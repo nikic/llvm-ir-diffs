@@ -571,789 +571,72 @@ _ZL13NormalizeValsRyS_.exit14:                    ; preds = %while.body.i10, %_Z
 
 ; Function Attrs: mustprogress nofree nosync nounwind willreturn memory(none) uwtable
 define dso_local noundef i64 @_Z17GetCompressRatingjyyy(i32 noundef %dictionarySize, i64 noundef %elapsedTime, i64 noundef %freq, i64 noundef %size) local_unnamed_addr #9 {
-for.body4.i:
-  %umax.i = tail call i32 @llvm.umax.i32(i32 %dictionarySize, i32 256)
-  %0 = add i32 %umax.i, -256
-  %1 = icmp ult i32 %0, 256
-  br i1 %1, label %cleanup.i, label %for.body4.1.i
+entry:
+  br label %for.cond1.preheader.i
 
-cleanup.i:                                        ; preds = %for.body4.1.i, %for.inc.1.i, %for.inc.1.i.1, %for.inc.1.i.2, %for.body4.2.i, %for.inc.2.i, %for.inc.2.i.1, %for.inc.2.i.2, %for.body4.3.i, %for.inc.3.i, %for.inc.3.i.1, %for.inc.3.i.2, %for.body4.4.i, %for.inc.4.i, %for.inc.4.i.1, %for.inc.4.i.2, %for.body4.5.i, %for.inc.5.i, %for.inc.5.i.1, %for.inc.5.i.2, %for.body4.6.i, %for.inc.6.i, %for.inc.6.i.1, %for.inc.6.i.2, %for.body4.7.i, %for.inc.7.i, %for.inc.7.i.1, %for.inc.7.i.2, %for.body4.8.i, %for.inc.8.i, %for.inc.8.i.1, %for.inc.8.i.2, %for.body4.9.i, %for.inc.9.i, %for.inc.9.i.1, %for.inc.9.i.2, %for.body4.10.i, %for.inc.10.i, %for.inc.10.i.1, %for.inc.10.i.2, %for.body4.11.i, %for.inc.11.i, %for.inc.11.i.1, %for.inc.11.i.2, %for.body4.12.i, %for.inc.12.i, %for.inc.12.i.1, %for.inc.12.i.2, %for.body4.13.i, %for.inc.13.i, %for.inc.13.i.1, %for.inc.13.i.2, %for.body4.14.i, %for.inc.14.i, %for.inc.14.i.1, %for.inc.14.i.2, %for.body4.15.i, %for.inc.15.i, %for.inc.15.i.1, %for.inc.15.i.2, %for.body4.16.i, %for.inc.16.i, %for.inc.16.i.1, %for.inc.16.i.2, %for.body4.17.i, %for.inc.17.i, %for.inc.17.i.1, %for.inc.17.i.2, %for.body4.18.i, %for.inc.18.i, %for.inc.18.i.1, %for.inc.18.i.2, %for.body4.19.i, %for.inc.19.i, %for.inc.19.i.1, %for.inc.19.i.2, %for.body4.20.i, %for.inc.20.i, %for.inc.20.i.1, %for.inc.20.i.2, %for.body4.21.i, %for.inc.21.i, %for.inc.21.i.1, %for.inc.21.i.2, %for.body4.22.i, %for.inc.22.i, %for.inc.22.i.1, %for.inc.22.i.2, %for.body4.23.i, %for.inc.23.i, %for.inc.23.i.1, %for.inc.23.i.2, %for.body4.i
-  %i.028.lcssa.i = phi i32 [ -2560, %for.body4.i ], [ 3328, %for.inc.23.i.2 ], [ 3328, %for.inc.23.i.1 ], [ 3328, %for.inc.23.i ], [ 3328, %for.body4.23.i ], [ 3072, %for.inc.22.i.2 ], [ 3072, %for.inc.22.i.1 ], [ 3072, %for.inc.22.i ], [ 3072, %for.body4.22.i ], [ 2816, %for.inc.21.i.2 ], [ 2816, %for.inc.21.i.1 ], [ 2816, %for.inc.21.i ], [ 2816, %for.body4.21.i ], [ 2560, %for.inc.20.i.2 ], [ 2560, %for.inc.20.i.1 ], [ 2560, %for.inc.20.i ], [ 2560, %for.body4.20.i ], [ 2304, %for.inc.19.i.2 ], [ 2304, %for.inc.19.i.1 ], [ 2304, %for.inc.19.i ], [ 2304, %for.body4.19.i ], [ 2048, %for.inc.18.i.2 ], [ 2048, %for.inc.18.i.1 ], [ 2048, %for.inc.18.i ], [ 2048, %for.body4.18.i ], [ 1792, %for.inc.17.i.2 ], [ 1792, %for.inc.17.i.1 ], [ 1792, %for.inc.17.i ], [ 1792, %for.body4.17.i ], [ 1536, %for.inc.16.i.2 ], [ 1536, %for.inc.16.i.1 ], [ 1536, %for.inc.16.i ], [ 1536, %for.body4.16.i ], [ 1280, %for.inc.15.i.2 ], [ 1280, %for.inc.15.i.1 ], [ 1280, %for.inc.15.i ], [ 1280, %for.body4.15.i ], [ 1024, %for.inc.14.i.2 ], [ 1024, %for.inc.14.i.1 ], [ 1024, %for.inc.14.i ], [ 1024, %for.body4.14.i ], [ 768, %for.inc.13.i.2 ], [ 768, %for.inc.13.i.1 ], [ 768, %for.inc.13.i ], [ 768, %for.body4.13.i ], [ 512, %for.inc.12.i.2 ], [ 512, %for.inc.12.i.1 ], [ 512, %for.inc.12.i ], [ 512, %for.body4.12.i ], [ 256, %for.inc.11.i.2 ], [ 256, %for.inc.11.i.1 ], [ 256, %for.inc.11.i ], [ 256, %for.body4.11.i ], [ 0, %for.inc.10.i.2 ], [ 0, %for.inc.10.i.1 ], [ 0, %for.inc.10.i ], [ 0, %for.body4.10.i ], [ -256, %for.inc.9.i.2 ], [ -256, %for.inc.9.i.1 ], [ -256, %for.inc.9.i ], [ -256, %for.body4.9.i ], [ -512, %for.inc.8.i.2 ], [ -512, %for.inc.8.i.1 ], [ -512, %for.inc.8.i ], [ -512, %for.body4.8.i ], [ -768, %for.inc.7.i.2 ], [ -768, %for.inc.7.i.1 ], [ -768, %for.inc.7.i ], [ -768, %for.body4.7.i ], [ -1024, %for.inc.6.i.2 ], [ -1024, %for.inc.6.i.1 ], [ -1024, %for.inc.6.i ], [ -1024, %for.body4.6.i ], [ -1280, %for.inc.5.i.2 ], [ -1280, %for.inc.5.i.1 ], [ -1280, %for.inc.5.i ], [ -1280, %for.body4.5.i ], [ -1536, %for.inc.4.i.2 ], [ -1536, %for.inc.4.i.1 ], [ -1536, %for.inc.4.i ], [ -1536, %for.body4.4.i ], [ -1792, %for.inc.3.i.2 ], [ -1792, %for.inc.3.i.1 ], [ -1792, %for.inc.3.i ], [ -1792, %for.body4.3.i ], [ -2048, %for.inc.2.i.2 ], [ -2048, %for.inc.2.i.1 ], [ -2048, %for.inc.2.i ], [ -2048, %for.body4.2.i ], [ -2304, %for.inc.1.i.2 ], [ -2304, %for.inc.1.i.1 ], [ -2304, %for.inc.1.i ], [ -2304, %for.body4.1.i ]
-  %j.027.lcssa.i = phi i32 [ %0, %for.body4.i ], [ %j.027.23.i, %for.body4.23.i ], [ %inc.23.i, %for.inc.23.i ], [ %inc.23.i.1, %for.inc.23.i.1 ], [ %inc.23.i.2, %for.inc.23.i.2 ], [ %j.027.22.i, %for.body4.22.i ], [ %inc.22.i, %for.inc.22.i ], [ %inc.22.i.1, %for.inc.22.i.1 ], [ %inc.22.i.2, %for.inc.22.i.2 ], [ %j.027.21.i, %for.body4.21.i ], [ %inc.21.i, %for.inc.21.i ], [ %inc.21.i.1, %for.inc.21.i.1 ], [ %inc.21.i.2, %for.inc.21.i.2 ], [ %j.027.20.i, %for.body4.20.i ], [ %inc.20.i, %for.inc.20.i ], [ %inc.20.i.1, %for.inc.20.i.1 ], [ %inc.20.i.2, %for.inc.20.i.2 ], [ %j.027.19.i, %for.body4.19.i ], [ %inc.19.i, %for.inc.19.i ], [ %inc.19.i.1, %for.inc.19.i.1 ], [ %inc.19.i.2, %for.inc.19.i.2 ], [ %j.027.18.i, %for.body4.18.i ], [ %inc.18.i, %for.inc.18.i ], [ %inc.18.i.1, %for.inc.18.i.1 ], [ %inc.18.i.2, %for.inc.18.i.2 ], [ %j.027.17.i, %for.body4.17.i ], [ %inc.17.i, %for.inc.17.i ], [ %inc.17.i.1, %for.inc.17.i.1 ], [ %inc.17.i.2, %for.inc.17.i.2 ], [ %j.027.16.i, %for.body4.16.i ], [ %inc.16.i, %for.inc.16.i ], [ %inc.16.i.1, %for.inc.16.i.1 ], [ %inc.16.i.2, %for.inc.16.i.2 ], [ %j.027.15.i, %for.body4.15.i ], [ %inc.15.i, %for.inc.15.i ], [ %inc.15.i.1, %for.inc.15.i.1 ], [ %inc.15.i.2, %for.inc.15.i.2 ], [ %j.027.14.i, %for.body4.14.i ], [ %inc.14.i, %for.inc.14.i ], [ %inc.14.i.1, %for.inc.14.i.1 ], [ %inc.14.i.2, %for.inc.14.i.2 ], [ %j.027.13.i, %for.body4.13.i ], [ %inc.13.i, %for.inc.13.i ], [ %inc.13.i.1, %for.inc.13.i.1 ], [ %inc.13.i.2, %for.inc.13.i.2 ], [ %j.027.12.i, %for.body4.12.i ], [ %inc.12.i, %for.inc.12.i ], [ %inc.12.i.1, %for.inc.12.i.1 ], [ %inc.12.i.2, %for.inc.12.i.2 ], [ %j.027.11.i, %for.body4.11.i ], [ %inc.11.i, %for.inc.11.i ], [ %inc.11.i.1, %for.inc.11.i.1 ], [ %inc.11.i.2, %for.inc.11.i.2 ], [ %j.027.10.i, %for.body4.10.i ], [ %inc.10.i, %for.inc.10.i ], [ %inc.10.i.1, %for.inc.10.i.1 ], [ %inc.10.i.2, %for.inc.10.i.2 ], [ %j.027.9.i, %for.body4.9.i ], [ %inc.9.i, %for.inc.9.i ], [ %inc.9.i.1, %for.inc.9.i.1 ], [ %inc.9.i.2, %for.inc.9.i.2 ], [ %j.027.8.i, %for.body4.8.i ], [ %inc.8.i, %for.inc.8.i ], [ %inc.8.i.1, %for.inc.8.i.1 ], [ %inc.8.i.2, %for.inc.8.i.2 ], [ %j.027.7.i, %for.body4.7.i ], [ %inc.7.i, %for.inc.7.i ], [ %inc.7.i.1, %for.inc.7.i.1 ], [ %inc.7.i.2, %for.inc.7.i.2 ], [ %j.027.6.i, %for.body4.6.i ], [ %inc.6.i, %for.inc.6.i ], [ %inc.6.i.1, %for.inc.6.i.1 ], [ %inc.6.i.2, %for.inc.6.i.2 ], [ %j.027.5.i, %for.body4.5.i ], [ %inc.5.i, %for.inc.5.i ], [ %inc.5.i.1, %for.inc.5.i.1 ], [ %inc.5.i.2, %for.inc.5.i.2 ], [ %j.027.4.i, %for.body4.4.i ], [ %inc.4.i, %for.inc.4.i ], [ %inc.4.i.1, %for.inc.4.i.1 ], [ %inc.4.i.2, %for.inc.4.i.2 ], [ %j.027.3.i, %for.body4.3.i ], [ %inc.3.i, %for.inc.3.i ], [ %inc.3.i.1, %for.inc.3.i.1 ], [ %inc.3.i.2, %for.inc.3.i.2 ], [ %j.027.2.i, %for.body4.2.i ], [ %inc.2.i, %for.inc.2.i ], [ %inc.2.i.1, %for.inc.2.i.1 ], [ %inc.2.i.2, %for.inc.2.i.2 ], [ %j.027.1.i, %for.body4.1.i ], [ %inc.1.i, %for.inc.1.i ], [ %inc.1.i.1, %for.inc.1.i.1 ], [ %inc.1.i.2, %for.inc.1.i.2 ]
-  %2 = add i32 %i.028.lcssa.i, %j.027.lcssa.i
-  %3 = zext i32 %2 to i64
+for.cond1.preheader.i:                            ; preds = %for.inc9.i, %entry
+  %i.028.i = phi i32 [ 8, %entry ], [ %inc10.i, %for.inc9.i ]
+  %shl.i = shl nuw i32 1, %i.028.i
+  %sub.i = add nsw i32 %i.028.i, -8
+  br label %for.body4.i
+
+for.body4.i:                                      ; preds = %for.inc.i.3, %for.cond1.preheader.i
+  %j.027.i = phi i32 [ 0, %for.cond1.preheader.i ], [ %inc.i.3, %for.inc.i.3 ]
+  %shl5.i = shl nuw nsw i32 %j.027.i, %sub.i
+  %add.i = add nuw i32 %shl5.i, %shl.i
+  %cmp6.not.i = icmp ult i32 %add.i, %dictionarySize
+  br i1 %cmp6.not.i, label %for.inc.i, label %cleanup.i
+
+for.inc.i:                                        ; preds = %for.body4.i
+  %inc.i = or i32 %j.027.i, 1
+  %shl5.i.1 = shl nuw nsw i32 %inc.i, %sub.i
+  %add.i.1 = add nuw i32 %shl5.i.1, %shl.i
+  %cmp6.not.i.1 = icmp ult i32 %add.i.1, %dictionarySize
+  br i1 %cmp6.not.i.1, label %for.inc.i.1, label %cleanup.i
+
+for.inc.i.1:                                      ; preds = %for.inc.i
+  %inc.i.1 = or i32 %j.027.i, 2
+  %shl5.i.2 = shl nuw nsw i32 %inc.i.1, %sub.i
+  %add.i.2 = add nuw i32 %shl5.i.2, %shl.i
+  %cmp6.not.i.2 = icmp ult i32 %add.i.2, %dictionarySize
+  br i1 %cmp6.not.i.2, label %for.inc.i.2, label %cleanup.i
+
+for.inc.i.2:                                      ; preds = %for.inc.i.1
+  %inc.i.2 = or i32 %j.027.i, 3
+  %shl5.i.3 = shl nuw nsw i32 %inc.i.2, %sub.i
+  %add.i.3 = add nuw i32 %shl5.i.3, %shl.i
+  %cmp6.not.i.3 = icmp ult i32 %add.i.3, %dictionarySize
+  br i1 %cmp6.not.i.3, label %for.inc.i.3, label %cleanup.i
+
+for.inc.i.3:                                      ; preds = %for.inc.i.2
+  %inc.i.3 = add nuw nsw i32 %j.027.i, 4
+  %exitcond.i.3 = icmp eq i32 %inc.i.3, 256
+  br i1 %exitcond.i.3, label %for.inc9.i, label %for.body4.i
+
+cleanup.i:                                        ; preds = %for.inc.i.2, %for.inc.i.1, %for.inc.i, %for.body4.i
+  %j.027.i.lcssa = phi i32 [ %j.027.i, %for.body4.i ], [ %inc.i, %for.inc.i ], [ %inc.i.1, %for.inc.i.1 ], [ %inc.i.2, %for.inc.i.2 ]
+  %shl7.i = shl i32 %i.028.i, 8
+  %add8.i = add i32 %shl7.i, -4608
+  %0 = add i32 %add8.i, %j.027.i.lcssa
+  %1 = zext i32 %0 to i64
   br label %_ZL10GetLogSizej.exit
 
-for.body4.1.i:                                    ; preds = %for.body4.i, %for.inc.1.i.3
-  %j.027.1.i = phi i32 [ %inc.1.i.3, %for.inc.1.i.3 ], [ 0, %for.body4.i ]
-  %shl5.1.i = shl nuw nsw i32 %j.027.1.i, 1
-  %add.1.i = add nuw nsw i32 %shl5.1.i, 512
-  %cmp6.not.1.i = icmp ult i32 %add.1.i, %dictionarySize
-  br i1 %cmp6.not.1.i, label %for.inc.1.i, label %cleanup.i
-
-for.inc.1.i:                                      ; preds = %for.body4.1.i
-  %inc.1.i = or i32 %j.027.1.i, 1
-  %shl5.1.i.1 = shl nuw nsw i32 %inc.1.i, 1
-  %add.1.i.1 = add nuw nsw i32 %shl5.1.i.1, 512
-  %cmp6.not.1.i.1 = icmp ult i32 %add.1.i.1, %dictionarySize
-  br i1 %cmp6.not.1.i.1, label %for.inc.1.i.1, label %cleanup.i
-
-for.inc.1.i.1:                                    ; preds = %for.inc.1.i
-  %inc.1.i.1 = or i32 %j.027.1.i, 2
-  %shl5.1.i.2 = shl nuw nsw i32 %inc.1.i.1, 1
-  %add.1.i.2 = add nuw nsw i32 %shl5.1.i.2, 512
-  %cmp6.not.1.i.2 = icmp ult i32 %add.1.i.2, %dictionarySize
-  br i1 %cmp6.not.1.i.2, label %for.inc.1.i.2, label %cleanup.i
-
-for.inc.1.i.2:                                    ; preds = %for.inc.1.i.1
-  %inc.1.i.2 = or i32 %j.027.1.i, 3
-  %shl5.1.i.3 = shl nuw nsw i32 %inc.1.i.2, 1
-  %add.1.i.3 = add nuw nsw i32 %shl5.1.i.3, 512
-  %cmp6.not.1.i.3 = icmp ult i32 %add.1.i.3, %dictionarySize
-  br i1 %cmp6.not.1.i.3, label %for.inc.1.i.3, label %cleanup.i
-
-for.inc.1.i.3:                                    ; preds = %for.inc.1.i.2
-  %inc.1.i.3 = add nuw nsw i32 %j.027.1.i, 4
-  %exitcond.1.i.3 = icmp eq i32 %inc.1.i.3, 256
-  br i1 %exitcond.1.i.3, label %for.body4.2.i, label %for.body4.1.i
-
-for.body4.2.i:                                    ; preds = %for.inc.1.i.3, %for.inc.2.i.3
-  %j.027.2.i = phi i32 [ %inc.2.i.3, %for.inc.2.i.3 ], [ 0, %for.inc.1.i.3 ]
-  %shl5.2.i = shl nuw nsw i32 %j.027.2.i, 2
-  %add.2.i = add nuw nsw i32 %shl5.2.i, 1024
-  %cmp6.not.2.i = icmp ult i32 %add.2.i, %dictionarySize
-  br i1 %cmp6.not.2.i, label %for.inc.2.i, label %cleanup.i
-
-for.inc.2.i:                                      ; preds = %for.body4.2.i
-  %inc.2.i = or i32 %j.027.2.i, 1
-  %shl5.2.i.1 = shl nuw nsw i32 %inc.2.i, 2
-  %add.2.i.1 = add nuw nsw i32 %shl5.2.i.1, 1024
-  %cmp6.not.2.i.1 = icmp ult i32 %add.2.i.1, %dictionarySize
-  br i1 %cmp6.not.2.i.1, label %for.inc.2.i.1, label %cleanup.i
-
-for.inc.2.i.1:                                    ; preds = %for.inc.2.i
-  %inc.2.i.1 = or i32 %j.027.2.i, 2
-  %shl5.2.i.2 = shl nuw nsw i32 %inc.2.i.1, 2
-  %add.2.i.2 = add nuw nsw i32 %shl5.2.i.2, 1024
-  %cmp6.not.2.i.2 = icmp ult i32 %add.2.i.2, %dictionarySize
-  br i1 %cmp6.not.2.i.2, label %for.inc.2.i.2, label %cleanup.i
-
-for.inc.2.i.2:                                    ; preds = %for.inc.2.i.1
-  %inc.2.i.2 = or i32 %j.027.2.i, 3
-  %shl5.2.i.3 = shl nuw nsw i32 %inc.2.i.2, 2
-  %add.2.i.3 = add nuw nsw i32 %shl5.2.i.3, 1024
-  %cmp6.not.2.i.3 = icmp ult i32 %add.2.i.3, %dictionarySize
-  br i1 %cmp6.not.2.i.3, label %for.inc.2.i.3, label %cleanup.i
-
-for.inc.2.i.3:                                    ; preds = %for.inc.2.i.2
-  %inc.2.i.3 = add nuw nsw i32 %j.027.2.i, 4
-  %exitcond.2.i.3 = icmp eq i32 %inc.2.i.3, 256
-  br i1 %exitcond.2.i.3, label %for.body4.3.i, label %for.body4.2.i
-
-for.body4.3.i:                                    ; preds = %for.inc.2.i.3, %for.inc.3.i.3
-  %j.027.3.i = phi i32 [ %inc.3.i.3, %for.inc.3.i.3 ], [ 0, %for.inc.2.i.3 ]
-  %shl5.3.i = shl nuw nsw i32 %j.027.3.i, 3
-  %add.3.i = add nuw nsw i32 %shl5.3.i, 2048
-  %cmp6.not.3.i = icmp ult i32 %add.3.i, %dictionarySize
-  br i1 %cmp6.not.3.i, label %for.inc.3.i, label %cleanup.i
-
-for.inc.3.i:                                      ; preds = %for.body4.3.i
-  %inc.3.i = or i32 %j.027.3.i, 1
-  %shl5.3.i.1 = shl nuw nsw i32 %inc.3.i, 3
-  %add.3.i.1 = add nuw nsw i32 %shl5.3.i.1, 2048
-  %cmp6.not.3.i.1 = icmp ult i32 %add.3.i.1, %dictionarySize
-  br i1 %cmp6.not.3.i.1, label %for.inc.3.i.1, label %cleanup.i
-
-for.inc.3.i.1:                                    ; preds = %for.inc.3.i
-  %inc.3.i.1 = or i32 %j.027.3.i, 2
-  %shl5.3.i.2 = shl nuw nsw i32 %inc.3.i.1, 3
-  %add.3.i.2 = add nuw nsw i32 %shl5.3.i.2, 2048
-  %cmp6.not.3.i.2 = icmp ult i32 %add.3.i.2, %dictionarySize
-  br i1 %cmp6.not.3.i.2, label %for.inc.3.i.2, label %cleanup.i
-
-for.inc.3.i.2:                                    ; preds = %for.inc.3.i.1
-  %inc.3.i.2 = or i32 %j.027.3.i, 3
-  %shl5.3.i.3 = shl nuw nsw i32 %inc.3.i.2, 3
-  %add.3.i.3 = add nuw nsw i32 %shl5.3.i.3, 2048
-  %cmp6.not.3.i.3 = icmp ult i32 %add.3.i.3, %dictionarySize
-  br i1 %cmp6.not.3.i.3, label %for.inc.3.i.3, label %cleanup.i
-
-for.inc.3.i.3:                                    ; preds = %for.inc.3.i.2
-  %inc.3.i.3 = add nuw nsw i32 %j.027.3.i, 4
-  %exitcond.3.i.3 = icmp eq i32 %inc.3.i.3, 256
-  br i1 %exitcond.3.i.3, label %for.body4.4.i, label %for.body4.3.i
-
-for.body4.4.i:                                    ; preds = %for.inc.3.i.3, %for.inc.4.i.3
-  %j.027.4.i = phi i32 [ %inc.4.i.3, %for.inc.4.i.3 ], [ 0, %for.inc.3.i.3 ]
-  %shl5.4.i = shl nuw nsw i32 %j.027.4.i, 4
-  %add.4.i = add nuw nsw i32 %shl5.4.i, 4096
-  %cmp6.not.4.i = icmp ult i32 %add.4.i, %dictionarySize
-  br i1 %cmp6.not.4.i, label %for.inc.4.i, label %cleanup.i
-
-for.inc.4.i:                                      ; preds = %for.body4.4.i
-  %inc.4.i = or i32 %j.027.4.i, 1
-  %shl5.4.i.1 = shl nuw nsw i32 %inc.4.i, 4
-  %add.4.i.1 = add nuw nsw i32 %shl5.4.i.1, 4096
-  %cmp6.not.4.i.1 = icmp ult i32 %add.4.i.1, %dictionarySize
-  br i1 %cmp6.not.4.i.1, label %for.inc.4.i.1, label %cleanup.i
-
-for.inc.4.i.1:                                    ; preds = %for.inc.4.i
-  %inc.4.i.1 = or i32 %j.027.4.i, 2
-  %shl5.4.i.2 = shl nuw nsw i32 %inc.4.i.1, 4
-  %add.4.i.2 = add nuw nsw i32 %shl5.4.i.2, 4096
-  %cmp6.not.4.i.2 = icmp ult i32 %add.4.i.2, %dictionarySize
-  br i1 %cmp6.not.4.i.2, label %for.inc.4.i.2, label %cleanup.i
-
-for.inc.4.i.2:                                    ; preds = %for.inc.4.i.1
-  %inc.4.i.2 = or i32 %j.027.4.i, 3
-  %shl5.4.i.3 = shl nuw nsw i32 %inc.4.i.2, 4
-  %add.4.i.3 = add nuw nsw i32 %shl5.4.i.3, 4096
-  %cmp6.not.4.i.3 = icmp ult i32 %add.4.i.3, %dictionarySize
-  br i1 %cmp6.not.4.i.3, label %for.inc.4.i.3, label %cleanup.i
-
-for.inc.4.i.3:                                    ; preds = %for.inc.4.i.2
-  %inc.4.i.3 = add nuw nsw i32 %j.027.4.i, 4
-  %exitcond.4.i.3 = icmp eq i32 %inc.4.i.3, 256
-  br i1 %exitcond.4.i.3, label %for.body4.5.i, label %for.body4.4.i
-
-for.body4.5.i:                                    ; preds = %for.inc.4.i.3, %for.inc.5.i.3
-  %j.027.5.i = phi i32 [ %inc.5.i.3, %for.inc.5.i.3 ], [ 0, %for.inc.4.i.3 ]
-  %shl5.5.i = shl nuw nsw i32 %j.027.5.i, 5
-  %add.5.i = add nuw nsw i32 %shl5.5.i, 8192
-  %cmp6.not.5.i = icmp ult i32 %add.5.i, %dictionarySize
-  br i1 %cmp6.not.5.i, label %for.inc.5.i, label %cleanup.i
-
-for.inc.5.i:                                      ; preds = %for.body4.5.i
-  %inc.5.i = or i32 %j.027.5.i, 1
-  %shl5.5.i.1 = shl nuw nsw i32 %inc.5.i, 5
-  %add.5.i.1 = add nuw nsw i32 %shl5.5.i.1, 8192
-  %cmp6.not.5.i.1 = icmp ult i32 %add.5.i.1, %dictionarySize
-  br i1 %cmp6.not.5.i.1, label %for.inc.5.i.1, label %cleanup.i
-
-for.inc.5.i.1:                                    ; preds = %for.inc.5.i
-  %inc.5.i.1 = or i32 %j.027.5.i, 2
-  %shl5.5.i.2 = shl nuw nsw i32 %inc.5.i.1, 5
-  %add.5.i.2 = add nuw nsw i32 %shl5.5.i.2, 8192
-  %cmp6.not.5.i.2 = icmp ult i32 %add.5.i.2, %dictionarySize
-  br i1 %cmp6.not.5.i.2, label %for.inc.5.i.2, label %cleanup.i
-
-for.inc.5.i.2:                                    ; preds = %for.inc.5.i.1
-  %inc.5.i.2 = or i32 %j.027.5.i, 3
-  %shl5.5.i.3 = shl nuw nsw i32 %inc.5.i.2, 5
-  %add.5.i.3 = add nuw nsw i32 %shl5.5.i.3, 8192
-  %cmp6.not.5.i.3 = icmp ult i32 %add.5.i.3, %dictionarySize
-  br i1 %cmp6.not.5.i.3, label %for.inc.5.i.3, label %cleanup.i
-
-for.inc.5.i.3:                                    ; preds = %for.inc.5.i.2
-  %inc.5.i.3 = add nuw nsw i32 %j.027.5.i, 4
-  %exitcond.5.i.3 = icmp eq i32 %inc.5.i.3, 256
-  br i1 %exitcond.5.i.3, label %for.body4.6.i, label %for.body4.5.i
-
-for.body4.6.i:                                    ; preds = %for.inc.5.i.3, %for.inc.6.i.3
-  %j.027.6.i = phi i32 [ %inc.6.i.3, %for.inc.6.i.3 ], [ 0, %for.inc.5.i.3 ]
-  %shl5.6.i = shl nuw nsw i32 %j.027.6.i, 6
-  %add.6.i = add nuw nsw i32 %shl5.6.i, 16384
-  %cmp6.not.6.i = icmp ult i32 %add.6.i, %dictionarySize
-  br i1 %cmp6.not.6.i, label %for.inc.6.i, label %cleanup.i
-
-for.inc.6.i:                                      ; preds = %for.body4.6.i
-  %inc.6.i = or i32 %j.027.6.i, 1
-  %shl5.6.i.1 = shl nuw nsw i32 %inc.6.i, 6
-  %add.6.i.1 = add nuw nsw i32 %shl5.6.i.1, 16384
-  %cmp6.not.6.i.1 = icmp ult i32 %add.6.i.1, %dictionarySize
-  br i1 %cmp6.not.6.i.1, label %for.inc.6.i.1, label %cleanup.i
-
-for.inc.6.i.1:                                    ; preds = %for.inc.6.i
-  %inc.6.i.1 = or i32 %j.027.6.i, 2
-  %shl5.6.i.2 = shl nuw nsw i32 %inc.6.i.1, 6
-  %add.6.i.2 = add nuw nsw i32 %shl5.6.i.2, 16384
-  %cmp6.not.6.i.2 = icmp ult i32 %add.6.i.2, %dictionarySize
-  br i1 %cmp6.not.6.i.2, label %for.inc.6.i.2, label %cleanup.i
-
-for.inc.6.i.2:                                    ; preds = %for.inc.6.i.1
-  %inc.6.i.2 = or i32 %j.027.6.i, 3
-  %shl5.6.i.3 = shl nuw nsw i32 %inc.6.i.2, 6
-  %add.6.i.3 = add nuw nsw i32 %shl5.6.i.3, 16384
-  %cmp6.not.6.i.3 = icmp ult i32 %add.6.i.3, %dictionarySize
-  br i1 %cmp6.not.6.i.3, label %for.inc.6.i.3, label %cleanup.i
-
-for.inc.6.i.3:                                    ; preds = %for.inc.6.i.2
-  %inc.6.i.3 = add nuw nsw i32 %j.027.6.i, 4
-  %exitcond.6.i.3 = icmp eq i32 %inc.6.i.3, 256
-  br i1 %exitcond.6.i.3, label %for.body4.7.i, label %for.body4.6.i
-
-for.body4.7.i:                                    ; preds = %for.inc.6.i.3, %for.inc.7.i.3
-  %j.027.7.i = phi i32 [ %inc.7.i.3, %for.inc.7.i.3 ], [ 0, %for.inc.6.i.3 ]
-  %shl5.7.i = shl nuw nsw i32 %j.027.7.i, 7
-  %add.7.i = add nuw nsw i32 %shl5.7.i, 32768
-  %cmp6.not.7.i = icmp ult i32 %add.7.i, %dictionarySize
-  br i1 %cmp6.not.7.i, label %for.inc.7.i, label %cleanup.i
-
-for.inc.7.i:                                      ; preds = %for.body4.7.i
-  %inc.7.i = or i32 %j.027.7.i, 1
-  %shl5.7.i.1 = shl nuw nsw i32 %inc.7.i, 7
-  %add.7.i.1 = add nuw nsw i32 %shl5.7.i.1, 32768
-  %cmp6.not.7.i.1 = icmp ult i32 %add.7.i.1, %dictionarySize
-  br i1 %cmp6.not.7.i.1, label %for.inc.7.i.1, label %cleanup.i
-
-for.inc.7.i.1:                                    ; preds = %for.inc.7.i
-  %inc.7.i.1 = or i32 %j.027.7.i, 2
-  %shl5.7.i.2 = shl nuw nsw i32 %inc.7.i.1, 7
-  %add.7.i.2 = add nuw nsw i32 %shl5.7.i.2, 32768
-  %cmp6.not.7.i.2 = icmp ult i32 %add.7.i.2, %dictionarySize
-  br i1 %cmp6.not.7.i.2, label %for.inc.7.i.2, label %cleanup.i
-
-for.inc.7.i.2:                                    ; preds = %for.inc.7.i.1
-  %inc.7.i.2 = or i32 %j.027.7.i, 3
-  %shl5.7.i.3 = shl nuw nsw i32 %inc.7.i.2, 7
-  %add.7.i.3 = add nuw nsw i32 %shl5.7.i.3, 32768
-  %cmp6.not.7.i.3 = icmp ult i32 %add.7.i.3, %dictionarySize
-  br i1 %cmp6.not.7.i.3, label %for.inc.7.i.3, label %cleanup.i
-
-for.inc.7.i.3:                                    ; preds = %for.inc.7.i.2
-  %inc.7.i.3 = add nuw nsw i32 %j.027.7.i, 4
-  %exitcond.7.i.3 = icmp eq i32 %inc.7.i.3, 256
-  br i1 %exitcond.7.i.3, label %for.body4.8.i, label %for.body4.7.i
-
-for.body4.8.i:                                    ; preds = %for.inc.7.i.3, %for.inc.8.i.3
-  %j.027.8.i = phi i32 [ %inc.8.i.3, %for.inc.8.i.3 ], [ 0, %for.inc.7.i.3 ]
-  %shl5.8.i = shl nuw nsw i32 %j.027.8.i, 8
-  %add.8.i = add nuw nsw i32 %shl5.8.i, 65536
-  %cmp6.not.8.i = icmp ult i32 %add.8.i, %dictionarySize
-  br i1 %cmp6.not.8.i, label %for.inc.8.i, label %cleanup.i
-
-for.inc.8.i:                                      ; preds = %for.body4.8.i
-  %inc.8.i = or i32 %j.027.8.i, 1
-  %shl5.8.i.1 = shl nuw nsw i32 %inc.8.i, 8
-  %add.8.i.1 = add nuw nsw i32 %shl5.8.i.1, 65536
-  %cmp6.not.8.i.1 = icmp ult i32 %add.8.i.1, %dictionarySize
-  br i1 %cmp6.not.8.i.1, label %for.inc.8.i.1, label %cleanup.i
-
-for.inc.8.i.1:                                    ; preds = %for.inc.8.i
-  %inc.8.i.1 = or i32 %j.027.8.i, 2
-  %shl5.8.i.2 = shl nuw nsw i32 %inc.8.i.1, 8
-  %add.8.i.2 = add nuw nsw i32 %shl5.8.i.2, 65536
-  %cmp6.not.8.i.2 = icmp ult i32 %add.8.i.2, %dictionarySize
-  br i1 %cmp6.not.8.i.2, label %for.inc.8.i.2, label %cleanup.i
-
-for.inc.8.i.2:                                    ; preds = %for.inc.8.i.1
-  %inc.8.i.2 = or i32 %j.027.8.i, 3
-  %shl5.8.i.3 = shl nuw nsw i32 %inc.8.i.2, 8
-  %add.8.i.3 = add nuw nsw i32 %shl5.8.i.3, 65536
-  %cmp6.not.8.i.3 = icmp ult i32 %add.8.i.3, %dictionarySize
-  br i1 %cmp6.not.8.i.3, label %for.inc.8.i.3, label %cleanup.i
-
-for.inc.8.i.3:                                    ; preds = %for.inc.8.i.2
-  %inc.8.i.3 = add nuw nsw i32 %j.027.8.i, 4
-  %exitcond.8.i.3 = icmp eq i32 %inc.8.i.3, 256
-  br i1 %exitcond.8.i.3, label %for.body4.9.i, label %for.body4.8.i
-
-for.body4.9.i:                                    ; preds = %for.inc.8.i.3, %for.inc.9.i.3
-  %j.027.9.i = phi i32 [ %inc.9.i.3, %for.inc.9.i.3 ], [ 0, %for.inc.8.i.3 ]
-  %shl5.9.i = shl nuw nsw i32 %j.027.9.i, 9
-  %add.9.i = add nuw nsw i32 %shl5.9.i, 131072
-  %cmp6.not.9.i = icmp ult i32 %add.9.i, %dictionarySize
-  br i1 %cmp6.not.9.i, label %for.inc.9.i, label %cleanup.i
-
-for.inc.9.i:                                      ; preds = %for.body4.9.i
-  %inc.9.i = or i32 %j.027.9.i, 1
-  %shl5.9.i.1 = shl nuw nsw i32 %inc.9.i, 9
-  %add.9.i.1 = add nuw nsw i32 %shl5.9.i.1, 131072
-  %cmp6.not.9.i.1 = icmp ult i32 %add.9.i.1, %dictionarySize
-  br i1 %cmp6.not.9.i.1, label %for.inc.9.i.1, label %cleanup.i
-
-for.inc.9.i.1:                                    ; preds = %for.inc.9.i
-  %inc.9.i.1 = or i32 %j.027.9.i, 2
-  %shl5.9.i.2 = shl nuw nsw i32 %inc.9.i.1, 9
-  %add.9.i.2 = add nuw nsw i32 %shl5.9.i.2, 131072
-  %cmp6.not.9.i.2 = icmp ult i32 %add.9.i.2, %dictionarySize
-  br i1 %cmp6.not.9.i.2, label %for.inc.9.i.2, label %cleanup.i
-
-for.inc.9.i.2:                                    ; preds = %for.inc.9.i.1
-  %inc.9.i.2 = or i32 %j.027.9.i, 3
-  %shl5.9.i.3 = shl nuw nsw i32 %inc.9.i.2, 9
-  %add.9.i.3 = add nuw nsw i32 %shl5.9.i.3, 131072
-  %cmp6.not.9.i.3 = icmp ult i32 %add.9.i.3, %dictionarySize
-  br i1 %cmp6.not.9.i.3, label %for.inc.9.i.3, label %cleanup.i
-
-for.inc.9.i.3:                                    ; preds = %for.inc.9.i.2
-  %inc.9.i.3 = add nuw nsw i32 %j.027.9.i, 4
-  %exitcond.9.i.3 = icmp eq i32 %inc.9.i.3, 256
-  br i1 %exitcond.9.i.3, label %for.body4.10.i, label %for.body4.9.i
-
-for.body4.10.i:                                   ; preds = %for.inc.9.i.3, %for.inc.10.i.3
-  %j.027.10.i = phi i32 [ %inc.10.i.3, %for.inc.10.i.3 ], [ 0, %for.inc.9.i.3 ]
-  %shl5.10.i = shl nuw nsw i32 %j.027.10.i, 10
-  %add.10.i = add nuw nsw i32 %shl5.10.i, 262144
-  %cmp6.not.10.i = icmp ult i32 %add.10.i, %dictionarySize
-  br i1 %cmp6.not.10.i, label %for.inc.10.i, label %cleanup.i
-
-for.inc.10.i:                                     ; preds = %for.body4.10.i
-  %inc.10.i = or i32 %j.027.10.i, 1
-  %shl5.10.i.1 = shl nuw nsw i32 %inc.10.i, 10
-  %add.10.i.1 = add nuw nsw i32 %shl5.10.i.1, 262144
-  %cmp6.not.10.i.1 = icmp ult i32 %add.10.i.1, %dictionarySize
-  br i1 %cmp6.not.10.i.1, label %for.inc.10.i.1, label %cleanup.i
-
-for.inc.10.i.1:                                   ; preds = %for.inc.10.i
-  %inc.10.i.1 = or i32 %j.027.10.i, 2
-  %shl5.10.i.2 = shl nuw nsw i32 %inc.10.i.1, 10
-  %add.10.i.2 = add nuw nsw i32 %shl5.10.i.2, 262144
-  %cmp6.not.10.i.2 = icmp ult i32 %add.10.i.2, %dictionarySize
-  br i1 %cmp6.not.10.i.2, label %for.inc.10.i.2, label %cleanup.i
-
-for.inc.10.i.2:                                   ; preds = %for.inc.10.i.1
-  %inc.10.i.2 = or i32 %j.027.10.i, 3
-  %shl5.10.i.3 = shl nuw nsw i32 %inc.10.i.2, 10
-  %add.10.i.3 = add nuw nsw i32 %shl5.10.i.3, 262144
-  %cmp6.not.10.i.3 = icmp ult i32 %add.10.i.3, %dictionarySize
-  br i1 %cmp6.not.10.i.3, label %for.inc.10.i.3, label %cleanup.i
-
-for.inc.10.i.3:                                   ; preds = %for.inc.10.i.2
-  %inc.10.i.3 = add nuw nsw i32 %j.027.10.i, 4
-  %exitcond.10.i.3 = icmp eq i32 %inc.10.i.3, 256
-  br i1 %exitcond.10.i.3, label %for.body4.11.i, label %for.body4.10.i
-
-for.body4.11.i:                                   ; preds = %for.inc.10.i.3, %for.inc.11.i.3
-  %j.027.11.i = phi i32 [ %inc.11.i.3, %for.inc.11.i.3 ], [ 0, %for.inc.10.i.3 ]
-  %shl5.11.i = shl nuw nsw i32 %j.027.11.i, 11
-  %add.11.i = add nuw nsw i32 %shl5.11.i, 524288
-  %cmp6.not.11.i = icmp ult i32 %add.11.i, %dictionarySize
-  br i1 %cmp6.not.11.i, label %for.inc.11.i, label %cleanup.i
-
-for.inc.11.i:                                     ; preds = %for.body4.11.i
-  %inc.11.i = or i32 %j.027.11.i, 1
-  %shl5.11.i.1 = shl nuw nsw i32 %inc.11.i, 11
-  %add.11.i.1 = add nuw nsw i32 %shl5.11.i.1, 524288
-  %cmp6.not.11.i.1 = icmp ult i32 %add.11.i.1, %dictionarySize
-  br i1 %cmp6.not.11.i.1, label %for.inc.11.i.1, label %cleanup.i
-
-for.inc.11.i.1:                                   ; preds = %for.inc.11.i
-  %inc.11.i.1 = or i32 %j.027.11.i, 2
-  %shl5.11.i.2 = shl nuw nsw i32 %inc.11.i.1, 11
-  %add.11.i.2 = add nuw nsw i32 %shl5.11.i.2, 524288
-  %cmp6.not.11.i.2 = icmp ult i32 %add.11.i.2, %dictionarySize
-  br i1 %cmp6.not.11.i.2, label %for.inc.11.i.2, label %cleanup.i
-
-for.inc.11.i.2:                                   ; preds = %for.inc.11.i.1
-  %inc.11.i.2 = or i32 %j.027.11.i, 3
-  %shl5.11.i.3 = shl nuw nsw i32 %inc.11.i.2, 11
-  %add.11.i.3 = add nuw nsw i32 %shl5.11.i.3, 524288
-  %cmp6.not.11.i.3 = icmp ult i32 %add.11.i.3, %dictionarySize
-  br i1 %cmp6.not.11.i.3, label %for.inc.11.i.3, label %cleanup.i
-
-for.inc.11.i.3:                                   ; preds = %for.inc.11.i.2
-  %inc.11.i.3 = add nuw nsw i32 %j.027.11.i, 4
-  %exitcond.11.i.3 = icmp eq i32 %inc.11.i.3, 256
-  br i1 %exitcond.11.i.3, label %for.body4.12.i, label %for.body4.11.i
-
-for.body4.12.i:                                   ; preds = %for.inc.11.i.3, %for.inc.12.i.3
-  %j.027.12.i = phi i32 [ %inc.12.i.3, %for.inc.12.i.3 ], [ 0, %for.inc.11.i.3 ]
-  %shl5.12.i = shl nuw nsw i32 %j.027.12.i, 12
-  %add.12.i = add nuw nsw i32 %shl5.12.i, 1048576
-  %cmp6.not.12.i = icmp ult i32 %add.12.i, %dictionarySize
-  br i1 %cmp6.not.12.i, label %for.inc.12.i, label %cleanup.i
-
-for.inc.12.i:                                     ; preds = %for.body4.12.i
-  %inc.12.i = or i32 %j.027.12.i, 1
-  %shl5.12.i.1 = shl nuw nsw i32 %inc.12.i, 12
-  %add.12.i.1 = add nuw nsw i32 %shl5.12.i.1, 1048576
-  %cmp6.not.12.i.1 = icmp ult i32 %add.12.i.1, %dictionarySize
-  br i1 %cmp6.not.12.i.1, label %for.inc.12.i.1, label %cleanup.i
-
-for.inc.12.i.1:                                   ; preds = %for.inc.12.i
-  %inc.12.i.1 = or i32 %j.027.12.i, 2
-  %shl5.12.i.2 = shl nuw nsw i32 %inc.12.i.1, 12
-  %add.12.i.2 = add nuw nsw i32 %shl5.12.i.2, 1048576
-  %cmp6.not.12.i.2 = icmp ult i32 %add.12.i.2, %dictionarySize
-  br i1 %cmp6.not.12.i.2, label %for.inc.12.i.2, label %cleanup.i
-
-for.inc.12.i.2:                                   ; preds = %for.inc.12.i.1
-  %inc.12.i.2 = or i32 %j.027.12.i, 3
-  %shl5.12.i.3 = shl nuw nsw i32 %inc.12.i.2, 12
-  %add.12.i.3 = add nuw nsw i32 %shl5.12.i.3, 1048576
-  %cmp6.not.12.i.3 = icmp ult i32 %add.12.i.3, %dictionarySize
-  br i1 %cmp6.not.12.i.3, label %for.inc.12.i.3, label %cleanup.i
-
-for.inc.12.i.3:                                   ; preds = %for.inc.12.i.2
-  %inc.12.i.3 = add nuw nsw i32 %j.027.12.i, 4
-  %exitcond.12.i.3 = icmp eq i32 %inc.12.i.3, 256
-  br i1 %exitcond.12.i.3, label %for.body4.13.i, label %for.body4.12.i
-
-for.body4.13.i:                                   ; preds = %for.inc.12.i.3, %for.inc.13.i.3
-  %j.027.13.i = phi i32 [ %inc.13.i.3, %for.inc.13.i.3 ], [ 0, %for.inc.12.i.3 ]
-  %shl5.13.i = shl nuw nsw i32 %j.027.13.i, 13
-  %add.13.i = add nuw nsw i32 %shl5.13.i, 2097152
-  %cmp6.not.13.i = icmp ult i32 %add.13.i, %dictionarySize
-  br i1 %cmp6.not.13.i, label %for.inc.13.i, label %cleanup.i
-
-for.inc.13.i:                                     ; preds = %for.body4.13.i
-  %inc.13.i = or i32 %j.027.13.i, 1
-  %shl5.13.i.1 = shl nuw nsw i32 %inc.13.i, 13
-  %add.13.i.1 = add nuw nsw i32 %shl5.13.i.1, 2097152
-  %cmp6.not.13.i.1 = icmp ult i32 %add.13.i.1, %dictionarySize
-  br i1 %cmp6.not.13.i.1, label %for.inc.13.i.1, label %cleanup.i
-
-for.inc.13.i.1:                                   ; preds = %for.inc.13.i
-  %inc.13.i.1 = or i32 %j.027.13.i, 2
-  %shl5.13.i.2 = shl nuw nsw i32 %inc.13.i.1, 13
-  %add.13.i.2 = add nuw nsw i32 %shl5.13.i.2, 2097152
-  %cmp6.not.13.i.2 = icmp ult i32 %add.13.i.2, %dictionarySize
-  br i1 %cmp6.not.13.i.2, label %for.inc.13.i.2, label %cleanup.i
-
-for.inc.13.i.2:                                   ; preds = %for.inc.13.i.1
-  %inc.13.i.2 = or i32 %j.027.13.i, 3
-  %shl5.13.i.3 = shl nuw nsw i32 %inc.13.i.2, 13
-  %add.13.i.3 = add nuw nsw i32 %shl5.13.i.3, 2097152
-  %cmp6.not.13.i.3 = icmp ult i32 %add.13.i.3, %dictionarySize
-  br i1 %cmp6.not.13.i.3, label %for.inc.13.i.3, label %cleanup.i
-
-for.inc.13.i.3:                                   ; preds = %for.inc.13.i.2
-  %inc.13.i.3 = add nuw nsw i32 %j.027.13.i, 4
-  %exitcond.13.i.3 = icmp eq i32 %inc.13.i.3, 256
-  br i1 %exitcond.13.i.3, label %for.body4.14.i, label %for.body4.13.i
-
-for.body4.14.i:                                   ; preds = %for.inc.13.i.3, %for.inc.14.i.3
-  %j.027.14.i = phi i32 [ %inc.14.i.3, %for.inc.14.i.3 ], [ 0, %for.inc.13.i.3 ]
-  %shl5.14.i = shl nuw nsw i32 %j.027.14.i, 14
-  %add.14.i = add nuw nsw i32 %shl5.14.i, 4194304
-  %cmp6.not.14.i = icmp ult i32 %add.14.i, %dictionarySize
-  br i1 %cmp6.not.14.i, label %for.inc.14.i, label %cleanup.i
-
-for.inc.14.i:                                     ; preds = %for.body4.14.i
-  %inc.14.i = or i32 %j.027.14.i, 1
-  %shl5.14.i.1 = shl nuw nsw i32 %inc.14.i, 14
-  %add.14.i.1 = add nuw nsw i32 %shl5.14.i.1, 4194304
-  %cmp6.not.14.i.1 = icmp ult i32 %add.14.i.1, %dictionarySize
-  br i1 %cmp6.not.14.i.1, label %for.inc.14.i.1, label %cleanup.i
-
-for.inc.14.i.1:                                   ; preds = %for.inc.14.i
-  %inc.14.i.1 = or i32 %j.027.14.i, 2
-  %shl5.14.i.2 = shl nuw nsw i32 %inc.14.i.1, 14
-  %add.14.i.2 = add nuw nsw i32 %shl5.14.i.2, 4194304
-  %cmp6.not.14.i.2 = icmp ult i32 %add.14.i.2, %dictionarySize
-  br i1 %cmp6.not.14.i.2, label %for.inc.14.i.2, label %cleanup.i
-
-for.inc.14.i.2:                                   ; preds = %for.inc.14.i.1
-  %inc.14.i.2 = or i32 %j.027.14.i, 3
-  %shl5.14.i.3 = shl nuw nsw i32 %inc.14.i.2, 14
-  %add.14.i.3 = add nuw nsw i32 %shl5.14.i.3, 4194304
-  %cmp6.not.14.i.3 = icmp ult i32 %add.14.i.3, %dictionarySize
-  br i1 %cmp6.not.14.i.3, label %for.inc.14.i.3, label %cleanup.i
-
-for.inc.14.i.3:                                   ; preds = %for.inc.14.i.2
-  %inc.14.i.3 = add nuw nsw i32 %j.027.14.i, 4
-  %exitcond.14.i.3 = icmp eq i32 %inc.14.i.3, 256
-  br i1 %exitcond.14.i.3, label %for.body4.15.i, label %for.body4.14.i
-
-for.body4.15.i:                                   ; preds = %for.inc.14.i.3, %for.inc.15.i.3
-  %j.027.15.i = phi i32 [ %inc.15.i.3, %for.inc.15.i.3 ], [ 0, %for.inc.14.i.3 ]
-  %shl5.15.i = shl nuw nsw i32 %j.027.15.i, 15
-  %add.15.i = add nuw nsw i32 %shl5.15.i, 8388608
-  %cmp6.not.15.i = icmp ult i32 %add.15.i, %dictionarySize
-  br i1 %cmp6.not.15.i, label %for.inc.15.i, label %cleanup.i
-
-for.inc.15.i:                                     ; preds = %for.body4.15.i
-  %inc.15.i = or i32 %j.027.15.i, 1
-  %shl5.15.i.1 = shl nuw nsw i32 %inc.15.i, 15
-  %add.15.i.1 = add nuw nsw i32 %shl5.15.i.1, 8388608
-  %cmp6.not.15.i.1 = icmp ult i32 %add.15.i.1, %dictionarySize
-  br i1 %cmp6.not.15.i.1, label %for.inc.15.i.1, label %cleanup.i
-
-for.inc.15.i.1:                                   ; preds = %for.inc.15.i
-  %inc.15.i.1 = or i32 %j.027.15.i, 2
-  %shl5.15.i.2 = shl nuw nsw i32 %inc.15.i.1, 15
-  %add.15.i.2 = add nuw nsw i32 %shl5.15.i.2, 8388608
-  %cmp6.not.15.i.2 = icmp ult i32 %add.15.i.2, %dictionarySize
-  br i1 %cmp6.not.15.i.2, label %for.inc.15.i.2, label %cleanup.i
-
-for.inc.15.i.2:                                   ; preds = %for.inc.15.i.1
-  %inc.15.i.2 = or i32 %j.027.15.i, 3
-  %shl5.15.i.3 = shl nuw nsw i32 %inc.15.i.2, 15
-  %add.15.i.3 = add nuw nsw i32 %shl5.15.i.3, 8388608
-  %cmp6.not.15.i.3 = icmp ult i32 %add.15.i.3, %dictionarySize
-  br i1 %cmp6.not.15.i.3, label %for.inc.15.i.3, label %cleanup.i
-
-for.inc.15.i.3:                                   ; preds = %for.inc.15.i.2
-  %inc.15.i.3 = add nuw nsw i32 %j.027.15.i, 4
-  %exitcond.15.i.3 = icmp eq i32 %inc.15.i.3, 256
-  br i1 %exitcond.15.i.3, label %for.body4.16.i, label %for.body4.15.i
-
-for.body4.16.i:                                   ; preds = %for.inc.15.i.3, %for.inc.16.i.3
-  %j.027.16.i = phi i32 [ %inc.16.i.3, %for.inc.16.i.3 ], [ 0, %for.inc.15.i.3 ]
-  %shl5.16.i = shl nuw nsw i32 %j.027.16.i, 16
-  %add.16.i = add nuw nsw i32 %shl5.16.i, 16777216
-  %cmp6.not.16.i = icmp ult i32 %add.16.i, %dictionarySize
-  br i1 %cmp6.not.16.i, label %for.inc.16.i, label %cleanup.i
-
-for.inc.16.i:                                     ; preds = %for.body4.16.i
-  %inc.16.i = or i32 %j.027.16.i, 1
-  %shl5.16.i.1 = shl nuw nsw i32 %inc.16.i, 16
-  %add.16.i.1 = add nuw nsw i32 %shl5.16.i.1, 16777216
-  %cmp6.not.16.i.1 = icmp ult i32 %add.16.i.1, %dictionarySize
-  br i1 %cmp6.not.16.i.1, label %for.inc.16.i.1, label %cleanup.i
-
-for.inc.16.i.1:                                   ; preds = %for.inc.16.i
-  %inc.16.i.1 = or i32 %j.027.16.i, 2
-  %shl5.16.i.2 = shl nuw nsw i32 %inc.16.i.1, 16
-  %add.16.i.2 = add nuw nsw i32 %shl5.16.i.2, 16777216
-  %cmp6.not.16.i.2 = icmp ult i32 %add.16.i.2, %dictionarySize
-  br i1 %cmp6.not.16.i.2, label %for.inc.16.i.2, label %cleanup.i
-
-for.inc.16.i.2:                                   ; preds = %for.inc.16.i.1
-  %inc.16.i.2 = or i32 %j.027.16.i, 3
-  %shl5.16.i.3 = shl nuw nsw i32 %inc.16.i.2, 16
-  %add.16.i.3 = add nuw nsw i32 %shl5.16.i.3, 16777216
-  %cmp6.not.16.i.3 = icmp ult i32 %add.16.i.3, %dictionarySize
-  br i1 %cmp6.not.16.i.3, label %for.inc.16.i.3, label %cleanup.i
-
-for.inc.16.i.3:                                   ; preds = %for.inc.16.i.2
-  %inc.16.i.3 = add nuw nsw i32 %j.027.16.i, 4
-  %exitcond.16.i.3 = icmp eq i32 %inc.16.i.3, 256
-  br i1 %exitcond.16.i.3, label %for.body4.17.i, label %for.body4.16.i
-
-for.body4.17.i:                                   ; preds = %for.inc.16.i.3, %for.inc.17.i.3
-  %j.027.17.i = phi i32 [ %inc.17.i.3, %for.inc.17.i.3 ], [ 0, %for.inc.16.i.3 ]
-  %shl5.17.i = shl nuw nsw i32 %j.027.17.i, 17
-  %add.17.i = add nuw nsw i32 %shl5.17.i, 33554432
-  %cmp6.not.17.i = icmp ult i32 %add.17.i, %dictionarySize
-  br i1 %cmp6.not.17.i, label %for.inc.17.i, label %cleanup.i
-
-for.inc.17.i:                                     ; preds = %for.body4.17.i
-  %inc.17.i = or i32 %j.027.17.i, 1
-  %shl5.17.i.1 = shl nuw nsw i32 %inc.17.i, 17
-  %add.17.i.1 = add nuw nsw i32 %shl5.17.i.1, 33554432
-  %cmp6.not.17.i.1 = icmp ult i32 %add.17.i.1, %dictionarySize
-  br i1 %cmp6.not.17.i.1, label %for.inc.17.i.1, label %cleanup.i
-
-for.inc.17.i.1:                                   ; preds = %for.inc.17.i
-  %inc.17.i.1 = or i32 %j.027.17.i, 2
-  %shl5.17.i.2 = shl nuw nsw i32 %inc.17.i.1, 17
-  %add.17.i.2 = add nuw nsw i32 %shl5.17.i.2, 33554432
-  %cmp6.not.17.i.2 = icmp ult i32 %add.17.i.2, %dictionarySize
-  br i1 %cmp6.not.17.i.2, label %for.inc.17.i.2, label %cleanup.i
-
-for.inc.17.i.2:                                   ; preds = %for.inc.17.i.1
-  %inc.17.i.2 = or i32 %j.027.17.i, 3
-  %shl5.17.i.3 = shl nuw nsw i32 %inc.17.i.2, 17
-  %add.17.i.3 = add nuw nsw i32 %shl5.17.i.3, 33554432
-  %cmp6.not.17.i.3 = icmp ult i32 %add.17.i.3, %dictionarySize
-  br i1 %cmp6.not.17.i.3, label %for.inc.17.i.3, label %cleanup.i
-
-for.inc.17.i.3:                                   ; preds = %for.inc.17.i.2
-  %inc.17.i.3 = add nuw nsw i32 %j.027.17.i, 4
-  %exitcond.17.i.3 = icmp eq i32 %inc.17.i.3, 256
-  br i1 %exitcond.17.i.3, label %for.body4.18.i, label %for.body4.17.i
-
-for.body4.18.i:                                   ; preds = %for.inc.17.i.3, %for.inc.18.i.3
-  %j.027.18.i = phi i32 [ %inc.18.i.3, %for.inc.18.i.3 ], [ 0, %for.inc.17.i.3 ]
-  %shl5.18.i = shl nuw nsw i32 %j.027.18.i, 18
-  %add.18.i = add nuw nsw i32 %shl5.18.i, 67108864
-  %cmp6.not.18.i = icmp ult i32 %add.18.i, %dictionarySize
-  br i1 %cmp6.not.18.i, label %for.inc.18.i, label %cleanup.i
-
-for.inc.18.i:                                     ; preds = %for.body4.18.i
-  %inc.18.i = or i32 %j.027.18.i, 1
-  %shl5.18.i.1 = shl nuw nsw i32 %inc.18.i, 18
-  %add.18.i.1 = add nuw nsw i32 %shl5.18.i.1, 67108864
-  %cmp6.not.18.i.1 = icmp ult i32 %add.18.i.1, %dictionarySize
-  br i1 %cmp6.not.18.i.1, label %for.inc.18.i.1, label %cleanup.i
-
-for.inc.18.i.1:                                   ; preds = %for.inc.18.i
-  %inc.18.i.1 = or i32 %j.027.18.i, 2
-  %shl5.18.i.2 = shl nuw nsw i32 %inc.18.i.1, 18
-  %add.18.i.2 = add nuw nsw i32 %shl5.18.i.2, 67108864
-  %cmp6.not.18.i.2 = icmp ult i32 %add.18.i.2, %dictionarySize
-  br i1 %cmp6.not.18.i.2, label %for.inc.18.i.2, label %cleanup.i
-
-for.inc.18.i.2:                                   ; preds = %for.inc.18.i.1
-  %inc.18.i.2 = or i32 %j.027.18.i, 3
-  %shl5.18.i.3 = shl nuw nsw i32 %inc.18.i.2, 18
-  %add.18.i.3 = add nuw nsw i32 %shl5.18.i.3, 67108864
-  %cmp6.not.18.i.3 = icmp ult i32 %add.18.i.3, %dictionarySize
-  br i1 %cmp6.not.18.i.3, label %for.inc.18.i.3, label %cleanup.i
-
-for.inc.18.i.3:                                   ; preds = %for.inc.18.i.2
-  %inc.18.i.3 = add nuw nsw i32 %j.027.18.i, 4
-  %exitcond.18.i.3 = icmp eq i32 %inc.18.i.3, 256
-  br i1 %exitcond.18.i.3, label %for.body4.19.i, label %for.body4.18.i
-
-for.body4.19.i:                                   ; preds = %for.inc.18.i.3, %for.inc.19.i.3
-  %j.027.19.i = phi i32 [ %inc.19.i.3, %for.inc.19.i.3 ], [ 0, %for.inc.18.i.3 ]
-  %shl5.19.i = shl nuw nsw i32 %j.027.19.i, 19
-  %add.19.i = add nuw nsw i32 %shl5.19.i, 134217728
-  %cmp6.not.19.i = icmp ult i32 %add.19.i, %dictionarySize
-  br i1 %cmp6.not.19.i, label %for.inc.19.i, label %cleanup.i
-
-for.inc.19.i:                                     ; preds = %for.body4.19.i
-  %inc.19.i = or i32 %j.027.19.i, 1
-  %shl5.19.i.1 = shl nuw nsw i32 %inc.19.i, 19
-  %add.19.i.1 = add nuw nsw i32 %shl5.19.i.1, 134217728
-  %cmp6.not.19.i.1 = icmp ult i32 %add.19.i.1, %dictionarySize
-  br i1 %cmp6.not.19.i.1, label %for.inc.19.i.1, label %cleanup.i
-
-for.inc.19.i.1:                                   ; preds = %for.inc.19.i
-  %inc.19.i.1 = or i32 %j.027.19.i, 2
-  %shl5.19.i.2 = shl nuw nsw i32 %inc.19.i.1, 19
-  %add.19.i.2 = add nuw nsw i32 %shl5.19.i.2, 134217728
-  %cmp6.not.19.i.2 = icmp ult i32 %add.19.i.2, %dictionarySize
-  br i1 %cmp6.not.19.i.2, label %for.inc.19.i.2, label %cleanup.i
-
-for.inc.19.i.2:                                   ; preds = %for.inc.19.i.1
-  %inc.19.i.2 = or i32 %j.027.19.i, 3
-  %shl5.19.i.3 = shl nuw nsw i32 %inc.19.i.2, 19
-  %add.19.i.3 = add nuw nsw i32 %shl5.19.i.3, 134217728
-  %cmp6.not.19.i.3 = icmp ult i32 %add.19.i.3, %dictionarySize
-  br i1 %cmp6.not.19.i.3, label %for.inc.19.i.3, label %cleanup.i
-
-for.inc.19.i.3:                                   ; preds = %for.inc.19.i.2
-  %inc.19.i.3 = add nuw nsw i32 %j.027.19.i, 4
-  %exitcond.19.i.3 = icmp eq i32 %inc.19.i.3, 256
-  br i1 %exitcond.19.i.3, label %for.body4.20.i, label %for.body4.19.i
-
-for.body4.20.i:                                   ; preds = %for.inc.19.i.3, %for.inc.20.i.3
-  %j.027.20.i = phi i32 [ %inc.20.i.3, %for.inc.20.i.3 ], [ 0, %for.inc.19.i.3 ]
-  %shl5.20.i = shl nuw nsw i32 %j.027.20.i, 20
-  %add.20.i = add nuw nsw i32 %shl5.20.i, 268435456
-  %cmp6.not.20.i = icmp ult i32 %add.20.i, %dictionarySize
-  br i1 %cmp6.not.20.i, label %for.inc.20.i, label %cleanup.i
-
-for.inc.20.i:                                     ; preds = %for.body4.20.i
-  %inc.20.i = or i32 %j.027.20.i, 1
-  %shl5.20.i.1 = shl nuw nsw i32 %inc.20.i, 20
-  %add.20.i.1 = add nuw nsw i32 %shl5.20.i.1, 268435456
-  %cmp6.not.20.i.1 = icmp ult i32 %add.20.i.1, %dictionarySize
-  br i1 %cmp6.not.20.i.1, label %for.inc.20.i.1, label %cleanup.i
-
-for.inc.20.i.1:                                   ; preds = %for.inc.20.i
-  %inc.20.i.1 = or i32 %j.027.20.i, 2
-  %shl5.20.i.2 = shl nuw nsw i32 %inc.20.i.1, 20
-  %add.20.i.2 = add nuw nsw i32 %shl5.20.i.2, 268435456
-  %cmp6.not.20.i.2 = icmp ult i32 %add.20.i.2, %dictionarySize
-  br i1 %cmp6.not.20.i.2, label %for.inc.20.i.2, label %cleanup.i
-
-for.inc.20.i.2:                                   ; preds = %for.inc.20.i.1
-  %inc.20.i.2 = or i32 %j.027.20.i, 3
-  %shl5.20.i.3 = shl nuw nsw i32 %inc.20.i.2, 20
-  %add.20.i.3 = add nuw nsw i32 %shl5.20.i.3, 268435456
-  %cmp6.not.20.i.3 = icmp ult i32 %add.20.i.3, %dictionarySize
-  br i1 %cmp6.not.20.i.3, label %for.inc.20.i.3, label %cleanup.i
-
-for.inc.20.i.3:                                   ; preds = %for.inc.20.i.2
-  %inc.20.i.3 = add nuw nsw i32 %j.027.20.i, 4
-  %exitcond.20.i.3 = icmp eq i32 %inc.20.i.3, 256
-  br i1 %exitcond.20.i.3, label %for.body4.21.i, label %for.body4.20.i
-
-for.body4.21.i:                                   ; preds = %for.inc.20.i.3, %for.inc.21.i.3
-  %j.027.21.i = phi i32 [ %inc.21.i.3, %for.inc.21.i.3 ], [ 0, %for.inc.20.i.3 ]
-  %shl5.21.i = shl nuw nsw i32 %j.027.21.i, 21
-  %add.21.i = add nuw nsw i32 %shl5.21.i, 536870912
-  %cmp6.not.21.i = icmp ult i32 %add.21.i, %dictionarySize
-  br i1 %cmp6.not.21.i, label %for.inc.21.i, label %cleanup.i
-
-for.inc.21.i:                                     ; preds = %for.body4.21.i
-  %inc.21.i = or i32 %j.027.21.i, 1
-  %shl5.21.i.1 = shl nuw nsw i32 %inc.21.i, 21
-  %add.21.i.1 = add nuw nsw i32 %shl5.21.i.1, 536870912
-  %cmp6.not.21.i.1 = icmp ult i32 %add.21.i.1, %dictionarySize
-  br i1 %cmp6.not.21.i.1, label %for.inc.21.i.1, label %cleanup.i
-
-for.inc.21.i.1:                                   ; preds = %for.inc.21.i
-  %inc.21.i.1 = or i32 %j.027.21.i, 2
-  %shl5.21.i.2 = shl nuw nsw i32 %inc.21.i.1, 21
-  %add.21.i.2 = add nuw nsw i32 %shl5.21.i.2, 536870912
-  %cmp6.not.21.i.2 = icmp ult i32 %add.21.i.2, %dictionarySize
-  br i1 %cmp6.not.21.i.2, label %for.inc.21.i.2, label %cleanup.i
-
-for.inc.21.i.2:                                   ; preds = %for.inc.21.i.1
-  %inc.21.i.2 = or i32 %j.027.21.i, 3
-  %shl5.21.i.3 = shl nuw nsw i32 %inc.21.i.2, 21
-  %add.21.i.3 = add nuw nsw i32 %shl5.21.i.3, 536870912
-  %cmp6.not.21.i.3 = icmp ult i32 %add.21.i.3, %dictionarySize
-  br i1 %cmp6.not.21.i.3, label %for.inc.21.i.3, label %cleanup.i
-
-for.inc.21.i.3:                                   ; preds = %for.inc.21.i.2
-  %inc.21.i.3 = add nuw nsw i32 %j.027.21.i, 4
-  %exitcond.21.i.3 = icmp eq i32 %inc.21.i.3, 256
-  br i1 %exitcond.21.i.3, label %for.body4.22.i, label %for.body4.21.i
-
-for.body4.22.i:                                   ; preds = %for.inc.21.i.3, %for.inc.22.i.3
-  %j.027.22.i = phi i32 [ %inc.22.i.3, %for.inc.22.i.3 ], [ 0, %for.inc.21.i.3 ]
-  %shl5.22.i = shl nuw nsw i32 %j.027.22.i, 22
-  %add.22.i = add nuw nsw i32 %shl5.22.i, 1073741824
-  %cmp6.not.22.i = icmp ult i32 %add.22.i, %dictionarySize
-  br i1 %cmp6.not.22.i, label %for.inc.22.i, label %cleanup.i
-
-for.inc.22.i:                                     ; preds = %for.body4.22.i
-  %inc.22.i = or i32 %j.027.22.i, 1
-  %shl5.22.i.1 = shl nuw nsw i32 %inc.22.i, 22
-  %add.22.i.1 = add nuw nsw i32 %shl5.22.i.1, 1073741824
-  %cmp6.not.22.i.1 = icmp ult i32 %add.22.i.1, %dictionarySize
-  br i1 %cmp6.not.22.i.1, label %for.inc.22.i.1, label %cleanup.i
-
-for.inc.22.i.1:                                   ; preds = %for.inc.22.i
-  %inc.22.i.1 = or i32 %j.027.22.i, 2
-  %shl5.22.i.2 = shl nuw nsw i32 %inc.22.i.1, 22
-  %add.22.i.2 = add nuw nsw i32 %shl5.22.i.2, 1073741824
-  %cmp6.not.22.i.2 = icmp ult i32 %add.22.i.2, %dictionarySize
-  br i1 %cmp6.not.22.i.2, label %for.inc.22.i.2, label %cleanup.i
-
-for.inc.22.i.2:                                   ; preds = %for.inc.22.i.1
-  %inc.22.i.2 = or i32 %j.027.22.i, 3
-  %shl5.22.i.3 = shl nuw nsw i32 %inc.22.i.2, 22
-  %add.22.i.3 = add nuw nsw i32 %shl5.22.i.3, 1073741824
-  %cmp6.not.22.i.3 = icmp ult i32 %add.22.i.3, %dictionarySize
-  br i1 %cmp6.not.22.i.3, label %for.inc.22.i.3, label %cleanup.i
-
-for.inc.22.i.3:                                   ; preds = %for.inc.22.i.2
-  %inc.22.i.3 = add nuw nsw i32 %j.027.22.i, 4
-  %exitcond.22.i.3 = icmp eq i32 %inc.22.i.3, 256
-  br i1 %exitcond.22.i.3, label %for.body4.23.i, label %for.body4.22.i
-
-for.body4.23.i:                                   ; preds = %for.inc.22.i.3, %for.inc.23.i.3
-  %j.027.23.i = phi i32 [ %inc.23.i.3, %for.inc.23.i.3 ], [ 0, %for.inc.22.i.3 ]
-  %shl5.23.i = shl nuw nsw i32 %j.027.23.i, 23
-  %add.23.i = or i32 %shl5.23.i, -2147483648
-  %cmp6.not.23.i = icmp ult i32 %add.23.i, %dictionarySize
-  br i1 %cmp6.not.23.i, label %for.inc.23.i, label %cleanup.i
-
-for.inc.23.i:                                     ; preds = %for.body4.23.i
-  %inc.23.i = or i32 %j.027.23.i, 1
-  %shl5.23.i.1 = shl nuw nsw i32 %inc.23.i, 23
-  %add.23.i.1 = or i32 %shl5.23.i.1, -2147483648
-  %cmp6.not.23.i.1 = icmp ult i32 %add.23.i.1, %dictionarySize
-  br i1 %cmp6.not.23.i.1, label %for.inc.23.i.1, label %cleanup.i
-
-for.inc.23.i.1:                                   ; preds = %for.inc.23.i
-  %inc.23.i.1 = or i32 %j.027.23.i, 2
-  %shl5.23.i.2 = shl nuw nsw i32 %inc.23.i.1, 23
-  %add.23.i.2 = or i32 %shl5.23.i.2, -2147483648
-  %cmp6.not.23.i.2 = icmp ult i32 %add.23.i.2, %dictionarySize
-  br i1 %cmp6.not.23.i.2, label %for.inc.23.i.2, label %cleanup.i
-
-for.inc.23.i.2:                                   ; preds = %for.inc.23.i.1
-  %inc.23.i.2 = or i32 %j.027.23.i, 3
-  %shl5.23.i.3 = shl nuw nsw i32 %inc.23.i.2, 23
-  %add.23.i.3 = or i32 %shl5.23.i.3, -2147483648
-  %cmp6.not.23.i.3 = icmp ult i32 %add.23.i.3, %dictionarySize
-  br i1 %cmp6.not.23.i.3, label %for.inc.23.i.3, label %cleanup.i
-
-for.inc.23.i.3:                                   ; preds = %for.inc.23.i.2
-  %inc.23.i.3 = add nuw nsw i32 %j.027.23.i, 4
-  %exitcond.23.i.3 = icmp eq i32 %inc.23.i.3, 256
-  br i1 %exitcond.23.i.3, label %_ZL10GetLogSizej.exit, label %for.body4.23.i
-
-_ZL10GetLogSizej.exit:                            ; preds = %for.inc.23.i.3, %cleanup.i
-  %spec.select.i = phi i64 [ %3, %cleanup.i ], [ 3584, %for.inc.23.i.3 ]
+for.inc9.i:                                       ; preds = %for.inc.i.3
+  %inc10.i = add nuw nsw i32 %i.028.i, 1
+  %exitcond31.i = icmp eq i32 %inc10.i, 32
+  br i1 %exitcond31.i, label %_ZL10GetLogSizej.exit, label %for.cond1.preheader.i
+
+_ZL10GetLogSizej.exit:                            ; preds = %for.inc9.i, %cleanup.i
+  %spec.select.i = phi i64 [ %1, %cleanup.i ], [ 3584, %for.inc9.i ]
   %cmp3.i.i = icmp ugt i64 %freq, 1000000
   br i1 %cmp3.i.i, label %while.body.i.i, label %_ZL11MyMultDiv64yyy.exit
 
 while.body.i.i:                                   ; preds = %_ZL10GetLogSizej.exit, %while.body.i.i
   %elTime.0.i = phi i64 [ %shr1.i.i, %while.body.i.i ], [ %elapsedTime, %_ZL10GetLogSizej.exit ]
-  %4 = phi i64 [ %shr.i.i, %while.body.i.i ], [ %freq, %_ZL10GetLogSizej.exit ]
-  %shr.i.i = lshr i64 %4, 1
+  %2 = phi i64 [ %shr.i.i, %while.body.i.i ], [ %freq, %_ZL10GetLogSizej.exit ]
+  %shr.i.i = lshr i64 %2, 1
   %shr1.i.i = lshr i64 %elTime.0.i, 1
-  %cmp.i.i = icmp ugt i64 %4, 2000001
+  %cmp.i.i = icmp ugt i64 %2, 2000001
   br i1 %cmp.i.i, label %while.body.i.i, label %_ZL11MyMultDiv64yyy.exit
 
 _ZL11MyMultDiv64yyy.exit:                         ; preds = %while.body.i.i, %_ZL10GetLogSizej.exit
@@ -5286,81 +4569,82 @@ attributes #24 = { builtin nounwind }
 !57 = !{!30, !33, i64 56}
 !58 = distinct !{!58, !19}
 !59 = distinct !{!59, !19}
-!60 = !{!61, !13, i64 24}
-!61 = !{!"_ZTS21CBenchRandomGenerator", !22, i64 0, !13, i64 24}
-!62 = !{!63, !10, i64 164}
-!63 = !{!"_ZTS12CEncoderInfo", !11, i64 0, !64, i64 32, !11, i64 40, !11, i64 56, !10, i64 72, !11, i64 80, !11, i64 112, !11, i64 128, !13, i64 136, !65, i64 144, !13, i64 152, !10, i64 160, !10, i64 164, !10, i64 168, !61, i64 176, !13, i64 208, !65, i64 216}
-!64 = !{!"_ZTS9CMyComPtrI14ICompressCoderE", !13, i64 0}
-!65 = !{!"_ZTS9CMyComPtrI20ISequentialOutStreamE", !13, i64 0}
-!66 = !{!63, !10, i64 160}
-!67 = !{!9, !10, i64 0}
-!68 = !{!63, !13, i64 136}
-!69 = !{!65, !13, i64 0}
-!70 = !{!63, !13, i64 208}
-!71 = !{!72, !73, i64 0}
-!72 = !{!"_ZTS14tagPROPVARIANT", !73, i64 0, !73, i64 2, !73, i64 4, !73, i64 6, !11, i64 8}
-!73 = !{!"short", !11, i64 0}
-!74 = !{!75, !13, i64 0}
-!75 = !{!"_ZTS9CMyComPtrI27ICompressSetCoderPropertiesE", !13, i64 0}
-!76 = !{!64, !13, i64 0}
-!77 = !{!78, !13, i64 0}
-!78 = !{!"_ZTS9CMyComPtrI29ICompressWriteCoderPropertiesE", !13, i64 0}
-!79 = !{!80, !10, i64 0}
-!80 = !{!"_ZTS20CBaseRandomGenerator", !10, i64 0, !10, i64 4}
-!81 = !{!80, !10, i64 4}
-!82 = distinct !{!82, !19}
+!60 = distinct !{!60, !19}
+!61 = !{!62, !13, i64 24}
+!62 = !{!"_ZTS21CBenchRandomGenerator", !22, i64 0, !13, i64 24}
+!63 = !{!64, !10, i64 164}
+!64 = !{!"_ZTS12CEncoderInfo", !11, i64 0, !65, i64 32, !11, i64 40, !11, i64 56, !10, i64 72, !11, i64 80, !11, i64 112, !11, i64 128, !13, i64 136, !66, i64 144, !13, i64 152, !10, i64 160, !10, i64 164, !10, i64 168, !62, i64 176, !13, i64 208, !66, i64 216}
+!65 = !{!"_ZTS9CMyComPtrI14ICompressCoderE", !13, i64 0}
+!66 = !{!"_ZTS9CMyComPtrI20ISequentialOutStreamE", !13, i64 0}
+!67 = !{!64, !10, i64 160}
+!68 = !{!9, !10, i64 0}
+!69 = !{!64, !13, i64 136}
+!70 = !{!66, !13, i64 0}
+!71 = !{!64, !13, i64 208}
+!72 = !{!73, !74, i64 0}
+!73 = !{!"_ZTS14tagPROPVARIANT", !74, i64 0, !74, i64 2, !74, i64 4, !74, i64 6, !11, i64 8}
+!74 = !{!"short", !11, i64 0}
+!75 = !{!76, !13, i64 0}
+!76 = !{!"_ZTS9CMyComPtrI27ICompressSetCoderPropertiesE", !13, i64 0}
+!77 = !{!65, !13, i64 0}
+!78 = !{!79, !13, i64 0}
+!79 = !{!"_ZTS9CMyComPtrI29ICompressWriteCoderPropertiesE", !13, i64 0}
+!80 = !{!81, !10, i64 0}
+!81 = !{!"_ZTS20CBaseRandomGenerator", !10, i64 0, !10, i64 4}
+!82 = !{!81, !10, i64 4}
 !83 = distinct !{!83, !19}
 !84 = distinct !{!84, !19}
-!85 = !{!86, !13, i64 0}
-!86 = !{!"_ZTS9CMyComPtrI21ICompressProgressInfoE", !13, i64 0}
-!87 = !{!63, !10, i64 168}
-!88 = !{!89, !13, i64 0}
-!89 = !{!"_ZTS9CMyComPtrI30ICompressSetDecoderProperties2E", !13, i64 0}
-!90 = !{!13, !13, i64 0}
-!91 = !{!63, !10, i64 72}
-!92 = distinct !{!92, !19}
-!93 = !{!94, !10, i64 8}
-!94 = !{!"_ZTSN8NWindows7CThreadE", !95, i64 0}
-!95 = !{!"_ZTS8_CThread", !14, i64 0, !10, i64 8}
-!96 = !{!97, !13, i64 0}
-!97 = !{!"_ZTS14CBenchEncoders", !13, i64 0}
-!98 = !{!63, !13, i64 152}
-!99 = distinct !{!99, !19}
+!85 = distinct !{!85, !19}
+!86 = !{!87, !13, i64 0}
+!87 = !{!"_ZTS9CMyComPtrI21ICompressProgressInfoE", !13, i64 0}
+!88 = !{!64, !10, i64 168}
+!89 = !{!90, !13, i64 0}
+!90 = !{!"_ZTS9CMyComPtrI30ICompressSetDecoderProperties2E", !13, i64 0}
+!91 = !{!13, !13, i64 0}
+!92 = !{!64, !10, i64 72}
+!93 = distinct !{!93, !19}
+!94 = !{!95, !10, i64 8}
+!95 = !{!"_ZTSN8NWindows7CThreadE", !96, i64 0}
+!96 = !{!"_ZTS8_CThread", !14, i64 0, !10, i64 8}
+!97 = !{!98, !13, i64 0}
+!98 = !{!"_ZTS14CBenchEncoders", !13, i64 0}
+!99 = !{!64, !13, i64 152}
 !100 = distinct !{!100, !19}
 !101 = distinct !{!101, !19}
-!102 = !{!32, !10, i64 48}
-!103 = !{!30, !10, i64 72}
-!104 = distinct !{!104, !19, !105}
-!105 = !{!"llvm.loop.peeled.count", i32 1}
-!106 = distinct !{!106, !19}
+!102 = distinct !{!102, !19}
+!103 = !{!32, !10, i64 48}
+!104 = !{!30, !10, i64 72}
+!105 = distinct !{!105, !19, !106}
+!106 = !{!"llvm.loop.peeled.count", i32 1}
 !107 = distinct !{!107, !19}
-!108 = distinct !{!108, !109}
-!109 = !{!"llvm.loop.unroll.disable"}
-!110 = distinct !{!110, !19}
-!111 = !{!112, !10, i64 8}
-!112 = !{!"_ZTSN12CEncoderInfo12CDecoderInfoE", !13, i64 0, !10, i64 8, !38, i64 12}
-!113 = !{!112, !13, i64 0}
-!114 = !{!112, !38, i64 12}
-!115 = distinct !{!115, !19}
+!108 = distinct !{!108, !19}
+!109 = distinct !{!109, !110}
+!110 = !{!"llvm.loop.unroll.disable"}
+!111 = distinct !{!111, !19}
+!112 = !{!113, !10, i64 8}
+!113 = !{!"_ZTSN12CEncoderInfo12CDecoderInfoE", !13, i64 0, !10, i64 8, !38, i64 12}
+!114 = !{!113, !13, i64 0}
+!115 = !{!113, !38, i64 12}
 !116 = distinct !{!116, !19}
 !117 = distinct !{!117, !19}
 !118 = distinct !{!118, !19}
-!119 = distinct !{!119, !109}
-!120 = distinct !{!120, !19}
+!119 = distinct !{!119, !19}
+!120 = distinct !{!120, !110}
 !121 = distinct !{!121, !19}
 !122 = distinct !{!122, !19}
 !123 = distinct !{!123, !19}
-!124 = !{!125, !10, i64 0}
-!125 = !{!"_ZTS11CCrcThreads", !10, i64 0, !13, i64 8}
-!126 = !{!125, !13, i64 8}
-!127 = !{!128, !13, i64 16}
-!128 = !{!"_ZTS8CCrcInfo", !94, i64 0, !13, i64 16, !10, i64 24, !10, i64 28, !10, i64 32, !38, i64 36}
-!129 = !{!128, !10, i64 28}
-!130 = !{!128, !10, i64 24}
-!131 = !{!128, !10, i64 32}
-!132 = distinct !{!132, !19}
+!124 = distinct !{!124, !19}
+!125 = !{!126, !10, i64 0}
+!126 = !{!"_ZTS11CCrcThreads", !10, i64 0, !13, i64 8}
+!127 = !{!126, !13, i64 8}
+!128 = !{!129, !13, i64 16}
+!129 = !{!"_ZTS8CCrcInfo", !95, i64 0, !13, i64 16, !10, i64 24, !10, i64 28, !10, i64 32, !38, i64 36}
+!130 = !{!129, !10, i64 28}
+!131 = !{!129, !10, i64 24}
+!132 = !{!129, !10, i64 32}
 !133 = distinct !{!133, !19}
 !134 = distinct !{!134, !19}
 !135 = distinct !{!135, !19}
-!136 = !{!128, !38, i64 36}
-!137 = distinct !{!137, !19}
+!136 = distinct !{!136, !19}
+!137 = !{!129, !38, i64 36}
+!138 = distinct !{!138, !19}

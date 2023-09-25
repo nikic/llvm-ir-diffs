@@ -9692,121 +9692,59 @@ for.body18.lr.ph:                                 ; preds = %for.end
   %m_sortedConstraints19 = getelementptr inbounds %struct.InplaceSolverIslandCallback, ptr %this, i64 0, i32 3
   %15 = load ptr, ptr %m_sortedConstraints19, align 8
   %16 = zext i32 %i.0.lcssa to i64
-  %17 = sub i32 %0, %i.0.lcssa
-  %.neg = add i32 %i.0.lcssa, 1
-  %xtraiter = and i32 %17, 1
-  %18 = icmp eq i32 %0, %.neg
-  br i1 %18, label %for.end29.loopexit.unr-lcssa, label %for.body18.lr.ph.new
-
-for.body18.lr.ph.new:                             ; preds = %for.body18.lr.ph
-  %unroll_iter = and i32 %17, -2
   br label %for.body18
 
-for.body18:                                       ; preds = %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1, %for.body18.lr.ph.new
-  %indvars.iv83 = phi i64 [ %16, %for.body18.lr.ph.new ], [ %indvars.iv.next84.1, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1 ]
-  %numCurConstraints.077 = phi i32 [ 0, %for.body18.lr.ph.new ], [ %spec.select.1, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1 ]
-  %niter = phi i32 [ 0, %for.body18.lr.ph.new ], [ %niter.next.1, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1 ]
+for.body18:                                       ; preds = %for.body18.lr.ph, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66
+  %indvars.iv83 = phi i64 [ %16, %for.body18.lr.ph ], [ %indvars.iv.next84, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66 ]
+  %numCurConstraints.077 = phi i32 [ 0, %for.body18.lr.ph ], [ %spec.select, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66 ]
   %arrayidx21 = getelementptr inbounds ptr, ptr %15, i64 %indvars.iv83
-  %19 = load ptr, ptr %arrayidx21, align 8
-  %m_rbA.i.i59 = getelementptr inbounds %class.btTypedConstraint, ptr %19, i64 0, i32 5
-  %20 = load ptr, ptr %m_rbA.i.i59, align 8
-  %m_islandTag1.i.i60 = getelementptr inbounds %class.btCollisionObject, ptr %20, i64 0, i32 12
-  %21 = load i32, ptr %m_islandTag1.i.i60, align 4
-  %cmp.i61 = icmp sgt i32 %21, -1
+  %17 = load ptr, ptr %arrayidx21, align 8
+  %m_rbA.i.i59 = getelementptr inbounds %class.btTypedConstraint, ptr %17, i64 0, i32 5
+  %18 = load ptr, ptr %m_rbA.i.i59, align 8
+  %m_islandTag1.i.i60 = getelementptr inbounds %class.btCollisionObject, ptr %18, i64 0, i32 12
+  %19 = load i32, ptr %m_islandTag1.i.i60, align 4
+  %cmp.i61 = icmp sgt i32 %19, -1
   br i1 %cmp.i61, label %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66, label %cond.false.i62
 
 cond.false.i62:                                   ; preds = %for.body18
-  %m_rbB.i.i63 = getelementptr inbounds %class.btTypedConstraint, ptr %19, i64 0, i32 6
-  %22 = load ptr, ptr %m_rbB.i.i63, align 8
-  %m_islandTag1.i8.i64 = getelementptr inbounds %class.btCollisionObject, ptr %22, i64 0, i32 12
-  %23 = load i32, ptr %m_islandTag1.i8.i64, align 4
+  %m_rbB.i.i63 = getelementptr inbounds %class.btTypedConstraint, ptr %17, i64 0, i32 6
+  %20 = load ptr, ptr %m_rbB.i.i63, align 8
+  %m_islandTag1.i8.i64 = getelementptr inbounds %class.btCollisionObject, ptr %20, i64 0, i32 12
+  %21 = load i32, ptr %m_islandTag1.i8.i64, align 4
   br label %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66
 
 _Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66: ; preds = %for.body18, %cond.false.i62
-  %cond.i65 = phi i32 [ %23, %cond.false.i62 ], [ %21, %for.body18 ]
+  %cond.i65 = phi i32 [ %21, %cond.false.i62 ], [ %19, %for.body18 ]
   %cmp23 = icmp eq i32 %cond.i65, %islandId
   %inc25 = zext i1 %cmp23 to i32
   %spec.select = add nuw nsw i32 %numCurConstraints.077, %inc25
   %indvars.iv.next84 = add nuw nsw i64 %indvars.iv83, 1
-  %arrayidx21.1 = getelementptr inbounds ptr, ptr %15, i64 %indvars.iv.next84
-  %24 = load ptr, ptr %arrayidx21.1, align 8
-  %m_rbA.i.i59.1 = getelementptr inbounds %class.btTypedConstraint, ptr %24, i64 0, i32 5
-  %25 = load ptr, ptr %m_rbA.i.i59.1, align 8
-  %m_islandTag1.i.i60.1 = getelementptr inbounds %class.btCollisionObject, ptr %25, i64 0, i32 12
-  %26 = load i32, ptr %m_islandTag1.i.i60.1, align 4
-  %cmp.i61.1 = icmp sgt i32 %26, -1
-  br i1 %cmp.i61.1, label %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1, label %cond.false.i62.1
+  %22 = trunc i64 %indvars.iv.next84 to i32
+  %cmp17 = icmp sgt i32 %0, %22
+  br i1 %cmp17, label %for.body18, label %for.end29
 
-cond.false.i62.1:                                 ; preds = %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66
-  %m_rbB.i.i63.1 = getelementptr inbounds %class.btTypedConstraint, ptr %24, i64 0, i32 6
-  %27 = load ptr, ptr %m_rbB.i.i63.1, align 8
-  %m_islandTag1.i8.i64.1 = getelementptr inbounds %class.btCollisionObject, ptr %27, i64 0, i32 12
-  %28 = load i32, ptr %m_islandTag1.i8.i64.1, align 4
-  br label %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1
-
-_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1: ; preds = %cond.false.i62.1, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66
-  %cond.i65.1 = phi i32 [ %28, %cond.false.i62.1 ], [ %26, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66 ]
-  %cmp23.1 = icmp eq i32 %cond.i65.1, %islandId
-  %inc25.1 = zext i1 %cmp23.1 to i32
-  %spec.select.1 = add nuw nsw i32 %spec.select, %inc25.1
-  %indvars.iv.next84.1 = add nuw nsw i64 %indvars.iv83, 2
-  %niter.next.1 = add i32 %niter, 2
-  %niter.ncmp.1.not = icmp eq i32 %niter.next.1, %unroll_iter
-  br i1 %niter.ncmp.1.not, label %for.end29.loopexit.unr-lcssa, label %for.body18
-
-for.end29.loopexit.unr-lcssa:                     ; preds = %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1, %for.body18.lr.ph
-  %spec.select.lcssa.ph = phi i32 [ undef, %for.body18.lr.ph ], [ %spec.select.1, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1 ]
-  %indvars.iv83.unr = phi i64 [ %16, %for.body18.lr.ph ], [ %indvars.iv.next84.1, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1 ]
-  %numCurConstraints.077.unr = phi i32 [ 0, %for.body18.lr.ph ], [ %spec.select.1, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.1 ]
-  %lcmp.mod.not = icmp eq i32 %xtraiter, 0
-  br i1 %lcmp.mod.not, label %for.end29, label %for.body18.epil
-
-for.body18.epil:                                  ; preds = %for.end29.loopexit.unr-lcssa
-  %arrayidx21.epil = getelementptr inbounds ptr, ptr %15, i64 %indvars.iv83.unr
-  %29 = load ptr, ptr %arrayidx21.epil, align 8
-  %m_rbA.i.i59.epil = getelementptr inbounds %class.btTypedConstraint, ptr %29, i64 0, i32 5
-  %30 = load ptr, ptr %m_rbA.i.i59.epil, align 8
-  %m_islandTag1.i.i60.epil = getelementptr inbounds %class.btCollisionObject, ptr %30, i64 0, i32 12
-  %31 = load i32, ptr %m_islandTag1.i.i60.epil, align 4
-  %cmp.i61.epil = icmp sgt i32 %31, -1
-  br i1 %cmp.i61.epil, label %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.epil, label %cond.false.i62.epil
-
-cond.false.i62.epil:                              ; preds = %for.body18.epil
-  %m_rbB.i.i63.epil = getelementptr inbounds %class.btTypedConstraint, ptr %29, i64 0, i32 6
-  %32 = load ptr, ptr %m_rbB.i.i63.epil, align 8
-  %m_islandTag1.i8.i64.epil = getelementptr inbounds %class.btCollisionObject, ptr %32, i64 0, i32 12
-  %33 = load i32, ptr %m_islandTag1.i8.i64.epil, align 4
-  br label %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.epil
-
-_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.epil: ; preds = %cond.false.i62.epil, %for.body18.epil
-  %cond.i65.epil = phi i32 [ %33, %cond.false.i62.epil ], [ %31, %for.body18.epil ]
-  %cmp23.epil = icmp eq i32 %cond.i65.epil, %islandId
-  %inc25.epil = zext i1 %cmp23.epil to i32
-  %spec.select.epil = add nuw nsw i32 %numCurConstraints.077.unr, %inc25.epil
-  br label %for.end29
-
-for.end29:                                        ; preds = %for.inc, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.epil, %for.end29.loopexit.unr-lcssa, %for.end
-  %startConstraint.089 = phi ptr [ %startConstraint.0, %for.end ], [ %startConstraint.0, %for.end29.loopexit.unr-lcssa ], [ %startConstraint.0, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.epil ], [ null, %for.inc ]
-  %numCurConstraints.0.lcssa = phi i32 [ 0, %for.end ], [ %spec.select.lcssa.ph, %for.end29.loopexit.unr-lcssa ], [ %spec.select.epil, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66.epil ], [ 0, %for.inc ]
+for.end29:                                        ; preds = %for.inc, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66, %for.end
+  %startConstraint.089 = phi ptr [ %startConstraint.0, %for.end ], [ %startConstraint.0, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66 ], [ null, %for.inc ]
+  %numCurConstraints.0.lcssa = phi i32 [ 0, %for.end ], [ %spec.select, %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit66 ], [ 0, %for.inc ]
   %add30 = sub i32 0, %numManifolds
   %tobool31.not = icmp eq i32 %numCurConstraints.0.lcssa, %add30
   br i1 %tobool31.not, label %if.end42, label %if.then32
 
 if.then32:                                        ; preds = %for.end29
   %m_solver33 = getelementptr inbounds %struct.InplaceSolverIslandCallback, ptr %this, i64 0, i32 2
-  %34 = load ptr, ptr %m_solver33, align 8
+  %23 = load ptr, ptr %m_solver33, align 8
   %m_solverInfo34 = getelementptr inbounds %struct.InplaceSolverIslandCallback, ptr %this, i64 0, i32 1
-  %35 = load ptr, ptr %m_solverInfo34, align 8
+  %24 = load ptr, ptr %m_solverInfo34, align 8
   %m_debugDrawer35 = getelementptr inbounds %struct.InplaceSolverIslandCallback, ptr %this, i64 0, i32 5
-  %36 = load ptr, ptr %m_debugDrawer35, align 8
+  %25 = load ptr, ptr %m_debugDrawer35, align 8
   %m_stackAlloc36 = getelementptr inbounds %struct.InplaceSolverIslandCallback, ptr %this, i64 0, i32 6
-  %37 = load ptr, ptr %m_stackAlloc36, align 8
+  %26 = load ptr, ptr %m_stackAlloc36, align 8
   %m_dispatcher37 = getelementptr inbounds %struct.InplaceSolverIslandCallback, ptr %this, i64 0, i32 7
-  %38 = load ptr, ptr %m_dispatcher37, align 8
-  %vtable38 = load ptr, ptr %34, align 8
+  %27 = load ptr, ptr %m_dispatcher37, align 8
+  %vtable38 = load ptr, ptr %23, align 8
   %vfn39 = getelementptr inbounds ptr, ptr %vtable38, i64 3
-  %39 = load ptr, ptr %vfn39, align 8
-  %call40 = tail call noundef float %39(ptr noundef nonnull align 8 dereferenceable(8) %34, ptr noundef %bodies, i32 noundef %numBodies, ptr noundef %manifolds, i32 noundef %numManifolds, ptr noundef %startConstraint.089, i32 noundef %numCurConstraints.0.lcssa, ptr noundef nonnull align 4 dereferenceable(68) %35, ptr noundef %36, ptr noundef %37, ptr noundef %38)
+  %28 = load ptr, ptr %vfn39, align 8
+  %call40 = tail call noundef float %28(ptr noundef nonnull align 8 dereferenceable(8) %23, ptr noundef %bodies, i32 noundef %numBodies, ptr noundef %manifolds, i32 noundef %numManifolds, ptr noundef %startConstraint.089, i32 noundef %numCurConstraints.0.lcssa, ptr noundef nonnull align 4 dereferenceable(68) %24, ptr noundef %25, ptr noundef %26, ptr noundef %27)
   br label %if.end42
 
 if.end42:                                         ; preds = %for.end29, %if.then32, %if.then, %if.then2

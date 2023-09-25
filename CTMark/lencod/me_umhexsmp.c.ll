@@ -45,6 +45,8 @@ target triple = "x86_64-unknown-linux-gnu"
 @ref_access_method = external local_unnamed_addr global i32, align 4
 @mvbits = external local_unnamed_addr global ptr, align 8
 @computeUniPred = external local_unnamed_addr global [6 x ptr], align 16
+@Diamond_X = internal unnamed_addr constant [4 x i16] [i16 -1, i16 1, i16 0, i16 0], align 2
+@Diamond_Y = internal unnamed_addr constant [4 x i16] [i16 0, i16 0, i16 -1, i16 1], align 2
 @Hexagon_X = internal unnamed_addr constant [6 x i16] [i16 -2, i16 2, i16 -1, i16 1, i16 -1, i16 1], align 2
 @Hexagon_Y = internal unnamed_addr constant [6 x i16] [i16 0, i16 0, i16 -2, i16 2, i16 2, i16 -2], align 2
 @Big_Hexagon_X = internal unnamed_addr constant [16 x i16] [i16 -4, i16 4, i16 0, i16 0, i16 -4, i16 4, i16 -4, i16 4, i16 -4, i16 4, i16 -4, i16 4, i16 -2, i16 2, i16 -2, i16 2], align 16
@@ -653,8 +655,8 @@ land.lhs.true195.3:                               ; preds = %if.then223.2, %if.t
   %best_x.3.2.ph = phi i32 [ %best_x.3.1, %land.lhs.true195.2 ], [ %best_x.3.1, %if.then200.2 ], [ %best_x.0, %if.then223.2 ]
   %best_y.3.2.ph = phi i32 [ %best_y.3.1, %land.lhs.true195.2 ], [ %best_y.3.1, %if.then200.2 ], [ %add190.2, %if.then223.2 ]
   %min_mcost.addr.3.2.ph = phi i32 [ %min_mcost.addr.3.1, %land.lhs.true195.2 ], [ %min_mcost.addr.3.1, %if.then200.2 ], [ %add220.2, %if.then223.2 ]
-  %add190.31642 = add nsw i32 %best_y.0, 1
-  %sub196.3 = sub nsw i32 %add190.31642, %add18
+  %add190.31645 = add nsw i32 %best_y.0, 1
+  %sub196.3 = sub nsw i32 %add190.31645, %add18
   %cond.i1503.3 = tail call i32 @llvm.abs.i32(i32 %sub196.3, i1 true)
   %cmp198.not.3 = icmp sgt i32 %cond.i1503.3, %search_range
   br i1 %cmp198.not.3, label %cleanup, label %if.then200.3
@@ -666,7 +668,7 @@ if.then200.3:                                     ; preds = %land.lhs.true195.3
   %idxprom203.3 = sext i32 %sub202.3 to i64
   %arrayidx204.3 = getelementptr inbounds i32, ptr %76, i64 %idxprom203.3
   %77 = load i32, ptr %arrayidx204.3, align 4
-  %shl205.3 = shl i32 %add190.31642, 2
+  %shl205.3 = shl i32 %add190.31645, 2
   %sub206.3 = sub nsw i32 %shl205.3, %add14
   %idxprom207.3 = sext i32 %sub206.3 to i64
   %arrayidx208.3 = getelementptr inbounds i32, ptr %76, i64 %idxprom207.3
@@ -821,8 +823,8 @@ land.lhs.true248.3:                               ; preds = %if.then276.2, %if.t
   %best_x.5.2.ph = phi i32 [ %best_x.5.1, %land.lhs.true248.2 ], [ %best_x.5.1, %if.then253.2 ], [ %best_x.0, %if.then276.2 ]
   %best_y.5.2.ph = phi i32 [ %best_y.5.1, %land.lhs.true248.2 ], [ %best_y.5.1, %if.then253.2 ], [ %add243.2, %if.then276.2 ]
   %min_mcost.addr.5.2.ph = phi i32 [ %min_mcost.addr.5.1, %land.lhs.true248.2 ], [ %min_mcost.addr.5.1, %if.then253.2 ], [ %add273.2, %if.then276.2 ]
-  %add243.31650 = add nsw i32 %best_y.0, 1
-  %sub249.3 = sub nsw i32 %add243.31650, %add18
+  %add243.31653 = add nsw i32 %best_y.0, 1
+  %sub249.3 = sub nsw i32 %add243.31653, %add18
   %cond.i1505.3 = tail call i32 @llvm.abs.i32(i32 %sub249.3, i1 true)
   %cmp251.not.3 = icmp sgt i32 %cond.i1505.3, %search_range
   br i1 %cmp251.not.3, label %for.inc279.3, label %if.then253.3
@@ -834,7 +836,7 @@ if.then253.3:                                     ; preds = %land.lhs.true248.3
   %idxprom256.3 = sext i32 %sub255.3 to i64
   %arrayidx257.3 = getelementptr inbounds i32, ptr %96, i64 %idxprom256.3
   %97 = load i32, ptr %arrayidx257.3, align 4
-  %shl258.3 = shl i32 %add243.31650, 2
+  %shl258.3 = shl i32 %add243.31653, 2
   %sub259.3 = sub nsw i32 %shl258.3, %add14
   %idxprom260.3 = sext i32 %sub259.3 to i64
   %arrayidx261.3 = getelementptr inbounds i32, ptr %96, i64 %idxprom260.3
@@ -859,7 +861,7 @@ if.then276.3:                                     ; preds = %if.then253.3
 
 for.inc279.3:                                     ; preds = %for.inc279.1, %if.then276.3, %if.then253.3, %land.lhs.true248.3
   %best_x.5.3 = phi i32 [ %best_x.0, %if.then276.3 ], [ %best_x.5.2.ph, %if.then253.3 ], [ %best_x.5.2.ph, %land.lhs.true248.3 ], [ %best_x.5.1, %for.inc279.1 ]
-  %best_y.5.3 = phi i32 [ %add243.31650, %if.then276.3 ], [ %best_y.5.2.ph, %if.then253.3 ], [ %best_y.5.2.ph, %land.lhs.true248.3 ], [ %best_y.5.1, %for.inc279.1 ]
+  %best_y.5.3 = phi i32 [ %add243.31653, %if.then276.3 ], [ %best_y.5.2.ph, %if.then253.3 ], [ %best_y.5.2.ph, %land.lhs.true248.3 ], [ %best_y.5.1, %for.inc279.1 ]
   %min_mcost.addr.5.3 = phi i32 [ %add273.3, %if.then276.3 ], [ %min_mcost.addr.5.2.ph, %if.then253.3 ], [ %min_mcost.addr.5.2.ph, %land.lhs.true248.3 ], [ %min_mcost.addr.5.1, %for.inc279.1 ]
   %cmp282 = icmp eq i32 %blocktype, 1
   br i1 %cmp282, label %land.lhs.true284, label %lor.lhs.false292
@@ -904,11 +906,7 @@ for.cond456.preheader:                            ; preds = %for.inc453, %if.the
   %best_x.6.lcssa = phi i32 [ %best_x.5.3, %if.then300 ], [ %best_x.10, %for.inc453 ]
   %best_y.6.lcssa = phi i32 [ %best_y.5.3, %if.then300 ], [ %best_y.10, %for.inc453 ]
   %min_mcost.addr.6.lcssa = phi i32 [ %min_mcost.addr.5.3, %if.then300 ], [ %min_mcost.addr.10, %for.inc453 ]
-  %add464 = add nsw i32 %best_x.6.lcssa, -2
-  %sub469 = sub nsw i32 %add464, %add16
-  %cond.i1514 = tail call i32 @llvm.abs.i32(i32 %sub469, i1 true)
-  %cmp471.not = icmp sgt i32 %cond.i1514, %search_range
-  br i1 %cmp471.not, label %for.inc504, label %land.lhs.true473
+  br label %for.body460
 
 for.body305:                                      ; preds = %for.body305.lr.ph, %for.inc453
   %conv3021553 = phi i32 [ 1, %for.body305.lr.ph ], [ %conv302, %for.inc453 ]
@@ -1072,293 +1070,96 @@ for.inc453:                                       ; preds = %if.end380, %land.lh
   %cmp303.not = icmp slt i32 %div, %conv302
   br i1 %cmp303.not, label %for.cond456.preheader, label %for.body305
 
-land.lhs.true473:                                 ; preds = %for.cond456.preheader
-  %sub474 = sub nsw i32 %best_y.6.lcssa, %add18
+for.cond507.preheader:                            ; preds = %for.inc504
+  %div509 = sdiv i32 %search_range, 4
+  %cmp510.not1564 = icmp slt i32 %search_range, 4
+  br i1 %cmp510.not1564, label %if.end571, label %for.cond513.preheader
+
+for.body460:                                      ; preds = %for.cond456.preheader, %for.inc504
+  %indvars.iv = phi i64 [ 0, %for.cond456.preheader ], [ %indvars.iv.next, %for.inc504 ]
+  %min_mcost.addr.111558 = phi i32 [ %min_mcost.addr.6.lcssa, %for.cond456.preheader ], [ %min_mcost.addr.12, %for.inc504 ]
+  %best_y.111557 = phi i32 [ %best_y.6.lcssa, %for.cond456.preheader ], [ %best_y.12, %for.inc504 ]
+  %best_x.111556 = phi i32 [ %best_x.6.lcssa, %for.cond456.preheader ], [ %best_x.12, %for.inc504 ]
+  %arrayidx462 = getelementptr inbounds [6 x i16], ptr @Hexagon_X, i64 0, i64 %indvars.iv
+  %123 = load i16, ptr %arrayidx462, align 2
+  %conv463 = sext i16 %123 to i32
+  %add464 = add nsw i32 %best_x.6.lcssa, %conv463
+  %arrayidx466 = getelementptr inbounds [6 x i16], ptr @Hexagon_Y, i64 0, i64 %indvars.iv
+  %124 = load i16, ptr %arrayidx466, align 2
+  %conv467 = sext i16 %124 to i32
+  %add468 = add nsw i32 %best_y.6.lcssa, %conv467
+  %sub469 = sub nsw i32 %add464, %add16
+  %cond.i1514 = tail call i32 @llvm.abs.i32(i32 %sub469, i1 true)
+  %cmp471.not = icmp sgt i32 %cond.i1514, %search_range
+  br i1 %cmp471.not, label %for.inc504, label %land.lhs.true473
+
+land.lhs.true473:                                 ; preds = %for.body460
+  %sub474 = sub nsw i32 %add468, %add18
   %cond.i1515 = tail call i32 @llvm.abs.i32(i32 %sub474, i1 true)
   %cmp476.not = icmp sgt i32 %cond.i1515, %search_range
   br i1 %cmp476.not, label %for.inc504, label %if.then478
 
 if.then478:                                       ; preds = %land.lhs.true473
-  %123 = load ptr, ptr @mvbits, align 8
+  %125 = load ptr, ptr @mvbits, align 8
   %shl479 = shl i32 %add464, 2
   %sub480 = sub nsw i32 %shl479, %add
   %idxprom481 = sext i32 %sub480 to i64
-  %arrayidx482 = getelementptr inbounds i32, ptr %123, i64 %idxprom481
-  %124 = load i32, ptr %arrayidx482, align 4
-  %shl483 = shl i32 %best_y.6.lcssa, 2
+  %arrayidx482 = getelementptr inbounds i32, ptr %125, i64 %idxprom481
+  %126 = load i32, ptr %arrayidx482, align 4
+  %shl483 = shl i32 %add468, 2
   %sub484 = sub nsw i32 %shl483, %add14
   %idxprom485 = sext i32 %sub484 to i64
-  %arrayidx486 = getelementptr inbounds i32, ptr %123, i64 %idxprom485
-  %125 = load i32, ptr %arrayidx486, align 4
-  %add487 = add nsw i32 %125, %124
+  %arrayidx486 = getelementptr inbounds i32, ptr %125, i64 %idxprom485
+  %127 = load i32, ptr %arrayidx486, align 4
+  %add487 = add nsw i32 %127, %126
   %mul488 = mul nsw i32 %add487, %lambda_factor
   %shr489 = ashr i32 %mul488, 16
-  %126 = load i32, ptr @dist_method, align 4
-  %idxprom490 = zext i32 %126 to i64
+  %128 = load i32, ptr @dist_method, align 4
+  %idxprom490 = zext i32 %128 to i64
   %arrayidx491 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom490
-  %127 = load ptr, ptr %arrayidx491, align 8
-  %sub492 = sub nsw i32 %min_mcost.addr.6.lcssa, %shr489
+  %129 = load ptr, ptr %arrayidx491, align 8
+  %sub492 = sub nsw i32 %min_mcost.addr.111558, %shr489
   %shl494 = add i32 %shl479, 80
   %shl496 = add i32 %shl483, 80
-  %call497 = tail call i32 %127(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub492, i32 noundef %shl494, i32 noundef %shl496) #10
+  %call497 = tail call i32 %129(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub492, i32 noundef %shl494, i32 noundef %shl496) #10
   %add498 = add nsw i32 %shr489, %call497
-  %cmp499 = icmp slt i32 %add498, %min_mcost.addr.6.lcssa
-  %spec.select = select i1 %cmp499, i32 %add464, i32 %best_x.6.lcssa
-  %spec.select1702 = tail call i32 @llvm.smin.i32(i32 %add498, i32 %min_mcost.addr.6.lcssa)
+  %cmp499 = icmp slt i32 %add498, %min_mcost.addr.111558
+  br i1 %cmp499, label %if.then501, label %for.inc504
+
+if.then501:                                       ; preds = %if.then478
   br label %for.inc504
 
-for.inc504:                                       ; preds = %if.then478, %for.cond456.preheader, %land.lhs.true473
-  %best_x.12 = phi i32 [ %best_x.6.lcssa, %land.lhs.true473 ], [ %best_x.6.lcssa, %for.cond456.preheader ], [ %spec.select, %if.then478 ]
-  %min_mcost.addr.12 = phi i32 [ %min_mcost.addr.6.lcssa, %land.lhs.true473 ], [ %min_mcost.addr.6.lcssa, %for.cond456.preheader ], [ %spec.select1702, %if.then478 ]
-  %add464.1 = add nsw i32 %best_x.6.lcssa, 2
-  %sub469.1 = sub nsw i32 %add464.1, %add16
-  %cond.i1514.1 = tail call i32 @llvm.abs.i32(i32 %sub469.1, i1 true)
-  %cmp471.not.1 = icmp sgt i32 %cond.i1514.1, %search_range
-  br i1 %cmp471.not.1, label %for.inc504.1, label %land.lhs.true473.1
+for.inc504:                                       ; preds = %for.body460, %land.lhs.true473, %if.then501, %if.then478
+  %best_x.12 = phi i32 [ %add464, %if.then501 ], [ %best_x.111556, %if.then478 ], [ %best_x.111556, %land.lhs.true473 ], [ %best_x.111556, %for.body460 ]
+  %best_y.12 = phi i32 [ %add468, %if.then501 ], [ %best_y.111557, %if.then478 ], [ %best_y.111557, %land.lhs.true473 ], [ %best_y.111557, %for.body460 ]
+  %min_mcost.addr.12 = phi i32 [ %add498, %if.then501 ], [ %min_mcost.addr.111558, %if.then478 ], [ %min_mcost.addr.111558, %land.lhs.true473 ], [ %min_mcost.addr.111558, %for.body460 ]
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond.not = icmp eq i64 %indvars.iv.next, 6
+  br i1 %exitcond.not, label %for.cond507.preheader, label %for.body460
 
-land.lhs.true473.1:                               ; preds = %for.inc504
-  %sub474.1 = sub nsw i32 %best_y.6.lcssa, %add18
-  %cond.i1515.1 = tail call i32 @llvm.abs.i32(i32 %sub474.1, i1 true)
-  %cmp476.not.1 = icmp sgt i32 %cond.i1515.1, %search_range
-  br i1 %cmp476.not.1, label %for.inc504.1, label %if.then478.1
-
-if.then478.1:                                     ; preds = %land.lhs.true473.1
-  %128 = load ptr, ptr @mvbits, align 8
-  %shl479.1 = shl i32 %add464.1, 2
-  %sub480.1 = sub nsw i32 %shl479.1, %add
-  %idxprom481.1 = sext i32 %sub480.1 to i64
-  %arrayidx482.1 = getelementptr inbounds i32, ptr %128, i64 %idxprom481.1
-  %129 = load i32, ptr %arrayidx482.1, align 4
-  %shl483.1 = shl i32 %best_y.6.lcssa, 2
-  %sub484.1 = sub nsw i32 %shl483.1, %add14
-  %idxprom485.1 = sext i32 %sub484.1 to i64
-  %arrayidx486.1 = getelementptr inbounds i32, ptr %128, i64 %idxprom485.1
-  %130 = load i32, ptr %arrayidx486.1, align 4
-  %add487.1 = add nsw i32 %130, %129
-  %mul488.1 = mul nsw i32 %add487.1, %lambda_factor
-  %shr489.1 = ashr i32 %mul488.1, 16
-  %131 = load i32, ptr @dist_method, align 4
-  %idxprom490.1 = zext i32 %131 to i64
-  %arrayidx491.1 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom490.1
-  %132 = load ptr, ptr %arrayidx491.1, align 8
-  %sub492.1 = sub nsw i32 %min_mcost.addr.12, %shr489.1
-  %shl494.1 = add i32 %shl479.1, 80
-  %shl496.1 = add i32 %shl483.1, 80
-  %call497.1 = tail call i32 %132(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub492.1, i32 noundef %shl494.1, i32 noundef %shl496.1) #10
-  %add498.1 = add nsw i32 %shr489.1, %call497.1
-  %cmp499.1 = icmp slt i32 %add498.1, %min_mcost.addr.12
-  %spec.select1703 = select i1 %cmp499.1, i32 %add464.1, i32 %best_x.12
-  %spec.select1704 = tail call i32 @llvm.smin.i32(i32 %add498.1, i32 %min_mcost.addr.12)
-  br label %for.inc504.1
-
-for.inc504.1:                                     ; preds = %if.then478.1, %land.lhs.true473.1, %for.inc504
-  %best_x.12.1 = phi i32 [ %best_x.12, %land.lhs.true473.1 ], [ %best_x.12, %for.inc504 ], [ %spec.select1703, %if.then478.1 ]
-  %min_mcost.addr.12.1 = phi i32 [ %min_mcost.addr.12, %land.lhs.true473.1 ], [ %min_mcost.addr.12, %for.inc504 ], [ %spec.select1704, %if.then478.1 ]
-  %add464.2 = add nsw i32 %best_x.6.lcssa, -1
-  %add468.2 = add nsw i32 %best_y.6.lcssa, -2
-  %sub469.2 = sub nsw i32 %add464.2, %add16
-  %cond.i1514.2 = tail call i32 @llvm.abs.i32(i32 %sub469.2, i1 true)
-  %cmp471.not.2 = icmp sgt i32 %cond.i1514.2, %search_range
-  br i1 %cmp471.not.2, label %for.inc504.2, label %land.lhs.true473.2
-
-land.lhs.true473.2:                               ; preds = %for.inc504.1
-  %sub474.2 = sub nsw i32 %add468.2, %add18
-  %cond.i1515.2 = tail call i32 @llvm.abs.i32(i32 %sub474.2, i1 true)
-  %cmp476.not.2 = icmp sgt i32 %cond.i1515.2, %search_range
-  br i1 %cmp476.not.2, label %for.inc504.2, label %if.then478.2
-
-if.then478.2:                                     ; preds = %land.lhs.true473.2
-  %133 = load ptr, ptr @mvbits, align 8
-  %shl479.2 = shl i32 %add464.2, 2
-  %sub480.2 = sub nsw i32 %shl479.2, %add
-  %idxprom481.2 = sext i32 %sub480.2 to i64
-  %arrayidx482.2 = getelementptr inbounds i32, ptr %133, i64 %idxprom481.2
-  %134 = load i32, ptr %arrayidx482.2, align 4
-  %shl483.2 = shl i32 %add468.2, 2
-  %sub484.2 = sub nsw i32 %shl483.2, %add14
-  %idxprom485.2 = sext i32 %sub484.2 to i64
-  %arrayidx486.2 = getelementptr inbounds i32, ptr %133, i64 %idxprom485.2
-  %135 = load i32, ptr %arrayidx486.2, align 4
-  %add487.2 = add nsw i32 %135, %134
-  %mul488.2 = mul nsw i32 %add487.2, %lambda_factor
-  %shr489.2 = ashr i32 %mul488.2, 16
-  %136 = load i32, ptr @dist_method, align 4
-  %idxprom490.2 = zext i32 %136 to i64
-  %arrayidx491.2 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom490.2
-  %137 = load ptr, ptr %arrayidx491.2, align 8
-  %sub492.2 = sub nsw i32 %min_mcost.addr.12.1, %shr489.2
-  %shl494.2 = add i32 %shl479.2, 80
-  %shl496.2 = add i32 %shl483.2, 80
-  %call497.2 = tail call i32 %137(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub492.2, i32 noundef %shl494.2, i32 noundef %shl496.2) #10
-  %add498.2 = add nsw i32 %shr489.2, %call497.2
-  %cmp499.2 = icmp slt i32 %add498.2, %min_mcost.addr.12.1
-  br i1 %cmp499.2, label %if.then501.2, label %for.inc504.2
-
-if.then501.2:                                     ; preds = %if.then478.2
-  br label %for.inc504.2
-
-for.inc504.2:                                     ; preds = %if.then501.2, %if.then478.2, %land.lhs.true473.2, %for.inc504.1
-  %best_x.12.2 = phi i32 [ %add464.2, %if.then501.2 ], [ %best_x.12.1, %if.then478.2 ], [ %best_x.12.1, %land.lhs.true473.2 ], [ %best_x.12.1, %for.inc504.1 ]
-  %best_y.12.2 = phi i32 [ %add468.2, %if.then501.2 ], [ %best_y.6.lcssa, %if.then478.2 ], [ %best_y.6.lcssa, %land.lhs.true473.2 ], [ %best_y.6.lcssa, %for.inc504.1 ]
-  %min_mcost.addr.12.2 = phi i32 [ %add498.2, %if.then501.2 ], [ %min_mcost.addr.12.1, %if.then478.2 ], [ %min_mcost.addr.12.1, %land.lhs.true473.2 ], [ %min_mcost.addr.12.1, %for.inc504.1 ]
-  %add464.3 = add nsw i32 %best_x.6.lcssa, 1
-  %add468.3 = add nsw i32 %best_y.6.lcssa, 2
-  %sub469.3 = sub nsw i32 %add464.3, %add16
-  %cond.i1514.3 = tail call i32 @llvm.abs.i32(i32 %sub469.3, i1 true)
-  %cmp471.not.3 = icmp sgt i32 %cond.i1514.3, %search_range
-  br i1 %cmp471.not.3, label %for.inc504.3, label %land.lhs.true473.3
-
-land.lhs.true473.3:                               ; preds = %for.inc504.2
-  %sub474.3 = sub nsw i32 %add468.3, %add18
-  %cond.i1515.3 = tail call i32 @llvm.abs.i32(i32 %sub474.3, i1 true)
-  %cmp476.not.3 = icmp sgt i32 %cond.i1515.3, %search_range
-  br i1 %cmp476.not.3, label %for.inc504.3, label %if.then478.3
-
-if.then478.3:                                     ; preds = %land.lhs.true473.3
-  %138 = load ptr, ptr @mvbits, align 8
-  %shl479.3 = shl i32 %add464.3, 2
-  %sub480.3 = sub nsw i32 %shl479.3, %add
-  %idxprom481.3 = sext i32 %sub480.3 to i64
-  %arrayidx482.3 = getelementptr inbounds i32, ptr %138, i64 %idxprom481.3
-  %139 = load i32, ptr %arrayidx482.3, align 4
-  %shl483.3 = shl i32 %add468.3, 2
-  %sub484.3 = sub nsw i32 %shl483.3, %add14
-  %idxprom485.3 = sext i32 %sub484.3 to i64
-  %arrayidx486.3 = getelementptr inbounds i32, ptr %138, i64 %idxprom485.3
-  %140 = load i32, ptr %arrayidx486.3, align 4
-  %add487.3 = add nsw i32 %140, %139
-  %mul488.3 = mul nsw i32 %add487.3, %lambda_factor
-  %shr489.3 = ashr i32 %mul488.3, 16
-  %141 = load i32, ptr @dist_method, align 4
-  %idxprom490.3 = zext i32 %141 to i64
-  %arrayidx491.3 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom490.3
-  %142 = load ptr, ptr %arrayidx491.3, align 8
-  %sub492.3 = sub nsw i32 %min_mcost.addr.12.2, %shr489.3
-  %shl494.3 = add i32 %shl479.3, 80
-  %shl496.3 = add i32 %shl483.3, 80
-  %call497.3 = tail call i32 %142(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub492.3, i32 noundef %shl494.3, i32 noundef %shl496.3) #10
-  %add498.3 = add nsw i32 %shr489.3, %call497.3
-  %cmp499.3 = icmp slt i32 %add498.3, %min_mcost.addr.12.2
-  br i1 %cmp499.3, label %if.then501.3, label %for.inc504.3
-
-if.then501.3:                                     ; preds = %if.then478.3
-  br label %for.inc504.3
-
-for.inc504.3:                                     ; preds = %if.then501.3, %if.then478.3, %land.lhs.true473.3, %for.inc504.2
-  %best_x.12.3 = phi i32 [ %add464.3, %if.then501.3 ], [ %best_x.12.2, %if.then478.3 ], [ %best_x.12.2, %land.lhs.true473.3 ], [ %best_x.12.2, %for.inc504.2 ]
-  %best_y.12.3 = phi i32 [ %add468.3, %if.then501.3 ], [ %best_y.12.2, %if.then478.3 ], [ %best_y.12.2, %land.lhs.true473.3 ], [ %best_y.12.2, %for.inc504.2 ]
-  %min_mcost.addr.12.3 = phi i32 [ %add498.3, %if.then501.3 ], [ %min_mcost.addr.12.2, %if.then478.3 ], [ %min_mcost.addr.12.2, %land.lhs.true473.3 ], [ %min_mcost.addr.12.2, %for.inc504.2 ]
-  br i1 %cmp471.not.2, label %for.inc504.4, label %land.lhs.true473.4
-
-land.lhs.true473.4:                               ; preds = %for.inc504.3
-  %sub474.4 = sub nsw i32 %add468.3, %add18
-  %cond.i1515.4 = tail call i32 @llvm.abs.i32(i32 %sub474.4, i1 true)
-  %cmp476.not.4 = icmp sgt i32 %cond.i1515.4, %search_range
-  br i1 %cmp476.not.4, label %for.inc504.4, label %if.then478.4
-
-if.then478.4:                                     ; preds = %land.lhs.true473.4
-  %143 = load ptr, ptr @mvbits, align 8
-  %shl479.4 = shl i32 %add464.2, 2
-  %sub480.4 = sub nsw i32 %shl479.4, %add
-  %idxprom481.4 = sext i32 %sub480.4 to i64
-  %arrayidx482.4 = getelementptr inbounds i32, ptr %143, i64 %idxprom481.4
-  %144 = load i32, ptr %arrayidx482.4, align 4
-  %shl483.4 = shl i32 %add468.3, 2
-  %sub484.4 = sub nsw i32 %shl483.4, %add14
-  %idxprom485.4 = sext i32 %sub484.4 to i64
-  %arrayidx486.4 = getelementptr inbounds i32, ptr %143, i64 %idxprom485.4
-  %145 = load i32, ptr %arrayidx486.4, align 4
-  %add487.4 = add nsw i32 %145, %144
-  %mul488.4 = mul nsw i32 %add487.4, %lambda_factor
-  %shr489.4 = ashr i32 %mul488.4, 16
-  %146 = load i32, ptr @dist_method, align 4
-  %idxprom490.4 = zext i32 %146 to i64
-  %arrayidx491.4 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom490.4
-  %147 = load ptr, ptr %arrayidx491.4, align 8
-  %sub492.4 = sub nsw i32 %min_mcost.addr.12.3, %shr489.4
-  %shl494.4 = add i32 %shl479.4, 80
-  %shl496.4 = add i32 %shl483.4, 80
-  %call497.4 = tail call i32 %147(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub492.4, i32 noundef %shl494.4, i32 noundef %shl496.4) #10
-  %add498.4 = add nsw i32 %shr489.4, %call497.4
-  %cmp499.4 = icmp slt i32 %add498.4, %min_mcost.addr.12.3
-  br i1 %cmp499.4, label %if.then501.4, label %for.inc504.4
-
-if.then501.4:                                     ; preds = %if.then478.4
-  br label %for.inc504.4
-
-for.inc504.4:                                     ; preds = %if.then501.4, %if.then478.4, %land.lhs.true473.4, %for.inc504.3
-  %best_x.12.4 = phi i32 [ %add464.2, %if.then501.4 ], [ %best_x.12.3, %if.then478.4 ], [ %best_x.12.3, %land.lhs.true473.4 ], [ %best_x.12.3, %for.inc504.3 ]
-  %best_y.12.4 = phi i32 [ %add468.3, %if.then501.4 ], [ %best_y.12.3, %if.then478.4 ], [ %best_y.12.3, %land.lhs.true473.4 ], [ %best_y.12.3, %for.inc504.3 ]
-  %min_mcost.addr.12.4 = phi i32 [ %add498.4, %if.then501.4 ], [ %min_mcost.addr.12.3, %if.then478.4 ], [ %min_mcost.addr.12.3, %land.lhs.true473.4 ], [ %min_mcost.addr.12.3, %for.inc504.3 ]
-  br i1 %cmp471.not.3, label %for.inc504.5, label %land.lhs.true473.5
-
-land.lhs.true473.5:                               ; preds = %for.inc504.4
-  %sub474.5 = sub nsw i32 %add468.2, %add18
-  %cond.i1515.5 = tail call i32 @llvm.abs.i32(i32 %sub474.5, i1 true)
-  %cmp476.not.5 = icmp sgt i32 %cond.i1515.5, %search_range
-  br i1 %cmp476.not.5, label %for.inc504.5, label %if.then478.5
-
-if.then478.5:                                     ; preds = %land.lhs.true473.5
-  %148 = load ptr, ptr @mvbits, align 8
-  %shl479.5 = shl i32 %add464.3, 2
-  %sub480.5 = sub nsw i32 %shl479.5, %add
-  %idxprom481.5 = sext i32 %sub480.5 to i64
-  %arrayidx482.5 = getelementptr inbounds i32, ptr %148, i64 %idxprom481.5
-  %149 = load i32, ptr %arrayidx482.5, align 4
-  %shl483.5 = shl i32 %add468.2, 2
-  %sub484.5 = sub nsw i32 %shl483.5, %add14
-  %idxprom485.5 = sext i32 %sub484.5 to i64
-  %arrayidx486.5 = getelementptr inbounds i32, ptr %148, i64 %idxprom485.5
-  %150 = load i32, ptr %arrayidx486.5, align 4
-  %add487.5 = add nsw i32 %150, %149
-  %mul488.5 = mul nsw i32 %add487.5, %lambda_factor
-  %shr489.5 = ashr i32 %mul488.5, 16
-  %151 = load i32, ptr @dist_method, align 4
-  %idxprom490.5 = zext i32 %151 to i64
-  %arrayidx491.5 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom490.5
-  %152 = load ptr, ptr %arrayidx491.5, align 8
-  %sub492.5 = sub nsw i32 %min_mcost.addr.12.4, %shr489.5
-  %shl494.5 = add i32 %shl479.5, 80
-  %shl496.5 = add i32 %shl483.5, 80
-  %call497.5 = tail call i32 %152(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub492.5, i32 noundef %shl494.5, i32 noundef %shl496.5) #10
-  %add498.5 = add nsw i32 %shr489.5, %call497.5
-  %cmp499.5 = icmp slt i32 %add498.5, %min_mcost.addr.12.4
-  br i1 %cmp499.5, label %if.then501.5, label %for.inc504.5
-
-if.then501.5:                                     ; preds = %if.then478.5
-  br label %for.inc504.5
-
-for.inc504.5:                                     ; preds = %if.then501.5, %if.then478.5, %land.lhs.true473.5, %for.inc504.4
-  %best_x.12.5 = phi i32 [ %add464.3, %if.then501.5 ], [ %best_x.12.4, %if.then478.5 ], [ %best_x.12.4, %land.lhs.true473.5 ], [ %best_x.12.4, %for.inc504.4 ]
-  %best_y.12.5 = phi i32 [ %add468.2, %if.then501.5 ], [ %best_y.12.4, %if.then478.5 ], [ %best_y.12.4, %land.lhs.true473.5 ], [ %best_y.12.4, %for.inc504.4 ]
-  %min_mcost.addr.12.5 = phi i32 [ %add498.5, %if.then501.5 ], [ %min_mcost.addr.12.4, %if.then478.5 ], [ %min_mcost.addr.12.4, %land.lhs.true473.5 ], [ %min_mcost.addr.12.4, %for.inc504.4 ]
-  %div509 = sdiv i32 %search_range, 4
-  %cmp510.not1564 = icmp slt i32 %search_range, 4
-  br i1 %cmp510.not1564, label %if.end571, label %for.cond513.preheader
-
-for.cond513.preheader:                            ; preds = %for.inc504.5, %for.inc568
-  %conv5081569 = phi i32 [ %conv508, %for.inc568 ], [ 1, %for.inc504.5 ]
-  %i.11568 = phi i16 [ %inc569, %for.inc568 ], [ 1, %for.inc504.5 ]
-  %min_mcost.addr.131567 = phi i32 [ %min_mcost.addr.15, %for.inc568 ], [ %min_mcost.addr.12.5, %for.inc504.5 ]
-  %best_y.131566 = phi i32 [ %best_y.15, %for.inc568 ], [ %best_y.12.5, %for.inc504.5 ]
-  %best_x.131565 = phi i32 [ %best_x.15, %for.inc568 ], [ %best_x.12.5, %for.inc504.5 ]
+for.cond513.preheader:                            ; preds = %for.cond507.preheader, %for.inc568
+  %conv5081569 = phi i32 [ %conv508, %for.inc568 ], [ 1, %for.cond507.preheader ]
+  %i.11568 = phi i16 [ %inc569, %for.inc568 ], [ 1, %for.cond507.preheader ]
+  %min_mcost.addr.131567 = phi i32 [ %min_mcost.addr.15, %for.inc568 ], [ %min_mcost.addr.12, %for.cond507.preheader ]
+  %best_y.131566 = phi i32 [ %best_y.15, %for.inc568 ], [ %best_y.12, %for.cond507.preheader ]
+  %best_x.131565 = phi i32 [ %best_x.15, %for.inc568 ], [ %best_x.12, %for.cond507.preheader ]
   br label %for.body517
 
 for.body517:                                      ; preds = %for.cond513.preheader, %for.inc565
-  %indvars.iv = phi i64 [ 0, %for.cond513.preheader ], [ %indvars.iv.next, %for.inc565 ]
+  %indvars.iv1618 = phi i64 [ 0, %for.cond513.preheader ], [ %indvars.iv.next1619, %for.inc565 ]
   %min_mcost.addr.141562 = phi i32 [ %min_mcost.addr.131567, %for.cond513.preheader ], [ %min_mcost.addr.15, %for.inc565 ]
   %best_y.141561 = phi i32 [ %best_y.131566, %for.cond513.preheader ], [ %best_y.15, %for.inc565 ]
   %best_x.141560 = phi i32 [ %best_x.131565, %for.cond513.preheader ], [ %best_x.15, %for.inc565 ]
-  %arrayidx519 = getelementptr inbounds [16 x i16], ptr @Big_Hexagon_X, i64 0, i64 %indvars.iv
-  %153 = load i16, ptr %arrayidx519, align 2
-  %conv520 = sext i16 %153 to i32
+  %arrayidx519 = getelementptr inbounds [16 x i16], ptr @Big_Hexagon_X, i64 0, i64 %indvars.iv1618
+  %130 = load i16, ptr %arrayidx519, align 2
+  %conv520 = sext i16 %130 to i32
   %mul522 = mul nsw i32 %conv5081569, %conv520
-  %add523 = add nsw i32 %mul522, %best_x.12.5
-  %arrayidx525 = getelementptr inbounds [16 x i16], ptr @Big_Hexagon_Y, i64 0, i64 %indvars.iv
-  %154 = load i16, ptr %arrayidx525, align 2
-  %conv526 = sext i16 %154 to i32
+  %add523 = add nsw i32 %mul522, %best_x.12
+  %arrayidx525 = getelementptr inbounds [16 x i16], ptr @Big_Hexagon_Y, i64 0, i64 %indvars.iv1618
+  %131 = load i16, ptr %arrayidx525, align 2
+  %conv526 = sext i16 %131 to i32
   %mul528 = mul nsw i32 %conv5081569, %conv526
-  %add529 = add nsw i32 %mul528, %best_y.12.5
+  %add529 = add nsw i32 %mul528, %best_y.12
   %sub530 = sub nsw i32 %add523, %add16
   %cond.i1516 = tail call i32 @llvm.abs.i32(i32 %sub530, i1 true)
   %cmp532.not = icmp sgt i32 %cond.i1516, %search_range
@@ -1371,28 +1172,28 @@ land.lhs.true534:                                 ; preds = %for.body517
   br i1 %cmp537.not, label %for.inc565, label %if.then539
 
 if.then539:                                       ; preds = %land.lhs.true534
-  %155 = load ptr, ptr @mvbits, align 8
+  %132 = load ptr, ptr @mvbits, align 8
   %shl540 = shl i32 %add523, 2
   %sub541 = sub nsw i32 %shl540, %add
   %idxprom542 = sext i32 %sub541 to i64
-  %arrayidx543 = getelementptr inbounds i32, ptr %155, i64 %idxprom542
-  %156 = load i32, ptr %arrayidx543, align 4
+  %arrayidx543 = getelementptr inbounds i32, ptr %132, i64 %idxprom542
+  %133 = load i32, ptr %arrayidx543, align 4
   %shl544 = shl i32 %add529, 2
   %sub545 = sub nsw i32 %shl544, %add14
   %idxprom546 = sext i32 %sub545 to i64
-  %arrayidx547 = getelementptr inbounds i32, ptr %155, i64 %idxprom546
-  %157 = load i32, ptr %arrayidx547, align 4
-  %add548 = add nsw i32 %157, %156
+  %arrayidx547 = getelementptr inbounds i32, ptr %132, i64 %idxprom546
+  %134 = load i32, ptr %arrayidx547, align 4
+  %add548 = add nsw i32 %134, %133
   %mul549 = mul nsw i32 %add548, %lambda_factor
   %shr550 = ashr i32 %mul549, 16
-  %158 = load i32, ptr @dist_method, align 4
-  %idxprom551 = zext i32 %158 to i64
+  %135 = load i32, ptr @dist_method, align 4
+  %idxprom551 = zext i32 %135 to i64
   %arrayidx552 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom551
-  %159 = load ptr, ptr %arrayidx552, align 8
+  %136 = load ptr, ptr %arrayidx552, align 8
   %sub553 = sub nsw i32 %min_mcost.addr.141562, %shr550
   %shl555 = add i32 %shl540, 80
   %shl557 = add i32 %shl544, 80
-  %call558 = tail call i32 %159(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub553, i32 noundef %shl555, i32 noundef %shl557) #10
+  %call558 = tail call i32 %136(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub553, i32 noundef %shl555, i32 noundef %shl557) #10
   %add559 = add nsw i32 %shr550, %call558
   %cmp560 = icmp slt i32 %add559, %min_mcost.addr.141562
   br i1 %cmp560, label %if.then562, label %for.inc565
@@ -1404,9 +1205,9 @@ for.inc565:                                       ; preds = %for.body517, %land.
   %best_x.15 = phi i32 [ %add523, %if.then562 ], [ %best_x.141560, %if.then539 ], [ %best_x.141560, %land.lhs.true534 ], [ %best_x.141560, %for.body517 ]
   %best_y.15 = phi i32 [ %add529, %if.then562 ], [ %best_y.141561, %if.then539 ], [ %best_y.141561, %land.lhs.true534 ], [ %best_y.141561, %for.body517 ]
   %min_mcost.addr.15 = phi i32 [ %add559, %if.then562 ], [ %min_mcost.addr.141562, %if.then539 ], [ %min_mcost.addr.141562, %land.lhs.true534 ], [ %min_mcost.addr.141562, %for.body517 ]
-  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
-  %exitcond.not = icmp eq i64 %indvars.iv.next, 16
-  br i1 %exitcond.not, label %for.inc568, label %for.body517
+  %indvars.iv.next1619 = add nuw nsw i64 %indvars.iv1618, 1
+  %exitcond1621.not = icmp eq i64 %indvars.iv.next1619, 16
+  br i1 %exitcond1621.not, label %for.inc568, label %for.body517
 
 for.inc568:                                       ; preds = %for.inc565
   %inc569 = add i16 %i.11568, 1
@@ -1414,21 +1215,21 @@ for.inc568:                                       ; preds = %for.inc565
   %cmp510.not = icmp slt i32 %div509, %conv508
   br i1 %cmp510.not, label %if.end571, label %for.cond513.preheader
 
-if.end571:                                        ; preds = %for.inc568, %for.inc504.5, %lor.lhs.false292
-  %best_x.16 = phi i32 [ %best_x.5.3, %lor.lhs.false292 ], [ %best_x.12.5, %for.inc504.5 ], [ %best_x.15, %for.inc568 ]
-  %best_y.16 = phi i32 [ %best_y.5.3, %lor.lhs.false292 ], [ %best_y.12.5, %for.inc504.5 ], [ %best_y.15, %for.inc568 ]
-  %min_mcost.addr.16 = phi i32 [ %min_mcost.addr.5.3, %lor.lhs.false292 ], [ %min_mcost.addr.12.5, %for.inc504.5 ], [ %min_mcost.addr.15, %for.inc568 ]
+if.end571:                                        ; preds = %for.inc568, %for.cond507.preheader, %lor.lhs.false292
+  %best_x.16 = phi i32 [ %best_x.5.3, %lor.lhs.false292 ], [ %best_x.12, %for.cond507.preheader ], [ %best_x.15, %for.inc568 ]
+  %best_y.16 = phi i32 [ %best_y.5.3, %lor.lhs.false292 ], [ %best_y.12, %for.cond507.preheader ], [ %best_y.15, %for.inc568 ]
+  %min_mcost.addr.16 = phi i32 [ %min_mcost.addr.5.3, %lor.lhs.false292 ], [ %min_mcost.addr.12, %for.cond507.preheader ], [ %min_mcost.addr.15, %for.inc568 ]
   %cmp572 = icmp sgt i32 %blocktype, 1
   br i1 %cmp572, label %if.then574, label %if.end616
 
 if.then574:                                       ; preds = %if.end571
-  %160 = load i16, ptr @smpUMHEX_pred_MV_uplayer_X, align 2
-  %161 = sdiv i16 %160, 4
-  %div576 = sext i16 %161 to i32
+  %137 = load i16, ptr @smpUMHEX_pred_MV_uplayer_X, align 2
+  %138 = sdiv i16 %137, 4
+  %div576 = sext i16 %138 to i32
   %add577 = add nsw i32 %div576, %pic_pix_x
-  %162 = load i16, ptr @smpUMHEX_pred_MV_uplayer_Y, align 2
-  %163 = sdiv i16 %162, 4
-  %div579 = sext i16 %163 to i32
+  %139 = load i16, ptr @smpUMHEX_pred_MV_uplayer_Y, align 2
+  %140 = sdiv i16 %139, 4
+  %div579 = sext i16 %140 to i32
   %add580 = add nsw i32 %div579, %pic_pix_y
   %sub581 = sub nsw i32 %add577, %add16
   %cond.i1518 = tail call i32 @llvm.abs.i32(i32 %sub581, i1 true)
@@ -1442,28 +1243,28 @@ land.lhs.true585:                                 ; preds = %if.then574
   br i1 %cmp588.not, label %if.end616, label %if.then590
 
 if.then590:                                       ; preds = %land.lhs.true585
-  %164 = load ptr, ptr @mvbits, align 8
+  %141 = load ptr, ptr @mvbits, align 8
   %shl591 = shl i32 %add577, 2
   %sub592 = sub nsw i32 %shl591, %add
   %idxprom593 = sext i32 %sub592 to i64
-  %arrayidx594 = getelementptr inbounds i32, ptr %164, i64 %idxprom593
-  %165 = load i32, ptr %arrayidx594, align 4
+  %arrayidx594 = getelementptr inbounds i32, ptr %141, i64 %idxprom593
+  %142 = load i32, ptr %arrayidx594, align 4
   %shl595 = shl i32 %add580, 2
   %sub596 = sub nsw i32 %shl595, %add14
   %idxprom597 = sext i32 %sub596 to i64
-  %arrayidx598 = getelementptr inbounds i32, ptr %164, i64 %idxprom597
-  %166 = load i32, ptr %arrayidx598, align 4
-  %add599 = add nsw i32 %166, %165
+  %arrayidx598 = getelementptr inbounds i32, ptr %141, i64 %idxprom597
+  %143 = load i32, ptr %arrayidx598, align 4
+  %add599 = add nsw i32 %143, %142
   %mul600 = mul nsw i32 %add599, %lambda_factor
   %shr601 = ashr i32 %mul600, 16
-  %167 = load i32, ptr @dist_method, align 4
-  %idxprom602 = zext i32 %167 to i64
+  %144 = load i32, ptr @dist_method, align 4
+  %idxprom602 = zext i32 %144 to i64
   %arrayidx603 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom602
-  %168 = load ptr, ptr %arrayidx603, align 8
+  %145 = load ptr, ptr %arrayidx603, align 8
   %sub604 = sub nsw i32 %min_mcost.addr.16, %shr601
   %shl606 = add i32 %shl591, 80
   %shl608 = add i32 %shl595, 80
-  %call609 = tail call i32 %168(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub604, i32 noundef %shl606, i32 noundef %shl608) #10
+  %call609 = tail call i32 %145(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub604, i32 noundef %shl606, i32 noundef %shl608) #10
   %add610 = add nsw i32 %shr601, %call609
   %cmp611 = icmp slt i32 %add610, %min_mcost.addr.16
   br i1 %cmp611, label %if.then613, label %if.end616
@@ -1485,26 +1286,26 @@ if.then622:                                       ; preds = %if.end616
   br i1 %or.cond1542, label %if.end657, label %if.then632
 
 if.then632:                                       ; preds = %if.then622
-  %169 = load ptr, ptr @mvbits, align 8
+  %146 = load ptr, ptr @mvbits, align 8
   %sub634 = sub nsw i32 0, %conv
   %idxprom635 = sext i32 %sub634 to i64
-  %arrayidx636 = getelementptr inbounds i32, ptr %169, i64 %idxprom635
-  %170 = load i32, ptr %arrayidx636, align 4
+  %arrayidx636 = getelementptr inbounds i32, ptr %146, i64 %idxprom635
+  %147 = load i32, ptr %arrayidx636, align 4
   %sub638 = sub nsw i32 0, %conv13
   %idxprom639 = sext i32 %sub638 to i64
-  %arrayidx640 = getelementptr inbounds i32, ptr %169, i64 %idxprom639
-  %171 = load i32, ptr %arrayidx640, align 4
-  %add641 = add nsw i32 %171, %170
+  %arrayidx640 = getelementptr inbounds i32, ptr %146, i64 %idxprom639
+  %148 = load i32, ptr %arrayidx640, align 4
+  %add641 = add nsw i32 %148, %147
   %mul642 = mul nsw i32 %add641, %lambda_factor
   %shr643 = ashr i32 %mul642, 16
-  %172 = load i32, ptr @dist_method, align 4
-  %idxprom644 = zext i32 %172 to i64
+  %149 = load i32, ptr @dist_method, align 4
+  %idxprom644 = zext i32 %149 to i64
   %arrayidx645 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom644
-  %173 = load ptr, ptr %arrayidx645, align 8
+  %150 = load ptr, ptr %arrayidx645, align 8
   %sub646 = sub nsw i32 %min_mcost.addr.17, %shr643
   %shl648 = add i32 %shl, 80
   %shl650 = add i32 %shl12, 80
-  %call651 = tail call i32 %173(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub646, i32 noundef %shl648, i32 noundef %shl650) #10
+  %call651 = tail call i32 %150(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub646, i32 noundef %shl648, i32 noundef %shl650) #10
   %add652 = add nsw i32 %shr643, %call651
   %cmp653 = icmp slt i32 %add652, %min_mcost.addr.17
   br i1 %cmp653, label %if.then655, label %if.end657
@@ -1529,37 +1330,37 @@ land.lhs.true675:                                 ; preds = %if.end657
   br i1 %cmp678.not, label %for.inc706, label %if.then680
 
 if.then680:                                       ; preds = %land.lhs.true675
-  %174 = load ptr, ptr @mvbits, align 8
+  %151 = load ptr, ptr @mvbits, align 8
   %shl681 = shl i32 %add666, 2
   %sub682 = sub nsw i32 %shl681, %add
   %idxprom683 = sext i32 %sub682 to i64
-  %arrayidx684 = getelementptr inbounds i32, ptr %174, i64 %idxprom683
-  %175 = load i32, ptr %arrayidx684, align 4
+  %arrayidx684 = getelementptr inbounds i32, ptr %151, i64 %idxprom683
+  %152 = load i32, ptr %arrayidx684, align 4
   %shl685 = shl i32 %best_y.18, 2
   %sub686 = sub nsw i32 %shl685, %add14
   %idxprom687 = sext i32 %sub686 to i64
-  %arrayidx688 = getelementptr inbounds i32, ptr %174, i64 %idxprom687
-  %176 = load i32, ptr %arrayidx688, align 4
-  %add689 = add nsw i32 %176, %175
+  %arrayidx688 = getelementptr inbounds i32, ptr %151, i64 %idxprom687
+  %153 = load i32, ptr %arrayidx688, align 4
+  %add689 = add nsw i32 %153, %152
   %mul690 = mul nsw i32 %add689, %lambda_factor
   %shr691 = ashr i32 %mul690, 16
-  %177 = load i32, ptr @dist_method, align 4
-  %idxprom692 = zext i32 %177 to i64
+  %154 = load i32, ptr @dist_method, align 4
+  %idxprom692 = zext i32 %154 to i64
   %arrayidx693 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom692
-  %178 = load ptr, ptr %arrayidx693, align 8
+  %155 = load ptr, ptr %arrayidx693, align 8
   %sub694 = sub nsw i32 %min_mcost.addr.18, %shr691
   %shl696 = add i32 %shl681, 80
   %shl698 = add i32 %shl685, 80
-  %call699 = tail call i32 %178(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694, i32 noundef %shl696, i32 noundef %shl698) #10
+  %call699 = tail call i32 %155(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694, i32 noundef %shl696, i32 noundef %shl698) #10
   %add700 = add nsw i32 %shr691, %call699
   %cmp701 = icmp slt i32 %add700, %min_mcost.addr.18
-  %spec.select1705 = select i1 %cmp701, i32 %add666, i32 %best_x.18
-  %spec.select1706 = tail call i32 @llvm.smin.i32(i32 %add700, i32 %min_mcost.addr.18)
+  %spec.select = select i1 %cmp701, i32 %add666, i32 %best_x.18
+  %spec.select1695 = tail call i32 @llvm.smin.i32(i32 %add700, i32 %min_mcost.addr.18)
   br label %for.inc706
 
 for.inc706:                                       ; preds = %if.then680, %if.end657, %land.lhs.true675
-  %best_x.20 = phi i32 [ %best_x.18, %land.lhs.true675 ], [ %best_x.18, %if.end657 ], [ %spec.select1705, %if.then680 ]
-  %min_mcost.addr.20 = phi i32 [ %min_mcost.addr.18, %land.lhs.true675 ], [ %min_mcost.addr.18, %if.end657 ], [ %spec.select1706, %if.then680 ]
+  %best_x.20 = phi i32 [ %best_x.18, %land.lhs.true675 ], [ %best_x.18, %if.end657 ], [ %spec.select, %if.then680 ]
+  %min_mcost.addr.20 = phi i32 [ %min_mcost.addr.18, %land.lhs.true675 ], [ %min_mcost.addr.18, %if.end657 ], [ %spec.select1695, %if.then680 ]
   %add666.1 = add nsw i32 %best_x.18, 1
   %sub671.1 = sub nsw i32 %add666.1, %add16
   %cond.i1522.1 = tail call i32 @llvm.abs.i32(i32 %sub671.1, i1 true)
@@ -1573,37 +1374,37 @@ land.lhs.true675.1:                               ; preds = %for.inc706
   br i1 %cmp678.not.1, label %for.inc706.1, label %if.then680.1
 
 if.then680.1:                                     ; preds = %land.lhs.true675.1
-  %179 = load ptr, ptr @mvbits, align 8
+  %156 = load ptr, ptr @mvbits, align 8
   %shl681.1 = shl i32 %add666.1, 2
   %sub682.1 = sub nsw i32 %shl681.1, %add
   %idxprom683.1 = sext i32 %sub682.1 to i64
-  %arrayidx684.1 = getelementptr inbounds i32, ptr %179, i64 %idxprom683.1
-  %180 = load i32, ptr %arrayidx684.1, align 4
+  %arrayidx684.1 = getelementptr inbounds i32, ptr %156, i64 %idxprom683.1
+  %157 = load i32, ptr %arrayidx684.1, align 4
   %shl685.1 = shl i32 %best_y.18, 2
   %sub686.1 = sub nsw i32 %shl685.1, %add14
   %idxprom687.1 = sext i32 %sub686.1 to i64
-  %arrayidx688.1 = getelementptr inbounds i32, ptr %179, i64 %idxprom687.1
-  %181 = load i32, ptr %arrayidx688.1, align 4
-  %add689.1 = add nsw i32 %181, %180
+  %arrayidx688.1 = getelementptr inbounds i32, ptr %156, i64 %idxprom687.1
+  %158 = load i32, ptr %arrayidx688.1, align 4
+  %add689.1 = add nsw i32 %158, %157
   %mul690.1 = mul nsw i32 %add689.1, %lambda_factor
   %shr691.1 = ashr i32 %mul690.1, 16
-  %182 = load i32, ptr @dist_method, align 4
-  %idxprom692.1 = zext i32 %182 to i64
+  %159 = load i32, ptr @dist_method, align 4
+  %idxprom692.1 = zext i32 %159 to i64
   %arrayidx693.1 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom692.1
-  %183 = load ptr, ptr %arrayidx693.1, align 8
+  %160 = load ptr, ptr %arrayidx693.1, align 8
   %sub694.1 = sub nsw i32 %min_mcost.addr.20, %shr691.1
   %shl696.1 = add i32 %shl681.1, 80
   %shl698.1 = add i32 %shl685.1, 80
-  %call699.1 = tail call i32 %183(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694.1, i32 noundef %shl696.1, i32 noundef %shl698.1) #10
+  %call699.1 = tail call i32 %160(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694.1, i32 noundef %shl696.1, i32 noundef %shl698.1) #10
   %add700.1 = add nsw i32 %shr691.1, %call699.1
   %cmp701.1 = icmp slt i32 %add700.1, %min_mcost.addr.20
-  %spec.select1707 = select i1 %cmp701.1, i32 %add666.1, i32 %best_x.20
-  %spec.select1708 = tail call i32 @llvm.smin.i32(i32 %add700.1, i32 %min_mcost.addr.20)
+  %spec.select1696 = select i1 %cmp701.1, i32 %add666.1, i32 %best_x.20
+  %spec.select1697 = tail call i32 @llvm.smin.i32(i32 %add700.1, i32 %min_mcost.addr.20)
   br label %for.inc706.1
 
 for.inc706.1:                                     ; preds = %if.then680.1, %land.lhs.true675.1, %for.inc706
-  %best_x.20.1 = phi i32 [ %best_x.20, %land.lhs.true675.1 ], [ %best_x.20, %for.inc706 ], [ %spec.select1707, %if.then680.1 ]
-  %min_mcost.addr.20.1 = phi i32 [ %min_mcost.addr.20, %land.lhs.true675.1 ], [ %min_mcost.addr.20, %for.inc706 ], [ %spec.select1708, %if.then680.1 ]
+  %best_x.20.1 = phi i32 [ %best_x.20, %land.lhs.true675.1 ], [ %best_x.20, %for.inc706 ], [ %spec.select1696, %if.then680.1 ]
+  %min_mcost.addr.20.1 = phi i32 [ %min_mcost.addr.20, %land.lhs.true675.1 ], [ %min_mcost.addr.20, %for.inc706 ], [ %spec.select1697, %if.then680.1 ]
   %add670.2 = add nsw i32 %best_y.18, -1
   %sub671.2 = sub nsw i32 %best_x.18, %add16
   %cond.i1522.2 = tail call i32 @llvm.abs.i32(i32 %sub671.2, i1 true)
@@ -1617,28 +1418,28 @@ land.lhs.true675.2:                               ; preds = %for.inc706.1
   br i1 %cmp678.not.2, label %land.lhs.true675.3, label %if.then680.2
 
 if.then680.2:                                     ; preds = %land.lhs.true675.2
-  %184 = load ptr, ptr @mvbits, align 8
+  %161 = load ptr, ptr @mvbits, align 8
   %shl681.2 = shl i32 %best_x.18, 2
   %sub682.2 = sub nsw i32 %shl681.2, %add
   %idxprom683.2 = sext i32 %sub682.2 to i64
-  %arrayidx684.2 = getelementptr inbounds i32, ptr %184, i64 %idxprom683.2
-  %185 = load i32, ptr %arrayidx684.2, align 4
+  %arrayidx684.2 = getelementptr inbounds i32, ptr %161, i64 %idxprom683.2
+  %162 = load i32, ptr %arrayidx684.2, align 4
   %shl685.2 = shl i32 %add670.2, 2
   %sub686.2 = sub nsw i32 %shl685.2, %add14
   %idxprom687.2 = sext i32 %sub686.2 to i64
-  %arrayidx688.2 = getelementptr inbounds i32, ptr %184, i64 %idxprom687.2
-  %186 = load i32, ptr %arrayidx688.2, align 4
-  %add689.2 = add nsw i32 %186, %185
+  %arrayidx688.2 = getelementptr inbounds i32, ptr %161, i64 %idxprom687.2
+  %163 = load i32, ptr %arrayidx688.2, align 4
+  %add689.2 = add nsw i32 %163, %162
   %mul690.2 = mul nsw i32 %add689.2, %lambda_factor
   %shr691.2 = ashr i32 %mul690.2, 16
-  %187 = load i32, ptr @dist_method, align 4
-  %idxprom692.2 = zext i32 %187 to i64
+  %164 = load i32, ptr @dist_method, align 4
+  %idxprom692.2 = zext i32 %164 to i64
   %arrayidx693.2 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom692.2
-  %188 = load ptr, ptr %arrayidx693.2, align 8
+  %165 = load ptr, ptr %arrayidx693.2, align 8
   %sub694.2 = sub nsw i32 %min_mcost.addr.20.1, %shr691.2
   %shl696.2 = add i32 %shl681.2, 80
   %shl698.2 = add i32 %shl685.2, 80
-  %call699.2 = tail call i32 %188(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694.2, i32 noundef %shl696.2, i32 noundef %shl698.2) #10
+  %call699.2 = tail call i32 %165(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694.2, i32 noundef %shl696.2, i32 noundef %shl698.2) #10
   %add700.2 = add nsw i32 %shr691.2, %call699.2
   %cmp701.2 = icmp slt i32 %add700.2, %min_mcost.addr.20.1
   br i1 %cmp701.2, label %if.then703.2, label %land.lhs.true675.3
@@ -1650,35 +1451,35 @@ land.lhs.true675.3:                               ; preds = %if.then703.2, %if.t
   %best_x.20.2.ph = phi i32 [ %best_x.20.1, %land.lhs.true675.2 ], [ %best_x.20.1, %if.then680.2 ], [ %best_x.18, %if.then703.2 ]
   %best_y.20.2.ph = phi i32 [ %best_y.18, %land.lhs.true675.2 ], [ %best_y.18, %if.then680.2 ], [ %add670.2, %if.then703.2 ]
   %min_mcost.addr.20.2.ph = phi i32 [ %min_mcost.addr.20.1, %land.lhs.true675.2 ], [ %min_mcost.addr.20.1, %if.then680.2 ], [ %add700.2, %if.then703.2 ]
-  %add670.31658 = add nsw i32 %best_y.18, 1
-  %sub676.3 = sub nsw i32 %add670.31658, %add18
+  %add670.31661 = add nsw i32 %best_y.18, 1
+  %sub676.3 = sub nsw i32 %add670.31661, %add18
   %cond.i1523.3 = tail call i32 @llvm.abs.i32(i32 %sub676.3, i1 true)
   %cmp678.not.3 = icmp sgt i32 %cond.i1523.3, %search_range
   br i1 %cmp678.not.3, label %if.end709, label %if.then680.3
 
 if.then680.3:                                     ; preds = %land.lhs.true675.3
-  %189 = load ptr, ptr @mvbits, align 8
+  %166 = load ptr, ptr @mvbits, align 8
   %shl681.3 = shl i32 %best_x.18, 2
   %sub682.3 = sub nsw i32 %shl681.3, %add
   %idxprom683.3 = sext i32 %sub682.3 to i64
-  %arrayidx684.3 = getelementptr inbounds i32, ptr %189, i64 %idxprom683.3
-  %190 = load i32, ptr %arrayidx684.3, align 4
-  %shl685.3 = shl i32 %add670.31658, 2
+  %arrayidx684.3 = getelementptr inbounds i32, ptr %166, i64 %idxprom683.3
+  %167 = load i32, ptr %arrayidx684.3, align 4
+  %shl685.3 = shl i32 %add670.31661, 2
   %sub686.3 = sub nsw i32 %shl685.3, %add14
   %idxprom687.3 = sext i32 %sub686.3 to i64
-  %arrayidx688.3 = getelementptr inbounds i32, ptr %189, i64 %idxprom687.3
-  %191 = load i32, ptr %arrayidx688.3, align 4
-  %add689.3 = add nsw i32 %191, %190
+  %arrayidx688.3 = getelementptr inbounds i32, ptr %166, i64 %idxprom687.3
+  %168 = load i32, ptr %arrayidx688.3, align 4
+  %add689.3 = add nsw i32 %168, %167
   %mul690.3 = mul nsw i32 %add689.3, %lambda_factor
   %shr691.3 = ashr i32 %mul690.3, 16
-  %192 = load i32, ptr @dist_method, align 4
-  %idxprom692.3 = zext i32 %192 to i64
+  %169 = load i32, ptr @dist_method, align 4
+  %idxprom692.3 = zext i32 %169 to i64
   %arrayidx693.3 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom692.3
-  %193 = load ptr, ptr %arrayidx693.3, align 8
+  %170 = load ptr, ptr %arrayidx693.3, align 8
   %sub694.3 = sub nsw i32 %min_mcost.addr.20.2.ph, %shr691.3
   %shl696.3 = add i32 %shl681.3, 80
   %shl698.3 = add i32 %shl685.3, 80
-  %call699.3 = tail call i32 %193(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694.3, i32 noundef %shl696.3, i32 noundef %shl698.3) #10
+  %call699.3 = tail call i32 %170(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub694.3, i32 noundef %shl696.3, i32 noundef %shl698.3) #10
   %add700.3 = add nsw i32 %shr691.3, %call699.3
   %cmp701.3 = icmp slt i32 %add700.3, %min_mcost.addr.20.2.ph
   br i1 %cmp701.3, label %if.then703.3, label %if.end709
@@ -1688,10 +1489,10 @@ if.then703.3:                                     ; preds = %if.then680.3
 
 if.end709:                                        ; preds = %for.inc706.1, %land.lhs.true675.3, %if.then680.3, %if.then703.3, %if.end616
   %best_x.21 = phi i32 [ %best_x.17, %if.end616 ], [ %best_x.18, %if.then703.3 ], [ %best_x.20.2.ph, %if.then680.3 ], [ %best_x.20.2.ph, %land.lhs.true675.3 ], [ %best_x.20.1, %for.inc706.1 ]
-  %best_y.21 = phi i32 [ %best_y.17, %if.end616 ], [ %add670.31658, %if.then703.3 ], [ %best_y.20.2.ph, %if.then680.3 ], [ %best_y.20.2.ph, %land.lhs.true675.3 ], [ %best_y.18, %for.inc706.1 ]
+  %best_y.21 = phi i32 [ %best_y.17, %if.end616 ], [ %add670.31661, %if.then703.3 ], [ %best_y.20.2.ph, %if.then680.3 ], [ %best_y.20.2.ph, %land.lhs.true675.3 ], [ %best_y.18, %for.inc706.1 ]
   %min_mcost.addr.21 = phi i32 [ %min_mcost.addr.17, %if.end616 ], [ %add700.3, %if.then703.3 ], [ %min_mcost.addr.20.2.ph, %if.then680.3 ], [ %min_mcost.addr.20.2.ph, %land.lhs.true675.3 ], [ %min_mcost.addr.20.1, %for.inc706.1 ]
-  %194 = load i16, ptr @ConvergeThreshold, align 2
-  %conv710 = zext i16 %194 to i32
+  %171 = load i16, ptr @ConvergeThreshold, align 2
+  %conv710 = zext i16 %171 to i32
   %shr714 = lshr i32 %conv710, %conv1751494
   %cmp715 = icmp slt i32 %min_mcost.addr.21, %shr714
   br i1 %cmp715, label %for.body722.preheader, label %for.cond774.preheader
@@ -1714,37 +1515,37 @@ land.lhs.true735:                                 ; preds = %for.body722.prehead
   br i1 %cmp738.not, label %for.inc766, label %if.then740
 
 if.then740:                                       ; preds = %land.lhs.true735
-  %195 = load ptr, ptr @mvbits, align 8
+  %172 = load ptr, ptr @mvbits, align 8
   %shl741 = shl i32 %add726, 2
   %sub742 = sub nsw i32 %shl741, %add
   %idxprom743 = sext i32 %sub742 to i64
-  %arrayidx744 = getelementptr inbounds i32, ptr %195, i64 %idxprom743
-  %196 = load i32, ptr %arrayidx744, align 4
+  %arrayidx744 = getelementptr inbounds i32, ptr %172, i64 %idxprom743
+  %173 = load i32, ptr %arrayidx744, align 4
   %shl745 = shl i32 %best_y.21, 2
   %sub746 = sub nsw i32 %shl745, %add14
   %idxprom747 = sext i32 %sub746 to i64
-  %arrayidx748 = getelementptr inbounds i32, ptr %195, i64 %idxprom747
-  %197 = load i32, ptr %arrayidx748, align 4
-  %add749 = add nsw i32 %197, %196
+  %arrayidx748 = getelementptr inbounds i32, ptr %172, i64 %idxprom747
+  %174 = load i32, ptr %arrayidx748, align 4
+  %add749 = add nsw i32 %174, %173
   %mul750 = mul nsw i32 %add749, %lambda_factor
   %shr751 = ashr i32 %mul750, 16
-  %198 = load i32, ptr @dist_method, align 4
-  %idxprom752 = zext i32 %198 to i64
+  %175 = load i32, ptr @dist_method, align 4
+  %idxprom752 = zext i32 %175 to i64
   %arrayidx753 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom752
-  %199 = load ptr, ptr %arrayidx753, align 8
+  %176 = load ptr, ptr %arrayidx753, align 8
   %sub754 = sub nsw i32 %min_mcost.addr.21, %shr751
   %shl756 = add i32 %shl741, 80
   %shl758 = add i32 %shl745, 80
-  %call759 = tail call i32 %199(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754, i32 noundef %shl756, i32 noundef %shl758) #10
+  %call759 = tail call i32 %176(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754, i32 noundef %shl756, i32 noundef %shl758) #10
   %add760 = add nsw i32 %shr751, %call759
   %cmp761 = icmp slt i32 %add760, %min_mcost.addr.21
-  %spec.select1709 = select i1 %cmp761, i32 %add726, i32 %best_x.21
-  %spec.select1710 = tail call i32 @llvm.smin.i32(i32 %add760, i32 %min_mcost.addr.21)
+  %spec.select1698 = select i1 %cmp761, i32 %add726, i32 %best_x.21
+  %spec.select1699 = tail call i32 @llvm.smin.i32(i32 %add760, i32 %min_mcost.addr.21)
   br label %for.inc766
 
 for.inc766:                                       ; preds = %if.then740, %for.body722.preheader, %land.lhs.true735
-  %best_x.23 = phi i32 [ %best_x.21, %land.lhs.true735 ], [ %best_x.21, %for.body722.preheader ], [ %spec.select1709, %if.then740 ]
-  %min_mcost.addr.23 = phi i32 [ %min_mcost.addr.21, %land.lhs.true735 ], [ %min_mcost.addr.21, %for.body722.preheader ], [ %spec.select1710, %if.then740 ]
+  %best_x.23 = phi i32 [ %best_x.21, %land.lhs.true735 ], [ %best_x.21, %for.body722.preheader ], [ %spec.select1698, %if.then740 ]
+  %min_mcost.addr.23 = phi i32 [ %min_mcost.addr.21, %land.lhs.true735 ], [ %min_mcost.addr.21, %for.body722.preheader ], [ %spec.select1699, %if.then740 ]
   %add726.1 = add nsw i32 %best_x.21, 1
   %sub731.1 = sub nsw i32 %add726.1, %add16
   %cond.i1524.1 = tail call i32 @llvm.abs.i32(i32 %sub731.1, i1 true)
@@ -1758,37 +1559,37 @@ land.lhs.true735.1:                               ; preds = %for.inc766
   br i1 %cmp738.not.1, label %for.inc766.1, label %if.then740.1
 
 if.then740.1:                                     ; preds = %land.lhs.true735.1
-  %200 = load ptr, ptr @mvbits, align 8
+  %177 = load ptr, ptr @mvbits, align 8
   %shl741.1 = shl i32 %add726.1, 2
   %sub742.1 = sub nsw i32 %shl741.1, %add
   %idxprom743.1 = sext i32 %sub742.1 to i64
-  %arrayidx744.1 = getelementptr inbounds i32, ptr %200, i64 %idxprom743.1
-  %201 = load i32, ptr %arrayidx744.1, align 4
+  %arrayidx744.1 = getelementptr inbounds i32, ptr %177, i64 %idxprom743.1
+  %178 = load i32, ptr %arrayidx744.1, align 4
   %shl745.1 = shl i32 %best_y.21, 2
   %sub746.1 = sub nsw i32 %shl745.1, %add14
   %idxprom747.1 = sext i32 %sub746.1 to i64
-  %arrayidx748.1 = getelementptr inbounds i32, ptr %200, i64 %idxprom747.1
-  %202 = load i32, ptr %arrayidx748.1, align 4
-  %add749.1 = add nsw i32 %202, %201
+  %arrayidx748.1 = getelementptr inbounds i32, ptr %177, i64 %idxprom747.1
+  %179 = load i32, ptr %arrayidx748.1, align 4
+  %add749.1 = add nsw i32 %179, %178
   %mul750.1 = mul nsw i32 %add749.1, %lambda_factor
   %shr751.1 = ashr i32 %mul750.1, 16
-  %203 = load i32, ptr @dist_method, align 4
-  %idxprom752.1 = zext i32 %203 to i64
+  %180 = load i32, ptr @dist_method, align 4
+  %idxprom752.1 = zext i32 %180 to i64
   %arrayidx753.1 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom752.1
-  %204 = load ptr, ptr %arrayidx753.1, align 8
+  %181 = load ptr, ptr %arrayidx753.1, align 8
   %sub754.1 = sub nsw i32 %min_mcost.addr.23, %shr751.1
   %shl756.1 = add i32 %shl741.1, 80
   %shl758.1 = add i32 %shl745.1, 80
-  %call759.1 = tail call i32 %204(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754.1, i32 noundef %shl756.1, i32 noundef %shl758.1) #10
+  %call759.1 = tail call i32 %181(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754.1, i32 noundef %shl756.1, i32 noundef %shl758.1) #10
   %add760.1 = add nsw i32 %shr751.1, %call759.1
   %cmp761.1 = icmp slt i32 %add760.1, %min_mcost.addr.23
-  %spec.select1711 = select i1 %cmp761.1, i32 %add726.1, i32 %best_x.23
-  %spec.select1712 = tail call i32 @llvm.smin.i32(i32 %add760.1, i32 %min_mcost.addr.23)
+  %spec.select1700 = select i1 %cmp761.1, i32 %add726.1, i32 %best_x.23
+  %spec.select1701 = tail call i32 @llvm.smin.i32(i32 %add760.1, i32 %min_mcost.addr.23)
   br label %for.inc766.1
 
 for.inc766.1:                                     ; preds = %if.then740.1, %land.lhs.true735.1, %for.inc766
-  %best_x.23.1 = phi i32 [ %best_x.23, %land.lhs.true735.1 ], [ %best_x.23, %for.inc766 ], [ %spec.select1711, %if.then740.1 ]
-  %min_mcost.addr.23.1 = phi i32 [ %min_mcost.addr.23, %land.lhs.true735.1 ], [ %min_mcost.addr.23, %for.inc766 ], [ %spec.select1712, %if.then740.1 ]
+  %best_x.23.1 = phi i32 [ %best_x.23, %land.lhs.true735.1 ], [ %best_x.23, %for.inc766 ], [ %spec.select1700, %if.then740.1 ]
+  %min_mcost.addr.23.1 = phi i32 [ %min_mcost.addr.23, %land.lhs.true735.1 ], [ %min_mcost.addr.23, %for.inc766 ], [ %spec.select1701, %if.then740.1 ]
   %add730.2 = add nsw i32 %best_y.21, -1
   %sub731.2 = sub nsw i32 %best_x.21, %add16
   %cond.i1524.2 = tail call i32 @llvm.abs.i32(i32 %sub731.2, i1 true)
@@ -1802,28 +1603,28 @@ land.lhs.true735.2:                               ; preds = %for.inc766.1
   br i1 %cmp738.not.2, label %land.lhs.true735.3, label %if.then740.2
 
 if.then740.2:                                     ; preds = %land.lhs.true735.2
-  %205 = load ptr, ptr @mvbits, align 8
+  %182 = load ptr, ptr @mvbits, align 8
   %shl741.2 = shl i32 %best_x.21, 2
   %sub742.2 = sub nsw i32 %shl741.2, %add
   %idxprom743.2 = sext i32 %sub742.2 to i64
-  %arrayidx744.2 = getelementptr inbounds i32, ptr %205, i64 %idxprom743.2
-  %206 = load i32, ptr %arrayidx744.2, align 4
+  %arrayidx744.2 = getelementptr inbounds i32, ptr %182, i64 %idxprom743.2
+  %183 = load i32, ptr %arrayidx744.2, align 4
   %shl745.2 = shl i32 %add730.2, 2
   %sub746.2 = sub nsw i32 %shl745.2, %add14
   %idxprom747.2 = sext i32 %sub746.2 to i64
-  %arrayidx748.2 = getelementptr inbounds i32, ptr %205, i64 %idxprom747.2
-  %207 = load i32, ptr %arrayidx748.2, align 4
-  %add749.2 = add nsw i32 %207, %206
+  %arrayidx748.2 = getelementptr inbounds i32, ptr %182, i64 %idxprom747.2
+  %184 = load i32, ptr %arrayidx748.2, align 4
+  %add749.2 = add nsw i32 %184, %183
   %mul750.2 = mul nsw i32 %add749.2, %lambda_factor
   %shr751.2 = ashr i32 %mul750.2, 16
-  %208 = load i32, ptr @dist_method, align 4
-  %idxprom752.2 = zext i32 %208 to i64
+  %185 = load i32, ptr @dist_method, align 4
+  %idxprom752.2 = zext i32 %185 to i64
   %arrayidx753.2 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom752.2
-  %209 = load ptr, ptr %arrayidx753.2, align 8
+  %186 = load ptr, ptr %arrayidx753.2, align 8
   %sub754.2 = sub nsw i32 %min_mcost.addr.23.1, %shr751.2
   %shl756.2 = add i32 %shl741.2, 80
   %shl758.2 = add i32 %shl745.2, 80
-  %call759.2 = tail call i32 %209(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754.2, i32 noundef %shl756.2, i32 noundef %shl758.2) #10
+  %call759.2 = tail call i32 %186(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754.2, i32 noundef %shl756.2, i32 noundef %shl758.2) #10
   %add760.2 = add nsw i32 %shr751.2, %call759.2
   %cmp761.2 = icmp slt i32 %add760.2, %min_mcost.addr.23.1
   br i1 %cmp761.2, label %if.then763.2, label %land.lhs.true735.3
@@ -1835,35 +1636,35 @@ land.lhs.true735.3:                               ; preds = %if.then763.2, %if.t
   %best_x.23.2.ph = phi i32 [ %best_x.23.1, %land.lhs.true735.2 ], [ %best_x.23.1, %if.then740.2 ], [ %best_x.21, %if.then763.2 ]
   %best_y.23.2.ph = phi i32 [ %best_y.21, %land.lhs.true735.2 ], [ %best_y.21, %if.then740.2 ], [ %add730.2, %if.then763.2 ]
   %min_mcost.addr.23.2.ph = phi i32 [ %min_mcost.addr.23.1, %land.lhs.true735.2 ], [ %min_mcost.addr.23.1, %if.then740.2 ], [ %add760.2, %if.then763.2 ]
-  %add730.31666 = add nsw i32 %best_y.21, 1
-  %sub736.3 = sub nsw i32 %add730.31666, %add18
+  %add730.31669 = add nsw i32 %best_y.21, 1
+  %sub736.3 = sub nsw i32 %add730.31669, %add18
   %cond.i1525.3 = tail call i32 @llvm.abs.i32(i32 %sub736.3, i1 true)
   %cmp738.not.3 = icmp sgt i32 %cond.i1525.3, %search_range
   br i1 %cmp738.not.3, label %cleanup, label %if.then740.3
 
 if.then740.3:                                     ; preds = %land.lhs.true735.3
-  %210 = load ptr, ptr @mvbits, align 8
+  %187 = load ptr, ptr @mvbits, align 8
   %shl741.3 = shl i32 %best_x.21, 2
   %sub742.3 = sub nsw i32 %shl741.3, %add
   %idxprom743.3 = sext i32 %sub742.3 to i64
-  %arrayidx744.3 = getelementptr inbounds i32, ptr %210, i64 %idxprom743.3
-  %211 = load i32, ptr %arrayidx744.3, align 4
-  %shl745.3 = shl i32 %add730.31666, 2
+  %arrayidx744.3 = getelementptr inbounds i32, ptr %187, i64 %idxprom743.3
+  %188 = load i32, ptr %arrayidx744.3, align 4
+  %shl745.3 = shl i32 %add730.31669, 2
   %sub746.3 = sub nsw i32 %shl745.3, %add14
   %idxprom747.3 = sext i32 %sub746.3 to i64
-  %arrayidx748.3 = getelementptr inbounds i32, ptr %210, i64 %idxprom747.3
-  %212 = load i32, ptr %arrayidx748.3, align 4
-  %add749.3 = add nsw i32 %212, %211
+  %arrayidx748.3 = getelementptr inbounds i32, ptr %187, i64 %idxprom747.3
+  %189 = load i32, ptr %arrayidx748.3, align 4
+  %add749.3 = add nsw i32 %189, %188
   %mul750.3 = mul nsw i32 %add749.3, %lambda_factor
   %shr751.3 = ashr i32 %mul750.3, 16
-  %213 = load i32, ptr @dist_method, align 4
-  %idxprom752.3 = zext i32 %213 to i64
+  %190 = load i32, ptr @dist_method, align 4
+  %idxprom752.3 = zext i32 %190 to i64
   %arrayidx753.3 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom752.3
-  %214 = load ptr, ptr %arrayidx753.3, align 8
+  %191 = load ptr, ptr %arrayidx753.3, align 8
   %sub754.3 = sub nsw i32 %min_mcost.addr.23.2.ph, %shr751.3
   %shl756.3 = add i32 %shl741.3, 80
   %shl758.3 = add i32 %shl745.3, 80
-  %call759.3 = tail call i32 %214(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754.3, i32 noundef %shl756.3, i32 noundef %shl758.3) #10
+  %call759.3 = tail call i32 %191(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub754.3, i32 noundef %shl756.3, i32 noundef %shl758.3) #10
   %add760.3 = add nsw i32 %shr751.3, %call759.3
   %cmp761.3 = icmp slt i32 %add760.3, %min_mcost.addr.23.2.ph
   br i1 %cmp761.3, label %if.then763.3, label %cleanup
@@ -1871,10 +1672,7 @@ if.then740.3:                                     ; preds = %land.lhs.true735.3
 if.then763.3:                                     ; preds = %if.then740.3
   br label %cleanup
 
-for.cond774:                                      ; preds = %if.then801.5, %for.inc827.5
-  %min_mcost.addr.26.51679 = phi i32 [ %min_mcost.addr.26.4, %for.inc827.5 ], [ %add821.5, %if.then801.5 ]
-  %best_y.26.51678 = phi i32 [ %best_y.26.4, %for.inc827.5 ], [ %add791.2, %if.then801.5 ]
-  %best_x.26.51677 = phi i32 [ %best_x.26.4, %for.inc827.5 ], [ %add787.3, %if.then801.5 ]
+for.cond774:                                      ; preds = %for.end829
   %inc838 = add i16 %i.21585, 1
   %conv775 = zext i16 %inc838 to i32
   %cmp776 = icmp slt i32 %conv775, %search_range
@@ -1882,284 +1680,88 @@ for.cond774:                                      ; preds = %if.then801.5, %for.
 
 for.cond779.preheader:                            ; preds = %for.cond774.preheader, %for.cond774
   %i.21585 = phi i16 [ %inc838, %for.cond774 ], [ 0, %for.cond774.preheader ]
-  %min_mcost.addr.241584 = phi i32 [ %min_mcost.addr.26.51679, %for.cond774 ], [ %min_mcost.addr.21, %for.cond774.preheader ]
-  %best_y.241583 = phi i32 [ %best_y.26.51678, %for.cond774 ], [ %best_y.21, %for.cond774.preheader ]
-  %best_x.241582 = phi i32 [ %best_x.26.51677, %for.cond774 ], [ %best_x.21, %for.cond774.preheader ]
-  %add787 = add nsw i32 %best_x.241582, -2
+  %min_mcost.addr.241584 = phi i32 [ %min_mcost.addr.26, %for.cond774 ], [ %min_mcost.addr.21, %for.cond774.preheader ]
+  %best_y.241583 = phi i32 [ %best_y.26, %for.cond774 ], [ %best_y.21, %for.cond774.preheader ]
+  %best_x.241582 = phi i32 [ %best_x.26, %for.cond774 ], [ %best_x.21, %for.cond774.preheader ]
+  br label %for.body783
+
+for.body783:                                      ; preds = %for.cond779.preheader, %for.inc827
+  %indvars.iv1626 = phi i64 [ 0, %for.cond779.preheader ], [ %indvars.iv.next1627, %for.inc827 ]
+  %min_mcost.addr.251579 = phi i32 [ %min_mcost.addr.241584, %for.cond779.preheader ], [ %min_mcost.addr.26, %for.inc827 ]
+  %best_y.251578 = phi i32 [ %best_y.241583, %for.cond779.preheader ], [ %best_y.26, %for.inc827 ]
+  %best_x.251577 = phi i32 [ %best_x.241582, %for.cond779.preheader ], [ %best_x.26, %for.inc827 ]
+  %arrayidx785 = getelementptr inbounds [6 x i16], ptr @Hexagon_X, i64 0, i64 %indvars.iv1626
+  %192 = load i16, ptr %arrayidx785, align 2
+  %conv786 = sext i16 %192 to i32
+  %add787 = add nsw i32 %best_x.241582, %conv786
+  %arrayidx789 = getelementptr inbounds [6 x i16], ptr @Hexagon_Y, i64 0, i64 %indvars.iv1626
+  %193 = load i16, ptr %arrayidx789, align 2
+  %conv790 = sext i16 %193 to i32
+  %add791 = add nsw i32 %best_y.241583, %conv790
   %sub792 = sub nsw i32 %add787, %add16
   %cond.i1526 = tail call i32 @llvm.abs.i32(i32 %sub792, i1 true)
   %cmp794.not = icmp sgt i32 %cond.i1526, %search_range
   br i1 %cmp794.not, label %for.inc827, label %land.lhs.true796
 
-land.lhs.true796:                                 ; preds = %for.cond779.preheader
-  %sub797 = sub nsw i32 %best_y.241583, %add18
+land.lhs.true796:                                 ; preds = %for.body783
+  %sub797 = sub nsw i32 %add791, %add18
   %cond.i1527 = tail call i32 @llvm.abs.i32(i32 %sub797, i1 true)
   %cmp799.not = icmp sgt i32 %cond.i1527, %search_range
   br i1 %cmp799.not, label %for.inc827, label %if.then801
 
 if.then801:                                       ; preds = %land.lhs.true796
-  %215 = load ptr, ptr @mvbits, align 8
+  %194 = load ptr, ptr @mvbits, align 8
   %shl802 = shl i32 %add787, 2
   %sub803 = sub nsw i32 %shl802, %add
   %idxprom804 = sext i32 %sub803 to i64
-  %arrayidx805 = getelementptr inbounds i32, ptr %215, i64 %idxprom804
-  %216 = load i32, ptr %arrayidx805, align 4
-  %shl806 = shl i32 %best_y.241583, 2
+  %arrayidx805 = getelementptr inbounds i32, ptr %194, i64 %idxprom804
+  %195 = load i32, ptr %arrayidx805, align 4
+  %shl806 = shl i32 %add791, 2
   %sub807 = sub nsw i32 %shl806, %add14
   %idxprom808 = sext i32 %sub807 to i64
-  %arrayidx809 = getelementptr inbounds i32, ptr %215, i64 %idxprom808
-  %217 = load i32, ptr %arrayidx809, align 4
-  %add810 = add nsw i32 %217, %216
+  %arrayidx809 = getelementptr inbounds i32, ptr %194, i64 %idxprom808
+  %196 = load i32, ptr %arrayidx809, align 4
+  %add810 = add nsw i32 %196, %195
   %mul811 = mul nsw i32 %add810, %lambda_factor
   %shr812 = ashr i32 %mul811, 16
-  %218 = load i32, ptr @dist_method, align 4
-  %idxprom813 = zext i32 %218 to i64
+  %197 = load i32, ptr @dist_method, align 4
+  %idxprom813 = zext i32 %197 to i64
   %arrayidx814 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom813
-  %219 = load ptr, ptr %arrayidx814, align 8
-  %sub815 = sub nsw i32 %min_mcost.addr.241584, %shr812
+  %198 = load ptr, ptr %arrayidx814, align 8
+  %sub815 = sub nsw i32 %min_mcost.addr.251579, %shr812
   %shl817 = add i32 %shl802, 80
   %shl819 = add i32 %shl806, 80
-  %call820 = tail call i32 %219(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub815, i32 noundef %shl817, i32 noundef %shl819) #10
+  %call820 = tail call i32 %198(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub815, i32 noundef %shl817, i32 noundef %shl819) #10
   %add821 = add nsw i32 %shr812, %call820
-  %cmp822 = icmp slt i32 %add821, %min_mcost.addr.241584
-  %spec.select1713 = select i1 %cmp822, i32 %add787, i32 %best_x.241582
-  %spec.select1714 = tail call i32 @llvm.smin.i32(i32 %add821, i32 %min_mcost.addr.241584)
+  %cmp822 = icmp slt i32 %add821, %min_mcost.addr.251579
+  br i1 %cmp822, label %if.then824, label %for.inc827
+
+if.then824:                                       ; preds = %if.then801
   br label %for.inc827
 
-for.inc827:                                       ; preds = %if.then801, %for.cond779.preheader, %land.lhs.true796
-  %best_x.26 = phi i32 [ %best_x.241582, %land.lhs.true796 ], [ %best_x.241582, %for.cond779.preheader ], [ %spec.select1713, %if.then801 ]
-  %min_mcost.addr.26 = phi i32 [ %min_mcost.addr.241584, %land.lhs.true796 ], [ %min_mcost.addr.241584, %for.cond779.preheader ], [ %spec.select1714, %if.then801 ]
-  %add787.1 = add nsw i32 %best_x.241582, 2
-  %sub792.1 = sub nsw i32 %add787.1, %add16
-  %cond.i1526.1 = tail call i32 @llvm.abs.i32(i32 %sub792.1, i1 true)
-  %cmp794.not.1 = icmp sgt i32 %cond.i1526.1, %search_range
-  br i1 %cmp794.not.1, label %for.inc827.1, label %land.lhs.true796.1
+for.inc827:                                       ; preds = %for.body783, %land.lhs.true796, %if.then824, %if.then801
+  %best_x.26 = phi i32 [ %add787, %if.then824 ], [ %best_x.251577, %if.then801 ], [ %best_x.251577, %land.lhs.true796 ], [ %best_x.251577, %for.body783 ]
+  %best_y.26 = phi i32 [ %add791, %if.then824 ], [ %best_y.251578, %if.then801 ], [ %best_y.251578, %land.lhs.true796 ], [ %best_y.251578, %for.body783 ]
+  %min_mcost.addr.26 = phi i32 [ %add821, %if.then824 ], [ %min_mcost.addr.251579, %if.then801 ], [ %min_mcost.addr.251579, %land.lhs.true796 ], [ %min_mcost.addr.251579, %for.body783 ]
+  %indvars.iv.next1627 = add nuw nsw i64 %indvars.iv1626, 1
+  %exitcond1629.not = icmp eq i64 %indvars.iv.next1627, 6
+  br i1 %exitcond1629.not, label %for.end829, label %for.body783
 
-land.lhs.true796.1:                               ; preds = %for.inc827
-  %sub797.1 = sub nsw i32 %best_y.241583, %add18
-  %cond.i1527.1 = tail call i32 @llvm.abs.i32(i32 %sub797.1, i1 true)
-  %cmp799.not.1 = icmp sgt i32 %cond.i1527.1, %search_range
-  br i1 %cmp799.not.1, label %for.inc827.1, label %if.then801.1
-
-if.then801.1:                                     ; preds = %land.lhs.true796.1
-  %220 = load ptr, ptr @mvbits, align 8
-  %shl802.1 = shl i32 %add787.1, 2
-  %sub803.1 = sub nsw i32 %shl802.1, %add
-  %idxprom804.1 = sext i32 %sub803.1 to i64
-  %arrayidx805.1 = getelementptr inbounds i32, ptr %220, i64 %idxprom804.1
-  %221 = load i32, ptr %arrayidx805.1, align 4
-  %shl806.1 = shl i32 %best_y.241583, 2
-  %sub807.1 = sub nsw i32 %shl806.1, %add14
-  %idxprom808.1 = sext i32 %sub807.1 to i64
-  %arrayidx809.1 = getelementptr inbounds i32, ptr %220, i64 %idxprom808.1
-  %222 = load i32, ptr %arrayidx809.1, align 4
-  %add810.1 = add nsw i32 %222, %221
-  %mul811.1 = mul nsw i32 %add810.1, %lambda_factor
-  %shr812.1 = ashr i32 %mul811.1, 16
-  %223 = load i32, ptr @dist_method, align 4
-  %idxprom813.1 = zext i32 %223 to i64
-  %arrayidx814.1 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom813.1
-  %224 = load ptr, ptr %arrayidx814.1, align 8
-  %sub815.1 = sub nsw i32 %min_mcost.addr.26, %shr812.1
-  %shl817.1 = add i32 %shl802.1, 80
-  %shl819.1 = add i32 %shl806.1, 80
-  %call820.1 = tail call i32 %224(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub815.1, i32 noundef %shl817.1, i32 noundef %shl819.1) #10
-  %add821.1 = add nsw i32 %shr812.1, %call820.1
-  %cmp822.1 = icmp slt i32 %add821.1, %min_mcost.addr.26
-  %spec.select1715 = select i1 %cmp822.1, i32 %add787.1, i32 %best_x.26
-  %spec.select1716 = tail call i32 @llvm.smin.i32(i32 %add821.1, i32 %min_mcost.addr.26)
-  br label %for.inc827.1
-
-for.inc827.1:                                     ; preds = %if.then801.1, %land.lhs.true796.1, %for.inc827
-  %best_x.26.1 = phi i32 [ %best_x.26, %land.lhs.true796.1 ], [ %best_x.26, %for.inc827 ], [ %spec.select1715, %if.then801.1 ]
-  %min_mcost.addr.26.1 = phi i32 [ %min_mcost.addr.26, %land.lhs.true796.1 ], [ %min_mcost.addr.26, %for.inc827 ], [ %spec.select1716, %if.then801.1 ]
-  %add787.2 = add nsw i32 %best_x.241582, -1
-  %add791.2 = add nsw i32 %best_y.241583, -2
-  %sub792.2 = sub nsw i32 %add787.2, %add16
-  %cond.i1526.2 = tail call i32 @llvm.abs.i32(i32 %sub792.2, i1 true)
-  %cmp794.not.2 = icmp sgt i32 %cond.i1526.2, %search_range
-  br i1 %cmp794.not.2, label %for.inc827.2, label %land.lhs.true796.2
-
-land.lhs.true796.2:                               ; preds = %for.inc827.1
-  %sub797.2 = sub nsw i32 %add791.2, %add18
-  %cond.i1527.2 = tail call i32 @llvm.abs.i32(i32 %sub797.2, i1 true)
-  %cmp799.not.2 = icmp sgt i32 %cond.i1527.2, %search_range
-  br i1 %cmp799.not.2, label %for.inc827.2, label %if.then801.2
-
-if.then801.2:                                     ; preds = %land.lhs.true796.2
-  %225 = load ptr, ptr @mvbits, align 8
-  %shl802.2 = shl i32 %add787.2, 2
-  %sub803.2 = sub nsw i32 %shl802.2, %add
-  %idxprom804.2 = sext i32 %sub803.2 to i64
-  %arrayidx805.2 = getelementptr inbounds i32, ptr %225, i64 %idxprom804.2
-  %226 = load i32, ptr %arrayidx805.2, align 4
-  %shl806.2 = shl i32 %add791.2, 2
-  %sub807.2 = sub nsw i32 %shl806.2, %add14
-  %idxprom808.2 = sext i32 %sub807.2 to i64
-  %arrayidx809.2 = getelementptr inbounds i32, ptr %225, i64 %idxprom808.2
-  %227 = load i32, ptr %arrayidx809.2, align 4
-  %add810.2 = add nsw i32 %227, %226
-  %mul811.2 = mul nsw i32 %add810.2, %lambda_factor
-  %shr812.2 = ashr i32 %mul811.2, 16
-  %228 = load i32, ptr @dist_method, align 4
-  %idxprom813.2 = zext i32 %228 to i64
-  %arrayidx814.2 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom813.2
-  %229 = load ptr, ptr %arrayidx814.2, align 8
-  %sub815.2 = sub nsw i32 %min_mcost.addr.26.1, %shr812.2
-  %shl817.2 = add i32 %shl802.2, 80
-  %shl819.2 = add i32 %shl806.2, 80
-  %call820.2 = tail call i32 %229(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub815.2, i32 noundef %shl817.2, i32 noundef %shl819.2) #10
-  %add821.2 = add nsw i32 %shr812.2, %call820.2
-  %cmp822.2 = icmp slt i32 %add821.2, %min_mcost.addr.26.1
-  br i1 %cmp822.2, label %if.then824.2, label %for.inc827.2
-
-if.then824.2:                                     ; preds = %if.then801.2
-  br label %for.inc827.2
-
-for.inc827.2:                                     ; preds = %if.then824.2, %if.then801.2, %land.lhs.true796.2, %for.inc827.1
-  %best_x.26.2 = phi i32 [ %add787.2, %if.then824.2 ], [ %best_x.26.1, %if.then801.2 ], [ %best_x.26.1, %land.lhs.true796.2 ], [ %best_x.26.1, %for.inc827.1 ]
-  %best_y.26.2 = phi i32 [ %add791.2, %if.then824.2 ], [ %best_y.241583, %if.then801.2 ], [ %best_y.241583, %land.lhs.true796.2 ], [ %best_y.241583, %for.inc827.1 ]
-  %min_mcost.addr.26.2 = phi i32 [ %add821.2, %if.then824.2 ], [ %min_mcost.addr.26.1, %if.then801.2 ], [ %min_mcost.addr.26.1, %land.lhs.true796.2 ], [ %min_mcost.addr.26.1, %for.inc827.1 ]
-  %add787.3 = add nsw i32 %best_x.241582, 1
-  %add791.3 = add nsw i32 %best_y.241583, 2
-  %sub792.3 = sub nsw i32 %add787.3, %add16
-  %cond.i1526.3 = tail call i32 @llvm.abs.i32(i32 %sub792.3, i1 true)
-  %cmp794.not.3 = icmp sgt i32 %cond.i1526.3, %search_range
-  br i1 %cmp794.not.3, label %for.inc827.3, label %land.lhs.true796.3
-
-land.lhs.true796.3:                               ; preds = %for.inc827.2
-  %sub797.3 = sub nsw i32 %add791.3, %add18
-  %cond.i1527.3 = tail call i32 @llvm.abs.i32(i32 %sub797.3, i1 true)
-  %cmp799.not.3 = icmp sgt i32 %cond.i1527.3, %search_range
-  br i1 %cmp799.not.3, label %for.inc827.3, label %if.then801.3
-
-if.then801.3:                                     ; preds = %land.lhs.true796.3
-  %230 = load ptr, ptr @mvbits, align 8
-  %shl802.3 = shl i32 %add787.3, 2
-  %sub803.3 = sub nsw i32 %shl802.3, %add
-  %idxprom804.3 = sext i32 %sub803.3 to i64
-  %arrayidx805.3 = getelementptr inbounds i32, ptr %230, i64 %idxprom804.3
-  %231 = load i32, ptr %arrayidx805.3, align 4
-  %shl806.3 = shl i32 %add791.3, 2
-  %sub807.3 = sub nsw i32 %shl806.3, %add14
-  %idxprom808.3 = sext i32 %sub807.3 to i64
-  %arrayidx809.3 = getelementptr inbounds i32, ptr %230, i64 %idxprom808.3
-  %232 = load i32, ptr %arrayidx809.3, align 4
-  %add810.3 = add nsw i32 %232, %231
-  %mul811.3 = mul nsw i32 %add810.3, %lambda_factor
-  %shr812.3 = ashr i32 %mul811.3, 16
-  %233 = load i32, ptr @dist_method, align 4
-  %idxprom813.3 = zext i32 %233 to i64
-  %arrayidx814.3 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom813.3
-  %234 = load ptr, ptr %arrayidx814.3, align 8
-  %sub815.3 = sub nsw i32 %min_mcost.addr.26.2, %shr812.3
-  %shl817.3 = add i32 %shl802.3, 80
-  %shl819.3 = add i32 %shl806.3, 80
-  %call820.3 = tail call i32 %234(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub815.3, i32 noundef %shl817.3, i32 noundef %shl819.3) #10
-  %add821.3 = add nsw i32 %shr812.3, %call820.3
-  %cmp822.3 = icmp slt i32 %add821.3, %min_mcost.addr.26.2
-  br i1 %cmp822.3, label %if.then824.3, label %for.inc827.3
-
-if.then824.3:                                     ; preds = %if.then801.3
-  br label %for.inc827.3
-
-for.inc827.3:                                     ; preds = %if.then824.3, %if.then801.3, %land.lhs.true796.3, %for.inc827.2
-  %best_x.26.3 = phi i32 [ %add787.3, %if.then824.3 ], [ %best_x.26.2, %if.then801.3 ], [ %best_x.26.2, %land.lhs.true796.3 ], [ %best_x.26.2, %for.inc827.2 ]
-  %best_y.26.3 = phi i32 [ %add791.3, %if.then824.3 ], [ %best_y.26.2, %if.then801.3 ], [ %best_y.26.2, %land.lhs.true796.3 ], [ %best_y.26.2, %for.inc827.2 ]
-  %min_mcost.addr.26.3 = phi i32 [ %add821.3, %if.then824.3 ], [ %min_mcost.addr.26.2, %if.then801.3 ], [ %min_mcost.addr.26.2, %land.lhs.true796.3 ], [ %min_mcost.addr.26.2, %for.inc827.2 ]
-  br i1 %cmp794.not.2, label %for.inc827.4, label %land.lhs.true796.4
-
-land.lhs.true796.4:                               ; preds = %for.inc827.3
-  %sub797.4 = sub nsw i32 %add791.3, %add18
-  %cond.i1527.4 = tail call i32 @llvm.abs.i32(i32 %sub797.4, i1 true)
-  %cmp799.not.4 = icmp sgt i32 %cond.i1527.4, %search_range
-  br i1 %cmp799.not.4, label %for.inc827.4, label %if.then801.4
-
-if.then801.4:                                     ; preds = %land.lhs.true796.4
-  %235 = load ptr, ptr @mvbits, align 8
-  %shl802.4 = shl i32 %add787.2, 2
-  %sub803.4 = sub nsw i32 %shl802.4, %add
-  %idxprom804.4 = sext i32 %sub803.4 to i64
-  %arrayidx805.4 = getelementptr inbounds i32, ptr %235, i64 %idxprom804.4
-  %236 = load i32, ptr %arrayidx805.4, align 4
-  %shl806.4 = shl i32 %add791.3, 2
-  %sub807.4 = sub nsw i32 %shl806.4, %add14
-  %idxprom808.4 = sext i32 %sub807.4 to i64
-  %arrayidx809.4 = getelementptr inbounds i32, ptr %235, i64 %idxprom808.4
-  %237 = load i32, ptr %arrayidx809.4, align 4
-  %add810.4 = add nsw i32 %237, %236
-  %mul811.4 = mul nsw i32 %add810.4, %lambda_factor
-  %shr812.4 = ashr i32 %mul811.4, 16
-  %238 = load i32, ptr @dist_method, align 4
-  %idxprom813.4 = zext i32 %238 to i64
-  %arrayidx814.4 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom813.4
-  %239 = load ptr, ptr %arrayidx814.4, align 8
-  %sub815.4 = sub nsw i32 %min_mcost.addr.26.3, %shr812.4
-  %shl817.4 = add i32 %shl802.4, 80
-  %shl819.4 = add i32 %shl806.4, 80
-  %call820.4 = tail call i32 %239(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub815.4, i32 noundef %shl817.4, i32 noundef %shl819.4) #10
-  %add821.4 = add nsw i32 %shr812.4, %call820.4
-  %cmp822.4 = icmp slt i32 %add821.4, %min_mcost.addr.26.3
-  br i1 %cmp822.4, label %if.then824.4, label %for.inc827.4
-
-if.then824.4:                                     ; preds = %if.then801.4
-  br label %for.inc827.4
-
-for.inc827.4:                                     ; preds = %if.then824.4, %if.then801.4, %land.lhs.true796.4, %for.inc827.3
-  %best_x.26.4 = phi i32 [ %add787.2, %if.then824.4 ], [ %best_x.26.3, %if.then801.4 ], [ %best_x.26.3, %land.lhs.true796.4 ], [ %best_x.26.3, %for.inc827.3 ]
-  %best_y.26.4 = phi i32 [ %add791.3, %if.then824.4 ], [ %best_y.26.3, %if.then801.4 ], [ %best_y.26.3, %land.lhs.true796.4 ], [ %best_y.26.3, %for.inc827.3 ]
-  %min_mcost.addr.26.4 = phi i32 [ %add821.4, %if.then824.4 ], [ %min_mcost.addr.26.3, %if.then801.4 ], [ %min_mcost.addr.26.3, %land.lhs.true796.4 ], [ %min_mcost.addr.26.3, %for.inc827.3 ]
-  br i1 %cmp794.not.3, label %for.inc827.5, label %land.lhs.true796.5
-
-land.lhs.true796.5:                               ; preds = %for.inc827.4
-  %sub797.5 = sub nsw i32 %add791.2, %add18
-  %cond.i1527.5 = tail call i32 @llvm.abs.i32(i32 %sub797.5, i1 true)
-  %cmp799.not.5 = icmp sgt i32 %cond.i1527.5, %search_range
-  br i1 %cmp799.not.5, label %for.inc827.5, label %if.then801.5
-
-if.then801.5:                                     ; preds = %land.lhs.true796.5
-  %240 = load ptr, ptr @mvbits, align 8
-  %shl802.5 = shl i32 %add787.3, 2
-  %sub803.5 = sub nsw i32 %shl802.5, %add
-  %idxprom804.5 = sext i32 %sub803.5 to i64
-  %arrayidx805.5 = getelementptr inbounds i32, ptr %240, i64 %idxprom804.5
-  %241 = load i32, ptr %arrayidx805.5, align 4
-  %shl806.5 = shl i32 %add791.2, 2
-  %sub807.5 = sub nsw i32 %shl806.5, %add14
-  %idxprom808.5 = sext i32 %sub807.5 to i64
-  %arrayidx809.5 = getelementptr inbounds i32, ptr %240, i64 %idxprom808.5
-  %242 = load i32, ptr %arrayidx809.5, align 4
-  %add810.5 = add nsw i32 %242, %241
-  %mul811.5 = mul nsw i32 %add810.5, %lambda_factor
-  %shr812.5 = ashr i32 %mul811.5, 16
-  %243 = load i32, ptr @dist_method, align 4
-  %idxprom813.5 = zext i32 %243 to i64
-  %arrayidx814.5 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom813.5
-  %244 = load ptr, ptr %arrayidx814.5, align 8
-  %sub815.5 = sub nsw i32 %min_mcost.addr.26.4, %shr812.5
-  %shl817.5 = add i32 %shl802.5, 80
-  %shl819.5 = add i32 %shl806.5, 80
-  %call820.5 = tail call i32 %244(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub815.5, i32 noundef %shl817.5, i32 noundef %shl819.5) #10
-  %add821.5 = add nsw i32 %shr812.5, %call820.5
-  %cmp822.5 = icmp slt i32 %add821.5, %min_mcost.addr.26.4
-  br i1 %cmp822.5, label %for.cond774, label %for.inc827.5
-
-for.inc827.5:                                     ; preds = %if.then801.5, %land.lhs.true796.5, %for.inc827.4
-  %cmp830 = icmp eq i32 %best_x.26.4, %best_x.241582
-  %cmp833 = icmp eq i32 %best_y.26.4, %best_y.241583
+for.end829:                                       ; preds = %for.inc827
+  %cmp830 = icmp eq i32 %best_x.26, %best_x.241582
+  %cmp833 = icmp eq i32 %best_y.26, %best_y.241583
   %or.cond1499 = select i1 %cmp830, i1 %cmp833, i1 false
   br i1 %or.cond1499, label %for.end839, label %for.cond774
 
-for.end839:                                       ; preds = %for.cond774, %for.inc827.5
-  %best_x.27 = phi i32 [ %best_x.241582, %for.inc827.5 ], [ %best_x.26.51677, %for.cond774 ]
-  %best_y.27 = phi i32 [ %best_y.241583, %for.inc827.5 ], [ %best_y.26.51678, %for.cond774 ]
-  %min_mcost.addr.27 = phi i32 [ %min_mcost.addr.26.4, %for.inc827.5 ], [ %min_mcost.addr.26.51679, %for.cond774 ]
+for.end839:                                       ; preds = %for.cond774, %for.end829
+  %best_x.27 = phi i32 [ %best_x.241582, %for.end829 ], [ %best_x.26, %for.cond774 ]
+  %best_y.27 = phi i32 [ %best_y.241583, %for.end829 ], [ %best_y.26, %for.cond774 ]
   br i1 %cmp7761581, label %for.cond845.preheader, label %cleanup
 
 for.cond840:                                      ; preds = %if.then867.3, %for.inc893.3
-  %min_mcost.addr.30.31700 = phi i32 [ %min_mcost.addr.30.3, %for.inc893.3 ], [ %add887.3, %if.then867.3 ]
-  %best_y.30.31699 = phi i32 [ %best_y.30.3, %for.inc893.3 ], [ %add857.31687, %if.then867.3 ]
-  %best_x.30.31698 = phi i32 [ %best_x.30.3, %for.inc893.3 ], [ %best_x.281597, %if.then867.3 ]
+  %min_mcost.addr.30.31693 = phi i32 [ %min_mcost.addr.30.3, %for.inc893.3 ], [ %add887.3, %if.then867.3 ]
+  %best_y.30.31692 = phi i32 [ %best_y.30.3, %for.inc893.3 ], [ %add857.31680, %if.then867.3 ]
+  %best_x.30.31691 = phi i32 [ %best_x.30.3, %for.inc893.3 ], [ %best_x.281597, %if.then867.3 ]
   %inc904 = add i16 %i.31600, 1
   %conv841 = zext i16 %inc904 to i32
   %cmp842 = icmp slt i32 %conv841, %search_range
@@ -2167,9 +1769,9 @@ for.cond840:                                      ; preds = %if.then867.3, %for.
 
 for.cond845.preheader:                            ; preds = %for.end839, %for.cond840
   %i.31600 = phi i16 [ %inc904, %for.cond840 ], [ 0, %for.end839 ]
-  %min_mcost.addr.281599 = phi i32 [ %min_mcost.addr.30.31700, %for.cond840 ], [ %min_mcost.addr.27, %for.end839 ]
-  %best_y.281598 = phi i32 [ %best_y.30.31699, %for.cond840 ], [ %best_y.27, %for.end839 ]
-  %best_x.281597 = phi i32 [ %best_x.30.31698, %for.cond840 ], [ %best_x.27, %for.end839 ]
+  %min_mcost.addr.281599 = phi i32 [ %min_mcost.addr.30.31693, %for.cond840 ], [ %min_mcost.addr.26, %for.end839 ]
+  %best_y.281598 = phi i32 [ %best_y.30.31692, %for.cond840 ], [ %best_y.27, %for.end839 ]
+  %best_x.281597 = phi i32 [ %best_x.30.31691, %for.cond840 ], [ %best_x.27, %for.end839 ]
   %add853 = add nsw i32 %best_x.281597, -1
   %sub858 = sub nsw i32 %add853, %add16
   %cond.i1528 = tail call i32 @llvm.abs.i32(i32 %sub858, i1 true)
@@ -2183,37 +1785,37 @@ land.lhs.true862:                                 ; preds = %for.cond845.prehead
   br i1 %cmp865.not, label %for.inc893, label %if.then867
 
 if.then867:                                       ; preds = %land.lhs.true862
-  %245 = load ptr, ptr @mvbits, align 8
+  %199 = load ptr, ptr @mvbits, align 8
   %shl868 = shl i32 %add853, 2
   %sub869 = sub nsw i32 %shl868, %add
   %idxprom870 = sext i32 %sub869 to i64
-  %arrayidx871 = getelementptr inbounds i32, ptr %245, i64 %idxprom870
-  %246 = load i32, ptr %arrayidx871, align 4
+  %arrayidx871 = getelementptr inbounds i32, ptr %199, i64 %idxprom870
+  %200 = load i32, ptr %arrayidx871, align 4
   %shl872 = shl i32 %best_y.281598, 2
   %sub873 = sub nsw i32 %shl872, %add14
   %idxprom874 = sext i32 %sub873 to i64
-  %arrayidx875 = getelementptr inbounds i32, ptr %245, i64 %idxprom874
-  %247 = load i32, ptr %arrayidx875, align 4
-  %add876 = add nsw i32 %247, %246
+  %arrayidx875 = getelementptr inbounds i32, ptr %199, i64 %idxprom874
+  %201 = load i32, ptr %arrayidx875, align 4
+  %add876 = add nsw i32 %201, %200
   %mul877 = mul nsw i32 %add876, %lambda_factor
   %shr878 = ashr i32 %mul877, 16
-  %248 = load i32, ptr @dist_method, align 4
-  %idxprom879 = zext i32 %248 to i64
+  %202 = load i32, ptr @dist_method, align 4
+  %idxprom879 = zext i32 %202 to i64
   %arrayidx880 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom879
-  %249 = load ptr, ptr %arrayidx880, align 8
+  %203 = load ptr, ptr %arrayidx880, align 8
   %sub881 = sub nsw i32 %min_mcost.addr.281599, %shr878
   %shl883 = add i32 %shl868, 80
   %shl885 = add i32 %shl872, 80
-  %call886 = tail call i32 %249(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881, i32 noundef %shl883, i32 noundef %shl885) #10
+  %call886 = tail call i32 %203(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881, i32 noundef %shl883, i32 noundef %shl885) #10
   %add887 = add nsw i32 %shr878, %call886
   %cmp888 = icmp slt i32 %add887, %min_mcost.addr.281599
-  %spec.select1717 = select i1 %cmp888, i32 %add853, i32 %best_x.281597
-  %spec.select1718 = tail call i32 @llvm.smin.i32(i32 %add887, i32 %min_mcost.addr.281599)
+  %spec.select1702 = select i1 %cmp888, i32 %add853, i32 %best_x.281597
+  %spec.select1703 = tail call i32 @llvm.smin.i32(i32 %add887, i32 %min_mcost.addr.281599)
   br label %for.inc893
 
 for.inc893:                                       ; preds = %if.then867, %for.cond845.preheader, %land.lhs.true862
-  %best_x.30 = phi i32 [ %best_x.281597, %land.lhs.true862 ], [ %best_x.281597, %for.cond845.preheader ], [ %spec.select1717, %if.then867 ]
-  %min_mcost.addr.30 = phi i32 [ %min_mcost.addr.281599, %land.lhs.true862 ], [ %min_mcost.addr.281599, %for.cond845.preheader ], [ %spec.select1718, %if.then867 ]
+  %best_x.30 = phi i32 [ %best_x.281597, %land.lhs.true862 ], [ %best_x.281597, %for.cond845.preheader ], [ %spec.select1702, %if.then867 ]
+  %min_mcost.addr.30 = phi i32 [ %min_mcost.addr.281599, %land.lhs.true862 ], [ %min_mcost.addr.281599, %for.cond845.preheader ], [ %spec.select1703, %if.then867 ]
   %add853.1 = add nsw i32 %best_x.281597, 1
   %sub858.1 = sub nsw i32 %add853.1, %add16
   %cond.i1528.1 = tail call i32 @llvm.abs.i32(i32 %sub858.1, i1 true)
@@ -2227,37 +1829,37 @@ land.lhs.true862.1:                               ; preds = %for.inc893
   br i1 %cmp865.not.1, label %for.inc893.1, label %if.then867.1
 
 if.then867.1:                                     ; preds = %land.lhs.true862.1
-  %250 = load ptr, ptr @mvbits, align 8
+  %204 = load ptr, ptr @mvbits, align 8
   %shl868.1 = shl i32 %add853.1, 2
   %sub869.1 = sub nsw i32 %shl868.1, %add
   %idxprom870.1 = sext i32 %sub869.1 to i64
-  %arrayidx871.1 = getelementptr inbounds i32, ptr %250, i64 %idxprom870.1
-  %251 = load i32, ptr %arrayidx871.1, align 4
+  %arrayidx871.1 = getelementptr inbounds i32, ptr %204, i64 %idxprom870.1
+  %205 = load i32, ptr %arrayidx871.1, align 4
   %shl872.1 = shl i32 %best_y.281598, 2
   %sub873.1 = sub nsw i32 %shl872.1, %add14
   %idxprom874.1 = sext i32 %sub873.1 to i64
-  %arrayidx875.1 = getelementptr inbounds i32, ptr %250, i64 %idxprom874.1
-  %252 = load i32, ptr %arrayidx875.1, align 4
-  %add876.1 = add nsw i32 %252, %251
+  %arrayidx875.1 = getelementptr inbounds i32, ptr %204, i64 %idxprom874.1
+  %206 = load i32, ptr %arrayidx875.1, align 4
+  %add876.1 = add nsw i32 %206, %205
   %mul877.1 = mul nsw i32 %add876.1, %lambda_factor
   %shr878.1 = ashr i32 %mul877.1, 16
-  %253 = load i32, ptr @dist_method, align 4
-  %idxprom879.1 = zext i32 %253 to i64
+  %207 = load i32, ptr @dist_method, align 4
+  %idxprom879.1 = zext i32 %207 to i64
   %arrayidx880.1 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom879.1
-  %254 = load ptr, ptr %arrayidx880.1, align 8
+  %208 = load ptr, ptr %arrayidx880.1, align 8
   %sub881.1 = sub nsw i32 %min_mcost.addr.30, %shr878.1
   %shl883.1 = add i32 %shl868.1, 80
   %shl885.1 = add i32 %shl872.1, 80
-  %call886.1 = tail call i32 %254(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881.1, i32 noundef %shl883.1, i32 noundef %shl885.1) #10
+  %call886.1 = tail call i32 %208(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881.1, i32 noundef %shl883.1, i32 noundef %shl885.1) #10
   %add887.1 = add nsw i32 %shr878.1, %call886.1
   %cmp888.1 = icmp slt i32 %add887.1, %min_mcost.addr.30
-  %spec.select1719 = select i1 %cmp888.1, i32 %add853.1, i32 %best_x.30
-  %spec.select1720 = tail call i32 @llvm.smin.i32(i32 %add887.1, i32 %min_mcost.addr.30)
+  %spec.select1704 = select i1 %cmp888.1, i32 %add853.1, i32 %best_x.30
+  %spec.select1705 = tail call i32 @llvm.smin.i32(i32 %add887.1, i32 %min_mcost.addr.30)
   br label %for.inc893.1
 
 for.inc893.1:                                     ; preds = %if.then867.1, %land.lhs.true862.1, %for.inc893
-  %best_x.30.1 = phi i32 [ %best_x.30, %land.lhs.true862.1 ], [ %best_x.30, %for.inc893 ], [ %spec.select1719, %if.then867.1 ]
-  %min_mcost.addr.30.1 = phi i32 [ %min_mcost.addr.30, %land.lhs.true862.1 ], [ %min_mcost.addr.30, %for.inc893 ], [ %spec.select1720, %if.then867.1 ]
+  %best_x.30.1 = phi i32 [ %best_x.30, %land.lhs.true862.1 ], [ %best_x.30, %for.inc893 ], [ %spec.select1704, %if.then867.1 ]
+  %min_mcost.addr.30.1 = phi i32 [ %min_mcost.addr.30, %land.lhs.true862.1 ], [ %min_mcost.addr.30, %for.inc893 ], [ %spec.select1705, %if.then867.1 ]
   %add857.2 = add nsw i32 %best_y.281598, -1
   %sub858.2 = sub nsw i32 %best_x.281597, %add16
   %cond.i1528.2 = tail call i32 @llvm.abs.i32(i32 %sub858.2, i1 true)
@@ -2271,28 +1873,28 @@ land.lhs.true862.2:                               ; preds = %for.inc893.1
   br i1 %cmp865.not.2, label %land.lhs.true862.3, label %if.then867.2
 
 if.then867.2:                                     ; preds = %land.lhs.true862.2
-  %255 = load ptr, ptr @mvbits, align 8
+  %209 = load ptr, ptr @mvbits, align 8
   %shl868.2 = shl i32 %best_x.281597, 2
   %sub869.2 = sub nsw i32 %shl868.2, %add
   %idxprom870.2 = sext i32 %sub869.2 to i64
-  %arrayidx871.2 = getelementptr inbounds i32, ptr %255, i64 %idxprom870.2
-  %256 = load i32, ptr %arrayidx871.2, align 4
+  %arrayidx871.2 = getelementptr inbounds i32, ptr %209, i64 %idxprom870.2
+  %210 = load i32, ptr %arrayidx871.2, align 4
   %shl872.2 = shl i32 %add857.2, 2
   %sub873.2 = sub nsw i32 %shl872.2, %add14
   %idxprom874.2 = sext i32 %sub873.2 to i64
-  %arrayidx875.2 = getelementptr inbounds i32, ptr %255, i64 %idxprom874.2
-  %257 = load i32, ptr %arrayidx875.2, align 4
-  %add876.2 = add nsw i32 %257, %256
+  %arrayidx875.2 = getelementptr inbounds i32, ptr %209, i64 %idxprom874.2
+  %211 = load i32, ptr %arrayidx875.2, align 4
+  %add876.2 = add nsw i32 %211, %210
   %mul877.2 = mul nsw i32 %add876.2, %lambda_factor
   %shr878.2 = ashr i32 %mul877.2, 16
-  %258 = load i32, ptr @dist_method, align 4
-  %idxprom879.2 = zext i32 %258 to i64
+  %212 = load i32, ptr @dist_method, align 4
+  %idxprom879.2 = zext i32 %212 to i64
   %arrayidx880.2 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom879.2
-  %259 = load ptr, ptr %arrayidx880.2, align 8
+  %213 = load ptr, ptr %arrayidx880.2, align 8
   %sub881.2 = sub nsw i32 %min_mcost.addr.30.1, %shr878.2
   %shl883.2 = add i32 %shl868.2, 80
   %shl885.2 = add i32 %shl872.2, 80
-  %call886.2 = tail call i32 %259(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881.2, i32 noundef %shl883.2, i32 noundef %shl885.2) #10
+  %call886.2 = tail call i32 %213(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881.2, i32 noundef %shl883.2, i32 noundef %shl885.2) #10
   %add887.2 = add nsw i32 %shr878.2, %call886.2
   %cmp888.2 = icmp slt i32 %add887.2, %min_mcost.addr.30.1
   br i1 %cmp888.2, label %if.then890.2, label %land.lhs.true862.3
@@ -2304,35 +1906,35 @@ land.lhs.true862.3:                               ; preds = %if.then890.2, %if.t
   %best_x.30.2.ph = phi i32 [ %best_x.30.1, %land.lhs.true862.2 ], [ %best_x.30.1, %if.then867.2 ], [ %best_x.281597, %if.then890.2 ]
   %best_y.30.2.ph = phi i32 [ %best_y.281598, %land.lhs.true862.2 ], [ %best_y.281598, %if.then867.2 ], [ %add857.2, %if.then890.2 ]
   %min_mcost.addr.30.2.ph = phi i32 [ %min_mcost.addr.30.1, %land.lhs.true862.2 ], [ %min_mcost.addr.30.1, %if.then867.2 ], [ %add887.2, %if.then890.2 ]
-  %add857.31687 = add nsw i32 %best_y.281598, 1
-  %sub863.3 = sub nsw i32 %add857.31687, %add18
+  %add857.31680 = add nsw i32 %best_y.281598, 1
+  %sub863.3 = sub nsw i32 %add857.31680, %add18
   %cond.i1529.3 = tail call i32 @llvm.abs.i32(i32 %sub863.3, i1 true)
   %cmp865.not.3 = icmp sgt i32 %cond.i1529.3, %search_range
   br i1 %cmp865.not.3, label %for.inc893.3, label %if.then867.3
 
 if.then867.3:                                     ; preds = %land.lhs.true862.3
-  %260 = load ptr, ptr @mvbits, align 8
+  %214 = load ptr, ptr @mvbits, align 8
   %shl868.3 = shl i32 %best_x.281597, 2
   %sub869.3 = sub nsw i32 %shl868.3, %add
   %idxprom870.3 = sext i32 %sub869.3 to i64
-  %arrayidx871.3 = getelementptr inbounds i32, ptr %260, i64 %idxprom870.3
-  %261 = load i32, ptr %arrayidx871.3, align 4
-  %shl872.3 = shl i32 %add857.31687, 2
+  %arrayidx871.3 = getelementptr inbounds i32, ptr %214, i64 %idxprom870.3
+  %215 = load i32, ptr %arrayidx871.3, align 4
+  %shl872.3 = shl i32 %add857.31680, 2
   %sub873.3 = sub nsw i32 %shl872.3, %add14
   %idxprom874.3 = sext i32 %sub873.3 to i64
-  %arrayidx875.3 = getelementptr inbounds i32, ptr %260, i64 %idxprom874.3
-  %262 = load i32, ptr %arrayidx875.3, align 4
-  %add876.3 = add nsw i32 %262, %261
+  %arrayidx875.3 = getelementptr inbounds i32, ptr %214, i64 %idxprom874.3
+  %216 = load i32, ptr %arrayidx875.3, align 4
+  %add876.3 = add nsw i32 %216, %215
   %mul877.3 = mul nsw i32 %add876.3, %lambda_factor
   %shr878.3 = ashr i32 %mul877.3, 16
-  %263 = load i32, ptr @dist_method, align 4
-  %idxprom879.3 = zext i32 %263 to i64
+  %217 = load i32, ptr @dist_method, align 4
+  %idxprom879.3 = zext i32 %217 to i64
   %arrayidx880.3 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom879.3
-  %264 = load ptr, ptr %arrayidx880.3, align 8
+  %218 = load ptr, ptr %arrayidx880.3, align 8
   %sub881.3 = sub nsw i32 %min_mcost.addr.30.2.ph, %shr878.3
   %shl883.3 = add i32 %shl868.3, 80
   %shl885.3 = add i32 %shl872.3, 80
-  %call886.3 = tail call i32 %264(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881.3, i32 noundef %shl883.3, i32 noundef %shl885.3) #10
+  %call886.3 = tail call i32 %218(ptr noundef %orig_pic, i32 noundef %7, i32 noundef %8, i32 noundef %sub881.3, i32 noundef %shl883.3, i32 noundef %shl885.3) #10
   %add887.3 = add nsw i32 %shr878.3, %call886.3
   %cmp888.3 = icmp slt i32 %add887.3, %min_mcost.addr.30.2.ph
   br i1 %cmp888.3, label %for.cond840, label %for.inc893.3
@@ -2347,9 +1949,9 @@ for.inc893.3:                                     ; preds = %for.inc893.1, %if.t
   br i1 %or.cond1500, label %cleanup, label %for.cond840
 
 cleanup:                                          ; preds = %for.inc893.3, %for.cond840, %for.end839, %for.cond774.preheader, %land.lhs.true735.3, %if.then740.3, %if.then763.3, %for.inc766.1, %land.lhs.true195.3, %if.then200.3, %if.then223.3, %for.inc.1
-  %best_x.31.sink = phi i32 [ %best_x.0, %if.then223.3 ], [ %best_x.3.2.ph, %if.then200.3 ], [ %best_x.3.2.ph, %land.lhs.true195.3 ], [ %best_x.3.1, %for.inc.1 ], [ %best_x.21, %if.then763.3 ], [ %best_x.23.2.ph, %if.then740.3 ], [ %best_x.23.2.ph, %land.lhs.true735.3 ], [ %best_x.23.1, %for.inc766.1 ], [ %best_x.27, %for.end839 ], [ %best_x.21, %for.cond774.preheader ], [ %best_x.30.31698, %for.cond840 ], [ %best_x.281597, %for.inc893.3 ]
-  %best_y.31.sink = phi i32 [ %add190.31642, %if.then223.3 ], [ %best_y.3.2.ph, %if.then200.3 ], [ %best_y.3.2.ph, %land.lhs.true195.3 ], [ %best_y.3.1, %for.inc.1 ], [ %add730.31666, %if.then763.3 ], [ %best_y.23.2.ph, %if.then740.3 ], [ %best_y.23.2.ph, %land.lhs.true735.3 ], [ %best_y.21, %for.inc766.1 ], [ %best_y.27, %for.end839 ], [ %best_y.21, %for.cond774.preheader ], [ %best_y.30.31699, %for.cond840 ], [ %best_y.281598, %for.inc893.3 ]
-  %retval.0 = phi i32 [ %add220.3, %if.then223.3 ], [ %min_mcost.addr.3.2.ph, %if.then200.3 ], [ %min_mcost.addr.3.2.ph, %land.lhs.true195.3 ], [ %min_mcost.addr.3.1, %for.inc.1 ], [ %add760.3, %if.then763.3 ], [ %min_mcost.addr.23.2.ph, %if.then740.3 ], [ %min_mcost.addr.23.2.ph, %land.lhs.true735.3 ], [ %min_mcost.addr.23.1, %for.inc766.1 ], [ %min_mcost.addr.27, %for.end839 ], [ %min_mcost.addr.21, %for.cond774.preheader ], [ %min_mcost.addr.30.31700, %for.cond840 ], [ %min_mcost.addr.30.3, %for.inc893.3 ]
+  %best_x.31.sink = phi i32 [ %best_x.0, %if.then223.3 ], [ %best_x.3.2.ph, %if.then200.3 ], [ %best_x.3.2.ph, %land.lhs.true195.3 ], [ %best_x.3.1, %for.inc.1 ], [ %best_x.21, %if.then763.3 ], [ %best_x.23.2.ph, %if.then740.3 ], [ %best_x.23.2.ph, %land.lhs.true735.3 ], [ %best_x.23.1, %for.inc766.1 ], [ %best_x.27, %for.end839 ], [ %best_x.21, %for.cond774.preheader ], [ %best_x.30.31691, %for.cond840 ], [ %best_x.281597, %for.inc893.3 ]
+  %best_y.31.sink = phi i32 [ %add190.31645, %if.then223.3 ], [ %best_y.3.2.ph, %if.then200.3 ], [ %best_y.3.2.ph, %land.lhs.true195.3 ], [ %best_y.3.1, %for.inc.1 ], [ %add730.31669, %if.then763.3 ], [ %best_y.23.2.ph, %if.then740.3 ], [ %best_y.23.2.ph, %land.lhs.true735.3 ], [ %best_y.21, %for.inc766.1 ], [ %best_y.27, %for.end839 ], [ %best_y.21, %for.cond774.preheader ], [ %best_y.30.31692, %for.cond840 ], [ %best_y.281598, %for.inc893.3 ]
+  %retval.0 = phi i32 [ %add220.3, %if.then223.3 ], [ %min_mcost.addr.3.2.ph, %if.then200.3 ], [ %min_mcost.addr.3.2.ph, %land.lhs.true195.3 ], [ %min_mcost.addr.3.1, %for.inc.1 ], [ %add760.3, %if.then763.3 ], [ %min_mcost.addr.23.2.ph, %if.then740.3 ], [ %min_mcost.addr.23.2.ph, %land.lhs.true735.3 ], [ %min_mcost.addr.23.1, %for.inc766.1 ], [ %min_mcost.addr.26, %for.end839 ], [ %min_mcost.addr.21, %for.cond774.preheader ], [ %min_mcost.addr.30.31693, %for.cond840 ], [ %min_mcost.addr.30.3, %for.inc893.3 ]
   %sub906 = sub nsw i32 %best_x.31.sink, %pic_pix_x
   %conv907 = trunc i32 %sub906 to i16
   store i16 %conv907, ptr %mv_x, align 2
@@ -3021,11 +2623,11 @@ land.lhs.true97:                                  ; preds = %if.end92
   %conv100 = sext i16 %conv23 to i32
   %sub101 = add nsw i32 %conv100, -1
   %cmp102 = icmp slt i32 %add94, %sub101
-  %.pre.pre571 = load i16, ptr %mv_y, align 2
+  %.pre.pre577 = load i16, ptr %mv_y, align 2
   br i1 %cmp102, label %land.lhs.true104, label %if.else
 
 land.lhs.true104:                                 ; preds = %land.lhs.true97
-  %conv105 = sext i16 %.pre.pre571 to i32
+  %conv105 = sext i16 %.pre.pre577 to i32
   %add106 = add nsw i32 %shl19, %conv105
   %cmp107 = icmp sgt i32 %add106, 1
   br i1 %cmp107, label %land.lhs.true109, label %if.else
@@ -3037,12 +2639,12 @@ land.lhs.true109:                                 ; preds = %land.lhs.true104
   br i1 %cmp114, label %if.end117, label %if.else
 
 if.else:                                          ; preds = %if.end92.if.else_crit_edge, %land.lhs.true109, %land.lhs.true104, %land.lhs.true97
-  %.pre = phi i16 [ %.pre.pre, %if.end92.if.else_crit_edge ], [ %.pre.pre571, %land.lhs.true109 ], [ %.pre.pre571, %land.lhs.true104 ], [ %.pre.pre571, %land.lhs.true97 ]
-  %.pre573 = sext i16 %.pre to i32
+  %.pre = phi i16 [ %.pre.pre, %if.end92.if.else_crit_edge ], [ %.pre.pre577, %land.lhs.true109 ], [ %.pre.pre577, %land.lhs.true104 ], [ %.pre.pre577, %land.lhs.true97 ]
+  %.pre579 = sext i16 %.pre to i32
   br label %if.end117
 
 if.end117:                                        ; preds = %land.lhs.true109, %if.else
-  %conv123.pre-phi = phi i32 [ %conv105, %land.lhs.true109 ], [ %.pre573, %if.else ]
+  %conv123.pre-phi = phi i32 [ %conv105, %land.lhs.true109 ], [ %.pre579, %if.else ]
   %storemerge = phi i32 [ 0, %land.lhs.true109 ], [ 1, %if.else ]
   store i32 %storemerge, ptr @ref_access_method, align 4
   %conv118 = sext i16 %pred_mv_x to i32
@@ -3193,379 +2795,335 @@ if.end260:                                        ; preds = %if.then215, %if.the
   %currmv_y.1 = phi i32 [ %add219, %if.then258 ], [ %currmv_y.0, %if.then215 ], [ %currmv_y.0, %if.end211 ]
   %min_mcost.addr.1 = phi i32 [ %add243, %if.then258 ], [ %min_mcost.addr.0, %if.then215 ], [ %min_mcost.addr.0, %if.end211 ]
   %arrayidx348 = getelementptr inbounds [8 x i16], ptr @block_type_shift_factor, i64 0, i64 %idxprom9
-  br label %for.cond265.preheader
+  br label %for.body269
 
-for.cond265.preheader:                            ; preds = %for.inc.3, %if.end260
-  %min_mcost.addr.2566 = phi i32 [ %min_mcost.addr.1, %if.end260 ], [ %min_mcost.addr.5.3, %for.inc.3 ]
-  %currmv_y.2565 = phi i32 [ %currmv_y.1, %if.end260 ], [ %currmv_y.5.3, %for.inc.3 ]
-  %currmv_x.2564 = phi i32 [ %currmv_x.1, %if.end260 ], [ %currmv_x.5.3, %for.inc.3 ]
-  %i.0563 = phi i16 [ 0, %if.end260 ], [ %inc363, %for.inc.3 ]
-  %add273 = add nsw i32 %currmv_x.2564, -1
-  %81 = load i16, ptr %mv_x, align 2
-  %conv278 = sext i16 %81 to i32
-  %sub279 = sub nsw i32 %add273, %conv278
-  %cond.i = tail call i32 @llvm.abs.i32(i32 %sub279, i1 true)
-  %cmp282 = icmp ult i32 %cond.i, 4
-  br i1 %cmp282, label %land.lhs.true284, label %for.inc
-
-land.lhs.true284:                                 ; preds = %for.cond265.preheader
-  %82 = load i16, ptr %mv_y, align 2
-  %conv285 = sext i16 %82 to i32
-  %sub286 = sub nsw i32 %currmv_y.2565, %conv285
-  %cond.i552 = tail call i32 @llvm.abs.i32(i32 %sub286, i1 true)
-  %cmp289 = icmp ult i32 %cond.i552, 4
-  br i1 %cmp289, label %if.then291, label %for.inc
-
-if.then291:                                       ; preds = %land.lhs.true284
-  %83 = load ptr, ptr @smpUMHEX_SearchState, align 8
-  %add295 = add nsw i32 %sub286, 3
-  %idxprom296 = sext i32 %add295 to i64
-  %arrayidx297 = getelementptr inbounds ptr, ptr %83, i64 %idxprom296
-  %84 = load ptr, ptr %arrayidx297, align 8
-  %add301 = add nsw i32 %sub279, 3
-  %idxprom302 = sext i32 %add301 to i64
-  %arrayidx303 = getelementptr inbounds i8, ptr %84, i64 %idxprom302
-  %85 = load i8, ptr %arrayidx303, align 1
-  %tobool304.not = icmp eq i8 %85, 0
-  br i1 %tobool304.not, label %if.then305, label %for.inc
-
-if.then305:                                       ; preds = %if.then291
-  %86 = load ptr, ptr @mvbits, align 8
-  %sub309 = sub nsw i32 %add273, %conv118
-  %idxprom310 = sext i32 %sub309 to i64
-  %arrayidx311 = getelementptr inbounds i32, ptr %86, i64 %idxprom310
-  %87 = load i32, ptr %arrayidx311, align 4
-  %sub315 = sub nsw i32 %currmv_y.2565, %conv122
-  %idxprom316 = sext i32 %sub315 to i64
-  %arrayidx317 = getelementptr inbounds i32, ptr %86, i64 %idxprom316
-  %88 = load i32, ptr %arrayidx317, align 4
-  %add318 = add nsw i32 %88, %87
-  %mul319 = mul nsw i32 %add318, %lambda_factor
-  %shr320 = ashr i32 %mul319, 16
-  %89 = load i32, ptr @dist_method, align 4
-  %idxprom321 = zext i32 %89 to i64
-  %arrayidx322 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom321
-  %90 = load ptr, ptr %arrayidx322, align 8
-  %sub325 = sub nsw i32 %min_mcost.addr.2566, %shr320
-  %add326 = add nsw i32 %add273, %shl
-  %add327 = add nsw i32 %currmv_y.2565, %shl19
-  %call328 = tail call i32 %90(ptr noundef %orig_pic, i32 noundef %conv24, i32 noundef %conv20, i32 noundef %sub325, i32 noundef %add326, i32 noundef %add327) #10
-  %add329 = add nsw i32 %shr320, %call328
-  %91 = load ptr, ptr @smpUMHEX_SearchState, align 8
-  %92 = load i16, ptr %mv_y, align 2
-  %conv330 = sext i16 %92 to i32
-  %sub331 = add i32 %currmv_y.2565, 3
-  %add333 = sub i32 %sub331, %conv330
-  %idxprom334 = sext i32 %add333 to i64
-  %arrayidx335 = getelementptr inbounds ptr, ptr %91, i64 %idxprom334
-  %93 = load ptr, ptr %arrayidx335, align 8
-  %94 = load i16, ptr %mv_x, align 2
-  %conv336 = sext i16 %94 to i32
-  %sub337 = add i32 %currmv_x.2564, 2
-  %add339 = sub i32 %sub337, %conv336
-  %idxprom340 = sext i32 %add339 to i64
-  %arrayidx341 = getelementptr inbounds i8, ptr %93, i64 %idxprom340
-  store i8 1, ptr %arrayidx341, align 1
-  %cmp342 = icmp sge i32 %add329, %min_mcost.addr.2566
-  %currmv_x.4 = select i1 %cmp342, i32 %currmv_x.2564, i32 %add273
-  %min_mcost.addr.4 = tail call i32 @llvm.smin.i32(i32 %add329, i32 %min_mcost.addr.2566)
-  %95 = load i16, ptr @SubPelThreshold3, align 2
-  %conv346 = zext i16 %95 to i32
-  %96 = load i16, ptr %arrayidx348, align 2
-  %conv349551 = zext i16 %96 to i32
-  %shr350 = lshr i32 %conv346, %conv349551
-  %cmp351 = icmp slt i32 %min_mcost.addr.4, %shr350
-  br i1 %cmp351, label %cleanup, label %if.end345.for.inc_crit_edge
-
-if.end345.for.inc_crit_edge:                      ; preds = %if.then305
-  %abort_search.1 = zext i1 %cmp342 to i32
-  %.pre568 = load i16, ptr %mv_x, align 2
-  %.pre574 = sext i16 %.pre568 to i32
-  br label %for.inc
-
-for.inc:                                          ; preds = %if.end345.for.inc_crit_edge, %for.cond265.preheader, %land.lhs.true284, %if.then291
-  %conv278.1.pre-phi = phi i32 [ %.pre574, %if.end345.for.inc_crit_edge ], [ %conv278, %for.cond265.preheader ], [ %conv278, %land.lhs.true284 ], [ %conv278, %if.then291 ]
-  %currmv_x.5 = phi i32 [ %currmv_x.4, %if.end345.for.inc_crit_edge ], [ %currmv_x.2564, %for.cond265.preheader ], [ %currmv_x.2564, %land.lhs.true284 ], [ %currmv_x.2564, %if.then291 ]
-  %abort_search.2 = phi i32 [ %abort_search.1, %if.end345.for.inc_crit_edge ], [ 1, %for.cond265.preheader ], [ 1, %land.lhs.true284 ], [ 1, %if.then291 ]
-  %min_mcost.addr.5 = phi i32 [ %min_mcost.addr.4, %if.end345.for.inc_crit_edge ], [ %min_mcost.addr.2566, %for.cond265.preheader ], [ %min_mcost.addr.2566, %land.lhs.true284 ], [ %min_mcost.addr.2566, %if.then291 ]
-  %add273.1 = add nsw i32 %currmv_x.2564, 1
-  %sub279.1 = sub nsw i32 %add273.1, %conv278.1.pre-phi
+for.body269.1:                                    ; preds = %for.end, %for.inc.1
+  %indvars.iv.1 = phi i64 [ %indvars.iv.next.1, %for.inc.1 ], [ 0, %for.end ]
+  %min_mcost.addr.3562.1 = phi i32 [ %min_mcost.addr.5.1, %for.inc.1 ], [ %min_mcost.addr.5, %for.end ]
+  %abort_search.0561.1 = phi i32 [ %abort_search.2.1, %for.inc.1 ], [ 1, %for.end ]
+  %currmv_y.3560.1 = phi i32 [ %currmv_y.5.1, %for.inc.1 ], [ %currmv_y.5, %for.end ]
+  %currmv_x.3559.1 = phi i32 [ %currmv_x.5.1, %for.inc.1 ], [ %currmv_x.5, %for.end ]
+  %arrayidx271.1 = getelementptr inbounds [4 x i16], ptr @Diamond_X, i64 0, i64 %indvars.iv.1
+  %81 = load i16, ptr %arrayidx271.1, align 2
+  %conv272.1 = sext i16 %81 to i32
+  %add273.1 = add nsw i32 %currmv_x.5, %conv272.1
+  %arrayidx275.1 = getelementptr inbounds [4 x i16], ptr @Diamond_Y, i64 0, i64 %indvars.iv.1
+  %82 = load i16, ptr %arrayidx275.1, align 2
+  %conv276.1 = sext i16 %82 to i32
+  %add277.1 = add nsw i32 %currmv_y.5, %conv276.1
+  %83 = load i16, ptr %mv_x, align 2
+  %conv278.1 = sext i16 %83 to i32
+  %sub279.1 = sub nsw i32 %add273.1, %conv278.1
   %cond.i.1 = tail call i32 @llvm.abs.i32(i32 %sub279.1, i1 true)
   %cmp282.1 = icmp ult i32 %cond.i.1, 4
   br i1 %cmp282.1, label %land.lhs.true284.1, label %for.inc.1
 
-land.lhs.true284.1:                               ; preds = %for.inc
-  %97 = load i16, ptr %mv_y, align 2
-  %conv285.1 = sext i16 %97 to i32
-  %sub286.1 = sub nsw i32 %currmv_y.2565, %conv285.1
+land.lhs.true284.1:                               ; preds = %for.body269.1
+  %84 = load i16, ptr %mv_y, align 2
+  %conv285.1 = sext i16 %84 to i32
+  %sub286.1 = sub nsw i32 %add277.1, %conv285.1
   %cond.i552.1 = tail call i32 @llvm.abs.i32(i32 %sub286.1, i1 true)
   %cmp289.1 = icmp ult i32 %cond.i552.1, 4
   br i1 %cmp289.1, label %if.then291.1, label %for.inc.1
 
 if.then291.1:                                     ; preds = %land.lhs.true284.1
-  %98 = load ptr, ptr @smpUMHEX_SearchState, align 8
+  %85 = load ptr, ptr @smpUMHEX_SearchState, align 8
   %add295.1 = add nsw i32 %sub286.1, 3
   %idxprom296.1 = sext i32 %add295.1 to i64
-  %arrayidx297.1 = getelementptr inbounds ptr, ptr %98, i64 %idxprom296.1
-  %99 = load ptr, ptr %arrayidx297.1, align 8
+  %arrayidx297.1 = getelementptr inbounds ptr, ptr %85, i64 %idxprom296.1
+  %86 = load ptr, ptr %arrayidx297.1, align 8
   %add301.1 = add nsw i32 %sub279.1, 3
   %idxprom302.1 = sext i32 %add301.1 to i64
-  %arrayidx303.1 = getelementptr inbounds i8, ptr %99, i64 %idxprom302.1
-  %100 = load i8, ptr %arrayidx303.1, align 1
-  %tobool304.not.1 = icmp eq i8 %100, 0
+  %arrayidx303.1 = getelementptr inbounds i8, ptr %86, i64 %idxprom302.1
+  %87 = load i8, ptr %arrayidx303.1, align 1
+  %tobool304.not.1 = icmp eq i8 %87, 0
   br i1 %tobool304.not.1, label %if.then305.1, label %for.inc.1
 
 if.then305.1:                                     ; preds = %if.then291.1
-  %101 = load ptr, ptr @mvbits, align 8
+  %88 = load ptr, ptr @mvbits, align 8
   %sub309.1 = sub nsw i32 %add273.1, %conv118
   %idxprom310.1 = sext i32 %sub309.1 to i64
-  %arrayidx311.1 = getelementptr inbounds i32, ptr %101, i64 %idxprom310.1
-  %102 = load i32, ptr %arrayidx311.1, align 4
-  %sub315.1 = sub nsw i32 %currmv_y.2565, %conv122
+  %arrayidx311.1 = getelementptr inbounds i32, ptr %88, i64 %idxprom310.1
+  %89 = load i32, ptr %arrayidx311.1, align 4
+  %sub315.1 = sub nsw i32 %add277.1, %conv122
   %idxprom316.1 = sext i32 %sub315.1 to i64
-  %arrayidx317.1 = getelementptr inbounds i32, ptr %101, i64 %idxprom316.1
-  %103 = load i32, ptr %arrayidx317.1, align 4
-  %add318.1 = add nsw i32 %103, %102
+  %arrayidx317.1 = getelementptr inbounds i32, ptr %88, i64 %idxprom316.1
+  %90 = load i32, ptr %arrayidx317.1, align 4
+  %add318.1 = add nsw i32 %90, %89
   %mul319.1 = mul nsw i32 %add318.1, %lambda_factor
   %shr320.1 = ashr i32 %mul319.1, 16
-  %104 = load i32, ptr @dist_method, align 4
-  %idxprom321.1 = zext i32 %104 to i64
+  %91 = load i32, ptr @dist_method, align 4
+  %idxprom321.1 = zext i32 %91 to i64
   %arrayidx322.1 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom321.1
-  %105 = load ptr, ptr %arrayidx322.1, align 8
-  %sub325.1 = sub nsw i32 %min_mcost.addr.5, %shr320.1
+  %92 = load ptr, ptr %arrayidx322.1, align 8
+  %sub325.1 = sub nsw i32 %min_mcost.addr.3562.1, %shr320.1
   %add326.1 = add nsw i32 %add273.1, %shl
-  %add327.1 = add nsw i32 %currmv_y.2565, %shl19
-  %call328.1 = tail call i32 %105(ptr noundef %orig_pic, i32 noundef %conv24, i32 noundef %conv20, i32 noundef %sub325.1, i32 noundef %add326.1, i32 noundef %add327.1) #10
+  %add327.1 = add nsw i32 %add277.1, %shl19
+  %call328.1 = tail call i32 %92(ptr noundef %orig_pic, i32 noundef %conv24, i32 noundef %conv20, i32 noundef %sub325.1, i32 noundef %add326.1, i32 noundef %add327.1) #10
   %add329.1 = add nsw i32 %shr320.1, %call328.1
-  %106 = load ptr, ptr @smpUMHEX_SearchState, align 8
-  %107 = load i16, ptr %mv_y, align 2
-  %conv330.1 = sext i16 %107 to i32
-  %sub331.1 = add i32 %currmv_y.2565, 3
+  %93 = load ptr, ptr @smpUMHEX_SearchState, align 8
+  %94 = load i16, ptr %mv_y, align 2
+  %conv330.1 = sext i16 %94 to i32
+  %sub331.1 = add i32 %add277.1, 3
   %add333.1 = sub i32 %sub331.1, %conv330.1
   %idxprom334.1 = sext i32 %add333.1 to i64
-  %arrayidx335.1 = getelementptr inbounds ptr, ptr %106, i64 %idxprom334.1
-  %108 = load ptr, ptr %arrayidx335.1, align 8
-  %109 = load i16, ptr %mv_x, align 2
-  %conv336.1 = sext i16 %109 to i32
-  %sub337.1 = add i32 %currmv_x.2564, 4
+  %arrayidx335.1 = getelementptr inbounds ptr, ptr %93, i64 %idxprom334.1
+  %95 = load ptr, ptr %arrayidx335.1, align 8
+  %96 = load i16, ptr %mv_x, align 2
+  %conv336.1 = sext i16 %96 to i32
+  %sub337.1 = add i32 %add273.1, 3
   %add339.1 = sub i32 %sub337.1, %conv336.1
   %idxprom340.1 = sext i32 %add339.1 to i64
-  %arrayidx341.1 = getelementptr inbounds i8, ptr %108, i64 %idxprom340.1
+  %arrayidx341.1 = getelementptr inbounds i8, ptr %95, i64 %idxprom340.1
   store i8 1, ptr %arrayidx341.1, align 1
-  %cmp342.1 = icmp slt i32 %add329.1, %min_mcost.addr.5
-  %currmv_x.4.1 = select i1 %cmp342.1, i32 %add273.1, i32 %currmv_x.5
-  %min_mcost.addr.4.1 = tail call i32 @llvm.smin.i32(i32 %add329.1, i32 %min_mcost.addr.5)
-  %110 = load i16, ptr @SubPelThreshold3, align 2
-  %conv346.1 = zext i16 %110 to i32
-  %111 = load i16, ptr %arrayidx348, align 2
-  %conv349551.1 = zext i16 %111 to i32
+  %cmp342.1 = icmp slt i32 %add329.1, %min_mcost.addr.3562.1
+  br i1 %cmp342.1, label %if.then344.1, label %if.end345.1
+
+if.then344.1:                                     ; preds = %if.then305.1
+  br label %if.end345.1
+
+if.end345.1:                                      ; preds = %if.then344.1, %if.then305.1
+  %currmv_x.4.1 = phi i32 [ %add273.1, %if.then344.1 ], [ %currmv_x.3559.1, %if.then305.1 ]
+  %currmv_y.4.1 = phi i32 [ %add277.1, %if.then344.1 ], [ %currmv_y.3560.1, %if.then305.1 ]
+  %abort_search.1.1 = phi i32 [ 0, %if.then344.1 ], [ %abort_search.0561.1, %if.then305.1 ]
+  %min_mcost.addr.4.1 = phi i32 [ %add329.1, %if.then344.1 ], [ %min_mcost.addr.3562.1, %if.then305.1 ]
+  %97 = load i16, ptr @SubPelThreshold3, align 2
+  %conv346.1 = zext i16 %97 to i32
+  %98 = load i16, ptr %arrayidx348, align 2
+  %conv349551.1 = zext i16 %98 to i32
   %shr350.1 = lshr i32 %conv346.1, %conv349551.1
   %cmp351.1 = icmp slt i32 %min_mcost.addr.4.1, %shr350.1
-  br i1 %cmp351.1, label %cleanup, label %if.end345.1.for.inc.1_crit_edge
+  br i1 %cmp351.1, label %cleanup, label %for.inc.1
 
-if.end345.1.for.inc.1_crit_edge:                  ; preds = %if.then305.1
-  %abort_search.1.1 = select i1 %cmp342.1, i32 0, i32 %abort_search.2
-  %.pre569 = load i16, ptr %mv_x, align 2
-  %.pre575 = sext i16 %.pre569 to i32
-  br label %for.inc.1
+for.inc.1:                                        ; preds = %if.end345.1, %if.then291.1, %land.lhs.true284.1, %for.body269.1
+  %currmv_x.5.1 = phi i32 [ %currmv_x.3559.1, %if.then291.1 ], [ %currmv_x.4.1, %if.end345.1 ], [ %currmv_x.3559.1, %land.lhs.true284.1 ], [ %currmv_x.3559.1, %for.body269.1 ]
+  %currmv_y.5.1 = phi i32 [ %currmv_y.3560.1, %if.then291.1 ], [ %currmv_y.4.1, %if.end345.1 ], [ %currmv_y.3560.1, %land.lhs.true284.1 ], [ %currmv_y.3560.1, %for.body269.1 ]
+  %abort_search.2.1 = phi i32 [ %abort_search.0561.1, %if.then291.1 ], [ %abort_search.1.1, %if.end345.1 ], [ %abort_search.0561.1, %land.lhs.true284.1 ], [ %abort_search.0561.1, %for.body269.1 ]
+  %min_mcost.addr.5.1 = phi i32 [ %min_mcost.addr.3562.1, %if.then291.1 ], [ %min_mcost.addr.4.1, %if.end345.1 ], [ %min_mcost.addr.3562.1, %land.lhs.true284.1 ], [ %min_mcost.addr.3562.1, %for.body269.1 ]
+  %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv.1, 1
+  %exitcond.1.not = icmp eq i64 %indvars.iv.next.1, 4
+  br i1 %exitcond.1.not, label %for.end.1, label %for.body269.1
 
-for.inc.1:                                        ; preds = %if.end345.1.for.inc.1_crit_edge, %if.then291.1, %land.lhs.true284.1, %for.inc
-  %conv278.2.pre-phi = phi i32 [ %.pre575, %if.end345.1.for.inc.1_crit_edge ], [ %conv278.1.pre-phi, %if.then291.1 ], [ %conv278.1.pre-phi, %land.lhs.true284.1 ], [ %conv278.1.pre-phi, %for.inc ]
-  %currmv_x.5.1 = phi i32 [ %currmv_x.4.1, %if.end345.1.for.inc.1_crit_edge ], [ %currmv_x.5, %if.then291.1 ], [ %currmv_x.5, %land.lhs.true284.1 ], [ %currmv_x.5, %for.inc ]
-  %abort_search.2.1 = phi i32 [ %abort_search.1.1, %if.end345.1.for.inc.1_crit_edge ], [ %abort_search.2, %if.then291.1 ], [ %abort_search.2, %land.lhs.true284.1 ], [ %abort_search.2, %for.inc ]
-  %min_mcost.addr.5.1 = phi i32 [ %min_mcost.addr.4.1, %if.end345.1.for.inc.1_crit_edge ], [ %min_mcost.addr.5, %if.then291.1 ], [ %min_mcost.addr.5, %land.lhs.true284.1 ], [ %min_mcost.addr.5, %for.inc ]
-  %add277.2 = add nsw i32 %currmv_y.2565, -1
-  %sub279.2 = sub nsw i32 %currmv_x.2564, %conv278.2.pre-phi
+for.end.1:                                        ; preds = %for.inc.1
+  %tobool359.not.1 = icmp eq i32 %abort_search.2.1, 0
+  br i1 %tobool359.not.1, label %for.body269.2, label %cleanup
+
+for.body269.2:                                    ; preds = %for.end.1, %for.inc.2
+  %indvars.iv.2 = phi i64 [ %indvars.iv.next.2, %for.inc.2 ], [ 0, %for.end.1 ]
+  %min_mcost.addr.3562.2 = phi i32 [ %min_mcost.addr.5.2, %for.inc.2 ], [ %min_mcost.addr.5.1, %for.end.1 ]
+  %currmv_y.3560.2 = phi i32 [ %currmv_y.5.2, %for.inc.2 ], [ %currmv_y.5.1, %for.end.1 ]
+  %currmv_x.3559.2 = phi i32 [ %currmv_x.5.2, %for.inc.2 ], [ %currmv_x.5.1, %for.end.1 ]
+  %arrayidx271.2 = getelementptr inbounds [4 x i16], ptr @Diamond_X, i64 0, i64 %indvars.iv.2
+  %99 = load i16, ptr %arrayidx271.2, align 2
+  %conv272.2 = sext i16 %99 to i32
+  %add273.2 = add nsw i32 %currmv_x.5.1, %conv272.2
+  %arrayidx275.2 = getelementptr inbounds [4 x i16], ptr @Diamond_Y, i64 0, i64 %indvars.iv.2
+  %100 = load i16, ptr %arrayidx275.2, align 2
+  %conv276.2 = sext i16 %100 to i32
+  %add277.2 = add nsw i32 %currmv_y.5.1, %conv276.2
+  %101 = load i16, ptr %mv_x, align 2
+  %conv278.2 = sext i16 %101 to i32
+  %sub279.2 = sub nsw i32 %add273.2, %conv278.2
   %cond.i.2 = tail call i32 @llvm.abs.i32(i32 %sub279.2, i1 true)
   %cmp282.2 = icmp ult i32 %cond.i.2, 4
-  br i1 %cmp282.2, label %land.lhs.true284.2, label %for.inc.3
+  br i1 %cmp282.2, label %land.lhs.true284.2, label %for.inc.2
 
-land.lhs.true284.2:                               ; preds = %for.inc.1
-  %112 = load i16, ptr %mv_y, align 2
-  %conv285.2 = sext i16 %112 to i32
+land.lhs.true284.2:                               ; preds = %for.body269.2
+  %102 = load i16, ptr %mv_y, align 2
+  %conv285.2 = sext i16 %102 to i32
   %sub286.2 = sub nsw i32 %add277.2, %conv285.2
   %cond.i552.2 = tail call i32 @llvm.abs.i32(i32 %sub286.2, i1 true)
   %cmp289.2 = icmp ult i32 %cond.i552.2, 4
-  br i1 %cmp289.2, label %if.then291.2, label %land.lhs.true284.3
+  br i1 %cmp289.2, label %if.then291.2, label %for.inc.2
 
 if.then291.2:                                     ; preds = %land.lhs.true284.2
-  %113 = load ptr, ptr @smpUMHEX_SearchState, align 8
+  %103 = load ptr, ptr @smpUMHEX_SearchState, align 8
   %add295.2 = add nsw i32 %sub286.2, 3
   %idxprom296.2 = sext i32 %add295.2 to i64
-  %arrayidx297.2 = getelementptr inbounds ptr, ptr %113, i64 %idxprom296.2
-  %114 = load ptr, ptr %arrayidx297.2, align 8
+  %arrayidx297.2 = getelementptr inbounds ptr, ptr %103, i64 %idxprom296.2
+  %104 = load ptr, ptr %arrayidx297.2, align 8
   %add301.2 = add nsw i32 %sub279.2, 3
   %idxprom302.2 = sext i32 %add301.2 to i64
-  %arrayidx303.2 = getelementptr inbounds i8, ptr %114, i64 %idxprom302.2
-  %115 = load i8, ptr %arrayidx303.2, align 1
-  %tobool304.not.2 = icmp eq i8 %115, 0
-  br i1 %tobool304.not.2, label %if.then305.2, label %land.lhs.true284.3
+  %arrayidx303.2 = getelementptr inbounds i8, ptr %104, i64 %idxprom302.2
+  %105 = load i8, ptr %arrayidx303.2, align 1
+  %tobool304.not.2 = icmp eq i8 %105, 0
+  br i1 %tobool304.not.2, label %if.then305.2, label %for.inc.2
 
 if.then305.2:                                     ; preds = %if.then291.2
-  %116 = load ptr, ptr @mvbits, align 8
-  %sub309.2 = sub nsw i32 %currmv_x.2564, %conv118
+  %106 = load ptr, ptr @mvbits, align 8
+  %sub309.2 = sub nsw i32 %add273.2, %conv118
   %idxprom310.2 = sext i32 %sub309.2 to i64
-  %arrayidx311.2 = getelementptr inbounds i32, ptr %116, i64 %idxprom310.2
-  %117 = load i32, ptr %arrayidx311.2, align 4
+  %arrayidx311.2 = getelementptr inbounds i32, ptr %106, i64 %idxprom310.2
+  %107 = load i32, ptr %arrayidx311.2, align 4
   %sub315.2 = sub nsw i32 %add277.2, %conv122
   %idxprom316.2 = sext i32 %sub315.2 to i64
-  %arrayidx317.2 = getelementptr inbounds i32, ptr %116, i64 %idxprom316.2
-  %118 = load i32, ptr %arrayidx317.2, align 4
-  %add318.2 = add nsw i32 %118, %117
+  %arrayidx317.2 = getelementptr inbounds i32, ptr %106, i64 %idxprom316.2
+  %108 = load i32, ptr %arrayidx317.2, align 4
+  %add318.2 = add nsw i32 %108, %107
   %mul319.2 = mul nsw i32 %add318.2, %lambda_factor
   %shr320.2 = ashr i32 %mul319.2, 16
-  %119 = load i32, ptr @dist_method, align 4
-  %idxprom321.2 = zext i32 %119 to i64
+  %109 = load i32, ptr @dist_method, align 4
+  %idxprom321.2 = zext i32 %109 to i64
   %arrayidx322.2 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom321.2
-  %120 = load ptr, ptr %arrayidx322.2, align 8
-  %sub325.2 = sub nsw i32 %min_mcost.addr.5.1, %shr320.2
-  %add326.2 = add nsw i32 %currmv_x.2564, %shl
+  %110 = load ptr, ptr %arrayidx322.2, align 8
+  %sub325.2 = sub nsw i32 %min_mcost.addr.3562.2, %shr320.2
+  %add326.2 = add nsw i32 %add273.2, %shl
   %add327.2 = add nsw i32 %add277.2, %shl19
-  %call328.2 = tail call i32 %120(ptr noundef %orig_pic, i32 noundef %conv24, i32 noundef %conv20, i32 noundef %sub325.2, i32 noundef %add326.2, i32 noundef %add327.2) #10
+  %call328.2 = tail call i32 %110(ptr noundef %orig_pic, i32 noundef %conv24, i32 noundef %conv20, i32 noundef %sub325.2, i32 noundef %add326.2, i32 noundef %add327.2) #10
   %add329.2 = add nsw i32 %shr320.2, %call328.2
-  %121 = load ptr, ptr @smpUMHEX_SearchState, align 8
-  %122 = load i16, ptr %mv_y, align 2
-  %conv330.2 = sext i16 %122 to i32
-  %sub331.2 = add i32 %currmv_y.2565, 2
+  %111 = load ptr, ptr @smpUMHEX_SearchState, align 8
+  %112 = load i16, ptr %mv_y, align 2
+  %conv330.2 = sext i16 %112 to i32
+  %sub331.2 = add i32 %add277.2, 3
   %add333.2 = sub i32 %sub331.2, %conv330.2
   %idxprom334.2 = sext i32 %add333.2 to i64
-  %arrayidx335.2 = getelementptr inbounds ptr, ptr %121, i64 %idxprom334.2
-  %123 = load ptr, ptr %arrayidx335.2, align 8
-  %124 = load i16, ptr %mv_x, align 2
-  %conv336.2 = sext i16 %124 to i32
-  %sub337.2 = add i32 %currmv_x.2564, 3
+  %arrayidx335.2 = getelementptr inbounds ptr, ptr %111, i64 %idxprom334.2
+  %113 = load ptr, ptr %arrayidx335.2, align 8
+  %114 = load i16, ptr %mv_x, align 2
+  %conv336.2 = sext i16 %114 to i32
+  %sub337.2 = add i32 %add273.2, 3
   %add339.2 = sub i32 %sub337.2, %conv336.2
   %idxprom340.2 = sext i32 %add339.2 to i64
-  %arrayidx341.2 = getelementptr inbounds i8, ptr %123, i64 %idxprom340.2
+  %arrayidx341.2 = getelementptr inbounds i8, ptr %113, i64 %idxprom340.2
   store i8 1, ptr %arrayidx341.2, align 1
-  %cmp342.2 = icmp slt i32 %add329.2, %min_mcost.addr.5.1
-  br i1 %cmp342.2, label %if.then344.2, label %if.end345.2
-
-if.then344.2:                                     ; preds = %if.then305.2
-  br label %if.end345.2
-
-if.end345.2:                                      ; preds = %if.then344.2, %if.then305.2
-  %currmv_x.4.2 = phi i32 [ %currmv_x.2564, %if.then344.2 ], [ %currmv_x.5.1, %if.then305.2 ]
-  %currmv_y.4.2 = phi i32 [ %add277.2, %if.then344.2 ], [ %currmv_y.2565, %if.then305.2 ]
-  %abort_search.1.2 = phi i32 [ 0, %if.then344.2 ], [ %abort_search.2.1, %if.then305.2 ]
-  %min_mcost.addr.4.2 = phi i32 [ %add329.2, %if.then344.2 ], [ %min_mcost.addr.5.1, %if.then305.2 ]
-  %125 = load i16, ptr @SubPelThreshold3, align 2
-  %conv346.2 = zext i16 %125 to i32
-  %126 = load i16, ptr %arrayidx348, align 2
-  %conv349551.2 = zext i16 %126 to i32
+  %cmp342.2 = icmp slt i32 %add329.2, %min_mcost.addr.3562.2
+  %currmv_x.4.2 = select i1 %cmp342.2, i32 %add273.2, i32 %currmv_x.3559.2
+  %currmv_y.4.2 = select i1 %cmp342.2, i32 %add277.2, i32 %currmv_y.3560.2
+  %min_mcost.addr.4.2 = tail call i32 @llvm.smin.i32(i32 %add329.2, i32 %min_mcost.addr.3562.2)
+  %115 = load i16, ptr @SubPelThreshold3, align 2
+  %conv346.2 = zext i16 %115 to i32
+  %116 = load i16, ptr %arrayidx348, align 2
+  %conv349551.2 = zext i16 %116 to i32
   %shr350.2 = lshr i32 %conv346.2, %conv349551.2
   %cmp351.2 = icmp slt i32 %min_mcost.addr.4.2, %shr350.2
   br i1 %cmp351.2, label %cleanup, label %for.inc.2
 
-for.inc.2:                                        ; preds = %if.end345.2
-  %.pre570 = load i16, ptr %mv_x, align 2
-  %.pre576 = sext i16 %.pre570 to i32
-  %.pre577 = sub nsw i32 %currmv_x.2564, %.pre576
-  %.pre578 = tail call i32 @llvm.abs.i32(i32 %.pre577, i1 true)
-  %cmp282.3 = icmp ult i32 %.pre578, 4
-  br i1 %cmp282.3, label %land.lhs.true284.3, label %for.inc.3
+for.inc.2:                                        ; preds = %if.then305.2, %if.then291.2, %land.lhs.true284.2, %for.body269.2
+  %currmv_x.5.2 = phi i32 [ %currmv_x.3559.2, %if.then291.2 ], [ %currmv_x.4.2, %if.then305.2 ], [ %currmv_x.3559.2, %land.lhs.true284.2 ], [ %currmv_x.3559.2, %for.body269.2 ]
+  %currmv_y.5.2 = phi i32 [ %currmv_y.3560.2, %if.then291.2 ], [ %currmv_y.4.2, %if.then305.2 ], [ %currmv_y.3560.2, %land.lhs.true284.2 ], [ %currmv_y.3560.2, %for.body269.2 ]
+  %min_mcost.addr.5.2 = phi i32 [ %min_mcost.addr.3562.2, %if.then291.2 ], [ %min_mcost.addr.4.2, %if.then305.2 ], [ %min_mcost.addr.3562.2, %land.lhs.true284.2 ], [ %min_mcost.addr.3562.2, %for.body269.2 ]
+  %indvars.iv.next.2 = add nuw nsw i64 %indvars.iv.2, 1
+  %exitcond.2.not = icmp eq i64 %indvars.iv.next.2, 4
+  br i1 %exitcond.2.not, label %cleanup, label %for.body269.2
 
-land.lhs.true284.3:                               ; preds = %land.lhs.true284.2, %if.then291.2, %for.inc.2
-  %min_mcost.addr.5.2591 = phi i32 [ %min_mcost.addr.4.2, %for.inc.2 ], [ %min_mcost.addr.5.1, %if.then291.2 ], [ %min_mcost.addr.5.1, %land.lhs.true284.2 ]
-  %abort_search.2.2590 = phi i32 [ %abort_search.1.2, %for.inc.2 ], [ %abort_search.2.1, %if.then291.2 ], [ %abort_search.2.1, %land.lhs.true284.2 ]
-  %currmv_y.5.2589 = phi i32 [ %currmv_y.4.2, %for.inc.2 ], [ %currmv_y.2565, %if.then291.2 ], [ %currmv_y.2565, %land.lhs.true284.2 ]
-  %currmv_x.5.2588 = phi i32 [ %currmv_x.4.2, %for.inc.2 ], [ %currmv_x.5.1, %if.then291.2 ], [ %currmv_x.5.1, %land.lhs.true284.2 ]
-  %sub279.3.pre-phi587 = phi i32 [ %.pre577, %for.inc.2 ], [ %sub279.2, %if.then291.2 ], [ %sub279.2, %land.lhs.true284.2 ]
-  %add277.3592 = add nsw i32 %currmv_y.2565, 1
-  %127 = load i16, ptr %mv_y, align 2
-  %conv285.3 = sext i16 %127 to i32
-  %sub286.3 = sub nsw i32 %add277.3592, %conv285.3
-  %cond.i552.3 = tail call i32 @llvm.abs.i32(i32 %sub286.3, i1 true)
-  %cmp289.3 = icmp ult i32 %cond.i552.3, 4
-  br i1 %cmp289.3, label %if.then291.3, label %for.inc.3
+for.body269:                                      ; preds = %if.end260, %for.inc
+  %indvars.iv = phi i64 [ 0, %if.end260 ], [ %indvars.iv.next, %for.inc ]
+  %min_mcost.addr.3562 = phi i32 [ %min_mcost.addr.1, %if.end260 ], [ %min_mcost.addr.5, %for.inc ]
+  %abort_search.0561 = phi i32 [ 1, %if.end260 ], [ %abort_search.2, %for.inc ]
+  %currmv_y.3560 = phi i32 [ %currmv_y.1, %if.end260 ], [ %currmv_y.5, %for.inc ]
+  %currmv_x.3559 = phi i32 [ %currmv_x.1, %if.end260 ], [ %currmv_x.5, %for.inc ]
+  %arrayidx271 = getelementptr inbounds [4 x i16], ptr @Diamond_X, i64 0, i64 %indvars.iv
+  %117 = load i16, ptr %arrayidx271, align 2
+  %conv272 = sext i16 %117 to i32
+  %add273 = add nsw i32 %currmv_x.1, %conv272
+  %arrayidx275 = getelementptr inbounds [4 x i16], ptr @Diamond_Y, i64 0, i64 %indvars.iv
+  %118 = load i16, ptr %arrayidx275, align 2
+  %conv276 = sext i16 %118 to i32
+  %add277 = add nsw i32 %currmv_y.1, %conv276
+  %119 = load i16, ptr %mv_x, align 2
+  %conv278 = sext i16 %119 to i32
+  %sub279 = sub nsw i32 %add273, %conv278
+  %cond.i = tail call i32 @llvm.abs.i32(i32 %sub279, i1 true)
+  %cmp282 = icmp ult i32 %cond.i, 4
+  br i1 %cmp282, label %land.lhs.true284, label %for.inc
 
-if.then291.3:                                     ; preds = %land.lhs.true284.3
-  %128 = load ptr, ptr @smpUMHEX_SearchState, align 8
-  %add295.3 = add nsw i32 %sub286.3, 3
-  %idxprom296.3 = sext i32 %add295.3 to i64
-  %arrayidx297.3 = getelementptr inbounds ptr, ptr %128, i64 %idxprom296.3
-  %129 = load ptr, ptr %arrayidx297.3, align 8
-  %add301.3 = add nsw i32 %sub279.3.pre-phi587, 3
-  %idxprom302.3 = sext i32 %add301.3 to i64
-  %arrayidx303.3 = getelementptr inbounds i8, ptr %129, i64 %idxprom302.3
-  %130 = load i8, ptr %arrayidx303.3, align 1
-  %tobool304.not.3 = icmp eq i8 %130, 0
-  br i1 %tobool304.not.3, label %if.then305.3, label %for.inc.3
+land.lhs.true284:                                 ; preds = %for.body269
+  %120 = load i16, ptr %mv_y, align 2
+  %conv285 = sext i16 %120 to i32
+  %sub286 = sub nsw i32 %add277, %conv285
+  %cond.i552 = tail call i32 @llvm.abs.i32(i32 %sub286, i1 true)
+  %cmp289 = icmp ult i32 %cond.i552, 4
+  br i1 %cmp289, label %if.then291, label %for.inc
 
-if.then305.3:                                     ; preds = %if.then291.3
-  %131 = load ptr, ptr @mvbits, align 8
-  %sub309.3 = sub nsw i32 %currmv_x.2564, %conv118
-  %idxprom310.3 = sext i32 %sub309.3 to i64
-  %arrayidx311.3 = getelementptr inbounds i32, ptr %131, i64 %idxprom310.3
-  %132 = load i32, ptr %arrayidx311.3, align 4
-  %sub315.3 = sub nsw i32 %add277.3592, %conv122
-  %idxprom316.3 = sext i32 %sub315.3 to i64
-  %arrayidx317.3 = getelementptr inbounds i32, ptr %131, i64 %idxprom316.3
-  %133 = load i32, ptr %arrayidx317.3, align 4
-  %add318.3 = add nsw i32 %133, %132
-  %mul319.3 = mul nsw i32 %add318.3, %lambda_factor
-  %shr320.3 = ashr i32 %mul319.3, 16
-  %134 = load i32, ptr @dist_method, align 4
-  %idxprom321.3 = zext i32 %134 to i64
-  %arrayidx322.3 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom321.3
-  %135 = load ptr, ptr %arrayidx322.3, align 8
-  %sub325.3 = sub nsw i32 %min_mcost.addr.5.2591, %shr320.3
-  %add326.3 = add nsw i32 %currmv_x.2564, %shl
-  %add327.3 = add nsw i32 %add277.3592, %shl19
-  %call328.3 = tail call i32 %135(ptr noundef %orig_pic, i32 noundef %conv24, i32 noundef %conv20, i32 noundef %sub325.3, i32 noundef %add326.3, i32 noundef %add327.3) #10
-  %add329.3 = add nsw i32 %shr320.3, %call328.3
-  %136 = load ptr, ptr @smpUMHEX_SearchState, align 8
-  %137 = load i16, ptr %mv_y, align 2
-  %conv330.3 = sext i16 %137 to i32
-  %sub331.3 = add i32 %currmv_y.2565, 4
-  %add333.3 = sub i32 %sub331.3, %conv330.3
-  %idxprom334.3 = sext i32 %add333.3 to i64
-  %arrayidx335.3 = getelementptr inbounds ptr, ptr %136, i64 %idxprom334.3
-  %138 = load ptr, ptr %arrayidx335.3, align 8
-  %139 = load i16, ptr %mv_x, align 2
-  %conv336.3 = sext i16 %139 to i32
-  %sub337.3 = add i32 %currmv_x.2564, 3
-  %add339.3 = sub i32 %sub337.3, %conv336.3
-  %idxprom340.3 = sext i32 %add339.3 to i64
-  %arrayidx341.3 = getelementptr inbounds i8, ptr %138, i64 %idxprom340.3
-  store i8 1, ptr %arrayidx341.3, align 1
-  %cmp342.3 = icmp slt i32 %add329.3, %min_mcost.addr.5.2591
-  br i1 %cmp342.3, label %if.then344.3, label %if.end345.3
+if.then291:                                       ; preds = %land.lhs.true284
+  %121 = load ptr, ptr @smpUMHEX_SearchState, align 8
+  %add295 = add nsw i32 %sub286, 3
+  %idxprom296 = sext i32 %add295 to i64
+  %arrayidx297 = getelementptr inbounds ptr, ptr %121, i64 %idxprom296
+  %122 = load ptr, ptr %arrayidx297, align 8
+  %add301 = add nsw i32 %sub279, 3
+  %idxprom302 = sext i32 %add301 to i64
+  %arrayidx303 = getelementptr inbounds i8, ptr %122, i64 %idxprom302
+  %123 = load i8, ptr %arrayidx303, align 1
+  %tobool304.not = icmp eq i8 %123, 0
+  br i1 %tobool304.not, label %if.then305, label %for.inc
 
-if.then344.3:                                     ; preds = %if.then305.3
-  br label %if.end345.3
+if.then305:                                       ; preds = %if.then291
+  %124 = load ptr, ptr @mvbits, align 8
+  %sub309 = sub nsw i32 %add273, %conv118
+  %idxprom310 = sext i32 %sub309 to i64
+  %arrayidx311 = getelementptr inbounds i32, ptr %124, i64 %idxprom310
+  %125 = load i32, ptr %arrayidx311, align 4
+  %sub315 = sub nsw i32 %add277, %conv122
+  %idxprom316 = sext i32 %sub315 to i64
+  %arrayidx317 = getelementptr inbounds i32, ptr %124, i64 %idxprom316
+  %126 = load i32, ptr %arrayidx317, align 4
+  %add318 = add nsw i32 %126, %125
+  %mul319 = mul nsw i32 %add318, %lambda_factor
+  %shr320 = ashr i32 %mul319, 16
+  %127 = load i32, ptr @dist_method, align 4
+  %idxprom321 = zext i32 %127 to i64
+  %arrayidx322 = getelementptr inbounds [6 x ptr], ptr @computeUniPred, i64 0, i64 %idxprom321
+  %128 = load ptr, ptr %arrayidx322, align 8
+  %sub325 = sub nsw i32 %min_mcost.addr.3562, %shr320
+  %add326 = add nsw i32 %add273, %shl
+  %add327 = add nsw i32 %add277, %shl19
+  %call328 = tail call i32 %128(ptr noundef %orig_pic, i32 noundef %conv24, i32 noundef %conv20, i32 noundef %sub325, i32 noundef %add326, i32 noundef %add327) #10
+  %add329 = add nsw i32 %shr320, %call328
+  %129 = load ptr, ptr @smpUMHEX_SearchState, align 8
+  %130 = load i16, ptr %mv_y, align 2
+  %conv330 = sext i16 %130 to i32
+  %sub331 = add nsw i32 %add277, 3
+  %add333 = sub nsw i32 %sub331, %conv330
+  %idxprom334 = sext i32 %add333 to i64
+  %arrayidx335 = getelementptr inbounds ptr, ptr %129, i64 %idxprom334
+  %131 = load ptr, ptr %arrayidx335, align 8
+  %132 = load i16, ptr %mv_x, align 2
+  %conv336 = sext i16 %132 to i32
+  %sub337 = add nsw i32 %add273, 3
+  %add339 = sub nsw i32 %sub337, %conv336
+  %idxprom340 = sext i32 %add339 to i64
+  %arrayidx341 = getelementptr inbounds i8, ptr %131, i64 %idxprom340
+  store i8 1, ptr %arrayidx341, align 1
+  %cmp342 = icmp slt i32 %add329, %min_mcost.addr.3562
+  br i1 %cmp342, label %if.then344, label %if.end345
 
-if.end345.3:                                      ; preds = %if.then344.3, %if.then305.3
-  %currmv_x.4.3 = phi i32 [ %currmv_x.2564, %if.then344.3 ], [ %currmv_x.5.2588, %if.then305.3 ]
-  %currmv_y.4.3 = phi i32 [ %add277.3592, %if.then344.3 ], [ %currmv_y.5.2589, %if.then305.3 ]
-  %abort_search.1.3 = phi i32 [ 0, %if.then344.3 ], [ %abort_search.2.2590, %if.then305.3 ]
-  %min_mcost.addr.4.3 = phi i32 [ %add329.3, %if.then344.3 ], [ %min_mcost.addr.5.2591, %if.then305.3 ]
-  %140 = load i16, ptr @SubPelThreshold3, align 2
-  %conv346.3 = zext i16 %140 to i32
-  %141 = load i16, ptr %arrayidx348, align 2
-  %conv349551.3 = zext i16 %141 to i32
-  %shr350.3 = lshr i32 %conv346.3, %conv349551.3
-  %cmp351.3 = icmp slt i32 %min_mcost.addr.4.3, %shr350.3
-  br i1 %cmp351.3, label %cleanup, label %for.inc.3
+if.then344:                                       ; preds = %if.then305
+  br label %if.end345
 
-for.inc.3:                                        ; preds = %for.inc.1, %if.end345.3, %if.then291.3, %land.lhs.true284.3, %for.inc.2
-  %currmv_x.5.3 = phi i32 [ %currmv_x.5.2588, %if.then291.3 ], [ %currmv_x.4.3, %if.end345.3 ], [ %currmv_x.5.2588, %land.lhs.true284.3 ], [ %currmv_x.4.2, %for.inc.2 ], [ %currmv_x.5.1, %for.inc.1 ]
-  %currmv_y.5.3 = phi i32 [ %currmv_y.5.2589, %if.then291.3 ], [ %currmv_y.4.3, %if.end345.3 ], [ %currmv_y.5.2589, %land.lhs.true284.3 ], [ %currmv_y.4.2, %for.inc.2 ], [ %currmv_y.2565, %for.inc.1 ]
-  %abort_search.2.3 = phi i32 [ %abort_search.2.2590, %if.then291.3 ], [ %abort_search.1.3, %if.end345.3 ], [ %abort_search.2.2590, %land.lhs.true284.3 ], [ %abort_search.1.2, %for.inc.2 ], [ %abort_search.2.1, %for.inc.1 ]
-  %min_mcost.addr.5.3 = phi i32 [ %min_mcost.addr.5.2591, %if.then291.3 ], [ %min_mcost.addr.4.3, %if.end345.3 ], [ %min_mcost.addr.5.2591, %land.lhs.true284.3 ], [ %min_mcost.addr.4.2, %for.inc.2 ], [ %min_mcost.addr.5.1, %for.inc.1 ]
-  %tobool359.not = icmp ne i32 %abort_search.2.3, 0
-  %inc363 = add nuw nsw i16 %i.0563, 1
-  %exitcond.not = icmp eq i16 %inc363, 3
-  %or.cond602 = select i1 %tobool359.not, i1 true, i1 %exitcond.not
-  br i1 %or.cond602, label %cleanup, label %for.cond265.preheader
+if.end345:                                        ; preds = %if.then344, %if.then305
+  %currmv_x.4 = phi i32 [ %add273, %if.then344 ], [ %currmv_x.3559, %if.then305 ]
+  %currmv_y.4 = phi i32 [ %add277, %if.then344 ], [ %currmv_y.3560, %if.then305 ]
+  %abort_search.1 = phi i32 [ 0, %if.then344 ], [ %abort_search.0561, %if.then305 ]
+  %min_mcost.addr.4 = phi i32 [ %add329, %if.then344 ], [ %min_mcost.addr.3562, %if.then305 ]
+  %133 = load i16, ptr @SubPelThreshold3, align 2
+  %conv346 = zext i16 %133 to i32
+  %134 = load i16, ptr %arrayidx348, align 2
+  %conv349551 = zext i16 %134 to i32
+  %shr350 = lshr i32 %conv346, %conv349551
+  %cmp351 = icmp slt i32 %min_mcost.addr.4, %shr350
+  br i1 %cmp351, label %cleanup, label %for.inc
 
-cleanup:                                          ; preds = %for.inc.3, %if.then305, %if.then305.1, %if.end345.2, %if.end345.3, %land.lhs.true200
-  %currmv_x.5.3.sink = phi i32 [ %currmv_x.0, %land.lhs.true200 ], [ %currmv_x.4, %if.then305 ], [ %currmv_x.4.1, %if.then305.1 ], [ %currmv_x.4.2, %if.end345.2 ], [ %currmv_x.4.3, %if.end345.3 ], [ %currmv_x.5.3, %for.inc.3 ]
-  %currmv_y.5.3.sink = phi i32 [ %currmv_y.0, %land.lhs.true200 ], [ %currmv_y.2565, %if.then305 ], [ %currmv_y.2565, %if.then305.1 ], [ %currmv_y.4.2, %if.end345.2 ], [ %currmv_y.4.3, %if.end345.3 ], [ %currmv_y.5.3, %for.inc.3 ]
-  %retval.0 = phi i32 [ %min_mcost.addr.0, %land.lhs.true200 ], [ %min_mcost.addr.4, %if.then305 ], [ %min_mcost.addr.4.1, %if.then305.1 ], [ %min_mcost.addr.4.2, %if.end345.2 ], [ %min_mcost.addr.4.3, %if.end345.3 ], [ %min_mcost.addr.5.3, %for.inc.3 ]
-  %conv365 = trunc i32 %currmv_x.5.3.sink to i16
+for.inc:                                          ; preds = %for.body269, %land.lhs.true284, %if.end345, %if.then291
+  %currmv_x.5 = phi i32 [ %currmv_x.3559, %if.then291 ], [ %currmv_x.4, %if.end345 ], [ %currmv_x.3559, %land.lhs.true284 ], [ %currmv_x.3559, %for.body269 ]
+  %currmv_y.5 = phi i32 [ %currmv_y.3560, %if.then291 ], [ %currmv_y.4, %if.end345 ], [ %currmv_y.3560, %land.lhs.true284 ], [ %currmv_y.3560, %for.body269 ]
+  %abort_search.2 = phi i32 [ %abort_search.0561, %if.then291 ], [ %abort_search.1, %if.end345 ], [ %abort_search.0561, %land.lhs.true284 ], [ %abort_search.0561, %for.body269 ]
+  %min_mcost.addr.5 = phi i32 [ %min_mcost.addr.3562, %if.then291 ], [ %min_mcost.addr.4, %if.end345 ], [ %min_mcost.addr.3562, %land.lhs.true284 ], [ %min_mcost.addr.3562, %for.body269 ]
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond.not = icmp eq i64 %indvars.iv.next, 4
+  br i1 %exitcond.not, label %for.end, label %for.body269
+
+for.end:                                          ; preds = %for.inc
+  %tobool359.not = icmp eq i32 %abort_search.2, 0
+  br i1 %tobool359.not, label %for.body269.1, label %cleanup
+
+cleanup:                                          ; preds = %if.end345, %if.end345.1, %for.inc.2, %if.then305.2, %for.end, %for.end.1, %land.lhs.true200
+  %currmv_x.5.lcssa.lcssa.sink = phi i32 [ %currmv_x.0, %land.lhs.true200 ], [ %currmv_x.5, %for.end ], [ %currmv_x.5.1, %for.end.1 ], [ %currmv_x.4.2, %if.then305.2 ], [ %currmv_x.5.2, %for.inc.2 ], [ %currmv_x.4.1, %if.end345.1 ], [ %currmv_x.4, %if.end345 ]
+  %currmv_y.5.lcssa.lcssa.sink = phi i32 [ %currmv_y.0, %land.lhs.true200 ], [ %currmv_y.5, %for.end ], [ %currmv_y.5.1, %for.end.1 ], [ %currmv_y.4.2, %if.then305.2 ], [ %currmv_y.5.2, %for.inc.2 ], [ %currmv_y.4.1, %if.end345.1 ], [ %currmv_y.4, %if.end345 ]
+  %retval.0 = phi i32 [ %min_mcost.addr.0, %land.lhs.true200 ], [ %min_mcost.addr.5, %for.end ], [ %min_mcost.addr.5.1, %for.end.1 ], [ %min_mcost.addr.4.2, %if.then305.2 ], [ %min_mcost.addr.5.2, %for.inc.2 ], [ %min_mcost.addr.4.1, %if.end345.1 ], [ %min_mcost.addr.4, %if.end345 ]
+  %conv365 = trunc i32 %currmv_x.5.lcssa.lcssa.sink to i16
   store i16 %conv365, ptr %mv_x, align 2
-  %conv366 = trunc i32 %currmv_y.5.3.sink to i16
+  %conv366 = trunc i32 %currmv_y.5.lcssa.lcssa.sink to i16
   store i16 %conv366, ptr %mv_y, align 2
   ret i32 %retval.0
 }
@@ -6293,20 +5851,22 @@ attributes #10 = { nounwind }
 !44 = distinct !{!44, !42}
 !45 = distinct !{!45, !42}
 !46 = distinct !{!46, !42}
-!47 = !{!29, !13, i64 4168}
-!48 = !{!21, !13, i64 432}
-!49 = distinct !{!49, !42}
-!50 = distinct !{!50, !42}
-!51 = !{!7, !7, i64 0}
+!47 = distinct !{!47, !42}
+!48 = distinct !{!48, !42}
+!49 = !{!29, !13, i64 4168}
+!50 = !{!21, !13, i64 432}
+!51 = distinct !{!51, !42}
 !52 = distinct !{!52, !42}
-!53 = distinct !{!53, !42}
+!53 = !{!7, !7, i64 0}
 !54 = distinct !{!54, !42}
 !55 = distinct !{!55, !42}
 !56 = distinct !{!56, !42}
 !57 = distinct !{!57, !42}
 !58 = distinct !{!58, !42}
 !59 = distinct !{!59, !42}
-!60 = !{!12, !13, i64 176}
-!61 = !{!12, !13, i64 180}
-!62 = !{!12, !13, i64 0}
-!63 = distinct !{!63, !42}
+!60 = distinct !{!60, !42}
+!61 = distinct !{!61, !42}
+!62 = !{!12, !13, i64 176}
+!63 = !{!12, !13, i64 180}
+!64 = !{!12, !13, i64 0}
+!65 = distinct !{!65, !42}

@@ -6353,44 +6353,34 @@ for.end:                                          ; preds = %for.body, %middle.b
   br i1 %cmp182, label %for.body3.preheader, label %if.end102
 
 for.body3.preheader:                              ; preds = %for.end
-  %xtraiter = and i64 %wide.trip.count, 3
-  %12 = icmp ult i32 %n_windowSize, 4
+  %xtraiter = and i64 %wide.trip.count, 1
+  %12 = icmp eq i32 %n_windowSize, 1
   br i1 %12, label %for.cond14.preheader.unr-lcssa, label %for.body3.preheader.new
 
 for.body3.preheader.new:                          ; preds = %for.body3.preheader
-  %unroll_iter = and i64 %wide.trip.count, 4294967292
+  %unroll_iter = and i64 %wide.trip.count, 4294967294
   br label %for.body3
 
-for.cond14.preheader.unr-lcssa:                   ; preds = %for.inc11.3, %for.body3.preheader
-  %oneSampleQ.1.lcssa.ph = phi double [ undef, %for.body3.preheader ], [ %oneSampleQ.1.3, %for.inc11.3 ]
-  %indvars.iv208.unr = phi i64 [ 0, %for.body3.preheader ], [ %indvars.iv.next209.3, %for.inc11.3 ]
-  %oneSampleQ.0187.unr = phi double [ 0.000000e+00, %for.body3.preheader ], [ %oneSampleQ.1.3, %for.inc11.3 ]
+for.cond14.preheader.unr-lcssa:                   ; preds = %for.inc11.1, %for.body3.preheader
+  %oneSampleQ.1.lcssa.ph = phi double [ undef, %for.body3.preheader ], [ %oneSampleQ.1.1, %for.inc11.1 ]
+  %indvars.iv208.unr = phi i64 [ 0, %for.body3.preheader ], [ %indvars.iv.next209.1, %for.inc11.1 ]
+  %oneSampleQ.0187.unr = phi double [ 0.000000e+00, %for.body3.preheader ], [ %oneSampleQ.1.1, %for.inc11.1 ]
   %lcmp.mod.not = icmp eq i64 %xtraiter, 0
   br i1 %lcmp.mod.not, label %for.cond14.preheader, label %for.body3.epil
 
-for.body3.epil:                                   ; preds = %for.cond14.preheader.unr-lcssa, %for.inc11.epil
-  %indvars.iv208.epil = phi i64 [ %indvars.iv.next209.epil, %for.inc11.epil ], [ %indvars.iv208.unr, %for.cond14.preheader.unr-lcssa ]
-  %oneSampleQ.0187.epil = phi double [ %oneSampleQ.1.epil, %for.inc11.epil ], [ %oneSampleQ.0187.unr, %for.cond14.preheader.unr-lcssa ]
-  %epil.iter = phi i64 [ %epil.iter.next, %for.inc11.epil ], [ 0, %for.cond14.preheader.unr-lcssa ]
-  %arrayidx5.epil = getelementptr inbounds i32, ptr %m_rgRejected, i64 %indvars.iv208.epil
+for.body3.epil:                                   ; preds = %for.cond14.preheader.unr-lcssa
+  %arrayidx5.epil = getelementptr inbounds i32, ptr %m_rgRejected, i64 %indvars.iv208.unr
   %13 = load i32, ptr %arrayidx5.epil, align 4
   %tobool6.not.epil = icmp eq i32 %13, 0
-  br i1 %tobool6.not.epil, label %if.then7.epil, label %for.inc11.epil
+  br i1 %tobool6.not.epil, label %if.then7.epil, label %for.cond14.preheader
 
 if.then7.epil:                                    ; preds = %for.body3.epil
-  %arrayidx9.epil = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 21, i64 %indvars.iv208.epil
+  %arrayidx9.epil = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 21, i64 %indvars.iv208.unr
   %14 = load double, ptr %arrayidx9.epil, align 8
-  br label %for.inc11.epil
+  br label %for.cond14.preheader
 
-for.inc11.epil:                                   ; preds = %if.then7.epil, %for.body3.epil
-  %oneSampleQ.1.epil = phi double [ %oneSampleQ.0187.epil, %for.body3.epil ], [ %14, %if.then7.epil ]
-  %indvars.iv.next209.epil = add nuw nsw i64 %indvars.iv208.epil, 1
-  %epil.iter.next = add i64 %epil.iter, 1
-  %epil.iter.cmp.not = icmp eq i64 %epil.iter.next, %xtraiter
-  br i1 %epil.iter.cmp.not, label %for.cond14.preheader, label %for.body3.epil
-
-for.cond14.preheader:                             ; preds = %for.inc11.epil, %for.cond14.preheader.unr-lcssa
-  %oneSampleQ.1.lcssa = phi double [ %oneSampleQ.1.lcssa.ph, %for.cond14.preheader.unr-lcssa ], [ %oneSampleQ.1.epil, %for.inc11.epil ]
+for.cond14.preheader:                             ; preds = %for.body3.epil, %if.then7.epil, %for.cond14.preheader.unr-lcssa
+  %oneSampleQ.1.lcssa = phi double [ %oneSampleQ.1.lcssa.ph, %for.cond14.preheader.unr-lcssa ], [ %oneSampleQ.0187.unr, %for.body3.epil ], [ %14, %if.then7.epil ]
   br i1 %cmp182, label %for.body16.lr.ph, label %if.end102
 
 for.body16.lr.ph:                                 ; preds = %for.cond14.preheader
@@ -6398,10 +6388,10 @@ for.body16.lr.ph:                                 ; preds = %for.cond14.preheade
   %wide.trip.count216 = zext i32 %n_windowSize to i64
   br label %for.body16
 
-for.body3:                                        ; preds = %for.inc11.3, %for.body3.preheader.new
-  %indvars.iv208 = phi i64 [ 0, %for.body3.preheader.new ], [ %indvars.iv.next209.3, %for.inc11.3 ]
-  %oneSampleQ.0187 = phi double [ 0.000000e+00, %for.body3.preheader.new ], [ %oneSampleQ.1.3, %for.inc11.3 ]
-  %niter = phi i64 [ 0, %for.body3.preheader.new ], [ %niter.next.3, %for.inc11.3 ]
+for.body3:                                        ; preds = %for.inc11.1, %for.body3.preheader.new
+  %indvars.iv208 = phi i64 [ 0, %for.body3.preheader.new ], [ %indvars.iv.next209.1, %for.inc11.1 ]
+  %oneSampleQ.0187 = phi double [ 0.000000e+00, %for.body3.preheader.new ], [ %oneSampleQ.1.1, %for.inc11.1 ]
+  %niter = phi i64 [ 0, %for.body3.preheader.new ], [ %niter.next.1, %for.inc11.1 ]
   %arrayidx5 = getelementptr inbounds i32, ptr %m_rgRejected, i64 %indvars.iv208
   %15 = load i32, ptr %arrayidx5, align 4
   %tobool6.not = icmp eq i32 %15, 0
@@ -6427,72 +6417,46 @@ if.then7.1:                                       ; preds = %for.inc11
 
 for.inc11.1:                                      ; preds = %if.then7.1, %for.inc11
   %oneSampleQ.1.1 = phi double [ %oneSampleQ.1, %for.inc11 ], [ %18, %if.then7.1 ]
-  %indvars.iv.next209.1 = or i64 %indvars.iv208, 2
-  %arrayidx5.2 = getelementptr inbounds i32, ptr %m_rgRejected, i64 %indvars.iv.next209.1
-  %19 = load i32, ptr %arrayidx5.2, align 4
-  %tobool6.not.2 = icmp eq i32 %19, 0
-  br i1 %tobool6.not.2, label %if.then7.2, label %for.inc11.2
-
-if.then7.2:                                       ; preds = %for.inc11.1
-  %arrayidx9.2 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 21, i64 %indvars.iv.next209.1
-  %20 = load double, ptr %arrayidx9.2, align 8
-  br label %for.inc11.2
-
-for.inc11.2:                                      ; preds = %if.then7.2, %for.inc11.1
-  %oneSampleQ.1.2 = phi double [ %oneSampleQ.1.1, %for.inc11.1 ], [ %20, %if.then7.2 ]
-  %indvars.iv.next209.2 = or i64 %indvars.iv208, 3
-  %arrayidx5.3 = getelementptr inbounds i32, ptr %m_rgRejected, i64 %indvars.iv.next209.2
-  %21 = load i32, ptr %arrayidx5.3, align 4
-  %tobool6.not.3 = icmp eq i32 %21, 0
-  br i1 %tobool6.not.3, label %if.then7.3, label %for.inc11.3
-
-if.then7.3:                                       ; preds = %for.inc11.2
-  %arrayidx9.3 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 21, i64 %indvars.iv.next209.2
-  %22 = load double, ptr %arrayidx9.3, align 8
-  br label %for.inc11.3
-
-for.inc11.3:                                      ; preds = %if.then7.3, %for.inc11.2
-  %oneSampleQ.1.3 = phi double [ %oneSampleQ.1.2, %for.inc11.2 ], [ %22, %if.then7.3 ]
-  %indvars.iv.next209.3 = add nuw nsw i64 %indvars.iv208, 4
-  %niter.next.3 = add i64 %niter, 4
-  %niter.ncmp.3 = icmp eq i64 %niter.next.3, %unroll_iter
-  br i1 %niter.ncmp.3, label %for.cond14.preheader.unr-lcssa, label %for.body3
+  %indvars.iv.next209.1 = add nuw nsw i64 %indvars.iv208, 2
+  %niter.next.1 = add i64 %niter, 2
+  %niter.ncmp.1 = icmp eq i64 %niter.next.1, %unroll_iter
+  br i1 %niter.ncmp.1, label %for.cond14.preheader.unr-lcssa, label %for.body3
 
 for.body16:                                       ; preds = %for.body16.lr.ph, %for.inc37
-  %23 = phi double [ 0.000000e+00, %for.body16.lr.ph ], [ %28, %for.inc37 ]
+  %19 = phi double [ 0.000000e+00, %for.body16.lr.ph ], [ %24, %for.inc37 ]
   %indvars.iv213 = phi i64 [ 0, %for.body16.lr.ph ], [ %indvars.iv.next214, %for.inc37 ]
   %estimateX2.0191 = phi i32 [ 0, %for.body16.lr.ph ], [ %estimateX2.1, %for.inc37 ]
   %arrayidx19 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 21, i64 %indvars.iv213
-  %24 = load double, ptr %arrayidx19, align 8
-  %cmp20 = fcmp une double %24, %oneSampleQ.1.lcssa
+  %20 = load double, ptr %arrayidx19, align 8
+  %cmp20 = fcmp une double %20, %oneSampleQ.1.lcssa
   %arrayidx22 = getelementptr inbounds i32, ptr %m_rgRejected, i64 %indvars.iv213
-  %25 = load i32, ptr %arrayidx22, align 4
-  %tobool23.not = icmp eq i32 %25, 0
-  %26 = and i1 %cmp20, %tobool23.not
-  %estimateX2.1 = select i1 %26, i32 1, i32 %estimateX2.0191
-  %tobool28.not = icmp eq i32 %25, 0
+  %21 = load i32, ptr %arrayidx22, align 4
+  %tobool23.not = icmp eq i32 %21, 0
+  %22 = and i1 %cmp20, %tobool23.not
+  %estimateX2.1 = select i1 %22, i32 1, i32 %estimateX2.0191
+  %tobool28.not = icmp eq i32 %21, 0
   br i1 %tobool28.not, label %if.then29, label %for.inc37
 
 if.then29:                                        ; preds = %for.body16
   %arrayidx34 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 22, i64 %indvars.iv213
-  %27 = load double, ptr %arrayidx34, align 8
-  %mul = fmul double %24, %27
+  %23 = load double, ptr %arrayidx34, align 8
+  %mul = fmul double %20, %23
   %div = fdiv double %mul, %conv
-  %add = fadd double %23, %div
+  %add = fadd double %19, %div
   store double %add, ptr %m_X1, align 8
   br label %for.inc37
 
 for.inc37:                                        ; preds = %for.body16, %if.then29
-  %28 = phi double [ %23, %for.body16 ], [ %add, %if.then29 ]
+  %24 = phi double [ %19, %for.body16 ], [ %add, %if.then29 ]
   %indvars.iv.next214 = add nuw nsw i64 %indvars.iv213, 1
   %exitcond217.not = icmp eq i64 %indvars.iv.next214, %wide.trip.count216
   br i1 %exitcond217.not, label %for.end39, label %for.body16
 
 for.end39:                                        ; preds = %for.inc37
-  %29 = icmp ne i32 %estimateX2.1, 0
+  %25 = icmp ne i32 %estimateX2.1, 0
   %cmp40 = icmp sgt i32 %spec.select.lcssa, 0
-  %or.cond = select i1 %cmp40, i1 %29, i1 false
-  %30 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %28, i64 0
+  %or.cond = select i1 %cmp40, i1 %25, i1 false
+  %26 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %24, i64 0
   br i1 %or.cond, label %for.cond45.preheader, label %if.end102
 
 for.cond45.preheader:                             ; preds = %for.end39
@@ -6504,102 +6468,102 @@ for.body48.preheader:                             ; preds = %for.cond45.preheade
 
 for.body48:                                       ; preds = %for.body48.preheader, %for.inc80
   %indvars.iv218 = phi i64 [ 0, %for.body48.preheader ], [ %indvars.iv.next219, %for.inc80 ]
-  %31 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %47, %for.inc80 ]
-  %32 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %48, %for.inc80 ]
-  %33 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %49, %for.inc80 ]
+  %27 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %43, %for.inc80 ]
+  %28 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %44, %for.inc80 ]
+  %29 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %45, %for.inc80 ]
   %arrayidx50 = getelementptr inbounds i32, ptr %m_rgRejected, i64 %indvars.iv218
-  %34 = load i32, ptr %arrayidx50, align 4
-  %tobool51.not = icmp eq i32 %34, 0
+  %30 = load i32, ptr %arrayidx50, align 4
+  %tobool51.not = icmp eq i32 %30, 0
   br i1 %tobool51.not, label %if.then52, label %for.inc80
 
 if.then52:                                        ; preds = %for.body48
   %arrayidx56 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 21, i64 %indvars.iv218
-  %35 = load double, ptr %arrayidx56, align 8
-  %div57 = fdiv double 1.000000e+00, %35
-  %36 = extractelement <2 x double> %33, i64 0
-  %add58 = fadd double %36, %div57
-  %mul65 = fmul double %35, %35
+  %31 = load double, ptr %arrayidx56, align 8
+  %div57 = fdiv double 1.000000e+00, %31
+  %32 = extractelement <2 x double> %29, i64 0
+  %add58 = fadd double %32, %div57
+  %mul65 = fmul double %31, %31
   %div66 = fdiv double 1.000000e+00, %mul65
-  %37 = insertelement <2 x double> <double poison, double 1.000000e+00>, double %div66, i64 0
-  %38 = fadd <2 x double> %32, %37
+  %33 = insertelement <2 x double> <double poison, double 1.000000e+00>, double %div66, i64 0
+  %34 = fadd <2 x double> %28, %33
   %arrayidx73 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 22, i64 %indvars.iv218
-  %39 = load double, ptr %arrayidx73, align 8
-  %40 = extractelement <2 x double> %31, i64 0
-  %41 = tail call double @llvm.fmuladd.f64(double %35, double %39, double %40)
-  %42 = extractelement <2 x double> %31, i64 1
-  %add78 = fadd double %42, %39
-  %43 = insertelement <2 x double> poison, double %41, i64 0
-  %44 = insertelement <2 x double> %43, double %add78, i64 1
-  %45 = insertelement <2 x double> poison, double %add58, i64 0
-  %46 = shufflevector <2 x double> %45, <2 x double> poison, <2 x i32> zeroinitializer
+  %35 = load double, ptr %arrayidx73, align 8
+  %36 = extractelement <2 x double> %27, i64 0
+  %37 = tail call double @llvm.fmuladd.f64(double %31, double %35, double %36)
+  %38 = extractelement <2 x double> %27, i64 1
+  %add78 = fadd double %38, %35
+  %39 = insertelement <2 x double> poison, double %37, i64 0
+  %40 = insertelement <2 x double> %39, double %add78, i64 1
+  %41 = insertelement <2 x double> poison, double %add58, i64 0
+  %42 = shufflevector <2 x double> %41, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.inc80
 
 for.inc80:                                        ; preds = %for.body48, %if.then52
-  %47 = phi <2 x double> [ %31, %for.body48 ], [ %44, %if.then52 ]
-  %48 = phi <2 x double> [ %32, %for.body48 ], [ %38, %if.then52 ]
-  %49 = phi <2 x double> [ %33, %for.body48 ], [ %46, %if.then52 ]
+  %43 = phi <2 x double> [ %27, %for.body48 ], [ %40, %if.then52 ]
+  %44 = phi <2 x double> [ %28, %for.body48 ], [ %34, %if.then52 ]
+  %45 = phi <2 x double> [ %29, %for.body48 ], [ %42, %if.then52 ]
   %indvars.iv.next219 = add nuw nsw i64 %indvars.iv218, 1
   %exitcond222.not = icmp eq i64 %indvars.iv.next219, %wide.trip.count221
   br i1 %exitcond222.not, label %for.end82, label %for.body48
 
 for.end82:                                        ; preds = %for.inc80, %for.cond45.preheader
-  %50 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %47, %for.inc80 ]
-  %51 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %48, %for.inc80 ]
-  %52 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %49, %for.inc80 ]
-  %53 = extractelement <2 x double> %52, i64 0
-  %54 = fneg double %53
-  %55 = extractelement <2 x double> %52, i64 1
-  %neg = fmul double %55, %54
-  %56 = extractelement <2 x double> %51, i64 0
-  %57 = extractelement <2 x double> %51, i64 1
-  %58 = tail call double @llvm.fmuladd.f64(double %57, double %56, double %neg)
-  %59 = tail call double @llvm.fabs.f64(double %58)
-  %cmp85 = fcmp ogt double %59, 0x3EB0C6F7A0B5ED8D
+  %46 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %43, %for.inc80 ]
+  %47 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %44, %for.inc80 ]
+  %48 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %45, %for.inc80 ]
+  %49 = extractelement <2 x double> %48, i64 0
+  %50 = fneg double %49
+  %51 = extractelement <2 x double> %48, i64 1
+  %neg = fmul double %51, %50
+  %52 = extractelement <2 x double> %47, i64 0
+  %53 = extractelement <2 x double> %47, i64 1
+  %54 = tail call double @llvm.fmuladd.f64(double %53, double %52, double %neg)
+  %55 = tail call double @llvm.fabs.f64(double %54)
+  %cmp85 = fcmp ogt double %55, 0x3EB0C6F7A0B5ED8D
   br i1 %cmp85, label %if.then87, label %if.else
 
 if.then87:                                        ; preds = %for.end82
-  %60 = shufflevector <2 x double> %50, <2 x double> poison, <2 x i32> <i32 1, i32 0>
-  %61 = fneg <2 x double> %60
-  %62 = fmul <2 x double> %52, %61
-  %63 = tail call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %50, <2 x double> %51, <2 x double> %62)
-  %64 = insertelement <2 x double> poison, double %58, i64 0
-  %65 = shufflevector <2 x double> %64, <2 x double> poison, <2 x i32> zeroinitializer
-  %66 = fdiv <2 x double> %63, %65
-  store <2 x double> %66, ptr %m_X1, align 8
+  %56 = shufflevector <2 x double> %46, <2 x double> poison, <2 x i32> <i32 1, i32 0>
+  %57 = fneg <2 x double> %56
+  %58 = fmul <2 x double> %48, %57
+  %59 = tail call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %46, <2 x double> %47, <2 x double> %58)
+  %60 = insertelement <2 x double> poison, double %54, i64 0
+  %61 = shufflevector <2 x double> %60, <2 x double> poison, <2 x i32> zeroinitializer
+  %62 = fdiv <2 x double> %59, %61
+  store <2 x double> %62, ptr %m_X1, align 8
   br label %if.end102
 
 if.else:                                          ; preds = %for.end82
-  %67 = extractelement <2 x double> %50, i64 0
-  %div98 = fdiv double %67, %57
+  %63 = extractelement <2 x double> %46, i64 0
+  %div98 = fdiv double %63, %53
   store double %div98, ptr %m_X1, align 8
   store double 0.000000e+00, ptr %m_X2, align 8
-  %68 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %div98, i64 0
+  %64 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %div98, i64 0
   br label %if.end102
 
 if.end102:                                        ; preds = %for.end, %for.end.thread, %for.cond14.preheader, %if.then87, %if.else, %for.end39
-  %69 = phi <2 x double> [ %66, %if.then87 ], [ %68, %if.else ], [ %30, %for.end39 ], [ zeroinitializer, %for.cond14.preheader ], [ zeroinitializer, %for.end.thread ], [ zeroinitializer, %for.end ]
-  %70 = load ptr, ptr @img, align 8
-  %type = getelementptr inbounds %struct.ImageParameters, ptr %70, i64 0, i32 5
-  %71 = load i32, ptr %type, align 4
-  %cmp103 = icmp eq i32 %71, 0
+  %65 = phi <2 x double> [ %62, %if.then87 ], [ %64, %if.else ], [ %26, %for.end39 ], [ zeroinitializer, %for.cond14.preheader ], [ zeroinitializer, %for.end.thread ], [ zeroinitializer, %for.end ]
+  %66 = load ptr, ptr @img, align 8
+  %type = getelementptr inbounds %struct.ImageParameters, ptr %66, i64 0, i32 5
+  %67 = load i32, ptr %type, align 4
+  %cmp103 = icmp eq i32 %67, 0
   br i1 %cmp103, label %land.lhs.true107, label %lor.lhs.false
 
 lor.lhs.false:                                    ; preds = %if.end102
-  %72 = load ptr, ptr @input, align 8
-  %RCUpdateMode = getelementptr inbounds %struct.InputParameters, ptr %72, i64 0, i32 162
-  %73 = load i32, ptr %RCUpdateMode, align 8
-  %cmp105 = icmp eq i32 %73, 1
+  %68 = load ptr, ptr @input, align 8
+  %RCUpdateMode = getelementptr inbounds %struct.InputParameters, ptr %68, i64 0, i32 162
+  %69 = load i32, ptr %RCUpdateMode, align 8
+  %cmp105 = icmp eq i32 %69, 1
   br i1 %cmp105, label %land.lhs.true107, label %if.end112
 
 land.lhs.true107:                                 ; preds = %lor.lhs.false, %if.end102
-  %74 = load i32, ptr %70, align 8
-  %75 = load i32, ptr @start_frame_no_in_this_IGOP, align 4
-  %tobool108.not = icmp eq i32 %74, %75
+  %70 = load i32, ptr %66, align 8
+  %71 = load i32, ptr @start_frame_no_in_this_IGOP, align 4
+  %tobool108.not = icmp eq i32 %70, %71
   br i1 %tobool108.not, label %if.end112, label %if.then109
 
 if.then109:                                       ; preds = %land.lhs.true107
   %Pm_X1 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 27
-  store <2 x double> %69, ptr %Pm_X1, align 8
+  store <2 x double> %65, ptr %Pm_X1, align 8
   br label %if.end112
 
 if.end112:                                        ; preds = %if.then109, %land.lhs.true107, %lor.lhs.false
@@ -7090,44 +7054,34 @@ for.end:                                          ; preds = %for.body, %middle.b
   br i1 %cmp179, label %for.body3.preheader, label %if.end99
 
 for.body3.preheader:                              ; preds = %for.end
-  %xtraiter = and i64 %wide.trip.count, 3
-  %12 = icmp ult i32 %n_windowSize, 4
+  %xtraiter = and i64 %wide.trip.count, 1
+  %12 = icmp eq i32 %n_windowSize, 1
   br i1 %12, label %for.cond14.preheader.unr-lcssa, label %for.body3.preheader.new
 
 for.body3.preheader.new:                          ; preds = %for.body3.preheader
-  %unroll_iter = and i64 %wide.trip.count, 4294967292
+  %unroll_iter = and i64 %wide.trip.count, 4294967294
   br label %for.body3
 
-for.cond14.preheader.unr-lcssa:                   ; preds = %for.inc11.3, %for.body3.preheader
-  %oneSampleQ.1.lcssa.ph = phi double [ undef, %for.body3.preheader ], [ %oneSampleQ.1.3, %for.inc11.3 ]
-  %indvars.iv205.unr = phi i64 [ 0, %for.body3.preheader ], [ %indvars.iv.next206.3, %for.inc11.3 ]
-  %oneSampleQ.0184.unr = phi double [ 0.000000e+00, %for.body3.preheader ], [ %oneSampleQ.1.3, %for.inc11.3 ]
+for.cond14.preheader.unr-lcssa:                   ; preds = %for.inc11.1, %for.body3.preheader
+  %oneSampleQ.1.lcssa.ph = phi double [ undef, %for.body3.preheader ], [ %oneSampleQ.1.1, %for.inc11.1 ]
+  %indvars.iv205.unr = phi i64 [ 0, %for.body3.preheader ], [ %indvars.iv.next206.1, %for.inc11.1 ]
+  %oneSampleQ.0184.unr = phi double [ 0.000000e+00, %for.body3.preheader ], [ %oneSampleQ.1.1, %for.inc11.1 ]
   %lcmp.mod.not = icmp eq i64 %xtraiter, 0
   br i1 %lcmp.mod.not, label %for.cond14.preheader, label %for.body3.epil
 
-for.body3.epil:                                   ; preds = %for.cond14.preheader.unr-lcssa, %for.inc11.epil
-  %indvars.iv205.epil = phi i64 [ %indvars.iv.next206.epil, %for.inc11.epil ], [ %indvars.iv205.unr, %for.cond14.preheader.unr-lcssa ]
-  %oneSampleQ.0184.epil = phi double [ %oneSampleQ.1.epil, %for.inc11.epil ], [ %oneSampleQ.0184.unr, %for.cond14.preheader.unr-lcssa ]
-  %epil.iter = phi i64 [ %epil.iter.next, %for.inc11.epil ], [ 0, %for.cond14.preheader.unr-lcssa ]
-  %arrayidx5.epil = getelementptr inbounds i32, ptr %PictureRejected, i64 %indvars.iv205.epil
+for.body3.epil:                                   ; preds = %for.cond14.preheader.unr-lcssa
+  %arrayidx5.epil = getelementptr inbounds i32, ptr %PictureRejected, i64 %indvars.iv205.unr
   %13 = load i32, ptr %arrayidx5.epil, align 4
   %tobool6.not.epil = icmp eq i32 %13, 0
-  br i1 %tobool6.not.epil, label %if.then7.epil, label %for.inc11.epil
+  br i1 %tobool6.not.epil, label %if.then7.epil, label %for.cond14.preheader
 
 if.then7.epil:                                    ; preds = %for.body3.epil
-  %arrayidx9.epil = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 19, i64 %indvars.iv205.epil
+  %arrayidx9.epil = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 19, i64 %indvars.iv205.unr
   %14 = load double, ptr %arrayidx9.epil, align 8
-  br label %for.inc11.epil
+  br label %for.cond14.preheader
 
-for.inc11.epil:                                   ; preds = %if.then7.epil, %for.body3.epil
-  %oneSampleQ.1.epil = phi double [ %oneSampleQ.0184.epil, %for.body3.epil ], [ %14, %if.then7.epil ]
-  %indvars.iv.next206.epil = add nuw nsw i64 %indvars.iv205.epil, 1
-  %epil.iter.next = add i64 %epil.iter, 1
-  %epil.iter.cmp.not = icmp eq i64 %epil.iter.next, %xtraiter
-  br i1 %epil.iter.cmp.not, label %for.cond14.preheader, label %for.body3.epil
-
-for.cond14.preheader:                             ; preds = %for.inc11.epil, %for.cond14.preheader.unr-lcssa
-  %oneSampleQ.1.lcssa = phi double [ %oneSampleQ.1.lcssa.ph, %for.cond14.preheader.unr-lcssa ], [ %oneSampleQ.1.epil, %for.inc11.epil ]
+for.cond14.preheader:                             ; preds = %for.body3.epil, %if.then7.epil, %for.cond14.preheader.unr-lcssa
+  %oneSampleQ.1.lcssa = phi double [ %oneSampleQ.1.lcssa.ph, %for.cond14.preheader.unr-lcssa ], [ %oneSampleQ.0184.unr, %for.body3.epil ], [ %14, %if.then7.epil ]
   br i1 %cmp179, label %for.body16.lr.ph, label %if.end99
 
 for.body16.lr.ph:                                 ; preds = %for.cond14.preheader
@@ -7135,10 +7089,10 @@ for.body16.lr.ph:                                 ; preds = %for.cond14.preheade
   %wide.trip.count213 = zext i32 %n_windowSize to i64
   br label %for.body16
 
-for.body3:                                        ; preds = %for.inc11.3, %for.body3.preheader.new
-  %indvars.iv205 = phi i64 [ 0, %for.body3.preheader.new ], [ %indvars.iv.next206.3, %for.inc11.3 ]
-  %oneSampleQ.0184 = phi double [ 0.000000e+00, %for.body3.preheader.new ], [ %oneSampleQ.1.3, %for.inc11.3 ]
-  %niter = phi i64 [ 0, %for.body3.preheader.new ], [ %niter.next.3, %for.inc11.3 ]
+for.body3:                                        ; preds = %for.inc11.1, %for.body3.preheader.new
+  %indvars.iv205 = phi i64 [ 0, %for.body3.preheader.new ], [ %indvars.iv.next206.1, %for.inc11.1 ]
+  %oneSampleQ.0184 = phi double [ 0.000000e+00, %for.body3.preheader.new ], [ %oneSampleQ.1.1, %for.inc11.1 ]
+  %niter = phi i64 [ 0, %for.body3.preheader.new ], [ %niter.next.1, %for.inc11.1 ]
   %arrayidx5 = getelementptr inbounds i32, ptr %PictureRejected, i64 %indvars.iv205
   %15 = load i32, ptr %arrayidx5, align 4
   %tobool6.not = icmp eq i32 %15, 0
@@ -7164,72 +7118,46 @@ if.then7.1:                                       ; preds = %for.inc11
 
 for.inc11.1:                                      ; preds = %if.then7.1, %for.inc11
   %oneSampleQ.1.1 = phi double [ %oneSampleQ.1, %for.inc11 ], [ %18, %if.then7.1 ]
-  %indvars.iv.next206.1 = or i64 %indvars.iv205, 2
-  %arrayidx5.2 = getelementptr inbounds i32, ptr %PictureRejected, i64 %indvars.iv.next206.1
-  %19 = load i32, ptr %arrayidx5.2, align 4
-  %tobool6.not.2 = icmp eq i32 %19, 0
-  br i1 %tobool6.not.2, label %if.then7.2, label %for.inc11.2
-
-if.then7.2:                                       ; preds = %for.inc11.1
-  %arrayidx9.2 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 19, i64 %indvars.iv.next206.1
-  %20 = load double, ptr %arrayidx9.2, align 8
-  br label %for.inc11.2
-
-for.inc11.2:                                      ; preds = %if.then7.2, %for.inc11.1
-  %oneSampleQ.1.2 = phi double [ %oneSampleQ.1.1, %for.inc11.1 ], [ %20, %if.then7.2 ]
-  %indvars.iv.next206.2 = or i64 %indvars.iv205, 3
-  %arrayidx5.3 = getelementptr inbounds i32, ptr %PictureRejected, i64 %indvars.iv.next206.2
-  %21 = load i32, ptr %arrayidx5.3, align 4
-  %tobool6.not.3 = icmp eq i32 %21, 0
-  br i1 %tobool6.not.3, label %if.then7.3, label %for.inc11.3
-
-if.then7.3:                                       ; preds = %for.inc11.2
-  %arrayidx9.3 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 19, i64 %indvars.iv.next206.2
-  %22 = load double, ptr %arrayidx9.3, align 8
-  br label %for.inc11.3
-
-for.inc11.3:                                      ; preds = %if.then7.3, %for.inc11.2
-  %oneSampleQ.1.3 = phi double [ %oneSampleQ.1.2, %for.inc11.2 ], [ %22, %if.then7.3 ]
-  %indvars.iv.next206.3 = add nuw nsw i64 %indvars.iv205, 4
-  %niter.next.3 = add i64 %niter, 4
-  %niter.ncmp.3 = icmp eq i64 %niter.next.3, %unroll_iter
-  br i1 %niter.ncmp.3, label %for.cond14.preheader.unr-lcssa, label %for.body3
+  %indvars.iv.next206.1 = add nuw nsw i64 %indvars.iv205, 2
+  %niter.next.1 = add i64 %niter, 2
+  %niter.ncmp.1 = icmp eq i64 %niter.next.1, %unroll_iter
+  br i1 %niter.ncmp.1, label %for.cond14.preheader.unr-lcssa, label %for.body3
 
 for.body16:                                       ; preds = %for.body16.lr.ph, %for.inc37
-  %23 = phi double [ 0.000000e+00, %for.body16.lr.ph ], [ %28, %for.inc37 ]
+  %19 = phi double [ 0.000000e+00, %for.body16.lr.ph ], [ %24, %for.inc37 ]
   %indvars.iv210 = phi i64 [ 0, %for.body16.lr.ph ], [ %indvars.iv.next211, %for.inc37 ]
   %estimateX2.0188 = phi i32 [ 0, %for.body16.lr.ph ], [ %estimateX2.1, %for.inc37 ]
   %arrayidx19 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 19, i64 %indvars.iv210
-  %24 = load double, ptr %arrayidx19, align 8
-  %cmp20 = fcmp une double %24, %oneSampleQ.1.lcssa
+  %20 = load double, ptr %arrayidx19, align 8
+  %cmp20 = fcmp une double %20, %oneSampleQ.1.lcssa
   %arrayidx22 = getelementptr inbounds i32, ptr %PictureRejected, i64 %indvars.iv210
-  %25 = load i32, ptr %arrayidx22, align 4
-  %tobool23.not = icmp eq i32 %25, 0
-  %26 = and i1 %cmp20, %tobool23.not
-  %estimateX2.1 = select i1 %26, i32 1, i32 %estimateX2.0188
-  %tobool28.not = icmp eq i32 %25, 0
+  %21 = load i32, ptr %arrayidx22, align 4
+  %tobool23.not = icmp eq i32 %21, 0
+  %22 = and i1 %cmp20, %tobool23.not
+  %estimateX2.1 = select i1 %22, i32 1, i32 %estimateX2.0188
+  %tobool28.not = icmp eq i32 %21, 0
   br i1 %tobool28.not, label %if.then29, label %for.inc37
 
 if.then29:                                        ; preds = %for.body16
   %arrayidx34 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 20, i64 %indvars.iv210
-  %27 = load double, ptr %arrayidx34, align 8
-  %mul = fmul double %27, %conv
-  %div = fdiv double %24, %mul
-  %add = fadd double %23, %div
+  %23 = load double, ptr %arrayidx34, align 8
+  %mul = fmul double %23, %conv
+  %div = fdiv double %20, %mul
+  %add = fadd double %19, %div
   store double %add, ptr %MADPictureC1, align 8
   br label %for.inc37
 
 for.inc37:                                        ; preds = %for.body16, %if.then29
-  %28 = phi double [ %23, %for.body16 ], [ %add, %if.then29 ]
+  %24 = phi double [ %19, %for.body16 ], [ %add, %if.then29 ]
   %indvars.iv.next211 = add nuw nsw i64 %indvars.iv210, 1
   %exitcond214.not = icmp eq i64 %indvars.iv.next211, %wide.trip.count213
   br i1 %exitcond214.not, label %for.end39, label %for.body16
 
 for.end39:                                        ; preds = %for.inc37
-  %29 = icmp ne i32 %estimateX2.1, 0
+  %25 = icmp ne i32 %estimateX2.1, 0
   %cmp40 = icmp sgt i32 %spec.select.lcssa, 0
-  %or.cond = select i1 %cmp40, i1 %29, i1 false
-  %30 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %28, i64 0
+  %or.cond = select i1 %cmp40, i1 %25, i1 false
+  %26 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %24, i64 0
   br i1 %or.cond, label %for.cond45.preheader, label %if.end99
 
 for.cond45.preheader:                             ; preds = %for.end39
@@ -7241,103 +7169,103 @@ for.body48.preheader:                             ; preds = %for.cond45.preheade
 
 for.body48:                                       ; preds = %for.body48.preheader, %for.inc77
   %indvars.iv215 = phi i64 [ 0, %for.body48.preheader ], [ %indvars.iv.next216, %for.inc77 ]
-  %31 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %50, %for.inc77 ]
-  %32 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %51, %for.inc77 ]
-  %33 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %52, %for.inc77 ]
+  %27 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %46, %for.inc77 ]
+  %28 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %47, %for.inc77 ]
+  %29 = phi <2 x double> [ zeroinitializer, %for.body48.preheader ], [ %48, %for.inc77 ]
   %arrayidx50 = getelementptr inbounds i32, ptr %PictureRejected, i64 %indvars.iv215
-  %34 = load i32, ptr %arrayidx50, align 4
-  %tobool51.not = icmp eq i32 %34, 0
+  %30 = load i32, ptr %arrayidx50, align 4
+  %tobool51.not = icmp eq i32 %30, 0
   br i1 %tobool51.not, label %if.then52, label %for.inc77
 
 if.then52:                                        ; preds = %for.body48
-  %35 = extractelement <2 x double> %32, i64 0
-  %add53 = fadd double %35, 1.000000e+00
+  %31 = extractelement <2 x double> %28, i64 0
+  %add53 = fadd double %31, 1.000000e+00
   %arrayidx56 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 20, i64 %indvars.iv215
-  %36 = load double, ptr %arrayidx56, align 8
-  %37 = extractelement <2 x double> %33, i64 1
-  %add57 = fadd double %37, %36
-  %38 = extractelement <2 x double> %32, i64 1
-  %39 = tail call double @llvm.fmuladd.f64(double %36, double %36, double %38)
+  %32 = load double, ptr %arrayidx56, align 8
+  %33 = extractelement <2 x double> %29, i64 1
+  %add57 = fadd double %33, %32
+  %34 = extractelement <2 x double> %28, i64 1
+  %35 = tail call double @llvm.fmuladd.f64(double %32, double %32, double %34)
   %arrayidx67 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 19, i64 %indvars.iv215
-  %40 = load double, ptr %arrayidx67, align 8
-  %41 = extractelement <2 x double> %31, i64 1
-  %add68 = fadd double %41, %40
-  %42 = extractelement <2 x double> %31, i64 0
-  %43 = tail call double @llvm.fmuladd.f64(double %40, double %36, double %42)
-  %44 = insertelement <2 x double> poison, double %43, i64 0
-  %45 = insertelement <2 x double> %44, double %add68, i64 1
-  %46 = insertelement <2 x double> poison, double %add53, i64 0
-  %47 = insertelement <2 x double> %46, double %39, i64 1
-  %48 = insertelement <2 x double> poison, double %add57, i64 0
-  %49 = shufflevector <2 x double> %48, <2 x double> poison, <2 x i32> zeroinitializer
+  %36 = load double, ptr %arrayidx67, align 8
+  %37 = extractelement <2 x double> %27, i64 1
+  %add68 = fadd double %37, %36
+  %38 = extractelement <2 x double> %27, i64 0
+  %39 = tail call double @llvm.fmuladd.f64(double %36, double %32, double %38)
+  %40 = insertelement <2 x double> poison, double %39, i64 0
+  %41 = insertelement <2 x double> %40, double %add68, i64 1
+  %42 = insertelement <2 x double> poison, double %add53, i64 0
+  %43 = insertelement <2 x double> %42, double %35, i64 1
+  %44 = insertelement <2 x double> poison, double %add57, i64 0
+  %45 = shufflevector <2 x double> %44, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.inc77
 
 for.inc77:                                        ; preds = %for.body48, %if.then52
-  %50 = phi <2 x double> [ %31, %for.body48 ], [ %45, %if.then52 ]
-  %51 = phi <2 x double> [ %32, %for.body48 ], [ %47, %if.then52 ]
-  %52 = phi <2 x double> [ %33, %for.body48 ], [ %49, %if.then52 ]
+  %46 = phi <2 x double> [ %27, %for.body48 ], [ %41, %if.then52 ]
+  %47 = phi <2 x double> [ %28, %for.body48 ], [ %43, %if.then52 ]
+  %48 = phi <2 x double> [ %29, %for.body48 ], [ %45, %if.then52 ]
   %indvars.iv.next216 = add nuw nsw i64 %indvars.iv215, 1
   %exitcond219.not = icmp eq i64 %indvars.iv.next216, %wide.trip.count218
   br i1 %exitcond219.not, label %for.end79, label %for.body48
 
 for.end79:                                        ; preds = %for.inc77, %for.cond45.preheader
-  %53 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %50, %for.inc77 ]
-  %54 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %51, %for.inc77 ]
-  %55 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %52, %for.inc77 ]
-  %56 = extractelement <2 x double> %55, i64 1
-  %57 = fneg double %56
-  %58 = extractelement <2 x double> %55, i64 0
-  %neg = fmul double %58, %57
-  %59 = extractelement <2 x double> %54, i64 0
-  %60 = extractelement <2 x double> %54, i64 1
-  %61 = tail call double @llvm.fmuladd.f64(double %59, double %60, double %neg)
-  %62 = tail call double @llvm.fabs.f64(double %61)
-  %cmp82 = fcmp ogt double %62, 0x3EB0C6F7A0B5ED8D
+  %49 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %46, %for.inc77 ]
+  %50 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %47, %for.inc77 ]
+  %51 = phi <2 x double> [ zeroinitializer, %for.cond45.preheader ], [ %48, %for.inc77 ]
+  %52 = extractelement <2 x double> %51, i64 1
+  %53 = fneg double %52
+  %54 = extractelement <2 x double> %51, i64 0
+  %neg = fmul double %54, %53
+  %55 = extractelement <2 x double> %50, i64 0
+  %56 = extractelement <2 x double> %50, i64 1
+  %57 = tail call double @llvm.fmuladd.f64(double %55, double %56, double %neg)
+  %58 = tail call double @llvm.fabs.f64(double %57)
+  %cmp82 = fcmp ogt double %58, 0x3EB0C6F7A0B5ED8D
   br i1 %cmp82, label %if.then84, label %if.else
 
 if.then84:                                        ; preds = %for.end79
-  %63 = shufflevector <2 x double> %53, <2 x double> poison, <2 x i32> <i32 1, i32 0>
-  %64 = fneg <2 x double> %63
-  %65 = fmul <2 x double> %55, %64
-  %66 = tail call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %53, <2 x double> %54, <2 x double> %65)
-  %67 = insertelement <2 x double> poison, double %61, i64 0
-  %68 = shufflevector <2 x double> %67, <2 x double> poison, <2 x i32> zeroinitializer
-  %69 = fdiv <2 x double> %66, %68
-  store <2 x double> %69, ptr %MADPictureC1, align 8
+  %59 = shufflevector <2 x double> %49, <2 x double> poison, <2 x i32> <i32 1, i32 0>
+  %60 = fneg <2 x double> %59
+  %61 = fmul <2 x double> %51, %60
+  %62 = tail call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %49, <2 x double> %50, <2 x double> %61)
+  %63 = insertelement <2 x double> poison, double %57, i64 0
+  %64 = shufflevector <2 x double> %63, <2 x double> poison, <2 x i32> zeroinitializer
+  %65 = fdiv <2 x double> %62, %64
+  store <2 x double> %65, ptr %MADPictureC1, align 8
   br label %if.end99
 
 if.else:                                          ; preds = %for.end79
-  %70 = extractelement <2 x double> %53, i64 1
-  %div95 = fdiv double %70, %56
+  %66 = extractelement <2 x double> %49, i64 1
+  %div95 = fdiv double %66, %52
   store double %div95, ptr %MADPictureC1, align 8
   store double 0.000000e+00, ptr %MADPictureC2, align 8
-  %71 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %div95, i64 0
+  %67 = insertelement <2 x double> <double poison, double 0.000000e+00>, double %div95, i64 0
   br label %if.end99
 
 if.end99:                                         ; preds = %for.end, %for.end.thread, %for.cond14.preheader, %if.then84, %if.else, %for.end39
-  %72 = phi <2 x double> [ %69, %if.then84 ], [ %71, %if.else ], [ %30, %for.end39 ], [ zeroinitializer, %for.cond14.preheader ], [ zeroinitializer, %for.end.thread ], [ zeroinitializer, %for.end ]
-  %73 = load ptr, ptr @img, align 8
-  %type = getelementptr inbounds %struct.ImageParameters, ptr %73, i64 0, i32 5
-  %74 = load i32, ptr %type, align 4
-  %cmp100 = icmp eq i32 %74, 0
+  %68 = phi <2 x double> [ %65, %if.then84 ], [ %67, %if.else ], [ %26, %for.end39 ], [ zeroinitializer, %for.cond14.preheader ], [ zeroinitializer, %for.end.thread ], [ zeroinitializer, %for.end ]
+  %69 = load ptr, ptr @img, align 8
+  %type = getelementptr inbounds %struct.ImageParameters, ptr %69, i64 0, i32 5
+  %70 = load i32, ptr %type, align 4
+  %cmp100 = icmp eq i32 %70, 0
   br i1 %cmp100, label %land.lhs.true104, label %lor.lhs.false
 
 lor.lhs.false:                                    ; preds = %if.end99
-  %75 = load ptr, ptr @input, align 8
-  %RCUpdateMode = getelementptr inbounds %struct.InputParameters, ptr %75, i64 0, i32 162
-  %76 = load i32, ptr %RCUpdateMode, align 8
-  %cmp102 = icmp eq i32 %76, 1
+  %71 = load ptr, ptr @input, align 8
+  %RCUpdateMode = getelementptr inbounds %struct.InputParameters, ptr %71, i64 0, i32 162
+  %72 = load i32, ptr %RCUpdateMode, align 8
+  %cmp102 = icmp eq i32 %72, 1
   br i1 %cmp102, label %land.lhs.true104, label %if.end109
 
 land.lhs.true104:                                 ; preds = %lor.lhs.false, %if.end99
-  %77 = load i32, ptr %73, align 8
-  %78 = load i32, ptr @start_frame_no_in_this_IGOP, align 4
-  %tobool105.not = icmp eq i32 %77, %78
+  %73 = load i32, ptr %69, align 8
+  %74 = load i32, ptr @start_frame_no_in_this_IGOP, align 4
+  %tobool105.not = icmp eq i32 %73, %74
   br i1 %tobool105.not, label %if.end109, label %if.then106
 
 if.then106:                                       ; preds = %land.lhs.true104
   %PMADPictureC1 = getelementptr inbounds %struct.rc_quadratic, ptr %prc, i64 0, i32 16
-  store <2 x double> %72, ptr %PMADPictureC1, align 8
+  store <2 x double> %68, ptr %PMADPictureC1, align 8
   br label %if.end109
 
 if.end109:                                        ; preds = %if.then106, %land.lhs.true104, %lor.lhs.false
@@ -8487,19 +8415,16 @@ attributes #25 = { noreturn nounwind }
 !160 = distinct !{!160, !107, !126, !125}
 !161 = distinct !{!161, !107, !125, !126}
 !162 = distinct !{!162, !107, !126, !125}
-!163 = distinct !{!163, !164}
-!164 = !{!"llvm.loop.unroll.disable"}
+!163 = distinct !{!163, !107}
+!164 = distinct !{!164, !107}
 !165 = distinct !{!165, !107}
-!166 = distinct !{!166, !107}
-!167 = distinct !{!167, !107}
-!168 = !{!18, !13, i64 88}
-!169 = !{!18, !13, i64 96}
-!170 = distinct !{!170, !107}
+!166 = !{!18, !13, i64 88}
+!167 = !{!18, !13, i64 96}
+!168 = distinct !{!168, !107}
+!169 = distinct !{!169, !107, !125, !126}
+!170 = distinct !{!170, !107, !126, !125}
 !171 = distinct !{!171, !107, !125, !126}
 !172 = distinct !{!172, !107, !126, !125}
-!173 = distinct !{!173, !107, !125, !126}
-!174 = distinct !{!174, !107, !126, !125}
-!175 = distinct !{!175, !164}
-!176 = distinct !{!176, !107}
-!177 = distinct !{!177, !107}
-!178 = distinct !{!178, !107}
+!173 = distinct !{!173, !107}
+!174 = distinct !{!174, !107}
+!175 = distinct !{!175, !107}

@@ -79,6 +79,10 @@ target triple = "x86_64-unknown-linux-gnu"
 ; Function Attrs: nounwind uwtable
 define dso_local void @InitFiles() local_unnamed_addr #0 {
 entry:
+  br label %for.body
+
+for.body:                                         ; preds = %entry, %if.end14
+  %indvars.iv = phi i64 [ 0, %entry ], [ %indvars.iv.next, %if.end14 ]
   %0 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
   %conv = zext i8 %0 to i32
   store i32 %conv, ptr @zz_size, align 4
@@ -88,13 +92,13 @@ entry:
   %cmp4 = icmp eq ptr %1, null
   br i1 %cmp4, label %if.then6, label %if.else8
 
-if.then6:                                         ; preds = %entry
+if.then6:                                         ; preds = %for.body
   %2 = load ptr, ptr @no_fpos, align 8
   %call7 = tail call ptr @GetMemory(i32 noundef %conv, ptr noundef %2) #16
   store ptr %call7, ptr @zz_hold, align 8
   br label %if.end14
 
-if.else8:                                         ; preds = %entry
+if.else8:                                         ; preds = %for.body
   store ptr %1, ptr @zz_hold, align 8
   %3 = load ptr, ptr %1, align 8
   store ptr %3, ptr %arrayidx, align 8
@@ -111,608 +115,284 @@ if.end14:                                         ; preds = %if.then6, %if.else8
   %osucc22 = getelementptr inbounds %struct.LIST, ptr %4, i64 0, i32 1
   store ptr %4, ptr %osucc22, align 8
   store ptr %4, ptr %4, align 8
-  store ptr %4, ptr @file_type, align 16
+  %arrayidx27 = getelementptr inbounds [11 x ptr], ptr @file_type, i64 0, i64 %indvars.iv
+  store ptr %4, ptr %arrayidx27, align 8
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond.not = icmp eq i64 %indvars.iv.next, 11
+  br i1 %exitcond.not, label %for.body31.preheader, label %for.body
+
+for.body31.preheader:                             ; preds = %if.end14
   %5 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.1 = zext i8 %5 to i32
-  store i32 %conv.1, ptr @zz_size, align 4
-  %conv1.1 = zext i8 %5 to i64
-  %arrayidx.1 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.1
-  %6 = load ptr, ptr %arrayidx.1, align 8
-  %cmp4.1 = icmp eq ptr %6, null
-  br i1 %cmp4.1, label %if.then6.1, label %if.else8.1
-
-if.else8.1:                                       ; preds = %if.end14
-  store ptr %6, ptr @zz_hold, align 8
-  %7 = load ptr, ptr %6, align 8
-  store ptr %7, ptr %arrayidx.1, align 8
-  br label %if.end14.1
-
-if.then6.1:                                       ; preds = %if.end14
-  %8 = load ptr, ptr @no_fpos, align 8
-  %call7.1 = tail call ptr @GetMemory(i32 noundef %conv.1, ptr noundef %8) #16
-  store ptr %call7.1, ptr @zz_hold, align 8
-  br label %if.end14.1
-
-if.end14.1:                                       ; preds = %if.then6.1, %if.else8.1
-  %9 = phi ptr [ %call7.1, %if.then6.1 ], [ %6, %if.else8.1 ]
-  %ou1.1 = getelementptr inbounds %struct.word_type, ptr %9, i64 0, i32 1
-  store i8 17, ptr %ou1.1, align 8
-  %osucc.1 = getelementptr inbounds [2 x %struct.LIST], ptr %9, i64 0, i64 1, i32 1
-  store ptr %9, ptr %osucc.1, align 8
-  %arrayidx18.1 = getelementptr inbounds [2 x %struct.LIST], ptr %9, i64 0, i64 1
-  store ptr %9, ptr %arrayidx18.1, align 8
-  %osucc22.1 = getelementptr inbounds %struct.LIST, ptr %9, i64 0, i32 1
-  store ptr %9, ptr %osucc22.1, align 8
-  store ptr %9, ptr %9, align 8
-  store ptr %9, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 1), align 8
-  %10 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.2 = zext i8 %10 to i32
-  store i32 %conv.2, ptr @zz_size, align 4
-  %conv1.2 = zext i8 %10 to i64
-  %arrayidx.2 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.2
-  %11 = load ptr, ptr %arrayidx.2, align 8
-  %cmp4.2 = icmp eq ptr %11, null
-  br i1 %cmp4.2, label %if.then6.2, label %if.else8.2
-
-if.else8.2:                                       ; preds = %if.end14.1
-  store ptr %11, ptr @zz_hold, align 8
-  %12 = load ptr, ptr %11, align 8
-  store ptr %12, ptr %arrayidx.2, align 8
-  br label %if.end14.2
-
-if.then6.2:                                       ; preds = %if.end14.1
-  %13 = load ptr, ptr @no_fpos, align 8
-  %call7.2 = tail call ptr @GetMemory(i32 noundef %conv.2, ptr noundef %13) #16
-  store ptr %call7.2, ptr @zz_hold, align 8
-  br label %if.end14.2
-
-if.end14.2:                                       ; preds = %if.then6.2, %if.else8.2
-  %14 = phi ptr [ %call7.2, %if.then6.2 ], [ %11, %if.else8.2 ]
-  %ou1.2 = getelementptr inbounds %struct.word_type, ptr %14, i64 0, i32 1
-  store i8 17, ptr %ou1.2, align 8
-  %osucc.2 = getelementptr inbounds [2 x %struct.LIST], ptr %14, i64 0, i64 1, i32 1
-  store ptr %14, ptr %osucc.2, align 8
-  %arrayidx18.2 = getelementptr inbounds [2 x %struct.LIST], ptr %14, i64 0, i64 1
-  store ptr %14, ptr %arrayidx18.2, align 8
-  %osucc22.2 = getelementptr inbounds %struct.LIST, ptr %14, i64 0, i32 1
-  store ptr %14, ptr %osucc22.2, align 8
-  store ptr %14, ptr %14, align 8
-  store ptr %14, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 2), align 16
-  %15 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.3 = zext i8 %15 to i32
-  store i32 %conv.3, ptr @zz_size, align 4
-  %conv1.3 = zext i8 %15 to i64
-  %arrayidx.3 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.3
-  %16 = load ptr, ptr %arrayidx.3, align 8
-  %cmp4.3 = icmp eq ptr %16, null
-  br i1 %cmp4.3, label %if.then6.3, label %if.else8.3
-
-if.else8.3:                                       ; preds = %if.end14.2
-  store ptr %16, ptr @zz_hold, align 8
-  %17 = load ptr, ptr %16, align 8
-  store ptr %17, ptr %arrayidx.3, align 8
-  br label %if.end14.3
-
-if.then6.3:                                       ; preds = %if.end14.2
-  %18 = load ptr, ptr @no_fpos, align 8
-  %call7.3 = tail call ptr @GetMemory(i32 noundef %conv.3, ptr noundef %18) #16
-  store ptr %call7.3, ptr @zz_hold, align 8
-  br label %if.end14.3
-
-if.end14.3:                                       ; preds = %if.then6.3, %if.else8.3
-  %19 = phi ptr [ %call7.3, %if.then6.3 ], [ %16, %if.else8.3 ]
-  %ou1.3 = getelementptr inbounds %struct.word_type, ptr %19, i64 0, i32 1
-  store i8 17, ptr %ou1.3, align 8
-  %osucc.3 = getelementptr inbounds [2 x %struct.LIST], ptr %19, i64 0, i64 1, i32 1
-  store ptr %19, ptr %osucc.3, align 8
-  %arrayidx18.3 = getelementptr inbounds [2 x %struct.LIST], ptr %19, i64 0, i64 1
-  store ptr %19, ptr %arrayidx18.3, align 8
-  %osucc22.3 = getelementptr inbounds %struct.LIST, ptr %19, i64 0, i32 1
-  store ptr %19, ptr %osucc22.3, align 8
-  store ptr %19, ptr %19, align 8
-  store ptr %19, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 3), align 8
-  %20 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.4 = zext i8 %20 to i32
-  store i32 %conv.4, ptr @zz_size, align 4
-  %conv1.4 = zext i8 %20 to i64
-  %arrayidx.4 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.4
-  %21 = load ptr, ptr %arrayidx.4, align 8
-  %cmp4.4 = icmp eq ptr %21, null
-  br i1 %cmp4.4, label %if.then6.4, label %if.else8.4
-
-if.else8.4:                                       ; preds = %if.end14.3
-  store ptr %21, ptr @zz_hold, align 8
-  %22 = load ptr, ptr %21, align 8
-  store ptr %22, ptr %arrayidx.4, align 8
-  br label %if.end14.4
-
-if.then6.4:                                       ; preds = %if.end14.3
-  %23 = load ptr, ptr @no_fpos, align 8
-  %call7.4 = tail call ptr @GetMemory(i32 noundef %conv.4, ptr noundef %23) #16
-  store ptr %call7.4, ptr @zz_hold, align 8
-  br label %if.end14.4
-
-if.end14.4:                                       ; preds = %if.then6.4, %if.else8.4
-  %24 = phi ptr [ %call7.4, %if.then6.4 ], [ %21, %if.else8.4 ]
-  %ou1.4 = getelementptr inbounds %struct.word_type, ptr %24, i64 0, i32 1
-  store i8 17, ptr %ou1.4, align 8
-  %osucc.4 = getelementptr inbounds [2 x %struct.LIST], ptr %24, i64 0, i64 1, i32 1
-  store ptr %24, ptr %osucc.4, align 8
-  %arrayidx18.4 = getelementptr inbounds [2 x %struct.LIST], ptr %24, i64 0, i64 1
-  store ptr %24, ptr %arrayidx18.4, align 8
-  %osucc22.4 = getelementptr inbounds %struct.LIST, ptr %24, i64 0, i32 1
-  store ptr %24, ptr %osucc22.4, align 8
-  store ptr %24, ptr %24, align 8
-  store ptr %24, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 4), align 16
-  %25 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.5 = zext i8 %25 to i32
-  store i32 %conv.5, ptr @zz_size, align 4
-  %conv1.5 = zext i8 %25 to i64
-  %arrayidx.5 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.5
-  %26 = load ptr, ptr %arrayidx.5, align 8
-  %cmp4.5 = icmp eq ptr %26, null
-  br i1 %cmp4.5, label %if.then6.5, label %if.else8.5
-
-if.else8.5:                                       ; preds = %if.end14.4
-  store ptr %26, ptr @zz_hold, align 8
-  %27 = load ptr, ptr %26, align 8
-  store ptr %27, ptr %arrayidx.5, align 8
-  br label %if.end14.5
-
-if.then6.5:                                       ; preds = %if.end14.4
-  %28 = load ptr, ptr @no_fpos, align 8
-  %call7.5 = tail call ptr @GetMemory(i32 noundef %conv.5, ptr noundef %28) #16
-  store ptr %call7.5, ptr @zz_hold, align 8
-  br label %if.end14.5
-
-if.end14.5:                                       ; preds = %if.then6.5, %if.else8.5
-  %29 = phi ptr [ %call7.5, %if.then6.5 ], [ %26, %if.else8.5 ]
-  %ou1.5 = getelementptr inbounds %struct.word_type, ptr %29, i64 0, i32 1
-  store i8 17, ptr %ou1.5, align 8
-  %osucc.5 = getelementptr inbounds [2 x %struct.LIST], ptr %29, i64 0, i64 1, i32 1
-  store ptr %29, ptr %osucc.5, align 8
-  %arrayidx18.5 = getelementptr inbounds [2 x %struct.LIST], ptr %29, i64 0, i64 1
-  store ptr %29, ptr %arrayidx18.5, align 8
-  %osucc22.5 = getelementptr inbounds %struct.LIST, ptr %29, i64 0, i32 1
-  store ptr %29, ptr %osucc22.5, align 8
-  store ptr %29, ptr %29, align 8
-  store ptr %29, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 5), align 8
-  %30 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.6 = zext i8 %30 to i32
-  store i32 %conv.6, ptr @zz_size, align 4
-  %conv1.6 = zext i8 %30 to i64
-  %arrayidx.6 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.6
-  %31 = load ptr, ptr %arrayidx.6, align 8
-  %cmp4.6 = icmp eq ptr %31, null
-  br i1 %cmp4.6, label %if.then6.6, label %if.else8.6
-
-if.else8.6:                                       ; preds = %if.end14.5
-  store ptr %31, ptr @zz_hold, align 8
-  %32 = load ptr, ptr %31, align 8
-  store ptr %32, ptr %arrayidx.6, align 8
-  br label %if.end14.6
-
-if.then6.6:                                       ; preds = %if.end14.5
-  %33 = load ptr, ptr @no_fpos, align 8
-  %call7.6 = tail call ptr @GetMemory(i32 noundef %conv.6, ptr noundef %33) #16
-  store ptr %call7.6, ptr @zz_hold, align 8
-  br label %if.end14.6
-
-if.end14.6:                                       ; preds = %if.then6.6, %if.else8.6
-  %34 = phi ptr [ %call7.6, %if.then6.6 ], [ %31, %if.else8.6 ]
-  %ou1.6 = getelementptr inbounds %struct.word_type, ptr %34, i64 0, i32 1
-  store i8 17, ptr %ou1.6, align 8
-  %osucc.6 = getelementptr inbounds [2 x %struct.LIST], ptr %34, i64 0, i64 1, i32 1
-  store ptr %34, ptr %osucc.6, align 8
-  %arrayidx18.6 = getelementptr inbounds [2 x %struct.LIST], ptr %34, i64 0, i64 1
-  store ptr %34, ptr %arrayidx18.6, align 8
-  %osucc22.6 = getelementptr inbounds %struct.LIST, ptr %34, i64 0, i32 1
-  store ptr %34, ptr %osucc22.6, align 8
-  store ptr %34, ptr %34, align 8
-  store ptr %34, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 6), align 16
-  %35 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.7 = zext i8 %35 to i32
-  store i32 %conv.7, ptr @zz_size, align 4
-  %conv1.7 = zext i8 %35 to i64
-  %arrayidx.7 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.7
-  %36 = load ptr, ptr %arrayidx.7, align 8
-  %cmp4.7 = icmp eq ptr %36, null
-  br i1 %cmp4.7, label %if.then6.7, label %if.else8.7
-
-if.else8.7:                                       ; preds = %if.end14.6
-  store ptr %36, ptr @zz_hold, align 8
-  %37 = load ptr, ptr %36, align 8
-  store ptr %37, ptr %arrayidx.7, align 8
-  br label %if.end14.7
-
-if.then6.7:                                       ; preds = %if.end14.6
-  %38 = load ptr, ptr @no_fpos, align 8
-  %call7.7 = tail call ptr @GetMemory(i32 noundef %conv.7, ptr noundef %38) #16
-  store ptr %call7.7, ptr @zz_hold, align 8
-  br label %if.end14.7
-
-if.end14.7:                                       ; preds = %if.then6.7, %if.else8.7
-  %39 = phi ptr [ %call7.7, %if.then6.7 ], [ %36, %if.else8.7 ]
-  %ou1.7 = getelementptr inbounds %struct.word_type, ptr %39, i64 0, i32 1
-  store i8 17, ptr %ou1.7, align 8
-  %osucc.7 = getelementptr inbounds [2 x %struct.LIST], ptr %39, i64 0, i64 1, i32 1
-  store ptr %39, ptr %osucc.7, align 8
-  %arrayidx18.7 = getelementptr inbounds [2 x %struct.LIST], ptr %39, i64 0, i64 1
-  store ptr %39, ptr %arrayidx18.7, align 8
-  %osucc22.7 = getelementptr inbounds %struct.LIST, ptr %39, i64 0, i32 1
-  store ptr %39, ptr %osucc22.7, align 8
-  store ptr %39, ptr %39, align 8
-  store ptr %39, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 7), align 8
-  %40 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.8 = zext i8 %40 to i32
-  store i32 %conv.8, ptr @zz_size, align 4
-  %conv1.8 = zext i8 %40 to i64
-  %arrayidx.8 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.8
-  %41 = load ptr, ptr %arrayidx.8, align 8
-  %cmp4.8 = icmp eq ptr %41, null
-  br i1 %cmp4.8, label %if.then6.8, label %if.else8.8
-
-if.else8.8:                                       ; preds = %if.end14.7
-  store ptr %41, ptr @zz_hold, align 8
-  %42 = load ptr, ptr %41, align 8
-  store ptr %42, ptr %arrayidx.8, align 8
-  br label %if.end14.8
-
-if.then6.8:                                       ; preds = %if.end14.7
-  %43 = load ptr, ptr @no_fpos, align 8
-  %call7.8 = tail call ptr @GetMemory(i32 noundef %conv.8, ptr noundef %43) #16
-  store ptr %call7.8, ptr @zz_hold, align 8
-  br label %if.end14.8
-
-if.end14.8:                                       ; preds = %if.then6.8, %if.else8.8
-  %44 = phi ptr [ %call7.8, %if.then6.8 ], [ %41, %if.else8.8 ]
-  %ou1.8 = getelementptr inbounds %struct.word_type, ptr %44, i64 0, i32 1
-  store i8 17, ptr %ou1.8, align 8
-  %osucc.8 = getelementptr inbounds [2 x %struct.LIST], ptr %44, i64 0, i64 1, i32 1
-  store ptr %44, ptr %osucc.8, align 8
-  %arrayidx18.8 = getelementptr inbounds [2 x %struct.LIST], ptr %44, i64 0, i64 1
-  store ptr %44, ptr %arrayidx18.8, align 8
-  %osucc22.8 = getelementptr inbounds %struct.LIST, ptr %44, i64 0, i32 1
-  store ptr %44, ptr %osucc22.8, align 8
-  store ptr %44, ptr %44, align 8
-  store ptr %44, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 8), align 16
-  %45 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.9 = zext i8 %45 to i32
-  store i32 %conv.9, ptr @zz_size, align 4
-  %conv1.9 = zext i8 %45 to i64
-  %arrayidx.9 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.9
-  %46 = load ptr, ptr %arrayidx.9, align 8
-  %cmp4.9 = icmp eq ptr %46, null
-  br i1 %cmp4.9, label %if.then6.9, label %if.else8.9
-
-if.else8.9:                                       ; preds = %if.end14.8
-  store ptr %46, ptr @zz_hold, align 8
-  %47 = load ptr, ptr %46, align 8
-  store ptr %47, ptr %arrayidx.9, align 8
-  br label %if.end14.9
-
-if.then6.9:                                       ; preds = %if.end14.8
-  %48 = load ptr, ptr @no_fpos, align 8
-  %call7.9 = tail call ptr @GetMemory(i32 noundef %conv.9, ptr noundef %48) #16
-  store ptr %call7.9, ptr @zz_hold, align 8
-  br label %if.end14.9
-
-if.end14.9:                                       ; preds = %if.then6.9, %if.else8.9
-  %49 = phi ptr [ %call7.9, %if.then6.9 ], [ %46, %if.else8.9 ]
-  %ou1.9 = getelementptr inbounds %struct.word_type, ptr %49, i64 0, i32 1
-  store i8 17, ptr %ou1.9, align 8
-  %osucc.9 = getelementptr inbounds [2 x %struct.LIST], ptr %49, i64 0, i64 1, i32 1
-  store ptr %49, ptr %osucc.9, align 8
-  %arrayidx18.9 = getelementptr inbounds [2 x %struct.LIST], ptr %49, i64 0, i64 1
-  store ptr %49, ptr %arrayidx18.9, align 8
-  %osucc22.9 = getelementptr inbounds %struct.LIST, ptr %49, i64 0, i32 1
-  store ptr %49, ptr %osucc22.9, align 8
-  store ptr %49, ptr %49, align 8
-  store ptr %49, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 9), align 8
-  %50 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv.10 = zext i8 %50 to i32
-  store i32 %conv.10, ptr @zz_size, align 4
-  %conv1.10 = zext i8 %50 to i64
-  %arrayidx.10 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv1.10
-  %51 = load ptr, ptr %arrayidx.10, align 8
-  %cmp4.10 = icmp eq ptr %51, null
-  br i1 %cmp4.10, label %if.then6.10, label %if.else8.10
-
-if.else8.10:                                      ; preds = %if.end14.9
-  store ptr %51, ptr @zz_hold, align 8
-  %52 = load ptr, ptr %51, align 8
-  store ptr %52, ptr %arrayidx.10, align 8
-  br label %if.end14.10
-
-if.then6.10:                                      ; preds = %if.end14.9
-  %53 = load ptr, ptr @no_fpos, align 8
-  %call7.10 = tail call ptr @GetMemory(i32 noundef %conv.10, ptr noundef %53) #16
-  store ptr %call7.10, ptr @zz_hold, align 8
-  br label %if.end14.10
-
-if.end14.10:                                      ; preds = %if.then6.10, %if.else8.10
-  %54 = phi ptr [ %call7.10, %if.then6.10 ], [ %51, %if.else8.10 ]
-  %ou1.10 = getelementptr inbounds %struct.word_type, ptr %54, i64 0, i32 1
-  store i8 17, ptr %ou1.10, align 8
-  %osucc.10 = getelementptr inbounds [2 x %struct.LIST], ptr %54, i64 0, i64 1, i32 1
-  store ptr %54, ptr %osucc.10, align 8
-  %arrayidx18.10 = getelementptr inbounds [2 x %struct.LIST], ptr %54, i64 0, i64 1
-  store ptr %54, ptr %arrayidx18.10, align 8
-  %osucc22.10 = getelementptr inbounds %struct.LIST, ptr %54, i64 0, i32 1
-  store ptr %54, ptr %osucc22.10, align 8
-  store ptr %54, ptr %54, align 8
-  store ptr %54, ptr getelementptr inbounds ([11 x ptr], ptr @file_type, i64 0, i64 10), align 16
-  %55 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32 = zext i8 %55 to i32
+  %conv32 = zext i8 %5 to i32
   store i32 %conv32, ptr @zz_size, align 4
-  %conv33 = zext i8 %55 to i64
+  %conv33 = zext i8 %5 to i64
   %arrayidx40 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33
-  %56 = load ptr, ptr %arrayidx40, align 8
-  %cmp41 = icmp eq ptr %56, null
+  %6 = load ptr, ptr %arrayidx40, align 8
+  %cmp41 = icmp eq ptr %6, null
   br i1 %cmp41, label %if.then43, label %if.else45
 
-if.then43:                                        ; preds = %if.end14.10
-  %57 = load ptr, ptr @no_fpos, align 8
-  %call44 = tail call ptr @GetMemory(i32 noundef %conv32, ptr noundef %57) #16
+if.then43:                                        ; preds = %for.body31.preheader
+  %7 = load ptr, ptr @no_fpos, align 8
+  %call44 = tail call ptr @GetMemory(i32 noundef %conv32, ptr noundef %7) #16
   store ptr %call44, ptr @zz_hold, align 8
   br label %if.end54
 
-if.else45:                                        ; preds = %if.end14.10
-  store ptr %56, ptr @zz_hold, align 8
-  %58 = load ptr, ptr %56, align 8
-  store ptr %58, ptr %arrayidx40, align 8
+if.else45:                                        ; preds = %for.body31.preheader
+  store ptr %6, ptr @zz_hold, align 8
+  %8 = load ptr, ptr %6, align 8
+  store ptr %8, ptr %arrayidx40, align 8
   br label %if.end54
 
 if.end54:                                         ; preds = %if.then43, %if.else45
-  %59 = phi ptr [ %call44, %if.then43 ], [ %56, %if.else45 ]
-  %ou155 = getelementptr inbounds %struct.word_type, ptr %59, i64 0, i32 1
+  %9 = phi ptr [ %call44, %if.then43 ], [ %6, %if.else45 ]
+  %ou155 = getelementptr inbounds %struct.word_type, ptr %9, i64 0, i32 1
   store i8 17, ptr %ou155, align 8
-  %osucc59 = getelementptr inbounds [2 x %struct.LIST], ptr %59, i64 0, i64 1, i32 1
-  store ptr %59, ptr %osucc59, align 8
-  %arrayidx61 = getelementptr inbounds [2 x %struct.LIST], ptr %59, i64 0, i64 1
-  store ptr %59, ptr %arrayidx61, align 8
-  %osucc65 = getelementptr inbounds %struct.LIST, ptr %59, i64 0, i32 1
-  store ptr %59, ptr %osucc65, align 8
-  store ptr %59, ptr %59, align 8
-  store ptr %59, ptr @file_path, align 16
-  %60 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32.1 = zext i8 %60 to i32
+  %osucc59 = getelementptr inbounds [2 x %struct.LIST], ptr %9, i64 0, i64 1, i32 1
+  store ptr %9, ptr %osucc59, align 8
+  %arrayidx61 = getelementptr inbounds [2 x %struct.LIST], ptr %9, i64 0, i64 1
+  store ptr %9, ptr %arrayidx61, align 8
+  %osucc65 = getelementptr inbounds %struct.LIST, ptr %9, i64 0, i32 1
+  store ptr %9, ptr %osucc65, align 8
+  store ptr %9, ptr %9, align 8
+  store ptr %9, ptr @file_path, align 16
+  %10 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv32.1 = zext i8 %10 to i32
   store i32 %conv32.1, ptr @zz_size, align 4
-  %conv33.1 = zext i8 %60 to i64
+  %conv33.1 = zext i8 %10 to i64
   %arrayidx40.1 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33.1
-  %61 = load ptr, ptr %arrayidx40.1, align 8
-  %cmp41.1 = icmp eq ptr %61, null
+  %11 = load ptr, ptr %arrayidx40.1, align 8
+  %cmp41.1 = icmp eq ptr %11, null
   br i1 %cmp41.1, label %if.then43.1, label %if.else45.1
 
 if.else45.1:                                      ; preds = %if.end54
-  store ptr %61, ptr @zz_hold, align 8
-  %62 = load ptr, ptr %61, align 8
-  store ptr %62, ptr %arrayidx40.1, align 8
+  store ptr %11, ptr @zz_hold, align 8
+  %12 = load ptr, ptr %11, align 8
+  store ptr %12, ptr %arrayidx40.1, align 8
   br label %if.end54.1
 
 if.then43.1:                                      ; preds = %if.end54
-  %63 = load ptr, ptr @no_fpos, align 8
-  %call44.1 = tail call ptr @GetMemory(i32 noundef %conv32.1, ptr noundef %63) #16
+  %13 = load ptr, ptr @no_fpos, align 8
+  %call44.1 = tail call ptr @GetMemory(i32 noundef %conv32.1, ptr noundef %13) #16
   store ptr %call44.1, ptr @zz_hold, align 8
   br label %if.end54.1
 
 if.end54.1:                                       ; preds = %if.then43.1, %if.else45.1
-  %64 = phi ptr [ %call44.1, %if.then43.1 ], [ %61, %if.else45.1 ]
-  %ou155.1 = getelementptr inbounds %struct.word_type, ptr %64, i64 0, i32 1
+  %14 = phi ptr [ %call44.1, %if.then43.1 ], [ %11, %if.else45.1 ]
+  %ou155.1 = getelementptr inbounds %struct.word_type, ptr %14, i64 0, i32 1
   store i8 17, ptr %ou155.1, align 8
-  %osucc59.1 = getelementptr inbounds [2 x %struct.LIST], ptr %64, i64 0, i64 1, i32 1
-  store ptr %64, ptr %osucc59.1, align 8
-  %arrayidx61.1 = getelementptr inbounds [2 x %struct.LIST], ptr %64, i64 0, i64 1
-  store ptr %64, ptr %arrayidx61.1, align 8
-  %osucc65.1 = getelementptr inbounds %struct.LIST, ptr %64, i64 0, i32 1
-  store ptr %64, ptr %osucc65.1, align 8
-  store ptr %64, ptr %64, align 8
-  store ptr %64, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 1), align 8
-  %65 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32.2 = zext i8 %65 to i32
+  %osucc59.1 = getelementptr inbounds [2 x %struct.LIST], ptr %14, i64 0, i64 1, i32 1
+  store ptr %14, ptr %osucc59.1, align 8
+  %arrayidx61.1 = getelementptr inbounds [2 x %struct.LIST], ptr %14, i64 0, i64 1
+  store ptr %14, ptr %arrayidx61.1, align 8
+  %osucc65.1 = getelementptr inbounds %struct.LIST, ptr %14, i64 0, i32 1
+  store ptr %14, ptr %osucc65.1, align 8
+  store ptr %14, ptr %14, align 8
+  store ptr %14, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 1), align 8
+  %15 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv32.2 = zext i8 %15 to i32
   store i32 %conv32.2, ptr @zz_size, align 4
-  %conv33.2 = zext i8 %65 to i64
+  %conv33.2 = zext i8 %15 to i64
   %arrayidx40.2 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33.2
-  %66 = load ptr, ptr %arrayidx40.2, align 8
-  %cmp41.2 = icmp eq ptr %66, null
+  %16 = load ptr, ptr %arrayidx40.2, align 8
+  %cmp41.2 = icmp eq ptr %16, null
   br i1 %cmp41.2, label %if.then43.2, label %if.else45.2
 
 if.else45.2:                                      ; preds = %if.end54.1
-  store ptr %66, ptr @zz_hold, align 8
-  %67 = load ptr, ptr %66, align 8
-  store ptr %67, ptr %arrayidx40.2, align 8
+  store ptr %16, ptr @zz_hold, align 8
+  %17 = load ptr, ptr %16, align 8
+  store ptr %17, ptr %arrayidx40.2, align 8
   br label %if.end54.2
 
 if.then43.2:                                      ; preds = %if.end54.1
-  %68 = load ptr, ptr @no_fpos, align 8
-  %call44.2 = tail call ptr @GetMemory(i32 noundef %conv32.2, ptr noundef %68) #16
+  %18 = load ptr, ptr @no_fpos, align 8
+  %call44.2 = tail call ptr @GetMemory(i32 noundef %conv32.2, ptr noundef %18) #16
   store ptr %call44.2, ptr @zz_hold, align 8
   br label %if.end54.2
 
 if.end54.2:                                       ; preds = %if.then43.2, %if.else45.2
-  %69 = phi ptr [ %call44.2, %if.then43.2 ], [ %66, %if.else45.2 ]
-  %ou155.2 = getelementptr inbounds %struct.word_type, ptr %69, i64 0, i32 1
+  %19 = phi ptr [ %call44.2, %if.then43.2 ], [ %16, %if.else45.2 ]
+  %ou155.2 = getelementptr inbounds %struct.word_type, ptr %19, i64 0, i32 1
   store i8 17, ptr %ou155.2, align 8
-  %osucc59.2 = getelementptr inbounds [2 x %struct.LIST], ptr %69, i64 0, i64 1, i32 1
-  store ptr %69, ptr %osucc59.2, align 8
-  %arrayidx61.2 = getelementptr inbounds [2 x %struct.LIST], ptr %69, i64 0, i64 1
-  store ptr %69, ptr %arrayidx61.2, align 8
-  %osucc65.2 = getelementptr inbounds %struct.LIST, ptr %69, i64 0, i32 1
-  store ptr %69, ptr %osucc65.2, align 8
-  store ptr %69, ptr %69, align 8
-  store ptr %69, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 2), align 16
-  %70 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32.3 = zext i8 %70 to i32
+  %osucc59.2 = getelementptr inbounds [2 x %struct.LIST], ptr %19, i64 0, i64 1, i32 1
+  store ptr %19, ptr %osucc59.2, align 8
+  %arrayidx61.2 = getelementptr inbounds [2 x %struct.LIST], ptr %19, i64 0, i64 1
+  store ptr %19, ptr %arrayidx61.2, align 8
+  %osucc65.2 = getelementptr inbounds %struct.LIST, ptr %19, i64 0, i32 1
+  store ptr %19, ptr %osucc65.2, align 8
+  store ptr %19, ptr %19, align 8
+  store ptr %19, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 2), align 16
+  %20 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv32.3 = zext i8 %20 to i32
   store i32 %conv32.3, ptr @zz_size, align 4
-  %conv33.3 = zext i8 %70 to i64
+  %conv33.3 = zext i8 %20 to i64
   %arrayidx40.3 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33.3
-  %71 = load ptr, ptr %arrayidx40.3, align 8
-  %cmp41.3 = icmp eq ptr %71, null
+  %21 = load ptr, ptr %arrayidx40.3, align 8
+  %cmp41.3 = icmp eq ptr %21, null
   br i1 %cmp41.3, label %if.then43.3, label %if.else45.3
 
 if.else45.3:                                      ; preds = %if.end54.2
-  store ptr %71, ptr @zz_hold, align 8
-  %72 = load ptr, ptr %71, align 8
-  store ptr %72, ptr %arrayidx40.3, align 8
+  store ptr %21, ptr @zz_hold, align 8
+  %22 = load ptr, ptr %21, align 8
+  store ptr %22, ptr %arrayidx40.3, align 8
   br label %if.end54.3
 
 if.then43.3:                                      ; preds = %if.end54.2
-  %73 = load ptr, ptr @no_fpos, align 8
-  %call44.3 = tail call ptr @GetMemory(i32 noundef %conv32.3, ptr noundef %73) #16
+  %23 = load ptr, ptr @no_fpos, align 8
+  %call44.3 = tail call ptr @GetMemory(i32 noundef %conv32.3, ptr noundef %23) #16
   store ptr %call44.3, ptr @zz_hold, align 8
   br label %if.end54.3
 
 if.end54.3:                                       ; preds = %if.then43.3, %if.else45.3
-  %74 = phi ptr [ %call44.3, %if.then43.3 ], [ %71, %if.else45.3 ]
-  %ou155.3 = getelementptr inbounds %struct.word_type, ptr %74, i64 0, i32 1
+  %24 = phi ptr [ %call44.3, %if.then43.3 ], [ %21, %if.else45.3 ]
+  %ou155.3 = getelementptr inbounds %struct.word_type, ptr %24, i64 0, i32 1
   store i8 17, ptr %ou155.3, align 8
-  %osucc59.3 = getelementptr inbounds [2 x %struct.LIST], ptr %74, i64 0, i64 1, i32 1
-  store ptr %74, ptr %osucc59.3, align 8
-  %arrayidx61.3 = getelementptr inbounds [2 x %struct.LIST], ptr %74, i64 0, i64 1
-  store ptr %74, ptr %arrayidx61.3, align 8
-  %osucc65.3 = getelementptr inbounds %struct.LIST, ptr %74, i64 0, i32 1
-  store ptr %74, ptr %osucc65.3, align 8
-  store ptr %74, ptr %74, align 8
-  store ptr %74, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 3), align 8
-  %75 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32.4 = zext i8 %75 to i32
+  %osucc59.3 = getelementptr inbounds [2 x %struct.LIST], ptr %24, i64 0, i64 1, i32 1
+  store ptr %24, ptr %osucc59.3, align 8
+  %arrayidx61.3 = getelementptr inbounds [2 x %struct.LIST], ptr %24, i64 0, i64 1
+  store ptr %24, ptr %arrayidx61.3, align 8
+  %osucc65.3 = getelementptr inbounds %struct.LIST, ptr %24, i64 0, i32 1
+  store ptr %24, ptr %osucc65.3, align 8
+  store ptr %24, ptr %24, align 8
+  store ptr %24, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 3), align 8
+  %25 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv32.4 = zext i8 %25 to i32
   store i32 %conv32.4, ptr @zz_size, align 4
-  %conv33.4 = zext i8 %75 to i64
+  %conv33.4 = zext i8 %25 to i64
   %arrayidx40.4 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33.4
-  %76 = load ptr, ptr %arrayidx40.4, align 8
-  %cmp41.4 = icmp eq ptr %76, null
+  %26 = load ptr, ptr %arrayidx40.4, align 8
+  %cmp41.4 = icmp eq ptr %26, null
   br i1 %cmp41.4, label %if.then43.4, label %if.else45.4
 
 if.else45.4:                                      ; preds = %if.end54.3
-  store ptr %76, ptr @zz_hold, align 8
-  %77 = load ptr, ptr %76, align 8
-  store ptr %77, ptr %arrayidx40.4, align 8
+  store ptr %26, ptr @zz_hold, align 8
+  %27 = load ptr, ptr %26, align 8
+  store ptr %27, ptr %arrayidx40.4, align 8
   br label %if.end54.4
 
 if.then43.4:                                      ; preds = %if.end54.3
-  %78 = load ptr, ptr @no_fpos, align 8
-  %call44.4 = tail call ptr @GetMemory(i32 noundef %conv32.4, ptr noundef %78) #16
+  %28 = load ptr, ptr @no_fpos, align 8
+  %call44.4 = tail call ptr @GetMemory(i32 noundef %conv32.4, ptr noundef %28) #16
   store ptr %call44.4, ptr @zz_hold, align 8
   br label %if.end54.4
 
 if.end54.4:                                       ; preds = %if.then43.4, %if.else45.4
-  %79 = phi ptr [ %call44.4, %if.then43.4 ], [ %76, %if.else45.4 ]
-  %ou155.4 = getelementptr inbounds %struct.word_type, ptr %79, i64 0, i32 1
+  %29 = phi ptr [ %call44.4, %if.then43.4 ], [ %26, %if.else45.4 ]
+  %ou155.4 = getelementptr inbounds %struct.word_type, ptr %29, i64 0, i32 1
   store i8 17, ptr %ou155.4, align 8
-  %osucc59.4 = getelementptr inbounds [2 x %struct.LIST], ptr %79, i64 0, i64 1, i32 1
-  store ptr %79, ptr %osucc59.4, align 8
-  %arrayidx61.4 = getelementptr inbounds [2 x %struct.LIST], ptr %79, i64 0, i64 1
-  store ptr %79, ptr %arrayidx61.4, align 8
-  %osucc65.4 = getelementptr inbounds %struct.LIST, ptr %79, i64 0, i32 1
-  store ptr %79, ptr %osucc65.4, align 8
-  store ptr %79, ptr %79, align 8
-  store ptr %79, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 4), align 16
-  %80 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32.5 = zext i8 %80 to i32
+  %osucc59.4 = getelementptr inbounds [2 x %struct.LIST], ptr %29, i64 0, i64 1, i32 1
+  store ptr %29, ptr %osucc59.4, align 8
+  %arrayidx61.4 = getelementptr inbounds [2 x %struct.LIST], ptr %29, i64 0, i64 1
+  store ptr %29, ptr %arrayidx61.4, align 8
+  %osucc65.4 = getelementptr inbounds %struct.LIST, ptr %29, i64 0, i32 1
+  store ptr %29, ptr %osucc65.4, align 8
+  store ptr %29, ptr %29, align 8
+  store ptr %29, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 4), align 16
+  %30 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv32.5 = zext i8 %30 to i32
   store i32 %conv32.5, ptr @zz_size, align 4
-  %conv33.5 = zext i8 %80 to i64
+  %conv33.5 = zext i8 %30 to i64
   %arrayidx40.5 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33.5
-  %81 = load ptr, ptr %arrayidx40.5, align 8
-  %cmp41.5 = icmp eq ptr %81, null
+  %31 = load ptr, ptr %arrayidx40.5, align 8
+  %cmp41.5 = icmp eq ptr %31, null
   br i1 %cmp41.5, label %if.then43.5, label %if.else45.5
 
 if.else45.5:                                      ; preds = %if.end54.4
-  store ptr %81, ptr @zz_hold, align 8
-  %82 = load ptr, ptr %81, align 8
-  store ptr %82, ptr %arrayidx40.5, align 8
+  store ptr %31, ptr @zz_hold, align 8
+  %32 = load ptr, ptr %31, align 8
+  store ptr %32, ptr %arrayidx40.5, align 8
   br label %if.end54.5
 
 if.then43.5:                                      ; preds = %if.end54.4
-  %83 = load ptr, ptr @no_fpos, align 8
-  %call44.5 = tail call ptr @GetMemory(i32 noundef %conv32.5, ptr noundef %83) #16
+  %33 = load ptr, ptr @no_fpos, align 8
+  %call44.5 = tail call ptr @GetMemory(i32 noundef %conv32.5, ptr noundef %33) #16
   store ptr %call44.5, ptr @zz_hold, align 8
   br label %if.end54.5
 
 if.end54.5:                                       ; preds = %if.then43.5, %if.else45.5
-  %84 = phi ptr [ %call44.5, %if.then43.5 ], [ %81, %if.else45.5 ]
-  %ou155.5 = getelementptr inbounds %struct.word_type, ptr %84, i64 0, i32 1
+  %34 = phi ptr [ %call44.5, %if.then43.5 ], [ %31, %if.else45.5 ]
+  %ou155.5 = getelementptr inbounds %struct.word_type, ptr %34, i64 0, i32 1
   store i8 17, ptr %ou155.5, align 8
-  %osucc59.5 = getelementptr inbounds [2 x %struct.LIST], ptr %84, i64 0, i64 1, i32 1
-  store ptr %84, ptr %osucc59.5, align 8
-  %arrayidx61.5 = getelementptr inbounds [2 x %struct.LIST], ptr %84, i64 0, i64 1
-  store ptr %84, ptr %arrayidx61.5, align 8
-  %osucc65.5 = getelementptr inbounds %struct.LIST, ptr %84, i64 0, i32 1
-  store ptr %84, ptr %osucc65.5, align 8
-  store ptr %84, ptr %84, align 8
-  store ptr %84, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 5), align 8
-  %85 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32.6 = zext i8 %85 to i32
+  %osucc59.5 = getelementptr inbounds [2 x %struct.LIST], ptr %34, i64 0, i64 1, i32 1
+  store ptr %34, ptr %osucc59.5, align 8
+  %arrayidx61.5 = getelementptr inbounds [2 x %struct.LIST], ptr %34, i64 0, i64 1
+  store ptr %34, ptr %arrayidx61.5, align 8
+  %osucc65.5 = getelementptr inbounds %struct.LIST, ptr %34, i64 0, i32 1
+  store ptr %34, ptr %osucc65.5, align 8
+  store ptr %34, ptr %34, align 8
+  store ptr %34, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 5), align 8
+  %35 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv32.6 = zext i8 %35 to i32
   store i32 %conv32.6, ptr @zz_size, align 4
-  %conv33.6 = zext i8 %85 to i64
+  %conv33.6 = zext i8 %35 to i64
   %arrayidx40.6 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33.6
-  %86 = load ptr, ptr %arrayidx40.6, align 8
-  %cmp41.6 = icmp eq ptr %86, null
+  %36 = load ptr, ptr %arrayidx40.6, align 8
+  %cmp41.6 = icmp eq ptr %36, null
   br i1 %cmp41.6, label %if.then43.6, label %if.else45.6
 
 if.else45.6:                                      ; preds = %if.end54.5
-  store ptr %86, ptr @zz_hold, align 8
-  %87 = load ptr, ptr %86, align 8
-  store ptr %87, ptr %arrayidx40.6, align 8
+  store ptr %36, ptr @zz_hold, align 8
+  %37 = load ptr, ptr %36, align 8
+  store ptr %37, ptr %arrayidx40.6, align 8
   br label %if.end54.6
 
 if.then43.6:                                      ; preds = %if.end54.5
-  %88 = load ptr, ptr @no_fpos, align 8
-  %call44.6 = tail call ptr @GetMemory(i32 noundef %conv32.6, ptr noundef %88) #16
+  %38 = load ptr, ptr @no_fpos, align 8
+  %call44.6 = tail call ptr @GetMemory(i32 noundef %conv32.6, ptr noundef %38) #16
   store ptr %call44.6, ptr @zz_hold, align 8
   br label %if.end54.6
 
 if.end54.6:                                       ; preds = %if.then43.6, %if.else45.6
-  %89 = phi ptr [ %call44.6, %if.then43.6 ], [ %86, %if.else45.6 ]
-  %ou155.6 = getelementptr inbounds %struct.word_type, ptr %89, i64 0, i32 1
+  %39 = phi ptr [ %call44.6, %if.then43.6 ], [ %36, %if.else45.6 ]
+  %ou155.6 = getelementptr inbounds %struct.word_type, ptr %39, i64 0, i32 1
   store i8 17, ptr %ou155.6, align 8
-  %osucc59.6 = getelementptr inbounds [2 x %struct.LIST], ptr %89, i64 0, i64 1, i32 1
-  store ptr %89, ptr %osucc59.6, align 8
-  %arrayidx61.6 = getelementptr inbounds [2 x %struct.LIST], ptr %89, i64 0, i64 1
-  store ptr %89, ptr %arrayidx61.6, align 8
-  %osucc65.6 = getelementptr inbounds %struct.LIST, ptr %89, i64 0, i32 1
-  store ptr %89, ptr %osucc65.6, align 8
-  store ptr %89, ptr %89, align 8
-  store ptr %89, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 6), align 16
-  %90 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv32.7 = zext i8 %90 to i32
+  %osucc59.6 = getelementptr inbounds [2 x %struct.LIST], ptr %39, i64 0, i64 1, i32 1
+  store ptr %39, ptr %osucc59.6, align 8
+  %arrayidx61.6 = getelementptr inbounds [2 x %struct.LIST], ptr %39, i64 0, i64 1
+  store ptr %39, ptr %arrayidx61.6, align 8
+  %osucc65.6 = getelementptr inbounds %struct.LIST, ptr %39, i64 0, i32 1
+  store ptr %39, ptr %osucc65.6, align 8
+  store ptr %39, ptr %39, align 8
+  store ptr %39, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 6), align 16
+  %40 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv32.7 = zext i8 %40 to i32
   store i32 %conv32.7, ptr @zz_size, align 4
-  %conv33.7 = zext i8 %90 to i64
+  %conv33.7 = zext i8 %40 to i64
   %arrayidx40.7 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv33.7
-  %91 = load ptr, ptr %arrayidx40.7, align 8
-  %cmp41.7 = icmp eq ptr %91, null
+  %41 = load ptr, ptr %arrayidx40.7, align 8
+  %cmp41.7 = icmp eq ptr %41, null
   br i1 %cmp41.7, label %if.then43.7, label %if.else45.7
 
 if.else45.7:                                      ; preds = %if.end54.6
-  store ptr %91, ptr @zz_hold, align 8
-  %92 = load ptr, ptr %91, align 8
-  store ptr %92, ptr %arrayidx40.7, align 8
+  store ptr %41, ptr @zz_hold, align 8
+  %42 = load ptr, ptr %41, align 8
+  store ptr %42, ptr %arrayidx40.7, align 8
   br label %if.end54.7
 
 if.then43.7:                                      ; preds = %if.end54.6
-  %93 = load ptr, ptr @no_fpos, align 8
-  %call44.7 = tail call ptr @GetMemory(i32 noundef %conv32.7, ptr noundef %93) #16
+  %43 = load ptr, ptr @no_fpos, align 8
+  %call44.7 = tail call ptr @GetMemory(i32 noundef %conv32.7, ptr noundef %43) #16
   store ptr %call44.7, ptr @zz_hold, align 8
   br label %if.end54.7
 
 if.end54.7:                                       ; preds = %if.then43.7, %if.else45.7
-  %94 = phi ptr [ %call44.7, %if.then43.7 ], [ %91, %if.else45.7 ]
-  %ou155.7 = getelementptr inbounds %struct.word_type, ptr %94, i64 0, i32 1
+  %44 = phi ptr [ %call44.7, %if.then43.7 ], [ %41, %if.else45.7 ]
+  %ou155.7 = getelementptr inbounds %struct.word_type, ptr %44, i64 0, i32 1
   store i8 17, ptr %ou155.7, align 8
-  %osucc59.7 = getelementptr inbounds [2 x %struct.LIST], ptr %94, i64 0, i64 1, i32 1
-  store ptr %94, ptr %osucc59.7, align 8
-  %arrayidx61.7 = getelementptr inbounds [2 x %struct.LIST], ptr %94, i64 0, i64 1
-  store ptr %94, ptr %arrayidx61.7, align 8
-  %osucc65.7 = getelementptr inbounds %struct.LIST, ptr %94, i64 0, i32 1
-  store ptr %94, ptr %osucc65.7, align 8
-  store ptr %94, ptr %94, align 8
-  store ptr %94, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 7), align 8
+  %osucc59.7 = getelementptr inbounds [2 x %struct.LIST], ptr %44, i64 0, i64 1, i32 1
+  store ptr %44, ptr %osucc59.7, align 8
+  %arrayidx61.7 = getelementptr inbounds [2 x %struct.LIST], ptr %44, i64 0, i64 1
+  store ptr %44, ptr %arrayidx61.7, align 8
+  %osucc65.7 = getelementptr inbounds %struct.LIST, ptr %44, i64 0, i32 1
+  store ptr %44, ptr %osucc65.7, align 8
+  store ptr %44, ptr %44, align 8
+  store ptr %44, ptr getelementptr inbounds ([8 x ptr], ptr @file_path, i64 0, i64 7), align 8
   %call.i = tail call noalias dereferenceable_or_null(56) ptr @malloc(i64 noundef 56) #17
   %cmp.i = icmp eq ptr %call.i, null
   br i1 %cmp.i, label %if.then.i, label %ftab_new.exit
 
 if.then.i:                                        ; preds = %if.end54.7
-  %95 = load ptr, ptr @no_fpos, align 8
-  %call2.i = tail call ptr (i32, i32, ptr, i32, ptr, ...) @Error(i32 noundef 3, i32 noundef 1, ptr noundef nonnull @.str.33, i32 noundef 1, ptr noundef %95) #16
+  %45 = load ptr, ptr @no_fpos, align 8
+  %call2.i = tail call ptr (i32, i32, ptr, i32, ptr, ...) @Error(i32 noundef 3, i32 noundef 1, ptr noundef nonnull @.str.33, i32 noundef 1, ptr noundef %45) #16
   br label %ftab_new.exit
 
 ftab_new.exit:                                    ; preds = %if.end54.7, %if.then.i
@@ -720,120 +400,120 @@ ftab_new.exit:                                    ; preds = %if.end54.7, %if.the
   %filetab_count.i = getelementptr inbounds %struct.anon.14, ptr %call.i, i64 0, i32 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(52) %filetab_count.i, i8 0, i64 52, i1 false)
   store ptr %call.i, ptr @file_tab, align 8
-  %96 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
-  %conv75 = zext i8 %96 to i32
+  %46 = load i8, ptr getelementptr inbounds ([0 x i8], ptr @zz_lengths, i64 0, i64 17), align 1
+  %conv75 = zext i8 %46 to i32
   store i32 %conv75, ptr @zz_size, align 4
-  %conv76 = zext i8 %96 to i64
+  %conv76 = zext i8 %46 to i64
   %arrayidx83 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv76
-  %97 = load ptr, ptr %arrayidx83, align 8
-  %cmp84 = icmp eq ptr %97, null
+  %47 = load ptr, ptr %arrayidx83, align 8
+  %cmp84 = icmp eq ptr %47, null
   br i1 %cmp84, label %if.then86, label %if.else88
 
 if.then86:                                        ; preds = %ftab_new.exit
-  %98 = load ptr, ptr @no_fpos, align 8
-  %call87 = tail call ptr @GetMemory(i32 noundef %conv75, ptr noundef %98) #16
+  %48 = load ptr, ptr @no_fpos, align 8
+  %call87 = tail call ptr @GetMemory(i32 noundef %conv75, ptr noundef %48) #16
   store ptr %call87, ptr @zz_hold, align 8
   br label %if.end97
 
 if.else88:                                        ; preds = %ftab_new.exit
-  store ptr %97, ptr @zz_hold, align 8
-  %99 = load ptr, ptr %97, align 8
-  store ptr %99, ptr %arrayidx83, align 8
+  store ptr %47, ptr @zz_hold, align 8
+  %49 = load ptr, ptr %47, align 8
+  store ptr %49, ptr %arrayidx83, align 8
   br label %if.end97
 
 if.end97:                                         ; preds = %if.then86, %if.else88
-  %100 = phi ptr [ %call87, %if.then86 ], [ %97, %if.else88 ]
-  %ou198 = getelementptr inbounds %struct.word_type, ptr %100, i64 0, i32 1
+  %50 = phi ptr [ %call87, %if.then86 ], [ %47, %if.else88 ]
+  %ou198 = getelementptr inbounds %struct.word_type, ptr %50, i64 0, i32 1
   store i8 17, ptr %ou198, align 8
-  %osucc102 = getelementptr inbounds [2 x %struct.LIST], ptr %100, i64 0, i64 1, i32 1
-  store ptr %100, ptr %osucc102, align 8
-  %arrayidx104 = getelementptr inbounds [2 x %struct.LIST], ptr %100, i64 0, i64 1
-  store ptr %100, ptr %arrayidx104, align 8
-  %osucc108 = getelementptr inbounds %struct.LIST, ptr %100, i64 0, i32 1
-  store ptr %100, ptr %osucc108, align 8
-  store ptr %100, ptr %100, align 8
-  store ptr %100, ptr @empty_path, align 8
-  %101 = load ptr, ptr @no_fpos, align 8
-  %call112 = tail call ptr @MakeWord(i32 noundef 11, ptr noundef nonnull @.str.1, ptr noundef %101) #16
-  %102 = load i8, ptr @zz_lengths, align 1
-  %conv113 = zext i8 %102 to i32
+  %osucc102 = getelementptr inbounds [2 x %struct.LIST], ptr %50, i64 0, i64 1, i32 1
+  store ptr %50, ptr %osucc102, align 8
+  %arrayidx104 = getelementptr inbounds [2 x %struct.LIST], ptr %50, i64 0, i64 1
+  store ptr %50, ptr %arrayidx104, align 8
+  %osucc108 = getelementptr inbounds %struct.LIST, ptr %50, i64 0, i32 1
+  store ptr %50, ptr %osucc108, align 8
+  store ptr %50, ptr %50, align 8
+  store ptr %50, ptr @empty_path, align 8
+  %51 = load ptr, ptr @no_fpos, align 8
+  %call112 = tail call ptr @MakeWord(i32 noundef 11, ptr noundef nonnull @.str.1, ptr noundef %51) #16
+  %52 = load i8, ptr @zz_lengths, align 1
+  %conv113 = zext i8 %52 to i32
   store i32 %conv113, ptr @zz_size, align 4
-  %conv114 = zext i8 %102 to i64
+  %conv114 = zext i8 %52 to i64
   %arrayidx121 = getelementptr inbounds [0 x ptr], ptr @zz_free, i64 0, i64 %conv114
-  %103 = load ptr, ptr %arrayidx121, align 8
-  %cmp122 = icmp eq ptr %103, null
+  %53 = load ptr, ptr %arrayidx121, align 8
+  %cmp122 = icmp eq ptr %53, null
   br i1 %cmp122, label %if.then124, label %if.else126
 
 if.then124:                                       ; preds = %if.end97
-  %104 = load ptr, ptr @no_fpos, align 8
-  %call125 = tail call ptr @GetMemory(i32 noundef %conv113, ptr noundef %104) #16
+  %54 = load ptr, ptr @no_fpos, align 8
+  %call125 = tail call ptr @GetMemory(i32 noundef %conv113, ptr noundef %54) #16
   br label %if.end135
 
 if.else126:                                       ; preds = %if.end97
-  store ptr %103, ptr @zz_hold, align 8
-  %105 = load ptr, ptr %103, align 8
-  store ptr %105, ptr %arrayidx121, align 8
+  store ptr %53, ptr @zz_hold, align 8
+  %55 = load ptr, ptr %53, align 8
+  store ptr %55, ptr %arrayidx121, align 8
   br label %if.end135
 
 if.end135:                                        ; preds = %if.then124, %if.else126
-  %106 = phi ptr [ %call125, %if.then124 ], [ %103, %if.else126 ]
-  %ou1136 = getelementptr inbounds %struct.word_type, ptr %106, i64 0, i32 1
+  %56 = phi ptr [ %call125, %if.then124 ], [ %53, %if.else126 ]
+  %ou1136 = getelementptr inbounds %struct.word_type, ptr %56, i64 0, i32 1
   store i8 0, ptr %ou1136, align 8
-  %osucc140 = getelementptr inbounds [2 x %struct.LIST], ptr %106, i64 0, i64 1, i32 1
-  store ptr %106, ptr %osucc140, align 8
-  %arrayidx142 = getelementptr inbounds [2 x %struct.LIST], ptr %106, i64 0, i64 1
-  store ptr %106, ptr %arrayidx142, align 8
-  %osucc146 = getelementptr inbounds %struct.LIST, ptr %106, i64 0, i32 1
-  store ptr %106, ptr %osucc146, align 8
-  store ptr %106, ptr %106, align 8
-  store ptr %106, ptr @xx_link, align 8
-  store ptr %106, ptr @zz_res, align 8
-  %107 = load ptr, ptr @empty_path, align 8
-  store ptr %107, ptr @zz_hold, align 8
-  %cmp150 = icmp eq ptr %107, null
+  %osucc140 = getelementptr inbounds [2 x %struct.LIST], ptr %56, i64 0, i64 1, i32 1
+  store ptr %56, ptr %osucc140, align 8
+  %arrayidx142 = getelementptr inbounds [2 x %struct.LIST], ptr %56, i64 0, i64 1
+  store ptr %56, ptr %arrayidx142, align 8
+  %osucc146 = getelementptr inbounds %struct.LIST, ptr %56, i64 0, i32 1
+  store ptr %56, ptr %osucc146, align 8
+  store ptr %56, ptr %56, align 8
+  store ptr %56, ptr @xx_link, align 8
+  store ptr %56, ptr @zz_res, align 8
+  %57 = load ptr, ptr @empty_path, align 8
+  store ptr %57, ptr @zz_hold, align 8
+  %cmp150 = icmp eq ptr %57, null
   br i1 %cmp150, label %cond.end177, label %cond.false155
 
 cond.false155:                                    ; preds = %if.end135
-  %108 = load ptr, ptr %107, align 8
-  store ptr %108, ptr @zz_tmp, align 8
-  %109 = load ptr, ptr %106, align 8
-  store ptr %109, ptr %107, align 8
-  %110 = load ptr, ptr @zz_hold, align 8
-  %111 = load ptr, ptr @zz_res, align 8
-  %112 = load ptr, ptr %111, align 8
-  %osucc170 = getelementptr inbounds %struct.LIST, ptr %112, i64 0, i32 1
-  store ptr %110, ptr %osucc170, align 8
-  %113 = load ptr, ptr @zz_tmp, align 8
-  store ptr %113, ptr %111, align 8
-  %114 = load ptr, ptr @zz_res, align 8
-  %115 = load ptr, ptr @zz_tmp, align 8
-  %osucc176 = getelementptr inbounds %struct.LIST, ptr %115, i64 0, i32 1
-  store ptr %114, ptr %osucc176, align 8
+  %58 = load ptr, ptr %57, align 8
+  store ptr %58, ptr @zz_tmp, align 8
+  %59 = load ptr, ptr %56, align 8
+  store ptr %59, ptr %57, align 8
+  %60 = load ptr, ptr @zz_hold, align 8
+  %61 = load ptr, ptr @zz_res, align 8
+  %62 = load ptr, ptr %61, align 8
+  %osucc170 = getelementptr inbounds %struct.LIST, ptr %62, i64 0, i32 1
+  store ptr %60, ptr %osucc170, align 8
+  %63 = load ptr, ptr @zz_tmp, align 8
+  store ptr %63, ptr %61, align 8
+  %64 = load ptr, ptr @zz_res, align 8
+  %65 = load ptr, ptr @zz_tmp, align 8
+  %osucc176 = getelementptr inbounds %struct.LIST, ptr %65, i64 0, i32 1
+  store ptr %64, ptr %osucc176, align 8
   %.pre = load ptr, ptr @xx_link, align 8
   br label %cond.end177
 
 cond.end177:                                      ; preds = %if.end135, %cond.false155
-  %116 = phi ptr [ %106, %if.end135 ], [ %.pre, %cond.false155 ]
-  store ptr %116, ptr @zz_res, align 8
+  %66 = phi ptr [ %56, %if.end135 ], [ %.pre, %cond.false155 ]
+  store ptr %66, ptr @zz_res, align 8
   store ptr %call112, ptr @zz_hold, align 8
   %cmp179 = icmp eq ptr %call112, null
-  %cmp183 = icmp eq ptr %116, null
+  %cmp183 = icmp eq ptr %66, null
   %or.cond221 = select i1 %cmp179, i1 true, i1 %cmp183
   br i1 %or.cond221, label %cond.end210, label %cond.false186
 
 cond.false186:                                    ; preds = %cond.end177
   %arrayidx188 = getelementptr inbounds [2 x %struct.LIST], ptr %call112, i64 0, i64 1
-  %117 = load ptr, ptr %arrayidx188, align 8
-  store ptr %117, ptr @zz_tmp, align 8
-  %arrayidx191 = getelementptr inbounds [2 x %struct.LIST], ptr %116, i64 0, i64 1
-  %118 = load ptr, ptr %arrayidx191, align 8
-  store ptr %118, ptr %arrayidx188, align 8
-  %119 = load ptr, ptr %arrayidx191, align 8
-  %osucc201 = getelementptr inbounds [2 x %struct.LIST], ptr %119, i64 0, i64 1, i32 1
+  %67 = load ptr, ptr %arrayidx188, align 8
+  store ptr %67, ptr @zz_tmp, align 8
+  %arrayidx191 = getelementptr inbounds [2 x %struct.LIST], ptr %66, i64 0, i64 1
+  %68 = load ptr, ptr %arrayidx191, align 8
+  store ptr %68, ptr %arrayidx188, align 8
+  %69 = load ptr, ptr %arrayidx191, align 8
+  %osucc201 = getelementptr inbounds [2 x %struct.LIST], ptr %69, i64 0, i64 1, i32 1
   store ptr %call112, ptr %osucc201, align 8
-  store ptr %117, ptr %arrayidx191, align 8
-  %osucc207 = getelementptr inbounds [2 x %struct.LIST], ptr %117, i64 0, i64 1, i32 1
-  store ptr %116, ptr %osucc207, align 8
+  store ptr %67, ptr %arrayidx191, align 8
+  %osucc207 = getelementptr inbounds [2 x %struct.LIST], ptr %67, i64 0, i64 1, i32 1
+  store ptr %66, ptr %osucc207, align 8
   br label %cond.end210
 
 cond.end210:                                      ; preds = %cond.end177, %cond.false186
@@ -2885,32 +2565,33 @@ attributes #20 = { noreturn nounwind }
 !9 = !{!"int", !6, i64 0}
 !10 = !{!11, !11, i64 0}
 !11 = !{!"any pointer", !6, i64 0}
-!12 = !{!13, !9, i64 0}
-!13 = !{!"", !9, i64 0, !9, i64 4, !6, i64 8}
-!14 = !{!13, !9, i64 4}
-!15 = !{!16, !11, i64 0}
-!16 = !{!"filetab_rec", !11, i64 0, !11, i64 8}
-!17 = distinct !{!17, !18}
-!18 = !{!"llvm.loop.mustprogress"}
-!19 = !{!16, !11, i64 8}
-!20 = distinct !{!20, !18}
-!21 = distinct !{!21, !18}
-!22 = distinct !{!22, !18}
-!23 = distinct !{!23, !18}
-!24 = distinct !{!24, !18}
-!25 = distinct !{!25, !18}
-!26 = distinct !{!26, !18}
-!27 = !{!28, !29, i64 2}
-!28 = !{!"", !6, i64 0, !6, i64 1, !29, i64 2, !9, i64 4, !9, i64 6}
-!29 = !{!"short", !6, i64 0}
-!30 = distinct !{!30, !18}
-!31 = !{i16 0, i16 4096}
-!32 = distinct !{!32, !18}
-!33 = distinct !{!33, !18}
-!34 = distinct !{!34, !18}
-!35 = distinct !{!35, !18}
-!36 = !{!37, !38, i64 88}
-!37 = !{!"stat", !38, i64 0, !38, i64 8, !38, i64 16, !9, i64 24, !9, i64 28, !9, i64 32, !9, i64 36, !38, i64 40, !38, i64 48, !38, i64 56, !38, i64 64, !39, i64 72, !39, i64 88, !39, i64 104, !6, i64 120}
-!38 = !{!"long", !6, i64 0}
-!39 = !{!"timespec", !38, i64 0, !38, i64 8}
-!40 = distinct !{!40, !18}
+!12 = distinct !{!12, !13}
+!13 = !{!"llvm.loop.mustprogress"}
+!14 = !{!15, !9, i64 0}
+!15 = !{!"", !9, i64 0, !9, i64 4, !6, i64 8}
+!16 = !{!15, !9, i64 4}
+!17 = !{!18, !11, i64 0}
+!18 = !{!"filetab_rec", !11, i64 0, !11, i64 8}
+!19 = distinct !{!19, !13}
+!20 = !{!18, !11, i64 8}
+!21 = distinct !{!21, !13}
+!22 = distinct !{!22, !13}
+!23 = distinct !{!23, !13}
+!24 = distinct !{!24, !13}
+!25 = distinct !{!25, !13}
+!26 = distinct !{!26, !13}
+!27 = distinct !{!27, !13}
+!28 = !{!29, !30, i64 2}
+!29 = !{!"", !6, i64 0, !6, i64 1, !30, i64 2, !9, i64 4, !9, i64 6}
+!30 = !{!"short", !6, i64 0}
+!31 = distinct !{!31, !13}
+!32 = !{i16 0, i16 4096}
+!33 = distinct !{!33, !13}
+!34 = distinct !{!34, !13}
+!35 = distinct !{!35, !13}
+!36 = distinct !{!36, !13}
+!37 = !{!38, !39, i64 88}
+!38 = !{!"stat", !39, i64 0, !39, i64 8, !39, i64 16, !9, i64 24, !9, i64 28, !9, i64 32, !9, i64 36, !39, i64 40, !39, i64 48, !39, i64 56, !39, i64 64, !40, i64 72, !40, i64 88, !40, i64 104, !6, i64 120}
+!39 = !{!"long", !6, i64 0}
+!40 = !{!"timespec", !39, i64 0, !39, i64 8}
+!41 = distinct !{!41, !13}

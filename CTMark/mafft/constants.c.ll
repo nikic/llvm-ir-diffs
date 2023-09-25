@@ -1853,31 +1853,36 @@ for.cond231.preheader:                            ; preds = %for.body227, %if.en
   %225 = load <2 x double>, ptr %arrayidx242.2.3, align 8
   %226 = fmul <2 x double> %225, <double 4.000000e+00, double 4.000000e+00>
   store <2 x double> %226, ptr %arrayidx242.2.3, align 8
-  %227 = load ptr, ptr %call, align 8
-  %228 = load double, ptr %227, align 8
-  %cmp262 = fcmp oeq double %228, 0.000000e+00
-  br i1 %cmp262, label %if.then264, label %if.end270
+  br label %for.cond254.preheader
 
 for.body227:                                      ; preds = %if.end223, %for.body227
   %x.03466 = phi i32 [ %inc229, %for.body227 ], [ 0, %if.end223 ]
   tail call void @MtxmltDouble(ptr noundef %call, ptr noundef nonnull %call1, i32 noundef 4) #15
   %inc229 = add nuw nsw i32 %x.03466, 1
-  %229 = load i32, ptr @pamN, align 4
-  %cmp225 = icmp slt i32 %inc229, %229
+  %227 = load i32, ptr @pamN, align 4
+  %cmp225 = icmp slt i32 %inc229, %227
   br i1 %cmp225, label %for.body227, label %for.cond231.preheader
 
-if.then264:                                       ; preds = %for.cond231.preheader
+for.cond254.preheader:                            ; preds = %for.cond231.preheader, %if.end270.3
+  %indvars.iv3845 = phi i64 [ 0, %for.cond231.preheader ], [ %indvars.iv.next3846, %if.end270.3 ]
+  %arrayidx259 = getelementptr inbounds ptr, ptr %call, i64 %indvars.iv3845
+  %228 = load ptr, ptr %arrayidx259, align 8
+  %229 = load double, ptr %228, align 8
+  %cmp262 = fcmp oeq double %229, 0.000000e+00
+  br i1 %cmp262, label %if.then264, label %if.end270
+
+if.then264:                                       ; preds = %for.cond254.preheader
   %230 = load ptr, ptr @stderr, align 8
   %231 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %230) #16
-  %232 = load ptr, ptr %call, align 8
+  %232 = load ptr, ptr %arrayidx259, align 8
   store double 1.000000e-05, ptr %232, align 8
   br label %if.end270
 
-if.end270:                                        ; preds = %if.then264, %for.cond231.preheader
-  %233 = phi double [ 1.000000e-05, %if.then264 ], [ %228, %for.cond231.preheader ]
+if.end270:                                        ; preds = %if.then264, %for.cond254.preheader
+  %233 = phi double [ 1.000000e-05, %if.then264 ], [ %229, %for.cond254.preheader ]
   %call275 = tail call double @log10(double noundef %233) #15
   %mul276 = fmul double %call275, 1.000000e+03
-  %234 = load ptr, ptr %call, align 8
+  %234 = load ptr, ptr %arrayidx259, align 8
   store double %mul276, ptr %234, align 8
   %arrayidx261.1 = getelementptr inbounds double, ptr %234, i64 1
   %235 = load double, ptr %arrayidx261.1, align 8
@@ -1887,7 +1892,7 @@ if.end270:                                        ; preds = %if.then264, %for.co
 if.then264.1:                                     ; preds = %if.end270
   %236 = load ptr, ptr @stderr, align 8
   %237 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %236) #16
-  %238 = load ptr, ptr %call, align 8
+  %238 = load ptr, ptr %arrayidx259, align 8
   %arrayidx269.1 = getelementptr inbounds double, ptr %238, i64 1
   store double 1.000000e-05, ptr %arrayidx269.1, align 8
   br label %if.end270.1
@@ -1896,7 +1901,7 @@ if.end270.1:                                      ; preds = %if.then264.1, %if.e
   %239 = phi double [ 1.000000e-05, %if.then264.1 ], [ %235, %if.end270 ]
   %call275.1 = tail call double @log10(double noundef %239) #15
   %mul276.1 = fmul double %call275.1, 1.000000e+03
-  %240 = load ptr, ptr %call, align 8
+  %240 = load ptr, ptr %arrayidx259, align 8
   %arrayidx280.1 = getelementptr inbounds double, ptr %240, i64 1
   store double %mul276.1, ptr %arrayidx280.1, align 8
   %arrayidx261.2 = getelementptr inbounds double, ptr %240, i64 2
@@ -1907,7 +1912,7 @@ if.end270.1:                                      ; preds = %if.then264.1, %if.e
 if.then264.2:                                     ; preds = %if.end270.1
   %242 = load ptr, ptr @stderr, align 8
   %243 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %242) #16
-  %244 = load ptr, ptr %call, align 8
+  %244 = load ptr, ptr %arrayidx259, align 8
   %arrayidx269.2 = getelementptr inbounds double, ptr %244, i64 2
   store double 1.000000e-05, ptr %arrayidx269.2, align 8
   br label %if.end270.2
@@ -1916,7 +1921,7 @@ if.end270.2:                                      ; preds = %if.then264.2, %if.e
   %245 = phi double [ 1.000000e-05, %if.then264.2 ], [ %241, %if.end270.1 ]
   %call275.2 = tail call double @log10(double noundef %245) #15
   %mul276.2 = fmul double %call275.2, 1.000000e+03
-  %246 = load ptr, ptr %call, align 8
+  %246 = load ptr, ptr %arrayidx259, align 8
   %arrayidx280.2 = getelementptr inbounds double, ptr %246, i64 2
   store double %mul276.2, ptr %arrayidx280.2, align 8
   %arrayidx261.3 = getelementptr inbounds double, ptr %246, i64 3
@@ -1927,7 +1932,7 @@ if.end270.2:                                      ; preds = %if.then264.2, %if.e
 if.then264.3:                                     ; preds = %if.end270.2
   %248 = load ptr, ptr @stderr, align 8
   %249 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %248) #16
-  %250 = load ptr, ptr %call, align 8
+  %250 = load ptr, ptr %arrayidx259, align 8
   %arrayidx269.3 = getelementptr inbounds double, ptr %250, i64 3
   store double 1.000000e-05, ptr %arrayidx269.3, align 8
   br label %if.end270.3
@@ -1936,450 +1941,218 @@ if.end270.3:                                      ; preds = %if.then264.3, %if.e
   %251 = phi double [ 1.000000e-05, %if.then264.3 ], [ %247, %if.end270.2 ]
   %call275.3 = tail call double @log10(double noundef %251) #15
   %mul276.3 = fmul double %call275.3, 1.000000e+03
-  %252 = load ptr, ptr %call, align 8
+  %252 = load ptr, ptr %arrayidx259, align 8
   %arrayidx280.3 = getelementptr inbounds double, ptr %252, i64 3
   store double %mul276.3, ptr %arrayidx280.3, align 8
-  %arrayidx259.1 = getelementptr inbounds ptr, ptr %call, i64 1
-  %253 = load ptr, ptr %arrayidx259.1, align 8
-  %254 = load double, ptr %253, align 8
-  %cmp262.14638 = fcmp oeq double %254, 0.000000e+00
-  br i1 %cmp262.14638, label %if.then264.14639, label %if.end270.14642
+  %indvars.iv.next3846 = add nuw nsw i64 %indvars.iv3845, 1
+  %exitcond3848.not = icmp eq i64 %indvars.iv.next3846, 4
+  br i1 %exitcond3848.not, label %for.end286, label %for.cond254.preheader
 
-if.then264.14639:                                 ; preds = %if.end270.3
-  %255 = load ptr, ptr @stderr, align 8
-  %256 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %255) #16
-  %257 = load ptr, ptr %arrayidx259.1, align 8
-  store double 1.000000e-05, ptr %257, align 8
-  br label %if.end270.14642
-
-if.end270.14642:                                  ; preds = %if.then264.14639, %if.end270.3
-  %258 = phi double [ 1.000000e-05, %if.then264.14639 ], [ %254, %if.end270.3 ]
-  %call275.14640 = tail call double @log10(double noundef %258) #15
-  %mul276.14641 = fmul double %call275.14640, 1.000000e+03
-  %259 = load ptr, ptr %arrayidx259.1, align 8
-  store double %mul276.14641, ptr %259, align 8
-  %arrayidx261.1.1 = getelementptr inbounds double, ptr %259, i64 1
-  %260 = load double, ptr %arrayidx261.1.1, align 8
-  %cmp262.1.1 = fcmp oeq double %260, 0.000000e+00
-  br i1 %cmp262.1.1, label %if.then264.1.1, label %if.end270.1.1
-
-if.then264.1.1:                                   ; preds = %if.end270.14642
-  %261 = load ptr, ptr @stderr, align 8
-  %262 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %261) #16
-  %263 = load ptr, ptr %arrayidx259.1, align 8
-  %arrayidx269.1.1 = getelementptr inbounds double, ptr %263, i64 1
-  store double 1.000000e-05, ptr %arrayidx269.1.1, align 8
-  br label %if.end270.1.1
-
-if.end270.1.1:                                    ; preds = %if.then264.1.1, %if.end270.14642
-  %264 = phi double [ 1.000000e-05, %if.then264.1.1 ], [ %260, %if.end270.14642 ]
-  %call275.1.1 = tail call double @log10(double noundef %264) #15
-  %mul276.1.1 = fmul double %call275.1.1, 1.000000e+03
-  %265 = load ptr, ptr %arrayidx259.1, align 8
-  %arrayidx280.1.1 = getelementptr inbounds double, ptr %265, i64 1
-  store double %mul276.1.1, ptr %arrayidx280.1.1, align 8
-  %arrayidx261.2.1 = getelementptr inbounds double, ptr %265, i64 2
-  %266 = load double, ptr %arrayidx261.2.1, align 8
-  %cmp262.2.1 = fcmp oeq double %266, 0.000000e+00
-  br i1 %cmp262.2.1, label %if.then264.2.1, label %if.end270.2.1
-
-if.then264.2.1:                                   ; preds = %if.end270.1.1
-  %267 = load ptr, ptr @stderr, align 8
-  %268 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %267) #16
-  %269 = load ptr, ptr %arrayidx259.1, align 8
-  %arrayidx269.2.1 = getelementptr inbounds double, ptr %269, i64 2
-  store double 1.000000e-05, ptr %arrayidx269.2.1, align 8
-  br label %if.end270.2.1
-
-if.end270.2.1:                                    ; preds = %if.then264.2.1, %if.end270.1.1
-  %270 = phi double [ 1.000000e-05, %if.then264.2.1 ], [ %266, %if.end270.1.1 ]
-  %call275.2.1 = tail call double @log10(double noundef %270) #15
-  %mul276.2.1 = fmul double %call275.2.1, 1.000000e+03
-  %271 = load ptr, ptr %arrayidx259.1, align 8
-  %arrayidx280.2.1 = getelementptr inbounds double, ptr %271, i64 2
-  store double %mul276.2.1, ptr %arrayidx280.2.1, align 8
-  %arrayidx261.3.1 = getelementptr inbounds double, ptr %271, i64 3
-  %272 = load double, ptr %arrayidx261.3.1, align 8
-  %cmp262.3.1 = fcmp oeq double %272, 0.000000e+00
-  br i1 %cmp262.3.1, label %if.then264.3.1, label %if.end270.3.1
-
-if.then264.3.1:                                   ; preds = %if.end270.2.1
-  %273 = load ptr, ptr @stderr, align 8
-  %274 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %273) #16
-  %275 = load ptr, ptr %arrayidx259.1, align 8
-  %arrayidx269.3.1 = getelementptr inbounds double, ptr %275, i64 3
-  store double 1.000000e-05, ptr %arrayidx269.3.1, align 8
-  br label %if.end270.3.1
-
-if.end270.3.1:                                    ; preds = %if.then264.3.1, %if.end270.2.1
-  %276 = phi double [ 1.000000e-05, %if.then264.3.1 ], [ %272, %if.end270.2.1 ]
-  %call275.3.1 = tail call double @log10(double noundef %276) #15
-  %mul276.3.1 = fmul double %call275.3.1, 1.000000e+03
-  %277 = load ptr, ptr %arrayidx259.1, align 8
-  %arrayidx280.3.1 = getelementptr inbounds double, ptr %277, i64 3
-  store double %mul276.3.1, ptr %arrayidx280.3.1, align 8
-  %arrayidx259.2 = getelementptr inbounds ptr, ptr %call, i64 2
-  %278 = load ptr, ptr %arrayidx259.2, align 8
-  %279 = load double, ptr %278, align 8
-  %cmp262.24643 = fcmp oeq double %279, 0.000000e+00
-  br i1 %cmp262.24643, label %if.then264.24644, label %if.end270.24647
-
-if.then264.24644:                                 ; preds = %if.end270.3.1
-  %280 = load ptr, ptr @stderr, align 8
-  %281 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %280) #16
-  %282 = load ptr, ptr %arrayidx259.2, align 8
-  store double 1.000000e-05, ptr %282, align 8
-  br label %if.end270.24647
-
-if.end270.24647:                                  ; preds = %if.then264.24644, %if.end270.3.1
-  %283 = phi double [ 1.000000e-05, %if.then264.24644 ], [ %279, %if.end270.3.1 ]
-  %call275.24645 = tail call double @log10(double noundef %283) #15
-  %mul276.24646 = fmul double %call275.24645, 1.000000e+03
-  %284 = load ptr, ptr %arrayidx259.2, align 8
-  store double %mul276.24646, ptr %284, align 8
-  %arrayidx261.1.2 = getelementptr inbounds double, ptr %284, i64 1
-  %285 = load double, ptr %arrayidx261.1.2, align 8
-  %cmp262.1.2 = fcmp oeq double %285, 0.000000e+00
-  br i1 %cmp262.1.2, label %if.then264.1.2, label %if.end270.1.2
-
-if.then264.1.2:                                   ; preds = %if.end270.24647
-  %286 = load ptr, ptr @stderr, align 8
-  %287 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %286) #16
-  %288 = load ptr, ptr %arrayidx259.2, align 8
-  %arrayidx269.1.2 = getelementptr inbounds double, ptr %288, i64 1
-  store double 1.000000e-05, ptr %arrayidx269.1.2, align 8
-  br label %if.end270.1.2
-
-if.end270.1.2:                                    ; preds = %if.then264.1.2, %if.end270.24647
-  %289 = phi double [ 1.000000e-05, %if.then264.1.2 ], [ %285, %if.end270.24647 ]
-  %call275.1.2 = tail call double @log10(double noundef %289) #15
-  %mul276.1.2 = fmul double %call275.1.2, 1.000000e+03
-  %290 = load ptr, ptr %arrayidx259.2, align 8
-  %arrayidx280.1.2 = getelementptr inbounds double, ptr %290, i64 1
-  store double %mul276.1.2, ptr %arrayidx280.1.2, align 8
-  %arrayidx261.2.2 = getelementptr inbounds double, ptr %290, i64 2
-  %291 = load double, ptr %arrayidx261.2.2, align 8
-  %cmp262.2.2 = fcmp oeq double %291, 0.000000e+00
-  br i1 %cmp262.2.2, label %if.then264.2.2, label %if.end270.2.2
-
-if.then264.2.2:                                   ; preds = %if.end270.1.2
-  %292 = load ptr, ptr @stderr, align 8
-  %293 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %292) #16
-  %294 = load ptr, ptr %arrayidx259.2, align 8
-  %arrayidx269.2.2 = getelementptr inbounds double, ptr %294, i64 2
-  store double 1.000000e-05, ptr %arrayidx269.2.2, align 8
-  br label %if.end270.2.2
-
-if.end270.2.2:                                    ; preds = %if.then264.2.2, %if.end270.1.2
-  %295 = phi double [ 1.000000e-05, %if.then264.2.2 ], [ %291, %if.end270.1.2 ]
-  %call275.2.2 = tail call double @log10(double noundef %295) #15
-  %mul276.2.2 = fmul double %call275.2.2, 1.000000e+03
-  %296 = load ptr, ptr %arrayidx259.2, align 8
-  %arrayidx280.2.2 = getelementptr inbounds double, ptr %296, i64 2
-  store double %mul276.2.2, ptr %arrayidx280.2.2, align 8
-  %arrayidx261.3.2 = getelementptr inbounds double, ptr %296, i64 3
-  %297 = load double, ptr %arrayidx261.3.2, align 8
-  %cmp262.3.2 = fcmp oeq double %297, 0.000000e+00
-  br i1 %cmp262.3.2, label %if.then264.3.2, label %if.end270.3.2
-
-if.then264.3.2:                                   ; preds = %if.end270.2.2
-  %298 = load ptr, ptr @stderr, align 8
-  %299 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %298) #16
-  %300 = load ptr, ptr %arrayidx259.2, align 8
-  %arrayidx269.3.2 = getelementptr inbounds double, ptr %300, i64 3
-  store double 1.000000e-05, ptr %arrayidx269.3.2, align 8
-  br label %if.end270.3.2
-
-if.end270.3.2:                                    ; preds = %if.then264.3.2, %if.end270.2.2
-  %301 = phi double [ 1.000000e-05, %if.then264.3.2 ], [ %297, %if.end270.2.2 ]
-  %call275.3.2 = tail call double @log10(double noundef %301) #15
-  %mul276.3.2 = fmul double %call275.3.2, 1.000000e+03
-  %302 = load ptr, ptr %arrayidx259.2, align 8
-  %arrayidx280.3.2 = getelementptr inbounds double, ptr %302, i64 3
-  store double %mul276.3.2, ptr %arrayidx280.3.2, align 8
-  %arrayidx259.3 = getelementptr inbounds ptr, ptr %call, i64 3
-  %303 = load ptr, ptr %arrayidx259.3, align 8
-  %304 = load double, ptr %303, align 8
-  %cmp262.34648 = fcmp oeq double %304, 0.000000e+00
-  br i1 %cmp262.34648, label %if.then264.34649, label %if.end270.34652
-
-if.then264.34649:                                 ; preds = %if.end270.3.2
-  %305 = load ptr, ptr @stderr, align 8
-  %306 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %305) #16
-  %307 = load ptr, ptr %arrayidx259.3, align 8
-  store double 1.000000e-05, ptr %307, align 8
-  br label %if.end270.34652
-
-if.end270.34652:                                  ; preds = %if.then264.34649, %if.end270.3.2
-  %308 = phi double [ 1.000000e-05, %if.then264.34649 ], [ %304, %if.end270.3.2 ]
-  %call275.34650 = tail call double @log10(double noundef %308) #15
-  %mul276.34651 = fmul double %call275.34650, 1.000000e+03
-  %309 = load ptr, ptr %arrayidx259.3, align 8
-  store double %mul276.34651, ptr %309, align 8
-  %arrayidx261.1.3 = getelementptr inbounds double, ptr %309, i64 1
-  %310 = load double, ptr %arrayidx261.1.3, align 8
-  %cmp262.1.3 = fcmp oeq double %310, 0.000000e+00
-  br i1 %cmp262.1.3, label %if.then264.1.3, label %if.end270.1.3
-
-if.then264.1.3:                                   ; preds = %if.end270.34652
-  %311 = load ptr, ptr @stderr, align 8
-  %312 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %311) #16
-  %313 = load ptr, ptr %arrayidx259.3, align 8
-  %arrayidx269.1.3 = getelementptr inbounds double, ptr %313, i64 1
-  store double 1.000000e-05, ptr %arrayidx269.1.3, align 8
-  br label %if.end270.1.3
-
-if.end270.1.3:                                    ; preds = %if.then264.1.3, %if.end270.34652
-  %314 = phi double [ 1.000000e-05, %if.then264.1.3 ], [ %310, %if.end270.34652 ]
-  %call275.1.3 = tail call double @log10(double noundef %314) #15
-  %mul276.1.3 = fmul double %call275.1.3, 1.000000e+03
-  %315 = load ptr, ptr %arrayidx259.3, align 8
-  %arrayidx280.1.3 = getelementptr inbounds double, ptr %315, i64 1
-  store double %mul276.1.3, ptr %arrayidx280.1.3, align 8
-  %arrayidx261.2.3 = getelementptr inbounds double, ptr %315, i64 2
-  %316 = load double, ptr %arrayidx261.2.3, align 8
-  %cmp262.2.3 = fcmp oeq double %316, 0.000000e+00
-  br i1 %cmp262.2.3, label %if.then264.2.3, label %if.end270.2.3
-
-if.then264.2.3:                                   ; preds = %if.end270.1.3
-  %317 = load ptr, ptr @stderr, align 8
-  %318 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %317) #16
-  %319 = load ptr, ptr %arrayidx259.3, align 8
-  %arrayidx269.2.3 = getelementptr inbounds double, ptr %319, i64 2
-  store double 1.000000e-05, ptr %arrayidx269.2.3, align 8
-  br label %if.end270.2.3
-
-if.end270.2.3:                                    ; preds = %if.then264.2.3, %if.end270.1.3
-  %320 = phi double [ 1.000000e-05, %if.then264.2.3 ], [ %316, %if.end270.1.3 ]
-  %call275.2.3 = tail call double @log10(double noundef %320) #15
-  %mul276.2.3 = fmul double %call275.2.3, 1.000000e+03
-  %321 = load ptr, ptr %arrayidx259.3, align 8
-  %arrayidx280.2.3 = getelementptr inbounds double, ptr %321, i64 2
-  store double %mul276.2.3, ptr %arrayidx280.2.3, align 8
-  %arrayidx261.3.3 = getelementptr inbounds double, ptr %321, i64 3
-  %322 = load double, ptr %arrayidx261.3.3, align 8
-  %cmp262.3.3 = fcmp oeq double %322, 0.000000e+00
-  br i1 %cmp262.3.3, label %if.then264.3.3, label %if.end270.3.3
-
-if.then264.3.3:                                   ; preds = %if.end270.2.3
-  %323 = load ptr, ptr @stderr, align 8
-  %324 = tail call i64 @fwrite(ptr nonnull @.str.9, i64 28, i64 1, ptr %323) #16
-  %325 = load ptr, ptr %arrayidx259.3, align 8
-  %arrayidx269.3.3 = getelementptr inbounds double, ptr %325, i64 3
-  store double 1.000000e-05, ptr %arrayidx269.3.3, align 8
-  br label %if.end270.3.3
-
-if.end270.3.3:                                    ; preds = %if.then264.3.3, %if.end270.2.3
-  %326 = phi double [ 1.000000e-05, %if.then264.3.3 ], [ %322, %if.end270.2.3 ]
-  %call275.3.3 = tail call double @log10(double noundef %326) #15
-  %mul276.3.3 = fmul double %call275.3.3, 1.000000e+03
-  %327 = load ptr, ptr %arrayidx259.3, align 8
-  %arrayidx280.3.3 = getelementptr inbounds double, ptr %327, i64 3
-  store double %mul276.3.3, ptr %arrayidx280.3.3, align 8
-  %328 = load i32, ptr @disp, align 4
-  %tobool287.not = icmp eq i32 %328, 0
+for.end286:                                       ; preds = %if.end270.3
+  %253 = load i32, ptr @disp, align 4
+  %tobool287.not = icmp eq i32 %253, 0
   br i1 %tobool287.not, label %if.end311, label %if.then288
 
-if.then288:                                       ; preds = %if.end270.3.3
-  %329 = load ptr, ptr @stderr, align 8
-  %330 = tail call i64 @fwrite(ptr nonnull @.str.10, i64 11, i64 1, ptr %329) #16
-  %331 = load ptr, ptr @stderr, align 8
-  %332 = load ptr, ptr %call, align 8
-  %333 = load double, ptr %332, align 8
-  %call302 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %331, ptr noundef nonnull @.str.7, double noundef %333) #16
-  %334 = load ptr, ptr @stderr, align 8
-  %335 = load ptr, ptr %call, align 8
-  %arrayidx301.1 = getelementptr inbounds double, ptr %335, i64 1
-  %336 = load double, ptr %arrayidx301.1, align 8
-  %call302.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %334, ptr noundef nonnull @.str.7, double noundef %336) #16
-  %337 = load ptr, ptr @stderr, align 8
-  %338 = load ptr, ptr %call, align 8
-  %arrayidx301.2 = getelementptr inbounds double, ptr %338, i64 2
-  %339 = load double, ptr %arrayidx301.2, align 8
-  %call302.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %337, ptr noundef nonnull @.str.7, double noundef %339) #16
-  %340 = load ptr, ptr @stderr, align 8
-  %341 = load ptr, ptr %call, align 8
-  %arrayidx301.3 = getelementptr inbounds double, ptr %341, i64 3
-  %342 = load double, ptr %arrayidx301.3, align 8
-  %call302.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %340, ptr noundef nonnull @.str.7, double noundef %342) #16
-  %343 = load ptr, ptr @stderr, align 8
-  %fputc3315 = tail call i32 @fputc(i32 10, ptr %343)
-  %344 = load ptr, ptr @stderr, align 8
-  %345 = load ptr, ptr %arrayidx240.1, align 8
-  %346 = load double, ptr %345, align 8
-  %call302.13857 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %344, ptr noundef nonnull @.str.7, double noundef %346) #16
-  %347 = load ptr, ptr @stderr, align 8
-  %348 = load ptr, ptr %arrayidx240.1, align 8
-  %arrayidx301.1.1 = getelementptr inbounds double, ptr %348, i64 1
-  %349 = load double, ptr %arrayidx301.1.1, align 8
-  %call302.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %347, ptr noundef nonnull @.str.7, double noundef %349) #16
-  %350 = load ptr, ptr @stderr, align 8
-  %351 = load ptr, ptr %arrayidx240.1, align 8
-  %arrayidx301.2.1 = getelementptr inbounds double, ptr %351, i64 2
-  %352 = load double, ptr %arrayidx301.2.1, align 8
-  %call302.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %350, ptr noundef nonnull @.str.7, double noundef %352) #16
-  %353 = load ptr, ptr @stderr, align 8
-  %354 = load ptr, ptr %arrayidx240.1, align 8
-  %arrayidx301.3.1 = getelementptr inbounds double, ptr %354, i64 3
-  %355 = load double, ptr %arrayidx301.3.1, align 8
-  %call302.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %353, ptr noundef nonnull @.str.7, double noundef %355) #16
-  %356 = load ptr, ptr @stderr, align 8
-  %fputc3315.1 = tail call i32 @fputc(i32 10, ptr %356)
-  %357 = load ptr, ptr @stderr, align 8
-  %358 = load ptr, ptr %arrayidx240.2, align 8
-  %359 = load double, ptr %358, align 8
-  %call302.23858 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %357, ptr noundef nonnull @.str.7, double noundef %359) #16
-  %360 = load ptr, ptr @stderr, align 8
-  %361 = load ptr, ptr %arrayidx240.2, align 8
-  %arrayidx301.1.2 = getelementptr inbounds double, ptr %361, i64 1
-  %362 = load double, ptr %arrayidx301.1.2, align 8
-  %call302.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %360, ptr noundef nonnull @.str.7, double noundef %362) #16
-  %363 = load ptr, ptr @stderr, align 8
-  %364 = load ptr, ptr %arrayidx240.2, align 8
-  %arrayidx301.2.2 = getelementptr inbounds double, ptr %364, i64 2
-  %365 = load double, ptr %arrayidx301.2.2, align 8
-  %call302.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %363, ptr noundef nonnull @.str.7, double noundef %365) #16
-  %366 = load ptr, ptr @stderr, align 8
-  %367 = load ptr, ptr %arrayidx240.2, align 8
-  %arrayidx301.3.2 = getelementptr inbounds double, ptr %367, i64 3
-  %368 = load double, ptr %arrayidx301.3.2, align 8
-  %call302.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %366, ptr noundef nonnull @.str.7, double noundef %368) #16
-  %369 = load ptr, ptr @stderr, align 8
-  %fputc3315.2 = tail call i32 @fputc(i32 10, ptr %369)
-  %370 = load ptr, ptr @stderr, align 8
-  %371 = load ptr, ptr %arrayidx240.3, align 8
-  %372 = load double, ptr %371, align 8
-  %call302.33859 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %370, ptr noundef nonnull @.str.7, double noundef %372) #16
-  %373 = load ptr, ptr @stderr, align 8
-  %374 = load ptr, ptr %arrayidx240.3, align 8
-  %arrayidx301.1.3 = getelementptr inbounds double, ptr %374, i64 1
-  %375 = load double, ptr %arrayidx301.1.3, align 8
-  %call302.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %373, ptr noundef nonnull @.str.7, double noundef %375) #16
-  %376 = load ptr, ptr @stderr, align 8
-  %377 = load ptr, ptr %arrayidx240.3, align 8
-  %arrayidx301.2.3 = getelementptr inbounds double, ptr %377, i64 2
-  %378 = load double, ptr %arrayidx301.2.3, align 8
-  %call302.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %376, ptr noundef nonnull @.str.7, double noundef %378) #16
-  %379 = load ptr, ptr @stderr, align 8
-  %380 = load ptr, ptr %arrayidx240.3, align 8
-  %arrayidx301.3.3 = getelementptr inbounds double, ptr %380, i64 3
-  %381 = load double, ptr %arrayidx301.3.3, align 8
-  %call302.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %379, ptr noundef nonnull @.str.7, double noundef %381) #16
-  %382 = load ptr, ptr @stderr, align 8
-  %fputc3315.3 = tail call i32 @fputc(i32 10, ptr %382)
-  %383 = load ptr, ptr @stderr, align 8
-  %fputc3312 = tail call i32 @fputc(i32 10, ptr %383)
+if.then288:                                       ; preds = %for.end286
+  %254 = load ptr, ptr @stderr, align 8
+  %255 = tail call i64 @fwrite(ptr nonnull @.str.10, i64 11, i64 1, ptr %254) #16
+  %256 = load ptr, ptr @stderr, align 8
+  %257 = load ptr, ptr %call, align 8
+  %258 = load double, ptr %257, align 8
+  %call302 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %256, ptr noundef nonnull @.str.7, double noundef %258) #16
+  %259 = load ptr, ptr @stderr, align 8
+  %260 = load ptr, ptr %call, align 8
+  %arrayidx301.1 = getelementptr inbounds double, ptr %260, i64 1
+  %261 = load double, ptr %arrayidx301.1, align 8
+  %call302.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %259, ptr noundef nonnull @.str.7, double noundef %261) #16
+  %262 = load ptr, ptr @stderr, align 8
+  %263 = load ptr, ptr %call, align 8
+  %arrayidx301.2 = getelementptr inbounds double, ptr %263, i64 2
+  %264 = load double, ptr %arrayidx301.2, align 8
+  %call302.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %262, ptr noundef nonnull @.str.7, double noundef %264) #16
+  %265 = load ptr, ptr @stderr, align 8
+  %266 = load ptr, ptr %call, align 8
+  %arrayidx301.3 = getelementptr inbounds double, ptr %266, i64 3
+  %267 = load double, ptr %arrayidx301.3, align 8
+  %call302.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %265, ptr noundef nonnull @.str.7, double noundef %267) #16
+  %268 = load ptr, ptr @stderr, align 8
+  %fputc3315 = tail call i32 @fputc(i32 10, ptr %268)
+  %269 = load ptr, ptr @stderr, align 8
+  %270 = load ptr, ptr %arrayidx240.1, align 8
+  %271 = load double, ptr %270, align 8
+  %call302.13857 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %269, ptr noundef nonnull @.str.7, double noundef %271) #16
+  %272 = load ptr, ptr @stderr, align 8
+  %273 = load ptr, ptr %arrayidx240.1, align 8
+  %arrayidx301.1.1 = getelementptr inbounds double, ptr %273, i64 1
+  %274 = load double, ptr %arrayidx301.1.1, align 8
+  %call302.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %272, ptr noundef nonnull @.str.7, double noundef %274) #16
+  %275 = load ptr, ptr @stderr, align 8
+  %276 = load ptr, ptr %arrayidx240.1, align 8
+  %arrayidx301.2.1 = getelementptr inbounds double, ptr %276, i64 2
+  %277 = load double, ptr %arrayidx301.2.1, align 8
+  %call302.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %275, ptr noundef nonnull @.str.7, double noundef %277) #16
+  %278 = load ptr, ptr @stderr, align 8
+  %279 = load ptr, ptr %arrayidx240.1, align 8
+  %arrayidx301.3.1 = getelementptr inbounds double, ptr %279, i64 3
+  %280 = load double, ptr %arrayidx301.3.1, align 8
+  %call302.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %278, ptr noundef nonnull @.str.7, double noundef %280) #16
+  %281 = load ptr, ptr @stderr, align 8
+  %fputc3315.1 = tail call i32 @fputc(i32 10, ptr %281)
+  %282 = load ptr, ptr @stderr, align 8
+  %283 = load ptr, ptr %arrayidx240.2, align 8
+  %284 = load double, ptr %283, align 8
+  %call302.23858 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %282, ptr noundef nonnull @.str.7, double noundef %284) #16
+  %285 = load ptr, ptr @stderr, align 8
+  %286 = load ptr, ptr %arrayidx240.2, align 8
+  %arrayidx301.1.2 = getelementptr inbounds double, ptr %286, i64 1
+  %287 = load double, ptr %arrayidx301.1.2, align 8
+  %call302.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %285, ptr noundef nonnull @.str.7, double noundef %287) #16
+  %288 = load ptr, ptr @stderr, align 8
+  %289 = load ptr, ptr %arrayidx240.2, align 8
+  %arrayidx301.2.2 = getelementptr inbounds double, ptr %289, i64 2
+  %290 = load double, ptr %arrayidx301.2.2, align 8
+  %call302.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %288, ptr noundef nonnull @.str.7, double noundef %290) #16
+  %291 = load ptr, ptr @stderr, align 8
+  %292 = load ptr, ptr %arrayidx240.2, align 8
+  %arrayidx301.3.2 = getelementptr inbounds double, ptr %292, i64 3
+  %293 = load double, ptr %arrayidx301.3.2, align 8
+  %call302.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %291, ptr noundef nonnull @.str.7, double noundef %293) #16
+  %294 = load ptr, ptr @stderr, align 8
+  %fputc3315.2 = tail call i32 @fputc(i32 10, ptr %294)
+  %295 = load ptr, ptr @stderr, align 8
+  %296 = load ptr, ptr %arrayidx240.3, align 8
+  %297 = load double, ptr %296, align 8
+  %call302.33859 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %295, ptr noundef nonnull @.str.7, double noundef %297) #16
+  %298 = load ptr, ptr @stderr, align 8
+  %299 = load ptr, ptr %arrayidx240.3, align 8
+  %arrayidx301.1.3 = getelementptr inbounds double, ptr %299, i64 1
+  %300 = load double, ptr %arrayidx301.1.3, align 8
+  %call302.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %298, ptr noundef nonnull @.str.7, double noundef %300) #16
+  %301 = load ptr, ptr @stderr, align 8
+  %302 = load ptr, ptr %arrayidx240.3, align 8
+  %arrayidx301.2.3 = getelementptr inbounds double, ptr %302, i64 2
+  %303 = load double, ptr %arrayidx301.2.3, align 8
+  %call302.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %301, ptr noundef nonnull @.str.7, double noundef %303) #16
+  %304 = load ptr, ptr @stderr, align 8
+  %305 = load ptr, ptr %arrayidx240.3, align 8
+  %arrayidx301.3.3 = getelementptr inbounds double, ptr %305, i64 3
+  %306 = load double, ptr %arrayidx301.3.3, align 8
+  %call302.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %304, ptr noundef nonnull @.str.7, double noundef %306) #16
+  %307 = load ptr, ptr @stderr, align 8
+  %fputc3315.3 = tail call i32 @fputc(i32 10, ptr %307)
+  %308 = load ptr, ptr @stderr, align 8
+  %fputc3312 = tail call i32 @fputc(i32 10, ptr %308)
   br label %if.end311
 
-if.end311:                                        ; preds = %if.then288, %if.end270.3.3
+if.end311:                                        ; preds = %if.then288, %for.end286
   tail call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 16 dereferenceable(26) @amino, ptr noundef nonnull align 16 dereferenceable(26) @locaminon, i64 26, i1 false)
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(512) @amino_n, i8 -1, i64 512, i1 false)
-  %384 = load i8, ptr @amino, align 16
-  %idxprom339 = sext i8 %384 to i64
+  %309 = load i8, ptr @amino, align 16
+  %idxprom339 = sext i8 %309 to i64
   %arrayidx340 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339
   store i32 0, ptr %arrayidx340, align 4
-  %385 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom339.1 = sext i8 %385 to i64
+  %310 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom339.1 = sext i8 %310 to i64
   %arrayidx340.1 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.1
   store i32 1, ptr %arrayidx340.1, align 4
-  %386 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom339.2 = sext i8 %386 to i64
+  %311 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom339.2 = sext i8 %311 to i64
   %arrayidx340.2 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.2
   store i32 2, ptr %arrayidx340.2, align 4
-  %387 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %idxprom339.3 = sext i8 %387 to i64
+  %312 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %idxprom339.3 = sext i8 %312 to i64
   %arrayidx340.3 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.3
   store i32 3, ptr %arrayidx340.3, align 4
-  %388 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %idxprom339.4 = sext i8 %388 to i64
+  %313 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %idxprom339.4 = sext i8 %313 to i64
   %arrayidx340.4 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.4
   store i32 4, ptr %arrayidx340.4, align 4
-  %389 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom339.5 = sext i8 %389 to i64
+  %314 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom339.5 = sext i8 %314 to i64
   %arrayidx340.5 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.5
   store i32 5, ptr %arrayidx340.5, align 4
-  %390 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom339.6 = sext i8 %390 to i64
+  %315 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom339.6 = sext i8 %315 to i64
   %arrayidx340.6 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.6
   store i32 6, ptr %arrayidx340.6, align 4
-  %391 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom339.7 = sext i8 %391 to i64
+  %316 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom339.7 = sext i8 %316 to i64
   %arrayidx340.7 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.7
   store i32 7, ptr %arrayidx340.7, align 4
-  %392 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %idxprom339.8 = sext i8 %392 to i64
+  %317 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %idxprom339.8 = sext i8 %317 to i64
   %arrayidx340.8 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.8
   store i32 8, ptr %arrayidx340.8, align 4
-  %393 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %idxprom339.9 = sext i8 %393 to i64
+  %318 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %idxprom339.9 = sext i8 %318 to i64
   %arrayidx340.9 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.9
   store i32 9, ptr %arrayidx340.9, align 4
-  %394 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
-  %idxprom339.10 = sext i8 %394 to i64
+  %319 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
+  %idxprom339.10 = sext i8 %319 to i64
   %arrayidx340.10 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.10
   store i32 10, ptr %arrayidx340.10, align 4
-  %395 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
-  %idxprom339.11 = sext i8 %395 to i64
+  %320 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
+  %idxprom339.11 = sext i8 %320 to i64
   %arrayidx340.11 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.11
   store i32 11, ptr %arrayidx340.11, align 4
-  %396 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
-  %idxprom339.12 = sext i8 %396 to i64
+  %321 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
+  %idxprom339.12 = sext i8 %321 to i64
   %arrayidx340.12 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.12
   store i32 12, ptr %arrayidx340.12, align 4
-  %397 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %idxprom339.13 = sext i8 %397 to i64
+  %322 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %idxprom339.13 = sext i8 %322 to i64
   %arrayidx340.13 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.13
   store i32 13, ptr %arrayidx340.13, align 4
-  %398 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %idxprom339.14 = sext i8 %398 to i64
+  %323 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %idxprom339.14 = sext i8 %323 to i64
   %arrayidx340.14 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.14
   store i32 14, ptr %arrayidx340.14, align 4
-  %399 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %idxprom339.15 = sext i8 %399 to i64
+  %324 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %idxprom339.15 = sext i8 %324 to i64
   %arrayidx340.15 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.15
   store i32 15, ptr %arrayidx340.15, align 4
-  %400 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %idxprom339.16 = sext i8 %400 to i64
+  %325 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %idxprom339.16 = sext i8 %325 to i64
   %arrayidx340.16 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.16
   store i32 16, ptr %arrayidx340.16, align 4
-  %401 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %idxprom339.17 = sext i8 %401 to i64
+  %326 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %idxprom339.17 = sext i8 %326 to i64
   %arrayidx340.17 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.17
   store i32 17, ptr %arrayidx340.17, align 4
-  %402 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %idxprom339.18 = sext i8 %402 to i64
+  %327 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %idxprom339.18 = sext i8 %327 to i64
   %arrayidx340.18 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.18
   store i32 18, ptr %arrayidx340.18, align 4
-  %403 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %idxprom339.19 = sext i8 %403 to i64
+  %328 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %idxprom339.19 = sext i8 %328 to i64
   %arrayidx340.19 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.19
   store i32 19, ptr %arrayidx340.19, align 4
-  %404 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
-  %idxprom339.20 = sext i8 %404 to i64
+  %329 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
+  %idxprom339.20 = sext i8 %329 to i64
   %arrayidx340.20 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.20
   store i32 20, ptr %arrayidx340.20, align 4
-  %405 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
-  %idxprom339.21 = sext i8 %405 to i64
+  %330 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
+  %idxprom339.21 = sext i8 %330 to i64
   %arrayidx340.21 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.21
   store i32 21, ptr %arrayidx340.21, align 4
-  %406 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
-  %idxprom339.22 = sext i8 %406 to i64
+  %331 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
+  %idxprom339.22 = sext i8 %331 to i64
   %arrayidx340.22 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.22
   store i32 22, ptr %arrayidx340.22, align 4
-  %407 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
-  %idxprom339.23 = sext i8 %407 to i64
+  %332 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
+  %idxprom339.23 = sext i8 %332 to i64
   %arrayidx340.23 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.23
   store i32 23, ptr %arrayidx340.23, align 4
-  %408 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
-  %idxprom339.24 = sext i8 %408 to i64
+  %333 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
+  %idxprom339.24 = sext i8 %333 to i64
   %arrayidx340.24 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.24
   store i32 24, ptr %arrayidx340.24, align 4
-  %409 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
-  %idxprom339.25 = sext i8 %409 to i64
+  %334 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
+  %idxprom339.25 = sext i8 %334 to i64
   %arrayidx340.25 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom339.25
   store i32 25, ptr %arrayidx340.25, align 4
-  %410 = load i32, ptr @fmodel, align 4
-  %cmp344 = icmp eq i32 %410, 1
+  %335 = load i32, ptr @fmodel, align 4
+  %cmp344 = icmp eq i32 %335, 1
   br i1 %cmp344, label %if.then346, label %if.else347
 
 if.then346:                                       ; preds = %if.end311
@@ -2400,217 +2173,217 @@ if.else347:                                       ; preds = %if.end311
   br label %if.end352
 
 if.end352:                                        ; preds = %if.else347, %if.then346
-  %411 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4597, %if.then346 ]
-  %412 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4596, %if.then346 ]
-  %413 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4595, %if.then346 ]
-  %414 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4594, %if.then346 ]
-  %415 = load ptr, ptr %call, align 8
-  %arrayidx364.2 = getelementptr inbounds double, ptr %415, i64 2
-  %416 = load ptr, ptr %arrayidx240.1, align 8
-  %417 = load double, ptr %416, align 8
-  %mul367.13878 = fmul double %417, %413
-  %arrayidx364.1.1 = getelementptr inbounds double, ptr %416, i64 1
-  %418 = load double, ptr %arrayidx364.1.1, align 8
-  %mul367.1.1 = fmul double %418, %413
-  %arrayidx364.2.1 = getelementptr inbounds double, ptr %416, i64 2
-  %419 = load double, ptr %arrayidx364.2.1, align 8
-  %mul367.2.1 = fmul double %419, %413
-  %arrayidx364.3.1 = getelementptr inbounds double, ptr %416, i64 3
-  %420 = load double, ptr %arrayidx364.3.1, align 8
-  %mul367.3.1 = fmul double %420, %413
-  %421 = load ptr, ptr %arrayidx240.2, align 8
-  %422 = load double, ptr %421, align 8
-  %mul367.23879 = fmul double %422, %412
-  %arrayidx364.1.2 = getelementptr inbounds double, ptr %421, i64 1
-  %423 = load double, ptr %arrayidx364.1.2, align 8
-  %mul367.1.2 = fmul double %423, %412
-  %arrayidx364.2.2 = getelementptr inbounds double, ptr %421, i64 2
-  %424 = load double, ptr %arrayidx364.2.2, align 8
-  %mul367.2.2 = fmul double %424, %412
-  %arrayidx364.3.2 = getelementptr inbounds double, ptr %421, i64 3
-  %425 = load double, ptr %arrayidx364.3.2, align 8
-  %mul367.3.2 = fmul double %425, %412
-  %426 = load ptr, ptr %arrayidx240.3, align 8
-  %427 = load double, ptr %426, align 8
-  %mul367.33880 = fmul double %427, %411
-  %arrayidx364.1.3 = getelementptr inbounds double, ptr %426, i64 1
-  %428 = load double, ptr %arrayidx364.1.3, align 8
-  %mul367.1.3 = fmul double %428, %411
-  %arrayidx364.2.3 = getelementptr inbounds double, ptr %426, i64 2
-  %429 = load double, ptr %arrayidx364.2.3, align 8
-  %mul367.2.3 = fmul double %429, %411
-  %arrayidx364.3.3 = getelementptr inbounds double, ptr %426, i64 3
-  %430 = load double, ptr %arrayidx364.3.3, align 8
-  %mul367.3.3 = fmul double %430, %411
-  %431 = load <2 x double>, ptr %415, align 8
-  %432 = extractelement <2 x double> %431, i64 0
-  %mul367 = fmul double %432, %414
-  %433 = tail call double @llvm.fmuladd.f64(double %mul367, double %414, double 0.000000e+00)
-  %434 = extractelement <2 x double> %431, i64 1
-  %mul367.1 = fmul double %434, %414
-  %435 = tail call double @llvm.fmuladd.f64(double %mul367.1, double %413, double %433)
-  %436 = load <2 x double>, ptr %arrayidx364.2, align 8
-  %437 = extractelement <2 x double> %436, i64 0
-  %mul367.2 = fmul double %437, %414
-  %438 = extractelement <2 x double> %436, i64 1
-  %mul367.3 = fmul double %438, %414
-  %439 = tail call double @llvm.fmuladd.f64(double %mul367.2, double %412, double %435)
-  %440 = tail call double @llvm.fmuladd.f64(double %mul367.3, double %411, double %439)
-  %441 = tail call double @llvm.fmuladd.f64(double %mul367.13878, double %414, double %440)
-  %442 = tail call double @llvm.fmuladd.f64(double %mul367.1.1, double %413, double %441)
-  %443 = tail call double @llvm.fmuladd.f64(double %mul367.2.1, double %412, double %442)
-  %444 = tail call double @llvm.fmuladd.f64(double %mul367.3.1, double %411, double %443)
-  %445 = tail call double @llvm.fmuladd.f64(double %mul367.23879, double %414, double %444)
-  %446 = tail call double @llvm.fmuladd.f64(double %mul367.1.2, double %413, double %445)
-  %447 = tail call double @llvm.fmuladd.f64(double %mul367.2.2, double %412, double %446)
-  %448 = tail call double @llvm.fmuladd.f64(double %mul367.3.2, double %411, double %447)
-  %449 = tail call double @llvm.fmuladd.f64(double %mul367.33880, double %414, double %448)
-  %450 = tail call double @llvm.fmuladd.f64(double %mul367.1.3, double %413, double %449)
-  %451 = tail call double @llvm.fmuladd.f64(double %mul367.2.3, double %412, double %450)
-  %452 = tail call double @llvm.fmuladd.f64(double %mul367.3.3, double %411, double %451)
-  %453 = insertelement <2 x double> poison, double %452, i64 0
-  %454 = shufflevector <2 x double> %453, <2 x double> poison, <2 x i32> zeroinitializer
-  %455 = fsub <2 x double> %431, %454
-  store <2 x double> %455, ptr %415, align 8
-  %456 = fsub <2 x double> %436, %454
-  store <2 x double> %456, ptr %arrayidx364.2, align 8
-  %457 = load <2 x double>, ptr %416, align 8
-  %458 = fsub <2 x double> %457, %454
-  store <2 x double> %458, ptr %416, align 8
-  %459 = load <2 x double>, ptr %arrayidx364.2.1, align 8
-  %460 = fsub <2 x double> %459, %454
-  store <2 x double> %460, ptr %arrayidx364.2.1, align 8
-  %461 = load <2 x double>, ptr %421, align 8
-  %462 = fsub <2 x double> %461, %454
-  store <2 x double> %462, ptr %421, align 8
-  %463 = load <2 x double>, ptr %arrayidx364.2.2, align 8
-  %464 = fsub <2 x double> %463, %454
-  store <2 x double> %464, ptr %arrayidx364.2.2, align 8
-  %465 = load <2 x double>, ptr %426, align 8
-  %466 = fsub <2 x double> %465, %454
-  store <2 x double> %466, ptr %426, align 8
-  %467 = load <2 x double>, ptr %arrayidx364.2.3, align 8
-  %468 = fsub <2 x double> %467, %454
-  store <2 x double> %468, ptr %arrayidx364.2.3, align 8
-  %469 = load ptr, ptr %call, align 8
-  %470 = load double, ptr %arrayidx364.1.1, align 8
-  %div405.1 = fmul double %470, 2.500000e-01
-  %471 = load double, ptr %arrayidx364.2.2, align 8
-  %472 = insertelement <2 x double> %468, double %471, i64 0
-  %473 = fmul <2 x double> %472, <double 2.500000e-01, double 2.500000e-01>
-  %474 = load <2 x double>, ptr %469, align 8
-  %475 = extractelement <2 x double> %474, i64 0
-  %div405 = fmul double %475, 2.500000e-01
+  %336 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4597, %if.then346 ]
+  %337 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4596, %if.then346 ]
+  %338 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4595, %if.then346 ]
+  %339 = phi double [ 2.500000e-01, %if.else347 ], [ %.pre4594, %if.then346 ]
+  %340 = load ptr, ptr %call, align 8
+  %arrayidx364.2 = getelementptr inbounds double, ptr %340, i64 2
+  %341 = load ptr, ptr %arrayidx240.1, align 8
+  %342 = load double, ptr %341, align 8
+  %mul367.13878 = fmul double %342, %338
+  %arrayidx364.1.1 = getelementptr inbounds double, ptr %341, i64 1
+  %343 = load double, ptr %arrayidx364.1.1, align 8
+  %mul367.1.1 = fmul double %343, %338
+  %arrayidx364.2.1 = getelementptr inbounds double, ptr %341, i64 2
+  %344 = load double, ptr %arrayidx364.2.1, align 8
+  %mul367.2.1 = fmul double %344, %338
+  %arrayidx364.3.1 = getelementptr inbounds double, ptr %341, i64 3
+  %345 = load double, ptr %arrayidx364.3.1, align 8
+  %mul367.3.1 = fmul double %345, %338
+  %346 = load ptr, ptr %arrayidx240.2, align 8
+  %347 = load double, ptr %346, align 8
+  %mul367.23879 = fmul double %347, %337
+  %arrayidx364.1.2 = getelementptr inbounds double, ptr %346, i64 1
+  %348 = load double, ptr %arrayidx364.1.2, align 8
+  %mul367.1.2 = fmul double %348, %337
+  %arrayidx364.2.2 = getelementptr inbounds double, ptr %346, i64 2
+  %349 = load double, ptr %arrayidx364.2.2, align 8
+  %mul367.2.2 = fmul double %349, %337
+  %arrayidx364.3.2 = getelementptr inbounds double, ptr %346, i64 3
+  %350 = load double, ptr %arrayidx364.3.2, align 8
+  %mul367.3.2 = fmul double %350, %337
+  %351 = load ptr, ptr %arrayidx240.3, align 8
+  %352 = load double, ptr %351, align 8
+  %mul367.33880 = fmul double %352, %336
+  %arrayidx364.1.3 = getelementptr inbounds double, ptr %351, i64 1
+  %353 = load double, ptr %arrayidx364.1.3, align 8
+  %mul367.1.3 = fmul double %353, %336
+  %arrayidx364.2.3 = getelementptr inbounds double, ptr %351, i64 2
+  %354 = load double, ptr %arrayidx364.2.3, align 8
+  %mul367.2.3 = fmul double %354, %336
+  %arrayidx364.3.3 = getelementptr inbounds double, ptr %351, i64 3
+  %355 = load double, ptr %arrayidx364.3.3, align 8
+  %mul367.3.3 = fmul double %355, %336
+  %356 = load <2 x double>, ptr %340, align 8
+  %357 = extractelement <2 x double> %356, i64 0
+  %mul367 = fmul double %357, %339
+  %358 = tail call double @llvm.fmuladd.f64(double %mul367, double %339, double 0.000000e+00)
+  %359 = extractelement <2 x double> %356, i64 1
+  %mul367.1 = fmul double %359, %339
+  %360 = tail call double @llvm.fmuladd.f64(double %mul367.1, double %338, double %358)
+  %361 = load <2 x double>, ptr %arrayidx364.2, align 8
+  %362 = extractelement <2 x double> %361, i64 0
+  %mul367.2 = fmul double %362, %339
+  %363 = extractelement <2 x double> %361, i64 1
+  %mul367.3 = fmul double %363, %339
+  %364 = tail call double @llvm.fmuladd.f64(double %mul367.2, double %337, double %360)
+  %365 = tail call double @llvm.fmuladd.f64(double %mul367.3, double %336, double %364)
+  %366 = tail call double @llvm.fmuladd.f64(double %mul367.13878, double %339, double %365)
+  %367 = tail call double @llvm.fmuladd.f64(double %mul367.1.1, double %338, double %366)
+  %368 = tail call double @llvm.fmuladd.f64(double %mul367.2.1, double %337, double %367)
+  %369 = tail call double @llvm.fmuladd.f64(double %mul367.3.1, double %336, double %368)
+  %370 = tail call double @llvm.fmuladd.f64(double %mul367.23879, double %339, double %369)
+  %371 = tail call double @llvm.fmuladd.f64(double %mul367.1.2, double %338, double %370)
+  %372 = tail call double @llvm.fmuladd.f64(double %mul367.2.2, double %337, double %371)
+  %373 = tail call double @llvm.fmuladd.f64(double %mul367.3.2, double %336, double %372)
+  %374 = tail call double @llvm.fmuladd.f64(double %mul367.33880, double %339, double %373)
+  %375 = tail call double @llvm.fmuladd.f64(double %mul367.1.3, double %338, double %374)
+  %376 = tail call double @llvm.fmuladd.f64(double %mul367.2.3, double %337, double %375)
+  %377 = tail call double @llvm.fmuladd.f64(double %mul367.3.3, double %336, double %376)
+  %378 = insertelement <2 x double> poison, double %377, i64 0
+  %379 = shufflevector <2 x double> %378, <2 x double> poison, <2 x i32> zeroinitializer
+  %380 = fsub <2 x double> %356, %379
+  store <2 x double> %380, ptr %340, align 8
+  %381 = fsub <2 x double> %361, %379
+  store <2 x double> %381, ptr %arrayidx364.2, align 8
+  %382 = load <2 x double>, ptr %341, align 8
+  %383 = fsub <2 x double> %382, %379
+  store <2 x double> %383, ptr %341, align 8
+  %384 = load <2 x double>, ptr %arrayidx364.2.1, align 8
+  %385 = fsub <2 x double> %384, %379
+  store <2 x double> %385, ptr %arrayidx364.2.1, align 8
+  %386 = load <2 x double>, ptr %346, align 8
+  %387 = fsub <2 x double> %386, %379
+  store <2 x double> %387, ptr %346, align 8
+  %388 = load <2 x double>, ptr %arrayidx364.2.2, align 8
+  %389 = fsub <2 x double> %388, %379
+  store <2 x double> %389, ptr %arrayidx364.2.2, align 8
+  %390 = load <2 x double>, ptr %351, align 8
+  %391 = fsub <2 x double> %390, %379
+  store <2 x double> %391, ptr %351, align 8
+  %392 = load <2 x double>, ptr %arrayidx364.2.3, align 8
+  %393 = fsub <2 x double> %392, %379
+  store <2 x double> %393, ptr %arrayidx364.2.3, align 8
+  %394 = load ptr, ptr %call, align 8
+  %395 = load double, ptr %arrayidx364.1.1, align 8
+  %div405.1 = fmul double %395, 2.500000e-01
+  %396 = load double, ptr %arrayidx364.2.2, align 8
+  %397 = insertelement <2 x double> %393, double %396, i64 0
+  %398 = fmul <2 x double> %397, <double 2.500000e-01, double 2.500000e-01>
+  %399 = load <2 x double>, ptr %394, align 8
+  %400 = extractelement <2 x double> %399, i64 0
+  %div405 = fmul double %400, 2.500000e-01
   %add406 = fadd double %div405, 0.000000e+00
   %add406.1 = fadd double %add406, %div405.1
-  %476 = extractelement <2 x double> %473, i64 0
-  %add406.2 = fadd double %add406.1, %476
-  %477 = extractelement <2 x double> %473, i64 1
-  %add406.3 = fadd double %add406.2, %477
+  %401 = extractelement <2 x double> %398, i64 0
+  %add406.2 = fadd double %add406.1, %401
+  %402 = extractelement <2 x double> %398, i64 1
+  %add406.3 = fadd double %add406.2, %402
   %div418 = fdiv double 6.000000e+02, %add406.3
-  %478 = insertelement <2 x double> poison, double %div418, i64 0
-  %479 = shufflevector <2 x double> %478, <2 x double> poison, <2 x i32> zeroinitializer
-  %480 = fmul <2 x double> %479, %474
-  store <2 x double> %480, ptr %469, align 8
-  %arrayidx422.2 = getelementptr inbounds double, ptr %469, i64 2
-  %481 = load <2 x double>, ptr %arrayidx422.2, align 8
-  %482 = fmul <2 x double> %479, %481
-  store <2 x double> %482, ptr %arrayidx422.2, align 8
-  %483 = load ptr, ptr %arrayidx240.1, align 8
-  %484 = load <2 x double>, ptr %483, align 8
-  %485 = fmul <2 x double> %479, %484
-  store <2 x double> %485, ptr %483, align 8
-  %arrayidx422.2.1 = getelementptr inbounds double, ptr %483, i64 2
-  %486 = load <2 x double>, ptr %arrayidx422.2.1, align 8
-  %487 = fmul <2 x double> %479, %486
-  store <2 x double> %487, ptr %arrayidx422.2.1, align 8
-  %488 = load ptr, ptr %arrayidx240.2, align 8
-  %arrayidx422.1.2 = getelementptr inbounds double, ptr %488, i64 1
-  %489 = load <2 x double>, ptr %488, align 8
-  %490 = fmul <2 x double> %479, %489
-  store <2 x double> %490, ptr %488, align 8
-  %arrayidx422.2.2 = getelementptr inbounds double, ptr %488, i64 2
-  %arrayidx422.3.2 = getelementptr inbounds double, ptr %488, i64 3
-  %491 = load <2 x double>, ptr %arrayidx422.2.2, align 8
-  %492 = fmul <2 x double> %479, %491
-  store <2 x double> %492, ptr %arrayidx422.2.2, align 8
-  %493 = load ptr, ptr %arrayidx240.3, align 8
-  %arrayidx422.1.3 = getelementptr inbounds double, ptr %493, i64 1
-  %494 = load <2 x double>, ptr %493, align 8
-  %495 = fmul <2 x double> %479, %494
-  store <2 x double> %495, ptr %493, align 8
-  %arrayidx422.2.3 = getelementptr inbounds double, ptr %493, i64 2
-  %arrayidx422.3.3 = getelementptr inbounds double, ptr %493, i64 3
-  %496 = load <2 x double>, ptr %arrayidx422.2.3, align 8
-  %497 = fmul <2 x double> %479, %496
-  store <2 x double> %497, ptr %arrayidx422.2.3, align 8
-  %498 = load i32, ptr @offset, align 4
-  %conv438 = sitofp i32 %498 to double
-  %499 = load <2 x double>, ptr %469, align 8
-  %500 = insertelement <2 x double> poison, double %conv438, i64 0
-  %501 = shufflevector <2 x double> %500, <2 x double> poison, <2 x i32> zeroinitializer
-  %502 = fsub <2 x double> %499, %501
-  store <2 x double> %502, ptr %469, align 8
-  %503 = load <2 x double>, ptr %arrayidx422.2, align 8
-  %504 = fsub <2 x double> %503, %501
-  store <2 x double> %504, ptr %arrayidx422.2, align 8
-  %505 = load <2 x double>, ptr %483, align 8
-  %506 = fsub <2 x double> %505, %501
-  store <2 x double> %506, ptr %483, align 8
-  %507 = load <2 x double>, ptr %arrayidx422.2.1, align 8
-  %508 = fsub <2 x double> %507, %501
-  store <2 x double> %508, ptr %arrayidx422.2.1, align 8
-  %509 = load <2 x double>, ptr %488, align 8
-  %510 = fsub <2 x double> %509, %501
-  store <2 x double> %510, ptr %488, align 8
-  %511 = load <2 x double>, ptr %arrayidx422.2.2, align 8
-  %512 = fsub <2 x double> %511, %501
-  store <2 x double> %512, ptr %arrayidx422.2.2, align 8
-  %513 = load <2 x double>, ptr %493, align 8
-  %514 = fsub <2 x double> %513, %501
-  store <2 x double> %514, ptr %493, align 8
-  %515 = load <2 x double>, ptr %arrayidx422.2.3, align 8
-  %516 = fsub <2 x double> %515, %501
-  store <2 x double> %516, ptr %arrayidx422.2.3, align 8
-  %517 = load ptr, ptr %call, align 8
-  %518 = load double, ptr %517, align 8
-  %cmp.i = fcmp ogt double %518, 0.000000e+00
+  %403 = insertelement <2 x double> poison, double %div418, i64 0
+  %404 = shufflevector <2 x double> %403, <2 x double> poison, <2 x i32> zeroinitializer
+  %405 = fmul <2 x double> %404, %399
+  store <2 x double> %405, ptr %394, align 8
+  %arrayidx422.2 = getelementptr inbounds double, ptr %394, i64 2
+  %406 = load <2 x double>, ptr %arrayidx422.2, align 8
+  %407 = fmul <2 x double> %404, %406
+  store <2 x double> %407, ptr %arrayidx422.2, align 8
+  %408 = load ptr, ptr %arrayidx240.1, align 8
+  %409 = load <2 x double>, ptr %408, align 8
+  %410 = fmul <2 x double> %404, %409
+  store <2 x double> %410, ptr %408, align 8
+  %arrayidx422.2.1 = getelementptr inbounds double, ptr %408, i64 2
+  %411 = load <2 x double>, ptr %arrayidx422.2.1, align 8
+  %412 = fmul <2 x double> %404, %411
+  store <2 x double> %412, ptr %arrayidx422.2.1, align 8
+  %413 = load ptr, ptr %arrayidx240.2, align 8
+  %arrayidx422.1.2 = getelementptr inbounds double, ptr %413, i64 1
+  %414 = load <2 x double>, ptr %413, align 8
+  %415 = fmul <2 x double> %404, %414
+  store <2 x double> %415, ptr %413, align 8
+  %arrayidx422.2.2 = getelementptr inbounds double, ptr %413, i64 2
+  %arrayidx422.3.2 = getelementptr inbounds double, ptr %413, i64 3
+  %416 = load <2 x double>, ptr %arrayidx422.2.2, align 8
+  %417 = fmul <2 x double> %404, %416
+  store <2 x double> %417, ptr %arrayidx422.2.2, align 8
+  %418 = load ptr, ptr %arrayidx240.3, align 8
+  %arrayidx422.1.3 = getelementptr inbounds double, ptr %418, i64 1
+  %419 = load <2 x double>, ptr %418, align 8
+  %420 = fmul <2 x double> %404, %419
+  store <2 x double> %420, ptr %418, align 8
+  %arrayidx422.2.3 = getelementptr inbounds double, ptr %418, i64 2
+  %arrayidx422.3.3 = getelementptr inbounds double, ptr %418, i64 3
+  %421 = load <2 x double>, ptr %arrayidx422.2.3, align 8
+  %422 = fmul <2 x double> %404, %421
+  store <2 x double> %422, ptr %arrayidx422.2.3, align 8
+  %423 = load i32, ptr @offset, align 4
+  %conv438 = sitofp i32 %423 to double
+  %424 = load <2 x double>, ptr %394, align 8
+  %425 = insertelement <2 x double> poison, double %conv438, i64 0
+  %426 = shufflevector <2 x double> %425, <2 x double> poison, <2 x i32> zeroinitializer
+  %427 = fsub <2 x double> %424, %426
+  store <2 x double> %427, ptr %394, align 8
+  %428 = load <2 x double>, ptr %arrayidx422.2, align 8
+  %429 = fsub <2 x double> %428, %426
+  store <2 x double> %429, ptr %arrayidx422.2, align 8
+  %430 = load <2 x double>, ptr %408, align 8
+  %431 = fsub <2 x double> %430, %426
+  store <2 x double> %431, ptr %408, align 8
+  %432 = load <2 x double>, ptr %arrayidx422.2.1, align 8
+  %433 = fsub <2 x double> %432, %426
+  store <2 x double> %433, ptr %arrayidx422.2.1, align 8
+  %434 = load <2 x double>, ptr %413, align 8
+  %435 = fsub <2 x double> %434, %426
+  store <2 x double> %435, ptr %413, align 8
+  %436 = load <2 x double>, ptr %arrayidx422.2.2, align 8
+  %437 = fsub <2 x double> %436, %426
+  store <2 x double> %437, ptr %arrayidx422.2.2, align 8
+  %438 = load <2 x double>, ptr %418, align 8
+  %439 = fsub <2 x double> %438, %426
+  store <2 x double> %439, ptr %418, align 8
+  %440 = load <2 x double>, ptr %arrayidx422.2.3, align 8
+  %441 = fsub <2 x double> %440, %426
+  store <2 x double> %441, ptr %arrayidx422.2.3, align 8
+  %442 = load ptr, ptr %call, align 8
+  %443 = load double, ptr %442, align 8
+  %cmp.i = fcmp ogt double %443, 0.000000e+00
   br i1 %cmp.i, label %if.then.i, label %if.else.i
 
 if.then.i:                                        ; preds = %if.end352
-  %add.i = fadd double %518, 5.000000e-01
+  %add.i = fadd double %443, 5.000000e-01
   %conv.i = fptosi double %add.i to i32
   br label %shishagonyuu.exit
 
 if.else.i:                                        ; preds = %if.end352
-  %or.cond.i = fcmp olt double %518, 0.000000e+00
+  %or.cond.i = fcmp olt double %443, 0.000000e+00
   br i1 %or.cond.i, label %if.then7.i, label %shishagonyuu.exit
 
 if.then7.i:                                       ; preds = %if.else.i
-  %sub.i = fadd double %518, -5.000000e-01
+  %sub.i = fadd double %443, -5.000000e-01
   %conv8.i = fptosi double %sub.i to i32
   br label %shishagonyuu.exit
 
 shishagonyuu.exit:                                ; preds = %if.then.i, %if.else.i, %if.then7.i
   %out.0.i = phi i32 [ %conv.i, %if.then.i ], [ %conv8.i, %if.then7.i ], [ 0, %if.else.i ]
   %conv463 = sitofp i32 %out.0.i to double
-  store double %conv463, ptr %517, align 8
-  %arrayidx461.1 = getelementptr inbounds double, ptr %517, i64 1
-  %519 = load double, ptr %arrayidx461.1, align 8
-  %cmp.i.1 = fcmp ogt double %519, 0.000000e+00
+  store double %conv463, ptr %442, align 8
+  %arrayidx461.1 = getelementptr inbounds double, ptr %442, i64 1
+  %444 = load double, ptr %arrayidx461.1, align 8
+  %cmp.i.1 = fcmp ogt double %444, 0.000000e+00
   br i1 %cmp.i.1, label %if.then.i.1, label %if.else.i.1
 
 if.else.i.1:                                      ; preds = %shishagonyuu.exit
-  %or.cond.i.1 = fcmp olt double %519, 0.000000e+00
+  %or.cond.i.1 = fcmp olt double %444, 0.000000e+00
   br i1 %or.cond.i.1, label %if.then7.i.1, label %shishagonyuu.exit.1
 
 if.then7.i.1:                                     ; preds = %if.else.i.1
-  %sub.i.1 = fadd double %519, -5.000000e-01
+  %sub.i.1 = fadd double %444, -5.000000e-01
   %conv8.i.1 = fptosi double %sub.i.1 to i32
   br label %shishagonyuu.exit.1
 
 if.then.i.1:                                      ; preds = %shishagonyuu.exit
-  %add.i.1 = fadd double %519, 5.000000e-01
+  %add.i.1 = fadd double %444, 5.000000e-01
   %conv.i.1 = fptosi double %add.i.1 to i32
   br label %shishagonyuu.exit.1
 
@@ -2618,22 +2391,22 @@ shishagonyuu.exit.1:                              ; preds = %if.then.i.1, %if.th
   %out.0.i.1 = phi i32 [ %conv.i.1, %if.then.i.1 ], [ %conv8.i.1, %if.then7.i.1 ], [ 0, %if.else.i.1 ]
   %conv463.1 = sitofp i32 %out.0.i.1 to double
   store double %conv463.1, ptr %arrayidx461.1, align 8
-  %arrayidx461.2 = getelementptr inbounds double, ptr %517, i64 2
-  %520 = load double, ptr %arrayidx461.2, align 8
-  %cmp.i.2 = fcmp ogt double %520, 0.000000e+00
+  %arrayidx461.2 = getelementptr inbounds double, ptr %442, i64 2
+  %445 = load double, ptr %arrayidx461.2, align 8
+  %cmp.i.2 = fcmp ogt double %445, 0.000000e+00
   br i1 %cmp.i.2, label %if.then.i.2, label %if.else.i.2
 
 if.else.i.2:                                      ; preds = %shishagonyuu.exit.1
-  %or.cond.i.2 = fcmp olt double %520, 0.000000e+00
+  %or.cond.i.2 = fcmp olt double %445, 0.000000e+00
   br i1 %or.cond.i.2, label %if.then7.i.2, label %shishagonyuu.exit.2
 
 if.then7.i.2:                                     ; preds = %if.else.i.2
-  %sub.i.2 = fadd double %520, -5.000000e-01
+  %sub.i.2 = fadd double %445, -5.000000e-01
   %conv8.i.2 = fptosi double %sub.i.2 to i32
   br label %shishagonyuu.exit.2
 
 if.then.i.2:                                      ; preds = %shishagonyuu.exit.1
-  %add.i.2 = fadd double %520, 5.000000e-01
+  %add.i.2 = fadd double %445, 5.000000e-01
   %conv.i.2 = fptosi double %add.i.2 to i32
   br label %shishagonyuu.exit.2
 
@@ -2641,22 +2414,22 @@ shishagonyuu.exit.2:                              ; preds = %if.then.i.2, %if.th
   %out.0.i.2 = phi i32 [ %conv.i.2, %if.then.i.2 ], [ %conv8.i.2, %if.then7.i.2 ], [ 0, %if.else.i.2 ]
   %conv463.2 = sitofp i32 %out.0.i.2 to double
   store double %conv463.2, ptr %arrayidx461.2, align 8
-  %arrayidx461.3 = getelementptr inbounds double, ptr %517, i64 3
-  %521 = load double, ptr %arrayidx461.3, align 8
-  %cmp.i.3 = fcmp ogt double %521, 0.000000e+00
+  %arrayidx461.3 = getelementptr inbounds double, ptr %442, i64 3
+  %446 = load double, ptr %arrayidx461.3, align 8
+  %cmp.i.3 = fcmp ogt double %446, 0.000000e+00
   br i1 %cmp.i.3, label %if.then.i.3, label %if.else.i.3
 
 if.else.i.3:                                      ; preds = %shishagonyuu.exit.2
-  %or.cond.i.3 = fcmp olt double %521, 0.000000e+00
+  %or.cond.i.3 = fcmp olt double %446, 0.000000e+00
   br i1 %or.cond.i.3, label %if.then7.i.3, label %shishagonyuu.exit.3
 
 if.then7.i.3:                                     ; preds = %if.else.i.3
-  %sub.i.3 = fadd double %521, -5.000000e-01
+  %sub.i.3 = fadd double %446, -5.000000e-01
   %conv8.i.3 = fptosi double %sub.i.3 to i32
   br label %shishagonyuu.exit.3
 
 if.then.i.3:                                      ; preds = %shishagonyuu.exit.2
-  %add.i.3 = fadd double %521, 5.000000e-01
+  %add.i.3 = fadd double %446, 5.000000e-01
   %conv.i.3 = fptosi double %add.i.3 to i32
   br label %shishagonyuu.exit.3
 
@@ -2664,45 +2437,45 @@ shishagonyuu.exit.3:                              ; preds = %if.then.i.3, %if.th
   %out.0.i.3 = phi i32 [ %conv.i.3, %if.then.i.3 ], [ %conv8.i.3, %if.then7.i.3 ], [ 0, %if.else.i.3 ]
   %conv463.3 = sitofp i32 %out.0.i.3 to double
   store double %conv463.3, ptr %arrayidx461.3, align 8
-  %522 = load ptr, ptr %arrayidx240.1, align 8
-  %523 = load double, ptr %522, align 8
-  %cmp.i.13926 = fcmp ogt double %523, 0.000000e+00
+  %447 = load ptr, ptr %arrayidx240.1, align 8
+  %448 = load double, ptr %447, align 8
+  %cmp.i.13926 = fcmp ogt double %448, 0.000000e+00
   br i1 %cmp.i.13926, label %if.then.i.13934, label %if.else.i.13928
 
 if.else.i.13928:                                  ; preds = %shishagonyuu.exit.3
-  %or.cond.i.13927 = fcmp olt double %523, 0.000000e+00
+  %or.cond.i.13927 = fcmp olt double %448, 0.000000e+00
   br i1 %or.cond.i.13927, label %if.then7.i.13931, label %shishagonyuu.exit.13937
 
 if.then7.i.13931:                                 ; preds = %if.else.i.13928
-  %sub.i.13929 = fadd double %523, -5.000000e-01
+  %sub.i.13929 = fadd double %448, -5.000000e-01
   %conv8.i.13930 = fptosi double %sub.i.13929 to i32
   br label %shishagonyuu.exit.13937
 
 if.then.i.13934:                                  ; preds = %shishagonyuu.exit.3
-  %add.i.13932 = fadd double %523, 5.000000e-01
+  %add.i.13932 = fadd double %448, 5.000000e-01
   %conv.i.13933 = fptosi double %add.i.13932 to i32
   br label %shishagonyuu.exit.13937
 
 shishagonyuu.exit.13937:                          ; preds = %if.then.i.13934, %if.then7.i.13931, %if.else.i.13928
   %out.0.i.13935 = phi i32 [ %conv.i.13933, %if.then.i.13934 ], [ %conv8.i.13930, %if.then7.i.13931 ], [ 0, %if.else.i.13928 ]
   %conv463.13936 = sitofp i32 %out.0.i.13935 to double
-  store double %conv463.13936, ptr %522, align 8
-  %arrayidx461.1.1 = getelementptr inbounds double, ptr %522, i64 1
-  %524 = load double, ptr %arrayidx461.1.1, align 8
-  %cmp.i.1.1 = fcmp ogt double %524, 0.000000e+00
+  store double %conv463.13936, ptr %447, align 8
+  %arrayidx461.1.1 = getelementptr inbounds double, ptr %447, i64 1
+  %449 = load double, ptr %arrayidx461.1.1, align 8
+  %cmp.i.1.1 = fcmp ogt double %449, 0.000000e+00
   br i1 %cmp.i.1.1, label %if.then.i.1.1, label %if.else.i.1.1
 
 if.else.i.1.1:                                    ; preds = %shishagonyuu.exit.13937
-  %or.cond.i.1.1 = fcmp olt double %524, 0.000000e+00
+  %or.cond.i.1.1 = fcmp olt double %449, 0.000000e+00
   br i1 %or.cond.i.1.1, label %if.then7.i.1.1, label %shishagonyuu.exit.1.1
 
 if.then7.i.1.1:                                   ; preds = %if.else.i.1.1
-  %sub.i.1.1 = fadd double %524, -5.000000e-01
+  %sub.i.1.1 = fadd double %449, -5.000000e-01
   %conv8.i.1.1 = fptosi double %sub.i.1.1 to i32
   br label %shishagonyuu.exit.1.1
 
 if.then.i.1.1:                                    ; preds = %shishagonyuu.exit.13937
-  %add.i.1.1 = fadd double %524, 5.000000e-01
+  %add.i.1.1 = fadd double %449, 5.000000e-01
   %conv.i.1.1 = fptosi double %add.i.1.1 to i32
   br label %shishagonyuu.exit.1.1
 
@@ -2710,22 +2483,22 @@ shishagonyuu.exit.1.1:                            ; preds = %if.then.i.1.1, %if.
   %out.0.i.1.1 = phi i32 [ %conv.i.1.1, %if.then.i.1.1 ], [ %conv8.i.1.1, %if.then7.i.1.1 ], [ 0, %if.else.i.1.1 ]
   %conv463.1.1 = sitofp i32 %out.0.i.1.1 to double
   store double %conv463.1.1, ptr %arrayidx461.1.1, align 8
-  %arrayidx461.2.1 = getelementptr inbounds double, ptr %522, i64 2
-  %525 = load double, ptr %arrayidx461.2.1, align 8
-  %cmp.i.2.1 = fcmp ogt double %525, 0.000000e+00
+  %arrayidx461.2.1 = getelementptr inbounds double, ptr %447, i64 2
+  %450 = load double, ptr %arrayidx461.2.1, align 8
+  %cmp.i.2.1 = fcmp ogt double %450, 0.000000e+00
   br i1 %cmp.i.2.1, label %if.then.i.2.1, label %if.else.i.2.1
 
 if.else.i.2.1:                                    ; preds = %shishagonyuu.exit.1.1
-  %or.cond.i.2.1 = fcmp olt double %525, 0.000000e+00
+  %or.cond.i.2.1 = fcmp olt double %450, 0.000000e+00
   br i1 %or.cond.i.2.1, label %if.then7.i.2.1, label %shishagonyuu.exit.2.1
 
 if.then7.i.2.1:                                   ; preds = %if.else.i.2.1
-  %sub.i.2.1 = fadd double %525, -5.000000e-01
+  %sub.i.2.1 = fadd double %450, -5.000000e-01
   %conv8.i.2.1 = fptosi double %sub.i.2.1 to i32
   br label %shishagonyuu.exit.2.1
 
 if.then.i.2.1:                                    ; preds = %shishagonyuu.exit.1.1
-  %add.i.2.1 = fadd double %525, 5.000000e-01
+  %add.i.2.1 = fadd double %450, 5.000000e-01
   %conv.i.2.1 = fptosi double %add.i.2.1 to i32
   br label %shishagonyuu.exit.2.1
 
@@ -2733,22 +2506,22 @@ shishagonyuu.exit.2.1:                            ; preds = %if.then.i.2.1, %if.
   %out.0.i.2.1 = phi i32 [ %conv.i.2.1, %if.then.i.2.1 ], [ %conv8.i.2.1, %if.then7.i.2.1 ], [ 0, %if.else.i.2.1 ]
   %conv463.2.1 = sitofp i32 %out.0.i.2.1 to double
   store double %conv463.2.1, ptr %arrayidx461.2.1, align 8
-  %arrayidx461.3.1 = getelementptr inbounds double, ptr %522, i64 3
-  %526 = load double, ptr %arrayidx461.3.1, align 8
-  %cmp.i.3.1 = fcmp ogt double %526, 0.000000e+00
+  %arrayidx461.3.1 = getelementptr inbounds double, ptr %447, i64 3
+  %451 = load double, ptr %arrayidx461.3.1, align 8
+  %cmp.i.3.1 = fcmp ogt double %451, 0.000000e+00
   br i1 %cmp.i.3.1, label %if.then.i.3.1, label %if.else.i.3.1
 
 if.else.i.3.1:                                    ; preds = %shishagonyuu.exit.2.1
-  %or.cond.i.3.1 = fcmp olt double %526, 0.000000e+00
+  %or.cond.i.3.1 = fcmp olt double %451, 0.000000e+00
   br i1 %or.cond.i.3.1, label %if.then7.i.3.1, label %shishagonyuu.exit.3.1
 
 if.then7.i.3.1:                                   ; preds = %if.else.i.3.1
-  %sub.i.3.1 = fadd double %526, -5.000000e-01
+  %sub.i.3.1 = fadd double %451, -5.000000e-01
   %conv8.i.3.1 = fptosi double %sub.i.3.1 to i32
   br label %shishagonyuu.exit.3.1
 
 if.then.i.3.1:                                    ; preds = %shishagonyuu.exit.2.1
-  %add.i.3.1 = fadd double %526, 5.000000e-01
+  %add.i.3.1 = fadd double %451, 5.000000e-01
   %conv.i.3.1 = fptosi double %add.i.3.1 to i32
   br label %shishagonyuu.exit.3.1
 
@@ -2756,43 +2529,43 @@ shishagonyuu.exit.3.1:                            ; preds = %if.then.i.3.1, %if.
   %out.0.i.3.1 = phi i32 [ %conv.i.3.1, %if.then.i.3.1 ], [ %conv8.i.3.1, %if.then7.i.3.1 ], [ 0, %if.else.i.3.1 ]
   %conv463.3.1 = sitofp i32 %out.0.i.3.1 to double
   store double %conv463.3.1, ptr %arrayidx461.3.1, align 8
-  %527 = load double, ptr %488, align 8
-  %cmp.i.23938 = fcmp ogt double %527, 0.000000e+00
+  %452 = load double, ptr %413, align 8
+  %cmp.i.23938 = fcmp ogt double %452, 0.000000e+00
   br i1 %cmp.i.23938, label %if.then.i.23946, label %if.else.i.23940
 
 if.else.i.23940:                                  ; preds = %shishagonyuu.exit.3.1
-  %or.cond.i.23939 = fcmp olt double %527, 0.000000e+00
+  %or.cond.i.23939 = fcmp olt double %452, 0.000000e+00
   br i1 %or.cond.i.23939, label %if.then7.i.23943, label %shishagonyuu.exit.23949
 
 if.then7.i.23943:                                 ; preds = %if.else.i.23940
-  %sub.i.23941 = fadd double %527, -5.000000e-01
+  %sub.i.23941 = fadd double %452, -5.000000e-01
   %conv8.i.23942 = fptosi double %sub.i.23941 to i32
   br label %shishagonyuu.exit.23949
 
 if.then.i.23946:                                  ; preds = %shishagonyuu.exit.3.1
-  %add.i.23944 = fadd double %527, 5.000000e-01
+  %add.i.23944 = fadd double %452, 5.000000e-01
   %conv.i.23945 = fptosi double %add.i.23944 to i32
   br label %shishagonyuu.exit.23949
 
 shishagonyuu.exit.23949:                          ; preds = %if.then.i.23946, %if.then7.i.23943, %if.else.i.23940
   %out.0.i.23947 = phi i32 [ %conv.i.23945, %if.then.i.23946 ], [ %conv8.i.23942, %if.then7.i.23943 ], [ 0, %if.else.i.23940 ]
   %conv463.23948 = sitofp i32 %out.0.i.23947 to double
-  store double %conv463.23948, ptr %488, align 8
-  %528 = load double, ptr %arrayidx422.1.2, align 8
-  %cmp.i.1.2 = fcmp ogt double %528, 0.000000e+00
+  store double %conv463.23948, ptr %413, align 8
+  %453 = load double, ptr %arrayidx422.1.2, align 8
+  %cmp.i.1.2 = fcmp ogt double %453, 0.000000e+00
   br i1 %cmp.i.1.2, label %if.then.i.1.2, label %if.else.i.1.2
 
 if.else.i.1.2:                                    ; preds = %shishagonyuu.exit.23949
-  %or.cond.i.1.2 = fcmp olt double %528, 0.000000e+00
+  %or.cond.i.1.2 = fcmp olt double %453, 0.000000e+00
   br i1 %or.cond.i.1.2, label %if.then7.i.1.2, label %shishagonyuu.exit.1.2
 
 if.then7.i.1.2:                                   ; preds = %if.else.i.1.2
-  %sub.i.1.2 = fadd double %528, -5.000000e-01
+  %sub.i.1.2 = fadd double %453, -5.000000e-01
   %conv8.i.1.2 = fptosi double %sub.i.1.2 to i32
   br label %shishagonyuu.exit.1.2
 
 if.then.i.1.2:                                    ; preds = %shishagonyuu.exit.23949
-  %add.i.1.2 = fadd double %528, 5.000000e-01
+  %add.i.1.2 = fadd double %453, 5.000000e-01
   %conv.i.1.2 = fptosi double %add.i.1.2 to i32
   br label %shishagonyuu.exit.1.2
 
@@ -2800,21 +2573,21 @@ shishagonyuu.exit.1.2:                            ; preds = %if.then.i.1.2, %if.
   %out.0.i.1.2 = phi i32 [ %conv.i.1.2, %if.then.i.1.2 ], [ %conv8.i.1.2, %if.then7.i.1.2 ], [ 0, %if.else.i.1.2 ]
   %conv463.1.2 = sitofp i32 %out.0.i.1.2 to double
   store double %conv463.1.2, ptr %arrayidx422.1.2, align 8
-  %529 = load double, ptr %arrayidx422.2.2, align 8
-  %cmp.i.2.2 = fcmp ogt double %529, 0.000000e+00
+  %454 = load double, ptr %arrayidx422.2.2, align 8
+  %cmp.i.2.2 = fcmp ogt double %454, 0.000000e+00
   br i1 %cmp.i.2.2, label %if.then.i.2.2, label %if.else.i.2.2
 
 if.else.i.2.2:                                    ; preds = %shishagonyuu.exit.1.2
-  %or.cond.i.2.2 = fcmp olt double %529, 0.000000e+00
+  %or.cond.i.2.2 = fcmp olt double %454, 0.000000e+00
   br i1 %or.cond.i.2.2, label %if.then7.i.2.2, label %shishagonyuu.exit.2.2
 
 if.then7.i.2.2:                                   ; preds = %if.else.i.2.2
-  %sub.i.2.2 = fadd double %529, -5.000000e-01
+  %sub.i.2.2 = fadd double %454, -5.000000e-01
   %conv8.i.2.2 = fptosi double %sub.i.2.2 to i32
   br label %shishagonyuu.exit.2.2
 
 if.then.i.2.2:                                    ; preds = %shishagonyuu.exit.1.2
-  %add.i.2.2 = fadd double %529, 5.000000e-01
+  %add.i.2.2 = fadd double %454, 5.000000e-01
   %conv.i.2.2 = fptosi double %add.i.2.2 to i32
   br label %shishagonyuu.exit.2.2
 
@@ -2822,21 +2595,21 @@ shishagonyuu.exit.2.2:                            ; preds = %if.then.i.2.2, %if.
   %out.0.i.2.2 = phi i32 [ %conv.i.2.2, %if.then.i.2.2 ], [ %conv8.i.2.2, %if.then7.i.2.2 ], [ 0, %if.else.i.2.2 ]
   %conv463.2.2 = sitofp i32 %out.0.i.2.2 to double
   store double %conv463.2.2, ptr %arrayidx422.2.2, align 8
-  %530 = load double, ptr %arrayidx422.3.2, align 8
-  %cmp.i.3.2 = fcmp ogt double %530, 0.000000e+00
+  %455 = load double, ptr %arrayidx422.3.2, align 8
+  %cmp.i.3.2 = fcmp ogt double %455, 0.000000e+00
   br i1 %cmp.i.3.2, label %if.then.i.3.2, label %if.else.i.3.2
 
 if.else.i.3.2:                                    ; preds = %shishagonyuu.exit.2.2
-  %or.cond.i.3.2 = fcmp olt double %530, 0.000000e+00
+  %or.cond.i.3.2 = fcmp olt double %455, 0.000000e+00
   br i1 %or.cond.i.3.2, label %if.then7.i.3.2, label %shishagonyuu.exit.3.2
 
 if.then7.i.3.2:                                   ; preds = %if.else.i.3.2
-  %sub.i.3.2 = fadd double %530, -5.000000e-01
+  %sub.i.3.2 = fadd double %455, -5.000000e-01
   %conv8.i.3.2 = fptosi double %sub.i.3.2 to i32
   br label %shishagonyuu.exit.3.2
 
 if.then.i.3.2:                                    ; preds = %shishagonyuu.exit.2.2
-  %add.i.3.2 = fadd double %530, 5.000000e-01
+  %add.i.3.2 = fadd double %455, 5.000000e-01
   %conv.i.3.2 = fptosi double %add.i.3.2 to i32
   br label %shishagonyuu.exit.3.2
 
@@ -2844,43 +2617,43 @@ shishagonyuu.exit.3.2:                            ; preds = %if.then.i.3.2, %if.
   %out.0.i.3.2 = phi i32 [ %conv.i.3.2, %if.then.i.3.2 ], [ %conv8.i.3.2, %if.then7.i.3.2 ], [ 0, %if.else.i.3.2 ]
   %conv463.3.2 = sitofp i32 %out.0.i.3.2 to double
   store double %conv463.3.2, ptr %arrayidx422.3.2, align 8
-  %531 = load double, ptr %493, align 8
-  %cmp.i.33950 = fcmp ogt double %531, 0.000000e+00
+  %456 = load double, ptr %418, align 8
+  %cmp.i.33950 = fcmp ogt double %456, 0.000000e+00
   br i1 %cmp.i.33950, label %if.then.i.33958, label %if.else.i.33952
 
 if.else.i.33952:                                  ; preds = %shishagonyuu.exit.3.2
-  %or.cond.i.33951 = fcmp olt double %531, 0.000000e+00
+  %or.cond.i.33951 = fcmp olt double %456, 0.000000e+00
   br i1 %or.cond.i.33951, label %if.then7.i.33955, label %shishagonyuu.exit.33961
 
 if.then7.i.33955:                                 ; preds = %if.else.i.33952
-  %sub.i.33953 = fadd double %531, -5.000000e-01
+  %sub.i.33953 = fadd double %456, -5.000000e-01
   %conv8.i.33954 = fptosi double %sub.i.33953 to i32
   br label %shishagonyuu.exit.33961
 
 if.then.i.33958:                                  ; preds = %shishagonyuu.exit.3.2
-  %add.i.33956 = fadd double %531, 5.000000e-01
+  %add.i.33956 = fadd double %456, 5.000000e-01
   %conv.i.33957 = fptosi double %add.i.33956 to i32
   br label %shishagonyuu.exit.33961
 
 shishagonyuu.exit.33961:                          ; preds = %if.then.i.33958, %if.then7.i.33955, %if.else.i.33952
   %out.0.i.33959 = phi i32 [ %conv.i.33957, %if.then.i.33958 ], [ %conv8.i.33954, %if.then7.i.33955 ], [ 0, %if.else.i.33952 ]
   %conv463.33960 = sitofp i32 %out.0.i.33959 to double
-  store double %conv463.33960, ptr %493, align 8
-  %532 = load double, ptr %arrayidx422.1.3, align 8
-  %cmp.i.1.3 = fcmp ogt double %532, 0.000000e+00
+  store double %conv463.33960, ptr %418, align 8
+  %457 = load double, ptr %arrayidx422.1.3, align 8
+  %cmp.i.1.3 = fcmp ogt double %457, 0.000000e+00
   br i1 %cmp.i.1.3, label %if.then.i.1.3, label %if.else.i.1.3
 
 if.else.i.1.3:                                    ; preds = %shishagonyuu.exit.33961
-  %or.cond.i.1.3 = fcmp olt double %532, 0.000000e+00
+  %or.cond.i.1.3 = fcmp olt double %457, 0.000000e+00
   br i1 %or.cond.i.1.3, label %if.then7.i.1.3, label %shishagonyuu.exit.1.3
 
 if.then7.i.1.3:                                   ; preds = %if.else.i.1.3
-  %sub.i.1.3 = fadd double %532, -5.000000e-01
+  %sub.i.1.3 = fadd double %457, -5.000000e-01
   %conv8.i.1.3 = fptosi double %sub.i.1.3 to i32
   br label %shishagonyuu.exit.1.3
 
 if.then.i.1.3:                                    ; preds = %shishagonyuu.exit.33961
-  %add.i.1.3 = fadd double %532, 5.000000e-01
+  %add.i.1.3 = fadd double %457, 5.000000e-01
   %conv.i.1.3 = fptosi double %add.i.1.3 to i32
   br label %shishagonyuu.exit.1.3
 
@@ -2888,21 +2661,21 @@ shishagonyuu.exit.1.3:                            ; preds = %if.then.i.1.3, %if.
   %out.0.i.1.3 = phi i32 [ %conv.i.1.3, %if.then.i.1.3 ], [ %conv8.i.1.3, %if.then7.i.1.3 ], [ 0, %if.else.i.1.3 ]
   %conv463.1.3 = sitofp i32 %out.0.i.1.3 to double
   store double %conv463.1.3, ptr %arrayidx422.1.3, align 8
-  %533 = load double, ptr %arrayidx422.2.3, align 8
-  %cmp.i.2.3 = fcmp ogt double %533, 0.000000e+00
+  %458 = load double, ptr %arrayidx422.2.3, align 8
+  %cmp.i.2.3 = fcmp ogt double %458, 0.000000e+00
   br i1 %cmp.i.2.3, label %if.then.i.2.3, label %if.else.i.2.3
 
 if.else.i.2.3:                                    ; preds = %shishagonyuu.exit.1.3
-  %or.cond.i.2.3 = fcmp olt double %533, 0.000000e+00
+  %or.cond.i.2.3 = fcmp olt double %458, 0.000000e+00
   br i1 %or.cond.i.2.3, label %if.then7.i.2.3, label %shishagonyuu.exit.2.3
 
 if.then7.i.2.3:                                   ; preds = %if.else.i.2.3
-  %sub.i.2.3 = fadd double %533, -5.000000e-01
+  %sub.i.2.3 = fadd double %458, -5.000000e-01
   %conv8.i.2.3 = fptosi double %sub.i.2.3 to i32
   br label %shishagonyuu.exit.2.3
 
 if.then.i.2.3:                                    ; preds = %shishagonyuu.exit.1.3
-  %add.i.2.3 = fadd double %533, 5.000000e-01
+  %add.i.2.3 = fadd double %458, 5.000000e-01
   %conv.i.2.3 = fptosi double %add.i.2.3 to i32
   br label %shishagonyuu.exit.2.3
 
@@ -2910,21 +2683,21 @@ shishagonyuu.exit.2.3:                            ; preds = %if.then.i.2.3, %if.
   %out.0.i.2.3 = phi i32 [ %conv.i.2.3, %if.then.i.2.3 ], [ %conv8.i.2.3, %if.then7.i.2.3 ], [ 0, %if.else.i.2.3 ]
   %conv463.2.3 = sitofp i32 %out.0.i.2.3 to double
   store double %conv463.2.3, ptr %arrayidx422.2.3, align 8
-  %534 = load double, ptr %arrayidx422.3.3, align 8
-  %cmp.i.3.3 = fcmp ogt double %534, 0.000000e+00
+  %459 = load double, ptr %arrayidx422.3.3, align 8
+  %cmp.i.3.3 = fcmp ogt double %459, 0.000000e+00
   br i1 %cmp.i.3.3, label %if.then.i.3.3, label %if.else.i.3.3
 
 if.else.i.3.3:                                    ; preds = %shishagonyuu.exit.2.3
-  %or.cond.i.3.3 = fcmp olt double %534, 0.000000e+00
+  %or.cond.i.3.3 = fcmp olt double %459, 0.000000e+00
   br i1 %or.cond.i.3.3, label %if.then7.i.3.3, label %shishagonyuu.exit.3.3
 
 if.then7.i.3.3:                                   ; preds = %if.else.i.3.3
-  %sub.i.3.3 = fadd double %534, -5.000000e-01
+  %sub.i.3.3 = fadd double %459, -5.000000e-01
   %conv8.i.3.3 = fptosi double %sub.i.3.3 to i32
   br label %shishagonyuu.exit.3.3
 
 if.then.i.3.3:                                    ; preds = %shishagonyuu.exit.2.3
-  %add.i.3.3 = fadd double %534, 5.000000e-01
+  %add.i.3.3 = fadd double %459, 5.000000e-01
   %conv.i.3.3 = fptosi double %add.i.3.3 to i32
   br label %shishagonyuu.exit.3.3
 
@@ -2932,104 +2705,104 @@ shishagonyuu.exit.3.3:                            ; preds = %if.then.i.3.3, %if.
   %out.0.i.3.3 = phi i32 [ %conv.i.3.3, %if.then.i.3.3 ], [ %conv8.i.3.3, %if.then7.i.3.3 ], [ 0, %if.else.i.3.3 ]
   %conv463.3.3 = sitofp i32 %out.0.i.3.3 to double
   store double %conv463.3.3, ptr %arrayidx422.3.3, align 8
-  %535 = load i32, ptr @disp, align 4
-  %tobool474.not = icmp eq i32 %535, 0
+  %460 = load i32, ptr @disp, align 4
+  %tobool474.not = icmp eq i32 %460, 0
   br i1 %tobool474.not, label %if.end498, label %if.then475
 
 if.then475:                                       ; preds = %shishagonyuu.exit.3.3
-  %536 = load ptr, ptr @stderr, align 8
-  %537 = tail call i64 @fwrite(ptr nonnull @.str.11, i64 20, i64 1, ptr %536) #16
-  %538 = load ptr, ptr @stderr, align 8
-  %539 = load ptr, ptr %call, align 8
-  %540 = load double, ptr %539, align 8
-  %call489 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %538, ptr noundef nonnull @.str.7, double noundef %540) #16
-  %541 = load ptr, ptr @stderr, align 8
-  %542 = load ptr, ptr %call, align 8
-  %arrayidx488.1 = getelementptr inbounds double, ptr %542, i64 1
-  %543 = load double, ptr %arrayidx488.1, align 8
-  %call489.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %541, ptr noundef nonnull @.str.7, double noundef %543) #16
-  %544 = load ptr, ptr @stderr, align 8
-  %545 = load ptr, ptr %call, align 8
-  %arrayidx488.2 = getelementptr inbounds double, ptr %545, i64 2
-  %546 = load double, ptr %arrayidx488.2, align 8
-  %call489.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %544, ptr noundef nonnull @.str.7, double noundef %546) #16
-  %547 = load ptr, ptr @stderr, align 8
-  %548 = load ptr, ptr %call, align 8
-  %arrayidx488.3 = getelementptr inbounds double, ptr %548, i64 3
-  %549 = load double, ptr %arrayidx488.3, align 8
-  %call489.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %547, ptr noundef nonnull @.str.7, double noundef %549) #16
-  %550 = load ptr, ptr @stderr, align 8
-  %fputc3314 = tail call i32 @fputc(i32 10, ptr %550)
-  %551 = load ptr, ptr @stderr, align 8
-  %552 = load ptr, ptr %arrayidx240.1, align 8
-  %553 = load double, ptr %552, align 8
-  %call489.13970 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %551, ptr noundef nonnull @.str.7, double noundef %553) #16
-  %554 = load ptr, ptr @stderr, align 8
-  %555 = load ptr, ptr %arrayidx240.1, align 8
-  %arrayidx488.1.1 = getelementptr inbounds double, ptr %555, i64 1
-  %556 = load double, ptr %arrayidx488.1.1, align 8
-  %call489.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %554, ptr noundef nonnull @.str.7, double noundef %556) #16
-  %557 = load ptr, ptr @stderr, align 8
-  %558 = load ptr, ptr %arrayidx240.1, align 8
-  %arrayidx488.2.1 = getelementptr inbounds double, ptr %558, i64 2
-  %559 = load double, ptr %arrayidx488.2.1, align 8
-  %call489.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %557, ptr noundef nonnull @.str.7, double noundef %559) #16
-  %560 = load ptr, ptr @stderr, align 8
-  %561 = load ptr, ptr %arrayidx240.1, align 8
-  %arrayidx488.3.1 = getelementptr inbounds double, ptr %561, i64 3
-  %562 = load double, ptr %arrayidx488.3.1, align 8
-  %call489.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %560, ptr noundef nonnull @.str.7, double noundef %562) #16
-  %563 = load ptr, ptr @stderr, align 8
-  %fputc3314.1 = tail call i32 @fputc(i32 10, ptr %563)
-  %564 = load ptr, ptr @stderr, align 8
-  %565 = load ptr, ptr %arrayidx240.2, align 8
-  %566 = load double, ptr %565, align 8
-  %call489.23971 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %564, ptr noundef nonnull @.str.7, double noundef %566) #16
-  %567 = load ptr, ptr @stderr, align 8
-  %568 = load ptr, ptr %arrayidx240.2, align 8
-  %arrayidx488.1.2 = getelementptr inbounds double, ptr %568, i64 1
-  %569 = load double, ptr %arrayidx488.1.2, align 8
-  %call489.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %567, ptr noundef nonnull @.str.7, double noundef %569) #16
-  %570 = load ptr, ptr @stderr, align 8
-  %571 = load ptr, ptr %arrayidx240.2, align 8
-  %arrayidx488.2.2 = getelementptr inbounds double, ptr %571, i64 2
-  %572 = load double, ptr %arrayidx488.2.2, align 8
-  %call489.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %570, ptr noundef nonnull @.str.7, double noundef %572) #16
-  %573 = load ptr, ptr @stderr, align 8
-  %574 = load ptr, ptr %arrayidx240.2, align 8
-  %arrayidx488.3.2 = getelementptr inbounds double, ptr %574, i64 3
-  %575 = load double, ptr %arrayidx488.3.2, align 8
-  %call489.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %573, ptr noundef nonnull @.str.7, double noundef %575) #16
-  %576 = load ptr, ptr @stderr, align 8
-  %fputc3314.2 = tail call i32 @fputc(i32 10, ptr %576)
-  %577 = load ptr, ptr @stderr, align 8
-  %578 = load ptr, ptr %arrayidx240.3, align 8
-  %579 = load double, ptr %578, align 8
-  %call489.33972 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %577, ptr noundef nonnull @.str.7, double noundef %579) #16
-  %580 = load ptr, ptr @stderr, align 8
-  %581 = load ptr, ptr %arrayidx240.3, align 8
-  %arrayidx488.1.3 = getelementptr inbounds double, ptr %581, i64 1
-  %582 = load double, ptr %arrayidx488.1.3, align 8
-  %call489.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %580, ptr noundef nonnull @.str.7, double noundef %582) #16
-  %583 = load ptr, ptr @stderr, align 8
-  %584 = load ptr, ptr %arrayidx240.3, align 8
-  %arrayidx488.2.3 = getelementptr inbounds double, ptr %584, i64 2
-  %585 = load double, ptr %arrayidx488.2.3, align 8
-  %call489.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %583, ptr noundef nonnull @.str.7, double noundef %585) #16
-  %586 = load ptr, ptr @stderr, align 8
-  %587 = load ptr, ptr %arrayidx240.3, align 8
-  %arrayidx488.3.3 = getelementptr inbounds double, ptr %587, i64 3
-  %588 = load double, ptr %arrayidx488.3.3, align 8
-  %call489.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %586, ptr noundef nonnull @.str.7, double noundef %588) #16
-  %589 = load ptr, ptr @stderr, align 8
-  %fputc3314.3 = tail call i32 @fputc(i32 10, ptr %589)
-  %590 = load ptr, ptr @stderr, align 8
-  %fputc3313 = tail call i32 @fputc(i32 10, ptr %590)
+  %461 = load ptr, ptr @stderr, align 8
+  %462 = tail call i64 @fwrite(ptr nonnull @.str.11, i64 20, i64 1, ptr %461) #16
+  %463 = load ptr, ptr @stderr, align 8
+  %464 = load ptr, ptr %call, align 8
+  %465 = load double, ptr %464, align 8
+  %call489 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %463, ptr noundef nonnull @.str.7, double noundef %465) #16
+  %466 = load ptr, ptr @stderr, align 8
+  %467 = load ptr, ptr %call, align 8
+  %arrayidx488.1 = getelementptr inbounds double, ptr %467, i64 1
+  %468 = load double, ptr %arrayidx488.1, align 8
+  %call489.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %466, ptr noundef nonnull @.str.7, double noundef %468) #16
+  %469 = load ptr, ptr @stderr, align 8
+  %470 = load ptr, ptr %call, align 8
+  %arrayidx488.2 = getelementptr inbounds double, ptr %470, i64 2
+  %471 = load double, ptr %arrayidx488.2, align 8
+  %call489.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %469, ptr noundef nonnull @.str.7, double noundef %471) #16
+  %472 = load ptr, ptr @stderr, align 8
+  %473 = load ptr, ptr %call, align 8
+  %arrayidx488.3 = getelementptr inbounds double, ptr %473, i64 3
+  %474 = load double, ptr %arrayidx488.3, align 8
+  %call489.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %472, ptr noundef nonnull @.str.7, double noundef %474) #16
+  %475 = load ptr, ptr @stderr, align 8
+  %fputc3314 = tail call i32 @fputc(i32 10, ptr %475)
+  %476 = load ptr, ptr @stderr, align 8
+  %477 = load ptr, ptr %arrayidx240.1, align 8
+  %478 = load double, ptr %477, align 8
+  %call489.13970 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %476, ptr noundef nonnull @.str.7, double noundef %478) #16
+  %479 = load ptr, ptr @stderr, align 8
+  %480 = load ptr, ptr %arrayidx240.1, align 8
+  %arrayidx488.1.1 = getelementptr inbounds double, ptr %480, i64 1
+  %481 = load double, ptr %arrayidx488.1.1, align 8
+  %call489.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %479, ptr noundef nonnull @.str.7, double noundef %481) #16
+  %482 = load ptr, ptr @stderr, align 8
+  %483 = load ptr, ptr %arrayidx240.1, align 8
+  %arrayidx488.2.1 = getelementptr inbounds double, ptr %483, i64 2
+  %484 = load double, ptr %arrayidx488.2.1, align 8
+  %call489.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %482, ptr noundef nonnull @.str.7, double noundef %484) #16
+  %485 = load ptr, ptr @stderr, align 8
+  %486 = load ptr, ptr %arrayidx240.1, align 8
+  %arrayidx488.3.1 = getelementptr inbounds double, ptr %486, i64 3
+  %487 = load double, ptr %arrayidx488.3.1, align 8
+  %call489.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %485, ptr noundef nonnull @.str.7, double noundef %487) #16
+  %488 = load ptr, ptr @stderr, align 8
+  %fputc3314.1 = tail call i32 @fputc(i32 10, ptr %488)
+  %489 = load ptr, ptr @stderr, align 8
+  %490 = load ptr, ptr %arrayidx240.2, align 8
+  %491 = load double, ptr %490, align 8
+  %call489.23971 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %489, ptr noundef nonnull @.str.7, double noundef %491) #16
+  %492 = load ptr, ptr @stderr, align 8
+  %493 = load ptr, ptr %arrayidx240.2, align 8
+  %arrayidx488.1.2 = getelementptr inbounds double, ptr %493, i64 1
+  %494 = load double, ptr %arrayidx488.1.2, align 8
+  %call489.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %492, ptr noundef nonnull @.str.7, double noundef %494) #16
+  %495 = load ptr, ptr @stderr, align 8
+  %496 = load ptr, ptr %arrayidx240.2, align 8
+  %arrayidx488.2.2 = getelementptr inbounds double, ptr %496, i64 2
+  %497 = load double, ptr %arrayidx488.2.2, align 8
+  %call489.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %495, ptr noundef nonnull @.str.7, double noundef %497) #16
+  %498 = load ptr, ptr @stderr, align 8
+  %499 = load ptr, ptr %arrayidx240.2, align 8
+  %arrayidx488.3.2 = getelementptr inbounds double, ptr %499, i64 3
+  %500 = load double, ptr %arrayidx488.3.2, align 8
+  %call489.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %498, ptr noundef nonnull @.str.7, double noundef %500) #16
+  %501 = load ptr, ptr @stderr, align 8
+  %fputc3314.2 = tail call i32 @fputc(i32 10, ptr %501)
+  %502 = load ptr, ptr @stderr, align 8
+  %503 = load ptr, ptr %arrayidx240.3, align 8
+  %504 = load double, ptr %503, align 8
+  %call489.33972 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %502, ptr noundef nonnull @.str.7, double noundef %504) #16
+  %505 = load ptr, ptr @stderr, align 8
+  %506 = load ptr, ptr %arrayidx240.3, align 8
+  %arrayidx488.1.3 = getelementptr inbounds double, ptr %506, i64 1
+  %507 = load double, ptr %arrayidx488.1.3, align 8
+  %call489.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %505, ptr noundef nonnull @.str.7, double noundef %507) #16
+  %508 = load ptr, ptr @stderr, align 8
+  %509 = load ptr, ptr %arrayidx240.3, align 8
+  %arrayidx488.2.3 = getelementptr inbounds double, ptr %509, i64 2
+  %510 = load double, ptr %arrayidx488.2.3, align 8
+  %call489.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %508, ptr noundef nonnull @.str.7, double noundef %510) #16
+  %511 = load ptr, ptr @stderr, align 8
+  %512 = load ptr, ptr %arrayidx240.3, align 8
+  %arrayidx488.3.3 = getelementptr inbounds double, ptr %512, i64 3
+  %513 = load double, ptr %arrayidx488.3.3, align 8
+  %call489.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %511, ptr noundef nonnull @.str.7, double noundef %513) #16
+  %514 = load ptr, ptr @stderr, align 8
+  %fputc3314.3 = tail call i32 @fputc(i32 10, ptr %514)
+  %515 = load ptr, ptr @stderr, align 8
+  %fputc3313 = tail call i32 @fputc(i32 10, ptr %515)
   br label %if.end498
 
 if.end498:                                        ; preds = %if.then475, %shishagonyuu.exit.3.3
-  %591 = load ptr, ptr @stderr, align 8
-  %592 = tail call i64 @fwrite(ptr nonnull @.str.12, i64 5, i64 1, ptr %591) #16
+  %516 = load ptr, ptr @stderr, align 8
+  %517 = tail call i64 @fwrite(ptr nonnull @.str.12, i64 5, i64 1, ptr %516) #16
   %.pre4606 = load ptr, ptr %arrayidx240.3, align 8
   %.pre4607 = load double, ptr %.pre4606, align 8
   %.pre4608 = load ptr, ptr %call, align 8
@@ -3038,485 +2811,485 @@ if.end498:                                        ; preds = %if.then475, %shisha
   br label %if.end500
 
 if.end500:                                        ; preds = %if.end98, %if.end498
-  %593 = phi ptr [ %127, %if.end98 ], [ %.pre4610, %if.end498 ]
-  %594 = phi ptr [ %122, %if.end98 ], [ %.pre4609, %if.end498 ]
-  %595 = phi ptr [ %115, %if.end98 ], [ %.pre4608, %if.end498 ]
-  %596 = phi double [ %136, %if.end98 ], [ %.pre4607, %if.end498 ]
-  %597 = phi ptr [ %109, %if.end98 ], [ %.pre4606, %if.end498 ]
+  %518 = phi ptr [ %127, %if.end98 ], [ %.pre4610, %if.end498 ]
+  %519 = phi ptr [ %122, %if.end98 ], [ %.pre4609, %if.end498 ]
+  %520 = phi ptr [ %115, %if.end98 ], [ %.pre4608, %if.end498 ]
+  %521 = phi double [ %136, %if.end98 ], [ %.pre4607, %if.end498 ]
+  %522 = phi ptr [ %109, %if.end98 ], [ %.pre4606, %if.end498 ]
   %arrayidx505 = getelementptr inbounds ptr, ptr %call, i64 3
   %arrayidx508 = getelementptr inbounds ptr, ptr %call, i64 4
-  %598 = load ptr, ptr %arrayidx508, align 8
-  store double %596, ptr %598, align 8
-  %arrayidx513 = getelementptr inbounds double, ptr %595, i64 3
-  %599 = load double, ptr %arrayidx513, align 8
-  %arrayidx516 = getelementptr inbounds double, ptr %595, i64 4
-  store double %599, ptr %arrayidx516, align 8
-  %arrayidx507.1 = getelementptr inbounds double, ptr %597, i64 1
-  %600 = load double, ptr %arrayidx507.1, align 8
-  %arrayidx510.1 = getelementptr inbounds double, ptr %598, i64 1
-  store double %600, ptr %arrayidx510.1, align 8
+  %523 = load ptr, ptr %arrayidx508, align 8
+  store double %521, ptr %523, align 8
+  %arrayidx513 = getelementptr inbounds double, ptr %520, i64 3
+  %524 = load double, ptr %arrayidx513, align 8
+  %arrayidx516 = getelementptr inbounds double, ptr %520, i64 4
+  store double %524, ptr %arrayidx516, align 8
+  %arrayidx507.1 = getelementptr inbounds double, ptr %522, i64 1
+  %525 = load double, ptr %arrayidx507.1, align 8
+  %arrayidx510.1 = getelementptr inbounds double, ptr %523, i64 1
+  store double %525, ptr %arrayidx510.1, align 8
   %arrayidx512.1 = getelementptr inbounds ptr, ptr %call, i64 1
-  %arrayidx513.1 = getelementptr inbounds double, ptr %594, i64 3
-  %601 = load double, ptr %arrayidx513.1, align 8
-  %arrayidx516.1 = getelementptr inbounds double, ptr %594, i64 4
-  store double %601, ptr %arrayidx516.1, align 8
-  %arrayidx507.2 = getelementptr inbounds double, ptr %597, i64 2
-  %602 = load double, ptr %arrayidx507.2, align 8
-  %arrayidx510.2 = getelementptr inbounds double, ptr %598, i64 2
-  store double %602, ptr %arrayidx510.2, align 8
+  %arrayidx513.1 = getelementptr inbounds double, ptr %519, i64 3
+  %526 = load double, ptr %arrayidx513.1, align 8
+  %arrayidx516.1 = getelementptr inbounds double, ptr %519, i64 4
+  store double %526, ptr %arrayidx516.1, align 8
+  %arrayidx507.2 = getelementptr inbounds double, ptr %522, i64 2
+  %527 = load double, ptr %arrayidx507.2, align 8
+  %arrayidx510.2 = getelementptr inbounds double, ptr %523, i64 2
+  store double %527, ptr %arrayidx510.2, align 8
   %arrayidx512.2 = getelementptr inbounds ptr, ptr %call, i64 2
-  %arrayidx513.2 = getelementptr inbounds double, ptr %593, i64 3
-  %603 = load double, ptr %arrayidx513.2, align 8
-  %arrayidx516.2 = getelementptr inbounds double, ptr %593, i64 4
-  store double %603, ptr %arrayidx516.2, align 8
-  %arrayidx507.3 = getelementptr inbounds double, ptr %597, i64 3
-  %604 = load double, ptr %arrayidx507.3, align 8
-  %arrayidx510.3 = getelementptr inbounds double, ptr %598, i64 3
-  store double %604, ptr %arrayidx510.3, align 8
-  %605 = load double, ptr %arrayidx507.3, align 8
-  %arrayidx516.3 = getelementptr inbounds double, ptr %597, i64 4
-  store double %605, ptr %arrayidx516.3, align 8
-  %arrayidx510.4 = getelementptr inbounds double, ptr %598, i64 4
-  %606 = load double, ptr %arrayidx510.3, align 8
-  store double %606, ptr %arrayidx510.4, align 8
+  %arrayidx513.2 = getelementptr inbounds double, ptr %518, i64 3
+  %528 = load double, ptr %arrayidx513.2, align 8
+  %arrayidx516.2 = getelementptr inbounds double, ptr %518, i64 4
+  store double %528, ptr %arrayidx516.2, align 8
+  %arrayidx507.3 = getelementptr inbounds double, ptr %522, i64 3
+  %529 = load double, ptr %arrayidx507.3, align 8
+  %arrayidx510.3 = getelementptr inbounds double, ptr %523, i64 3
+  store double %529, ptr %arrayidx510.3, align 8
+  %530 = load double, ptr %arrayidx507.3, align 8
+  %arrayidx516.3 = getelementptr inbounds double, ptr %522, i64 4
+  store double %530, ptr %arrayidx516.3, align 8
+  %arrayidx510.4 = getelementptr inbounds double, ptr %523, i64 4
+  %531 = load double, ptr %arrayidx510.3, align 8
+  store double %531, ptr %arrayidx510.4, align 8
   %arrayidx535 = getelementptr inbounds ptr, ptr %call, i64 5
-  %607 = load ptr, ptr %arrayidx535, align 8
-  %608 = load double, ptr %595, align 8
-  %arrayidx537 = getelementptr inbounds double, ptr %607, i64 5
-  store double %608, ptr %arrayidx537, align 8
-  %arrayidx533.1 = getelementptr inbounds double, ptr %595, i64 1
-  %609 = load double, ptr %arrayidx533.1, align 8
-  %arrayidx537.1 = getelementptr inbounds double, ptr %607, i64 6
-  store double %609, ptr %arrayidx537.1, align 8
-  %arrayidx533.2 = getelementptr inbounds double, ptr %595, i64 2
-  %610 = load double, ptr %arrayidx533.2, align 8
-  %arrayidx537.2 = getelementptr inbounds double, ptr %607, i64 7
-  store double %610, ptr %arrayidx537.2, align 8
-  %611 = load double, ptr %arrayidx513, align 8
-  %arrayidx537.3 = getelementptr inbounds double, ptr %607, i64 8
-  store double %611, ptr %arrayidx537.3, align 8
-  %612 = load double, ptr %arrayidx516, align 8
-  %arrayidx537.4 = getelementptr inbounds double, ptr %607, i64 9
-  store double %612, ptr %arrayidx537.4, align 8
+  %532 = load ptr, ptr %arrayidx535, align 8
+  %533 = load double, ptr %520, align 8
+  %arrayidx537 = getelementptr inbounds double, ptr %532, i64 5
+  store double %533, ptr %arrayidx537, align 8
+  %arrayidx533.1 = getelementptr inbounds double, ptr %520, i64 1
+  %534 = load double, ptr %arrayidx533.1, align 8
+  %arrayidx537.1 = getelementptr inbounds double, ptr %532, i64 6
+  store double %534, ptr %arrayidx537.1, align 8
+  %arrayidx533.2 = getelementptr inbounds double, ptr %520, i64 2
+  %535 = load double, ptr %arrayidx533.2, align 8
+  %arrayidx537.2 = getelementptr inbounds double, ptr %532, i64 7
+  store double %535, ptr %arrayidx537.2, align 8
+  %536 = load double, ptr %arrayidx513, align 8
+  %arrayidx537.3 = getelementptr inbounds double, ptr %532, i64 8
+  store double %536, ptr %arrayidx537.3, align 8
+  %537 = load double, ptr %arrayidx516, align 8
+  %arrayidx537.4 = getelementptr inbounds double, ptr %532, i64 9
+  store double %537, ptr %arrayidx537.4, align 8
   %arrayidx535.1 = getelementptr inbounds ptr, ptr %call, i64 6
-  %613 = load ptr, ptr %arrayidx535.1, align 8
-  %614 = load double, ptr %594, align 8
-  %arrayidx537.14045 = getelementptr inbounds double, ptr %613, i64 5
-  store double %614, ptr %arrayidx537.14045, align 8
-  %arrayidx533.1.1 = getelementptr inbounds double, ptr %594, i64 1
-  %615 = load double, ptr %arrayidx533.1.1, align 8
-  %arrayidx537.1.1 = getelementptr inbounds double, ptr %613, i64 6
-  store double %615, ptr %arrayidx537.1.1, align 8
-  %arrayidx533.2.1 = getelementptr inbounds double, ptr %594, i64 2
-  %616 = load double, ptr %arrayidx533.2.1, align 8
-  %arrayidx537.2.1 = getelementptr inbounds double, ptr %613, i64 7
-  store double %616, ptr %arrayidx537.2.1, align 8
-  %617 = load double, ptr %arrayidx513.1, align 8
-  %arrayidx537.3.1 = getelementptr inbounds double, ptr %613, i64 8
-  store double %617, ptr %arrayidx537.3.1, align 8
-  %618 = load double, ptr %arrayidx516.1, align 8
-  %arrayidx537.4.1 = getelementptr inbounds double, ptr %613, i64 9
-  store double %618, ptr %arrayidx537.4.1, align 8
+  %538 = load ptr, ptr %arrayidx535.1, align 8
+  %539 = load double, ptr %519, align 8
+  %arrayidx537.14045 = getelementptr inbounds double, ptr %538, i64 5
+  store double %539, ptr %arrayidx537.14045, align 8
+  %arrayidx533.1.1 = getelementptr inbounds double, ptr %519, i64 1
+  %540 = load double, ptr %arrayidx533.1.1, align 8
+  %arrayidx537.1.1 = getelementptr inbounds double, ptr %538, i64 6
+  store double %540, ptr %arrayidx537.1.1, align 8
+  %arrayidx533.2.1 = getelementptr inbounds double, ptr %519, i64 2
+  %541 = load double, ptr %arrayidx533.2.1, align 8
+  %arrayidx537.2.1 = getelementptr inbounds double, ptr %538, i64 7
+  store double %541, ptr %arrayidx537.2.1, align 8
+  %542 = load double, ptr %arrayidx513.1, align 8
+  %arrayidx537.3.1 = getelementptr inbounds double, ptr %538, i64 8
+  store double %542, ptr %arrayidx537.3.1, align 8
+  %543 = load double, ptr %arrayidx516.1, align 8
+  %arrayidx537.4.1 = getelementptr inbounds double, ptr %538, i64 9
+  store double %543, ptr %arrayidx537.4.1, align 8
   %arrayidx535.2 = getelementptr inbounds ptr, ptr %call, i64 7
-  %619 = load ptr, ptr %arrayidx535.2, align 8
-  %620 = load double, ptr %593, align 8
-  %arrayidx537.24046 = getelementptr inbounds double, ptr %619, i64 5
-  store double %620, ptr %arrayidx537.24046, align 8
-  %arrayidx533.1.2 = getelementptr inbounds double, ptr %593, i64 1
-  %621 = load double, ptr %arrayidx533.1.2, align 8
-  %arrayidx537.1.2 = getelementptr inbounds double, ptr %619, i64 6
-  store double %621, ptr %arrayidx537.1.2, align 8
-  %arrayidx533.2.2 = getelementptr inbounds double, ptr %593, i64 2
-  %622 = load double, ptr %arrayidx533.2.2, align 8
-  %arrayidx537.2.2 = getelementptr inbounds double, ptr %619, i64 7
-  store double %622, ptr %arrayidx537.2.2, align 8
-  %623 = load double, ptr %arrayidx513.2, align 8
-  %arrayidx537.3.2 = getelementptr inbounds double, ptr %619, i64 8
-  store double %623, ptr %arrayidx537.3.2, align 8
-  %624 = load double, ptr %arrayidx516.2, align 8
-  %arrayidx537.4.2 = getelementptr inbounds double, ptr %619, i64 9
-  store double %624, ptr %arrayidx537.4.2, align 8
+  %544 = load ptr, ptr %arrayidx535.2, align 8
+  %545 = load double, ptr %518, align 8
+  %arrayidx537.24046 = getelementptr inbounds double, ptr %544, i64 5
+  store double %545, ptr %arrayidx537.24046, align 8
+  %arrayidx533.1.2 = getelementptr inbounds double, ptr %518, i64 1
+  %546 = load double, ptr %arrayidx533.1.2, align 8
+  %arrayidx537.1.2 = getelementptr inbounds double, ptr %544, i64 6
+  store double %546, ptr %arrayidx537.1.2, align 8
+  %arrayidx533.2.2 = getelementptr inbounds double, ptr %518, i64 2
+  %547 = load double, ptr %arrayidx533.2.2, align 8
+  %arrayidx537.2.2 = getelementptr inbounds double, ptr %544, i64 7
+  store double %547, ptr %arrayidx537.2.2, align 8
+  %548 = load double, ptr %arrayidx513.2, align 8
+  %arrayidx537.3.2 = getelementptr inbounds double, ptr %544, i64 8
+  store double %548, ptr %arrayidx537.3.2, align 8
+  %549 = load double, ptr %arrayidx516.2, align 8
+  %arrayidx537.4.2 = getelementptr inbounds double, ptr %544, i64 9
+  store double %549, ptr %arrayidx537.4.2, align 8
   %arrayidx535.3 = getelementptr inbounds ptr, ptr %call, i64 8
-  %625 = load ptr, ptr %arrayidx535.3, align 8
-  %626 = load double, ptr %597, align 8
-  %arrayidx537.34047 = getelementptr inbounds double, ptr %625, i64 5
-  store double %626, ptr %arrayidx537.34047, align 8
-  %627 = load double, ptr %arrayidx507.1, align 8
-  %arrayidx537.1.3 = getelementptr inbounds double, ptr %625, i64 6
-  store double %627, ptr %arrayidx537.1.3, align 8
-  %628 = load double, ptr %arrayidx507.2, align 8
-  %arrayidx537.2.3 = getelementptr inbounds double, ptr %625, i64 7
-  store double %628, ptr %arrayidx537.2.3, align 8
-  %629 = load double, ptr %arrayidx507.3, align 8
-  %arrayidx537.3.3 = getelementptr inbounds double, ptr %625, i64 8
-  store double %629, ptr %arrayidx537.3.3, align 8
-  %630 = load double, ptr %arrayidx516.3, align 8
-  %arrayidx537.4.3 = getelementptr inbounds double, ptr %625, i64 9
-  store double %630, ptr %arrayidx537.4.3, align 8
-  %631 = load ptr, ptr %arrayidx508, align 8
+  %550 = load ptr, ptr %arrayidx535.3, align 8
+  %551 = load double, ptr %522, align 8
+  %arrayidx537.34047 = getelementptr inbounds double, ptr %550, i64 5
+  store double %551, ptr %arrayidx537.34047, align 8
+  %552 = load double, ptr %arrayidx507.1, align 8
+  %arrayidx537.1.3 = getelementptr inbounds double, ptr %550, i64 6
+  store double %552, ptr %arrayidx537.1.3, align 8
+  %553 = load double, ptr %arrayidx507.2, align 8
+  %arrayidx537.2.3 = getelementptr inbounds double, ptr %550, i64 7
+  store double %553, ptr %arrayidx537.2.3, align 8
+  %554 = load double, ptr %arrayidx507.3, align 8
+  %arrayidx537.3.3 = getelementptr inbounds double, ptr %550, i64 8
+  store double %554, ptr %arrayidx537.3.3, align 8
+  %555 = load double, ptr %arrayidx516.3, align 8
+  %arrayidx537.4.3 = getelementptr inbounds double, ptr %550, i64 9
+  store double %555, ptr %arrayidx537.4.3, align 8
+  %556 = load ptr, ptr %arrayidx508, align 8
   %arrayidx535.4 = getelementptr inbounds ptr, ptr %call, i64 9
-  %632 = load ptr, ptr %arrayidx535.4, align 8
-  %633 = load double, ptr %631, align 8
-  %arrayidx537.44048 = getelementptr inbounds double, ptr %632, i64 5
-  store double %633, ptr %arrayidx537.44048, align 8
-  %arrayidx533.1.4 = getelementptr inbounds double, ptr %631, i64 1
-  %634 = load double, ptr %arrayidx533.1.4, align 8
-  %arrayidx537.1.4 = getelementptr inbounds double, ptr %632, i64 6
-  store double %634, ptr %arrayidx537.1.4, align 8
-  %arrayidx533.2.4 = getelementptr inbounds double, ptr %631, i64 2
-  %635 = load double, ptr %arrayidx533.2.4, align 8
-  %arrayidx537.2.4 = getelementptr inbounds double, ptr %632, i64 7
-  store double %635, ptr %arrayidx537.2.4, align 8
-  %arrayidx533.3.4 = getelementptr inbounds double, ptr %631, i64 3
-  %636 = load double, ptr %arrayidx533.3.4, align 8
-  %arrayidx537.3.4 = getelementptr inbounds double, ptr %632, i64 8
-  store double %636, ptr %arrayidx537.3.4, align 8
-  %arrayidx533.4.4 = getelementptr inbounds double, ptr %631, i64 4
-  %637 = load double, ptr %arrayidx533.4.4, align 8
-  %arrayidx537.4.4 = getelementptr inbounds double, ptr %632, i64 9
-  store double %637, ptr %arrayidx537.4.4, align 8
-  %638 = load i32, ptr @disp, align 4
-  %tobool544.not = icmp eq i32 %638, 0
+  %557 = load ptr, ptr %arrayidx535.4, align 8
+  %558 = load double, ptr %556, align 8
+  %arrayidx537.44048 = getelementptr inbounds double, ptr %557, i64 5
+  store double %558, ptr %arrayidx537.44048, align 8
+  %arrayidx533.1.4 = getelementptr inbounds double, ptr %556, i64 1
+  %559 = load double, ptr %arrayidx533.1.4, align 8
+  %arrayidx537.1.4 = getelementptr inbounds double, ptr %557, i64 6
+  store double %559, ptr %arrayidx537.1.4, align 8
+  %arrayidx533.2.4 = getelementptr inbounds double, ptr %556, i64 2
+  %560 = load double, ptr %arrayidx533.2.4, align 8
+  %arrayidx537.2.4 = getelementptr inbounds double, ptr %557, i64 7
+  store double %560, ptr %arrayidx537.2.4, align 8
+  %arrayidx533.3.4 = getelementptr inbounds double, ptr %556, i64 3
+  %561 = load double, ptr %arrayidx533.3.4, align 8
+  %arrayidx537.3.4 = getelementptr inbounds double, ptr %557, i64 8
+  store double %561, ptr %arrayidx537.3.4, align 8
+  %arrayidx533.4.4 = getelementptr inbounds double, ptr %556, i64 4
+  %562 = load double, ptr %arrayidx533.4.4, align 8
+  %arrayidx537.4.4 = getelementptr inbounds double, ptr %557, i64 9
+  store double %562, ptr %arrayidx537.4.4, align 8
+  %563 = load i32, ptr @disp, align 4
+  %tobool544.not = icmp eq i32 %563, 0
   br i1 %tobool544.not, label %if.end593, label %if.then545
 
 if.then545:                                       ; preds = %if.end500
-  %639 = load ptr, ptr @stderr, align 8
-  %640 = tail call i64 @fwrite(ptr nonnull @.str.13, i64 12, i64 1, ptr %639) #16
-  %641 = load ptr, ptr @stderr, align 8
-  %642 = load ptr, ptr %call, align 8
-  %643 = load double, ptr %642, align 8
-  %call559 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %641, ptr noundef nonnull @.str.7, double noundef %643) #16
-  %644 = load ptr, ptr @stderr, align 8
-  %645 = load ptr, ptr %call, align 8
-  %arrayidx558.1 = getelementptr inbounds double, ptr %645, i64 1
-  %646 = load double, ptr %arrayidx558.1, align 8
-  %call559.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %644, ptr noundef nonnull @.str.7, double noundef %646) #16
-  %647 = load ptr, ptr @stderr, align 8
-  %648 = load ptr, ptr %call, align 8
-  %arrayidx558.2 = getelementptr inbounds double, ptr %648, i64 2
-  %649 = load double, ptr %arrayidx558.2, align 8
-  %call559.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %647, ptr noundef nonnull @.str.7, double noundef %649) #16
-  %650 = load ptr, ptr @stderr, align 8
-  %651 = load ptr, ptr %call, align 8
-  %arrayidx558.3 = getelementptr inbounds double, ptr %651, i64 3
-  %652 = load double, ptr %arrayidx558.3, align 8
-  %call559.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %650, ptr noundef nonnull @.str.7, double noundef %652) #16
-  %653 = load ptr, ptr @stderr, align 8
-  %fputc3328 = tail call i32 @fputc(i32 10, ptr %653)
-  %654 = load ptr, ptr @stderr, align 8
-  %655 = load ptr, ptr %arrayidx512.1, align 8
-  %656 = load double, ptr %655, align 8
-  %call559.14057 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %654, ptr noundef nonnull @.str.7, double noundef %656) #16
-  %657 = load ptr, ptr @stderr, align 8
-  %658 = load ptr, ptr %arrayidx512.1, align 8
-  %arrayidx558.1.1 = getelementptr inbounds double, ptr %658, i64 1
-  %659 = load double, ptr %arrayidx558.1.1, align 8
-  %call559.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %657, ptr noundef nonnull @.str.7, double noundef %659) #16
-  %660 = load ptr, ptr @stderr, align 8
-  %661 = load ptr, ptr %arrayidx512.1, align 8
-  %arrayidx558.2.1 = getelementptr inbounds double, ptr %661, i64 2
-  %662 = load double, ptr %arrayidx558.2.1, align 8
-  %call559.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %660, ptr noundef nonnull @.str.7, double noundef %662) #16
-  %663 = load ptr, ptr @stderr, align 8
-  %664 = load ptr, ptr %arrayidx512.1, align 8
-  %arrayidx558.3.1 = getelementptr inbounds double, ptr %664, i64 3
-  %665 = load double, ptr %arrayidx558.3.1, align 8
-  %call559.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %663, ptr noundef nonnull @.str.7, double noundef %665) #16
-  %666 = load ptr, ptr @stderr, align 8
-  %fputc3328.1 = tail call i32 @fputc(i32 10, ptr %666)
-  %667 = load ptr, ptr @stderr, align 8
-  %668 = load ptr, ptr %arrayidx512.2, align 8
-  %669 = load double, ptr %668, align 8
-  %call559.24058 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %667, ptr noundef nonnull @.str.7, double noundef %669) #16
-  %670 = load ptr, ptr @stderr, align 8
-  %671 = load ptr, ptr %arrayidx512.2, align 8
-  %arrayidx558.1.2 = getelementptr inbounds double, ptr %671, i64 1
-  %672 = load double, ptr %arrayidx558.1.2, align 8
-  %call559.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %670, ptr noundef nonnull @.str.7, double noundef %672) #16
-  %673 = load ptr, ptr @stderr, align 8
-  %674 = load ptr, ptr %arrayidx512.2, align 8
-  %arrayidx558.2.2 = getelementptr inbounds double, ptr %674, i64 2
-  %675 = load double, ptr %arrayidx558.2.2, align 8
-  %call559.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %673, ptr noundef nonnull @.str.7, double noundef %675) #16
-  %676 = load ptr, ptr @stderr, align 8
-  %677 = load ptr, ptr %arrayidx512.2, align 8
-  %arrayidx558.3.2 = getelementptr inbounds double, ptr %677, i64 3
-  %678 = load double, ptr %arrayidx558.3.2, align 8
-  %call559.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %676, ptr noundef nonnull @.str.7, double noundef %678) #16
-  %679 = load ptr, ptr @stderr, align 8
-  %fputc3328.2 = tail call i32 @fputc(i32 10, ptr %679)
-  %680 = load ptr, ptr @stderr, align 8
-  %681 = load ptr, ptr %arrayidx505, align 8
-  %682 = load double, ptr %681, align 8
-  %call559.34059 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %680, ptr noundef nonnull @.str.7, double noundef %682) #16
-  %683 = load ptr, ptr @stderr, align 8
-  %684 = load ptr, ptr %arrayidx505, align 8
-  %arrayidx558.1.3 = getelementptr inbounds double, ptr %684, i64 1
-  %685 = load double, ptr %arrayidx558.1.3, align 8
-  %call559.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %683, ptr noundef nonnull @.str.7, double noundef %685) #16
-  %686 = load ptr, ptr @stderr, align 8
-  %687 = load ptr, ptr %arrayidx505, align 8
-  %arrayidx558.2.3 = getelementptr inbounds double, ptr %687, i64 2
-  %688 = load double, ptr %arrayidx558.2.3, align 8
-  %call559.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %686, ptr noundef nonnull @.str.7, double noundef %688) #16
-  %689 = load ptr, ptr @stderr, align 8
-  %690 = load ptr, ptr %arrayidx505, align 8
-  %arrayidx558.3.3 = getelementptr inbounds double, ptr %690, i64 3
-  %691 = load double, ptr %arrayidx558.3.3, align 8
-  %call559.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %689, ptr noundef nonnull @.str.7, double noundef %691) #16
-  %692 = load ptr, ptr @stderr, align 8
-  %fputc3328.3 = tail call i32 @fputc(i32 10, ptr %692)
-  %693 = load ptr, ptr @stderr, align 8
-  %fputc3317 = tail call i32 @fputc(i32 10, ptr %693)
+  %564 = load ptr, ptr @stderr, align 8
+  %565 = tail call i64 @fwrite(ptr nonnull @.str.13, i64 12, i64 1, ptr %564) #16
+  %566 = load ptr, ptr @stderr, align 8
+  %567 = load ptr, ptr %call, align 8
+  %568 = load double, ptr %567, align 8
+  %call559 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %566, ptr noundef nonnull @.str.7, double noundef %568) #16
+  %569 = load ptr, ptr @stderr, align 8
+  %570 = load ptr, ptr %call, align 8
+  %arrayidx558.1 = getelementptr inbounds double, ptr %570, i64 1
+  %571 = load double, ptr %arrayidx558.1, align 8
+  %call559.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %569, ptr noundef nonnull @.str.7, double noundef %571) #16
+  %572 = load ptr, ptr @stderr, align 8
+  %573 = load ptr, ptr %call, align 8
+  %arrayidx558.2 = getelementptr inbounds double, ptr %573, i64 2
+  %574 = load double, ptr %arrayidx558.2, align 8
+  %call559.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %572, ptr noundef nonnull @.str.7, double noundef %574) #16
+  %575 = load ptr, ptr @stderr, align 8
+  %576 = load ptr, ptr %call, align 8
+  %arrayidx558.3 = getelementptr inbounds double, ptr %576, i64 3
+  %577 = load double, ptr %arrayidx558.3, align 8
+  %call559.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %575, ptr noundef nonnull @.str.7, double noundef %577) #16
+  %578 = load ptr, ptr @stderr, align 8
+  %fputc3328 = tail call i32 @fputc(i32 10, ptr %578)
+  %579 = load ptr, ptr @stderr, align 8
+  %580 = load ptr, ptr %arrayidx512.1, align 8
+  %581 = load double, ptr %580, align 8
+  %call559.14057 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %579, ptr noundef nonnull @.str.7, double noundef %581) #16
+  %582 = load ptr, ptr @stderr, align 8
+  %583 = load ptr, ptr %arrayidx512.1, align 8
+  %arrayidx558.1.1 = getelementptr inbounds double, ptr %583, i64 1
+  %584 = load double, ptr %arrayidx558.1.1, align 8
+  %call559.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %582, ptr noundef nonnull @.str.7, double noundef %584) #16
+  %585 = load ptr, ptr @stderr, align 8
+  %586 = load ptr, ptr %arrayidx512.1, align 8
+  %arrayidx558.2.1 = getelementptr inbounds double, ptr %586, i64 2
+  %587 = load double, ptr %arrayidx558.2.1, align 8
+  %call559.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %585, ptr noundef nonnull @.str.7, double noundef %587) #16
+  %588 = load ptr, ptr @stderr, align 8
+  %589 = load ptr, ptr %arrayidx512.1, align 8
+  %arrayidx558.3.1 = getelementptr inbounds double, ptr %589, i64 3
+  %590 = load double, ptr %arrayidx558.3.1, align 8
+  %call559.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %588, ptr noundef nonnull @.str.7, double noundef %590) #16
+  %591 = load ptr, ptr @stderr, align 8
+  %fputc3328.1 = tail call i32 @fputc(i32 10, ptr %591)
+  %592 = load ptr, ptr @stderr, align 8
+  %593 = load ptr, ptr %arrayidx512.2, align 8
+  %594 = load double, ptr %593, align 8
+  %call559.24058 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %592, ptr noundef nonnull @.str.7, double noundef %594) #16
+  %595 = load ptr, ptr @stderr, align 8
+  %596 = load ptr, ptr %arrayidx512.2, align 8
+  %arrayidx558.1.2 = getelementptr inbounds double, ptr %596, i64 1
+  %597 = load double, ptr %arrayidx558.1.2, align 8
+  %call559.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %595, ptr noundef nonnull @.str.7, double noundef %597) #16
+  %598 = load ptr, ptr @stderr, align 8
+  %599 = load ptr, ptr %arrayidx512.2, align 8
+  %arrayidx558.2.2 = getelementptr inbounds double, ptr %599, i64 2
+  %600 = load double, ptr %arrayidx558.2.2, align 8
+  %call559.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %598, ptr noundef nonnull @.str.7, double noundef %600) #16
+  %601 = load ptr, ptr @stderr, align 8
+  %602 = load ptr, ptr %arrayidx512.2, align 8
+  %arrayidx558.3.2 = getelementptr inbounds double, ptr %602, i64 3
+  %603 = load double, ptr %arrayidx558.3.2, align 8
+  %call559.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %601, ptr noundef nonnull @.str.7, double noundef %603) #16
+  %604 = load ptr, ptr @stderr, align 8
+  %fputc3328.2 = tail call i32 @fputc(i32 10, ptr %604)
+  %605 = load ptr, ptr @stderr, align 8
+  %606 = load ptr, ptr %arrayidx505, align 8
+  %607 = load double, ptr %606, align 8
+  %call559.34059 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %605, ptr noundef nonnull @.str.7, double noundef %607) #16
+  %608 = load ptr, ptr @stderr, align 8
+  %609 = load ptr, ptr %arrayidx505, align 8
+  %arrayidx558.1.3 = getelementptr inbounds double, ptr %609, i64 1
+  %610 = load double, ptr %arrayidx558.1.3, align 8
+  %call559.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %608, ptr noundef nonnull @.str.7, double noundef %610) #16
+  %611 = load ptr, ptr @stderr, align 8
+  %612 = load ptr, ptr %arrayidx505, align 8
+  %arrayidx558.2.3 = getelementptr inbounds double, ptr %612, i64 2
+  %613 = load double, ptr %arrayidx558.2.3, align 8
+  %call559.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %611, ptr noundef nonnull @.str.7, double noundef %613) #16
+  %614 = load ptr, ptr @stderr, align 8
+  %615 = load ptr, ptr %arrayidx505, align 8
+  %arrayidx558.3.3 = getelementptr inbounds double, ptr %615, i64 3
+  %616 = load double, ptr %arrayidx558.3.3, align 8
+  %call559.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %614, ptr noundef nonnull @.str.7, double noundef %616) #16
+  %617 = load ptr, ptr @stderr, align 8
+  %fputc3328.3 = tail call i32 @fputc(i32 10, ptr %617)
+  %618 = load ptr, ptr @stderr, align 8
+  %fputc3317 = tail call i32 @fputc(i32 10, ptr %618)
   %.pr = load i32, ptr @disp, align 4
   %tobool569.not = icmp eq i32 %.pr, 0
   br i1 %tobool569.not, label %if.end593, label %if.then570
 
 if.then570:                                       ; preds = %if.then545
-  %694 = load ptr, ptr @stderr, align 8
-  %695 = tail call i64 @fwrite(ptr nonnull @.str.14, i64 16, i64 1, ptr %694) #16
-  %696 = load ptr, ptr @stderr, align 8
-  %697 = load ptr, ptr %call, align 8
-  %698 = load double, ptr %697, align 8
-  %call584 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %696, ptr noundef nonnull @.str.7, double noundef %698) #16
-  %699 = load ptr, ptr @stderr, align 8
-  %700 = load ptr, ptr %call, align 8
-  %arrayidx583.1 = getelementptr inbounds double, ptr %700, i64 1
-  %701 = load double, ptr %arrayidx583.1, align 8
-  %call584.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %699, ptr noundef nonnull @.str.7, double noundef %701) #16
-  %702 = load ptr, ptr @stderr, align 8
-  %703 = load ptr, ptr %call, align 8
-  %arrayidx583.2 = getelementptr inbounds double, ptr %703, i64 2
-  %704 = load double, ptr %arrayidx583.2, align 8
-  %call584.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %702, ptr noundef nonnull @.str.7, double noundef %704) #16
-  %705 = load ptr, ptr @stderr, align 8
-  %706 = load ptr, ptr %call, align 8
-  %arrayidx583.3 = getelementptr inbounds double, ptr %706, i64 3
-  %707 = load double, ptr %arrayidx583.3, align 8
-  %call584.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %705, ptr noundef nonnull @.str.7, double noundef %707) #16
-  %708 = load ptr, ptr @stderr, align 8
-  %fputc3327 = tail call i32 @fputc(i32 10, ptr %708)
-  %709 = load ptr, ptr @stderr, align 8
-  %710 = load ptr, ptr %arrayidx512.1, align 8
-  %711 = load double, ptr %710, align 8
-  %call584.14068 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %709, ptr noundef nonnull @.str.7, double noundef %711) #16
-  %712 = load ptr, ptr @stderr, align 8
-  %713 = load ptr, ptr %arrayidx512.1, align 8
-  %arrayidx583.1.1 = getelementptr inbounds double, ptr %713, i64 1
-  %714 = load double, ptr %arrayidx583.1.1, align 8
-  %call584.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %712, ptr noundef nonnull @.str.7, double noundef %714) #16
-  %715 = load ptr, ptr @stderr, align 8
-  %716 = load ptr, ptr %arrayidx512.1, align 8
-  %arrayidx583.2.1 = getelementptr inbounds double, ptr %716, i64 2
-  %717 = load double, ptr %arrayidx583.2.1, align 8
-  %call584.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %715, ptr noundef nonnull @.str.7, double noundef %717) #16
-  %718 = load ptr, ptr @stderr, align 8
-  %719 = load ptr, ptr %arrayidx512.1, align 8
-  %arrayidx583.3.1 = getelementptr inbounds double, ptr %719, i64 3
-  %720 = load double, ptr %arrayidx583.3.1, align 8
-  %call584.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %718, ptr noundef nonnull @.str.7, double noundef %720) #16
-  %721 = load ptr, ptr @stderr, align 8
-  %fputc3327.1 = tail call i32 @fputc(i32 10, ptr %721)
-  %722 = load ptr, ptr @stderr, align 8
-  %723 = load ptr, ptr %arrayidx512.2, align 8
-  %724 = load double, ptr %723, align 8
-  %call584.24069 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %722, ptr noundef nonnull @.str.7, double noundef %724) #16
-  %725 = load ptr, ptr @stderr, align 8
-  %726 = load ptr, ptr %arrayidx512.2, align 8
-  %arrayidx583.1.2 = getelementptr inbounds double, ptr %726, i64 1
-  %727 = load double, ptr %arrayidx583.1.2, align 8
-  %call584.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %725, ptr noundef nonnull @.str.7, double noundef %727) #16
-  %728 = load ptr, ptr @stderr, align 8
-  %729 = load ptr, ptr %arrayidx512.2, align 8
-  %arrayidx583.2.2 = getelementptr inbounds double, ptr %729, i64 2
-  %730 = load double, ptr %arrayidx583.2.2, align 8
-  %call584.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %728, ptr noundef nonnull @.str.7, double noundef %730) #16
-  %731 = load ptr, ptr @stderr, align 8
-  %732 = load ptr, ptr %arrayidx512.2, align 8
-  %arrayidx583.3.2 = getelementptr inbounds double, ptr %732, i64 3
-  %733 = load double, ptr %arrayidx583.3.2, align 8
-  %call584.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %731, ptr noundef nonnull @.str.7, double noundef %733) #16
-  %734 = load ptr, ptr @stderr, align 8
-  %fputc3327.2 = tail call i32 @fputc(i32 10, ptr %734)
-  %735 = load ptr, ptr @stderr, align 8
-  %736 = load ptr, ptr %arrayidx505, align 8
-  %737 = load double, ptr %736, align 8
-  %call584.34070 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %735, ptr noundef nonnull @.str.7, double noundef %737) #16
-  %738 = load ptr, ptr @stderr, align 8
-  %739 = load ptr, ptr %arrayidx505, align 8
-  %arrayidx583.1.3 = getelementptr inbounds double, ptr %739, i64 1
-  %740 = load double, ptr %arrayidx583.1.3, align 8
-  %call584.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %738, ptr noundef nonnull @.str.7, double noundef %740) #16
-  %741 = load ptr, ptr @stderr, align 8
-  %742 = load ptr, ptr %arrayidx505, align 8
-  %arrayidx583.2.3 = getelementptr inbounds double, ptr %742, i64 2
-  %743 = load double, ptr %arrayidx583.2.3, align 8
-  %call584.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %741, ptr noundef nonnull @.str.7, double noundef %743) #16
-  %744 = load ptr, ptr @stderr, align 8
-  %745 = load ptr, ptr %arrayidx505, align 8
-  %arrayidx583.3.3 = getelementptr inbounds double, ptr %745, i64 3
-  %746 = load double, ptr %arrayidx583.3.3, align 8
-  %call584.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %744, ptr noundef nonnull @.str.7, double noundef %746) #16
-  %747 = load ptr, ptr @stderr, align 8
-  %fputc3327.3 = tail call i32 @fputc(i32 10, ptr %747)
-  %748 = load ptr, ptr @stderr, align 8
-  %fputc3318 = tail call i32 @fputc(i32 10, ptr %748)
+  %619 = load ptr, ptr @stderr, align 8
+  %620 = tail call i64 @fwrite(ptr nonnull @.str.14, i64 16, i64 1, ptr %619) #16
+  %621 = load ptr, ptr @stderr, align 8
+  %622 = load ptr, ptr %call, align 8
+  %623 = load double, ptr %622, align 8
+  %call584 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %621, ptr noundef nonnull @.str.7, double noundef %623) #16
+  %624 = load ptr, ptr @stderr, align 8
+  %625 = load ptr, ptr %call, align 8
+  %arrayidx583.1 = getelementptr inbounds double, ptr %625, i64 1
+  %626 = load double, ptr %arrayidx583.1, align 8
+  %call584.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %624, ptr noundef nonnull @.str.7, double noundef %626) #16
+  %627 = load ptr, ptr @stderr, align 8
+  %628 = load ptr, ptr %call, align 8
+  %arrayidx583.2 = getelementptr inbounds double, ptr %628, i64 2
+  %629 = load double, ptr %arrayidx583.2, align 8
+  %call584.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %627, ptr noundef nonnull @.str.7, double noundef %629) #16
+  %630 = load ptr, ptr @stderr, align 8
+  %631 = load ptr, ptr %call, align 8
+  %arrayidx583.3 = getelementptr inbounds double, ptr %631, i64 3
+  %632 = load double, ptr %arrayidx583.3, align 8
+  %call584.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %630, ptr noundef nonnull @.str.7, double noundef %632) #16
+  %633 = load ptr, ptr @stderr, align 8
+  %fputc3327 = tail call i32 @fputc(i32 10, ptr %633)
+  %634 = load ptr, ptr @stderr, align 8
+  %635 = load ptr, ptr %arrayidx512.1, align 8
+  %636 = load double, ptr %635, align 8
+  %call584.14068 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %634, ptr noundef nonnull @.str.7, double noundef %636) #16
+  %637 = load ptr, ptr @stderr, align 8
+  %638 = load ptr, ptr %arrayidx512.1, align 8
+  %arrayidx583.1.1 = getelementptr inbounds double, ptr %638, i64 1
+  %639 = load double, ptr %arrayidx583.1.1, align 8
+  %call584.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %637, ptr noundef nonnull @.str.7, double noundef %639) #16
+  %640 = load ptr, ptr @stderr, align 8
+  %641 = load ptr, ptr %arrayidx512.1, align 8
+  %arrayidx583.2.1 = getelementptr inbounds double, ptr %641, i64 2
+  %642 = load double, ptr %arrayidx583.2.1, align 8
+  %call584.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %640, ptr noundef nonnull @.str.7, double noundef %642) #16
+  %643 = load ptr, ptr @stderr, align 8
+  %644 = load ptr, ptr %arrayidx512.1, align 8
+  %arrayidx583.3.1 = getelementptr inbounds double, ptr %644, i64 3
+  %645 = load double, ptr %arrayidx583.3.1, align 8
+  %call584.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %643, ptr noundef nonnull @.str.7, double noundef %645) #16
+  %646 = load ptr, ptr @stderr, align 8
+  %fputc3327.1 = tail call i32 @fputc(i32 10, ptr %646)
+  %647 = load ptr, ptr @stderr, align 8
+  %648 = load ptr, ptr %arrayidx512.2, align 8
+  %649 = load double, ptr %648, align 8
+  %call584.24069 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %647, ptr noundef nonnull @.str.7, double noundef %649) #16
+  %650 = load ptr, ptr @stderr, align 8
+  %651 = load ptr, ptr %arrayidx512.2, align 8
+  %arrayidx583.1.2 = getelementptr inbounds double, ptr %651, i64 1
+  %652 = load double, ptr %arrayidx583.1.2, align 8
+  %call584.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %650, ptr noundef nonnull @.str.7, double noundef %652) #16
+  %653 = load ptr, ptr @stderr, align 8
+  %654 = load ptr, ptr %arrayidx512.2, align 8
+  %arrayidx583.2.2 = getelementptr inbounds double, ptr %654, i64 2
+  %655 = load double, ptr %arrayidx583.2.2, align 8
+  %call584.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %653, ptr noundef nonnull @.str.7, double noundef %655) #16
+  %656 = load ptr, ptr @stderr, align 8
+  %657 = load ptr, ptr %arrayidx512.2, align 8
+  %arrayidx583.3.2 = getelementptr inbounds double, ptr %657, i64 3
+  %658 = load double, ptr %arrayidx583.3.2, align 8
+  %call584.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %656, ptr noundef nonnull @.str.7, double noundef %658) #16
+  %659 = load ptr, ptr @stderr, align 8
+  %fputc3327.2 = tail call i32 @fputc(i32 10, ptr %659)
+  %660 = load ptr, ptr @stderr, align 8
+  %661 = load ptr, ptr %arrayidx505, align 8
+  %662 = load double, ptr %661, align 8
+  %call584.34070 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %660, ptr noundef nonnull @.str.7, double noundef %662) #16
+  %663 = load ptr, ptr @stderr, align 8
+  %664 = load ptr, ptr %arrayidx505, align 8
+  %arrayidx583.1.3 = getelementptr inbounds double, ptr %664, i64 1
+  %665 = load double, ptr %arrayidx583.1.3, align 8
+  %call584.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %663, ptr noundef nonnull @.str.7, double noundef %665) #16
+  %666 = load ptr, ptr @stderr, align 8
+  %667 = load ptr, ptr %arrayidx505, align 8
+  %arrayidx583.2.3 = getelementptr inbounds double, ptr %667, i64 2
+  %668 = load double, ptr %arrayidx583.2.3, align 8
+  %call584.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %666, ptr noundef nonnull @.str.7, double noundef %668) #16
+  %669 = load ptr, ptr @stderr, align 8
+  %670 = load ptr, ptr %arrayidx505, align 8
+  %arrayidx583.3.3 = getelementptr inbounds double, ptr %670, i64 3
+  %671 = load double, ptr %arrayidx583.3.3, align 8
+  %call584.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %669, ptr noundef nonnull @.str.7, double noundef %671) #16
+  %672 = load ptr, ptr @stderr, align 8
+  %fputc3327.3 = tail call i32 @fputc(i32 10, ptr %672)
+  %673 = load ptr, ptr @stderr, align 8
+  %fputc3318 = tail call i32 @fputc(i32 10, ptr %673)
   br label %if.end593
 
 if.end593:                                        ; preds = %if.end500, %if.then570, %if.then545
   tail call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 16 dereferenceable(26) @amino, ptr noundef nonnull align 16 dereferenceable(26) @locaminon, i64 26, i1 false)
-  %749 = load i8, ptr @locgrpn, align 16
-  %750 = load i8, ptr @amino, align 16
-  %idxprom614 = sext i8 %750 to i64
+  %674 = load i8, ptr @locgrpn, align 16
+  %675 = load i8, ptr @amino, align 16
+  %idxprom614 = sext i8 %675 to i64
   %arrayidx615 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614
-  store i8 %749, ptr %arrayidx615, align 1
-  %751 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 1), align 1
-  %752 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom614.1 = sext i8 %752 to i64
+  store i8 %674, ptr %arrayidx615, align 1
+  %676 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 1), align 1
+  %677 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom614.1 = sext i8 %677 to i64
   %arrayidx615.1 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.1
-  store i8 %751, ptr %arrayidx615.1, align 1
-  %753 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 2), align 2
-  %754 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom614.2 = sext i8 %754 to i64
+  store i8 %676, ptr %arrayidx615.1, align 1
+  %678 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 2), align 2
+  %679 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom614.2 = sext i8 %679 to i64
   %arrayidx615.2 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.2
-  store i8 %753, ptr %arrayidx615.2, align 1
-  %755 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 3), align 1
-  %756 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %idxprom614.3 = sext i8 %756 to i64
+  store i8 %678, ptr %arrayidx615.2, align 1
+  %680 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 3), align 1
+  %681 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %idxprom614.3 = sext i8 %681 to i64
   %arrayidx615.3 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.3
-  store i8 %755, ptr %arrayidx615.3, align 1
-  %757 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 4), align 4
-  %758 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %idxprom614.4 = sext i8 %758 to i64
+  store i8 %680, ptr %arrayidx615.3, align 1
+  %682 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 4), align 4
+  %683 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %idxprom614.4 = sext i8 %683 to i64
   %arrayidx615.4 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.4
-  store i8 %757, ptr %arrayidx615.4, align 1
-  %759 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 5), align 1
-  %760 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom614.5 = sext i8 %760 to i64
+  store i8 %682, ptr %arrayidx615.4, align 1
+  %684 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 5), align 1
+  %685 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom614.5 = sext i8 %685 to i64
   %arrayidx615.5 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.5
-  store i8 %759, ptr %arrayidx615.5, align 1
-  %761 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 6), align 2
-  %762 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom614.6 = sext i8 %762 to i64
+  store i8 %684, ptr %arrayidx615.5, align 1
+  %686 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 6), align 2
+  %687 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom614.6 = sext i8 %687 to i64
   %arrayidx615.6 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.6
-  store i8 %761, ptr %arrayidx615.6, align 1
-  %763 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 7), align 1
-  %764 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom614.7 = sext i8 %764 to i64
+  store i8 %686, ptr %arrayidx615.6, align 1
+  %688 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 7), align 1
+  %689 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom614.7 = sext i8 %689 to i64
   %arrayidx615.7 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.7
-  store i8 %763, ptr %arrayidx615.7, align 1
-  %765 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 8), align 8
-  %766 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %idxprom614.8 = sext i8 %766 to i64
+  store i8 %688, ptr %arrayidx615.7, align 1
+  %690 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 8), align 8
+  %691 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %idxprom614.8 = sext i8 %691 to i64
   %arrayidx615.8 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.8
-  store i8 %765, ptr %arrayidx615.8, align 1
-  %767 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 9), align 1
-  %768 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %idxprom614.9 = sext i8 %768 to i64
+  store i8 %690, ptr %arrayidx615.8, align 1
+  %692 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 9), align 1
+  %693 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %idxprom614.9 = sext i8 %693 to i64
   %arrayidx615.9 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.9
-  store i8 %767, ptr %arrayidx615.9, align 1
-  %769 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 10), align 2
-  %770 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
-  %idxprom614.10 = sext i8 %770 to i64
+  store i8 %692, ptr %arrayidx615.9, align 1
+  %694 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 10), align 2
+  %695 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
+  %idxprom614.10 = sext i8 %695 to i64
   %arrayidx615.10 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.10
-  store i8 %769, ptr %arrayidx615.10, align 1
-  %771 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 11), align 1
-  %772 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
-  %idxprom614.11 = sext i8 %772 to i64
+  store i8 %694, ptr %arrayidx615.10, align 1
+  %696 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 11), align 1
+  %697 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
+  %idxprom614.11 = sext i8 %697 to i64
   %arrayidx615.11 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.11
-  store i8 %771, ptr %arrayidx615.11, align 1
-  %773 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 12), align 4
-  %774 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
-  %idxprom614.12 = sext i8 %774 to i64
+  store i8 %696, ptr %arrayidx615.11, align 1
+  %698 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 12), align 4
+  %699 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
+  %idxprom614.12 = sext i8 %699 to i64
   %arrayidx615.12 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.12
-  store i8 %773, ptr %arrayidx615.12, align 1
-  %775 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 13), align 1
-  %776 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %idxprom614.13 = sext i8 %776 to i64
+  store i8 %698, ptr %arrayidx615.12, align 1
+  %700 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 13), align 1
+  %701 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %idxprom614.13 = sext i8 %701 to i64
   %arrayidx615.13 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.13
-  store i8 %775, ptr %arrayidx615.13, align 1
-  %777 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 14), align 2
-  %778 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %idxprom614.14 = sext i8 %778 to i64
+  store i8 %700, ptr %arrayidx615.13, align 1
+  %702 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 14), align 2
+  %703 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %idxprom614.14 = sext i8 %703 to i64
   %arrayidx615.14 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.14
-  store i8 %777, ptr %arrayidx615.14, align 1
-  %779 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 15), align 1
-  %780 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %idxprom614.15 = sext i8 %780 to i64
+  store i8 %702, ptr %arrayidx615.14, align 1
+  %704 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 15), align 1
+  %705 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %idxprom614.15 = sext i8 %705 to i64
   %arrayidx615.15 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.15
-  store i8 %779, ptr %arrayidx615.15, align 1
-  %781 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 16), align 16
-  %782 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %idxprom614.16 = sext i8 %782 to i64
+  store i8 %704, ptr %arrayidx615.15, align 1
+  %706 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 16), align 16
+  %707 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %idxprom614.16 = sext i8 %707 to i64
   %arrayidx615.16 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.16
-  store i8 %781, ptr %arrayidx615.16, align 1
-  %783 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 17), align 1
-  %784 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %idxprom614.17 = sext i8 %784 to i64
+  store i8 %706, ptr %arrayidx615.16, align 1
+  %708 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 17), align 1
+  %709 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %idxprom614.17 = sext i8 %709 to i64
   %arrayidx615.17 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.17
-  store i8 %783, ptr %arrayidx615.17, align 1
-  %785 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 18), align 2
-  %786 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %idxprom614.18 = sext i8 %786 to i64
+  store i8 %708, ptr %arrayidx615.17, align 1
+  %710 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 18), align 2
+  %711 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %idxprom614.18 = sext i8 %711 to i64
   %arrayidx615.18 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.18
-  store i8 %785, ptr %arrayidx615.18, align 1
-  %787 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 19), align 1
-  %788 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %idxprom614.19 = sext i8 %788 to i64
+  store i8 %710, ptr %arrayidx615.18, align 1
+  %712 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 19), align 1
+  %713 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %idxprom614.19 = sext i8 %713 to i64
   %arrayidx615.19 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.19
-  store i8 %787, ptr %arrayidx615.19, align 1
-  %789 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 20), align 4
-  %790 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
-  %idxprom614.20 = sext i8 %790 to i64
+  store i8 %712, ptr %arrayidx615.19, align 1
+  %714 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 20), align 4
+  %715 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
+  %idxprom614.20 = sext i8 %715 to i64
   %arrayidx615.20 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.20
-  store i8 %789, ptr %arrayidx615.20, align 1
-  %791 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 21), align 1
-  %792 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
-  %idxprom614.21 = sext i8 %792 to i64
+  store i8 %714, ptr %arrayidx615.20, align 1
+  %716 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 21), align 1
+  %717 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
+  %idxprom614.21 = sext i8 %717 to i64
   %arrayidx615.21 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.21
-  store i8 %791, ptr %arrayidx615.21, align 1
-  %793 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 22), align 2
-  %794 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
-  %idxprom614.22 = sext i8 %794 to i64
+  store i8 %716, ptr %arrayidx615.21, align 1
+  %718 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 22), align 2
+  %719 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
+  %idxprom614.22 = sext i8 %719 to i64
   %arrayidx615.22 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.22
-  store i8 %793, ptr %arrayidx615.22, align 1
-  %795 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 23), align 1
-  %796 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
-  %idxprom614.23 = sext i8 %796 to i64
+  store i8 %718, ptr %arrayidx615.22, align 1
+  %720 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 23), align 1
+  %721 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
+  %idxprom614.23 = sext i8 %721 to i64
   %arrayidx615.23 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.23
-  store i8 %795, ptr %arrayidx615.23, align 1
-  %797 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 24), align 8
-  %798 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
-  %idxprom614.24 = sext i8 %798 to i64
+  store i8 %720, ptr %arrayidx615.23, align 1
+  %722 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 24), align 8
+  %723 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
+  %idxprom614.24 = sext i8 %723 to i64
   %arrayidx615.24 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.24
-  store i8 %797, ptr %arrayidx615.24, align 1
-  %799 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 25), align 1
-  %800 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
-  %idxprom614.25 = sext i8 %800 to i64
+  store i8 %722, ptr %arrayidx615.24, align 1
+  %724 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @locgrpn, i64 0, i64 25), align 1
+  %725 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
+  %idxprom614.25 = sext i8 %725 to i64
   %arrayidx615.25 = getelementptr inbounds [128 x i8], ptr @amino_grp, i64 0, i64 %idxprom614.25
-  store i8 %799, ptr %arrayidx615.25, align 1
+  store i8 %724, ptr %arrayidx615.25, align 1
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(2704) @n_dis, i8 0, i64 2704, i1 false)
   br label %for.cond641.preheader
 
 for.cond641.preheader:                            ; preds = %if.end593, %shishagonyuu.exit3339.9
   %indvars.iv4086 = phi i64 [ 0, %if.end593 ], [ %indvars.iv.next4087, %shishagonyuu.exit3339.9 ]
   %arrayidx646 = getelementptr inbounds ptr, ptr %call, i64 %indvars.iv4086
-  %801 = load ptr, ptr %arrayidx646, align 8
-  %802 = load double, ptr %801, align 8
-  %cmp.i3329 = fcmp ogt double %802, 0.000000e+00
+  %726 = load ptr, ptr %arrayidx646, align 8
+  %727 = load double, ptr %726, align 8
+  %cmp.i3329 = fcmp ogt double %727, 0.000000e+00
   br i1 %cmp.i3329, label %if.then.i3336, label %if.else.i3330
 
 if.then.i3336:                                    ; preds = %for.cond641.preheader
-  %add.i3337 = fadd double %802, 5.000000e-01
+  %add.i3337 = fadd double %727, 5.000000e-01
   %conv.i3338 = fptosi double %add.i3337 to i32
   br label %shishagonyuu.exit3339
 
 if.else.i3330:                                    ; preds = %for.cond641.preheader
-  %or.cond.i3331 = fcmp olt double %802, 0.000000e+00
+  %or.cond.i3331 = fcmp olt double %727, 0.000000e+00
   br i1 %or.cond.i3331, label %if.then7.i3333, label %shishagonyuu.exit3339
 
 if.then7.i3333:                                   ; preds = %if.else.i3330
-  %sub.i3334 = fadd double %802, -5.000000e-01
+  %sub.i3334 = fadd double %727, -5.000000e-01
   %conv8.i3335 = fptosi double %sub.i3334 to i32
   br label %shishagonyuu.exit3339
 
@@ -3524,22 +3297,22 @@ shishagonyuu.exit3339:                            ; preds = %if.then.i3336, %if.
   %out.0.i3332 = phi i32 [ %conv.i3338, %if.then.i3336 ], [ %conv8.i3335, %if.then7.i3333 ], [ 0, %if.else.i3330 ]
   %arrayidx653 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 0
   store i32 %out.0.i3332, ptr %arrayidx653, align 8
-  %arrayidx648.1 = getelementptr inbounds double, ptr %801, i64 1
-  %803 = load double, ptr %arrayidx648.1, align 8
-  %cmp.i3329.1 = fcmp ogt double %803, 0.000000e+00
+  %arrayidx648.1 = getelementptr inbounds double, ptr %726, i64 1
+  %728 = load double, ptr %arrayidx648.1, align 8
+  %cmp.i3329.1 = fcmp ogt double %728, 0.000000e+00
   br i1 %cmp.i3329.1, label %if.then.i3336.1, label %if.else.i3330.1
 
 if.else.i3330.1:                                  ; preds = %shishagonyuu.exit3339
-  %or.cond.i3331.1 = fcmp olt double %803, 0.000000e+00
+  %or.cond.i3331.1 = fcmp olt double %728, 0.000000e+00
   br i1 %or.cond.i3331.1, label %if.then7.i3333.1, label %shishagonyuu.exit3339.1
 
 if.then7.i3333.1:                                 ; preds = %if.else.i3330.1
-  %sub.i3334.1 = fadd double %803, -5.000000e-01
+  %sub.i3334.1 = fadd double %728, -5.000000e-01
   %conv8.i3335.1 = fptosi double %sub.i3334.1 to i32
   br label %shishagonyuu.exit3339.1
 
 if.then.i3336.1:                                  ; preds = %shishagonyuu.exit3339
-  %add.i3337.1 = fadd double %803, 5.000000e-01
+  %add.i3337.1 = fadd double %728, 5.000000e-01
   %conv.i3338.1 = fptosi double %add.i3337.1 to i32
   br label %shishagonyuu.exit3339.1
 
@@ -3547,22 +3320,22 @@ shishagonyuu.exit3339.1:                          ; preds = %if.then.i3336.1, %i
   %out.0.i3332.1 = phi i32 [ %conv.i3338.1, %if.then.i3336.1 ], [ %conv8.i3335.1, %if.then7.i3333.1 ], [ 0, %if.else.i3330.1 ]
   %arrayidx653.1 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 1
   store i32 %out.0.i3332.1, ptr %arrayidx653.1, align 4
-  %arrayidx648.2 = getelementptr inbounds double, ptr %801, i64 2
-  %804 = load double, ptr %arrayidx648.2, align 8
-  %cmp.i3329.2 = fcmp ogt double %804, 0.000000e+00
+  %arrayidx648.2 = getelementptr inbounds double, ptr %726, i64 2
+  %729 = load double, ptr %arrayidx648.2, align 8
+  %cmp.i3329.2 = fcmp ogt double %729, 0.000000e+00
   br i1 %cmp.i3329.2, label %if.then.i3336.2, label %if.else.i3330.2
 
 if.else.i3330.2:                                  ; preds = %shishagonyuu.exit3339.1
-  %or.cond.i3331.2 = fcmp olt double %804, 0.000000e+00
+  %or.cond.i3331.2 = fcmp olt double %729, 0.000000e+00
   br i1 %or.cond.i3331.2, label %if.then7.i3333.2, label %shishagonyuu.exit3339.2
 
 if.then7.i3333.2:                                 ; preds = %if.else.i3330.2
-  %sub.i3334.2 = fadd double %804, -5.000000e-01
+  %sub.i3334.2 = fadd double %729, -5.000000e-01
   %conv8.i3335.2 = fptosi double %sub.i3334.2 to i32
   br label %shishagonyuu.exit3339.2
 
 if.then.i3336.2:                                  ; preds = %shishagonyuu.exit3339.1
-  %add.i3337.2 = fadd double %804, 5.000000e-01
+  %add.i3337.2 = fadd double %729, 5.000000e-01
   %conv.i3338.2 = fptosi double %add.i3337.2 to i32
   br label %shishagonyuu.exit3339.2
 
@@ -3570,22 +3343,22 @@ shishagonyuu.exit3339.2:                          ; preds = %if.then.i3336.2, %i
   %out.0.i3332.2 = phi i32 [ %conv.i3338.2, %if.then.i3336.2 ], [ %conv8.i3335.2, %if.then7.i3333.2 ], [ 0, %if.else.i3330.2 ]
   %arrayidx653.2 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 2
   store i32 %out.0.i3332.2, ptr %arrayidx653.2, align 8
-  %arrayidx648.3 = getelementptr inbounds double, ptr %801, i64 3
-  %805 = load double, ptr %arrayidx648.3, align 8
-  %cmp.i3329.3 = fcmp ogt double %805, 0.000000e+00
+  %arrayidx648.3 = getelementptr inbounds double, ptr %726, i64 3
+  %730 = load double, ptr %arrayidx648.3, align 8
+  %cmp.i3329.3 = fcmp ogt double %730, 0.000000e+00
   br i1 %cmp.i3329.3, label %if.then.i3336.3, label %if.else.i3330.3
 
 if.else.i3330.3:                                  ; preds = %shishagonyuu.exit3339.2
-  %or.cond.i3331.3 = fcmp olt double %805, 0.000000e+00
+  %or.cond.i3331.3 = fcmp olt double %730, 0.000000e+00
   br i1 %or.cond.i3331.3, label %if.then7.i3333.3, label %shishagonyuu.exit3339.3
 
 if.then7.i3333.3:                                 ; preds = %if.else.i3330.3
-  %sub.i3334.3 = fadd double %805, -5.000000e-01
+  %sub.i3334.3 = fadd double %730, -5.000000e-01
   %conv8.i3335.3 = fptosi double %sub.i3334.3 to i32
   br label %shishagonyuu.exit3339.3
 
 if.then.i3336.3:                                  ; preds = %shishagonyuu.exit3339.2
-  %add.i3337.3 = fadd double %805, 5.000000e-01
+  %add.i3337.3 = fadd double %730, 5.000000e-01
   %conv.i3338.3 = fptosi double %add.i3337.3 to i32
   br label %shishagonyuu.exit3339.3
 
@@ -3593,22 +3366,22 @@ shishagonyuu.exit3339.3:                          ; preds = %if.then.i3336.3, %i
   %out.0.i3332.3 = phi i32 [ %conv.i3338.3, %if.then.i3336.3 ], [ %conv8.i3335.3, %if.then7.i3333.3 ], [ 0, %if.else.i3330.3 ]
   %arrayidx653.3 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 3
   store i32 %out.0.i3332.3, ptr %arrayidx653.3, align 4
-  %arrayidx648.4 = getelementptr inbounds double, ptr %801, i64 4
-  %806 = load double, ptr %arrayidx648.4, align 8
-  %cmp.i3329.4 = fcmp ogt double %806, 0.000000e+00
+  %arrayidx648.4 = getelementptr inbounds double, ptr %726, i64 4
+  %731 = load double, ptr %arrayidx648.4, align 8
+  %cmp.i3329.4 = fcmp ogt double %731, 0.000000e+00
   br i1 %cmp.i3329.4, label %if.then.i3336.4, label %if.else.i3330.4
 
 if.else.i3330.4:                                  ; preds = %shishagonyuu.exit3339.3
-  %or.cond.i3331.4 = fcmp olt double %806, 0.000000e+00
+  %or.cond.i3331.4 = fcmp olt double %731, 0.000000e+00
   br i1 %or.cond.i3331.4, label %if.then7.i3333.4, label %shishagonyuu.exit3339.4
 
 if.then7.i3333.4:                                 ; preds = %if.else.i3330.4
-  %sub.i3334.4 = fadd double %806, -5.000000e-01
+  %sub.i3334.4 = fadd double %731, -5.000000e-01
   %conv8.i3335.4 = fptosi double %sub.i3334.4 to i32
   br label %shishagonyuu.exit3339.4
 
 if.then.i3336.4:                                  ; preds = %shishagonyuu.exit3339.3
-  %add.i3337.4 = fadd double %806, 5.000000e-01
+  %add.i3337.4 = fadd double %731, 5.000000e-01
   %conv.i3338.4 = fptosi double %add.i3337.4 to i32
   br label %shishagonyuu.exit3339.4
 
@@ -3616,22 +3389,22 @@ shishagonyuu.exit3339.4:                          ; preds = %if.then.i3336.4, %i
   %out.0.i3332.4 = phi i32 [ %conv.i3338.4, %if.then.i3336.4 ], [ %conv8.i3335.4, %if.then7.i3333.4 ], [ 0, %if.else.i3330.4 ]
   %arrayidx653.4 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 4
   store i32 %out.0.i3332.4, ptr %arrayidx653.4, align 8
-  %arrayidx648.5 = getelementptr inbounds double, ptr %801, i64 5
-  %807 = load double, ptr %arrayidx648.5, align 8
-  %cmp.i3329.5 = fcmp ogt double %807, 0.000000e+00
+  %arrayidx648.5 = getelementptr inbounds double, ptr %726, i64 5
+  %732 = load double, ptr %arrayidx648.5, align 8
+  %cmp.i3329.5 = fcmp ogt double %732, 0.000000e+00
   br i1 %cmp.i3329.5, label %if.then.i3336.5, label %if.else.i3330.5
 
 if.else.i3330.5:                                  ; preds = %shishagonyuu.exit3339.4
-  %or.cond.i3331.5 = fcmp olt double %807, 0.000000e+00
+  %or.cond.i3331.5 = fcmp olt double %732, 0.000000e+00
   br i1 %or.cond.i3331.5, label %if.then7.i3333.5, label %shishagonyuu.exit3339.5
 
 if.then7.i3333.5:                                 ; preds = %if.else.i3330.5
-  %sub.i3334.5 = fadd double %807, -5.000000e-01
+  %sub.i3334.5 = fadd double %732, -5.000000e-01
   %conv8.i3335.5 = fptosi double %sub.i3334.5 to i32
   br label %shishagonyuu.exit3339.5
 
 if.then.i3336.5:                                  ; preds = %shishagonyuu.exit3339.4
-  %add.i3337.5 = fadd double %807, 5.000000e-01
+  %add.i3337.5 = fadd double %732, 5.000000e-01
   %conv.i3338.5 = fptosi double %add.i3337.5 to i32
   br label %shishagonyuu.exit3339.5
 
@@ -3639,22 +3412,22 @@ shishagonyuu.exit3339.5:                          ; preds = %if.then.i3336.5, %i
   %out.0.i3332.5 = phi i32 [ %conv.i3338.5, %if.then.i3336.5 ], [ %conv8.i3335.5, %if.then7.i3333.5 ], [ 0, %if.else.i3330.5 ]
   %arrayidx653.5 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 5
   store i32 %out.0.i3332.5, ptr %arrayidx653.5, align 4
-  %arrayidx648.6 = getelementptr inbounds double, ptr %801, i64 6
-  %808 = load double, ptr %arrayidx648.6, align 8
-  %cmp.i3329.6 = fcmp ogt double %808, 0.000000e+00
+  %arrayidx648.6 = getelementptr inbounds double, ptr %726, i64 6
+  %733 = load double, ptr %arrayidx648.6, align 8
+  %cmp.i3329.6 = fcmp ogt double %733, 0.000000e+00
   br i1 %cmp.i3329.6, label %if.then.i3336.6, label %if.else.i3330.6
 
 if.else.i3330.6:                                  ; preds = %shishagonyuu.exit3339.5
-  %or.cond.i3331.6 = fcmp olt double %808, 0.000000e+00
+  %or.cond.i3331.6 = fcmp olt double %733, 0.000000e+00
   br i1 %or.cond.i3331.6, label %if.then7.i3333.6, label %shishagonyuu.exit3339.6
 
 if.then7.i3333.6:                                 ; preds = %if.else.i3330.6
-  %sub.i3334.6 = fadd double %808, -5.000000e-01
+  %sub.i3334.6 = fadd double %733, -5.000000e-01
   %conv8.i3335.6 = fptosi double %sub.i3334.6 to i32
   br label %shishagonyuu.exit3339.6
 
 if.then.i3336.6:                                  ; preds = %shishagonyuu.exit3339.5
-  %add.i3337.6 = fadd double %808, 5.000000e-01
+  %add.i3337.6 = fadd double %733, 5.000000e-01
   %conv.i3338.6 = fptosi double %add.i3337.6 to i32
   br label %shishagonyuu.exit3339.6
 
@@ -3662,22 +3435,22 @@ shishagonyuu.exit3339.6:                          ; preds = %if.then.i3336.6, %i
   %out.0.i3332.6 = phi i32 [ %conv.i3338.6, %if.then.i3336.6 ], [ %conv8.i3335.6, %if.then7.i3333.6 ], [ 0, %if.else.i3330.6 ]
   %arrayidx653.6 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 6
   store i32 %out.0.i3332.6, ptr %arrayidx653.6, align 8
-  %arrayidx648.7 = getelementptr inbounds double, ptr %801, i64 7
-  %809 = load double, ptr %arrayidx648.7, align 8
-  %cmp.i3329.7 = fcmp ogt double %809, 0.000000e+00
+  %arrayidx648.7 = getelementptr inbounds double, ptr %726, i64 7
+  %734 = load double, ptr %arrayidx648.7, align 8
+  %cmp.i3329.7 = fcmp ogt double %734, 0.000000e+00
   br i1 %cmp.i3329.7, label %if.then.i3336.7, label %if.else.i3330.7
 
 if.else.i3330.7:                                  ; preds = %shishagonyuu.exit3339.6
-  %or.cond.i3331.7 = fcmp olt double %809, 0.000000e+00
+  %or.cond.i3331.7 = fcmp olt double %734, 0.000000e+00
   br i1 %or.cond.i3331.7, label %if.then7.i3333.7, label %shishagonyuu.exit3339.7
 
 if.then7.i3333.7:                                 ; preds = %if.else.i3330.7
-  %sub.i3334.7 = fadd double %809, -5.000000e-01
+  %sub.i3334.7 = fadd double %734, -5.000000e-01
   %conv8.i3335.7 = fptosi double %sub.i3334.7 to i32
   br label %shishagonyuu.exit3339.7
 
 if.then.i3336.7:                                  ; preds = %shishagonyuu.exit3339.6
-  %add.i3337.7 = fadd double %809, 5.000000e-01
+  %add.i3337.7 = fadd double %734, 5.000000e-01
   %conv.i3338.7 = fptosi double %add.i3337.7 to i32
   br label %shishagonyuu.exit3339.7
 
@@ -3685,22 +3458,22 @@ shishagonyuu.exit3339.7:                          ; preds = %if.then.i3336.7, %i
   %out.0.i3332.7 = phi i32 [ %conv.i3338.7, %if.then.i3336.7 ], [ %conv8.i3335.7, %if.then7.i3333.7 ], [ 0, %if.else.i3330.7 ]
   %arrayidx653.7 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 7
   store i32 %out.0.i3332.7, ptr %arrayidx653.7, align 4
-  %arrayidx648.8 = getelementptr inbounds double, ptr %801, i64 8
-  %810 = load double, ptr %arrayidx648.8, align 8
-  %cmp.i3329.8 = fcmp ogt double %810, 0.000000e+00
+  %arrayidx648.8 = getelementptr inbounds double, ptr %726, i64 8
+  %735 = load double, ptr %arrayidx648.8, align 8
+  %cmp.i3329.8 = fcmp ogt double %735, 0.000000e+00
   br i1 %cmp.i3329.8, label %if.then.i3336.8, label %if.else.i3330.8
 
 if.else.i3330.8:                                  ; preds = %shishagonyuu.exit3339.7
-  %or.cond.i3331.8 = fcmp olt double %810, 0.000000e+00
+  %or.cond.i3331.8 = fcmp olt double %735, 0.000000e+00
   br i1 %or.cond.i3331.8, label %if.then7.i3333.8, label %shishagonyuu.exit3339.8
 
 if.then7.i3333.8:                                 ; preds = %if.else.i3330.8
-  %sub.i3334.8 = fadd double %810, -5.000000e-01
+  %sub.i3334.8 = fadd double %735, -5.000000e-01
   %conv8.i3335.8 = fptosi double %sub.i3334.8 to i32
   br label %shishagonyuu.exit3339.8
 
 if.then.i3336.8:                                  ; preds = %shishagonyuu.exit3339.7
-  %add.i3337.8 = fadd double %810, 5.000000e-01
+  %add.i3337.8 = fadd double %735, 5.000000e-01
   %conv.i3338.8 = fptosi double %add.i3337.8 to i32
   br label %shishagonyuu.exit3339.8
 
@@ -3708,22 +3481,22 @@ shishagonyuu.exit3339.8:                          ; preds = %if.then.i3336.8, %i
   %out.0.i3332.8 = phi i32 [ %conv.i3338.8, %if.then.i3336.8 ], [ %conv8.i3335.8, %if.then7.i3333.8 ], [ 0, %if.else.i3330.8 ]
   %arrayidx653.8 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4086, i64 8
   store i32 %out.0.i3332.8, ptr %arrayidx653.8, align 8
-  %arrayidx648.9 = getelementptr inbounds double, ptr %801, i64 9
-  %811 = load double, ptr %arrayidx648.9, align 8
-  %cmp.i3329.9 = fcmp ogt double %811, 0.000000e+00
+  %arrayidx648.9 = getelementptr inbounds double, ptr %726, i64 9
+  %736 = load double, ptr %arrayidx648.9, align 8
+  %cmp.i3329.9 = fcmp ogt double %736, 0.000000e+00
   br i1 %cmp.i3329.9, label %if.then.i3336.9, label %if.else.i3330.9
 
 if.else.i3330.9:                                  ; preds = %shishagonyuu.exit3339.8
-  %or.cond.i3331.9 = fcmp olt double %811, 0.000000e+00
+  %or.cond.i3331.9 = fcmp olt double %736, 0.000000e+00
   br i1 %or.cond.i3331.9, label %if.then7.i3333.9, label %shishagonyuu.exit3339.9
 
 if.then7.i3333.9:                                 ; preds = %if.else.i3330.9
-  %sub.i3334.9 = fadd double %811, -5.000000e-01
+  %sub.i3334.9 = fadd double %736, -5.000000e-01
   %conv8.i3335.9 = fptosi double %sub.i3334.9 to i32
   br label %shishagonyuu.exit3339.9
 
 if.then.i3336.9:                                  ; preds = %shishagonyuu.exit3339.8
-  %add.i3337.9 = fadd double %811, 5.000000e-01
+  %add.i3337.9 = fadd double %736, 5.000000e-01
   %conv.i3338.9 = fptosi double %add.i3337.9 to i32
   br label %shishagonyuu.exit3339.9
 
@@ -3736,214 +3509,214 @@ shishagonyuu.exit3339.9:                          ; preds = %if.then.i3336.9, %i
   br i1 %exitcond4089.not, label %for.end659, label %for.cond641.preheader
 
 for.end659:                                       ; preds = %shishagonyuu.exit3339.9
-  %812 = load i32, ptr @disp, align 4
-  %tobool660.not = icmp eq i32 %812, 0
+  %737 = load i32, ptr @disp, align 4
+  %tobool660.not = icmp eq i32 %737, 0
   br i1 %tobool660.not, label %if.end684, label %if.then661
 
 if.then661:                                       ; preds = %for.end659
-  %813 = load ptr, ptr @stderr, align 8
-  %814 = tail call i64 @fwrite(ptr nonnull @.str.14, i64 16, i64 1, ptr %813) #16
+  %738 = load ptr, ptr @stderr, align 8
+  %739 = tail call i64 @fwrite(ptr nonnull @.str.14, i64 16, i64 1, ptr %738) #16
   br label %for.cond667.preheader
 
 for.cond667.preheader:                            ; preds = %if.then661, %for.cond667.preheader
   %indvars.iv4094 = phi i64 [ 0, %if.then661 ], [ %indvars.iv.next4095, %for.cond667.preheader ]
-  %815 = load ptr, ptr @stderr, align 8
+  %740 = load ptr, ptr @stderr, align 8
   %arrayidx674 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 0
-  %816 = load i32, ptr %arrayidx674, align 8
-  %call675 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %815, ptr noundef nonnull @.str.15, i32 noundef %816) #16
-  %817 = load ptr, ptr @stderr, align 8
+  %741 = load i32, ptr %arrayidx674, align 8
+  %call675 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %740, ptr noundef nonnull @.str.15, i32 noundef %741) #16
+  %742 = load ptr, ptr @stderr, align 8
   %arrayidx674.1 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 1
-  %818 = load i32, ptr %arrayidx674.1, align 4
-  %call675.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %817, ptr noundef nonnull @.str.15, i32 noundef %818) #16
-  %819 = load ptr, ptr @stderr, align 8
+  %743 = load i32, ptr %arrayidx674.1, align 4
+  %call675.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %742, ptr noundef nonnull @.str.15, i32 noundef %743) #16
+  %744 = load ptr, ptr @stderr, align 8
   %arrayidx674.2 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 2
-  %820 = load i32, ptr %arrayidx674.2, align 8
-  %call675.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %819, ptr noundef nonnull @.str.15, i32 noundef %820) #16
-  %821 = load ptr, ptr @stderr, align 8
+  %745 = load i32, ptr %arrayidx674.2, align 8
+  %call675.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %744, ptr noundef nonnull @.str.15, i32 noundef %745) #16
+  %746 = load ptr, ptr @stderr, align 8
   %arrayidx674.3 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 3
-  %822 = load i32, ptr %arrayidx674.3, align 4
-  %call675.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %821, ptr noundef nonnull @.str.15, i32 noundef %822) #16
-  %823 = load ptr, ptr @stderr, align 8
+  %747 = load i32, ptr %arrayidx674.3, align 4
+  %call675.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %746, ptr noundef nonnull @.str.15, i32 noundef %747) #16
+  %748 = load ptr, ptr @stderr, align 8
   %arrayidx674.4 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 4
-  %824 = load i32, ptr %arrayidx674.4, align 8
-  %call675.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %823, ptr noundef nonnull @.str.15, i32 noundef %824) #16
-  %825 = load ptr, ptr @stderr, align 8
+  %749 = load i32, ptr %arrayidx674.4, align 8
+  %call675.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %748, ptr noundef nonnull @.str.15, i32 noundef %749) #16
+  %750 = load ptr, ptr @stderr, align 8
   %arrayidx674.5 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 5
-  %826 = load i32, ptr %arrayidx674.5, align 4
-  %call675.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %825, ptr noundef nonnull @.str.15, i32 noundef %826) #16
-  %827 = load ptr, ptr @stderr, align 8
+  %751 = load i32, ptr %arrayidx674.5, align 4
+  %call675.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %750, ptr noundef nonnull @.str.15, i32 noundef %751) #16
+  %752 = load ptr, ptr @stderr, align 8
   %arrayidx674.6 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 6
-  %828 = load i32, ptr %arrayidx674.6, align 8
-  %call675.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %827, ptr noundef nonnull @.str.15, i32 noundef %828) #16
-  %829 = load ptr, ptr @stderr, align 8
+  %753 = load i32, ptr %arrayidx674.6, align 8
+  %call675.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %752, ptr noundef nonnull @.str.15, i32 noundef %753) #16
+  %754 = load ptr, ptr @stderr, align 8
   %arrayidx674.7 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 7
-  %830 = load i32, ptr %arrayidx674.7, align 4
-  %call675.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %829, ptr noundef nonnull @.str.15, i32 noundef %830) #16
-  %831 = load ptr, ptr @stderr, align 8
+  %755 = load i32, ptr %arrayidx674.7, align 4
+  %call675.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %754, ptr noundef nonnull @.str.15, i32 noundef %755) #16
+  %756 = load ptr, ptr @stderr, align 8
   %arrayidx674.8 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 8
-  %832 = load i32, ptr %arrayidx674.8, align 8
-  %call675.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %831, ptr noundef nonnull @.str.15, i32 noundef %832) #16
-  %833 = load ptr, ptr @stderr, align 8
+  %757 = load i32, ptr %arrayidx674.8, align 8
+  %call675.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %756, ptr noundef nonnull @.str.15, i32 noundef %757) #16
+  %758 = load ptr, ptr @stderr, align 8
   %arrayidx674.9 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 9
-  %834 = load i32, ptr %arrayidx674.9, align 4
-  %call675.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %833, ptr noundef nonnull @.str.15, i32 noundef %834) #16
-  %835 = load ptr, ptr @stderr, align 8
+  %759 = load i32, ptr %arrayidx674.9, align 4
+  %call675.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %758, ptr noundef nonnull @.str.15, i32 noundef %759) #16
+  %760 = load ptr, ptr @stderr, align 8
   %arrayidx674.10 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 10
-  %836 = load i32, ptr %arrayidx674.10, align 8
-  %call675.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %835, ptr noundef nonnull @.str.15, i32 noundef %836) #16
-  %837 = load ptr, ptr @stderr, align 8
+  %761 = load i32, ptr %arrayidx674.10, align 8
+  %call675.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %760, ptr noundef nonnull @.str.15, i32 noundef %761) #16
+  %762 = load ptr, ptr @stderr, align 8
   %arrayidx674.11 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 11
-  %838 = load i32, ptr %arrayidx674.11, align 4
-  %call675.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %837, ptr noundef nonnull @.str.15, i32 noundef %838) #16
-  %839 = load ptr, ptr @stderr, align 8
+  %763 = load i32, ptr %arrayidx674.11, align 4
+  %call675.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %762, ptr noundef nonnull @.str.15, i32 noundef %763) #16
+  %764 = load ptr, ptr @stderr, align 8
   %arrayidx674.12 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 12
-  %840 = load i32, ptr %arrayidx674.12, align 8
-  %call675.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %839, ptr noundef nonnull @.str.15, i32 noundef %840) #16
-  %841 = load ptr, ptr @stderr, align 8
+  %765 = load i32, ptr %arrayidx674.12, align 8
+  %call675.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %764, ptr noundef nonnull @.str.15, i32 noundef %765) #16
+  %766 = load ptr, ptr @stderr, align 8
   %arrayidx674.13 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 13
-  %842 = load i32, ptr %arrayidx674.13, align 4
-  %call675.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %841, ptr noundef nonnull @.str.15, i32 noundef %842) #16
-  %843 = load ptr, ptr @stderr, align 8
+  %767 = load i32, ptr %arrayidx674.13, align 4
+  %call675.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %766, ptr noundef nonnull @.str.15, i32 noundef %767) #16
+  %768 = load ptr, ptr @stderr, align 8
   %arrayidx674.14 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 14
-  %844 = load i32, ptr %arrayidx674.14, align 8
-  %call675.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %843, ptr noundef nonnull @.str.15, i32 noundef %844) #16
-  %845 = load ptr, ptr @stderr, align 8
+  %769 = load i32, ptr %arrayidx674.14, align 8
+  %call675.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %768, ptr noundef nonnull @.str.15, i32 noundef %769) #16
+  %770 = load ptr, ptr @stderr, align 8
   %arrayidx674.15 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 15
-  %846 = load i32, ptr %arrayidx674.15, align 4
-  %call675.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %845, ptr noundef nonnull @.str.15, i32 noundef %846) #16
-  %847 = load ptr, ptr @stderr, align 8
+  %771 = load i32, ptr %arrayidx674.15, align 4
+  %call675.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %770, ptr noundef nonnull @.str.15, i32 noundef %771) #16
+  %772 = load ptr, ptr @stderr, align 8
   %arrayidx674.16 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 16
-  %848 = load i32, ptr %arrayidx674.16, align 8
-  %call675.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %847, ptr noundef nonnull @.str.15, i32 noundef %848) #16
-  %849 = load ptr, ptr @stderr, align 8
+  %773 = load i32, ptr %arrayidx674.16, align 8
+  %call675.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %772, ptr noundef nonnull @.str.15, i32 noundef %773) #16
+  %774 = load ptr, ptr @stderr, align 8
   %arrayidx674.17 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 17
-  %850 = load i32, ptr %arrayidx674.17, align 4
-  %call675.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %849, ptr noundef nonnull @.str.15, i32 noundef %850) #16
-  %851 = load ptr, ptr @stderr, align 8
+  %775 = load i32, ptr %arrayidx674.17, align 4
+  %call675.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %774, ptr noundef nonnull @.str.15, i32 noundef %775) #16
+  %776 = load ptr, ptr @stderr, align 8
   %arrayidx674.18 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 18
-  %852 = load i32, ptr %arrayidx674.18, align 8
-  %call675.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %851, ptr noundef nonnull @.str.15, i32 noundef %852) #16
-  %853 = load ptr, ptr @stderr, align 8
+  %777 = load i32, ptr %arrayidx674.18, align 8
+  %call675.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %776, ptr noundef nonnull @.str.15, i32 noundef %777) #16
+  %778 = load ptr, ptr @stderr, align 8
   %arrayidx674.19 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 19
-  %854 = load i32, ptr %arrayidx674.19, align 4
-  %call675.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %853, ptr noundef nonnull @.str.15, i32 noundef %854) #16
-  %855 = load ptr, ptr @stderr, align 8
+  %779 = load i32, ptr %arrayidx674.19, align 4
+  %call675.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %778, ptr noundef nonnull @.str.15, i32 noundef %779) #16
+  %780 = load ptr, ptr @stderr, align 8
   %arrayidx674.20 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 20
-  %856 = load i32, ptr %arrayidx674.20, align 8
-  %call675.20 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %855, ptr noundef nonnull @.str.15, i32 noundef %856) #16
-  %857 = load ptr, ptr @stderr, align 8
+  %781 = load i32, ptr %arrayidx674.20, align 8
+  %call675.20 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %780, ptr noundef nonnull @.str.15, i32 noundef %781) #16
+  %782 = load ptr, ptr @stderr, align 8
   %arrayidx674.21 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 21
-  %858 = load i32, ptr %arrayidx674.21, align 4
-  %call675.21 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %857, ptr noundef nonnull @.str.15, i32 noundef %858) #16
-  %859 = load ptr, ptr @stderr, align 8
+  %783 = load i32, ptr %arrayidx674.21, align 4
+  %call675.21 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %782, ptr noundef nonnull @.str.15, i32 noundef %783) #16
+  %784 = load ptr, ptr @stderr, align 8
   %arrayidx674.22 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 22
-  %860 = load i32, ptr %arrayidx674.22, align 8
-  %call675.22 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %859, ptr noundef nonnull @.str.15, i32 noundef %860) #16
-  %861 = load ptr, ptr @stderr, align 8
+  %785 = load i32, ptr %arrayidx674.22, align 8
+  %call675.22 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %784, ptr noundef nonnull @.str.15, i32 noundef %785) #16
+  %786 = load ptr, ptr @stderr, align 8
   %arrayidx674.23 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 23
-  %862 = load i32, ptr %arrayidx674.23, align 4
-  %call675.23 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %861, ptr noundef nonnull @.str.15, i32 noundef %862) #16
-  %863 = load ptr, ptr @stderr, align 8
+  %787 = load i32, ptr %arrayidx674.23, align 4
+  %call675.23 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %786, ptr noundef nonnull @.str.15, i32 noundef %787) #16
+  %788 = load ptr, ptr @stderr, align 8
   %arrayidx674.24 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 24
-  %864 = load i32, ptr %arrayidx674.24, align 8
-  %call675.24 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %863, ptr noundef nonnull @.str.15, i32 noundef %864) #16
-  %865 = load ptr, ptr @stderr, align 8
+  %789 = load i32, ptr %arrayidx674.24, align 8
+  %call675.24 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %788, ptr noundef nonnull @.str.15, i32 noundef %789) #16
+  %790 = load ptr, ptr @stderr, align 8
   %arrayidx674.25 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4094, i64 25
-  %866 = load i32, ptr %arrayidx674.25, align 4
-  %call675.25 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %865, ptr noundef nonnull @.str.15, i32 noundef %866) #16
-  %867 = load ptr, ptr @stderr, align 8
-  %fputc3326 = tail call i32 @fputc(i32 10, ptr %867)
+  %791 = load i32, ptr %arrayidx674.25, align 4
+  %call675.25 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %790, ptr noundef nonnull @.str.15, i32 noundef %791) #16
+  %792 = load ptr, ptr @stderr, align 8
+  %fputc3326 = tail call i32 @fputc(i32 10, ptr %792)
   %indvars.iv.next4095 = add nuw nsw i64 %indvars.iv4094, 1
   %exitcond4097.not = icmp eq i64 %indvars.iv.next4095, 26
   br i1 %exitcond4097.not, label %for.end682, label %for.cond667.preheader
 
 for.end682:                                       ; preds = %for.cond667.preheader
-  %868 = load ptr, ptr @stderr, align 8
-  %fputc3319 = tail call i32 @fputc(i32 10, ptr %868)
+  %793 = load ptr, ptr @stderr, align 8
+  %fputc3319 = tail call i32 @fputc(i32 10, ptr %793)
   br label %if.end684
 
 if.end684:                                        ; preds = %for.end682, %for.end659
-  %869 = load double, ptr %call2, align 8
+  %794 = load double, ptr %call2, align 8
   %arrayidx701.1 = getelementptr inbounds double, ptr %call2, i64 1
-  %870 = load double, ptr %arrayidx701.1, align 8
+  %795 = load double, ptr %arrayidx701.1, align 8
   %arrayidx701.2 = getelementptr inbounds double, ptr %call2, i64 2
-  %871 = load double, ptr %arrayidx701.2, align 8
+  %796 = load double, ptr %arrayidx701.2, align 8
   %arrayidx701.3 = getelementptr inbounds double, ptr %call2, i64 3
-  %872 = load double, ptr %arrayidx701.3, align 8
-  %873 = load <2 x double>, ptr @ribosum4, align 32
-  %874 = extractelement <2 x double> %873, i64 0
-  %mul699 = fmul double %874, %869
-  %875 = tail call double @llvm.fmuladd.f64(double %mul699, double %869, double 0.000000e+00)
-  %876 = extractelement <2 x double> %873, i64 1
-  %mul699.1 = fmul double %876, %869
-  %877 = tail call double @llvm.fmuladd.f64(double %mul699.1, double %870, double %875)
-  %878 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
-  %879 = extractelement <2 x double> %878, i64 0
-  %mul699.2 = fmul double %879, %869
-  %880 = extractelement <2 x double> %878, i64 1
-  %mul699.3 = fmul double %880, %869
-  %881 = tail call double @llvm.fmuladd.f64(double %mul699.2, double %871, double %877)
-  %882 = tail call double @llvm.fmuladd.f64(double %mul699.3, double %872, double %881)
-  %883 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %884 = extractelement <2 x double> %883, i64 0
-  %mul699.14107 = fmul double %884, %870
-  %885 = extractelement <2 x double> %883, i64 1
-  %mul699.1.1 = fmul double %885, %870
-  %886 = tail call double @llvm.fmuladd.f64(double %mul699.14107, double %869, double %882)
-  %887 = tail call double @llvm.fmuladd.f64(double %mul699.1.1, double %870, double %886)
-  %888 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
-  %889 = extractelement <2 x double> %888, i64 0
-  %mul699.2.1 = fmul double %889, %870
-  %890 = extractelement <2 x double> %888, i64 1
-  %mul699.3.1 = fmul double %890, %870
-  %891 = tail call double @llvm.fmuladd.f64(double %mul699.2.1, double %871, double %887)
-  %892 = tail call double @llvm.fmuladd.f64(double %mul699.3.1, double %872, double %891)
-  %893 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %894 = extractelement <2 x double> %893, i64 0
-  %mul699.24109 = fmul double %894, %871
-  %895 = extractelement <2 x double> %893, i64 1
-  %mul699.1.2 = fmul double %895, %871
-  %896 = tail call double @llvm.fmuladd.f64(double %mul699.24109, double %869, double %892)
-  %897 = tail call double @llvm.fmuladd.f64(double %mul699.1.2, double %870, double %896)
-  %898 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
-  %899 = extractelement <2 x double> %898, i64 0
-  %mul699.2.2 = fmul double %899, %871
-  %900 = extractelement <2 x double> %898, i64 1
-  %mul699.3.2 = fmul double %900, %871
-  %901 = tail call double @llvm.fmuladd.f64(double %mul699.2.2, double %871, double %897)
-  %902 = tail call double @llvm.fmuladd.f64(double %mul699.3.2, double %872, double %901)
-  %903 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %904 = extractelement <2 x double> %903, i64 0
-  %mul699.34111 = fmul double %904, %872
-  %905 = extractelement <2 x double> %903, i64 1
-  %mul699.1.3 = fmul double %905, %872
-  %906 = tail call double @llvm.fmuladd.f64(double %mul699.34111, double %869, double %902)
-  %907 = tail call double @llvm.fmuladd.f64(double %mul699.1.3, double %870, double %906)
-  %908 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
-  %909 = extractelement <2 x double> %908, i64 0
-  %mul699.2.3 = fmul double %909, %872
-  %910 = extractelement <2 x double> %908, i64 1
-  %mul699.3.3 = fmul double %910, %872
-  %911 = tail call double @llvm.fmuladd.f64(double %mul699.2.3, double %871, double %907)
-  %912 = tail call double @llvm.fmuladd.f64(double %mul699.3.3, double %872, double %911)
-  %913 = insertelement <2 x double> poison, double %912, i64 0
-  %914 = shufflevector <2 x double> %913, <2 x double> poison, <2 x i32> zeroinitializer
-  %915 = fsub <2 x double> %873, %914
-  store <2 x double> %915, ptr @ribosum4, align 32
-  %916 = fsub <2 x double> %878, %914
-  store <2 x double> %916, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
-  %917 = fsub <2 x double> %883, %914
-  store <2 x double> %917, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %918 = fsub <2 x double> %888, %914
-  store <2 x double> %918, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
-  %919 = fsub <2 x double> %893, %914
-  store <2 x double> %919, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %920 = fsub <2 x double> %898, %914
-  store <2 x double> %920, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
-  %921 = fsub <2 x double> %903, %914
-  store <2 x double> %921, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %922 = fsub <2 x double> %908, %914
-  store <2 x double> %922, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
+  %797 = load double, ptr %arrayidx701.3, align 8
+  %798 = load <2 x double>, ptr @ribosum4, align 32
+  %799 = extractelement <2 x double> %798, i64 0
+  %mul699 = fmul double %799, %794
+  %800 = tail call double @llvm.fmuladd.f64(double %mul699, double %794, double 0.000000e+00)
+  %801 = extractelement <2 x double> %798, i64 1
+  %mul699.1 = fmul double %801, %794
+  %802 = tail call double @llvm.fmuladd.f64(double %mul699.1, double %795, double %800)
+  %803 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
+  %804 = extractelement <2 x double> %803, i64 0
+  %mul699.2 = fmul double %804, %794
+  %805 = extractelement <2 x double> %803, i64 1
+  %mul699.3 = fmul double %805, %794
+  %806 = tail call double @llvm.fmuladd.f64(double %mul699.2, double %796, double %802)
+  %807 = tail call double @llvm.fmuladd.f64(double %mul699.3, double %797, double %806)
+  %808 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
+  %809 = extractelement <2 x double> %808, i64 0
+  %mul699.14107 = fmul double %809, %795
+  %810 = extractelement <2 x double> %808, i64 1
+  %mul699.1.1 = fmul double %810, %795
+  %811 = tail call double @llvm.fmuladd.f64(double %mul699.14107, double %794, double %807)
+  %812 = tail call double @llvm.fmuladd.f64(double %mul699.1.1, double %795, double %811)
+  %813 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
+  %814 = extractelement <2 x double> %813, i64 0
+  %mul699.2.1 = fmul double %814, %795
+  %815 = extractelement <2 x double> %813, i64 1
+  %mul699.3.1 = fmul double %815, %795
+  %816 = tail call double @llvm.fmuladd.f64(double %mul699.2.1, double %796, double %812)
+  %817 = tail call double @llvm.fmuladd.f64(double %mul699.3.1, double %797, double %816)
+  %818 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
+  %819 = extractelement <2 x double> %818, i64 0
+  %mul699.24109 = fmul double %819, %796
+  %820 = extractelement <2 x double> %818, i64 1
+  %mul699.1.2 = fmul double %820, %796
+  %821 = tail call double @llvm.fmuladd.f64(double %mul699.24109, double %794, double %817)
+  %822 = tail call double @llvm.fmuladd.f64(double %mul699.1.2, double %795, double %821)
+  %823 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
+  %824 = extractelement <2 x double> %823, i64 0
+  %mul699.2.2 = fmul double %824, %796
+  %825 = extractelement <2 x double> %823, i64 1
+  %mul699.3.2 = fmul double %825, %796
+  %826 = tail call double @llvm.fmuladd.f64(double %mul699.2.2, double %796, double %822)
+  %827 = tail call double @llvm.fmuladd.f64(double %mul699.3.2, double %797, double %826)
+  %828 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
+  %829 = extractelement <2 x double> %828, i64 0
+  %mul699.34111 = fmul double %829, %797
+  %830 = extractelement <2 x double> %828, i64 1
+  %mul699.1.3 = fmul double %830, %797
+  %831 = tail call double @llvm.fmuladd.f64(double %mul699.34111, double %794, double %827)
+  %832 = tail call double @llvm.fmuladd.f64(double %mul699.1.3, double %795, double %831)
+  %833 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
+  %834 = extractelement <2 x double> %833, i64 0
+  %mul699.2.3 = fmul double %834, %797
+  %835 = extractelement <2 x double> %833, i64 1
+  %mul699.3.3 = fmul double %835, %797
+  %836 = tail call double @llvm.fmuladd.f64(double %mul699.2.3, double %796, double %832)
+  %837 = tail call double @llvm.fmuladd.f64(double %mul699.3.3, double %797, double %836)
+  %838 = insertelement <2 x double> poison, double %837, i64 0
+  %839 = shufflevector <2 x double> %838, <2 x double> poison, <2 x i32> zeroinitializer
+  %840 = fsub <2 x double> %798, %839
+  store <2 x double> %840, ptr @ribosum4, align 32
+  %841 = fsub <2 x double> %803, %839
+  store <2 x double> %841, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
+  %842 = fsub <2 x double> %808, %839
+  store <2 x double> %842, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
+  %843 = fsub <2 x double> %813, %839
+  store <2 x double> %843, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
+  %844 = fsub <2 x double> %818, %839
+  store <2 x double> %844, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
+  %845 = fsub <2 x double> %823, %839
+  store <2 x double> %845, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
+  %846 = fsub <2 x double> %828, %839
+  store <2 x double> %846, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
+  %847 = fsub <2 x double> %833, %839
+  store <2 x double> %847, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
   %.pre4611.pre = load double, ptr %call2, align 8
   %.pre4614.pre = load double, ptr %arrayidx701.3, align 8
   %.pre4612 = load double, ptr %arrayidx701.1, align 8
@@ -3952,114 +3725,114 @@ if.end684:                                        ; preds = %for.end682, %for.en
 
 for.cond732.preheader:                            ; preds = %if.end684, %for.inc773
   %indvars.iv4153 = phi i64 [ 0, %if.end684 ], [ %indvars.iv.next4154, %for.inc773 ]
-  %average.73531 = phi double [ 0.000000e+00, %if.end684 ], [ %958, %for.inc773 ]
-  %923 = shl nsw i64 %indvars.iv4153, 2
+  %average.73531 = phi double [ 0.000000e+00, %if.end684 ], [ %883, %for.inc773 ]
+  %848 = shl nsw i64 %indvars.iv4153, 2
   %arrayidx753 = getelementptr inbounds double, ptr %call2, i64 %indvars.iv4153
-  %924 = load double, ptr %arrayidx753, align 8
+  %849 = load double, ptr %arrayidx753, align 8
   br label %for.cond736.preheader
 
 for.cond736.preheader:                            ; preds = %for.cond732.preheader, %for.cond736.preheader
   %indvars.iv4148 = phi i64 [ 0, %for.cond732.preheader ], [ %indvars.iv.next4149, %for.cond736.preheader ]
-  %average.83529 = phi double [ %average.73531, %for.cond732.preheader ], [ %958, %for.cond736.preheader ]
-  %925 = add nuw nsw i64 %indvars.iv4148, %923
+  %average.83529 = phi double [ %average.73531, %for.cond732.preheader ], [ %883, %for.cond736.preheader ]
+  %850 = add nuw nsw i64 %indvars.iv4148, %848
   %arrayidx756 = getelementptr inbounds double, ptr %call2, i64 %indvars.iv4148
-  %926 = load double, ptr %arrayidx756, align 8
-  %arrayidx751 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 0
-  %927 = load double, ptr %arrayidx751, align 16
-  %mul754 = fmul double %927, %924
-  %mul757 = fmul double %mul754, %926
+  %851 = load double, ptr %arrayidx756, align 8
+  %arrayidx751 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 0
+  %852 = load double, ptr %arrayidx751, align 16
+  %mul754 = fmul double %852, %849
+  %mul757 = fmul double %mul754, %851
   %mul760 = fmul double %mul757, %.pre4611.pre
-  %928 = tail call double @llvm.fmuladd.f64(double %mul760, double %.pre4611.pre, double %average.83529)
-  %arrayidx751.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 1
-  %929 = load double, ptr %arrayidx751.1, align 8
-  %mul754.1 = fmul double %929, %924
-  %mul757.1 = fmul double %mul754.1, %926
+  %853 = tail call double @llvm.fmuladd.f64(double %mul760, double %.pre4611.pre, double %average.83529)
+  %arrayidx751.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 1
+  %854 = load double, ptr %arrayidx751.1, align 8
+  %mul754.1 = fmul double %854, %849
+  %mul757.1 = fmul double %mul754.1, %851
   %mul760.1 = fmul double %mul757.1, %.pre4611.pre
-  %930 = tail call double @llvm.fmuladd.f64(double %mul760.1, double %.pre4612, double %928)
-  %arrayidx751.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 2
-  %931 = load double, ptr %arrayidx751.2, align 16
-  %mul754.2 = fmul double %931, %924
-  %mul757.2 = fmul double %mul754.2, %926
+  %855 = tail call double @llvm.fmuladd.f64(double %mul760.1, double %.pre4612, double %853)
+  %arrayidx751.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 2
+  %856 = load double, ptr %arrayidx751.2, align 16
+  %mul754.2 = fmul double %856, %849
+  %mul757.2 = fmul double %mul754.2, %851
   %mul760.2 = fmul double %mul757.2, %.pre4611.pre
-  %932 = tail call double @llvm.fmuladd.f64(double %mul760.2, double %.pre4613, double %930)
-  %arrayidx751.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 3
-  %933 = load double, ptr %arrayidx751.3, align 8
-  %mul754.3 = fmul double %933, %924
-  %mul757.3 = fmul double %mul754.3, %926
+  %857 = tail call double @llvm.fmuladd.f64(double %mul760.2, double %.pre4613, double %855)
+  %arrayidx751.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 3
+  %858 = load double, ptr %arrayidx751.3, align 8
+  %mul754.3 = fmul double %858, %849
+  %mul757.3 = fmul double %mul754.3, %851
   %mul760.3 = fmul double %mul757.3, %.pre4611.pre
-  %934 = tail call double @llvm.fmuladd.f64(double %mul760.3, double %.pre4614.pre, double %932)
-  %arrayidx751.14136 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 4
-  %935 = load double, ptr %arrayidx751.14136, align 16
-  %mul754.14137 = fmul double %935, %924
-  %mul757.14138 = fmul double %mul754.14137, %926
+  %859 = tail call double @llvm.fmuladd.f64(double %mul760.3, double %.pre4614.pre, double %857)
+  %arrayidx751.14136 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 4
+  %860 = load double, ptr %arrayidx751.14136, align 16
+  %mul754.14137 = fmul double %860, %849
+  %mul757.14138 = fmul double %mul754.14137, %851
   %mul760.14139 = fmul double %mul757.14138, %.pre4612
-  %936 = tail call double @llvm.fmuladd.f64(double %mul760.14139, double %.pre4611.pre, double %934)
-  %arrayidx751.1.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 5
-  %937 = load double, ptr %arrayidx751.1.1, align 8
-  %mul754.1.1 = fmul double %937, %924
-  %mul757.1.1 = fmul double %mul754.1.1, %926
+  %861 = tail call double @llvm.fmuladd.f64(double %mul760.14139, double %.pre4611.pre, double %859)
+  %arrayidx751.1.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 5
+  %862 = load double, ptr %arrayidx751.1.1, align 8
+  %mul754.1.1 = fmul double %862, %849
+  %mul757.1.1 = fmul double %mul754.1.1, %851
   %mul760.1.1 = fmul double %mul757.1.1, %.pre4612
-  %938 = tail call double @llvm.fmuladd.f64(double %mul760.1.1, double %.pre4612, double %936)
-  %arrayidx751.2.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 6
-  %939 = load double, ptr %arrayidx751.2.1, align 16
-  %mul754.2.1 = fmul double %939, %924
-  %mul757.2.1 = fmul double %mul754.2.1, %926
+  %863 = tail call double @llvm.fmuladd.f64(double %mul760.1.1, double %.pre4612, double %861)
+  %arrayidx751.2.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 6
+  %864 = load double, ptr %arrayidx751.2.1, align 16
+  %mul754.2.1 = fmul double %864, %849
+  %mul757.2.1 = fmul double %mul754.2.1, %851
   %mul760.2.1 = fmul double %mul757.2.1, %.pre4612
-  %940 = tail call double @llvm.fmuladd.f64(double %mul760.2.1, double %.pre4613, double %938)
-  %arrayidx751.3.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 7
-  %941 = load double, ptr %arrayidx751.3.1, align 8
-  %mul754.3.1 = fmul double %941, %924
-  %mul757.3.1 = fmul double %mul754.3.1, %926
+  %865 = tail call double @llvm.fmuladd.f64(double %mul760.2.1, double %.pre4613, double %863)
+  %arrayidx751.3.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 7
+  %866 = load double, ptr %arrayidx751.3.1, align 8
+  %mul754.3.1 = fmul double %866, %849
+  %mul757.3.1 = fmul double %mul754.3.1, %851
   %mul760.3.1 = fmul double %mul757.3.1, %.pre4612
-  %942 = tail call double @llvm.fmuladd.f64(double %mul760.3.1, double %.pre4614.pre, double %940)
-  %arrayidx751.24140 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 8
-  %943 = load double, ptr %arrayidx751.24140, align 16
-  %mul754.24141 = fmul double %943, %924
-  %mul757.24142 = fmul double %mul754.24141, %926
+  %867 = tail call double @llvm.fmuladd.f64(double %mul760.3.1, double %.pre4614.pre, double %865)
+  %arrayidx751.24140 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 8
+  %868 = load double, ptr %arrayidx751.24140, align 16
+  %mul754.24141 = fmul double %868, %849
+  %mul757.24142 = fmul double %mul754.24141, %851
   %mul760.24143 = fmul double %mul757.24142, %.pre4613
-  %944 = tail call double @llvm.fmuladd.f64(double %mul760.24143, double %.pre4611.pre, double %942)
-  %arrayidx751.1.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 9
-  %945 = load double, ptr %arrayidx751.1.2, align 8
-  %mul754.1.2 = fmul double %945, %924
-  %mul757.1.2 = fmul double %mul754.1.2, %926
+  %869 = tail call double @llvm.fmuladd.f64(double %mul760.24143, double %.pre4611.pre, double %867)
+  %arrayidx751.1.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 9
+  %870 = load double, ptr %arrayidx751.1.2, align 8
+  %mul754.1.2 = fmul double %870, %849
+  %mul757.1.2 = fmul double %mul754.1.2, %851
   %mul760.1.2 = fmul double %mul757.1.2, %.pre4613
-  %946 = tail call double @llvm.fmuladd.f64(double %mul760.1.2, double %.pre4612, double %944)
-  %arrayidx751.2.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 10
-  %947 = load double, ptr %arrayidx751.2.2, align 16
-  %mul754.2.2 = fmul double %947, %924
-  %mul757.2.2 = fmul double %mul754.2.2, %926
+  %871 = tail call double @llvm.fmuladd.f64(double %mul760.1.2, double %.pre4612, double %869)
+  %arrayidx751.2.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 10
+  %872 = load double, ptr %arrayidx751.2.2, align 16
+  %mul754.2.2 = fmul double %872, %849
+  %mul757.2.2 = fmul double %mul754.2.2, %851
   %mul760.2.2 = fmul double %mul757.2.2, %.pre4613
-  %948 = tail call double @llvm.fmuladd.f64(double %mul760.2.2, double %.pre4613, double %946)
-  %arrayidx751.3.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 11
-  %949 = load double, ptr %arrayidx751.3.2, align 8
-  %mul754.3.2 = fmul double %949, %924
-  %mul757.3.2 = fmul double %mul754.3.2, %926
+  %873 = tail call double @llvm.fmuladd.f64(double %mul760.2.2, double %.pre4613, double %871)
+  %arrayidx751.3.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 11
+  %874 = load double, ptr %arrayidx751.3.2, align 8
+  %mul754.3.2 = fmul double %874, %849
+  %mul757.3.2 = fmul double %mul754.3.2, %851
   %mul760.3.2 = fmul double %mul757.3.2, %.pre4613
-  %950 = tail call double @llvm.fmuladd.f64(double %mul760.3.2, double %.pre4614.pre, double %948)
-  %arrayidx751.34144 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 12
-  %951 = load double, ptr %arrayidx751.34144, align 16
-  %mul754.34145 = fmul double %951, %924
-  %mul757.34146 = fmul double %mul754.34145, %926
+  %875 = tail call double @llvm.fmuladd.f64(double %mul760.3.2, double %.pre4614.pre, double %873)
+  %arrayidx751.34144 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 12
+  %876 = load double, ptr %arrayidx751.34144, align 16
+  %mul754.34145 = fmul double %876, %849
+  %mul757.34146 = fmul double %mul754.34145, %851
   %mul760.34147 = fmul double %mul757.34146, %.pre4614.pre
-  %952 = tail call double @llvm.fmuladd.f64(double %mul760.34147, double %.pre4611.pre, double %950)
-  %arrayidx751.1.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 13
-  %953 = load double, ptr %arrayidx751.1.3, align 8
-  %mul754.1.3 = fmul double %953, %924
-  %mul757.1.3 = fmul double %mul754.1.3, %926
+  %877 = tail call double @llvm.fmuladd.f64(double %mul760.34147, double %.pre4611.pre, double %875)
+  %arrayidx751.1.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 13
+  %878 = load double, ptr %arrayidx751.1.3, align 8
+  %mul754.1.3 = fmul double %878, %849
+  %mul757.1.3 = fmul double %mul754.1.3, %851
   %mul760.1.3 = fmul double %mul757.1.3, %.pre4614.pre
-  %954 = tail call double @llvm.fmuladd.f64(double %mul760.1.3, double %.pre4612, double %952)
-  %arrayidx751.2.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 14
-  %955 = load double, ptr %arrayidx751.2.3, align 16
-  %mul754.2.3 = fmul double %955, %924
-  %mul757.2.3 = fmul double %mul754.2.3, %926
+  %879 = tail call double @llvm.fmuladd.f64(double %mul760.1.3, double %.pre4612, double %877)
+  %arrayidx751.2.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 14
+  %880 = load double, ptr %arrayidx751.2.3, align 16
+  %mul754.2.3 = fmul double %880, %849
+  %mul757.2.3 = fmul double %mul754.2.3, %851
   %mul760.2.3 = fmul double %mul757.2.3, %.pre4614.pre
-  %956 = tail call double @llvm.fmuladd.f64(double %mul760.2.3, double %.pre4613, double %954)
-  %arrayidx751.3.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %925, i64 15
-  %957 = load double, ptr %arrayidx751.3.3, align 8
-  %mul754.3.3 = fmul double %957, %924
-  %mul757.3.3 = fmul double %mul754.3.3, %926
+  %881 = tail call double @llvm.fmuladd.f64(double %mul760.2.3, double %.pre4613, double %879)
+  %arrayidx751.3.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %850, i64 15
+  %882 = load double, ptr %arrayidx751.3.3, align 8
+  %mul754.3.3 = fmul double %882, %849
+  %mul757.3.3 = fmul double %mul754.3.3, %851
   %mul760.3.3 = fmul double %mul757.3.3, %.pre4614.pre
-  %958 = tail call double @llvm.fmuladd.f64(double %mul760.3.3, double %.pre4614.pre, double %956)
+  %883 = tail call double @llvm.fmuladd.f64(double %mul760.3.3, double %.pre4614.pre, double %881)
   %indvars.iv.next4149 = add nuw nsw i64 %indvars.iv4148, 1
   %exitcond4152.not = icmp eq i64 %indvars.iv.next4149, 4
   br i1 %exitcond4152.not, label %for.inc773, label %for.cond736.preheader
@@ -4070,230 +3843,230 @@ for.inc773:                                       ; preds = %for.cond736.prehead
   br i1 %exitcond4157.not, label %for.cond780.preheader.preheader, label %for.cond732.preheader
 
 for.cond780.preheader.preheader:                  ; preds = %for.inc773
-  %959 = insertelement <2 x double> poison, double %958, i64 0
-  %960 = shufflevector <2 x double> %959, <2 x double> poison, <2 x i32> zeroinitializer
+  %884 = insertelement <2 x double> poison, double %883, i64 0
+  %885 = shufflevector <2 x double> %884, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond780.preheader
 
 for.cond780.preheader:                            ; preds = %for.cond780.preheader.preheader, %for.cond780.preheader
   %indvars.iv4162 = phi i64 [ %indvars.iv.next4163, %for.cond780.preheader ], [ 0, %for.cond780.preheader.preheader ]
   %arrayidx787 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 0
-  %961 = load <2 x double>, ptr %arrayidx787, align 16
-  %962 = fsub <2 x double> %961, %960
-  store <2 x double> %962, ptr %arrayidx787, align 16
+  %886 = load <2 x double>, ptr %arrayidx787, align 16
+  %887 = fsub <2 x double> %886, %885
+  store <2 x double> %887, ptr %arrayidx787, align 16
   %arrayidx787.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 2
-  %963 = load <2 x double>, ptr %arrayidx787.2, align 16
-  %964 = fsub <2 x double> %963, %960
-  store <2 x double> %964, ptr %arrayidx787.2, align 16
+  %888 = load <2 x double>, ptr %arrayidx787.2, align 16
+  %889 = fsub <2 x double> %888, %885
+  store <2 x double> %889, ptr %arrayidx787.2, align 16
   %arrayidx787.4 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 4
-  %965 = load <2 x double>, ptr %arrayidx787.4, align 16
-  %966 = fsub <2 x double> %965, %960
-  store <2 x double> %966, ptr %arrayidx787.4, align 16
+  %890 = load <2 x double>, ptr %arrayidx787.4, align 16
+  %891 = fsub <2 x double> %890, %885
+  store <2 x double> %891, ptr %arrayidx787.4, align 16
   %arrayidx787.6 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 6
-  %967 = load <2 x double>, ptr %arrayidx787.6, align 16
-  %968 = fsub <2 x double> %967, %960
-  store <2 x double> %968, ptr %arrayidx787.6, align 16
+  %892 = load <2 x double>, ptr %arrayidx787.6, align 16
+  %893 = fsub <2 x double> %892, %885
+  store <2 x double> %893, ptr %arrayidx787.6, align 16
   %arrayidx787.8 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 8
-  %969 = load <2 x double>, ptr %arrayidx787.8, align 16
-  %970 = fsub <2 x double> %969, %960
-  store <2 x double> %970, ptr %arrayidx787.8, align 16
+  %894 = load <2 x double>, ptr %arrayidx787.8, align 16
+  %895 = fsub <2 x double> %894, %885
+  store <2 x double> %895, ptr %arrayidx787.8, align 16
   %arrayidx787.10 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 10
-  %971 = load <2 x double>, ptr %arrayidx787.10, align 16
-  %972 = fsub <2 x double> %971, %960
-  store <2 x double> %972, ptr %arrayidx787.10, align 16
+  %896 = load <2 x double>, ptr %arrayidx787.10, align 16
+  %897 = fsub <2 x double> %896, %885
+  store <2 x double> %897, ptr %arrayidx787.10, align 16
   %arrayidx787.12 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 12
-  %973 = load <2 x double>, ptr %arrayidx787.12, align 16
-  %974 = fsub <2 x double> %973, %960
-  store <2 x double> %974, ptr %arrayidx787.12, align 16
+  %898 = load <2 x double>, ptr %arrayidx787.12, align 16
+  %899 = fsub <2 x double> %898, %885
+  store <2 x double> %899, ptr %arrayidx787.12, align 16
   %arrayidx787.14 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4162, i64 14
-  %975 = load <2 x double>, ptr %arrayidx787.14, align 16
-  %976 = fsub <2 x double> %975, %960
-  store <2 x double> %976, ptr %arrayidx787.14, align 16
+  %900 = load <2 x double>, ptr %arrayidx787.14, align 16
+  %901 = fsub <2 x double> %900, %885
+  store <2 x double> %901, ptr %arrayidx787.14, align 16
   %indvars.iv.next4163 = add nuw nsw i64 %indvars.iv4162, 1
   %exitcond4165.not = icmp eq i64 %indvars.iv.next4163, 16
   br i1 %exitcond4165.not, label %for.body798.preheader, label %for.cond780.preheader
 
 for.body798.preheader:                            ; preds = %for.cond780.preheader
-  %977 = load double, ptr %call2, align 8
-  %978 = load double, ptr %arrayidx701.1, align 8
-  %979 = load double, ptr %arrayidx701.2, align 8
-  %980 = load double, ptr %arrayidx701.3, align 8
-  %981 = load <2 x double>, ptr @ribosum4, align 32
-  %982 = extractelement <2 x double> %981, i64 0
-  %983 = tail call double @llvm.fmuladd.f64(double %982, double %977, double 0.000000e+00)
-  %984 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
-  %985 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %986 = extractelement <2 x double> %985, i64 1
-  %987 = tail call double @llvm.fmuladd.f64(double %986, double %978, double %983)
-  %988 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
-  %989 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %990 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
-  %991 = extractelement <2 x double> %990, i64 0
-  %992 = tail call double @llvm.fmuladd.f64(double %991, double %979, double %987)
-  %993 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %994 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
-  %995 = extractelement <2 x double> %994, i64 1
-  %996 = tail call double @llvm.fmuladd.f64(double %995, double %980, double %992)
-  %div817 = fdiv double 6.000000e+02, %996
-  %997 = insertelement <2 x double> poison, double %div817, i64 0
-  %998 = shufflevector <2 x double> %997, <2 x double> poison, <2 x i32> zeroinitializer
-  %999 = fmul <2 x double> %998, %981
-  store <2 x double> %999, ptr @ribosum4, align 32
-  %1000 = fmul <2 x double> %998, %984
-  store <2 x double> %1000, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
-  %1001 = fmul <2 x double> %998, %985
-  store <2 x double> %1001, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %1002 = fmul <2 x double> %998, %988
-  store <2 x double> %1002, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
-  %1003 = fmul <2 x double> %998, %989
-  store <2 x double> %1003, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %1004 = fmul <2 x double> %998, %990
-  store <2 x double> %1004, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
-  %1005 = fmul <2 x double> %998, %993
-  store <2 x double> %1005, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %1006 = fmul <2 x double> %998, %994
-  store <2 x double> %1006, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
-  %1007 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 3, i64 3), align 8
-  %1008 = load double, ptr %call2, align 8
-  %mul830 = fmul double %1007, %1008
-  %1009 = load double, ptr %arrayidx701.3, align 8
-  %1010 = tail call double @llvm.fmuladd.f64(double %mul830, double %1009, double 0.000000e+00)
-  %1011 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 12, i64 12), align 16
-  %mul834 = fmul double %1009, %1011
-  %1012 = tail call double @llvm.fmuladd.f64(double %mul834, double %1008, double %1010)
-  %1013 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 6, i64 6), align 16
-  %1014 = load double, ptr %arrayidx701.1, align 8
-  %mul838 = fmul double %1013, %1014
-  %1015 = load double, ptr %arrayidx701.2, align 8
-  %1016 = tail call double @llvm.fmuladd.f64(double %mul838, double %1015, double %1012)
-  %1017 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 9, i64 9), align 8
-  %mul842 = fmul double %1015, %1017
-  %1018 = tail call double @llvm.fmuladd.f64(double %mul842, double %1014, double %1016)
-  %1019 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 7, i64 7), align 8
-  %mul846 = fmul double %1014, %1019
-  %1020 = tail call double @llvm.fmuladd.f64(double %mul846, double %1009, double %1018)
-  %1021 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 13, i64 13), align 8
-  %mul850 = fmul double %1009, %1021
-  %1022 = tail call double @llvm.fmuladd.f64(double %mul850, double %1014, double %1020)
-  %div861 = fdiv double 6.000000e+02, %1022
-  %1023 = insertelement <2 x double> poison, double %div861, i64 0
-  %1024 = shufflevector <2 x double> %1023, <2 x double> poison, <2 x i32> zeroinitializer
+  %902 = load double, ptr %call2, align 8
+  %903 = load double, ptr %arrayidx701.1, align 8
+  %904 = load double, ptr %arrayidx701.2, align 8
+  %905 = load double, ptr %arrayidx701.3, align 8
+  %906 = load <2 x double>, ptr @ribosum4, align 32
+  %907 = extractelement <2 x double> %906, i64 0
+  %908 = tail call double @llvm.fmuladd.f64(double %907, double %902, double 0.000000e+00)
+  %909 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
+  %910 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
+  %911 = extractelement <2 x double> %910, i64 1
+  %912 = tail call double @llvm.fmuladd.f64(double %911, double %903, double %908)
+  %913 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
+  %914 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
+  %915 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
+  %916 = extractelement <2 x double> %915, i64 0
+  %917 = tail call double @llvm.fmuladd.f64(double %916, double %904, double %912)
+  %918 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
+  %919 = load <2 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
+  %920 = extractelement <2 x double> %919, i64 1
+  %921 = tail call double @llvm.fmuladd.f64(double %920, double %905, double %917)
+  %div817 = fdiv double 6.000000e+02, %921
+  %922 = insertelement <2 x double> poison, double %div817, i64 0
+  %923 = shufflevector <2 x double> %922, <2 x double> poison, <2 x i32> zeroinitializer
+  %924 = fmul <2 x double> %923, %906
+  store <2 x double> %924, ptr @ribosum4, align 32
+  %925 = fmul <2 x double> %923, %909
+  store <2 x double> %925, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
+  %926 = fmul <2 x double> %923, %910
+  store <2 x double> %926, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
+  %927 = fmul <2 x double> %923, %913
+  store <2 x double> %927, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
+  %928 = fmul <2 x double> %923, %914
+  store <2 x double> %928, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
+  %929 = fmul <2 x double> %923, %915
+  store <2 x double> %929, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
+  %930 = fmul <2 x double> %923, %918
+  store <2 x double> %930, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
+  %931 = fmul <2 x double> %923, %919
+  store <2 x double> %931, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
+  %932 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 3, i64 3), align 8
+  %933 = load double, ptr %call2, align 8
+  %mul830 = fmul double %932, %933
+  %934 = load double, ptr %arrayidx701.3, align 8
+  %935 = tail call double @llvm.fmuladd.f64(double %mul830, double %934, double 0.000000e+00)
+  %936 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 12, i64 12), align 16
+  %mul834 = fmul double %934, %936
+  %937 = tail call double @llvm.fmuladd.f64(double %mul834, double %933, double %935)
+  %938 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 6, i64 6), align 16
+  %939 = load double, ptr %arrayidx701.1, align 8
+  %mul838 = fmul double %938, %939
+  %940 = load double, ptr %arrayidx701.2, align 8
+  %941 = tail call double @llvm.fmuladd.f64(double %mul838, double %940, double %937)
+  %942 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 9, i64 9), align 8
+  %mul842 = fmul double %940, %942
+  %943 = tail call double @llvm.fmuladd.f64(double %mul842, double %939, double %941)
+  %944 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 7, i64 7), align 8
+  %mul846 = fmul double %939, %944
+  %945 = tail call double @llvm.fmuladd.f64(double %mul846, double %934, double %943)
+  %946 = load double, ptr getelementptr inbounds ([16 x [16 x double]], ptr @ribosum16, i64 0, i64 13, i64 13), align 8
+  %mul850 = fmul double %934, %946
+  %947 = tail call double @llvm.fmuladd.f64(double %mul850, double %939, double %945)
+  %div861 = fdiv double 6.000000e+02, %947
+  %948 = insertelement <2 x double> poison, double %div861, i64 0
+  %949 = shufflevector <2 x double> %948, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond857.preheader
 
 for.cond857.preheader:                            ; preds = %for.body798.preheader, %for.cond857.preheader
   %indvars.iv4188 = phi i64 [ 0, %for.body798.preheader ], [ %indvars.iv.next4189, %for.cond857.preheader ]
   %arrayidx865 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 0
-  %1025 = load <2 x double>, ptr %arrayidx865, align 16
-  %1026 = fmul <2 x double> %1024, %1025
-  store <2 x double> %1026, ptr %arrayidx865, align 16
+  %950 = load <2 x double>, ptr %arrayidx865, align 16
+  %951 = fmul <2 x double> %949, %950
+  store <2 x double> %951, ptr %arrayidx865, align 16
   %arrayidx865.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 2
-  %1027 = load <2 x double>, ptr %arrayidx865.2, align 16
-  %1028 = fmul <2 x double> %1024, %1027
-  store <2 x double> %1028, ptr %arrayidx865.2, align 16
+  %952 = load <2 x double>, ptr %arrayidx865.2, align 16
+  %953 = fmul <2 x double> %949, %952
+  store <2 x double> %953, ptr %arrayidx865.2, align 16
   %arrayidx865.4 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 4
-  %1029 = load <2 x double>, ptr %arrayidx865.4, align 16
-  %1030 = fmul <2 x double> %1024, %1029
-  store <2 x double> %1030, ptr %arrayidx865.4, align 16
+  %954 = load <2 x double>, ptr %arrayidx865.4, align 16
+  %955 = fmul <2 x double> %949, %954
+  store <2 x double> %955, ptr %arrayidx865.4, align 16
   %arrayidx865.6 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 6
-  %1031 = load <2 x double>, ptr %arrayidx865.6, align 16
-  %1032 = fmul <2 x double> %1024, %1031
-  store <2 x double> %1032, ptr %arrayidx865.6, align 16
+  %956 = load <2 x double>, ptr %arrayidx865.6, align 16
+  %957 = fmul <2 x double> %949, %956
+  store <2 x double> %957, ptr %arrayidx865.6, align 16
   %arrayidx865.8 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 8
-  %1033 = load <2 x double>, ptr %arrayidx865.8, align 16
-  %1034 = fmul <2 x double> %1024, %1033
-  store <2 x double> %1034, ptr %arrayidx865.8, align 16
+  %958 = load <2 x double>, ptr %arrayidx865.8, align 16
+  %959 = fmul <2 x double> %949, %958
+  store <2 x double> %959, ptr %arrayidx865.8, align 16
   %arrayidx865.10 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 10
-  %1035 = load <2 x double>, ptr %arrayidx865.10, align 16
-  %1036 = fmul <2 x double> %1024, %1035
-  store <2 x double> %1036, ptr %arrayidx865.10, align 16
+  %960 = load <2 x double>, ptr %arrayidx865.10, align 16
+  %961 = fmul <2 x double> %949, %960
+  store <2 x double> %961, ptr %arrayidx865.10, align 16
   %arrayidx865.12 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 12
-  %1037 = load <2 x double>, ptr %arrayidx865.12, align 16
-  %1038 = fmul <2 x double> %1024, %1037
-  store <2 x double> %1038, ptr %arrayidx865.12, align 16
+  %962 = load <2 x double>, ptr %arrayidx865.12, align 16
+  %963 = fmul <2 x double> %949, %962
+  store <2 x double> %963, ptr %arrayidx865.12, align 16
   %arrayidx865.14 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4188, i64 14
-  %1039 = load <2 x double>, ptr %arrayidx865.14, align 16
-  %1040 = fmul <2 x double> %1024, %1039
-  store <2 x double> %1040, ptr %arrayidx865.14, align 16
+  %964 = load <2 x double>, ptr %arrayidx865.14, align 16
+  %965 = fmul <2 x double> %949, %964
+  store <2 x double> %965, ptr %arrayidx865.14, align 16
   %indvars.iv.next4189 = add nuw nsw i64 %indvars.iv4188, 1
   %exitcond4191.not = icmp eq i64 %indvars.iv.next4189, 16
   br i1 %exitcond4191.not, label %for.cond873.preheader, label %for.cond857.preheader
 
 for.cond873.preheader:                            ; preds = %for.cond857.preheader
-  %1041 = load i32, ptr @offset, align 4
-  %conv881 = sitofp i32 %1041 to double
-  %1042 = insertelement <2 x double> poison, double %conv881, i64 0
-  %1043 = shufflevector <2 x double> %1042, <2 x double> poison, <2 x i32> zeroinitializer
-  %1044 = fsub <2 x double> %999, %1043
-  store <2 x double> %1044, ptr @ribosum4, align 32
-  %1045 = fsub <2 x double> %1000, %1043
-  store <2 x double> %1045, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
-  %1046 = fsub <2 x double> %1001, %1043
-  store <2 x double> %1046, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %1047 = fsub <2 x double> %1002, %1043
-  store <2 x double> %1047, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
-  %1048 = fsub <2 x double> %1003, %1043
-  store <2 x double> %1048, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %1049 = fsub <2 x double> %1004, %1043
-  store <2 x double> %1049, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
-  %1050 = fsub <2 x double> %1005, %1043
-  store <2 x double> %1050, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %1051 = fsub <2 x double> %1006, %1043
-  store <2 x double> %1051, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
+  %966 = load i32, ptr @offset, align 4
+  %conv881 = sitofp i32 %966 to double
+  %967 = insertelement <2 x double> poison, double %conv881, i64 0
+  %968 = shufflevector <2 x double> %967, <2 x double> poison, <2 x i32> zeroinitializer
+  %969 = fsub <2 x double> %924, %968
+  store <2 x double> %969, ptr @ribosum4, align 32
+  %970 = fsub <2 x double> %925, %968
+  store <2 x double> %970, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
+  %971 = fsub <2 x double> %926, %968
+  store <2 x double> %971, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
+  %972 = fsub <2 x double> %927, %968
+  store <2 x double> %972, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
+  %973 = fsub <2 x double> %928, %968
+  store <2 x double> %973, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
+  %974 = fsub <2 x double> %929, %968
+  store <2 x double> %974, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
+  %975 = fsub <2 x double> %930, %968
+  store <2 x double> %975, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
+  %976 = fsub <2 x double> %931, %968
+  store <2 x double> %976, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
   br label %for.cond897.preheader
 
 for.cond897.preheader:                            ; preds = %for.cond873.preheader, %for.cond897.preheader
   %indvars.iv4210 = phi i64 [ 0, %for.cond873.preheader ], [ %indvars.iv.next4211, %for.cond897.preheader ]
   %arrayidx905 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 0
-  %1052 = load <2 x double>, ptr %arrayidx905, align 16
-  %1053 = fsub <2 x double> %1052, %1043
-  store <2 x double> %1053, ptr %arrayidx905, align 16
+  %977 = load <2 x double>, ptr %arrayidx905, align 16
+  %978 = fsub <2 x double> %977, %968
+  store <2 x double> %978, ptr %arrayidx905, align 16
   %arrayidx905.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 2
-  %1054 = load <2 x double>, ptr %arrayidx905.2, align 16
-  %1055 = fsub <2 x double> %1054, %1043
-  store <2 x double> %1055, ptr %arrayidx905.2, align 16
+  %979 = load <2 x double>, ptr %arrayidx905.2, align 16
+  %980 = fsub <2 x double> %979, %968
+  store <2 x double> %980, ptr %arrayidx905.2, align 16
   %arrayidx905.4 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 4
-  %1056 = load <2 x double>, ptr %arrayidx905.4, align 16
-  %1057 = fsub <2 x double> %1056, %1043
-  store <2 x double> %1057, ptr %arrayidx905.4, align 16
+  %981 = load <2 x double>, ptr %arrayidx905.4, align 16
+  %982 = fsub <2 x double> %981, %968
+  store <2 x double> %982, ptr %arrayidx905.4, align 16
   %arrayidx905.6 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 6
-  %1058 = load <2 x double>, ptr %arrayidx905.6, align 16
-  %1059 = fsub <2 x double> %1058, %1043
-  store <2 x double> %1059, ptr %arrayidx905.6, align 16
+  %983 = load <2 x double>, ptr %arrayidx905.6, align 16
+  %984 = fsub <2 x double> %983, %968
+  store <2 x double> %984, ptr %arrayidx905.6, align 16
   %arrayidx905.8 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 8
-  %1060 = load <2 x double>, ptr %arrayidx905.8, align 16
-  %1061 = fsub <2 x double> %1060, %1043
-  store <2 x double> %1061, ptr %arrayidx905.8, align 16
+  %985 = load <2 x double>, ptr %arrayidx905.8, align 16
+  %986 = fsub <2 x double> %985, %968
+  store <2 x double> %986, ptr %arrayidx905.8, align 16
   %arrayidx905.10 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 10
-  %1062 = load <2 x double>, ptr %arrayidx905.10, align 16
-  %1063 = fsub <2 x double> %1062, %1043
-  store <2 x double> %1063, ptr %arrayidx905.10, align 16
+  %987 = load <2 x double>, ptr %arrayidx905.10, align 16
+  %988 = fsub <2 x double> %987, %968
+  store <2 x double> %988, ptr %arrayidx905.10, align 16
   %arrayidx905.12 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 12
-  %1064 = load <2 x double>, ptr %arrayidx905.12, align 16
-  %1065 = fsub <2 x double> %1064, %1043
-  store <2 x double> %1065, ptr %arrayidx905.12, align 16
+  %989 = load <2 x double>, ptr %arrayidx905.12, align 16
+  %990 = fsub <2 x double> %989, %968
+  store <2 x double> %990, ptr %arrayidx905.12, align 16
   %arrayidx905.14 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4210, i64 14
-  %1066 = load <2 x double>, ptr %arrayidx905.14, align 16
-  %1067 = fsub <2 x double> %1066, %1043
-  store <2 x double> %1067, ptr %arrayidx905.14, align 16
+  %991 = load <2 x double>, ptr %arrayidx905.14, align 16
+  %992 = fsub <2 x double> %991, %968
+  store <2 x double> %992, ptr %arrayidx905.14, align 16
   %indvars.iv.next4211 = add nuw nsw i64 %indvars.iv4210, 1
   %exitcond4213.not = icmp eq i64 %indvars.iv.next4211, 16
   br i1 %exitcond4213.not, label %for.cond917.preheader.preheader, label %for.cond897.preheader
 
 for.cond917.preheader.preheader:                  ; preds = %for.cond897.preheader
-  %1068 = extractelement <2 x double> %1044, i64 0
-  %cmp.i3340 = fcmp ogt double %1068, 0.000000e+00
+  %993 = extractelement <2 x double> %969, i64 0
+  %cmp.i3340 = fcmp ogt double %993, 0.000000e+00
   br i1 %cmp.i3340, label %if.then.i3347, label %if.else.i3341
 
 if.then.i3347:                                    ; preds = %for.cond917.preheader.preheader
-  %add.i3348 = fadd double %1068, 5.000000e-01
+  %add.i3348 = fadd double %993, 5.000000e-01
   %conv.i3349 = fptosi double %add.i3348 to i32
   br label %shishagonyuu.exit3350
 
 if.else.i3341:                                    ; preds = %for.cond917.preheader.preheader
-  %or.cond.i3342 = fcmp olt double %1068, 0.000000e+00
+  %or.cond.i3342 = fcmp olt double %993, 0.000000e+00
   br i1 %or.cond.i3342, label %if.then7.i3344, label %shishagonyuu.exit3350
 
 if.then7.i3344:                                   ; preds = %if.else.i3341
-  %sub.i3345 = fadd double %1068, -5.000000e-01
+  %sub.i3345 = fadd double %993, -5.000000e-01
   %conv8.i3346 = fptosi double %sub.i3345 to i32
   br label %shishagonyuu.exit3350
 
@@ -4301,21 +4074,21 @@ shishagonyuu.exit3350:                            ; preds = %if.then.i3347, %if.
   %out.0.i3343 = phi i32 [ %conv.i3349, %if.then.i3347 ], [ %conv8.i3346, %if.then7.i3344 ], [ 0, %if.else.i3341 ]
   %conv926 = sitofp i32 %out.0.i3343 to double
   store double %conv926, ptr @ribosum4, align 32
-  %1069 = extractelement <2 x double> %1044, i64 1
-  %cmp.i3340.1 = fcmp ogt double %1069, 0.000000e+00
+  %994 = extractelement <2 x double> %969, i64 1
+  %cmp.i3340.1 = fcmp ogt double %994, 0.000000e+00
   br i1 %cmp.i3340.1, label %if.then.i3347.1, label %if.else.i3341.1
 
 if.else.i3341.1:                                  ; preds = %shishagonyuu.exit3350
-  %or.cond.i3342.1 = fcmp olt double %1069, 0.000000e+00
+  %or.cond.i3342.1 = fcmp olt double %994, 0.000000e+00
   br i1 %or.cond.i3342.1, label %if.then7.i3344.1, label %shishagonyuu.exit3350.1
 
 if.then7.i3344.1:                                 ; preds = %if.else.i3341.1
-  %sub.i3345.1 = fadd double %1069, -5.000000e-01
+  %sub.i3345.1 = fadd double %994, -5.000000e-01
   %conv8.i3346.1 = fptosi double %sub.i3345.1 to i32
   br label %shishagonyuu.exit3350.1
 
 if.then.i3347.1:                                  ; preds = %shishagonyuu.exit3350
-  %add.i3348.1 = fadd double %1069, 5.000000e-01
+  %add.i3348.1 = fadd double %994, 5.000000e-01
   %conv.i3349.1 = fptosi double %add.i3348.1 to i32
   br label %shishagonyuu.exit3350.1
 
@@ -4323,21 +4096,21 @@ shishagonyuu.exit3350.1:                          ; preds = %if.then.i3347.1, %i
   %out.0.i3343.1 = phi i32 [ %conv.i3349.1, %if.then.i3347.1 ], [ %conv8.i3346.1, %if.then7.i3344.1 ], [ 0, %if.else.i3341.1 ]
   %conv926.1 = sitofp i32 %out.0.i3343.1 to double
   store double %conv926.1, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 1), align 8
-  %1070 = extractelement <2 x double> %1045, i64 0
-  %cmp.i3340.2 = fcmp ogt double %1070, 0.000000e+00
+  %995 = extractelement <2 x double> %970, i64 0
+  %cmp.i3340.2 = fcmp ogt double %995, 0.000000e+00
   br i1 %cmp.i3340.2, label %if.then.i3347.2, label %if.else.i3341.2
 
 if.else.i3341.2:                                  ; preds = %shishagonyuu.exit3350.1
-  %or.cond.i3342.2 = fcmp olt double %1070, 0.000000e+00
+  %or.cond.i3342.2 = fcmp olt double %995, 0.000000e+00
   br i1 %or.cond.i3342.2, label %if.then7.i3344.2, label %shishagonyuu.exit3350.2
 
 if.then7.i3344.2:                                 ; preds = %if.else.i3341.2
-  %sub.i3345.2 = fadd double %1070, -5.000000e-01
+  %sub.i3345.2 = fadd double %995, -5.000000e-01
   %conv8.i3346.2 = fptosi double %sub.i3345.2 to i32
   br label %shishagonyuu.exit3350.2
 
 if.then.i3347.2:                                  ; preds = %shishagonyuu.exit3350.1
-  %add.i3348.2 = fadd double %1070, 5.000000e-01
+  %add.i3348.2 = fadd double %995, 5.000000e-01
   %conv.i3349.2 = fptosi double %add.i3348.2 to i32
   br label %shishagonyuu.exit3350.2
 
@@ -4345,21 +4118,21 @@ shishagonyuu.exit3350.2:                          ; preds = %if.then.i3347.2, %i
   %out.0.i3343.2 = phi i32 [ %conv.i3349.2, %if.then.i3347.2 ], [ %conv8.i3346.2, %if.then7.i3344.2 ], [ 0, %if.else.i3341.2 ]
   %conv926.2 = sitofp i32 %out.0.i3343.2 to double
   store double %conv926.2, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
-  %1071 = extractelement <2 x double> %1045, i64 1
-  %cmp.i3340.3 = fcmp ogt double %1071, 0.000000e+00
+  %996 = extractelement <2 x double> %970, i64 1
+  %cmp.i3340.3 = fcmp ogt double %996, 0.000000e+00
   br i1 %cmp.i3340.3, label %if.then.i3347.3, label %if.else.i3341.3
 
 if.else.i3341.3:                                  ; preds = %shishagonyuu.exit3350.2
-  %or.cond.i3342.3 = fcmp olt double %1071, 0.000000e+00
+  %or.cond.i3342.3 = fcmp olt double %996, 0.000000e+00
   br i1 %or.cond.i3342.3, label %if.then7.i3344.3, label %shishagonyuu.exit3350.3
 
 if.then7.i3344.3:                                 ; preds = %if.else.i3341.3
-  %sub.i3345.3 = fadd double %1071, -5.000000e-01
+  %sub.i3345.3 = fadd double %996, -5.000000e-01
   %conv8.i3346.3 = fptosi double %sub.i3345.3 to i32
   br label %shishagonyuu.exit3350.3
 
 if.then.i3347.3:                                  ; preds = %shishagonyuu.exit3350.2
-  %add.i3348.3 = fadd double %1071, 5.000000e-01
+  %add.i3348.3 = fadd double %996, 5.000000e-01
   %conv.i3349.3 = fptosi double %add.i3348.3 to i32
   br label %shishagonyuu.exit3350.3
 
@@ -4367,21 +4140,21 @@ shishagonyuu.exit3350.3:                          ; preds = %if.then.i3347.3, %i
   %out.0.i3343.3 = phi i32 [ %conv.i3349.3, %if.then.i3347.3 ], [ %conv8.i3346.3, %if.then7.i3344.3 ], [ 0, %if.else.i3341.3 ]
   %conv926.3 = sitofp i32 %out.0.i3343.3 to double
   store double %conv926.3, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 3), align 8
-  %1072 = extractelement <2 x double> %1046, i64 0
-  %cmp.i3340.14223 = fcmp ogt double %1072, 0.000000e+00
+  %997 = extractelement <2 x double> %971, i64 0
+  %cmp.i3340.14223 = fcmp ogt double %997, 0.000000e+00
   br i1 %cmp.i3340.14223, label %if.then.i3347.14231, label %if.else.i3341.14225
 
 if.else.i3341.14225:                              ; preds = %shishagonyuu.exit3350.3
-  %or.cond.i3342.14224 = fcmp olt double %1072, 0.000000e+00
+  %or.cond.i3342.14224 = fcmp olt double %997, 0.000000e+00
   br i1 %or.cond.i3342.14224, label %if.then7.i3344.14228, label %shishagonyuu.exit3350.14234
 
 if.then7.i3344.14228:                             ; preds = %if.else.i3341.14225
-  %sub.i3345.14226 = fadd double %1072, -5.000000e-01
+  %sub.i3345.14226 = fadd double %997, -5.000000e-01
   %conv8.i3346.14227 = fptosi double %sub.i3345.14226 to i32
   br label %shishagonyuu.exit3350.14234
 
 if.then.i3347.14231:                              ; preds = %shishagonyuu.exit3350.3
-  %add.i3348.14229 = fadd double %1072, 5.000000e-01
+  %add.i3348.14229 = fadd double %997, 5.000000e-01
   %conv.i3349.14230 = fptosi double %add.i3348.14229 to i32
   br label %shishagonyuu.exit3350.14234
 
@@ -4389,21 +4162,21 @@ shishagonyuu.exit3350.14234:                      ; preds = %if.then.i3347.14231
   %out.0.i3343.14232 = phi i32 [ %conv.i3349.14230, %if.then.i3347.14231 ], [ %conv8.i3346.14227, %if.then7.i3344.14228 ], [ 0, %if.else.i3341.14225 ]
   %conv926.14233 = sitofp i32 %out.0.i3343.14232 to double
   store double %conv926.14233, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %1073 = extractelement <2 x double> %1046, i64 1
-  %cmp.i3340.1.1 = fcmp ogt double %1073, 0.000000e+00
+  %998 = extractelement <2 x double> %971, i64 1
+  %cmp.i3340.1.1 = fcmp ogt double %998, 0.000000e+00
   br i1 %cmp.i3340.1.1, label %if.then.i3347.1.1, label %if.else.i3341.1.1
 
 if.else.i3341.1.1:                                ; preds = %shishagonyuu.exit3350.14234
-  %or.cond.i3342.1.1 = fcmp olt double %1073, 0.000000e+00
+  %or.cond.i3342.1.1 = fcmp olt double %998, 0.000000e+00
   br i1 %or.cond.i3342.1.1, label %if.then7.i3344.1.1, label %shishagonyuu.exit3350.1.1
 
 if.then7.i3344.1.1:                               ; preds = %if.else.i3341.1.1
-  %sub.i3345.1.1 = fadd double %1073, -5.000000e-01
+  %sub.i3345.1.1 = fadd double %998, -5.000000e-01
   %conv8.i3346.1.1 = fptosi double %sub.i3345.1.1 to i32
   br label %shishagonyuu.exit3350.1.1
 
 if.then.i3347.1.1:                                ; preds = %shishagonyuu.exit3350.14234
-  %add.i3348.1.1 = fadd double %1073, 5.000000e-01
+  %add.i3348.1.1 = fadd double %998, 5.000000e-01
   %conv.i3349.1.1 = fptosi double %add.i3348.1.1 to i32
   br label %shishagonyuu.exit3350.1.1
 
@@ -4411,21 +4184,21 @@ shishagonyuu.exit3350.1.1:                        ; preds = %if.then.i3347.1.1, 
   %out.0.i3343.1.1 = phi i32 [ %conv.i3349.1.1, %if.then.i3347.1.1 ], [ %conv8.i3346.1.1, %if.then7.i3344.1.1 ], [ 0, %if.else.i3341.1.1 ]
   %conv926.1.1 = sitofp i32 %out.0.i3343.1.1 to double
   store double %conv926.1.1, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 1), align 8
-  %1074 = extractelement <2 x double> %1047, i64 0
-  %cmp.i3340.2.1 = fcmp ogt double %1074, 0.000000e+00
+  %999 = extractelement <2 x double> %972, i64 0
+  %cmp.i3340.2.1 = fcmp ogt double %999, 0.000000e+00
   br i1 %cmp.i3340.2.1, label %if.then.i3347.2.1, label %if.else.i3341.2.1
 
 if.else.i3341.2.1:                                ; preds = %shishagonyuu.exit3350.1.1
-  %or.cond.i3342.2.1 = fcmp olt double %1074, 0.000000e+00
+  %or.cond.i3342.2.1 = fcmp olt double %999, 0.000000e+00
   br i1 %or.cond.i3342.2.1, label %if.then7.i3344.2.1, label %shishagonyuu.exit3350.2.1
 
 if.then7.i3344.2.1:                               ; preds = %if.else.i3341.2.1
-  %sub.i3345.2.1 = fadd double %1074, -5.000000e-01
+  %sub.i3345.2.1 = fadd double %999, -5.000000e-01
   %conv8.i3346.2.1 = fptosi double %sub.i3345.2.1 to i32
   br label %shishagonyuu.exit3350.2.1
 
 if.then.i3347.2.1:                                ; preds = %shishagonyuu.exit3350.1.1
-  %add.i3348.2.1 = fadd double %1074, 5.000000e-01
+  %add.i3348.2.1 = fadd double %999, 5.000000e-01
   %conv.i3349.2.1 = fptosi double %add.i3348.2.1 to i32
   br label %shishagonyuu.exit3350.2.1
 
@@ -4433,21 +4206,21 @@ shishagonyuu.exit3350.2.1:                        ; preds = %if.then.i3347.2.1, 
   %out.0.i3343.2.1 = phi i32 [ %conv.i3349.2.1, %if.then.i3347.2.1 ], [ %conv8.i3346.2.1, %if.then7.i3344.2.1 ], [ 0, %if.else.i3341.2.1 ]
   %conv926.2.1 = sitofp i32 %out.0.i3343.2.1 to double
   store double %conv926.2.1, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
-  %1075 = extractelement <2 x double> %1047, i64 1
-  %cmp.i3340.3.1 = fcmp ogt double %1075, 0.000000e+00
+  %1000 = extractelement <2 x double> %972, i64 1
+  %cmp.i3340.3.1 = fcmp ogt double %1000, 0.000000e+00
   br i1 %cmp.i3340.3.1, label %if.then.i3347.3.1, label %if.else.i3341.3.1
 
 if.else.i3341.3.1:                                ; preds = %shishagonyuu.exit3350.2.1
-  %or.cond.i3342.3.1 = fcmp olt double %1075, 0.000000e+00
+  %or.cond.i3342.3.1 = fcmp olt double %1000, 0.000000e+00
   br i1 %or.cond.i3342.3.1, label %if.then7.i3344.3.1, label %shishagonyuu.exit3350.3.1
 
 if.then7.i3344.3.1:                               ; preds = %if.else.i3341.3.1
-  %sub.i3345.3.1 = fadd double %1075, -5.000000e-01
+  %sub.i3345.3.1 = fadd double %1000, -5.000000e-01
   %conv8.i3346.3.1 = fptosi double %sub.i3345.3.1 to i32
   br label %shishagonyuu.exit3350.3.1
 
 if.then.i3347.3.1:                                ; preds = %shishagonyuu.exit3350.2.1
-  %add.i3348.3.1 = fadd double %1075, 5.000000e-01
+  %add.i3348.3.1 = fadd double %1000, 5.000000e-01
   %conv.i3349.3.1 = fptosi double %add.i3348.3.1 to i32
   br label %shishagonyuu.exit3350.3.1
 
@@ -4455,21 +4228,21 @@ shishagonyuu.exit3350.3.1:                        ; preds = %if.then.i3347.3.1, 
   %out.0.i3343.3.1 = phi i32 [ %conv.i3349.3.1, %if.then.i3347.3.1 ], [ %conv8.i3346.3.1, %if.then7.i3344.3.1 ], [ 0, %if.else.i3341.3.1 ]
   %conv926.3.1 = sitofp i32 %out.0.i3343.3.1 to double
   store double %conv926.3.1, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 3), align 8
-  %1076 = extractelement <2 x double> %1048, i64 0
-  %cmp.i3340.24236 = fcmp ogt double %1076, 0.000000e+00
+  %1001 = extractelement <2 x double> %973, i64 0
+  %cmp.i3340.24236 = fcmp ogt double %1001, 0.000000e+00
   br i1 %cmp.i3340.24236, label %if.then.i3347.24244, label %if.else.i3341.24238
 
 if.else.i3341.24238:                              ; preds = %shishagonyuu.exit3350.3.1
-  %or.cond.i3342.24237 = fcmp olt double %1076, 0.000000e+00
+  %or.cond.i3342.24237 = fcmp olt double %1001, 0.000000e+00
   br i1 %or.cond.i3342.24237, label %if.then7.i3344.24241, label %shishagonyuu.exit3350.24247
 
 if.then7.i3344.24241:                             ; preds = %if.else.i3341.24238
-  %sub.i3345.24239 = fadd double %1076, -5.000000e-01
+  %sub.i3345.24239 = fadd double %1001, -5.000000e-01
   %conv8.i3346.24240 = fptosi double %sub.i3345.24239 to i32
   br label %shishagonyuu.exit3350.24247
 
 if.then.i3347.24244:                              ; preds = %shishagonyuu.exit3350.3.1
-  %add.i3348.24242 = fadd double %1076, 5.000000e-01
+  %add.i3348.24242 = fadd double %1001, 5.000000e-01
   %conv.i3349.24243 = fptosi double %add.i3348.24242 to i32
   br label %shishagonyuu.exit3350.24247
 
@@ -4477,21 +4250,21 @@ shishagonyuu.exit3350.24247:                      ; preds = %if.then.i3347.24244
   %out.0.i3343.24245 = phi i32 [ %conv.i3349.24243, %if.then.i3347.24244 ], [ %conv8.i3346.24240, %if.then7.i3344.24241 ], [ 0, %if.else.i3341.24238 ]
   %conv926.24246 = sitofp i32 %out.0.i3343.24245 to double
   store double %conv926.24246, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %1077 = extractelement <2 x double> %1048, i64 1
-  %cmp.i3340.1.2 = fcmp ogt double %1077, 0.000000e+00
+  %1002 = extractelement <2 x double> %973, i64 1
+  %cmp.i3340.1.2 = fcmp ogt double %1002, 0.000000e+00
   br i1 %cmp.i3340.1.2, label %if.then.i3347.1.2, label %if.else.i3341.1.2
 
 if.else.i3341.1.2:                                ; preds = %shishagonyuu.exit3350.24247
-  %or.cond.i3342.1.2 = fcmp olt double %1077, 0.000000e+00
+  %or.cond.i3342.1.2 = fcmp olt double %1002, 0.000000e+00
   br i1 %or.cond.i3342.1.2, label %if.then7.i3344.1.2, label %shishagonyuu.exit3350.1.2
 
 if.then7.i3344.1.2:                               ; preds = %if.else.i3341.1.2
-  %sub.i3345.1.2 = fadd double %1077, -5.000000e-01
+  %sub.i3345.1.2 = fadd double %1002, -5.000000e-01
   %conv8.i3346.1.2 = fptosi double %sub.i3345.1.2 to i32
   br label %shishagonyuu.exit3350.1.2
 
 if.then.i3347.1.2:                                ; preds = %shishagonyuu.exit3350.24247
-  %add.i3348.1.2 = fadd double %1077, 5.000000e-01
+  %add.i3348.1.2 = fadd double %1002, 5.000000e-01
   %conv.i3349.1.2 = fptosi double %add.i3348.1.2 to i32
   br label %shishagonyuu.exit3350.1.2
 
@@ -4499,21 +4272,21 @@ shishagonyuu.exit3350.1.2:                        ; preds = %if.then.i3347.1.2, 
   %out.0.i3343.1.2 = phi i32 [ %conv.i3349.1.2, %if.then.i3347.1.2 ], [ %conv8.i3346.1.2, %if.then7.i3344.1.2 ], [ 0, %if.else.i3341.1.2 ]
   %conv926.1.2 = sitofp i32 %out.0.i3343.1.2 to double
   store double %conv926.1.2, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 1), align 8
-  %1078 = extractelement <2 x double> %1049, i64 0
-  %cmp.i3340.2.2 = fcmp ogt double %1078, 0.000000e+00
+  %1003 = extractelement <2 x double> %974, i64 0
+  %cmp.i3340.2.2 = fcmp ogt double %1003, 0.000000e+00
   br i1 %cmp.i3340.2.2, label %if.then.i3347.2.2, label %if.else.i3341.2.2
 
 if.else.i3341.2.2:                                ; preds = %shishagonyuu.exit3350.1.2
-  %or.cond.i3342.2.2 = fcmp olt double %1078, 0.000000e+00
+  %or.cond.i3342.2.2 = fcmp olt double %1003, 0.000000e+00
   br i1 %or.cond.i3342.2.2, label %if.then7.i3344.2.2, label %shishagonyuu.exit3350.2.2
 
 if.then7.i3344.2.2:                               ; preds = %if.else.i3341.2.2
-  %sub.i3345.2.2 = fadd double %1078, -5.000000e-01
+  %sub.i3345.2.2 = fadd double %1003, -5.000000e-01
   %conv8.i3346.2.2 = fptosi double %sub.i3345.2.2 to i32
   br label %shishagonyuu.exit3350.2.2
 
 if.then.i3347.2.2:                                ; preds = %shishagonyuu.exit3350.1.2
-  %add.i3348.2.2 = fadd double %1078, 5.000000e-01
+  %add.i3348.2.2 = fadd double %1003, 5.000000e-01
   %conv.i3349.2.2 = fptosi double %add.i3348.2.2 to i32
   br label %shishagonyuu.exit3350.2.2
 
@@ -4521,21 +4294,21 @@ shishagonyuu.exit3350.2.2:                        ; preds = %if.then.i3347.2.2, 
   %out.0.i3343.2.2 = phi i32 [ %conv.i3349.2.2, %if.then.i3347.2.2 ], [ %conv8.i3346.2.2, %if.then7.i3344.2.2 ], [ 0, %if.else.i3341.2.2 ]
   %conv926.2.2 = sitofp i32 %out.0.i3343.2.2 to double
   store double %conv926.2.2, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
-  %1079 = extractelement <2 x double> %1049, i64 1
-  %cmp.i3340.3.2 = fcmp ogt double %1079, 0.000000e+00
+  %1004 = extractelement <2 x double> %974, i64 1
+  %cmp.i3340.3.2 = fcmp ogt double %1004, 0.000000e+00
   br i1 %cmp.i3340.3.2, label %if.then.i3347.3.2, label %if.else.i3341.3.2
 
 if.else.i3341.3.2:                                ; preds = %shishagonyuu.exit3350.2.2
-  %or.cond.i3342.3.2 = fcmp olt double %1079, 0.000000e+00
+  %or.cond.i3342.3.2 = fcmp olt double %1004, 0.000000e+00
   br i1 %or.cond.i3342.3.2, label %if.then7.i3344.3.2, label %shishagonyuu.exit3350.3.2
 
 if.then7.i3344.3.2:                               ; preds = %if.else.i3341.3.2
-  %sub.i3345.3.2 = fadd double %1079, -5.000000e-01
+  %sub.i3345.3.2 = fadd double %1004, -5.000000e-01
   %conv8.i3346.3.2 = fptosi double %sub.i3345.3.2 to i32
   br label %shishagonyuu.exit3350.3.2
 
 if.then.i3347.3.2:                                ; preds = %shishagonyuu.exit3350.2.2
-  %add.i3348.3.2 = fadd double %1079, 5.000000e-01
+  %add.i3348.3.2 = fadd double %1004, 5.000000e-01
   %conv.i3349.3.2 = fptosi double %add.i3348.3.2 to i32
   br label %shishagonyuu.exit3350.3.2
 
@@ -4543,21 +4316,21 @@ shishagonyuu.exit3350.3.2:                        ; preds = %if.then.i3347.3.2, 
   %out.0.i3343.3.2 = phi i32 [ %conv.i3349.3.2, %if.then.i3347.3.2 ], [ %conv8.i3346.3.2, %if.then7.i3344.3.2 ], [ 0, %if.else.i3341.3.2 ]
   %conv926.3.2 = sitofp i32 %out.0.i3343.3.2 to double
   store double %conv926.3.2, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 3), align 8
-  %1080 = extractelement <2 x double> %1050, i64 0
-  %cmp.i3340.34249 = fcmp ogt double %1080, 0.000000e+00
+  %1005 = extractelement <2 x double> %975, i64 0
+  %cmp.i3340.34249 = fcmp ogt double %1005, 0.000000e+00
   br i1 %cmp.i3340.34249, label %if.then.i3347.34257, label %if.else.i3341.34251
 
 if.else.i3341.34251:                              ; preds = %shishagonyuu.exit3350.3.2
-  %or.cond.i3342.34250 = fcmp olt double %1080, 0.000000e+00
+  %or.cond.i3342.34250 = fcmp olt double %1005, 0.000000e+00
   br i1 %or.cond.i3342.34250, label %if.then7.i3344.34254, label %shishagonyuu.exit3350.34260
 
 if.then7.i3344.34254:                             ; preds = %if.else.i3341.34251
-  %sub.i3345.34252 = fadd double %1080, -5.000000e-01
+  %sub.i3345.34252 = fadd double %1005, -5.000000e-01
   %conv8.i3346.34253 = fptosi double %sub.i3345.34252 to i32
   br label %shishagonyuu.exit3350.34260
 
 if.then.i3347.34257:                              ; preds = %shishagonyuu.exit3350.3.2
-  %add.i3348.34255 = fadd double %1080, 5.000000e-01
+  %add.i3348.34255 = fadd double %1005, 5.000000e-01
   %conv.i3349.34256 = fptosi double %add.i3348.34255 to i32
   br label %shishagonyuu.exit3350.34260
 
@@ -4565,21 +4338,21 @@ shishagonyuu.exit3350.34260:                      ; preds = %if.then.i3347.34257
   %out.0.i3343.34258 = phi i32 [ %conv.i3349.34256, %if.then.i3347.34257 ], [ %conv8.i3346.34253, %if.then7.i3344.34254 ], [ 0, %if.else.i3341.34251 ]
   %conv926.34259 = sitofp i32 %out.0.i3343.34258 to double
   store double %conv926.34259, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %1081 = extractelement <2 x double> %1050, i64 1
-  %cmp.i3340.1.3 = fcmp ogt double %1081, 0.000000e+00
+  %1006 = extractelement <2 x double> %975, i64 1
+  %cmp.i3340.1.3 = fcmp ogt double %1006, 0.000000e+00
   br i1 %cmp.i3340.1.3, label %if.then.i3347.1.3, label %if.else.i3341.1.3
 
 if.else.i3341.1.3:                                ; preds = %shishagonyuu.exit3350.34260
-  %or.cond.i3342.1.3 = fcmp olt double %1081, 0.000000e+00
+  %or.cond.i3342.1.3 = fcmp olt double %1006, 0.000000e+00
   br i1 %or.cond.i3342.1.3, label %if.then7.i3344.1.3, label %shishagonyuu.exit3350.1.3
 
 if.then7.i3344.1.3:                               ; preds = %if.else.i3341.1.3
-  %sub.i3345.1.3 = fadd double %1081, -5.000000e-01
+  %sub.i3345.1.3 = fadd double %1006, -5.000000e-01
   %conv8.i3346.1.3 = fptosi double %sub.i3345.1.3 to i32
   br label %shishagonyuu.exit3350.1.3
 
 if.then.i3347.1.3:                                ; preds = %shishagonyuu.exit3350.34260
-  %add.i3348.1.3 = fadd double %1081, 5.000000e-01
+  %add.i3348.1.3 = fadd double %1006, 5.000000e-01
   %conv.i3349.1.3 = fptosi double %add.i3348.1.3 to i32
   br label %shishagonyuu.exit3350.1.3
 
@@ -4587,21 +4360,21 @@ shishagonyuu.exit3350.1.3:                        ; preds = %if.then.i3347.1.3, 
   %out.0.i3343.1.3 = phi i32 [ %conv.i3349.1.3, %if.then.i3347.1.3 ], [ %conv8.i3346.1.3, %if.then7.i3344.1.3 ], [ 0, %if.else.i3341.1.3 ]
   %conv926.1.3 = sitofp i32 %out.0.i3343.1.3 to double
   store double %conv926.1.3, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 1), align 8
-  %1082 = extractelement <2 x double> %1051, i64 0
-  %cmp.i3340.2.3 = fcmp ogt double %1082, 0.000000e+00
+  %1007 = extractelement <2 x double> %976, i64 0
+  %cmp.i3340.2.3 = fcmp ogt double %1007, 0.000000e+00
   br i1 %cmp.i3340.2.3, label %if.then.i3347.2.3, label %if.else.i3341.2.3
 
 if.else.i3341.2.3:                                ; preds = %shishagonyuu.exit3350.1.3
-  %or.cond.i3342.2.3 = fcmp olt double %1082, 0.000000e+00
+  %or.cond.i3342.2.3 = fcmp olt double %1007, 0.000000e+00
   br i1 %or.cond.i3342.2.3, label %if.then7.i3344.2.3, label %shishagonyuu.exit3350.2.3
 
 if.then7.i3344.2.3:                               ; preds = %if.else.i3341.2.3
-  %sub.i3345.2.3 = fadd double %1082, -5.000000e-01
+  %sub.i3345.2.3 = fadd double %1007, -5.000000e-01
   %conv8.i3346.2.3 = fptosi double %sub.i3345.2.3 to i32
   br label %shishagonyuu.exit3350.2.3
 
 if.then.i3347.2.3:                                ; preds = %shishagonyuu.exit3350.1.3
-  %add.i3348.2.3 = fadd double %1082, 5.000000e-01
+  %add.i3348.2.3 = fadd double %1007, 5.000000e-01
   %conv.i3349.2.3 = fptosi double %add.i3348.2.3 to i32
   br label %shishagonyuu.exit3350.2.3
 
@@ -4609,21 +4382,21 @@ shishagonyuu.exit3350.2.3:                        ; preds = %if.then.i3347.2.3, 
   %out.0.i3343.2.3 = phi i32 [ %conv.i3349.2.3, %if.then.i3347.2.3 ], [ %conv8.i3346.2.3, %if.then7.i3344.2.3 ], [ 0, %if.else.i3341.2.3 ]
   %conv926.2.3 = sitofp i32 %out.0.i3343.2.3 to double
   store double %conv926.2.3, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
-  %1083 = extractelement <2 x double> %1051, i64 1
-  %cmp.i3340.3.3 = fcmp ogt double %1083, 0.000000e+00
+  %1008 = extractelement <2 x double> %976, i64 1
+  %cmp.i3340.3.3 = fcmp ogt double %1008, 0.000000e+00
   br i1 %cmp.i3340.3.3, label %if.then.i3347.3.3, label %if.else.i3341.3.3
 
 if.else.i3341.3.3:                                ; preds = %shishagonyuu.exit3350.2.3
-  %or.cond.i3342.3.3 = fcmp olt double %1083, 0.000000e+00
+  %or.cond.i3342.3.3 = fcmp olt double %1008, 0.000000e+00
   br i1 %or.cond.i3342.3.3, label %if.then7.i3344.3.3, label %shishagonyuu.exit3350.3.3
 
 if.then7.i3344.3.3:                               ; preds = %if.else.i3341.3.3
-  %sub.i3345.3.3 = fadd double %1083, -5.000000e-01
+  %sub.i3345.3.3 = fadd double %1008, -5.000000e-01
   %conv8.i3346.3.3 = fptosi double %sub.i3345.3.3 to i32
   br label %shishagonyuu.exit3350.3.3
 
 if.then.i3347.3.3:                                ; preds = %shishagonyuu.exit3350.2.3
-  %add.i3348.3.3 = fadd double %1083, 5.000000e-01
+  %add.i3348.3.3 = fadd double %1008, 5.000000e-01
   %conv.i3349.3.3 = fptosi double %add.i3348.3.3 to i32
   br label %shishagonyuu.exit3350.3.3
 
@@ -4633,851 +4406,515 @@ shishagonyuu.exit3350.3.3:                        ; preds = %if.then.i3347.3.3, 
   store double %conv926.3.3, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 3), align 8
   br label %for.cond941.preheader
 
-for.cond941.preheader:                            ; preds = %shishagonyuu.exit3350.3.3, %shishagonyuu.exit3361.15
-  %indvars.iv4265 = phi i64 [ 0, %shishagonyuu.exit3350.3.3 ], [ %indvars.iv.next4266, %shishagonyuu.exit3361.15 ]
-  %arrayidx948 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 0
-  %1084 = load double, ptr %arrayidx948, align 16
-  %cmp.i3351 = fcmp ogt double %1084, 0.000000e+00
+for.cond941.preheader:                            ; preds = %shishagonyuu.exit3350.3.3, %for.inc958
+  %indvars.iv4265 = phi i64 [ 0, %shishagonyuu.exit3350.3.3 ], [ %indvars.iv.next4266, %for.inc958 ]
+  br label %for.body944
+
+for.body944:                                      ; preds = %for.cond941.preheader, %shishagonyuu.exit3361
+  %indvars.iv4261 = phi i64 [ 0, %for.cond941.preheader ], [ %indvars.iv.next4262, %shishagonyuu.exit3361 ]
+  %arrayidx948 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 %indvars.iv4261
+  %1009 = load double, ptr %arrayidx948, align 8
+  %cmp.i3351 = fcmp ogt double %1009, 0.000000e+00
   br i1 %cmp.i3351, label %if.then.i3358, label %if.else.i3352
 
-if.then.i3358:                                    ; preds = %for.cond941.preheader
-  %add.i3359 = fadd double %1084, 5.000000e-01
+if.then.i3358:                                    ; preds = %for.body944
+  %add.i3359 = fadd double %1009, 5.000000e-01
   %conv.i3360 = fptosi double %add.i3359 to i32
   br label %shishagonyuu.exit3361
 
-if.else.i3352:                                    ; preds = %for.cond941.preheader
-  %or.cond.i3353 = fcmp olt double %1084, 0.000000e+00
+if.else.i3352:                                    ; preds = %for.body944
+  %or.cond.i3353 = fcmp olt double %1009, 0.000000e+00
   br i1 %or.cond.i3353, label %if.then7.i3355, label %shishagonyuu.exit3361
 
 if.then7.i3355:                                   ; preds = %if.else.i3352
-  %sub.i3356 = fadd double %1084, -5.000000e-01
+  %sub.i3356 = fadd double %1009, -5.000000e-01
   %conv8.i3357 = fptosi double %sub.i3356 to i32
   br label %shishagonyuu.exit3361
 
 shishagonyuu.exit3361:                            ; preds = %if.then.i3358, %if.else.i3352, %if.then7.i3355
   %out.0.i3354 = phi i32 [ %conv.i3360, %if.then.i3358 ], [ %conv8.i3357, %if.then7.i3355 ], [ 0, %if.else.i3352 ]
   %conv950 = sitofp i32 %out.0.i3354 to double
-  store double %conv950, ptr %arrayidx948, align 16
-  %arrayidx948.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 1
-  %1085 = load double, ptr %arrayidx948.1, align 8
-  %cmp.i3351.1 = fcmp ogt double %1085, 0.000000e+00
-  br i1 %cmp.i3351.1, label %if.then.i3358.1, label %if.else.i3352.1
+  store double %conv950, ptr %arrayidx948, align 8
+  %indvars.iv.next4262 = add nuw nsw i64 %indvars.iv4261, 1
+  %exitcond4264.not = icmp eq i64 %indvars.iv.next4262, 16
+  br i1 %exitcond4264.not, label %for.inc958, label %for.body944
 
-if.else.i3352.1:                                  ; preds = %shishagonyuu.exit3361
-  %or.cond.i3353.1 = fcmp olt double %1085, 0.000000e+00
-  br i1 %or.cond.i3353.1, label %if.then7.i3355.1, label %shishagonyuu.exit3361.1
-
-if.then7.i3355.1:                                 ; preds = %if.else.i3352.1
-  %sub.i3356.1 = fadd double %1085, -5.000000e-01
-  %conv8.i3357.1 = fptosi double %sub.i3356.1 to i32
-  br label %shishagonyuu.exit3361.1
-
-if.then.i3358.1:                                  ; preds = %shishagonyuu.exit3361
-  %add.i3359.1 = fadd double %1085, 5.000000e-01
-  %conv.i3360.1 = fptosi double %add.i3359.1 to i32
-  br label %shishagonyuu.exit3361.1
-
-shishagonyuu.exit3361.1:                          ; preds = %if.then.i3358.1, %if.then7.i3355.1, %if.else.i3352.1
-  %out.0.i3354.1 = phi i32 [ %conv.i3360.1, %if.then.i3358.1 ], [ %conv8.i3357.1, %if.then7.i3355.1 ], [ 0, %if.else.i3352.1 ]
-  %conv950.1 = sitofp i32 %out.0.i3354.1 to double
-  store double %conv950.1, ptr %arrayidx948.1, align 8
-  %arrayidx948.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 2
-  %1086 = load double, ptr %arrayidx948.2, align 16
-  %cmp.i3351.2 = fcmp ogt double %1086, 0.000000e+00
-  br i1 %cmp.i3351.2, label %if.then.i3358.2, label %if.else.i3352.2
-
-if.else.i3352.2:                                  ; preds = %shishagonyuu.exit3361.1
-  %or.cond.i3353.2 = fcmp olt double %1086, 0.000000e+00
-  br i1 %or.cond.i3353.2, label %if.then7.i3355.2, label %shishagonyuu.exit3361.2
-
-if.then7.i3355.2:                                 ; preds = %if.else.i3352.2
-  %sub.i3356.2 = fadd double %1086, -5.000000e-01
-  %conv8.i3357.2 = fptosi double %sub.i3356.2 to i32
-  br label %shishagonyuu.exit3361.2
-
-if.then.i3358.2:                                  ; preds = %shishagonyuu.exit3361.1
-  %add.i3359.2 = fadd double %1086, 5.000000e-01
-  %conv.i3360.2 = fptosi double %add.i3359.2 to i32
-  br label %shishagonyuu.exit3361.2
-
-shishagonyuu.exit3361.2:                          ; preds = %if.then.i3358.2, %if.then7.i3355.2, %if.else.i3352.2
-  %out.0.i3354.2 = phi i32 [ %conv.i3360.2, %if.then.i3358.2 ], [ %conv8.i3357.2, %if.then7.i3355.2 ], [ 0, %if.else.i3352.2 ]
-  %conv950.2 = sitofp i32 %out.0.i3354.2 to double
-  store double %conv950.2, ptr %arrayidx948.2, align 16
-  %arrayidx948.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 3
-  %1087 = load double, ptr %arrayidx948.3, align 8
-  %cmp.i3351.3 = fcmp ogt double %1087, 0.000000e+00
-  br i1 %cmp.i3351.3, label %if.then.i3358.3, label %if.else.i3352.3
-
-if.else.i3352.3:                                  ; preds = %shishagonyuu.exit3361.2
-  %or.cond.i3353.3 = fcmp olt double %1087, 0.000000e+00
-  br i1 %or.cond.i3353.3, label %if.then7.i3355.3, label %shishagonyuu.exit3361.3
-
-if.then7.i3355.3:                                 ; preds = %if.else.i3352.3
-  %sub.i3356.3 = fadd double %1087, -5.000000e-01
-  %conv8.i3357.3 = fptosi double %sub.i3356.3 to i32
-  br label %shishagonyuu.exit3361.3
-
-if.then.i3358.3:                                  ; preds = %shishagonyuu.exit3361.2
-  %add.i3359.3 = fadd double %1087, 5.000000e-01
-  %conv.i3360.3 = fptosi double %add.i3359.3 to i32
-  br label %shishagonyuu.exit3361.3
-
-shishagonyuu.exit3361.3:                          ; preds = %if.then.i3358.3, %if.then7.i3355.3, %if.else.i3352.3
-  %out.0.i3354.3 = phi i32 [ %conv.i3360.3, %if.then.i3358.3 ], [ %conv8.i3357.3, %if.then7.i3355.3 ], [ 0, %if.else.i3352.3 ]
-  %conv950.3 = sitofp i32 %out.0.i3354.3 to double
-  store double %conv950.3, ptr %arrayidx948.3, align 8
-  %arrayidx948.4 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 4
-  %1088 = load double, ptr %arrayidx948.4, align 16
-  %cmp.i3351.4 = fcmp ogt double %1088, 0.000000e+00
-  br i1 %cmp.i3351.4, label %if.then.i3358.4, label %if.else.i3352.4
-
-if.else.i3352.4:                                  ; preds = %shishagonyuu.exit3361.3
-  %or.cond.i3353.4 = fcmp olt double %1088, 0.000000e+00
-  br i1 %or.cond.i3353.4, label %if.then7.i3355.4, label %shishagonyuu.exit3361.4
-
-if.then7.i3355.4:                                 ; preds = %if.else.i3352.4
-  %sub.i3356.4 = fadd double %1088, -5.000000e-01
-  %conv8.i3357.4 = fptosi double %sub.i3356.4 to i32
-  br label %shishagonyuu.exit3361.4
-
-if.then.i3358.4:                                  ; preds = %shishagonyuu.exit3361.3
-  %add.i3359.4 = fadd double %1088, 5.000000e-01
-  %conv.i3360.4 = fptosi double %add.i3359.4 to i32
-  br label %shishagonyuu.exit3361.4
-
-shishagonyuu.exit3361.4:                          ; preds = %if.then.i3358.4, %if.then7.i3355.4, %if.else.i3352.4
-  %out.0.i3354.4 = phi i32 [ %conv.i3360.4, %if.then.i3358.4 ], [ %conv8.i3357.4, %if.then7.i3355.4 ], [ 0, %if.else.i3352.4 ]
-  %conv950.4 = sitofp i32 %out.0.i3354.4 to double
-  store double %conv950.4, ptr %arrayidx948.4, align 16
-  %arrayidx948.5 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 5
-  %1089 = load double, ptr %arrayidx948.5, align 8
-  %cmp.i3351.5 = fcmp ogt double %1089, 0.000000e+00
-  br i1 %cmp.i3351.5, label %if.then.i3358.5, label %if.else.i3352.5
-
-if.else.i3352.5:                                  ; preds = %shishagonyuu.exit3361.4
-  %or.cond.i3353.5 = fcmp olt double %1089, 0.000000e+00
-  br i1 %or.cond.i3353.5, label %if.then7.i3355.5, label %shishagonyuu.exit3361.5
-
-if.then7.i3355.5:                                 ; preds = %if.else.i3352.5
-  %sub.i3356.5 = fadd double %1089, -5.000000e-01
-  %conv8.i3357.5 = fptosi double %sub.i3356.5 to i32
-  br label %shishagonyuu.exit3361.5
-
-if.then.i3358.5:                                  ; preds = %shishagonyuu.exit3361.4
-  %add.i3359.5 = fadd double %1089, 5.000000e-01
-  %conv.i3360.5 = fptosi double %add.i3359.5 to i32
-  br label %shishagonyuu.exit3361.5
-
-shishagonyuu.exit3361.5:                          ; preds = %if.then.i3358.5, %if.then7.i3355.5, %if.else.i3352.5
-  %out.0.i3354.5 = phi i32 [ %conv.i3360.5, %if.then.i3358.5 ], [ %conv8.i3357.5, %if.then7.i3355.5 ], [ 0, %if.else.i3352.5 ]
-  %conv950.5 = sitofp i32 %out.0.i3354.5 to double
-  store double %conv950.5, ptr %arrayidx948.5, align 8
-  %arrayidx948.6 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 6
-  %1090 = load double, ptr %arrayidx948.6, align 16
-  %cmp.i3351.6 = fcmp ogt double %1090, 0.000000e+00
-  br i1 %cmp.i3351.6, label %if.then.i3358.6, label %if.else.i3352.6
-
-if.else.i3352.6:                                  ; preds = %shishagonyuu.exit3361.5
-  %or.cond.i3353.6 = fcmp olt double %1090, 0.000000e+00
-  br i1 %or.cond.i3353.6, label %if.then7.i3355.6, label %shishagonyuu.exit3361.6
-
-if.then7.i3355.6:                                 ; preds = %if.else.i3352.6
-  %sub.i3356.6 = fadd double %1090, -5.000000e-01
-  %conv8.i3357.6 = fptosi double %sub.i3356.6 to i32
-  br label %shishagonyuu.exit3361.6
-
-if.then.i3358.6:                                  ; preds = %shishagonyuu.exit3361.5
-  %add.i3359.6 = fadd double %1090, 5.000000e-01
-  %conv.i3360.6 = fptosi double %add.i3359.6 to i32
-  br label %shishagonyuu.exit3361.6
-
-shishagonyuu.exit3361.6:                          ; preds = %if.then.i3358.6, %if.then7.i3355.6, %if.else.i3352.6
-  %out.0.i3354.6 = phi i32 [ %conv.i3360.6, %if.then.i3358.6 ], [ %conv8.i3357.6, %if.then7.i3355.6 ], [ 0, %if.else.i3352.6 ]
-  %conv950.6 = sitofp i32 %out.0.i3354.6 to double
-  store double %conv950.6, ptr %arrayidx948.6, align 16
-  %arrayidx948.7 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 7
-  %1091 = load double, ptr %arrayidx948.7, align 8
-  %cmp.i3351.7 = fcmp ogt double %1091, 0.000000e+00
-  br i1 %cmp.i3351.7, label %if.then.i3358.7, label %if.else.i3352.7
-
-if.else.i3352.7:                                  ; preds = %shishagonyuu.exit3361.6
-  %or.cond.i3353.7 = fcmp olt double %1091, 0.000000e+00
-  br i1 %or.cond.i3353.7, label %if.then7.i3355.7, label %shishagonyuu.exit3361.7
-
-if.then7.i3355.7:                                 ; preds = %if.else.i3352.7
-  %sub.i3356.7 = fadd double %1091, -5.000000e-01
-  %conv8.i3357.7 = fptosi double %sub.i3356.7 to i32
-  br label %shishagonyuu.exit3361.7
-
-if.then.i3358.7:                                  ; preds = %shishagonyuu.exit3361.6
-  %add.i3359.7 = fadd double %1091, 5.000000e-01
-  %conv.i3360.7 = fptosi double %add.i3359.7 to i32
-  br label %shishagonyuu.exit3361.7
-
-shishagonyuu.exit3361.7:                          ; preds = %if.then.i3358.7, %if.then7.i3355.7, %if.else.i3352.7
-  %out.0.i3354.7 = phi i32 [ %conv.i3360.7, %if.then.i3358.7 ], [ %conv8.i3357.7, %if.then7.i3355.7 ], [ 0, %if.else.i3352.7 ]
-  %conv950.7 = sitofp i32 %out.0.i3354.7 to double
-  store double %conv950.7, ptr %arrayidx948.7, align 8
-  %arrayidx948.8 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 8
-  %1092 = load double, ptr %arrayidx948.8, align 16
-  %cmp.i3351.8 = fcmp ogt double %1092, 0.000000e+00
-  br i1 %cmp.i3351.8, label %if.then.i3358.8, label %if.else.i3352.8
-
-if.else.i3352.8:                                  ; preds = %shishagonyuu.exit3361.7
-  %or.cond.i3353.8 = fcmp olt double %1092, 0.000000e+00
-  br i1 %or.cond.i3353.8, label %if.then7.i3355.8, label %shishagonyuu.exit3361.8
-
-if.then7.i3355.8:                                 ; preds = %if.else.i3352.8
-  %sub.i3356.8 = fadd double %1092, -5.000000e-01
-  %conv8.i3357.8 = fptosi double %sub.i3356.8 to i32
-  br label %shishagonyuu.exit3361.8
-
-if.then.i3358.8:                                  ; preds = %shishagonyuu.exit3361.7
-  %add.i3359.8 = fadd double %1092, 5.000000e-01
-  %conv.i3360.8 = fptosi double %add.i3359.8 to i32
-  br label %shishagonyuu.exit3361.8
-
-shishagonyuu.exit3361.8:                          ; preds = %if.then.i3358.8, %if.then7.i3355.8, %if.else.i3352.8
-  %out.0.i3354.8 = phi i32 [ %conv.i3360.8, %if.then.i3358.8 ], [ %conv8.i3357.8, %if.then7.i3355.8 ], [ 0, %if.else.i3352.8 ]
-  %conv950.8 = sitofp i32 %out.0.i3354.8 to double
-  store double %conv950.8, ptr %arrayidx948.8, align 16
-  %arrayidx948.9 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 9
-  %1093 = load double, ptr %arrayidx948.9, align 8
-  %cmp.i3351.9 = fcmp ogt double %1093, 0.000000e+00
-  br i1 %cmp.i3351.9, label %if.then.i3358.9, label %if.else.i3352.9
-
-if.else.i3352.9:                                  ; preds = %shishagonyuu.exit3361.8
-  %or.cond.i3353.9 = fcmp olt double %1093, 0.000000e+00
-  br i1 %or.cond.i3353.9, label %if.then7.i3355.9, label %shishagonyuu.exit3361.9
-
-if.then7.i3355.9:                                 ; preds = %if.else.i3352.9
-  %sub.i3356.9 = fadd double %1093, -5.000000e-01
-  %conv8.i3357.9 = fptosi double %sub.i3356.9 to i32
-  br label %shishagonyuu.exit3361.9
-
-if.then.i3358.9:                                  ; preds = %shishagonyuu.exit3361.8
-  %add.i3359.9 = fadd double %1093, 5.000000e-01
-  %conv.i3360.9 = fptosi double %add.i3359.9 to i32
-  br label %shishagonyuu.exit3361.9
-
-shishagonyuu.exit3361.9:                          ; preds = %if.then.i3358.9, %if.then7.i3355.9, %if.else.i3352.9
-  %out.0.i3354.9 = phi i32 [ %conv.i3360.9, %if.then.i3358.9 ], [ %conv8.i3357.9, %if.then7.i3355.9 ], [ 0, %if.else.i3352.9 ]
-  %conv950.9 = sitofp i32 %out.0.i3354.9 to double
-  store double %conv950.9, ptr %arrayidx948.9, align 8
-  %arrayidx948.10 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 10
-  %1094 = load double, ptr %arrayidx948.10, align 16
-  %cmp.i3351.10 = fcmp ogt double %1094, 0.000000e+00
-  br i1 %cmp.i3351.10, label %if.then.i3358.10, label %if.else.i3352.10
-
-if.else.i3352.10:                                 ; preds = %shishagonyuu.exit3361.9
-  %or.cond.i3353.10 = fcmp olt double %1094, 0.000000e+00
-  br i1 %or.cond.i3353.10, label %if.then7.i3355.10, label %shishagonyuu.exit3361.10
-
-if.then7.i3355.10:                                ; preds = %if.else.i3352.10
-  %sub.i3356.10 = fadd double %1094, -5.000000e-01
-  %conv8.i3357.10 = fptosi double %sub.i3356.10 to i32
-  br label %shishagonyuu.exit3361.10
-
-if.then.i3358.10:                                 ; preds = %shishagonyuu.exit3361.9
-  %add.i3359.10 = fadd double %1094, 5.000000e-01
-  %conv.i3360.10 = fptosi double %add.i3359.10 to i32
-  br label %shishagonyuu.exit3361.10
-
-shishagonyuu.exit3361.10:                         ; preds = %if.then.i3358.10, %if.then7.i3355.10, %if.else.i3352.10
-  %out.0.i3354.10 = phi i32 [ %conv.i3360.10, %if.then.i3358.10 ], [ %conv8.i3357.10, %if.then7.i3355.10 ], [ 0, %if.else.i3352.10 ]
-  %conv950.10 = sitofp i32 %out.0.i3354.10 to double
-  store double %conv950.10, ptr %arrayidx948.10, align 16
-  %arrayidx948.11 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 11
-  %1095 = load double, ptr %arrayidx948.11, align 8
-  %cmp.i3351.11 = fcmp ogt double %1095, 0.000000e+00
-  br i1 %cmp.i3351.11, label %if.then.i3358.11, label %if.else.i3352.11
-
-if.else.i3352.11:                                 ; preds = %shishagonyuu.exit3361.10
-  %or.cond.i3353.11 = fcmp olt double %1095, 0.000000e+00
-  br i1 %or.cond.i3353.11, label %if.then7.i3355.11, label %shishagonyuu.exit3361.11
-
-if.then7.i3355.11:                                ; preds = %if.else.i3352.11
-  %sub.i3356.11 = fadd double %1095, -5.000000e-01
-  %conv8.i3357.11 = fptosi double %sub.i3356.11 to i32
-  br label %shishagonyuu.exit3361.11
-
-if.then.i3358.11:                                 ; preds = %shishagonyuu.exit3361.10
-  %add.i3359.11 = fadd double %1095, 5.000000e-01
-  %conv.i3360.11 = fptosi double %add.i3359.11 to i32
-  br label %shishagonyuu.exit3361.11
-
-shishagonyuu.exit3361.11:                         ; preds = %if.then.i3358.11, %if.then7.i3355.11, %if.else.i3352.11
-  %out.0.i3354.11 = phi i32 [ %conv.i3360.11, %if.then.i3358.11 ], [ %conv8.i3357.11, %if.then7.i3355.11 ], [ 0, %if.else.i3352.11 ]
-  %conv950.11 = sitofp i32 %out.0.i3354.11 to double
-  store double %conv950.11, ptr %arrayidx948.11, align 8
-  %arrayidx948.12 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 12
-  %1096 = load double, ptr %arrayidx948.12, align 16
-  %cmp.i3351.12 = fcmp ogt double %1096, 0.000000e+00
-  br i1 %cmp.i3351.12, label %if.then.i3358.12, label %if.else.i3352.12
-
-if.else.i3352.12:                                 ; preds = %shishagonyuu.exit3361.11
-  %or.cond.i3353.12 = fcmp olt double %1096, 0.000000e+00
-  br i1 %or.cond.i3353.12, label %if.then7.i3355.12, label %shishagonyuu.exit3361.12
-
-if.then7.i3355.12:                                ; preds = %if.else.i3352.12
-  %sub.i3356.12 = fadd double %1096, -5.000000e-01
-  %conv8.i3357.12 = fptosi double %sub.i3356.12 to i32
-  br label %shishagonyuu.exit3361.12
-
-if.then.i3358.12:                                 ; preds = %shishagonyuu.exit3361.11
-  %add.i3359.12 = fadd double %1096, 5.000000e-01
-  %conv.i3360.12 = fptosi double %add.i3359.12 to i32
-  br label %shishagonyuu.exit3361.12
-
-shishagonyuu.exit3361.12:                         ; preds = %if.then.i3358.12, %if.then7.i3355.12, %if.else.i3352.12
-  %out.0.i3354.12 = phi i32 [ %conv.i3360.12, %if.then.i3358.12 ], [ %conv8.i3357.12, %if.then7.i3355.12 ], [ 0, %if.else.i3352.12 ]
-  %conv950.12 = sitofp i32 %out.0.i3354.12 to double
-  store double %conv950.12, ptr %arrayidx948.12, align 16
-  %arrayidx948.13 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 13
-  %1097 = load double, ptr %arrayidx948.13, align 8
-  %cmp.i3351.13 = fcmp ogt double %1097, 0.000000e+00
-  br i1 %cmp.i3351.13, label %if.then.i3358.13, label %if.else.i3352.13
-
-if.else.i3352.13:                                 ; preds = %shishagonyuu.exit3361.12
-  %or.cond.i3353.13 = fcmp olt double %1097, 0.000000e+00
-  br i1 %or.cond.i3353.13, label %if.then7.i3355.13, label %shishagonyuu.exit3361.13
-
-if.then7.i3355.13:                                ; preds = %if.else.i3352.13
-  %sub.i3356.13 = fadd double %1097, -5.000000e-01
-  %conv8.i3357.13 = fptosi double %sub.i3356.13 to i32
-  br label %shishagonyuu.exit3361.13
-
-if.then.i3358.13:                                 ; preds = %shishagonyuu.exit3361.12
-  %add.i3359.13 = fadd double %1097, 5.000000e-01
-  %conv.i3360.13 = fptosi double %add.i3359.13 to i32
-  br label %shishagonyuu.exit3361.13
-
-shishagonyuu.exit3361.13:                         ; preds = %if.then.i3358.13, %if.then7.i3355.13, %if.else.i3352.13
-  %out.0.i3354.13 = phi i32 [ %conv.i3360.13, %if.then.i3358.13 ], [ %conv8.i3357.13, %if.then7.i3355.13 ], [ 0, %if.else.i3352.13 ]
-  %conv950.13 = sitofp i32 %out.0.i3354.13 to double
-  store double %conv950.13, ptr %arrayidx948.13, align 8
-  %arrayidx948.14 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 14
-  %1098 = load double, ptr %arrayidx948.14, align 16
-  %cmp.i3351.14 = fcmp ogt double %1098, 0.000000e+00
-  br i1 %cmp.i3351.14, label %if.then.i3358.14, label %if.else.i3352.14
-
-if.else.i3352.14:                                 ; preds = %shishagonyuu.exit3361.13
-  %or.cond.i3353.14 = fcmp olt double %1098, 0.000000e+00
-  br i1 %or.cond.i3353.14, label %if.then7.i3355.14, label %shishagonyuu.exit3361.14
-
-if.then7.i3355.14:                                ; preds = %if.else.i3352.14
-  %sub.i3356.14 = fadd double %1098, -5.000000e-01
-  %conv8.i3357.14 = fptosi double %sub.i3356.14 to i32
-  br label %shishagonyuu.exit3361.14
-
-if.then.i3358.14:                                 ; preds = %shishagonyuu.exit3361.13
-  %add.i3359.14 = fadd double %1098, 5.000000e-01
-  %conv.i3360.14 = fptosi double %add.i3359.14 to i32
-  br label %shishagonyuu.exit3361.14
-
-shishagonyuu.exit3361.14:                         ; preds = %if.then.i3358.14, %if.then7.i3355.14, %if.else.i3352.14
-  %out.0.i3354.14 = phi i32 [ %conv.i3360.14, %if.then.i3358.14 ], [ %conv8.i3357.14, %if.then7.i3355.14 ], [ 0, %if.else.i3352.14 ]
-  %conv950.14 = sitofp i32 %out.0.i3354.14 to double
-  store double %conv950.14, ptr %arrayidx948.14, align 16
-  %arrayidx948.15 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4265, i64 15
-  %1099 = load double, ptr %arrayidx948.15, align 8
-  %cmp.i3351.15 = fcmp ogt double %1099, 0.000000e+00
-  br i1 %cmp.i3351.15, label %if.then.i3358.15, label %if.else.i3352.15
-
-if.else.i3352.15:                                 ; preds = %shishagonyuu.exit3361.14
-  %or.cond.i3353.15 = fcmp olt double %1099, 0.000000e+00
-  br i1 %or.cond.i3353.15, label %if.then7.i3355.15, label %shishagonyuu.exit3361.15
-
-if.then7.i3355.15:                                ; preds = %if.else.i3352.15
-  %sub.i3356.15 = fadd double %1099, -5.000000e-01
-  %conv8.i3357.15 = fptosi double %sub.i3356.15 to i32
-  br label %shishagonyuu.exit3361.15
-
-if.then.i3358.15:                                 ; preds = %shishagonyuu.exit3361.14
-  %add.i3359.15 = fadd double %1099, 5.000000e-01
-  %conv.i3360.15 = fptosi double %add.i3359.15 to i32
-  br label %shishagonyuu.exit3361.15
-
-shishagonyuu.exit3361.15:                         ; preds = %if.then.i3358.15, %if.then7.i3355.15, %if.else.i3352.15
-  %out.0.i3354.15 = phi i32 [ %conv.i3360.15, %if.then.i3358.15 ], [ %conv8.i3357.15, %if.then7.i3355.15 ], [ 0, %if.else.i3352.15 ]
-  %conv950.15 = sitofp i32 %out.0.i3354.15 to double
-  store double %conv950.15, ptr %arrayidx948.15, align 8
+for.inc958:                                       ; preds = %shishagonyuu.exit3361
   %indvars.iv.next4266 = add nuw nsw i64 %indvars.iv4265, 1
   %exitcond4268.not = icmp eq i64 %indvars.iv.next4266, 16
   br i1 %exitcond4268.not, label %for.end960, label %for.cond941.preheader
 
-for.end960:                                       ; preds = %shishagonyuu.exit3361.15
-  %1100 = load i32, ptr @disp, align 4
-  %tobool961.not = icmp eq i32 %1100, 0
+for.end960:                                       ; preds = %for.inc958
+  %1010 = load i32, ptr @disp, align 4
+  %tobool961.not = icmp eq i32 %1010, 0
   br i1 %tobool961.not, label %if.end1007, label %if.then962
 
 if.then962:                                       ; preds = %for.end960
-  %1101 = load ptr, ptr @stderr, align 8
-  %1102 = tail call i64 @fwrite(ptr nonnull @.str.16, i64 27, i64 1, ptr %1101) #16
-  %1103 = load ptr, ptr @stderr, align 8
-  %1104 = load double, ptr @ribosum4, align 32
-  %call976 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1103, ptr noundef nonnull @.str.7, double noundef %1104) #16
-  %1105 = load ptr, ptr @stderr, align 8
-  %1106 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 1), align 8
-  %call976.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1105, ptr noundef nonnull @.str.7, double noundef %1106) #16
-  %1107 = load ptr, ptr @stderr, align 8
-  %1108 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
-  %call976.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1107, ptr noundef nonnull @.str.7, double noundef %1108) #16
-  %1109 = load ptr, ptr @stderr, align 8
-  %1110 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 3), align 8
-  %call976.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1109, ptr noundef nonnull @.str.7, double noundef %1110) #16
-  %1111 = load ptr, ptr @stderr, align 8
-  %fputc3325 = tail call i32 @fputc(i32 10, ptr %1111)
-  %1112 = load ptr, ptr @stderr, align 8
-  %1113 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %call976.14278 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1112, ptr noundef nonnull @.str.7, double noundef %1113) #16
-  %1114 = load ptr, ptr @stderr, align 8
-  %1115 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 1), align 8
-  %call976.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1114, ptr noundef nonnull @.str.7, double noundef %1115) #16
-  %1116 = load ptr, ptr @stderr, align 8
-  %1117 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
-  %call976.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1116, ptr noundef nonnull @.str.7, double noundef %1117) #16
-  %1118 = load ptr, ptr @stderr, align 8
-  %1119 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 3), align 8
-  %call976.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1118, ptr noundef nonnull @.str.7, double noundef %1119) #16
-  %1120 = load ptr, ptr @stderr, align 8
-  %fputc3325.1 = tail call i32 @fputc(i32 10, ptr %1120)
-  %1121 = load ptr, ptr @stderr, align 8
-  %1122 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %call976.24280 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1121, ptr noundef nonnull @.str.7, double noundef %1122) #16
-  %1123 = load ptr, ptr @stderr, align 8
-  %1124 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 1), align 8
-  %call976.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1123, ptr noundef nonnull @.str.7, double noundef %1124) #16
-  %1125 = load ptr, ptr @stderr, align 8
-  %1126 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
-  %call976.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1125, ptr noundef nonnull @.str.7, double noundef %1126) #16
-  %1127 = load ptr, ptr @stderr, align 8
-  %1128 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 3), align 8
-  %call976.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1127, ptr noundef nonnull @.str.7, double noundef %1128) #16
-  %1129 = load ptr, ptr @stderr, align 8
-  %fputc3325.2 = tail call i32 @fputc(i32 10, ptr %1129)
-  %1130 = load ptr, ptr @stderr, align 8
-  %1131 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %call976.34282 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1130, ptr noundef nonnull @.str.7, double noundef %1131) #16
-  %1132 = load ptr, ptr @stderr, align 8
-  %1133 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 1), align 8
-  %call976.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1132, ptr noundef nonnull @.str.7, double noundef %1133) #16
-  %1134 = load ptr, ptr @stderr, align 8
-  %1135 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
-  %call976.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1134, ptr noundef nonnull @.str.7, double noundef %1135) #16
-  %1136 = load ptr, ptr @stderr, align 8
-  %1137 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 3), align 8
-  %call976.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1136, ptr noundef nonnull @.str.7, double noundef %1137) #16
-  %1138 = load ptr, ptr @stderr, align 8
-  %fputc3325.3 = tail call i32 @fputc(i32 10, ptr %1138)
-  %1139 = load ptr, ptr @stderr, align 8
-  %fputc3320 = tail call i32 @fputc(i32 10, ptr %1139)
-  %1140 = load ptr, ptr @stderr, align 8
-  %1141 = tail call i64 @fwrite(ptr nonnull @.str.17, i64 29, i64 1, ptr %1140) #16
+  %1011 = load ptr, ptr @stderr, align 8
+  %1012 = tail call i64 @fwrite(ptr nonnull @.str.16, i64 27, i64 1, ptr %1011) #16
+  %1013 = load ptr, ptr @stderr, align 8
+  %1014 = load double, ptr @ribosum4, align 32
+  %call976 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1013, ptr noundef nonnull @.str.7, double noundef %1014) #16
+  %1015 = load ptr, ptr @stderr, align 8
+  %1016 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 1), align 8
+  %call976.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1015, ptr noundef nonnull @.str.7, double noundef %1016) #16
+  %1017 = load ptr, ptr @stderr, align 8
+  %1018 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 2), align 16
+  %call976.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1017, ptr noundef nonnull @.str.7, double noundef %1018) #16
+  %1019 = load ptr, ptr @stderr, align 8
+  %1020 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 0, i64 3), align 8
+  %call976.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1019, ptr noundef nonnull @.str.7, double noundef %1020) #16
+  %1021 = load ptr, ptr @stderr, align 8
+  %fputc3325 = tail call i32 @fputc(i32 10, ptr %1021)
+  %1022 = load ptr, ptr @stderr, align 8
+  %1023 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
+  %call976.14278 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1022, ptr noundef nonnull @.str.7, double noundef %1023) #16
+  %1024 = load ptr, ptr @stderr, align 8
+  %1025 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 1), align 8
+  %call976.1.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1024, ptr noundef nonnull @.str.7, double noundef %1025) #16
+  %1026 = load ptr, ptr @stderr, align 8
+  %1027 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 2), align 16
+  %call976.2.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1026, ptr noundef nonnull @.str.7, double noundef %1027) #16
+  %1028 = load ptr, ptr @stderr, align 8
+  %1029 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 3), align 8
+  %call976.3.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1028, ptr noundef nonnull @.str.7, double noundef %1029) #16
+  %1030 = load ptr, ptr @stderr, align 8
+  %fputc3325.1 = tail call i32 @fputc(i32 10, ptr %1030)
+  %1031 = load ptr, ptr @stderr, align 8
+  %1032 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
+  %call976.24280 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1031, ptr noundef nonnull @.str.7, double noundef %1032) #16
+  %1033 = load ptr, ptr @stderr, align 8
+  %1034 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 1), align 8
+  %call976.1.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1033, ptr noundef nonnull @.str.7, double noundef %1034) #16
+  %1035 = load ptr, ptr @stderr, align 8
+  %1036 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 2), align 16
+  %call976.2.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1035, ptr noundef nonnull @.str.7, double noundef %1036) #16
+  %1037 = load ptr, ptr @stderr, align 8
+  %1038 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 3), align 8
+  %call976.3.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1037, ptr noundef nonnull @.str.7, double noundef %1038) #16
+  %1039 = load ptr, ptr @stderr, align 8
+  %fputc3325.2 = tail call i32 @fputc(i32 10, ptr %1039)
+  %1040 = load ptr, ptr @stderr, align 8
+  %1041 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
+  %call976.34282 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1040, ptr noundef nonnull @.str.7, double noundef %1041) #16
+  %1042 = load ptr, ptr @stderr, align 8
+  %1043 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 1), align 8
+  %call976.1.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1042, ptr noundef nonnull @.str.7, double noundef %1043) #16
+  %1044 = load ptr, ptr @stderr, align 8
+  %1045 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 2), align 16
+  %call976.2.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1044, ptr noundef nonnull @.str.7, double noundef %1045) #16
+  %1046 = load ptr, ptr @stderr, align 8
+  %1047 = load double, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 3), align 8
+  %call976.3.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1046, ptr noundef nonnull @.str.7, double noundef %1047) #16
+  %1048 = load ptr, ptr @stderr, align 8
+  %fputc3325.3 = tail call i32 @fputc(i32 10, ptr %1048)
+  %1049 = load ptr, ptr @stderr, align 8
+  %fputc3320 = tail call i32 @fputc(i32 10, ptr %1049)
+  %1050 = load ptr, ptr @stderr, align 8
+  %1051 = tail call i64 @fwrite(ptr nonnull @.str.17, i64 29, i64 1, ptr %1050) #16
   br label %for.cond990.preheader
 
 for.cond990.preheader:                            ; preds = %if.then962, %for.cond990.preheader
   %indvars.iv4287 = phi i64 [ 0, %if.then962 ], [ %indvars.iv.next4288, %for.cond990.preheader ]
-  %1142 = load ptr, ptr @stderr, align 8
+  %1052 = load ptr, ptr @stderr, align 8
   %arrayidx997 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 0
-  %1143 = load double, ptr %arrayidx997, align 16
-  %call998 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1142, ptr noundef nonnull @.str.18, double noundef %1143) #16
-  %1144 = load ptr, ptr @stderr, align 8
+  %1053 = load double, ptr %arrayidx997, align 16
+  %call998 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1052, ptr noundef nonnull @.str.18, double noundef %1053) #16
+  %1054 = load ptr, ptr @stderr, align 8
   %arrayidx997.1 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 1
-  %1145 = load double, ptr %arrayidx997.1, align 8
-  %call998.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1144, ptr noundef nonnull @.str.18, double noundef %1145) #16
-  %1146 = load ptr, ptr @stderr, align 8
+  %1055 = load double, ptr %arrayidx997.1, align 8
+  %call998.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1054, ptr noundef nonnull @.str.18, double noundef %1055) #16
+  %1056 = load ptr, ptr @stderr, align 8
   %arrayidx997.2 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 2
-  %1147 = load double, ptr %arrayidx997.2, align 16
-  %call998.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1146, ptr noundef nonnull @.str.18, double noundef %1147) #16
-  %1148 = load ptr, ptr @stderr, align 8
+  %1057 = load double, ptr %arrayidx997.2, align 16
+  %call998.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1056, ptr noundef nonnull @.str.18, double noundef %1057) #16
+  %1058 = load ptr, ptr @stderr, align 8
   %arrayidx997.3 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 3
-  %1149 = load double, ptr %arrayidx997.3, align 8
-  %call998.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1148, ptr noundef nonnull @.str.18, double noundef %1149) #16
-  %1150 = load ptr, ptr @stderr, align 8
+  %1059 = load double, ptr %arrayidx997.3, align 8
+  %call998.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1058, ptr noundef nonnull @.str.18, double noundef %1059) #16
+  %1060 = load ptr, ptr @stderr, align 8
   %arrayidx997.4 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 4
-  %1151 = load double, ptr %arrayidx997.4, align 16
-  %call998.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1150, ptr noundef nonnull @.str.18, double noundef %1151) #16
-  %1152 = load ptr, ptr @stderr, align 8
+  %1061 = load double, ptr %arrayidx997.4, align 16
+  %call998.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1060, ptr noundef nonnull @.str.18, double noundef %1061) #16
+  %1062 = load ptr, ptr @stderr, align 8
   %arrayidx997.5 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 5
-  %1153 = load double, ptr %arrayidx997.5, align 8
-  %call998.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1152, ptr noundef nonnull @.str.18, double noundef %1153) #16
-  %1154 = load ptr, ptr @stderr, align 8
+  %1063 = load double, ptr %arrayidx997.5, align 8
+  %call998.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1062, ptr noundef nonnull @.str.18, double noundef %1063) #16
+  %1064 = load ptr, ptr @stderr, align 8
   %arrayidx997.6 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 6
-  %1155 = load double, ptr %arrayidx997.6, align 16
-  %call998.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1154, ptr noundef nonnull @.str.18, double noundef %1155) #16
-  %1156 = load ptr, ptr @stderr, align 8
+  %1065 = load double, ptr %arrayidx997.6, align 16
+  %call998.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1064, ptr noundef nonnull @.str.18, double noundef %1065) #16
+  %1066 = load ptr, ptr @stderr, align 8
   %arrayidx997.7 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 7
-  %1157 = load double, ptr %arrayidx997.7, align 8
-  %call998.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1156, ptr noundef nonnull @.str.18, double noundef %1157) #16
-  %1158 = load ptr, ptr @stderr, align 8
+  %1067 = load double, ptr %arrayidx997.7, align 8
+  %call998.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1066, ptr noundef nonnull @.str.18, double noundef %1067) #16
+  %1068 = load ptr, ptr @stderr, align 8
   %arrayidx997.8 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 8
-  %1159 = load double, ptr %arrayidx997.8, align 16
-  %call998.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1158, ptr noundef nonnull @.str.18, double noundef %1159) #16
-  %1160 = load ptr, ptr @stderr, align 8
+  %1069 = load double, ptr %arrayidx997.8, align 16
+  %call998.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1068, ptr noundef nonnull @.str.18, double noundef %1069) #16
+  %1070 = load ptr, ptr @stderr, align 8
   %arrayidx997.9 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 9
-  %1161 = load double, ptr %arrayidx997.9, align 8
-  %call998.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1160, ptr noundef nonnull @.str.18, double noundef %1161) #16
-  %1162 = load ptr, ptr @stderr, align 8
+  %1071 = load double, ptr %arrayidx997.9, align 8
+  %call998.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1070, ptr noundef nonnull @.str.18, double noundef %1071) #16
+  %1072 = load ptr, ptr @stderr, align 8
   %arrayidx997.10 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 10
-  %1163 = load double, ptr %arrayidx997.10, align 16
-  %call998.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1162, ptr noundef nonnull @.str.18, double noundef %1163) #16
-  %1164 = load ptr, ptr @stderr, align 8
+  %1073 = load double, ptr %arrayidx997.10, align 16
+  %call998.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1072, ptr noundef nonnull @.str.18, double noundef %1073) #16
+  %1074 = load ptr, ptr @stderr, align 8
   %arrayidx997.11 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 11
-  %1165 = load double, ptr %arrayidx997.11, align 8
-  %call998.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1164, ptr noundef nonnull @.str.18, double noundef %1165) #16
-  %1166 = load ptr, ptr @stderr, align 8
+  %1075 = load double, ptr %arrayidx997.11, align 8
+  %call998.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1074, ptr noundef nonnull @.str.18, double noundef %1075) #16
+  %1076 = load ptr, ptr @stderr, align 8
   %arrayidx997.12 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 12
-  %1167 = load double, ptr %arrayidx997.12, align 16
-  %call998.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1166, ptr noundef nonnull @.str.18, double noundef %1167) #16
-  %1168 = load ptr, ptr @stderr, align 8
+  %1077 = load double, ptr %arrayidx997.12, align 16
+  %call998.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1076, ptr noundef nonnull @.str.18, double noundef %1077) #16
+  %1078 = load ptr, ptr @stderr, align 8
   %arrayidx997.13 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 13
-  %1169 = load double, ptr %arrayidx997.13, align 8
-  %call998.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1168, ptr noundef nonnull @.str.18, double noundef %1169) #16
-  %1170 = load ptr, ptr @stderr, align 8
+  %1079 = load double, ptr %arrayidx997.13, align 8
+  %call998.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1078, ptr noundef nonnull @.str.18, double noundef %1079) #16
+  %1080 = load ptr, ptr @stderr, align 8
   %arrayidx997.14 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 14
-  %1171 = load double, ptr %arrayidx997.14, align 16
-  %call998.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1170, ptr noundef nonnull @.str.18, double noundef %1171) #16
-  %1172 = load ptr, ptr @stderr, align 8
+  %1081 = load double, ptr %arrayidx997.14, align 16
+  %call998.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1080, ptr noundef nonnull @.str.18, double noundef %1081) #16
+  %1082 = load ptr, ptr @stderr, align 8
   %arrayidx997.15 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4287, i64 15
-  %1173 = load double, ptr %arrayidx997.15, align 8
-  %call998.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1172, ptr noundef nonnull @.str.18, double noundef %1173) #16
-  %1174 = load ptr, ptr @stderr, align 8
-  %fputc3324 = tail call i32 @fputc(i32 10, ptr %1174)
+  %1083 = load double, ptr %arrayidx997.15, align 8
+  %call998.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1082, ptr noundef nonnull @.str.18, double noundef %1083) #16
+  %1084 = load ptr, ptr @stderr, align 8
+  %fputc3324 = tail call i32 @fputc(i32 10, ptr %1084)
   %indvars.iv.next4288 = add nuw nsw i64 %indvars.iv4287, 1
   %exitcond4290.not = icmp eq i64 %indvars.iv.next4288, 16
   br i1 %exitcond4290.not, label %for.end1005, label %for.cond990.preheader
 
 for.end1005:                                      ; preds = %for.cond990.preheader
-  %1175 = load ptr, ptr @stderr, align 8
-  %fputc3321 = tail call i32 @fputc(i32 10, ptr %1175)
+  %1085 = load ptr, ptr @stderr, align 8
+  %fputc3321 = tail call i32 @fputc(i32 10, ptr %1085)
   br label %if.end1007
 
 if.end1007:                                       ; preds = %for.end1005, %for.end960
-  %1176 = load ptr, ptr @stderr, align 8
-  %1177 = tail call i64 @fwrite(ptr nonnull @.str.12, i64 5, i64 1, ptr %1176) #16
+  %1086 = load ptr, ptr @stderr, align 8
+  %1087 = tail call i64 @fwrite(ptr nonnull @.str.12, i64 5, i64 1, ptr %1086) #16
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(5476) @ribosumdis, i8 0, i64 5476, i1 false)
-  %1178 = load <4 x double>, ptr @ribosum4, align 32
-  %1179 = fptosi <4 x double> %1178 to <4 x i32>
-  %1180 = load <4 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
-  %1181 = fptosi <4 x double> %1180 to <4 x i32>
-  %1182 = load <4 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
-  %1183 = fptosi <4 x double> %1182 to <4 x i32>
-  %1184 = load <4 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
-  %1185 = fptosi <4 x double> %1184 to <4 x i32>
+  %1088 = load <4 x double>, ptr @ribosum4, align 32
+  %1089 = fptosi <4 x double> %1088 to <4 x i32>
+  %1090 = load <4 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 1, i64 0), align 32
+  %1091 = fptosi <4 x double> %1090 to <4 x i32>
+  %1092 = load <4 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 2, i64 0), align 32
+  %1093 = fptosi <4 x double> %1092 to <4 x i32>
+  %1094 = load <4 x double>, ptr getelementptr inbounds ([4 x [4 x double]], ptr @ribosum4, i64 0, i64 3, i64 0), align 32
+  %1095 = fptosi <4 x double> %1094 to <4 x i32>
   br label %for.cond1031.preheader
 
 for.cond1031.preheader:                           ; preds = %if.end1007, %for.cond1031.preheader
   %indvars.iv4316 = phi i64 [ 0, %if.end1007 ], [ %indvars.iv.next4317, %for.cond1031.preheader ]
-  %1186 = shl nsw i64 %indvars.iv4316, 2
-  %arrayidx1055 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 0
-  store <4 x i32> %1179, ptr %arrayidx1055, align 16
-  %arrayidx1055.14306 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 4
-  store <4 x i32> %1179, ptr %arrayidx1055.14306, align 16
-  %arrayidx1055.24308 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 8
-  store <4 x i32> %1179, ptr %arrayidx1055.24308, align 16
-  %arrayidx1055.34310 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 12
-  store <4 x i32> %1179, ptr %arrayidx1055.34310, align 16
-  %arrayidx1055.4 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 16
-  store <4 x i32> %1179, ptr %arrayidx1055.4, align 16
-  %arrayidx1055.5 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 20
-  store <4 x i32> %1179, ptr %arrayidx1055.5, align 16
-  %arrayidx1055.6 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 24
-  store <4 x i32> %1179, ptr %arrayidx1055.6, align 16
-  %arrayidx1055.7 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 28
-  store <4 x i32> %1179, ptr %arrayidx1055.7, align 16
-  %arrayidx1055.8 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1186, i64 32
-  store <4 x i32> %1179, ptr %arrayidx1055.8, align 16
-  %1187 = or i64 %1186, 1
-  %arrayidx1055.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 0
-  store <4 x i32> %1181, ptr %arrayidx1055.1, align 4
-  %arrayidx1055.14306.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 4
-  store <4 x i32> %1181, ptr %arrayidx1055.14306.1, align 4
-  %arrayidx1055.24308.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 8
-  store <4 x i32> %1181, ptr %arrayidx1055.24308.1, align 4
-  %arrayidx1055.34310.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 12
-  store <4 x i32> %1181, ptr %arrayidx1055.34310.1, align 4
-  %arrayidx1055.4.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 16
-  store <4 x i32> %1181, ptr %arrayidx1055.4.1, align 4
-  %arrayidx1055.5.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 20
-  store <4 x i32> %1181, ptr %arrayidx1055.5.1, align 4
-  %arrayidx1055.6.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 24
-  store <4 x i32> %1181, ptr %arrayidx1055.6.1, align 4
-  %arrayidx1055.7.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 28
-  store <4 x i32> %1181, ptr %arrayidx1055.7.1, align 4
-  %arrayidx1055.8.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1187, i64 32
-  store <4 x i32> %1181, ptr %arrayidx1055.8.1, align 4
-  %1188 = or i64 %1186, 2
-  %arrayidx1055.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 0
-  store <4 x i32> %1183, ptr %arrayidx1055.2, align 8
-  %arrayidx1055.14306.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 4
-  store <4 x i32> %1183, ptr %arrayidx1055.14306.2, align 8
-  %arrayidx1055.24308.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 8
-  store <4 x i32> %1183, ptr %arrayidx1055.24308.2, align 8
-  %arrayidx1055.34310.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 12
-  store <4 x i32> %1183, ptr %arrayidx1055.34310.2, align 8
-  %arrayidx1055.4.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 16
-  store <4 x i32> %1183, ptr %arrayidx1055.4.2, align 8
-  %arrayidx1055.5.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 20
-  store <4 x i32> %1183, ptr %arrayidx1055.5.2, align 8
-  %arrayidx1055.6.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 24
-  store <4 x i32> %1183, ptr %arrayidx1055.6.2, align 8
-  %arrayidx1055.7.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 28
-  store <4 x i32> %1183, ptr %arrayidx1055.7.2, align 8
-  %arrayidx1055.8.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1188, i64 32
-  store <4 x i32> %1183, ptr %arrayidx1055.8.2, align 8
-  %1189 = or i64 %1186, 3
-  %arrayidx1055.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 0
-  store <4 x i32> %1185, ptr %arrayidx1055.3, align 4
-  %arrayidx1055.14306.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 4
-  store <4 x i32> %1185, ptr %arrayidx1055.14306.3, align 4
-  %arrayidx1055.24308.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 8
-  store <4 x i32> %1185, ptr %arrayidx1055.24308.3, align 4
-  %arrayidx1055.34310.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 12
-  store <4 x i32> %1185, ptr %arrayidx1055.34310.3, align 4
-  %arrayidx1055.4.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 16
-  store <4 x i32> %1185, ptr %arrayidx1055.4.3, align 4
-  %arrayidx1055.5.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 20
-  store <4 x i32> %1185, ptr %arrayidx1055.5.3, align 4
-  %arrayidx1055.6.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 24
-  store <4 x i32> %1185, ptr %arrayidx1055.6.3, align 4
-  %arrayidx1055.7.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 28
-  store <4 x i32> %1185, ptr %arrayidx1055.7.3, align 4
-  %arrayidx1055.8.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1189, i64 32
-  store <4 x i32> %1185, ptr %arrayidx1055.8.3, align 4
+  %1096 = shl nsw i64 %indvars.iv4316, 2
+  %arrayidx1055 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 0
+  store <4 x i32> %1089, ptr %arrayidx1055, align 16
+  %arrayidx1055.14306 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 4
+  store <4 x i32> %1089, ptr %arrayidx1055.14306, align 16
+  %arrayidx1055.24308 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 8
+  store <4 x i32> %1089, ptr %arrayidx1055.24308, align 16
+  %arrayidx1055.34310 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 12
+  store <4 x i32> %1089, ptr %arrayidx1055.34310, align 16
+  %arrayidx1055.4 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 16
+  store <4 x i32> %1089, ptr %arrayidx1055.4, align 16
+  %arrayidx1055.5 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 20
+  store <4 x i32> %1089, ptr %arrayidx1055.5, align 16
+  %arrayidx1055.6 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 24
+  store <4 x i32> %1089, ptr %arrayidx1055.6, align 16
+  %arrayidx1055.7 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 28
+  store <4 x i32> %1089, ptr %arrayidx1055.7, align 16
+  %arrayidx1055.8 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1096, i64 32
+  store <4 x i32> %1089, ptr %arrayidx1055.8, align 16
+  %1097 = or i64 %1096, 1
+  %arrayidx1055.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 0
+  store <4 x i32> %1091, ptr %arrayidx1055.1, align 4
+  %arrayidx1055.14306.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 4
+  store <4 x i32> %1091, ptr %arrayidx1055.14306.1, align 4
+  %arrayidx1055.24308.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 8
+  store <4 x i32> %1091, ptr %arrayidx1055.24308.1, align 4
+  %arrayidx1055.34310.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 12
+  store <4 x i32> %1091, ptr %arrayidx1055.34310.1, align 4
+  %arrayidx1055.4.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 16
+  store <4 x i32> %1091, ptr %arrayidx1055.4.1, align 4
+  %arrayidx1055.5.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 20
+  store <4 x i32> %1091, ptr %arrayidx1055.5.1, align 4
+  %arrayidx1055.6.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 24
+  store <4 x i32> %1091, ptr %arrayidx1055.6.1, align 4
+  %arrayidx1055.7.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 28
+  store <4 x i32> %1091, ptr %arrayidx1055.7.1, align 4
+  %arrayidx1055.8.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1097, i64 32
+  store <4 x i32> %1091, ptr %arrayidx1055.8.1, align 4
+  %1098 = or i64 %1096, 2
+  %arrayidx1055.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 0
+  store <4 x i32> %1093, ptr %arrayidx1055.2, align 8
+  %arrayidx1055.14306.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 4
+  store <4 x i32> %1093, ptr %arrayidx1055.14306.2, align 8
+  %arrayidx1055.24308.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 8
+  store <4 x i32> %1093, ptr %arrayidx1055.24308.2, align 8
+  %arrayidx1055.34310.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 12
+  store <4 x i32> %1093, ptr %arrayidx1055.34310.2, align 8
+  %arrayidx1055.4.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 16
+  store <4 x i32> %1093, ptr %arrayidx1055.4.2, align 8
+  %arrayidx1055.5.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 20
+  store <4 x i32> %1093, ptr %arrayidx1055.5.2, align 8
+  %arrayidx1055.6.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 24
+  store <4 x i32> %1093, ptr %arrayidx1055.6.2, align 8
+  %arrayidx1055.7.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 28
+  store <4 x i32> %1093, ptr %arrayidx1055.7.2, align 8
+  %arrayidx1055.8.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1098, i64 32
+  store <4 x i32> %1093, ptr %arrayidx1055.8.2, align 8
+  %1099 = or i64 %1096, 3
+  %arrayidx1055.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 0
+  store <4 x i32> %1095, ptr %arrayidx1055.3, align 4
+  %arrayidx1055.14306.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 4
+  store <4 x i32> %1095, ptr %arrayidx1055.14306.3, align 4
+  %arrayidx1055.24308.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 8
+  store <4 x i32> %1095, ptr %arrayidx1055.24308.3, align 4
+  %arrayidx1055.34310.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 12
+  store <4 x i32> %1095, ptr %arrayidx1055.34310.3, align 4
+  %arrayidx1055.4.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 16
+  store <4 x i32> %1095, ptr %arrayidx1055.4.3, align 4
+  %arrayidx1055.5.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 20
+  store <4 x i32> %1095, ptr %arrayidx1055.5.3, align 4
+  %arrayidx1055.6.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 24
+  store <4 x i32> %1095, ptr %arrayidx1055.6.3, align 4
+  %arrayidx1055.7.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 28
+  store <4 x i32> %1095, ptr %arrayidx1055.7.3, align 4
+  %arrayidx1055.8.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1099, i64 32
+  store <4 x i32> %1095, ptr %arrayidx1055.8.3, align 4
   %indvars.iv.next4317 = add nuw nsw i64 %indvars.iv4316, 1
   %exitcond4320.not = icmp eq i64 %indvars.iv.next4317, 9
   br i1 %exitcond4320.not, label %for.cond1072.preheader, label %for.cond1031.preheader
 
 for.cond1072.preheader:                           ; preds = %for.cond1031.preheader, %for.cond1072.preheader
   %indvars.iv4326 = phi i64 [ %indvars.iv.next4327, %for.cond1072.preheader ], [ 0, %for.cond1031.preheader ]
-  %1190 = add nuw nsw i64 %indvars.iv4326, 4
+  %1100 = add nuw nsw i64 %indvars.iv4326, 4
   %arrayidx1079 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4326, i64 0
-  %arrayidx1086 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1190, i64 4
-  %1191 = load <4 x double>, ptr %arrayidx1079, align 16
-  %1192 = fptosi <4 x double> %1191 to <4 x i32>
-  store <4 x i32> %1192, ptr %arrayidx1086, align 4
+  %arrayidx1086 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1100, i64 4
+  %1101 = load <4 x double>, ptr %arrayidx1079, align 16
+  %1102 = fptosi <4 x double> %1101 to <4 x i32>
+  store <4 x i32> %1102, ptr %arrayidx1086, align 4
   %arrayidx1079.4 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4326, i64 4
-  %arrayidx1086.4 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1190, i64 8
-  %1193 = load <4 x double>, ptr %arrayidx1079.4, align 16
-  %1194 = fptosi <4 x double> %1193 to <4 x i32>
-  store <4 x i32> %1194, ptr %arrayidx1086.4, align 4
+  %arrayidx1086.4 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1100, i64 8
+  %1103 = load <4 x double>, ptr %arrayidx1079.4, align 16
+  %1104 = fptosi <4 x double> %1103 to <4 x i32>
+  store <4 x i32> %1104, ptr %arrayidx1086.4, align 4
   %arrayidx1079.8 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4326, i64 8
-  %arrayidx1086.8 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1190, i64 12
-  %1195 = load <4 x double>, ptr %arrayidx1079.8, align 16
-  %1196 = fptosi <4 x double> %1195 to <4 x i32>
-  store <4 x i32> %1196, ptr %arrayidx1086.8, align 4
+  %arrayidx1086.8 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1100, i64 12
+  %1105 = load <4 x double>, ptr %arrayidx1079.8, align 16
+  %1106 = fptosi <4 x double> %1105 to <4 x i32>
+  store <4 x i32> %1106, ptr %arrayidx1086.8, align 4
   %arrayidx1079.12 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4326, i64 12
-  %arrayidx1086.12 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1190, i64 16
-  %1197 = load <4 x double>, ptr %arrayidx1079.12, align 16
-  %1198 = fptosi <4 x double> %1197 to <4 x i32>
-  store <4 x i32> %1198, ptr %arrayidx1086.12, align 4
+  %arrayidx1086.12 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1100, i64 16
+  %1107 = load <4 x double>, ptr %arrayidx1079.12, align 16
+  %1108 = fptosi <4 x double> %1107 to <4 x i32>
+  store <4 x i32> %1108, ptr %arrayidx1086.12, align 4
   %indvars.iv.next4327 = add nuw nsw i64 %indvars.iv4326, 1
   %exitcond4330.not = icmp eq i64 %indvars.iv.next4327, 16
   br i1 %exitcond4330.not, label %for.cond1097.preheader, label %for.cond1072.preheader
 
 for.cond1097.preheader:                           ; preds = %for.cond1072.preheader, %for.cond1097.preheader
   %indvars.iv4336 = phi i64 [ %indvars.iv.next4337, %for.cond1097.preheader ], [ 0, %for.cond1072.preheader ]
-  %1199 = add nuw nsw i64 %indvars.iv4336, 20
+  %1109 = add nuw nsw i64 %indvars.iv4336, 20
   %arrayidx1104 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4336, i64 0
-  %arrayidx1111 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1199, i64 20
-  %1200 = load <4 x double>, ptr %arrayidx1104, align 16
-  %1201 = fptosi <4 x double> %1200 to <4 x i32>
-  store <4 x i32> %1201, ptr %arrayidx1111, align 4
+  %arrayidx1111 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1109, i64 20
+  %1110 = load <4 x double>, ptr %arrayidx1104, align 16
+  %1111 = fptosi <4 x double> %1110 to <4 x i32>
+  store <4 x i32> %1111, ptr %arrayidx1111, align 4
   %arrayidx1104.4 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4336, i64 4
-  %arrayidx1111.4 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1199, i64 24
-  %1202 = load <4 x double>, ptr %arrayidx1104.4, align 16
-  %1203 = fptosi <4 x double> %1202 to <4 x i32>
-  store <4 x i32> %1203, ptr %arrayidx1111.4, align 4
+  %arrayidx1111.4 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1109, i64 24
+  %1112 = load <4 x double>, ptr %arrayidx1104.4, align 16
+  %1113 = fptosi <4 x double> %1112 to <4 x i32>
+  store <4 x i32> %1113, ptr %arrayidx1111.4, align 4
   %arrayidx1104.8 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4336, i64 8
-  %arrayidx1111.8 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1199, i64 28
-  %1204 = load <4 x double>, ptr %arrayidx1104.8, align 16
-  %1205 = fptosi <4 x double> %1204 to <4 x i32>
-  store <4 x i32> %1205, ptr %arrayidx1111.8, align 4
+  %arrayidx1111.8 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1109, i64 28
+  %1114 = load <4 x double>, ptr %arrayidx1104.8, align 16
+  %1115 = fptosi <4 x double> %1114 to <4 x i32>
+  store <4 x i32> %1115, ptr %arrayidx1111.8, align 4
   %arrayidx1104.12 = getelementptr inbounds [16 x [16 x double]], ptr @ribosum16, i64 0, i64 %indvars.iv4336, i64 12
-  %arrayidx1111.12 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1199, i64 32
-  %1206 = load <4 x double>, ptr %arrayidx1104.12, align 16
-  %1207 = fptosi <4 x double> %1206 to <4 x i32>
-  store <4 x i32> %1207, ptr %arrayidx1111.12, align 4
+  %arrayidx1111.12 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %1109, i64 32
+  %1116 = load <4 x double>, ptr %arrayidx1104.12, align 16
+  %1117 = fptosi <4 x double> %1116 to <4 x i32>
+  store <4 x i32> %1117, ptr %arrayidx1111.12, align 4
   %indvars.iv.next4337 = add nuw nsw i64 %indvars.iv4336, 1
   %exitcond4340.not = icmp eq i64 %indvars.iv.next4337, 16
   br i1 %exitcond4340.not, label %for.end1117, label %for.cond1097.preheader
 
 for.end1117:                                      ; preds = %for.cond1097.preheader
-  %1208 = load i32, ptr @disp, align 4
-  %tobool1118.not = icmp eq i32 %1208, 0
+  %1118 = load i32, ptr @disp, align 4
+  %tobool1118.not = icmp eq i32 %1118, 0
   br i1 %tobool1118.not, label %if.end1142, label %if.then1119
 
 if.then1119:                                      ; preds = %for.end1117
-  %1209 = load ptr, ptr @stderr, align 8
-  %1210 = tail call i64 @fwrite(ptr nonnull @.str.19, i64 11, i64 1, ptr %1209) #16
+  %1119 = load ptr, ptr @stderr, align 8
+  %1120 = tail call i64 @fwrite(ptr nonnull @.str.19, i64 11, i64 1, ptr %1119) #16
   br label %for.cond1125.preheader
 
 for.cond1125.preheader:                           ; preds = %if.then1119, %for.cond1125.preheader
   %indvars.iv4345 = phi i64 [ 0, %if.then1119 ], [ %indvars.iv.next4346, %for.cond1125.preheader ]
-  %1211 = load ptr, ptr @stderr, align 8
+  %1121 = load ptr, ptr @stderr, align 8
   %arrayidx1132 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 0
-  %1212 = load i32, ptr %arrayidx1132, align 4
-  %call1133 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1211, ptr noundef nonnull @.str.20, i32 noundef %1212) #16
-  %1213 = load ptr, ptr @stderr, align 8
+  %1122 = load i32, ptr %arrayidx1132, align 4
+  %call1133 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1121, ptr noundef nonnull @.str.20, i32 noundef %1122) #16
+  %1123 = load ptr, ptr @stderr, align 8
   %arrayidx1132.1 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 1
-  %1214 = load i32, ptr %arrayidx1132.1, align 4
-  %call1133.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1213, ptr noundef nonnull @.str.20, i32 noundef %1214) #16
-  %1215 = load ptr, ptr @stderr, align 8
+  %1124 = load i32, ptr %arrayidx1132.1, align 4
+  %call1133.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1123, ptr noundef nonnull @.str.20, i32 noundef %1124) #16
+  %1125 = load ptr, ptr @stderr, align 8
   %arrayidx1132.2 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 2
-  %1216 = load i32, ptr %arrayidx1132.2, align 4
-  %call1133.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1215, ptr noundef nonnull @.str.20, i32 noundef %1216) #16
-  %1217 = load ptr, ptr @stderr, align 8
+  %1126 = load i32, ptr %arrayidx1132.2, align 4
+  %call1133.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1125, ptr noundef nonnull @.str.20, i32 noundef %1126) #16
+  %1127 = load ptr, ptr @stderr, align 8
   %arrayidx1132.3 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 3
-  %1218 = load i32, ptr %arrayidx1132.3, align 4
-  %call1133.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1217, ptr noundef nonnull @.str.20, i32 noundef %1218) #16
-  %1219 = load ptr, ptr @stderr, align 8
+  %1128 = load i32, ptr %arrayidx1132.3, align 4
+  %call1133.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1127, ptr noundef nonnull @.str.20, i32 noundef %1128) #16
+  %1129 = load ptr, ptr @stderr, align 8
   %arrayidx1132.4 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 4
-  %1220 = load i32, ptr %arrayidx1132.4, align 4
-  %call1133.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1219, ptr noundef nonnull @.str.20, i32 noundef %1220) #16
-  %1221 = load ptr, ptr @stderr, align 8
+  %1130 = load i32, ptr %arrayidx1132.4, align 4
+  %call1133.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1129, ptr noundef nonnull @.str.20, i32 noundef %1130) #16
+  %1131 = load ptr, ptr @stderr, align 8
   %arrayidx1132.5 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 5
-  %1222 = load i32, ptr %arrayidx1132.5, align 4
-  %call1133.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1221, ptr noundef nonnull @.str.20, i32 noundef %1222) #16
-  %1223 = load ptr, ptr @stderr, align 8
+  %1132 = load i32, ptr %arrayidx1132.5, align 4
+  %call1133.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1131, ptr noundef nonnull @.str.20, i32 noundef %1132) #16
+  %1133 = load ptr, ptr @stderr, align 8
   %arrayidx1132.6 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 6
-  %1224 = load i32, ptr %arrayidx1132.6, align 4
-  %call1133.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1223, ptr noundef nonnull @.str.20, i32 noundef %1224) #16
-  %1225 = load ptr, ptr @stderr, align 8
+  %1134 = load i32, ptr %arrayidx1132.6, align 4
+  %call1133.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1133, ptr noundef nonnull @.str.20, i32 noundef %1134) #16
+  %1135 = load ptr, ptr @stderr, align 8
   %arrayidx1132.7 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 7
-  %1226 = load i32, ptr %arrayidx1132.7, align 4
-  %call1133.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1225, ptr noundef nonnull @.str.20, i32 noundef %1226) #16
-  %1227 = load ptr, ptr @stderr, align 8
+  %1136 = load i32, ptr %arrayidx1132.7, align 4
+  %call1133.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1135, ptr noundef nonnull @.str.20, i32 noundef %1136) #16
+  %1137 = load ptr, ptr @stderr, align 8
   %arrayidx1132.8 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 8
-  %1228 = load i32, ptr %arrayidx1132.8, align 4
-  %call1133.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1227, ptr noundef nonnull @.str.20, i32 noundef %1228) #16
-  %1229 = load ptr, ptr @stderr, align 8
+  %1138 = load i32, ptr %arrayidx1132.8, align 4
+  %call1133.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1137, ptr noundef nonnull @.str.20, i32 noundef %1138) #16
+  %1139 = load ptr, ptr @stderr, align 8
   %arrayidx1132.9 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 9
-  %1230 = load i32, ptr %arrayidx1132.9, align 4
-  %call1133.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1229, ptr noundef nonnull @.str.20, i32 noundef %1230) #16
-  %1231 = load ptr, ptr @stderr, align 8
+  %1140 = load i32, ptr %arrayidx1132.9, align 4
+  %call1133.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1139, ptr noundef nonnull @.str.20, i32 noundef %1140) #16
+  %1141 = load ptr, ptr @stderr, align 8
   %arrayidx1132.10 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 10
-  %1232 = load i32, ptr %arrayidx1132.10, align 4
-  %call1133.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1231, ptr noundef nonnull @.str.20, i32 noundef %1232) #16
-  %1233 = load ptr, ptr @stderr, align 8
+  %1142 = load i32, ptr %arrayidx1132.10, align 4
+  %call1133.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1141, ptr noundef nonnull @.str.20, i32 noundef %1142) #16
+  %1143 = load ptr, ptr @stderr, align 8
   %arrayidx1132.11 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 11
-  %1234 = load i32, ptr %arrayidx1132.11, align 4
-  %call1133.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1233, ptr noundef nonnull @.str.20, i32 noundef %1234) #16
-  %1235 = load ptr, ptr @stderr, align 8
+  %1144 = load i32, ptr %arrayidx1132.11, align 4
+  %call1133.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1143, ptr noundef nonnull @.str.20, i32 noundef %1144) #16
+  %1145 = load ptr, ptr @stderr, align 8
   %arrayidx1132.12 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 12
-  %1236 = load i32, ptr %arrayidx1132.12, align 4
-  %call1133.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1235, ptr noundef nonnull @.str.20, i32 noundef %1236) #16
-  %1237 = load ptr, ptr @stderr, align 8
+  %1146 = load i32, ptr %arrayidx1132.12, align 4
+  %call1133.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1145, ptr noundef nonnull @.str.20, i32 noundef %1146) #16
+  %1147 = load ptr, ptr @stderr, align 8
   %arrayidx1132.13 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 13
-  %1238 = load i32, ptr %arrayidx1132.13, align 4
-  %call1133.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1237, ptr noundef nonnull @.str.20, i32 noundef %1238) #16
-  %1239 = load ptr, ptr @stderr, align 8
+  %1148 = load i32, ptr %arrayidx1132.13, align 4
+  %call1133.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1147, ptr noundef nonnull @.str.20, i32 noundef %1148) #16
+  %1149 = load ptr, ptr @stderr, align 8
   %arrayidx1132.14 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 14
-  %1240 = load i32, ptr %arrayidx1132.14, align 4
-  %call1133.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1239, ptr noundef nonnull @.str.20, i32 noundef %1240) #16
-  %1241 = load ptr, ptr @stderr, align 8
+  %1150 = load i32, ptr %arrayidx1132.14, align 4
+  %call1133.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1149, ptr noundef nonnull @.str.20, i32 noundef %1150) #16
+  %1151 = load ptr, ptr @stderr, align 8
   %arrayidx1132.15 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 15
-  %1242 = load i32, ptr %arrayidx1132.15, align 4
-  %call1133.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1241, ptr noundef nonnull @.str.20, i32 noundef %1242) #16
-  %1243 = load ptr, ptr @stderr, align 8
+  %1152 = load i32, ptr %arrayidx1132.15, align 4
+  %call1133.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1151, ptr noundef nonnull @.str.20, i32 noundef %1152) #16
+  %1153 = load ptr, ptr @stderr, align 8
   %arrayidx1132.16 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 16
-  %1244 = load i32, ptr %arrayidx1132.16, align 4
-  %call1133.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1243, ptr noundef nonnull @.str.20, i32 noundef %1244) #16
-  %1245 = load ptr, ptr @stderr, align 8
+  %1154 = load i32, ptr %arrayidx1132.16, align 4
+  %call1133.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1153, ptr noundef nonnull @.str.20, i32 noundef %1154) #16
+  %1155 = load ptr, ptr @stderr, align 8
   %arrayidx1132.17 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 17
-  %1246 = load i32, ptr %arrayidx1132.17, align 4
-  %call1133.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1245, ptr noundef nonnull @.str.20, i32 noundef %1246) #16
-  %1247 = load ptr, ptr @stderr, align 8
+  %1156 = load i32, ptr %arrayidx1132.17, align 4
+  %call1133.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1155, ptr noundef nonnull @.str.20, i32 noundef %1156) #16
+  %1157 = load ptr, ptr @stderr, align 8
   %arrayidx1132.18 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 18
-  %1248 = load i32, ptr %arrayidx1132.18, align 4
-  %call1133.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1247, ptr noundef nonnull @.str.20, i32 noundef %1248) #16
-  %1249 = load ptr, ptr @stderr, align 8
+  %1158 = load i32, ptr %arrayidx1132.18, align 4
+  %call1133.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1157, ptr noundef nonnull @.str.20, i32 noundef %1158) #16
+  %1159 = load ptr, ptr @stderr, align 8
   %arrayidx1132.19 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 19
-  %1250 = load i32, ptr %arrayidx1132.19, align 4
-  %call1133.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1249, ptr noundef nonnull @.str.20, i32 noundef %1250) #16
-  %1251 = load ptr, ptr @stderr, align 8
+  %1160 = load i32, ptr %arrayidx1132.19, align 4
+  %call1133.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1159, ptr noundef nonnull @.str.20, i32 noundef %1160) #16
+  %1161 = load ptr, ptr @stderr, align 8
   %arrayidx1132.20 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 20
-  %1252 = load i32, ptr %arrayidx1132.20, align 4
-  %call1133.20 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1251, ptr noundef nonnull @.str.20, i32 noundef %1252) #16
-  %1253 = load ptr, ptr @stderr, align 8
+  %1162 = load i32, ptr %arrayidx1132.20, align 4
+  %call1133.20 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1161, ptr noundef nonnull @.str.20, i32 noundef %1162) #16
+  %1163 = load ptr, ptr @stderr, align 8
   %arrayidx1132.21 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 21
-  %1254 = load i32, ptr %arrayidx1132.21, align 4
-  %call1133.21 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1253, ptr noundef nonnull @.str.20, i32 noundef %1254) #16
-  %1255 = load ptr, ptr @stderr, align 8
+  %1164 = load i32, ptr %arrayidx1132.21, align 4
+  %call1133.21 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1163, ptr noundef nonnull @.str.20, i32 noundef %1164) #16
+  %1165 = load ptr, ptr @stderr, align 8
   %arrayidx1132.22 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 22
-  %1256 = load i32, ptr %arrayidx1132.22, align 4
-  %call1133.22 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1255, ptr noundef nonnull @.str.20, i32 noundef %1256) #16
-  %1257 = load ptr, ptr @stderr, align 8
+  %1166 = load i32, ptr %arrayidx1132.22, align 4
+  %call1133.22 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1165, ptr noundef nonnull @.str.20, i32 noundef %1166) #16
+  %1167 = load ptr, ptr @stderr, align 8
   %arrayidx1132.23 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 23
-  %1258 = load i32, ptr %arrayidx1132.23, align 4
-  %call1133.23 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1257, ptr noundef nonnull @.str.20, i32 noundef %1258) #16
-  %1259 = load ptr, ptr @stderr, align 8
+  %1168 = load i32, ptr %arrayidx1132.23, align 4
+  %call1133.23 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1167, ptr noundef nonnull @.str.20, i32 noundef %1168) #16
+  %1169 = load ptr, ptr @stderr, align 8
   %arrayidx1132.24 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 24
-  %1260 = load i32, ptr %arrayidx1132.24, align 4
-  %call1133.24 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1259, ptr noundef nonnull @.str.20, i32 noundef %1260) #16
-  %1261 = load ptr, ptr @stderr, align 8
+  %1170 = load i32, ptr %arrayidx1132.24, align 4
+  %call1133.24 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1169, ptr noundef nonnull @.str.20, i32 noundef %1170) #16
+  %1171 = load ptr, ptr @stderr, align 8
   %arrayidx1132.25 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 25
-  %1262 = load i32, ptr %arrayidx1132.25, align 4
-  %call1133.25 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1261, ptr noundef nonnull @.str.20, i32 noundef %1262) #16
-  %1263 = load ptr, ptr @stderr, align 8
+  %1172 = load i32, ptr %arrayidx1132.25, align 4
+  %call1133.25 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1171, ptr noundef nonnull @.str.20, i32 noundef %1172) #16
+  %1173 = load ptr, ptr @stderr, align 8
   %arrayidx1132.26 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 26
-  %1264 = load i32, ptr %arrayidx1132.26, align 4
-  %call1133.26 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1263, ptr noundef nonnull @.str.20, i32 noundef %1264) #16
-  %1265 = load ptr, ptr @stderr, align 8
+  %1174 = load i32, ptr %arrayidx1132.26, align 4
+  %call1133.26 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1173, ptr noundef nonnull @.str.20, i32 noundef %1174) #16
+  %1175 = load ptr, ptr @stderr, align 8
   %arrayidx1132.27 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 27
-  %1266 = load i32, ptr %arrayidx1132.27, align 4
-  %call1133.27 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1265, ptr noundef nonnull @.str.20, i32 noundef %1266) #16
-  %1267 = load ptr, ptr @stderr, align 8
+  %1176 = load i32, ptr %arrayidx1132.27, align 4
+  %call1133.27 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1175, ptr noundef nonnull @.str.20, i32 noundef %1176) #16
+  %1177 = load ptr, ptr @stderr, align 8
   %arrayidx1132.28 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 28
-  %1268 = load i32, ptr %arrayidx1132.28, align 4
-  %call1133.28 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1267, ptr noundef nonnull @.str.20, i32 noundef %1268) #16
-  %1269 = load ptr, ptr @stderr, align 8
+  %1178 = load i32, ptr %arrayidx1132.28, align 4
+  %call1133.28 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1177, ptr noundef nonnull @.str.20, i32 noundef %1178) #16
+  %1179 = load ptr, ptr @stderr, align 8
   %arrayidx1132.29 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 29
-  %1270 = load i32, ptr %arrayidx1132.29, align 4
-  %call1133.29 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1269, ptr noundef nonnull @.str.20, i32 noundef %1270) #16
-  %1271 = load ptr, ptr @stderr, align 8
+  %1180 = load i32, ptr %arrayidx1132.29, align 4
+  %call1133.29 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1179, ptr noundef nonnull @.str.20, i32 noundef %1180) #16
+  %1181 = load ptr, ptr @stderr, align 8
   %arrayidx1132.30 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 30
-  %1272 = load i32, ptr %arrayidx1132.30, align 4
-  %call1133.30 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1271, ptr noundef nonnull @.str.20, i32 noundef %1272) #16
-  %1273 = load ptr, ptr @stderr, align 8
+  %1182 = load i32, ptr %arrayidx1132.30, align 4
+  %call1133.30 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1181, ptr noundef nonnull @.str.20, i32 noundef %1182) #16
+  %1183 = load ptr, ptr @stderr, align 8
   %arrayidx1132.31 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 31
-  %1274 = load i32, ptr %arrayidx1132.31, align 4
-  %call1133.31 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1273, ptr noundef nonnull @.str.20, i32 noundef %1274) #16
-  %1275 = load ptr, ptr @stderr, align 8
+  %1184 = load i32, ptr %arrayidx1132.31, align 4
+  %call1133.31 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1183, ptr noundef nonnull @.str.20, i32 noundef %1184) #16
+  %1185 = load ptr, ptr @stderr, align 8
   %arrayidx1132.32 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 32
-  %1276 = load i32, ptr %arrayidx1132.32, align 4
-  %call1133.32 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1275, ptr noundef nonnull @.str.20, i32 noundef %1276) #16
-  %1277 = load ptr, ptr @stderr, align 8
+  %1186 = load i32, ptr %arrayidx1132.32, align 4
+  %call1133.32 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1185, ptr noundef nonnull @.str.20, i32 noundef %1186) #16
+  %1187 = load ptr, ptr @stderr, align 8
   %arrayidx1132.33 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 33
-  %1278 = load i32, ptr %arrayidx1132.33, align 4
-  %call1133.33 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1277, ptr noundef nonnull @.str.20, i32 noundef %1278) #16
-  %1279 = load ptr, ptr @stderr, align 8
+  %1188 = load i32, ptr %arrayidx1132.33, align 4
+  %call1133.33 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1187, ptr noundef nonnull @.str.20, i32 noundef %1188) #16
+  %1189 = load ptr, ptr @stderr, align 8
   %arrayidx1132.34 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 34
-  %1280 = load i32, ptr %arrayidx1132.34, align 4
-  %call1133.34 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1279, ptr noundef nonnull @.str.20, i32 noundef %1280) #16
-  %1281 = load ptr, ptr @stderr, align 8
+  %1190 = load i32, ptr %arrayidx1132.34, align 4
+  %call1133.34 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1189, ptr noundef nonnull @.str.20, i32 noundef %1190) #16
+  %1191 = load ptr, ptr @stderr, align 8
   %arrayidx1132.35 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 35
-  %1282 = load i32, ptr %arrayidx1132.35, align 4
-  %call1133.35 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1281, ptr noundef nonnull @.str.20, i32 noundef %1282) #16
-  %1283 = load ptr, ptr @stderr, align 8
+  %1192 = load i32, ptr %arrayidx1132.35, align 4
+  %call1133.35 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1191, ptr noundef nonnull @.str.20, i32 noundef %1192) #16
+  %1193 = load ptr, ptr @stderr, align 8
   %arrayidx1132.36 = getelementptr inbounds [37 x [37 x i32]], ptr @ribosumdis, i64 0, i64 %indvars.iv4345, i64 36
-  %1284 = load i32, ptr %arrayidx1132.36, align 4
-  %call1133.36 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1283, ptr noundef nonnull @.str.20, i32 noundef %1284) #16
-  %1285 = load ptr, ptr @stderr, align 8
-  %fputc3323 = tail call i32 @fputc(i32 10, ptr %1285)
+  %1194 = load i32, ptr %arrayidx1132.36, align 4
+  %call1133.36 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1193, ptr noundef nonnull @.str.20, i32 noundef %1194) #16
+  %1195 = load ptr, ptr @stderr, align 8
+  %fputc3323 = tail call i32 @fputc(i32 10, ptr %1195)
   %indvars.iv.next4346 = add nuw nsw i64 %indvars.iv4345, 1
   %exitcond4348.not = icmp eq i64 %indvars.iv.next4346, 37
   br i1 %exitcond4348.not, label %for.end1140, label %for.cond1125.preheader
 
 for.end1140:                                      ; preds = %for.cond1125.preheader
-  %1286 = load ptr, ptr @stderr, align 8
-  %fputc3322 = tail call i32 @fputc(i32 10, ptr %1286)
+  %1196 = load ptr, ptr @stderr, align 8
+  %fputc3322 = tail call i32 @fputc(i32 10, ptr %1196)
   br label %if.end1142
 
 if.end1142:                                       ; preds = %for.end1140, %for.end1117
-  %1287 = load ptr, ptr @stderr, align 8
-  %1288 = tail call i64 @fwrite(ptr nonnull @.str.12, i64 5, i64 1, ptr %1287) #16
+  %1197 = load ptr, ptr @stderr, align 8
+  %1198 = tail call i64 @fwrite(ptr nonnull @.str.12, i64 5, i64 1, ptr %1197) #16
   tail call void @FreeDoubleMtx(ptr noundef %call1) #15
   tail call void @FreeDoubleMtx(ptr noundef %call) #15
   tail call void @free(ptr noundef %call2) #15
@@ -5485,8 +4922,8 @@ if.end1142:                                       ; preds = %for.end1140, %for.e
 
 if.else1144:                                      ; preds = %entry
   %cmp1145 = icmp eq i32 %0, 112
-  %1289 = load i32, ptr @scoremtx, align 4
-  %cmp1147 = icmp eq i32 %1289, 1
+  %1199 = load i32, ptr @scoremtx, align 4
+  %cmp1147 = icmp eq i32 %1199, 1
   %or.cond = select i1 %cmp1145, i1 %cmp1147, i1 false
   br i1 %or.cond, label %if.then1149, label %if.else1505
 
@@ -5494,8 +4931,8 @@ if.then1149:                                      ; preds = %if.else1144
   %call1152 = tail call ptr @AllocateDoubleMtx(i32 noundef 20, i32 noundef 20) #15
   %call1153 = tail call ptr @AllocateDoubleVec(i32 noundef 20) #15
   %call1154 = tail call ptr @AllocateDoubleVec(i32 noundef 20) #15
-  %1290 = load i32, ptr @ppenalty, align 4
-  %cmp1155 = icmp eq i32 %1290, 100009
+  %1200 = load i32, ptr @ppenalty, align 4
+  %cmp1155 = icmp eq i32 %1200, 100009
   br i1 %cmp1155, label %if.then1157, label %if.end1158
 
 if.then1157:                                      ; preds = %if.then1149
@@ -5503,9 +4940,9 @@ if.then1157:                                      ; preds = %if.then1149
   br label %if.end1158
 
 if.end1158:                                       ; preds = %if.then1157, %if.then1149
-  %1291 = phi i32 [ -1530, %if.then1157 ], [ %1290, %if.then1149 ]
-  %1292 = load i32, ptr @ppenalty_OP, align 4
-  %cmp1159 = icmp eq i32 %1292, 100009
+  %1201 = phi i32 [ -1530, %if.then1157 ], [ %1200, %if.then1149 ]
+  %1202 = load i32, ptr @ppenalty_OP, align 4
+  %cmp1159 = icmp eq i32 %1202, 100009
   br i1 %cmp1159, label %if.then1161, label %if.end1162
 
 if.then1161:                                      ; preds = %if.end1158
@@ -5513,9 +4950,9 @@ if.then1161:                                      ; preds = %if.end1158
   br label %if.end1162
 
 if.end1162:                                       ; preds = %if.then1161, %if.end1158
-  %1293 = phi i32 [ -1530, %if.then1161 ], [ %1292, %if.end1158 ]
-  %1294 = load i32, ptr @ppenalty_ex, align 4
-  %cmp1163 = icmp eq i32 %1294, 100009
+  %1203 = phi i32 [ -1530, %if.then1161 ], [ %1202, %if.end1158 ]
+  %1204 = load i32, ptr @ppenalty_ex, align 4
+  %cmp1163 = icmp eq i32 %1204, 100009
   br i1 %cmp1163, label %if.then1165, label %if.end1166
 
 if.then1165:                                      ; preds = %if.end1162
@@ -5523,9 +4960,9 @@ if.then1165:                                      ; preds = %if.end1162
   br label %if.end1166
 
 if.end1166:                                       ; preds = %if.then1165, %if.end1162
-  %1295 = phi i32 [ 0, %if.then1165 ], [ %1294, %if.end1162 ]
-  %1296 = load i32, ptr @ppenalty_EX, align 4
-  %cmp1167 = icmp eq i32 %1296, 100009
+  %1205 = phi i32 [ 0, %if.then1165 ], [ %1204, %if.end1162 ]
+  %1206 = load i32, ptr @ppenalty_EX, align 4
+  %cmp1167 = icmp eq i32 %1206, 100009
   br i1 %cmp1167, label %if.then1169, label %if.end1170
 
 if.then1169:                                      ; preds = %if.end1166
@@ -5533,9 +4970,9 @@ if.then1169:                                      ; preds = %if.end1166
   br label %if.end1170
 
 if.end1170:                                       ; preds = %if.then1169, %if.end1166
-  %1297 = phi i32 [ 0, %if.then1169 ], [ %1296, %if.end1166 ]
-  %1298 = load i32, ptr @poffset, align 4
-  %cmp1171 = icmp eq i32 %1298, 100009
+  %1207 = phi i32 [ 0, %if.then1169 ], [ %1206, %if.end1166 ]
+  %1208 = load i32, ptr @poffset, align 4
+  %cmp1171 = icmp eq i32 %1208, 100009
   br i1 %cmp1171, label %if.then1173, label %if.end1174
 
 if.then1173:                                      ; preds = %if.end1170
@@ -5543,9 +4980,9 @@ if.then1173:                                      ; preds = %if.end1170
   br label %if.end1174
 
 if.end1174:                                       ; preds = %if.then1173, %if.end1170
-  %1299 = phi i32 [ -123, %if.then1173 ], [ %1298, %if.end1170 ]
-  %1300 = load i32, ptr @pamN, align 4
-  %cmp1175 = icmp eq i32 %1300, 100009
+  %1209 = phi i32 [ -123, %if.then1173 ], [ %1208, %if.end1170 ]
+  %1210 = load i32, ptr @pamN, align 4
+  %cmp1175 = icmp eq i32 %1210, 100009
   br i1 %cmp1175, label %if.then1177, label %if.end1178
 
 if.then1177:                                      ; preds = %if.end1174
@@ -5553,8 +4990,8 @@ if.then1177:                                      ; preds = %if.end1174
   br label %if.end1178
 
 if.end1178:                                       ; preds = %if.then1177, %if.end1174
-  %1301 = load i32, ptr @kimuraR, align 4
-  %cmp1179 = icmp eq i32 %1301, 100009
+  %1211 = load i32, ptr @kimuraR, align 4
+  %cmp1179 = icmp eq i32 %1211, 100009
   br i1 %cmp1179, label %if.then1181, label %if.end1182
 
 if.then1181:                                      ; preds = %if.end1178
@@ -5562,42 +4999,42 @@ if.then1181:                                      ; preds = %if.end1178
   br label %if.end1182
 
 if.end1182:                                       ; preds = %if.then1181, %if.end1178
-  %conv1183 = sitofp i32 %1291 to double
-  %1302 = tail call double @llvm.fmuladd.f64(double %conv1183, double 6.000000e-01, double 5.000000e-01)
-  %conv1185 = fptosi double %1302 to i32
+  %conv1183 = sitofp i32 %1201 to double
+  %1212 = tail call double @llvm.fmuladd.f64(double %conv1183, double 6.000000e-01, double 5.000000e-01)
+  %conv1185 = fptosi double %1212 to i32
   store i32 %conv1185, ptr @penalty, align 4
-  %conv1186 = sitofp i32 %1293 to double
-  %1303 = tail call double @llvm.fmuladd.f64(double %conv1186, double 6.000000e-01, double 5.000000e-01)
-  %conv1188 = fptosi double %1303 to i32
+  %conv1186 = sitofp i32 %1203 to double
+  %1213 = tail call double @llvm.fmuladd.f64(double %conv1186, double 6.000000e-01, double 5.000000e-01)
+  %conv1188 = fptosi double %1213 to i32
   store i32 %conv1188, ptr @penalty_OP, align 4
-  %conv1189 = sitofp i32 %1295 to double
-  %1304 = tail call double @llvm.fmuladd.f64(double %conv1189, double 6.000000e-01, double 5.000000e-01)
-  %conv1191 = fptosi double %1304 to i32
+  %conv1189 = sitofp i32 %1205 to double
+  %1214 = tail call double @llvm.fmuladd.f64(double %conv1189, double 6.000000e-01, double 5.000000e-01)
+  %conv1191 = fptosi double %1214 to i32
   store i32 %conv1191, ptr @penalty_ex, align 4
-  %conv1192 = sitofp i32 %1297 to double
-  %1305 = tail call double @llvm.fmuladd.f64(double %conv1192, double 6.000000e-01, double 5.000000e-01)
-  %conv1194 = fptosi double %1305 to i32
+  %conv1192 = sitofp i32 %1207 to double
+  %1215 = tail call double @llvm.fmuladd.f64(double %conv1192, double 6.000000e-01, double 5.000000e-01)
+  %conv1194 = fptosi double %1215 to i32
   store i32 %conv1194, ptr @penalty_EX, align 4
-  %conv1195 = sitofp i32 %1299 to double
-  %1306 = tail call double @llvm.fmuladd.f64(double %conv1195, double 6.000000e-01, double 5.000000e-01)
-  %conv1197 = fptosi double %1306 to i32
+  %conv1195 = sitofp i32 %1209 to double
+  %1216 = tail call double @llvm.fmuladd.f64(double %conv1195, double 6.000000e-01, double 5.000000e-01)
+  %conv1197 = fptosi double %1216 to i32
   store i32 %conv1197, ptr @offset, align 4
   store i32 0, ptr @offsetFFT, align 4
   store i32 60, ptr @offsetLN, align 4
   store i32 -1199, ptr @penaltyLN, align 4
   store i32 -59, ptr @penalty_exLN, align 4
-  %1307 = load i32, ptr @nblosum, align 4
-  tail call void @BLOSUMmtx(i32 noundef %1307, ptr noundef %call1152, ptr noundef %call1154, ptr noundef nonnull @amino, ptr noundef nonnull @amino_grp)
-  %1308 = load i32, ptr @nblosum, align 4
-  %cmp1198 = icmp eq i32 %1308, -1
-  %1309 = load i32, ptr @ppenalty, align 4
-  %conv1201 = sitofp i32 %1309 to double
+  %1217 = load i32, ptr @nblosum, align 4
+  tail call void @BLOSUMmtx(i32 noundef %1217, ptr noundef %call1152, ptr noundef %call1154, ptr noundef nonnull @amino, ptr noundef nonnull @amino_grp)
+  %1218 = load i32, ptr @nblosum, align 4
+  %cmp1198 = icmp eq i32 %1218, -1
+  %1219 = load i32, ptr @ppenalty, align 4
+  %conv1201 = sitofp i32 %1219 to double
   %div1203 = fdiv double %conv1201, -1.000000e+03
-  %1310 = load i32, ptr @poffset, align 4
-  %conv1204 = sitofp i32 %1310 to double
+  %1220 = load i32, ptr @poffset, align 4
+  %conv1204 = sitofp i32 %1220 to double
   %div1206 = fdiv double %conv1204, -1.000000e+03
-  %1311 = load i32, ptr @ppenalty_ex, align 4
-  %conv1207 = sitofp i32 %1311 to double
+  %1221 = load i32, ptr @ppenalty_ex, align 4
+  %conv1207 = sitofp i32 %1221 to double
   %div1209 = fdiv double %conv1207, -1.000000e+03
   br i1 %cmp1198, label %if.then1200, label %if.else1211
 
@@ -5606,117 +5043,117 @@ if.then1200:                                      ; preds = %if.end1182
   br label %if.end1222
 
 if.else1211:                                      ; preds = %if.end1182
-  %call1221 = tail call i32 (ptr, ptr, ...) @sprintf(ptr noundef nonnull dereferenceable(1) @modelname, ptr noundef nonnull dereferenceable(1) @.str.22, i32 noundef %1308, double noundef %div1203, double noundef %div1206, double noundef %div1209) #15
+  %call1221 = tail call i32 (ptr, ptr, ...) @sprintf(ptr noundef nonnull dereferenceable(1) @modelname, ptr noundef nonnull dereferenceable(1) @.str.22, i32 noundef %1218, double noundef %div1203, double noundef %div1206, double noundef %div1209) #15
   br label %if.end1222
 
 if.end1222:                                       ; preds = %if.else1211, %if.then1200
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(512) @amino_n, i8 -1, i64 512, i1 false)
-  %1312 = load i8, ptr @amino, align 16
-  %idxprom1239 = sext i8 %1312 to i64
+  %1222 = load i8, ptr @amino, align 16
+  %idxprom1239 = sext i8 %1222 to i64
   %arrayidx1240 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239
   store i32 0, ptr %arrayidx1240, align 4
-  %1313 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom1239.1 = sext i8 %1313 to i64
+  %1223 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom1239.1 = sext i8 %1223 to i64
   %arrayidx1240.1 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.1
   store i32 1, ptr %arrayidx1240.1, align 4
-  %1314 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom1239.2 = sext i8 %1314 to i64
+  %1224 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom1239.2 = sext i8 %1224 to i64
   %arrayidx1240.2 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.2
   store i32 2, ptr %arrayidx1240.2, align 4
-  %1315 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %idxprom1239.3 = sext i8 %1315 to i64
+  %1225 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %idxprom1239.3 = sext i8 %1225 to i64
   %arrayidx1240.3 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.3
   store i32 3, ptr %arrayidx1240.3, align 4
-  %1316 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %idxprom1239.4 = sext i8 %1316 to i64
+  %1226 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %idxprom1239.4 = sext i8 %1226 to i64
   %arrayidx1240.4 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.4
   store i32 4, ptr %arrayidx1240.4, align 4
-  %1317 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom1239.5 = sext i8 %1317 to i64
+  %1227 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom1239.5 = sext i8 %1227 to i64
   %arrayidx1240.5 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.5
   store i32 5, ptr %arrayidx1240.5, align 4
-  %1318 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom1239.6 = sext i8 %1318 to i64
+  %1228 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom1239.6 = sext i8 %1228 to i64
   %arrayidx1240.6 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.6
   store i32 6, ptr %arrayidx1240.6, align 4
-  %1319 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom1239.7 = sext i8 %1319 to i64
+  %1229 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom1239.7 = sext i8 %1229 to i64
   %arrayidx1240.7 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.7
   store i32 7, ptr %arrayidx1240.7, align 4
-  %1320 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %idxprom1239.8 = sext i8 %1320 to i64
+  %1230 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %idxprom1239.8 = sext i8 %1230 to i64
   %arrayidx1240.8 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.8
   store i32 8, ptr %arrayidx1240.8, align 4
-  %1321 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %idxprom1239.9 = sext i8 %1321 to i64
+  %1231 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %idxprom1239.9 = sext i8 %1231 to i64
   %arrayidx1240.9 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.9
   store i32 9, ptr %arrayidx1240.9, align 4
-  %1322 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
-  %idxprom1239.10 = sext i8 %1322 to i64
+  %1232 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
+  %idxprom1239.10 = sext i8 %1232 to i64
   %arrayidx1240.10 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.10
   store i32 10, ptr %arrayidx1240.10, align 4
-  %1323 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
-  %idxprom1239.11 = sext i8 %1323 to i64
+  %1233 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
+  %idxprom1239.11 = sext i8 %1233 to i64
   %arrayidx1240.11 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.11
   store i32 11, ptr %arrayidx1240.11, align 4
-  %1324 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
-  %idxprom1239.12 = sext i8 %1324 to i64
+  %1234 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
+  %idxprom1239.12 = sext i8 %1234 to i64
   %arrayidx1240.12 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.12
   store i32 12, ptr %arrayidx1240.12, align 4
-  %1325 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %idxprom1239.13 = sext i8 %1325 to i64
+  %1235 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %idxprom1239.13 = sext i8 %1235 to i64
   %arrayidx1240.13 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.13
   store i32 13, ptr %arrayidx1240.13, align 4
-  %1326 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %idxprom1239.14 = sext i8 %1326 to i64
+  %1236 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %idxprom1239.14 = sext i8 %1236 to i64
   %arrayidx1240.14 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.14
   store i32 14, ptr %arrayidx1240.14, align 4
-  %1327 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %idxprom1239.15 = sext i8 %1327 to i64
+  %1237 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %idxprom1239.15 = sext i8 %1237 to i64
   %arrayidx1240.15 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.15
   store i32 15, ptr %arrayidx1240.15, align 4
-  %1328 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %idxprom1239.16 = sext i8 %1328 to i64
+  %1238 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %idxprom1239.16 = sext i8 %1238 to i64
   %arrayidx1240.16 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.16
   store i32 16, ptr %arrayidx1240.16, align 4
-  %1329 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %idxprom1239.17 = sext i8 %1329 to i64
+  %1239 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %idxprom1239.17 = sext i8 %1239 to i64
   %arrayidx1240.17 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.17
   store i32 17, ptr %arrayidx1240.17, align 4
-  %1330 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %idxprom1239.18 = sext i8 %1330 to i64
+  %1240 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %idxprom1239.18 = sext i8 %1240 to i64
   %arrayidx1240.18 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.18
   store i32 18, ptr %arrayidx1240.18, align 4
-  %1331 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %idxprom1239.19 = sext i8 %1331 to i64
+  %1241 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %idxprom1239.19 = sext i8 %1241 to i64
   %arrayidx1240.19 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.19
   store i32 19, ptr %arrayidx1240.19, align 4
-  %1332 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
-  %idxprom1239.20 = sext i8 %1332 to i64
+  %1242 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
+  %idxprom1239.20 = sext i8 %1242 to i64
   %arrayidx1240.20 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.20
   store i32 20, ptr %arrayidx1240.20, align 4
-  %1333 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
-  %idxprom1239.21 = sext i8 %1333 to i64
+  %1243 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
+  %idxprom1239.21 = sext i8 %1243 to i64
   %arrayidx1240.21 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.21
   store i32 21, ptr %arrayidx1240.21, align 4
-  %1334 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
-  %idxprom1239.22 = sext i8 %1334 to i64
+  %1244 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
+  %idxprom1239.22 = sext i8 %1244 to i64
   %arrayidx1240.22 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.22
   store i32 22, ptr %arrayidx1240.22, align 4
-  %1335 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
-  %idxprom1239.23 = sext i8 %1335 to i64
+  %1245 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
+  %idxprom1239.23 = sext i8 %1245 to i64
   %arrayidx1240.23 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.23
   store i32 23, ptr %arrayidx1240.23, align 4
-  %1336 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
-  %idxprom1239.24 = sext i8 %1336 to i64
+  %1246 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
+  %idxprom1239.24 = sext i8 %1246 to i64
   %arrayidx1240.24 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.24
   store i32 24, ptr %arrayidx1240.24, align 4
-  %1337 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
-  %idxprom1239.25 = sext i8 %1337 to i64
+  %1247 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
+  %idxprom1239.25 = sext i8 %1247 to i64
   %arrayidx1240.25 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1239.25
   store i32 25, ptr %arrayidx1240.25, align 4
-  %1338 = load i32, ptr @fmodel, align 4
-  %cmp1244 = icmp eq i32 %1338, 1
+  %1248 = load i32, ptr @fmodel, align 4
+  %cmp1244 = icmp eq i32 %1248, 1
   br i1 %cmp1244, label %if.then1246, label %if.end1248
 
 if.then1246:                                      ; preds = %if.end1222
@@ -5725,9 +5162,9 @@ if.then1246:                                      ; preds = %if.end1222
   br label %if.end1248
 
 if.end1248:                                       ; preds = %if.end1222, %if.then1246
-  %1339 = phi i32 [ %1338, %if.end1222 ], [ %.pr3385, %if.then1246 ]
+  %1249 = phi i32 [ %1248, %if.end1222 ], [ %.pr3385, %if.then1246 ]
   %freq1.0 = phi ptr [ %call1154, %if.end1222 ], [ %call1153, %if.then1246 ]
-  %cmp1249 = icmp eq i32 %1339, -1
+  %cmp1249 = icmp eq i32 %1249, -1
   br i1 %cmp1249, label %if.end1284, label %for.cond1253.preheader
 
 for.cond1253.preheader:                           ; preds = %if.end1248
@@ -5759,402 +5196,402 @@ for.cond1253.preheader:                           ; preds = %if.end1248
   %.pre4576 = load double, ptr %arrayidx1276.16.phi.trans.insert, align 8
   %arrayidx1276.17.phi.trans.insert = getelementptr inbounds double, ptr %freq1.0, i64 17
   %.pre4577 = load double, ptr %arrayidx1276.17.phi.trans.insert, align 8
-  %1340 = load double, ptr %freq1.0, align 8
+  %1250 = load double, ptr %freq1.0, align 8
   %arrayidx1276.1 = getelementptr inbounds double, ptr %freq1.0, i64 1
-  %1341 = load double, ptr %arrayidx1276.1, align 8
+  %1251 = load double, ptr %arrayidx1276.1, align 8
   %arrayidx1276.2 = getelementptr inbounds double, ptr %freq1.0, i64 2
-  %1342 = load double, ptr %arrayidx1276.2, align 8
+  %1252 = load double, ptr %arrayidx1276.2, align 8
   %arrayidx1276.3 = getelementptr inbounds double, ptr %freq1.0, i64 3
-  %1343 = load double, ptr %arrayidx1276.3, align 8
+  %1253 = load double, ptr %arrayidx1276.3, align 8
   %arrayidx1276.18 = getelementptr inbounds double, ptr %freq1.0, i64 18
-  %1344 = load double, ptr %arrayidx1276.18, align 8
+  %1254 = load double, ptr %arrayidx1276.18, align 8
   %arrayidx1276.19 = getelementptr inbounds double, ptr %freq1.0, i64 19
-  %1345 = load double, ptr %arrayidx1276.19, align 8
+  %1255 = load double, ptr %arrayidx1276.19, align 8
   br label %for.cond1264.preheader
 
 for.cond1264.preheader:                           ; preds = %for.cond1253.preheader, %for.cond1264.preheader
   %indvars.iv3743 = phi i64 [ 0, %for.cond1253.preheader ], [ %indvars.iv.next3744, %for.cond1264.preheader ]
-  %average1151.13438 = phi double [ 0.000000e+00, %for.cond1253.preheader ], [ %1387, %for.cond1264.preheader ]
+  %average1151.13438 = phi double [ 0.000000e+00, %for.cond1253.preheader ], [ %1297, %for.cond1264.preheader ]
   %arrayidx1269 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3743
-  %1346 = load ptr, ptr %arrayidx1269, align 8
+  %1256 = load ptr, ptr %arrayidx1269, align 8
   %arrayidx1273 = getelementptr inbounds double, ptr %freq1.0, i64 %indvars.iv3743
-  %1347 = load double, ptr %arrayidx1273, align 8
-  %1348 = load double, ptr %1346, align 8
-  %mul1274 = fmul double %1348, %1347
-  %1349 = tail call double @llvm.fmuladd.f64(double %mul1274, double %1340, double %average1151.13438)
-  %arrayidx1271.1 = getelementptr inbounds double, ptr %1346, i64 1
-  %1350 = load double, ptr %arrayidx1271.1, align 8
-  %mul1274.1 = fmul double %1350, %1347
-  %1351 = tail call double @llvm.fmuladd.f64(double %mul1274.1, double %1341, double %1349)
-  %arrayidx1271.2 = getelementptr inbounds double, ptr %1346, i64 2
-  %1352 = load double, ptr %arrayidx1271.2, align 8
-  %mul1274.2 = fmul double %1352, %1347
-  %1353 = tail call double @llvm.fmuladd.f64(double %mul1274.2, double %1342, double %1351)
-  %arrayidx1271.3 = getelementptr inbounds double, ptr %1346, i64 3
-  %1354 = load double, ptr %arrayidx1271.3, align 8
-  %mul1274.3 = fmul double %1354, %1347
-  %1355 = tail call double @llvm.fmuladd.f64(double %mul1274.3, double %1343, double %1353)
-  %arrayidx1271.4 = getelementptr inbounds double, ptr %1346, i64 4
-  %1356 = load double, ptr %arrayidx1271.4, align 8
-  %mul1274.4 = fmul double %1356, %1347
-  %1357 = tail call double @llvm.fmuladd.f64(double %mul1274.4, double %.pre4564, double %1355)
-  %arrayidx1271.5 = getelementptr inbounds double, ptr %1346, i64 5
-  %1358 = load double, ptr %arrayidx1271.5, align 8
-  %mul1274.5 = fmul double %1358, %1347
-  %1359 = tail call double @llvm.fmuladd.f64(double %mul1274.5, double %.pre4565, double %1357)
-  %arrayidx1271.6 = getelementptr inbounds double, ptr %1346, i64 6
-  %1360 = load double, ptr %arrayidx1271.6, align 8
-  %mul1274.6 = fmul double %1360, %1347
-  %1361 = tail call double @llvm.fmuladd.f64(double %mul1274.6, double %.pre4566, double %1359)
-  %arrayidx1271.7 = getelementptr inbounds double, ptr %1346, i64 7
-  %1362 = load double, ptr %arrayidx1271.7, align 8
-  %mul1274.7 = fmul double %1362, %1347
-  %1363 = tail call double @llvm.fmuladd.f64(double %mul1274.7, double %.pre4567, double %1361)
-  %arrayidx1271.8 = getelementptr inbounds double, ptr %1346, i64 8
-  %1364 = load double, ptr %arrayidx1271.8, align 8
-  %mul1274.8 = fmul double %1364, %1347
-  %1365 = tail call double @llvm.fmuladd.f64(double %mul1274.8, double %.pre4568, double %1363)
-  %arrayidx1271.9 = getelementptr inbounds double, ptr %1346, i64 9
-  %1366 = load double, ptr %arrayidx1271.9, align 8
-  %mul1274.9 = fmul double %1366, %1347
-  %1367 = tail call double @llvm.fmuladd.f64(double %mul1274.9, double %.pre4569, double %1365)
-  %arrayidx1271.10 = getelementptr inbounds double, ptr %1346, i64 10
-  %1368 = load double, ptr %arrayidx1271.10, align 8
-  %mul1274.10 = fmul double %1368, %1347
-  %1369 = tail call double @llvm.fmuladd.f64(double %mul1274.10, double %.pre4570, double %1367)
-  %arrayidx1271.11 = getelementptr inbounds double, ptr %1346, i64 11
-  %1370 = load double, ptr %arrayidx1271.11, align 8
-  %mul1274.11 = fmul double %1370, %1347
-  %1371 = tail call double @llvm.fmuladd.f64(double %mul1274.11, double %.pre4571, double %1369)
-  %arrayidx1271.12 = getelementptr inbounds double, ptr %1346, i64 12
-  %1372 = load double, ptr %arrayidx1271.12, align 8
-  %mul1274.12 = fmul double %1372, %1347
-  %1373 = tail call double @llvm.fmuladd.f64(double %mul1274.12, double %.pre4572, double %1371)
-  %arrayidx1271.13 = getelementptr inbounds double, ptr %1346, i64 13
-  %1374 = load double, ptr %arrayidx1271.13, align 8
-  %mul1274.13 = fmul double %1374, %1347
-  %1375 = tail call double @llvm.fmuladd.f64(double %mul1274.13, double %.pre4573, double %1373)
-  %arrayidx1271.14 = getelementptr inbounds double, ptr %1346, i64 14
-  %1376 = load double, ptr %arrayidx1271.14, align 8
-  %mul1274.14 = fmul double %1376, %1347
-  %1377 = tail call double @llvm.fmuladd.f64(double %mul1274.14, double %.pre4574, double %1375)
-  %arrayidx1271.15 = getelementptr inbounds double, ptr %1346, i64 15
-  %1378 = load double, ptr %arrayidx1271.15, align 8
-  %mul1274.15 = fmul double %1378, %1347
-  %1379 = tail call double @llvm.fmuladd.f64(double %mul1274.15, double %.pre4575, double %1377)
-  %arrayidx1271.16 = getelementptr inbounds double, ptr %1346, i64 16
-  %1380 = load double, ptr %arrayidx1271.16, align 8
-  %mul1274.16 = fmul double %1380, %1347
-  %1381 = tail call double @llvm.fmuladd.f64(double %mul1274.16, double %.pre4576, double %1379)
-  %arrayidx1271.17 = getelementptr inbounds double, ptr %1346, i64 17
-  %1382 = load double, ptr %arrayidx1271.17, align 8
-  %mul1274.17 = fmul double %1382, %1347
-  %1383 = tail call double @llvm.fmuladd.f64(double %mul1274.17, double %.pre4577, double %1381)
-  %arrayidx1271.18 = getelementptr inbounds double, ptr %1346, i64 18
-  %1384 = load double, ptr %arrayidx1271.18, align 8
-  %mul1274.18 = fmul double %1384, %1347
-  %1385 = tail call double @llvm.fmuladd.f64(double %mul1274.18, double %1344, double %1383)
-  %arrayidx1271.19 = getelementptr inbounds double, ptr %1346, i64 19
-  %1386 = load double, ptr %arrayidx1271.19, align 8
-  %mul1274.19 = fmul double %1386, %1347
-  %1387 = tail call double @llvm.fmuladd.f64(double %mul1274.19, double %1345, double %1385)
+  %1257 = load double, ptr %arrayidx1273, align 8
+  %1258 = load double, ptr %1256, align 8
+  %mul1274 = fmul double %1258, %1257
+  %1259 = tail call double @llvm.fmuladd.f64(double %mul1274, double %1250, double %average1151.13438)
+  %arrayidx1271.1 = getelementptr inbounds double, ptr %1256, i64 1
+  %1260 = load double, ptr %arrayidx1271.1, align 8
+  %mul1274.1 = fmul double %1260, %1257
+  %1261 = tail call double @llvm.fmuladd.f64(double %mul1274.1, double %1251, double %1259)
+  %arrayidx1271.2 = getelementptr inbounds double, ptr %1256, i64 2
+  %1262 = load double, ptr %arrayidx1271.2, align 8
+  %mul1274.2 = fmul double %1262, %1257
+  %1263 = tail call double @llvm.fmuladd.f64(double %mul1274.2, double %1252, double %1261)
+  %arrayidx1271.3 = getelementptr inbounds double, ptr %1256, i64 3
+  %1264 = load double, ptr %arrayidx1271.3, align 8
+  %mul1274.3 = fmul double %1264, %1257
+  %1265 = tail call double @llvm.fmuladd.f64(double %mul1274.3, double %1253, double %1263)
+  %arrayidx1271.4 = getelementptr inbounds double, ptr %1256, i64 4
+  %1266 = load double, ptr %arrayidx1271.4, align 8
+  %mul1274.4 = fmul double %1266, %1257
+  %1267 = tail call double @llvm.fmuladd.f64(double %mul1274.4, double %.pre4564, double %1265)
+  %arrayidx1271.5 = getelementptr inbounds double, ptr %1256, i64 5
+  %1268 = load double, ptr %arrayidx1271.5, align 8
+  %mul1274.5 = fmul double %1268, %1257
+  %1269 = tail call double @llvm.fmuladd.f64(double %mul1274.5, double %.pre4565, double %1267)
+  %arrayidx1271.6 = getelementptr inbounds double, ptr %1256, i64 6
+  %1270 = load double, ptr %arrayidx1271.6, align 8
+  %mul1274.6 = fmul double %1270, %1257
+  %1271 = tail call double @llvm.fmuladd.f64(double %mul1274.6, double %.pre4566, double %1269)
+  %arrayidx1271.7 = getelementptr inbounds double, ptr %1256, i64 7
+  %1272 = load double, ptr %arrayidx1271.7, align 8
+  %mul1274.7 = fmul double %1272, %1257
+  %1273 = tail call double @llvm.fmuladd.f64(double %mul1274.7, double %.pre4567, double %1271)
+  %arrayidx1271.8 = getelementptr inbounds double, ptr %1256, i64 8
+  %1274 = load double, ptr %arrayidx1271.8, align 8
+  %mul1274.8 = fmul double %1274, %1257
+  %1275 = tail call double @llvm.fmuladd.f64(double %mul1274.8, double %.pre4568, double %1273)
+  %arrayidx1271.9 = getelementptr inbounds double, ptr %1256, i64 9
+  %1276 = load double, ptr %arrayidx1271.9, align 8
+  %mul1274.9 = fmul double %1276, %1257
+  %1277 = tail call double @llvm.fmuladd.f64(double %mul1274.9, double %.pre4569, double %1275)
+  %arrayidx1271.10 = getelementptr inbounds double, ptr %1256, i64 10
+  %1278 = load double, ptr %arrayidx1271.10, align 8
+  %mul1274.10 = fmul double %1278, %1257
+  %1279 = tail call double @llvm.fmuladd.f64(double %mul1274.10, double %.pre4570, double %1277)
+  %arrayidx1271.11 = getelementptr inbounds double, ptr %1256, i64 11
+  %1280 = load double, ptr %arrayidx1271.11, align 8
+  %mul1274.11 = fmul double %1280, %1257
+  %1281 = tail call double @llvm.fmuladd.f64(double %mul1274.11, double %.pre4571, double %1279)
+  %arrayidx1271.12 = getelementptr inbounds double, ptr %1256, i64 12
+  %1282 = load double, ptr %arrayidx1271.12, align 8
+  %mul1274.12 = fmul double %1282, %1257
+  %1283 = tail call double @llvm.fmuladd.f64(double %mul1274.12, double %.pre4572, double %1281)
+  %arrayidx1271.13 = getelementptr inbounds double, ptr %1256, i64 13
+  %1284 = load double, ptr %arrayidx1271.13, align 8
+  %mul1274.13 = fmul double %1284, %1257
+  %1285 = tail call double @llvm.fmuladd.f64(double %mul1274.13, double %.pre4573, double %1283)
+  %arrayidx1271.14 = getelementptr inbounds double, ptr %1256, i64 14
+  %1286 = load double, ptr %arrayidx1271.14, align 8
+  %mul1274.14 = fmul double %1286, %1257
+  %1287 = tail call double @llvm.fmuladd.f64(double %mul1274.14, double %.pre4574, double %1285)
+  %arrayidx1271.15 = getelementptr inbounds double, ptr %1256, i64 15
+  %1288 = load double, ptr %arrayidx1271.15, align 8
+  %mul1274.15 = fmul double %1288, %1257
+  %1289 = tail call double @llvm.fmuladd.f64(double %mul1274.15, double %.pre4575, double %1287)
+  %arrayidx1271.16 = getelementptr inbounds double, ptr %1256, i64 16
+  %1290 = load double, ptr %arrayidx1271.16, align 8
+  %mul1274.16 = fmul double %1290, %1257
+  %1291 = tail call double @llvm.fmuladd.f64(double %mul1274.16, double %.pre4576, double %1289)
+  %arrayidx1271.17 = getelementptr inbounds double, ptr %1256, i64 17
+  %1292 = load double, ptr %arrayidx1271.17, align 8
+  %mul1274.17 = fmul double %1292, %1257
+  %1293 = tail call double @llvm.fmuladd.f64(double %mul1274.17, double %.pre4577, double %1291)
+  %arrayidx1271.18 = getelementptr inbounds double, ptr %1256, i64 18
+  %1294 = load double, ptr %arrayidx1271.18, align 8
+  %mul1274.18 = fmul double %1294, %1257
+  %1295 = tail call double @llvm.fmuladd.f64(double %mul1274.18, double %1254, double %1293)
+  %arrayidx1271.19 = getelementptr inbounds double, ptr %1256, i64 19
+  %1296 = load double, ptr %arrayidx1271.19, align 8
+  %mul1274.19 = fmul double %1296, %1257
+  %1297 = tail call double @llvm.fmuladd.f64(double %mul1274.19, double %1255, double %1295)
   %indvars.iv.next3744 = add nuw nsw i64 %indvars.iv3743, 1
   %exitcond3746.not = icmp eq i64 %indvars.iv.next3744, 20
   br i1 %exitcond3746.not, label %if.end1284, label %for.cond1264.preheader
 
 if.end1284:                                       ; preds = %for.cond1264.preheader, %if.end1248
-  %average1151.3 = phi double [ 0.000000e+00, %if.end1248 ], [ %1387, %for.cond1264.preheader ]
-  %1388 = insertelement <2 x double> poison, double %average1151.3, i64 0
-  %1389 = shufflevector <2 x double> %1388, <2 x double> poison, <2 x i32> zeroinitializer
+  %average1151.3 = phi double [ 0.000000e+00, %if.end1248 ], [ %1297, %for.cond1264.preheader ]
+  %1298 = insertelement <2 x double> poison, double %average1151.3, i64 0
+  %1299 = shufflevector <2 x double> %1298, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond1289.preheader
 
 for.cond1289.preheader:                           ; preds = %if.end1284, %for.cond1289.preheader
   %indvars.iv3751 = phi i64 [ 0, %if.end1284 ], [ %indvars.iv.next3752, %for.cond1289.preheader ]
   %arrayidx1294 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3751
-  %1390 = load ptr, ptr %arrayidx1294, align 8
-  %1391 = load <2 x double>, ptr %1390, align 8
-  %1392 = fsub <2 x double> %1391, %1389
-  store <2 x double> %1392, ptr %1390, align 8
-  %arrayidx1296.2 = getelementptr inbounds double, ptr %1390, i64 2
-  %1393 = load <2 x double>, ptr %arrayidx1296.2, align 8
-  %1394 = fsub <2 x double> %1393, %1389
-  store <2 x double> %1394, ptr %arrayidx1296.2, align 8
-  %arrayidx1296.4 = getelementptr inbounds double, ptr %1390, i64 4
-  %1395 = load <2 x double>, ptr %arrayidx1296.4, align 8
-  %1396 = fsub <2 x double> %1395, %1389
-  store <2 x double> %1396, ptr %arrayidx1296.4, align 8
-  %arrayidx1296.6 = getelementptr inbounds double, ptr %1390, i64 6
-  %1397 = load <2 x double>, ptr %arrayidx1296.6, align 8
-  %1398 = fsub <2 x double> %1397, %1389
-  store <2 x double> %1398, ptr %arrayidx1296.6, align 8
-  %arrayidx1296.8 = getelementptr inbounds double, ptr %1390, i64 8
-  %1399 = load <2 x double>, ptr %arrayidx1296.8, align 8
-  %1400 = fsub <2 x double> %1399, %1389
-  store <2 x double> %1400, ptr %arrayidx1296.8, align 8
-  %arrayidx1296.10 = getelementptr inbounds double, ptr %1390, i64 10
-  %1401 = load <2 x double>, ptr %arrayidx1296.10, align 8
-  %1402 = fsub <2 x double> %1401, %1389
-  store <2 x double> %1402, ptr %arrayidx1296.10, align 8
-  %arrayidx1296.12 = getelementptr inbounds double, ptr %1390, i64 12
-  %1403 = load <2 x double>, ptr %arrayidx1296.12, align 8
-  %1404 = fsub <2 x double> %1403, %1389
-  store <2 x double> %1404, ptr %arrayidx1296.12, align 8
-  %arrayidx1296.14 = getelementptr inbounds double, ptr %1390, i64 14
-  %1405 = load <2 x double>, ptr %arrayidx1296.14, align 8
-  %1406 = fsub <2 x double> %1405, %1389
-  store <2 x double> %1406, ptr %arrayidx1296.14, align 8
-  %arrayidx1296.16 = getelementptr inbounds double, ptr %1390, i64 16
-  %1407 = load <2 x double>, ptr %arrayidx1296.16, align 8
-  %1408 = fsub <2 x double> %1407, %1389
-  store <2 x double> %1408, ptr %arrayidx1296.16, align 8
-  %arrayidx1296.18 = getelementptr inbounds double, ptr %1390, i64 18
-  %1409 = load <2 x double>, ptr %arrayidx1296.18, align 8
-  %1410 = fsub <2 x double> %1409, %1389
-  store <2 x double> %1410, ptr %arrayidx1296.18, align 8
+  %1300 = load ptr, ptr %arrayidx1294, align 8
+  %1301 = load <2 x double>, ptr %1300, align 8
+  %1302 = fsub <2 x double> %1301, %1299
+  store <2 x double> %1302, ptr %1300, align 8
+  %arrayidx1296.2 = getelementptr inbounds double, ptr %1300, i64 2
+  %1303 = load <2 x double>, ptr %arrayidx1296.2, align 8
+  %1304 = fsub <2 x double> %1303, %1299
+  store <2 x double> %1304, ptr %arrayidx1296.2, align 8
+  %arrayidx1296.4 = getelementptr inbounds double, ptr %1300, i64 4
+  %1305 = load <2 x double>, ptr %arrayidx1296.4, align 8
+  %1306 = fsub <2 x double> %1305, %1299
+  store <2 x double> %1306, ptr %arrayidx1296.4, align 8
+  %arrayidx1296.6 = getelementptr inbounds double, ptr %1300, i64 6
+  %1307 = load <2 x double>, ptr %arrayidx1296.6, align 8
+  %1308 = fsub <2 x double> %1307, %1299
+  store <2 x double> %1308, ptr %arrayidx1296.6, align 8
+  %arrayidx1296.8 = getelementptr inbounds double, ptr %1300, i64 8
+  %1309 = load <2 x double>, ptr %arrayidx1296.8, align 8
+  %1310 = fsub <2 x double> %1309, %1299
+  store <2 x double> %1310, ptr %arrayidx1296.8, align 8
+  %arrayidx1296.10 = getelementptr inbounds double, ptr %1300, i64 10
+  %1311 = load <2 x double>, ptr %arrayidx1296.10, align 8
+  %1312 = fsub <2 x double> %1311, %1299
+  store <2 x double> %1312, ptr %arrayidx1296.10, align 8
+  %arrayidx1296.12 = getelementptr inbounds double, ptr %1300, i64 12
+  %1313 = load <2 x double>, ptr %arrayidx1296.12, align 8
+  %1314 = fsub <2 x double> %1313, %1299
+  store <2 x double> %1314, ptr %arrayidx1296.12, align 8
+  %arrayidx1296.14 = getelementptr inbounds double, ptr %1300, i64 14
+  %1315 = load <2 x double>, ptr %arrayidx1296.14, align 8
+  %1316 = fsub <2 x double> %1315, %1299
+  store <2 x double> %1316, ptr %arrayidx1296.14, align 8
+  %arrayidx1296.16 = getelementptr inbounds double, ptr %1300, i64 16
+  %1317 = load <2 x double>, ptr %arrayidx1296.16, align 8
+  %1318 = fsub <2 x double> %1317, %1299
+  store <2 x double> %1318, ptr %arrayidx1296.16, align 8
+  %arrayidx1296.18 = getelementptr inbounds double, ptr %1300, i64 18
+  %1319 = load <2 x double>, ptr %arrayidx1296.18, align 8
+  %1320 = fsub <2 x double> %1319, %1299
+  store <2 x double> %1320, ptr %arrayidx1296.18, align 8
   %indvars.iv.next3752 = add nuw nsw i64 %indvars.iv3751, 1
   %exitcond3754.not = icmp eq i64 %indvars.iv.next3752, 20
   br i1 %exitcond3754.not, label %for.body1307.preheader, label %for.cond1289.preheader
 
 for.body1307.preheader:                           ; preds = %for.cond1289.preheader
-  %1411 = load ptr, ptr %call1152, align 8
-  %1412 = load double, ptr %1411, align 8
-  %1413 = load double, ptr %freq1.0, align 8
-  %1414 = tail call double @llvm.fmuladd.f64(double %1412, double %1413, double 0.000000e+00)
+  %1321 = load ptr, ptr %call1152, align 8
+  %1322 = load double, ptr %1321, align 8
+  %1323 = load double, ptr %freq1.0, align 8
+  %1324 = tail call double @llvm.fmuladd.f64(double %1322, double %1323, double 0.000000e+00)
   %arrayidx1309.1 = getelementptr inbounds ptr, ptr %call1152, i64 1
-  %1415 = load ptr, ptr %arrayidx1309.1, align 8
-  %arrayidx1311.1 = getelementptr inbounds double, ptr %1415, i64 1
-  %1416 = load double, ptr %arrayidx1311.1, align 8
+  %1325 = load ptr, ptr %arrayidx1309.1, align 8
+  %arrayidx1311.1 = getelementptr inbounds double, ptr %1325, i64 1
+  %1326 = load double, ptr %arrayidx1311.1, align 8
   %arrayidx1313.1 = getelementptr inbounds double, ptr %freq1.0, i64 1
-  %1417 = load double, ptr %arrayidx1313.1, align 8
-  %1418 = tail call double @llvm.fmuladd.f64(double %1416, double %1417, double %1414)
+  %1327 = load double, ptr %arrayidx1313.1, align 8
+  %1328 = tail call double @llvm.fmuladd.f64(double %1326, double %1327, double %1324)
   %arrayidx1309.2 = getelementptr inbounds ptr, ptr %call1152, i64 2
-  %1419 = load ptr, ptr %arrayidx1309.2, align 8
-  %arrayidx1311.2 = getelementptr inbounds double, ptr %1419, i64 2
-  %1420 = load double, ptr %arrayidx1311.2, align 8
+  %1329 = load ptr, ptr %arrayidx1309.2, align 8
+  %arrayidx1311.2 = getelementptr inbounds double, ptr %1329, i64 2
+  %1330 = load double, ptr %arrayidx1311.2, align 8
   %arrayidx1313.2 = getelementptr inbounds double, ptr %freq1.0, i64 2
-  %1421 = load double, ptr %arrayidx1313.2, align 8
-  %1422 = tail call double @llvm.fmuladd.f64(double %1420, double %1421, double %1418)
+  %1331 = load double, ptr %arrayidx1313.2, align 8
+  %1332 = tail call double @llvm.fmuladd.f64(double %1330, double %1331, double %1328)
   %arrayidx1309.3 = getelementptr inbounds ptr, ptr %call1152, i64 3
-  %1423 = load ptr, ptr %arrayidx1309.3, align 8
-  %arrayidx1311.3 = getelementptr inbounds double, ptr %1423, i64 3
-  %1424 = load double, ptr %arrayidx1311.3, align 8
+  %1333 = load ptr, ptr %arrayidx1309.3, align 8
+  %arrayidx1311.3 = getelementptr inbounds double, ptr %1333, i64 3
+  %1334 = load double, ptr %arrayidx1311.3, align 8
   %arrayidx1313.3 = getelementptr inbounds double, ptr %freq1.0, i64 3
-  %1425 = load double, ptr %arrayidx1313.3, align 8
-  %1426 = tail call double @llvm.fmuladd.f64(double %1424, double %1425, double %1422)
+  %1335 = load double, ptr %arrayidx1313.3, align 8
+  %1336 = tail call double @llvm.fmuladd.f64(double %1334, double %1335, double %1332)
   %arrayidx1309.4 = getelementptr inbounds ptr, ptr %call1152, i64 4
-  %1427 = load ptr, ptr %arrayidx1309.4, align 8
-  %arrayidx1311.4 = getelementptr inbounds double, ptr %1427, i64 4
-  %1428 = load double, ptr %arrayidx1311.4, align 8
+  %1337 = load ptr, ptr %arrayidx1309.4, align 8
+  %arrayidx1311.4 = getelementptr inbounds double, ptr %1337, i64 4
+  %1338 = load double, ptr %arrayidx1311.4, align 8
   %arrayidx1313.4 = getelementptr inbounds double, ptr %freq1.0, i64 4
-  %1429 = load double, ptr %arrayidx1313.4, align 8
-  %1430 = tail call double @llvm.fmuladd.f64(double %1428, double %1429, double %1426)
+  %1339 = load double, ptr %arrayidx1313.4, align 8
+  %1340 = tail call double @llvm.fmuladd.f64(double %1338, double %1339, double %1336)
   %arrayidx1309.5 = getelementptr inbounds ptr, ptr %call1152, i64 5
-  %1431 = load ptr, ptr %arrayidx1309.5, align 8
-  %arrayidx1311.5 = getelementptr inbounds double, ptr %1431, i64 5
-  %1432 = load double, ptr %arrayidx1311.5, align 8
+  %1341 = load ptr, ptr %arrayidx1309.5, align 8
+  %arrayidx1311.5 = getelementptr inbounds double, ptr %1341, i64 5
+  %1342 = load double, ptr %arrayidx1311.5, align 8
   %arrayidx1313.5 = getelementptr inbounds double, ptr %freq1.0, i64 5
-  %1433 = load double, ptr %arrayidx1313.5, align 8
-  %1434 = tail call double @llvm.fmuladd.f64(double %1432, double %1433, double %1430)
+  %1343 = load double, ptr %arrayidx1313.5, align 8
+  %1344 = tail call double @llvm.fmuladd.f64(double %1342, double %1343, double %1340)
   %arrayidx1309.6 = getelementptr inbounds ptr, ptr %call1152, i64 6
-  %1435 = load ptr, ptr %arrayidx1309.6, align 8
-  %arrayidx1311.6 = getelementptr inbounds double, ptr %1435, i64 6
-  %1436 = load double, ptr %arrayidx1311.6, align 8
+  %1345 = load ptr, ptr %arrayidx1309.6, align 8
+  %arrayidx1311.6 = getelementptr inbounds double, ptr %1345, i64 6
+  %1346 = load double, ptr %arrayidx1311.6, align 8
   %arrayidx1313.6 = getelementptr inbounds double, ptr %freq1.0, i64 6
-  %1437 = load double, ptr %arrayidx1313.6, align 8
-  %1438 = tail call double @llvm.fmuladd.f64(double %1436, double %1437, double %1434)
+  %1347 = load double, ptr %arrayidx1313.6, align 8
+  %1348 = tail call double @llvm.fmuladd.f64(double %1346, double %1347, double %1344)
   %arrayidx1309.7 = getelementptr inbounds ptr, ptr %call1152, i64 7
-  %1439 = load ptr, ptr %arrayidx1309.7, align 8
-  %arrayidx1311.7 = getelementptr inbounds double, ptr %1439, i64 7
-  %1440 = load double, ptr %arrayidx1311.7, align 8
+  %1349 = load ptr, ptr %arrayidx1309.7, align 8
+  %arrayidx1311.7 = getelementptr inbounds double, ptr %1349, i64 7
+  %1350 = load double, ptr %arrayidx1311.7, align 8
   %arrayidx1313.7 = getelementptr inbounds double, ptr %freq1.0, i64 7
-  %1441 = load double, ptr %arrayidx1313.7, align 8
-  %1442 = tail call double @llvm.fmuladd.f64(double %1440, double %1441, double %1438)
+  %1351 = load double, ptr %arrayidx1313.7, align 8
+  %1352 = tail call double @llvm.fmuladd.f64(double %1350, double %1351, double %1348)
   %arrayidx1309.8 = getelementptr inbounds ptr, ptr %call1152, i64 8
-  %1443 = load ptr, ptr %arrayidx1309.8, align 8
-  %arrayidx1311.8 = getelementptr inbounds double, ptr %1443, i64 8
-  %1444 = load double, ptr %arrayidx1311.8, align 8
+  %1353 = load ptr, ptr %arrayidx1309.8, align 8
+  %arrayidx1311.8 = getelementptr inbounds double, ptr %1353, i64 8
+  %1354 = load double, ptr %arrayidx1311.8, align 8
   %arrayidx1313.8 = getelementptr inbounds double, ptr %freq1.0, i64 8
-  %1445 = load double, ptr %arrayidx1313.8, align 8
-  %1446 = tail call double @llvm.fmuladd.f64(double %1444, double %1445, double %1442)
+  %1355 = load double, ptr %arrayidx1313.8, align 8
+  %1356 = tail call double @llvm.fmuladd.f64(double %1354, double %1355, double %1352)
   %arrayidx1309.9 = getelementptr inbounds ptr, ptr %call1152, i64 9
-  %1447 = load ptr, ptr %arrayidx1309.9, align 8
-  %arrayidx1311.9 = getelementptr inbounds double, ptr %1447, i64 9
-  %1448 = load double, ptr %arrayidx1311.9, align 8
+  %1357 = load ptr, ptr %arrayidx1309.9, align 8
+  %arrayidx1311.9 = getelementptr inbounds double, ptr %1357, i64 9
+  %1358 = load double, ptr %arrayidx1311.9, align 8
   %arrayidx1313.9 = getelementptr inbounds double, ptr %freq1.0, i64 9
-  %1449 = load double, ptr %arrayidx1313.9, align 8
-  %1450 = tail call double @llvm.fmuladd.f64(double %1448, double %1449, double %1446)
+  %1359 = load double, ptr %arrayidx1313.9, align 8
+  %1360 = tail call double @llvm.fmuladd.f64(double %1358, double %1359, double %1356)
   %arrayidx1309.10 = getelementptr inbounds ptr, ptr %call1152, i64 10
-  %1451 = load ptr, ptr %arrayidx1309.10, align 8
-  %arrayidx1311.10 = getelementptr inbounds double, ptr %1451, i64 10
-  %1452 = load double, ptr %arrayidx1311.10, align 8
+  %1361 = load ptr, ptr %arrayidx1309.10, align 8
+  %arrayidx1311.10 = getelementptr inbounds double, ptr %1361, i64 10
+  %1362 = load double, ptr %arrayidx1311.10, align 8
   %arrayidx1313.10 = getelementptr inbounds double, ptr %freq1.0, i64 10
-  %1453 = load double, ptr %arrayidx1313.10, align 8
-  %1454 = tail call double @llvm.fmuladd.f64(double %1452, double %1453, double %1450)
+  %1363 = load double, ptr %arrayidx1313.10, align 8
+  %1364 = tail call double @llvm.fmuladd.f64(double %1362, double %1363, double %1360)
   %arrayidx1309.11 = getelementptr inbounds ptr, ptr %call1152, i64 11
-  %1455 = load ptr, ptr %arrayidx1309.11, align 8
-  %arrayidx1311.11 = getelementptr inbounds double, ptr %1455, i64 11
-  %1456 = load double, ptr %arrayidx1311.11, align 8
+  %1365 = load ptr, ptr %arrayidx1309.11, align 8
+  %arrayidx1311.11 = getelementptr inbounds double, ptr %1365, i64 11
+  %1366 = load double, ptr %arrayidx1311.11, align 8
   %arrayidx1313.11 = getelementptr inbounds double, ptr %freq1.0, i64 11
-  %1457 = load double, ptr %arrayidx1313.11, align 8
-  %1458 = tail call double @llvm.fmuladd.f64(double %1456, double %1457, double %1454)
+  %1367 = load double, ptr %arrayidx1313.11, align 8
+  %1368 = tail call double @llvm.fmuladd.f64(double %1366, double %1367, double %1364)
   %arrayidx1309.12 = getelementptr inbounds ptr, ptr %call1152, i64 12
-  %1459 = load ptr, ptr %arrayidx1309.12, align 8
-  %arrayidx1311.12 = getelementptr inbounds double, ptr %1459, i64 12
-  %1460 = load double, ptr %arrayidx1311.12, align 8
+  %1369 = load ptr, ptr %arrayidx1309.12, align 8
+  %arrayidx1311.12 = getelementptr inbounds double, ptr %1369, i64 12
+  %1370 = load double, ptr %arrayidx1311.12, align 8
   %arrayidx1313.12 = getelementptr inbounds double, ptr %freq1.0, i64 12
-  %1461 = load double, ptr %arrayidx1313.12, align 8
-  %1462 = tail call double @llvm.fmuladd.f64(double %1460, double %1461, double %1458)
+  %1371 = load double, ptr %arrayidx1313.12, align 8
+  %1372 = tail call double @llvm.fmuladd.f64(double %1370, double %1371, double %1368)
   %arrayidx1309.13 = getelementptr inbounds ptr, ptr %call1152, i64 13
-  %1463 = load ptr, ptr %arrayidx1309.13, align 8
-  %arrayidx1311.13 = getelementptr inbounds double, ptr %1463, i64 13
-  %1464 = load double, ptr %arrayidx1311.13, align 8
+  %1373 = load ptr, ptr %arrayidx1309.13, align 8
+  %arrayidx1311.13 = getelementptr inbounds double, ptr %1373, i64 13
+  %1374 = load double, ptr %arrayidx1311.13, align 8
   %arrayidx1313.13 = getelementptr inbounds double, ptr %freq1.0, i64 13
-  %1465 = load double, ptr %arrayidx1313.13, align 8
-  %1466 = tail call double @llvm.fmuladd.f64(double %1464, double %1465, double %1462)
+  %1375 = load double, ptr %arrayidx1313.13, align 8
+  %1376 = tail call double @llvm.fmuladd.f64(double %1374, double %1375, double %1372)
   %arrayidx1309.14 = getelementptr inbounds ptr, ptr %call1152, i64 14
-  %1467 = load ptr, ptr %arrayidx1309.14, align 8
-  %arrayidx1311.14 = getelementptr inbounds double, ptr %1467, i64 14
-  %1468 = load double, ptr %arrayidx1311.14, align 8
+  %1377 = load ptr, ptr %arrayidx1309.14, align 8
+  %arrayidx1311.14 = getelementptr inbounds double, ptr %1377, i64 14
+  %1378 = load double, ptr %arrayidx1311.14, align 8
   %arrayidx1313.14 = getelementptr inbounds double, ptr %freq1.0, i64 14
-  %1469 = load double, ptr %arrayidx1313.14, align 8
-  %1470 = tail call double @llvm.fmuladd.f64(double %1468, double %1469, double %1466)
+  %1379 = load double, ptr %arrayidx1313.14, align 8
+  %1380 = tail call double @llvm.fmuladd.f64(double %1378, double %1379, double %1376)
   %arrayidx1309.15 = getelementptr inbounds ptr, ptr %call1152, i64 15
-  %1471 = load ptr, ptr %arrayidx1309.15, align 8
-  %arrayidx1311.15 = getelementptr inbounds double, ptr %1471, i64 15
-  %1472 = load double, ptr %arrayidx1311.15, align 8
+  %1381 = load ptr, ptr %arrayidx1309.15, align 8
+  %arrayidx1311.15 = getelementptr inbounds double, ptr %1381, i64 15
+  %1382 = load double, ptr %arrayidx1311.15, align 8
   %arrayidx1313.15 = getelementptr inbounds double, ptr %freq1.0, i64 15
-  %1473 = load double, ptr %arrayidx1313.15, align 8
-  %1474 = tail call double @llvm.fmuladd.f64(double %1472, double %1473, double %1470)
+  %1383 = load double, ptr %arrayidx1313.15, align 8
+  %1384 = tail call double @llvm.fmuladd.f64(double %1382, double %1383, double %1380)
   %arrayidx1309.16 = getelementptr inbounds ptr, ptr %call1152, i64 16
-  %1475 = load ptr, ptr %arrayidx1309.16, align 8
-  %arrayidx1311.16 = getelementptr inbounds double, ptr %1475, i64 16
-  %1476 = load double, ptr %arrayidx1311.16, align 8
+  %1385 = load ptr, ptr %arrayidx1309.16, align 8
+  %arrayidx1311.16 = getelementptr inbounds double, ptr %1385, i64 16
+  %1386 = load double, ptr %arrayidx1311.16, align 8
   %arrayidx1313.16 = getelementptr inbounds double, ptr %freq1.0, i64 16
-  %1477 = load double, ptr %arrayidx1313.16, align 8
-  %1478 = tail call double @llvm.fmuladd.f64(double %1476, double %1477, double %1474)
+  %1387 = load double, ptr %arrayidx1313.16, align 8
+  %1388 = tail call double @llvm.fmuladd.f64(double %1386, double %1387, double %1384)
   %arrayidx1309.17 = getelementptr inbounds ptr, ptr %call1152, i64 17
-  %1479 = load ptr, ptr %arrayidx1309.17, align 8
-  %arrayidx1311.17 = getelementptr inbounds double, ptr %1479, i64 17
-  %1480 = load double, ptr %arrayidx1311.17, align 8
+  %1389 = load ptr, ptr %arrayidx1309.17, align 8
+  %arrayidx1311.17 = getelementptr inbounds double, ptr %1389, i64 17
+  %1390 = load double, ptr %arrayidx1311.17, align 8
   %arrayidx1313.17 = getelementptr inbounds double, ptr %freq1.0, i64 17
-  %1481 = load double, ptr %arrayidx1313.17, align 8
-  %1482 = tail call double @llvm.fmuladd.f64(double %1480, double %1481, double %1478)
+  %1391 = load double, ptr %arrayidx1313.17, align 8
+  %1392 = tail call double @llvm.fmuladd.f64(double %1390, double %1391, double %1388)
   %arrayidx1309.18 = getelementptr inbounds ptr, ptr %call1152, i64 18
-  %1483 = load ptr, ptr %arrayidx1309.18, align 8
-  %arrayidx1311.18 = getelementptr inbounds double, ptr %1483, i64 18
-  %1484 = load double, ptr %arrayidx1311.18, align 8
+  %1393 = load ptr, ptr %arrayidx1309.18, align 8
+  %arrayidx1311.18 = getelementptr inbounds double, ptr %1393, i64 18
+  %1394 = load double, ptr %arrayidx1311.18, align 8
   %arrayidx1313.18 = getelementptr inbounds double, ptr %freq1.0, i64 18
-  %1485 = load double, ptr %arrayidx1313.18, align 8
-  %1486 = tail call double @llvm.fmuladd.f64(double %1484, double %1485, double %1482)
+  %1395 = load double, ptr %arrayidx1313.18, align 8
+  %1396 = tail call double @llvm.fmuladd.f64(double %1394, double %1395, double %1392)
   %arrayidx1309.19 = getelementptr inbounds ptr, ptr %call1152, i64 19
-  %1487 = load ptr, ptr %arrayidx1309.19, align 8
-  %arrayidx1311.19 = getelementptr inbounds double, ptr %1487, i64 19
-  %1488 = load double, ptr %arrayidx1311.19, align 8
+  %1397 = load ptr, ptr %arrayidx1309.19, align 8
+  %arrayidx1311.19 = getelementptr inbounds double, ptr %1397, i64 19
+  %1398 = load double, ptr %arrayidx1311.19, align 8
   %arrayidx1313.19 = getelementptr inbounds double, ptr %freq1.0, i64 19
-  %1489 = load double, ptr %arrayidx1313.19, align 8
-  %1490 = tail call double @llvm.fmuladd.f64(double %1488, double %1489, double %1486)
-  %div1326 = fdiv double 6.000000e+02, %1490
-  %1491 = insertelement <2 x double> poison, double %div1326, i64 0
-  %1492 = shufflevector <2 x double> %1491, <2 x double> poison, <2 x i32> zeroinitializer
+  %1399 = load double, ptr %arrayidx1313.19, align 8
+  %1400 = tail call double @llvm.fmuladd.f64(double %1398, double %1399, double %1396)
+  %div1326 = fdiv double 6.000000e+02, %1400
+  %1401 = insertelement <2 x double> poison, double %div1326, i64 0
+  %1402 = shufflevector <2 x double> %1401, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond1322.preheader
 
 for.cond1322.preheader:                           ; preds = %for.body1307.preheader, %for.cond1322.preheader
   %indvars.iv3763 = phi i64 [ 0, %for.body1307.preheader ], [ %indvars.iv.next3764, %for.cond1322.preheader ]
   %arrayidx1328 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3763
-  %1493 = load ptr, ptr %arrayidx1328, align 8
-  %1494 = load <2 x double>, ptr %1493, align 8
-  %1495 = fmul <2 x double> %1492, %1494
-  store <2 x double> %1495, ptr %1493, align 8
-  %arrayidx1330.2 = getelementptr inbounds double, ptr %1493, i64 2
-  %1496 = load <2 x double>, ptr %arrayidx1330.2, align 8
-  %1497 = fmul <2 x double> %1492, %1496
-  store <2 x double> %1497, ptr %arrayidx1330.2, align 8
-  %arrayidx1330.4 = getelementptr inbounds double, ptr %1493, i64 4
-  %1498 = load <2 x double>, ptr %arrayidx1330.4, align 8
-  %1499 = fmul <2 x double> %1492, %1498
-  store <2 x double> %1499, ptr %arrayidx1330.4, align 8
-  %arrayidx1330.6 = getelementptr inbounds double, ptr %1493, i64 6
-  %1500 = load <2 x double>, ptr %arrayidx1330.6, align 8
-  %1501 = fmul <2 x double> %1492, %1500
-  store <2 x double> %1501, ptr %arrayidx1330.6, align 8
-  %arrayidx1330.8 = getelementptr inbounds double, ptr %1493, i64 8
-  %1502 = load <2 x double>, ptr %arrayidx1330.8, align 8
-  %1503 = fmul <2 x double> %1492, %1502
-  store <2 x double> %1503, ptr %arrayidx1330.8, align 8
-  %arrayidx1330.10 = getelementptr inbounds double, ptr %1493, i64 10
-  %1504 = load <2 x double>, ptr %arrayidx1330.10, align 8
-  %1505 = fmul <2 x double> %1492, %1504
-  store <2 x double> %1505, ptr %arrayidx1330.10, align 8
-  %arrayidx1330.12 = getelementptr inbounds double, ptr %1493, i64 12
-  %1506 = load <2 x double>, ptr %arrayidx1330.12, align 8
-  %1507 = fmul <2 x double> %1492, %1506
-  store <2 x double> %1507, ptr %arrayidx1330.12, align 8
-  %arrayidx1330.14 = getelementptr inbounds double, ptr %1493, i64 14
-  %1508 = load <2 x double>, ptr %arrayidx1330.14, align 8
-  %1509 = fmul <2 x double> %1492, %1508
-  store <2 x double> %1509, ptr %arrayidx1330.14, align 8
-  %arrayidx1330.16 = getelementptr inbounds double, ptr %1493, i64 16
-  %1510 = load <2 x double>, ptr %arrayidx1330.16, align 8
-  %1511 = fmul <2 x double> %1492, %1510
-  store <2 x double> %1511, ptr %arrayidx1330.16, align 8
-  %arrayidx1330.18 = getelementptr inbounds double, ptr %1493, i64 18
-  %1512 = load <2 x double>, ptr %arrayidx1330.18, align 8
-  %1513 = fmul <2 x double> %1492, %1512
-  store <2 x double> %1513, ptr %arrayidx1330.18, align 8
+  %1403 = load ptr, ptr %arrayidx1328, align 8
+  %1404 = load <2 x double>, ptr %1403, align 8
+  %1405 = fmul <2 x double> %1402, %1404
+  store <2 x double> %1405, ptr %1403, align 8
+  %arrayidx1330.2 = getelementptr inbounds double, ptr %1403, i64 2
+  %1406 = load <2 x double>, ptr %arrayidx1330.2, align 8
+  %1407 = fmul <2 x double> %1402, %1406
+  store <2 x double> %1407, ptr %arrayidx1330.2, align 8
+  %arrayidx1330.4 = getelementptr inbounds double, ptr %1403, i64 4
+  %1408 = load <2 x double>, ptr %arrayidx1330.4, align 8
+  %1409 = fmul <2 x double> %1402, %1408
+  store <2 x double> %1409, ptr %arrayidx1330.4, align 8
+  %arrayidx1330.6 = getelementptr inbounds double, ptr %1403, i64 6
+  %1410 = load <2 x double>, ptr %arrayidx1330.6, align 8
+  %1411 = fmul <2 x double> %1402, %1410
+  store <2 x double> %1411, ptr %arrayidx1330.6, align 8
+  %arrayidx1330.8 = getelementptr inbounds double, ptr %1403, i64 8
+  %1412 = load <2 x double>, ptr %arrayidx1330.8, align 8
+  %1413 = fmul <2 x double> %1402, %1412
+  store <2 x double> %1413, ptr %arrayidx1330.8, align 8
+  %arrayidx1330.10 = getelementptr inbounds double, ptr %1403, i64 10
+  %1414 = load <2 x double>, ptr %arrayidx1330.10, align 8
+  %1415 = fmul <2 x double> %1402, %1414
+  store <2 x double> %1415, ptr %arrayidx1330.10, align 8
+  %arrayidx1330.12 = getelementptr inbounds double, ptr %1403, i64 12
+  %1416 = load <2 x double>, ptr %arrayidx1330.12, align 8
+  %1417 = fmul <2 x double> %1402, %1416
+  store <2 x double> %1417, ptr %arrayidx1330.12, align 8
+  %arrayidx1330.14 = getelementptr inbounds double, ptr %1403, i64 14
+  %1418 = load <2 x double>, ptr %arrayidx1330.14, align 8
+  %1419 = fmul <2 x double> %1402, %1418
+  store <2 x double> %1419, ptr %arrayidx1330.14, align 8
+  %arrayidx1330.16 = getelementptr inbounds double, ptr %1403, i64 16
+  %1420 = load <2 x double>, ptr %arrayidx1330.16, align 8
+  %1421 = fmul <2 x double> %1402, %1420
+  store <2 x double> %1421, ptr %arrayidx1330.16, align 8
+  %arrayidx1330.18 = getelementptr inbounds double, ptr %1403, i64 18
+  %1422 = load <2 x double>, ptr %arrayidx1330.18, align 8
+  %1423 = fmul <2 x double> %1402, %1422
+  store <2 x double> %1423, ptr %arrayidx1330.18, align 8
   %indvars.iv.next3764 = add nuw nsw i64 %indvars.iv3763, 1
   %exitcond3766.not = icmp eq i64 %indvars.iv.next3764, 20
   br i1 %exitcond3766.not, label %for.cond1338.preheader, label %for.cond1322.preheader
 
 for.cond1338.preheader:                           ; preds = %for.cond1322.preheader
-  %1514 = load i32, ptr @offset, align 4
-  %conv1346 = sitofp i32 %1514 to double
-  %1515 = insertelement <2 x double> poison, double %conv1346, i64 0
-  %1516 = shufflevector <2 x double> %1515, <2 x double> poison, <2 x i32> zeroinitializer
+  %1424 = load i32, ptr @offset, align 4
+  %conv1346 = sitofp i32 %1424 to double
+  %1425 = insertelement <2 x double> poison, double %conv1346, i64 0
+  %1426 = shufflevector <2 x double> %1425, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond1342.preheader
 
 for.cond1342.preheader:                           ; preds = %for.cond1338.preheader, %for.cond1342.preheader
   %indvars.iv3771 = phi i64 [ 0, %for.cond1338.preheader ], [ %indvars.iv.next3772, %for.cond1342.preheader ]
   %arrayidx1348 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3771
-  %1517 = load ptr, ptr %arrayidx1348, align 8
-  %1518 = load <2 x double>, ptr %1517, align 8
-  %1519 = fsub <2 x double> %1518, %1516
-  store <2 x double> %1519, ptr %1517, align 8
-  %arrayidx1350.2 = getelementptr inbounds double, ptr %1517, i64 2
-  %1520 = load <2 x double>, ptr %arrayidx1350.2, align 8
-  %1521 = fsub <2 x double> %1520, %1516
-  store <2 x double> %1521, ptr %arrayidx1350.2, align 8
-  %arrayidx1350.4 = getelementptr inbounds double, ptr %1517, i64 4
-  %1522 = load <2 x double>, ptr %arrayidx1350.4, align 8
-  %1523 = fsub <2 x double> %1522, %1516
-  store <2 x double> %1523, ptr %arrayidx1350.4, align 8
-  %arrayidx1350.6 = getelementptr inbounds double, ptr %1517, i64 6
-  %1524 = load <2 x double>, ptr %arrayidx1350.6, align 8
-  %1525 = fsub <2 x double> %1524, %1516
-  store <2 x double> %1525, ptr %arrayidx1350.6, align 8
-  %arrayidx1350.8 = getelementptr inbounds double, ptr %1517, i64 8
-  %1526 = load <2 x double>, ptr %arrayidx1350.8, align 8
-  %1527 = fsub <2 x double> %1526, %1516
-  store <2 x double> %1527, ptr %arrayidx1350.8, align 8
-  %arrayidx1350.10 = getelementptr inbounds double, ptr %1517, i64 10
-  %1528 = load <2 x double>, ptr %arrayidx1350.10, align 8
-  %1529 = fsub <2 x double> %1528, %1516
-  store <2 x double> %1529, ptr %arrayidx1350.10, align 8
-  %arrayidx1350.12 = getelementptr inbounds double, ptr %1517, i64 12
-  %1530 = load <2 x double>, ptr %arrayidx1350.12, align 8
-  %1531 = fsub <2 x double> %1530, %1516
-  store <2 x double> %1531, ptr %arrayidx1350.12, align 8
-  %arrayidx1350.14 = getelementptr inbounds double, ptr %1517, i64 14
-  %1532 = load <2 x double>, ptr %arrayidx1350.14, align 8
-  %1533 = fsub <2 x double> %1532, %1516
-  store <2 x double> %1533, ptr %arrayidx1350.14, align 8
-  %arrayidx1350.16 = getelementptr inbounds double, ptr %1517, i64 16
-  %1534 = load <2 x double>, ptr %arrayidx1350.16, align 8
-  %1535 = fsub <2 x double> %1534, %1516
-  store <2 x double> %1535, ptr %arrayidx1350.16, align 8
-  %arrayidx1350.18 = getelementptr inbounds double, ptr %1517, i64 18
-  %1536 = load <2 x double>, ptr %arrayidx1350.18, align 8
-  %1537 = fsub <2 x double> %1536, %1516
-  store <2 x double> %1537, ptr %arrayidx1350.18, align 8
+  %1427 = load ptr, ptr %arrayidx1348, align 8
+  %1428 = load <2 x double>, ptr %1427, align 8
+  %1429 = fsub <2 x double> %1428, %1426
+  store <2 x double> %1429, ptr %1427, align 8
+  %arrayidx1350.2 = getelementptr inbounds double, ptr %1427, i64 2
+  %1430 = load <2 x double>, ptr %arrayidx1350.2, align 8
+  %1431 = fsub <2 x double> %1430, %1426
+  store <2 x double> %1431, ptr %arrayidx1350.2, align 8
+  %arrayidx1350.4 = getelementptr inbounds double, ptr %1427, i64 4
+  %1432 = load <2 x double>, ptr %arrayidx1350.4, align 8
+  %1433 = fsub <2 x double> %1432, %1426
+  store <2 x double> %1433, ptr %arrayidx1350.4, align 8
+  %arrayidx1350.6 = getelementptr inbounds double, ptr %1427, i64 6
+  %1434 = load <2 x double>, ptr %arrayidx1350.6, align 8
+  %1435 = fsub <2 x double> %1434, %1426
+  store <2 x double> %1435, ptr %arrayidx1350.6, align 8
+  %arrayidx1350.8 = getelementptr inbounds double, ptr %1427, i64 8
+  %1436 = load <2 x double>, ptr %arrayidx1350.8, align 8
+  %1437 = fsub <2 x double> %1436, %1426
+  store <2 x double> %1437, ptr %arrayidx1350.8, align 8
+  %arrayidx1350.10 = getelementptr inbounds double, ptr %1427, i64 10
+  %1438 = load <2 x double>, ptr %arrayidx1350.10, align 8
+  %1439 = fsub <2 x double> %1438, %1426
+  store <2 x double> %1439, ptr %arrayidx1350.10, align 8
+  %arrayidx1350.12 = getelementptr inbounds double, ptr %1427, i64 12
+  %1440 = load <2 x double>, ptr %arrayidx1350.12, align 8
+  %1441 = fsub <2 x double> %1440, %1426
+  store <2 x double> %1441, ptr %arrayidx1350.12, align 8
+  %arrayidx1350.14 = getelementptr inbounds double, ptr %1427, i64 14
+  %1442 = load <2 x double>, ptr %arrayidx1350.14, align 8
+  %1443 = fsub <2 x double> %1442, %1426
+  store <2 x double> %1443, ptr %arrayidx1350.14, align 8
+  %arrayidx1350.16 = getelementptr inbounds double, ptr %1427, i64 16
+  %1444 = load <2 x double>, ptr %arrayidx1350.16, align 8
+  %1445 = fsub <2 x double> %1444, %1426
+  store <2 x double> %1445, ptr %arrayidx1350.16, align 8
+  %arrayidx1350.18 = getelementptr inbounds double, ptr %1427, i64 18
+  %1446 = load <2 x double>, ptr %arrayidx1350.18, align 8
+  %1447 = fsub <2 x double> %1446, %1426
+  store <2 x double> %1447, ptr %arrayidx1350.18, align 8
   %indvars.iv.next3772 = add nuw nsw i64 %indvars.iv3771, 1
   %exitcond3774.not = icmp eq i64 %indvars.iv.next3772, 20
   br i1 %exitcond3774.not, label %for.cond1362.preheader, label %for.cond1342.preheader
@@ -6162,27 +5599,27 @@ for.cond1342.preheader:                           ; preds = %for.cond1338.prehea
 for.cond1362.preheader:                           ; preds = %for.cond1342.preheader, %for.inc1379
   %indvars.iv3779 = phi i64 [ %indvars.iv.next3780, %for.inc1379 ], [ 0, %for.cond1342.preheader ]
   %arrayidx1367 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3779
-  %1538 = load ptr, ptr %arrayidx1367, align 8
+  %1448 = load ptr, ptr %arrayidx1367, align 8
   br label %for.body1365
 
 for.body1365:                                     ; preds = %for.cond1362.preheader, %shishagonyuu.exit3372
   %indvars.iv3775 = phi i64 [ 0, %for.cond1362.preheader ], [ %indvars.iv.next3776, %shishagonyuu.exit3372 ]
-  %arrayidx1369 = getelementptr inbounds double, ptr %1538, i64 %indvars.iv3775
-  %1539 = load double, ptr %arrayidx1369, align 8
-  %cmp.i3362 = fcmp ogt double %1539, 0.000000e+00
+  %arrayidx1369 = getelementptr inbounds double, ptr %1448, i64 %indvars.iv3775
+  %1449 = load double, ptr %arrayidx1369, align 8
+  %cmp.i3362 = fcmp ogt double %1449, 0.000000e+00
   br i1 %cmp.i3362, label %if.then.i3369, label %if.else.i3363
 
 if.then.i3369:                                    ; preds = %for.body1365
-  %add.i3370 = fadd double %1539, 5.000000e-01
+  %add.i3370 = fadd double %1449, 5.000000e-01
   %conv.i3371 = fptosi double %add.i3370 to i32
   br label %shishagonyuu.exit3372
 
 if.else.i3363:                                    ; preds = %for.body1365
-  %or.cond.i3364 = fcmp olt double %1539, 0.000000e+00
+  %or.cond.i3364 = fcmp olt double %1449, 0.000000e+00
   br i1 %or.cond.i3364, label %if.then7.i3366, label %shishagonyuu.exit3372
 
 if.then7.i3366:                                   ; preds = %if.else.i3363
-  %sub.i3367 = fadd double %1539, -5.000000e-01
+  %sub.i3367 = fadd double %1449, -5.000000e-01
   %conv8.i3368 = fptosi double %sub.i3367 to i32
   br label %shishagonyuu.exit3372
 
@@ -6200,8 +5637,8 @@ for.inc1379:                                      ; preds = %shishagonyuu.exit33
   br i1 %exitcond3782.not, label %for.end1381, label %for.cond1362.preheader
 
 for.end1381:                                      ; preds = %for.inc1379
-  %1540 = load i32, ptr @disp, align 4
-  %tobool1382.not = icmp eq i32 %1540, 0
+  %1450 = load i32, ptr @disp, align 4
+  %tobool1382.not = icmp eq i32 %1450, 0
   br i1 %tobool1382.not, label %for.cond1467.preheader.preheader, label %if.then1383
 
 for.cond1467.preheader.preheader:                 ; preds = %for.end1381
@@ -6209,206 +5646,206 @@ for.cond1467.preheader.preheader:                 ; preds = %for.end1381
   br label %for.cond1485.preheader
 
 if.then1383:                                      ; preds = %for.end1381
-  %1541 = load ptr, ptr @stdout, align 8
-  %1542 = tail call i64 @fwrite(ptr nonnull @.str.23, i64 18, i64 1, ptr %1541)
+  %1451 = load ptr, ptr @stdout, align 8
+  %1452 = tail call i64 @fwrite(ptr nonnull @.str.23, i64 18, i64 1, ptr %1451)
   br label %for.body1388
 
 for.body1388:                                     ; preds = %if.then1383, %for.body1388
   %indvars.iv3787 = phi i64 [ 0, %if.then1383 ], [ %indvars.iv.next3788, %for.body1388 ]
-  %1543 = load ptr, ptr @stdout, align 8
+  %1453 = load ptr, ptr @stdout, align 8
   %arrayidx1390 = getelementptr inbounds [26 x i8], ptr @amino, i64 0, i64 %indvars.iv3787
-  %1544 = load i8, ptr %arrayidx1390, align 1
-  %conv1391 = sext i8 %1544 to i32
-  %call1392 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1543, ptr noundef nonnull @.str.24, i32 noundef %conv1391)
+  %1454 = load i8, ptr %arrayidx1390, align 1
+  %conv1391 = sext i8 %1454 to i32
+  %call1392 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1453, ptr noundef nonnull @.str.24, i32 noundef %conv1391)
   %arrayidx1398 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3787
-  %1545 = load ptr, ptr @stdout, align 8
-  %1546 = load ptr, ptr %arrayidx1398, align 8
-  %1547 = load double, ptr %1546, align 8
-  %call1401 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1545, ptr noundef nonnull @.str.25, double noundef %1547)
-  %1548 = load ptr, ptr @stdout, align 8
-  %1549 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.1 = getelementptr inbounds double, ptr %1549, i64 1
-  %1550 = load double, ptr %arrayidx1400.1, align 8
-  %call1401.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1548, ptr noundef nonnull @.str.25, double noundef %1550)
-  %1551 = load ptr, ptr @stdout, align 8
-  %1552 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.2 = getelementptr inbounds double, ptr %1552, i64 2
-  %1553 = load double, ptr %arrayidx1400.2, align 8
-  %call1401.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1551, ptr noundef nonnull @.str.25, double noundef %1553)
-  %1554 = load ptr, ptr @stdout, align 8
-  %1555 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.3 = getelementptr inbounds double, ptr %1555, i64 3
-  %1556 = load double, ptr %arrayidx1400.3, align 8
-  %call1401.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1554, ptr noundef nonnull @.str.25, double noundef %1556)
-  %1557 = load ptr, ptr @stdout, align 8
-  %1558 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.4 = getelementptr inbounds double, ptr %1558, i64 4
-  %1559 = load double, ptr %arrayidx1400.4, align 8
-  %call1401.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1557, ptr noundef nonnull @.str.25, double noundef %1559)
-  %1560 = load ptr, ptr @stdout, align 8
-  %1561 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.5 = getelementptr inbounds double, ptr %1561, i64 5
-  %1562 = load double, ptr %arrayidx1400.5, align 8
-  %call1401.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1560, ptr noundef nonnull @.str.25, double noundef %1562)
-  %1563 = load ptr, ptr @stdout, align 8
-  %1564 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.6 = getelementptr inbounds double, ptr %1564, i64 6
-  %1565 = load double, ptr %arrayidx1400.6, align 8
-  %call1401.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1563, ptr noundef nonnull @.str.25, double noundef %1565)
-  %1566 = load ptr, ptr @stdout, align 8
-  %1567 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.7 = getelementptr inbounds double, ptr %1567, i64 7
-  %1568 = load double, ptr %arrayidx1400.7, align 8
-  %call1401.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1566, ptr noundef nonnull @.str.25, double noundef %1568)
-  %1569 = load ptr, ptr @stdout, align 8
-  %1570 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.8 = getelementptr inbounds double, ptr %1570, i64 8
-  %1571 = load double, ptr %arrayidx1400.8, align 8
-  %call1401.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1569, ptr noundef nonnull @.str.25, double noundef %1571)
-  %1572 = load ptr, ptr @stdout, align 8
-  %1573 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.9 = getelementptr inbounds double, ptr %1573, i64 9
-  %1574 = load double, ptr %arrayidx1400.9, align 8
-  %call1401.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1572, ptr noundef nonnull @.str.25, double noundef %1574)
-  %1575 = load ptr, ptr @stdout, align 8
-  %1576 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.10 = getelementptr inbounds double, ptr %1576, i64 10
-  %1577 = load double, ptr %arrayidx1400.10, align 8
-  %call1401.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1575, ptr noundef nonnull @.str.25, double noundef %1577)
-  %1578 = load ptr, ptr @stdout, align 8
-  %1579 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.11 = getelementptr inbounds double, ptr %1579, i64 11
-  %1580 = load double, ptr %arrayidx1400.11, align 8
-  %call1401.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1578, ptr noundef nonnull @.str.25, double noundef %1580)
-  %1581 = load ptr, ptr @stdout, align 8
-  %1582 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.12 = getelementptr inbounds double, ptr %1582, i64 12
-  %1583 = load double, ptr %arrayidx1400.12, align 8
-  %call1401.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1581, ptr noundef nonnull @.str.25, double noundef %1583)
-  %1584 = load ptr, ptr @stdout, align 8
-  %1585 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.13 = getelementptr inbounds double, ptr %1585, i64 13
-  %1586 = load double, ptr %arrayidx1400.13, align 8
-  %call1401.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1584, ptr noundef nonnull @.str.25, double noundef %1586)
-  %1587 = load ptr, ptr @stdout, align 8
-  %1588 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.14 = getelementptr inbounds double, ptr %1588, i64 14
-  %1589 = load double, ptr %arrayidx1400.14, align 8
-  %call1401.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1587, ptr noundef nonnull @.str.25, double noundef %1589)
-  %1590 = load ptr, ptr @stdout, align 8
-  %1591 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.15 = getelementptr inbounds double, ptr %1591, i64 15
-  %1592 = load double, ptr %arrayidx1400.15, align 8
-  %call1401.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1590, ptr noundef nonnull @.str.25, double noundef %1592)
-  %1593 = load ptr, ptr @stdout, align 8
-  %1594 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.16 = getelementptr inbounds double, ptr %1594, i64 16
-  %1595 = load double, ptr %arrayidx1400.16, align 8
-  %call1401.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1593, ptr noundef nonnull @.str.25, double noundef %1595)
-  %1596 = load ptr, ptr @stdout, align 8
-  %1597 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.17 = getelementptr inbounds double, ptr %1597, i64 17
-  %1598 = load double, ptr %arrayidx1400.17, align 8
-  %call1401.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1596, ptr noundef nonnull @.str.25, double noundef %1598)
-  %1599 = load ptr, ptr @stdout, align 8
-  %1600 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.18 = getelementptr inbounds double, ptr %1600, i64 18
-  %1601 = load double, ptr %arrayidx1400.18, align 8
-  %call1401.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1599, ptr noundef nonnull @.str.25, double noundef %1601)
-  %1602 = load ptr, ptr @stdout, align 8
-  %1603 = load ptr, ptr %arrayidx1398, align 8
-  %arrayidx1400.19 = getelementptr inbounds double, ptr %1603, i64 19
-  %1604 = load double, ptr %arrayidx1400.19, align 8
-  %call1401.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1602, ptr noundef nonnull @.str.25, double noundef %1604)
-  %1605 = load ptr, ptr @stdout, align 8
-  %fputc3310 = tail call i32 @fputc(i32 10, ptr %1605)
+  %1455 = load ptr, ptr @stdout, align 8
+  %1456 = load ptr, ptr %arrayidx1398, align 8
+  %1457 = load double, ptr %1456, align 8
+  %call1401 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1455, ptr noundef nonnull @.str.25, double noundef %1457)
+  %1458 = load ptr, ptr @stdout, align 8
+  %1459 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.1 = getelementptr inbounds double, ptr %1459, i64 1
+  %1460 = load double, ptr %arrayidx1400.1, align 8
+  %call1401.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1458, ptr noundef nonnull @.str.25, double noundef %1460)
+  %1461 = load ptr, ptr @stdout, align 8
+  %1462 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.2 = getelementptr inbounds double, ptr %1462, i64 2
+  %1463 = load double, ptr %arrayidx1400.2, align 8
+  %call1401.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1461, ptr noundef nonnull @.str.25, double noundef %1463)
+  %1464 = load ptr, ptr @stdout, align 8
+  %1465 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.3 = getelementptr inbounds double, ptr %1465, i64 3
+  %1466 = load double, ptr %arrayidx1400.3, align 8
+  %call1401.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1464, ptr noundef nonnull @.str.25, double noundef %1466)
+  %1467 = load ptr, ptr @stdout, align 8
+  %1468 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.4 = getelementptr inbounds double, ptr %1468, i64 4
+  %1469 = load double, ptr %arrayidx1400.4, align 8
+  %call1401.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1467, ptr noundef nonnull @.str.25, double noundef %1469)
+  %1470 = load ptr, ptr @stdout, align 8
+  %1471 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.5 = getelementptr inbounds double, ptr %1471, i64 5
+  %1472 = load double, ptr %arrayidx1400.5, align 8
+  %call1401.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1470, ptr noundef nonnull @.str.25, double noundef %1472)
+  %1473 = load ptr, ptr @stdout, align 8
+  %1474 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.6 = getelementptr inbounds double, ptr %1474, i64 6
+  %1475 = load double, ptr %arrayidx1400.6, align 8
+  %call1401.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1473, ptr noundef nonnull @.str.25, double noundef %1475)
+  %1476 = load ptr, ptr @stdout, align 8
+  %1477 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.7 = getelementptr inbounds double, ptr %1477, i64 7
+  %1478 = load double, ptr %arrayidx1400.7, align 8
+  %call1401.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1476, ptr noundef nonnull @.str.25, double noundef %1478)
+  %1479 = load ptr, ptr @stdout, align 8
+  %1480 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.8 = getelementptr inbounds double, ptr %1480, i64 8
+  %1481 = load double, ptr %arrayidx1400.8, align 8
+  %call1401.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1479, ptr noundef nonnull @.str.25, double noundef %1481)
+  %1482 = load ptr, ptr @stdout, align 8
+  %1483 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.9 = getelementptr inbounds double, ptr %1483, i64 9
+  %1484 = load double, ptr %arrayidx1400.9, align 8
+  %call1401.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1482, ptr noundef nonnull @.str.25, double noundef %1484)
+  %1485 = load ptr, ptr @stdout, align 8
+  %1486 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.10 = getelementptr inbounds double, ptr %1486, i64 10
+  %1487 = load double, ptr %arrayidx1400.10, align 8
+  %call1401.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1485, ptr noundef nonnull @.str.25, double noundef %1487)
+  %1488 = load ptr, ptr @stdout, align 8
+  %1489 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.11 = getelementptr inbounds double, ptr %1489, i64 11
+  %1490 = load double, ptr %arrayidx1400.11, align 8
+  %call1401.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1488, ptr noundef nonnull @.str.25, double noundef %1490)
+  %1491 = load ptr, ptr @stdout, align 8
+  %1492 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.12 = getelementptr inbounds double, ptr %1492, i64 12
+  %1493 = load double, ptr %arrayidx1400.12, align 8
+  %call1401.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1491, ptr noundef nonnull @.str.25, double noundef %1493)
+  %1494 = load ptr, ptr @stdout, align 8
+  %1495 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.13 = getelementptr inbounds double, ptr %1495, i64 13
+  %1496 = load double, ptr %arrayidx1400.13, align 8
+  %call1401.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1494, ptr noundef nonnull @.str.25, double noundef %1496)
+  %1497 = load ptr, ptr @stdout, align 8
+  %1498 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.14 = getelementptr inbounds double, ptr %1498, i64 14
+  %1499 = load double, ptr %arrayidx1400.14, align 8
+  %call1401.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1497, ptr noundef nonnull @.str.25, double noundef %1499)
+  %1500 = load ptr, ptr @stdout, align 8
+  %1501 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.15 = getelementptr inbounds double, ptr %1501, i64 15
+  %1502 = load double, ptr %arrayidx1400.15, align 8
+  %call1401.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1500, ptr noundef nonnull @.str.25, double noundef %1502)
+  %1503 = load ptr, ptr @stdout, align 8
+  %1504 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.16 = getelementptr inbounds double, ptr %1504, i64 16
+  %1505 = load double, ptr %arrayidx1400.16, align 8
+  %call1401.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1503, ptr noundef nonnull @.str.25, double noundef %1505)
+  %1506 = load ptr, ptr @stdout, align 8
+  %1507 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.17 = getelementptr inbounds double, ptr %1507, i64 17
+  %1508 = load double, ptr %arrayidx1400.17, align 8
+  %call1401.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1506, ptr noundef nonnull @.str.25, double noundef %1508)
+  %1509 = load ptr, ptr @stdout, align 8
+  %1510 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.18 = getelementptr inbounds double, ptr %1510, i64 18
+  %1511 = load double, ptr %arrayidx1400.18, align 8
+  %call1401.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1509, ptr noundef nonnull @.str.25, double noundef %1511)
+  %1512 = load ptr, ptr @stdout, align 8
+  %1513 = load ptr, ptr %arrayidx1398, align 8
+  %arrayidx1400.19 = getelementptr inbounds double, ptr %1513, i64 19
+  %1514 = load double, ptr %arrayidx1400.19, align 8
+  %call1401.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1512, ptr noundef nonnull @.str.25, double noundef %1514)
+  %1515 = load ptr, ptr @stdout, align 8
+  %fputc3310 = tail call i32 @fputc(i32 10, ptr %1515)
   %indvars.iv.next3788 = add nuw nsw i64 %indvars.iv3787, 1
   %exitcond3790.not = icmp eq i64 %indvars.iv.next3788, 20
   br i1 %exitcond3790.not, label %for.end1408, label %for.body1388
 
 for.end1408:                                      ; preds = %for.body1388
-  %1606 = load ptr, ptr @stdout, align 8
-  %1607 = tail call i64 @fwrite(ptr nonnull @.str.26, i64 5, i64 1, ptr %1606)
-  %1608 = load ptr, ptr @stdout, align 8
-  %1609 = load i8, ptr @amino, align 16
-  %conv1416 = sext i8 %1609 to i32
-  %call1417 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1608, ptr noundef nonnull @.str.27, i32 noundef %conv1416)
-  %1610 = load ptr, ptr @stdout, align 8
-  %1611 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %conv1416.1 = sext i8 %1611 to i32
-  %call1417.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1610, ptr noundef nonnull @.str.27, i32 noundef %conv1416.1)
-  %1612 = load ptr, ptr @stdout, align 8
-  %1613 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %conv1416.2 = sext i8 %1613 to i32
-  %call1417.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1612, ptr noundef nonnull @.str.27, i32 noundef %conv1416.2)
-  %1614 = load ptr, ptr @stdout, align 8
-  %1615 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %conv1416.3 = sext i8 %1615 to i32
-  %call1417.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1614, ptr noundef nonnull @.str.27, i32 noundef %conv1416.3)
-  %1616 = load ptr, ptr @stdout, align 8
-  %1617 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %conv1416.4 = sext i8 %1617 to i32
-  %call1417.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1616, ptr noundef nonnull @.str.27, i32 noundef %conv1416.4)
-  %1618 = load ptr, ptr @stdout, align 8
-  %1619 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %conv1416.5 = sext i8 %1619 to i32
-  %call1417.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1618, ptr noundef nonnull @.str.27, i32 noundef %conv1416.5)
-  %1620 = load ptr, ptr @stdout, align 8
-  %1621 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %conv1416.6 = sext i8 %1621 to i32
-  %call1417.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1620, ptr noundef nonnull @.str.27, i32 noundef %conv1416.6)
-  %1622 = load ptr, ptr @stdout, align 8
-  %1623 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %conv1416.7 = sext i8 %1623 to i32
-  %call1417.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1622, ptr noundef nonnull @.str.27, i32 noundef %conv1416.7)
-  %1624 = load ptr, ptr @stdout, align 8
-  %1625 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %conv1416.8 = sext i8 %1625 to i32
-  %call1417.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1624, ptr noundef nonnull @.str.27, i32 noundef %conv1416.8)
-  %1626 = load ptr, ptr @stdout, align 8
-  %1627 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %conv1416.9 = sext i8 %1627 to i32
-  %call1417.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1626, ptr noundef nonnull @.str.27, i32 noundef %conv1416.9)
-  %1628 = load ptr, ptr @stdout, align 8
-  %1629 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
-  %conv1416.10 = sext i8 %1629 to i32
-  %call1417.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1628, ptr noundef nonnull @.str.27, i32 noundef %conv1416.10)
-  %1630 = load ptr, ptr @stdout, align 8
-  %1631 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
-  %conv1416.11 = sext i8 %1631 to i32
-  %call1417.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1630, ptr noundef nonnull @.str.27, i32 noundef %conv1416.11)
-  %1632 = load ptr, ptr @stdout, align 8
-  %1633 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
-  %conv1416.12 = sext i8 %1633 to i32
-  %call1417.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1632, ptr noundef nonnull @.str.27, i32 noundef %conv1416.12)
-  %1634 = load ptr, ptr @stdout, align 8
-  %1635 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %conv1416.13 = sext i8 %1635 to i32
-  %call1417.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1634, ptr noundef nonnull @.str.27, i32 noundef %conv1416.13)
-  %1636 = load ptr, ptr @stdout, align 8
-  %1637 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %conv1416.14 = sext i8 %1637 to i32
-  %call1417.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1636, ptr noundef nonnull @.str.27, i32 noundef %conv1416.14)
-  %1638 = load ptr, ptr @stdout, align 8
-  %1639 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %conv1416.15 = sext i8 %1639 to i32
-  %call1417.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1638, ptr noundef nonnull @.str.27, i32 noundef %conv1416.15)
-  %1640 = load ptr, ptr @stdout, align 8
-  %1641 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %conv1416.16 = sext i8 %1641 to i32
-  %call1417.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1640, ptr noundef nonnull @.str.27, i32 noundef %conv1416.16)
-  %1642 = load ptr, ptr @stdout, align 8
-  %1643 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %conv1416.17 = sext i8 %1643 to i32
-  %call1417.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1642, ptr noundef nonnull @.str.27, i32 noundef %conv1416.17)
-  %1644 = load ptr, ptr @stdout, align 8
-  %1645 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %conv1416.18 = sext i8 %1645 to i32
-  %call1417.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1644, ptr noundef nonnull @.str.27, i32 noundef %conv1416.18)
-  %1646 = load ptr, ptr @stdout, align 8
-  %1647 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %conv1416.19 = sext i8 %1647 to i32
-  %call1417.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1646, ptr noundef nonnull @.str.27, i32 noundef %conv1416.19)
+  %1516 = load ptr, ptr @stdout, align 8
+  %1517 = tail call i64 @fwrite(ptr nonnull @.str.26, i64 5, i64 1, ptr %1516)
+  %1518 = load ptr, ptr @stdout, align 8
+  %1519 = load i8, ptr @amino, align 16
+  %conv1416 = sext i8 %1519 to i32
+  %call1417 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1518, ptr noundef nonnull @.str.27, i32 noundef %conv1416)
+  %1520 = load ptr, ptr @stdout, align 8
+  %1521 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %conv1416.1 = sext i8 %1521 to i32
+  %call1417.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1520, ptr noundef nonnull @.str.27, i32 noundef %conv1416.1)
+  %1522 = load ptr, ptr @stdout, align 8
+  %1523 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %conv1416.2 = sext i8 %1523 to i32
+  %call1417.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1522, ptr noundef nonnull @.str.27, i32 noundef %conv1416.2)
+  %1524 = load ptr, ptr @stdout, align 8
+  %1525 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %conv1416.3 = sext i8 %1525 to i32
+  %call1417.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1524, ptr noundef nonnull @.str.27, i32 noundef %conv1416.3)
+  %1526 = load ptr, ptr @stdout, align 8
+  %1527 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %conv1416.4 = sext i8 %1527 to i32
+  %call1417.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1526, ptr noundef nonnull @.str.27, i32 noundef %conv1416.4)
+  %1528 = load ptr, ptr @stdout, align 8
+  %1529 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %conv1416.5 = sext i8 %1529 to i32
+  %call1417.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1528, ptr noundef nonnull @.str.27, i32 noundef %conv1416.5)
+  %1530 = load ptr, ptr @stdout, align 8
+  %1531 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %conv1416.6 = sext i8 %1531 to i32
+  %call1417.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1530, ptr noundef nonnull @.str.27, i32 noundef %conv1416.6)
+  %1532 = load ptr, ptr @stdout, align 8
+  %1533 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %conv1416.7 = sext i8 %1533 to i32
+  %call1417.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1532, ptr noundef nonnull @.str.27, i32 noundef %conv1416.7)
+  %1534 = load ptr, ptr @stdout, align 8
+  %1535 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %conv1416.8 = sext i8 %1535 to i32
+  %call1417.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1534, ptr noundef nonnull @.str.27, i32 noundef %conv1416.8)
+  %1536 = load ptr, ptr @stdout, align 8
+  %1537 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %conv1416.9 = sext i8 %1537 to i32
+  %call1417.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1536, ptr noundef nonnull @.str.27, i32 noundef %conv1416.9)
+  %1538 = load ptr, ptr @stdout, align 8
+  %1539 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
+  %conv1416.10 = sext i8 %1539 to i32
+  %call1417.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1538, ptr noundef nonnull @.str.27, i32 noundef %conv1416.10)
+  %1540 = load ptr, ptr @stdout, align 8
+  %1541 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
+  %conv1416.11 = sext i8 %1541 to i32
+  %call1417.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1540, ptr noundef nonnull @.str.27, i32 noundef %conv1416.11)
+  %1542 = load ptr, ptr @stdout, align 8
+  %1543 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
+  %conv1416.12 = sext i8 %1543 to i32
+  %call1417.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1542, ptr noundef nonnull @.str.27, i32 noundef %conv1416.12)
+  %1544 = load ptr, ptr @stdout, align 8
+  %1545 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %conv1416.13 = sext i8 %1545 to i32
+  %call1417.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1544, ptr noundef nonnull @.str.27, i32 noundef %conv1416.13)
+  %1546 = load ptr, ptr @stdout, align 8
+  %1547 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %conv1416.14 = sext i8 %1547 to i32
+  %call1417.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1546, ptr noundef nonnull @.str.27, i32 noundef %conv1416.14)
+  %1548 = load ptr, ptr @stdout, align 8
+  %1549 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %conv1416.15 = sext i8 %1549 to i32
+  %call1417.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1548, ptr noundef nonnull @.str.27, i32 noundef %conv1416.15)
+  %1550 = load ptr, ptr @stdout, align 8
+  %1551 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %conv1416.16 = sext i8 %1551 to i32
+  %call1417.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1550, ptr noundef nonnull @.str.27, i32 noundef %conv1416.16)
+  %1552 = load ptr, ptr @stdout, align 8
+  %1553 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %conv1416.17 = sext i8 %1553 to i32
+  %call1417.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1552, ptr noundef nonnull @.str.27, i32 noundef %conv1416.17)
+  %1554 = load ptr, ptr @stdout, align 8
+  %1555 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %conv1416.18 = sext i8 %1555 to i32
+  %call1417.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1554, ptr noundef nonnull @.str.27, i32 noundef %conv1416.18)
+  %1556 = load ptr, ptr @stdout, align 8
+  %1557 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %conv1416.19 = sext i8 %1557 to i32
+  %call1417.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1556, ptr noundef nonnull @.str.27, i32 noundef %conv1416.19)
   %.pre4578 = load double, ptr %arrayidx1313.4, align 8
   %.pre4579 = load double, ptr %arrayidx1313.5, align 8
   %.pre4580 = load double, ptr %arrayidx1313.6, align 8
@@ -6428,239 +5865,239 @@ for.end1408:                                      ; preds = %for.body1388
   %.pre4618 = load double, ptr %arrayidx1313.1, align 8
   %.pre4619 = load double, ptr %arrayidx1313.2, align 8
   %.pre4620 = load double, ptr %arrayidx1313.3, align 8
-  %1648 = load double, ptr %freq1.0, align 8
+  %1558 = load double, ptr %freq1.0, align 8
   br label %for.cond1425.preheader
 
 for.cond1425.preheader:                           ; preds = %for.end1408, %for.cond1425.preheader
   %indvars.iv3799 = phi i64 [ 0, %for.end1408 ], [ %indvars.iv.next3800, %for.cond1425.preheader ]
-  %average1151.53455 = phi double [ 0.000000e+00, %for.end1408 ], [ %1690, %for.cond1425.preheader ]
+  %average1151.53455 = phi double [ 0.000000e+00, %for.end1408 ], [ %1600, %for.cond1425.preheader ]
   %arrayidx1430 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3799
-  %1649 = load ptr, ptr %arrayidx1430, align 8
+  %1559 = load ptr, ptr %arrayidx1430, align 8
   %arrayidx1434 = getelementptr inbounds double, ptr %freq1.0, i64 %indvars.iv3799
-  %1650 = load double, ptr %arrayidx1434, align 8
-  %1651 = load double, ptr %1649, align 8
-  %mul1435 = fmul double %1651, %1650
-  %1652 = tail call double @llvm.fmuladd.f64(double %mul1435, double %1648, double %average1151.53455)
-  %arrayidx1432.1 = getelementptr inbounds double, ptr %1649, i64 1
-  %1653 = load double, ptr %arrayidx1432.1, align 8
-  %mul1435.1 = fmul double %1653, %1650
-  %1654 = tail call double @llvm.fmuladd.f64(double %mul1435.1, double %.pre4618, double %1652)
-  %arrayidx1432.2 = getelementptr inbounds double, ptr %1649, i64 2
-  %1655 = load double, ptr %arrayidx1432.2, align 8
-  %mul1435.2 = fmul double %1655, %1650
-  %1656 = tail call double @llvm.fmuladd.f64(double %mul1435.2, double %.pre4619, double %1654)
-  %arrayidx1432.3 = getelementptr inbounds double, ptr %1649, i64 3
-  %1657 = load double, ptr %arrayidx1432.3, align 8
-  %mul1435.3 = fmul double %1657, %1650
-  %1658 = tail call double @llvm.fmuladd.f64(double %mul1435.3, double %.pre4620, double %1656)
-  %arrayidx1432.4 = getelementptr inbounds double, ptr %1649, i64 4
-  %1659 = load double, ptr %arrayidx1432.4, align 8
-  %mul1435.4 = fmul double %1659, %1650
-  %1660 = tail call double @llvm.fmuladd.f64(double %mul1435.4, double %.pre4578, double %1658)
-  %arrayidx1432.5 = getelementptr inbounds double, ptr %1649, i64 5
-  %1661 = load double, ptr %arrayidx1432.5, align 8
-  %mul1435.5 = fmul double %1661, %1650
-  %1662 = tail call double @llvm.fmuladd.f64(double %mul1435.5, double %.pre4579, double %1660)
-  %arrayidx1432.6 = getelementptr inbounds double, ptr %1649, i64 6
-  %1663 = load double, ptr %arrayidx1432.6, align 8
-  %mul1435.6 = fmul double %1663, %1650
-  %1664 = tail call double @llvm.fmuladd.f64(double %mul1435.6, double %.pre4580, double %1662)
-  %arrayidx1432.7 = getelementptr inbounds double, ptr %1649, i64 7
-  %1665 = load double, ptr %arrayidx1432.7, align 8
-  %mul1435.7 = fmul double %1665, %1650
-  %1666 = tail call double @llvm.fmuladd.f64(double %mul1435.7, double %.pre4581, double %1664)
-  %arrayidx1432.8 = getelementptr inbounds double, ptr %1649, i64 8
-  %1667 = load double, ptr %arrayidx1432.8, align 8
-  %mul1435.8 = fmul double %1667, %1650
-  %1668 = tail call double @llvm.fmuladd.f64(double %mul1435.8, double %.pre4582, double %1666)
-  %arrayidx1432.9 = getelementptr inbounds double, ptr %1649, i64 9
-  %1669 = load double, ptr %arrayidx1432.9, align 8
-  %mul1435.9 = fmul double %1669, %1650
-  %1670 = tail call double @llvm.fmuladd.f64(double %mul1435.9, double %.pre4583, double %1668)
-  %arrayidx1432.10 = getelementptr inbounds double, ptr %1649, i64 10
-  %1671 = load double, ptr %arrayidx1432.10, align 8
-  %mul1435.10 = fmul double %1671, %1650
-  %1672 = tail call double @llvm.fmuladd.f64(double %mul1435.10, double %.pre4584, double %1670)
-  %arrayidx1432.11 = getelementptr inbounds double, ptr %1649, i64 11
-  %1673 = load double, ptr %arrayidx1432.11, align 8
-  %mul1435.11 = fmul double %1673, %1650
-  %1674 = tail call double @llvm.fmuladd.f64(double %mul1435.11, double %.pre4585, double %1672)
-  %arrayidx1432.12 = getelementptr inbounds double, ptr %1649, i64 12
-  %1675 = load double, ptr %arrayidx1432.12, align 8
-  %mul1435.12 = fmul double %1675, %1650
-  %1676 = tail call double @llvm.fmuladd.f64(double %mul1435.12, double %.pre4586, double %1674)
-  %arrayidx1432.13 = getelementptr inbounds double, ptr %1649, i64 13
-  %1677 = load double, ptr %arrayidx1432.13, align 8
-  %mul1435.13 = fmul double %1677, %1650
-  %1678 = tail call double @llvm.fmuladd.f64(double %mul1435.13, double %.pre4587, double %1676)
-  %arrayidx1432.14 = getelementptr inbounds double, ptr %1649, i64 14
-  %1679 = load double, ptr %arrayidx1432.14, align 8
-  %mul1435.14 = fmul double %1679, %1650
-  %1680 = tail call double @llvm.fmuladd.f64(double %mul1435.14, double %.pre4588, double %1678)
-  %arrayidx1432.15 = getelementptr inbounds double, ptr %1649, i64 15
-  %1681 = load double, ptr %arrayidx1432.15, align 8
-  %mul1435.15 = fmul double %1681, %1650
-  %1682 = tail call double @llvm.fmuladd.f64(double %mul1435.15, double %.pre4589, double %1680)
-  %arrayidx1432.16 = getelementptr inbounds double, ptr %1649, i64 16
-  %1683 = load double, ptr %arrayidx1432.16, align 8
-  %mul1435.16 = fmul double %1683, %1650
-  %1684 = tail call double @llvm.fmuladd.f64(double %mul1435.16, double %.pre4590, double %1682)
-  %arrayidx1432.17 = getelementptr inbounds double, ptr %1649, i64 17
-  %1685 = load double, ptr %arrayidx1432.17, align 8
-  %mul1435.17 = fmul double %1685, %1650
-  %1686 = tail call double @llvm.fmuladd.f64(double %mul1435.17, double %.pre4591, double %1684)
-  %arrayidx1432.18 = getelementptr inbounds double, ptr %1649, i64 18
-  %1687 = load double, ptr %arrayidx1432.18, align 8
-  %mul1435.18 = fmul double %1687, %1650
-  %1688 = tail call double @llvm.fmuladd.f64(double %mul1435.18, double %.pre4592, double %1686)
-  %arrayidx1432.19 = getelementptr inbounds double, ptr %1649, i64 19
-  %1689 = load double, ptr %arrayidx1432.19, align 8
-  %mul1435.19 = fmul double %1689, %1650
-  %1690 = tail call double @llvm.fmuladd.f64(double %mul1435.19, double %.pre4593, double %1688)
+  %1560 = load double, ptr %arrayidx1434, align 8
+  %1561 = load double, ptr %1559, align 8
+  %mul1435 = fmul double %1561, %1560
+  %1562 = tail call double @llvm.fmuladd.f64(double %mul1435, double %1558, double %average1151.53455)
+  %arrayidx1432.1 = getelementptr inbounds double, ptr %1559, i64 1
+  %1563 = load double, ptr %arrayidx1432.1, align 8
+  %mul1435.1 = fmul double %1563, %1560
+  %1564 = tail call double @llvm.fmuladd.f64(double %mul1435.1, double %.pre4618, double %1562)
+  %arrayidx1432.2 = getelementptr inbounds double, ptr %1559, i64 2
+  %1565 = load double, ptr %arrayidx1432.2, align 8
+  %mul1435.2 = fmul double %1565, %1560
+  %1566 = tail call double @llvm.fmuladd.f64(double %mul1435.2, double %.pre4619, double %1564)
+  %arrayidx1432.3 = getelementptr inbounds double, ptr %1559, i64 3
+  %1567 = load double, ptr %arrayidx1432.3, align 8
+  %mul1435.3 = fmul double %1567, %1560
+  %1568 = tail call double @llvm.fmuladd.f64(double %mul1435.3, double %.pre4620, double %1566)
+  %arrayidx1432.4 = getelementptr inbounds double, ptr %1559, i64 4
+  %1569 = load double, ptr %arrayidx1432.4, align 8
+  %mul1435.4 = fmul double %1569, %1560
+  %1570 = tail call double @llvm.fmuladd.f64(double %mul1435.4, double %.pre4578, double %1568)
+  %arrayidx1432.5 = getelementptr inbounds double, ptr %1559, i64 5
+  %1571 = load double, ptr %arrayidx1432.5, align 8
+  %mul1435.5 = fmul double %1571, %1560
+  %1572 = tail call double @llvm.fmuladd.f64(double %mul1435.5, double %.pre4579, double %1570)
+  %arrayidx1432.6 = getelementptr inbounds double, ptr %1559, i64 6
+  %1573 = load double, ptr %arrayidx1432.6, align 8
+  %mul1435.6 = fmul double %1573, %1560
+  %1574 = tail call double @llvm.fmuladd.f64(double %mul1435.6, double %.pre4580, double %1572)
+  %arrayidx1432.7 = getelementptr inbounds double, ptr %1559, i64 7
+  %1575 = load double, ptr %arrayidx1432.7, align 8
+  %mul1435.7 = fmul double %1575, %1560
+  %1576 = tail call double @llvm.fmuladd.f64(double %mul1435.7, double %.pre4581, double %1574)
+  %arrayidx1432.8 = getelementptr inbounds double, ptr %1559, i64 8
+  %1577 = load double, ptr %arrayidx1432.8, align 8
+  %mul1435.8 = fmul double %1577, %1560
+  %1578 = tail call double @llvm.fmuladd.f64(double %mul1435.8, double %.pre4582, double %1576)
+  %arrayidx1432.9 = getelementptr inbounds double, ptr %1559, i64 9
+  %1579 = load double, ptr %arrayidx1432.9, align 8
+  %mul1435.9 = fmul double %1579, %1560
+  %1580 = tail call double @llvm.fmuladd.f64(double %mul1435.9, double %.pre4583, double %1578)
+  %arrayidx1432.10 = getelementptr inbounds double, ptr %1559, i64 10
+  %1581 = load double, ptr %arrayidx1432.10, align 8
+  %mul1435.10 = fmul double %1581, %1560
+  %1582 = tail call double @llvm.fmuladd.f64(double %mul1435.10, double %.pre4584, double %1580)
+  %arrayidx1432.11 = getelementptr inbounds double, ptr %1559, i64 11
+  %1583 = load double, ptr %arrayidx1432.11, align 8
+  %mul1435.11 = fmul double %1583, %1560
+  %1584 = tail call double @llvm.fmuladd.f64(double %mul1435.11, double %.pre4585, double %1582)
+  %arrayidx1432.12 = getelementptr inbounds double, ptr %1559, i64 12
+  %1585 = load double, ptr %arrayidx1432.12, align 8
+  %mul1435.12 = fmul double %1585, %1560
+  %1586 = tail call double @llvm.fmuladd.f64(double %mul1435.12, double %.pre4586, double %1584)
+  %arrayidx1432.13 = getelementptr inbounds double, ptr %1559, i64 13
+  %1587 = load double, ptr %arrayidx1432.13, align 8
+  %mul1435.13 = fmul double %1587, %1560
+  %1588 = tail call double @llvm.fmuladd.f64(double %mul1435.13, double %.pre4587, double %1586)
+  %arrayidx1432.14 = getelementptr inbounds double, ptr %1559, i64 14
+  %1589 = load double, ptr %arrayidx1432.14, align 8
+  %mul1435.14 = fmul double %1589, %1560
+  %1590 = tail call double @llvm.fmuladd.f64(double %mul1435.14, double %.pre4588, double %1588)
+  %arrayidx1432.15 = getelementptr inbounds double, ptr %1559, i64 15
+  %1591 = load double, ptr %arrayidx1432.15, align 8
+  %mul1435.15 = fmul double %1591, %1560
+  %1592 = tail call double @llvm.fmuladd.f64(double %mul1435.15, double %.pre4589, double %1590)
+  %arrayidx1432.16 = getelementptr inbounds double, ptr %1559, i64 16
+  %1593 = load double, ptr %arrayidx1432.16, align 8
+  %mul1435.16 = fmul double %1593, %1560
+  %1594 = tail call double @llvm.fmuladd.f64(double %mul1435.16, double %.pre4590, double %1592)
+  %arrayidx1432.17 = getelementptr inbounds double, ptr %1559, i64 17
+  %1595 = load double, ptr %arrayidx1432.17, align 8
+  %mul1435.17 = fmul double %1595, %1560
+  %1596 = tail call double @llvm.fmuladd.f64(double %mul1435.17, double %.pre4591, double %1594)
+  %arrayidx1432.18 = getelementptr inbounds double, ptr %1559, i64 18
+  %1597 = load double, ptr %arrayidx1432.18, align 8
+  %mul1435.18 = fmul double %1597, %1560
+  %1598 = tail call double @llvm.fmuladd.f64(double %mul1435.18, double %.pre4592, double %1596)
+  %arrayidx1432.19 = getelementptr inbounds double, ptr %1559, i64 19
+  %1599 = load double, ptr %arrayidx1432.19, align 8
+  %mul1435.19 = fmul double %1599, %1560
+  %1600 = tail call double @llvm.fmuladd.f64(double %mul1435.19, double %.pre4593, double %1598)
   %indvars.iv.next3800 = add nuw nsw i64 %indvars.iv3799, 1
   %exitcond3802.not = icmp eq i64 %indvars.iv.next3800, 20
   br i1 %exitcond3802.not, label %for.end1444, label %for.cond1425.preheader
 
 for.end1444:                                      ; preds = %for.cond1425.preheader
-  %1691 = load ptr, ptr @stdout, align 8
-  %call1445 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1691, ptr noundef nonnull @.str.4, double noundef %1690)
-  %1692 = load ptr, ptr %call1152, align 8
-  %1693 = load double, ptr %1692, align 8
-  %1694 = load double, ptr %freq1.0, align 8
-  %1695 = tail call double @llvm.fmuladd.f64(double %1693, double %1694, double 0.000000e+00)
-  %1696 = load ptr, ptr %arrayidx1309.1, align 8
-  %arrayidx1453.1 = getelementptr inbounds double, ptr %1696, i64 1
-  %1697 = load double, ptr %arrayidx1453.1, align 8
-  %1698 = load double, ptr %arrayidx1313.1, align 8
-  %1699 = tail call double @llvm.fmuladd.f64(double %1697, double %1698, double %1695)
-  %1700 = load ptr, ptr %arrayidx1309.2, align 8
-  %arrayidx1453.2 = getelementptr inbounds double, ptr %1700, i64 2
-  %1701 = load double, ptr %arrayidx1453.2, align 8
-  %1702 = load double, ptr %arrayidx1313.2, align 8
-  %1703 = tail call double @llvm.fmuladd.f64(double %1701, double %1702, double %1699)
-  %1704 = load ptr, ptr %arrayidx1309.3, align 8
-  %arrayidx1453.3 = getelementptr inbounds double, ptr %1704, i64 3
-  %1705 = load double, ptr %arrayidx1453.3, align 8
-  %1706 = load double, ptr %arrayidx1313.3, align 8
-  %1707 = tail call double @llvm.fmuladd.f64(double %1705, double %1706, double %1703)
-  %1708 = load ptr, ptr %arrayidx1309.4, align 8
-  %arrayidx1453.4 = getelementptr inbounds double, ptr %1708, i64 4
-  %1709 = load double, ptr %arrayidx1453.4, align 8
-  %1710 = load double, ptr %arrayidx1313.4, align 8
-  %1711 = tail call double @llvm.fmuladd.f64(double %1709, double %1710, double %1707)
-  %1712 = load ptr, ptr %arrayidx1309.5, align 8
-  %arrayidx1453.5 = getelementptr inbounds double, ptr %1712, i64 5
-  %1713 = load double, ptr %arrayidx1453.5, align 8
-  %1714 = load double, ptr %arrayidx1313.5, align 8
-  %1715 = tail call double @llvm.fmuladd.f64(double %1713, double %1714, double %1711)
-  %1716 = load ptr, ptr %arrayidx1309.6, align 8
-  %arrayidx1453.6 = getelementptr inbounds double, ptr %1716, i64 6
-  %1717 = load double, ptr %arrayidx1453.6, align 8
-  %1718 = load double, ptr %arrayidx1313.6, align 8
-  %1719 = tail call double @llvm.fmuladd.f64(double %1717, double %1718, double %1715)
-  %1720 = load ptr, ptr %arrayidx1309.7, align 8
-  %arrayidx1453.7 = getelementptr inbounds double, ptr %1720, i64 7
-  %1721 = load double, ptr %arrayidx1453.7, align 8
-  %1722 = load double, ptr %arrayidx1313.7, align 8
-  %1723 = tail call double @llvm.fmuladd.f64(double %1721, double %1722, double %1719)
-  %1724 = load ptr, ptr %arrayidx1309.8, align 8
-  %arrayidx1453.8 = getelementptr inbounds double, ptr %1724, i64 8
-  %1725 = load double, ptr %arrayidx1453.8, align 8
-  %1726 = load double, ptr %arrayidx1313.8, align 8
-  %1727 = tail call double @llvm.fmuladd.f64(double %1725, double %1726, double %1723)
-  %1728 = load ptr, ptr %arrayidx1309.9, align 8
-  %arrayidx1453.9 = getelementptr inbounds double, ptr %1728, i64 9
-  %1729 = load double, ptr %arrayidx1453.9, align 8
-  %1730 = load double, ptr %arrayidx1313.9, align 8
-  %1731 = tail call double @llvm.fmuladd.f64(double %1729, double %1730, double %1727)
-  %1732 = load ptr, ptr %arrayidx1309.10, align 8
-  %arrayidx1453.10 = getelementptr inbounds double, ptr %1732, i64 10
-  %1733 = load double, ptr %arrayidx1453.10, align 8
-  %1734 = load double, ptr %arrayidx1313.10, align 8
-  %1735 = tail call double @llvm.fmuladd.f64(double %1733, double %1734, double %1731)
-  %1736 = load ptr, ptr %arrayidx1309.11, align 8
-  %arrayidx1453.11 = getelementptr inbounds double, ptr %1736, i64 11
-  %1737 = load double, ptr %arrayidx1453.11, align 8
-  %1738 = load double, ptr %arrayidx1313.11, align 8
-  %1739 = tail call double @llvm.fmuladd.f64(double %1737, double %1738, double %1735)
-  %1740 = load ptr, ptr %arrayidx1309.12, align 8
-  %arrayidx1453.12 = getelementptr inbounds double, ptr %1740, i64 12
-  %1741 = load double, ptr %arrayidx1453.12, align 8
-  %1742 = load double, ptr %arrayidx1313.12, align 8
-  %1743 = tail call double @llvm.fmuladd.f64(double %1741, double %1742, double %1739)
-  %1744 = load ptr, ptr %arrayidx1309.13, align 8
-  %arrayidx1453.13 = getelementptr inbounds double, ptr %1744, i64 13
-  %1745 = load double, ptr %arrayidx1453.13, align 8
-  %1746 = load double, ptr %arrayidx1313.13, align 8
-  %1747 = tail call double @llvm.fmuladd.f64(double %1745, double %1746, double %1743)
-  %1748 = load ptr, ptr %arrayidx1309.14, align 8
-  %arrayidx1453.14 = getelementptr inbounds double, ptr %1748, i64 14
-  %1749 = load double, ptr %arrayidx1453.14, align 8
-  %1750 = load double, ptr %arrayidx1313.14, align 8
-  %1751 = tail call double @llvm.fmuladd.f64(double %1749, double %1750, double %1747)
-  %1752 = load ptr, ptr %arrayidx1309.15, align 8
-  %arrayidx1453.15 = getelementptr inbounds double, ptr %1752, i64 15
-  %1753 = load double, ptr %arrayidx1453.15, align 8
-  %1754 = load double, ptr %arrayidx1313.15, align 8
-  %1755 = tail call double @llvm.fmuladd.f64(double %1753, double %1754, double %1751)
-  %1756 = load ptr, ptr %arrayidx1309.16, align 8
-  %arrayidx1453.16 = getelementptr inbounds double, ptr %1756, i64 16
-  %1757 = load double, ptr %arrayidx1453.16, align 8
-  %1758 = load double, ptr %arrayidx1313.16, align 8
-  %1759 = tail call double @llvm.fmuladd.f64(double %1757, double %1758, double %1755)
-  %1760 = load ptr, ptr %arrayidx1309.17, align 8
-  %arrayidx1453.17 = getelementptr inbounds double, ptr %1760, i64 17
-  %1761 = load double, ptr %arrayidx1453.17, align 8
-  %1762 = load double, ptr %arrayidx1313.17, align 8
-  %1763 = tail call double @llvm.fmuladd.f64(double %1761, double %1762, double %1759)
-  %1764 = load ptr, ptr %arrayidx1309.18, align 8
-  %arrayidx1453.18 = getelementptr inbounds double, ptr %1764, i64 18
-  %1765 = load double, ptr %arrayidx1453.18, align 8
-  %1766 = load double, ptr %arrayidx1313.18, align 8
-  %1767 = tail call double @llvm.fmuladd.f64(double %1765, double %1766, double %1763)
-  %1768 = load ptr, ptr %arrayidx1309.19, align 8
-  %arrayidx1453.19 = getelementptr inbounds double, ptr %1768, i64 19
-  %1769 = load double, ptr %arrayidx1453.19, align 8
-  %1770 = load double, ptr %arrayidx1313.19, align 8
-  %1771 = tail call double @llvm.fmuladd.f64(double %1769, double %1770, double %1767)
-  %1772 = load ptr, ptr @stdout, align 8
-  %call1460 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1772, ptr noundef nonnull @.str.28, double noundef %1771)
-  %1773 = load ptr, ptr @stderr, align 8
-  %1774 = load i32, ptr @penalty, align 4
-  %1775 = load i32, ptr @penalty_ex, align 4
-  %1776 = load i32, ptr @offset, align 4
-  %call1461 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1773, ptr noundef nonnull @.str.29, i32 noundef %1774, i32 noundef %1775, i32 noundef %1776) #16
+  %1601 = load ptr, ptr @stdout, align 8
+  %call1445 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1601, ptr noundef nonnull @.str.4, double noundef %1600)
+  %1602 = load ptr, ptr %call1152, align 8
+  %1603 = load double, ptr %1602, align 8
+  %1604 = load double, ptr %freq1.0, align 8
+  %1605 = tail call double @llvm.fmuladd.f64(double %1603, double %1604, double 0.000000e+00)
+  %1606 = load ptr, ptr %arrayidx1309.1, align 8
+  %arrayidx1453.1 = getelementptr inbounds double, ptr %1606, i64 1
+  %1607 = load double, ptr %arrayidx1453.1, align 8
+  %1608 = load double, ptr %arrayidx1313.1, align 8
+  %1609 = tail call double @llvm.fmuladd.f64(double %1607, double %1608, double %1605)
+  %1610 = load ptr, ptr %arrayidx1309.2, align 8
+  %arrayidx1453.2 = getelementptr inbounds double, ptr %1610, i64 2
+  %1611 = load double, ptr %arrayidx1453.2, align 8
+  %1612 = load double, ptr %arrayidx1313.2, align 8
+  %1613 = tail call double @llvm.fmuladd.f64(double %1611, double %1612, double %1609)
+  %1614 = load ptr, ptr %arrayidx1309.3, align 8
+  %arrayidx1453.3 = getelementptr inbounds double, ptr %1614, i64 3
+  %1615 = load double, ptr %arrayidx1453.3, align 8
+  %1616 = load double, ptr %arrayidx1313.3, align 8
+  %1617 = tail call double @llvm.fmuladd.f64(double %1615, double %1616, double %1613)
+  %1618 = load ptr, ptr %arrayidx1309.4, align 8
+  %arrayidx1453.4 = getelementptr inbounds double, ptr %1618, i64 4
+  %1619 = load double, ptr %arrayidx1453.4, align 8
+  %1620 = load double, ptr %arrayidx1313.4, align 8
+  %1621 = tail call double @llvm.fmuladd.f64(double %1619, double %1620, double %1617)
+  %1622 = load ptr, ptr %arrayidx1309.5, align 8
+  %arrayidx1453.5 = getelementptr inbounds double, ptr %1622, i64 5
+  %1623 = load double, ptr %arrayidx1453.5, align 8
+  %1624 = load double, ptr %arrayidx1313.5, align 8
+  %1625 = tail call double @llvm.fmuladd.f64(double %1623, double %1624, double %1621)
+  %1626 = load ptr, ptr %arrayidx1309.6, align 8
+  %arrayidx1453.6 = getelementptr inbounds double, ptr %1626, i64 6
+  %1627 = load double, ptr %arrayidx1453.6, align 8
+  %1628 = load double, ptr %arrayidx1313.6, align 8
+  %1629 = tail call double @llvm.fmuladd.f64(double %1627, double %1628, double %1625)
+  %1630 = load ptr, ptr %arrayidx1309.7, align 8
+  %arrayidx1453.7 = getelementptr inbounds double, ptr %1630, i64 7
+  %1631 = load double, ptr %arrayidx1453.7, align 8
+  %1632 = load double, ptr %arrayidx1313.7, align 8
+  %1633 = tail call double @llvm.fmuladd.f64(double %1631, double %1632, double %1629)
+  %1634 = load ptr, ptr %arrayidx1309.8, align 8
+  %arrayidx1453.8 = getelementptr inbounds double, ptr %1634, i64 8
+  %1635 = load double, ptr %arrayidx1453.8, align 8
+  %1636 = load double, ptr %arrayidx1313.8, align 8
+  %1637 = tail call double @llvm.fmuladd.f64(double %1635, double %1636, double %1633)
+  %1638 = load ptr, ptr %arrayidx1309.9, align 8
+  %arrayidx1453.9 = getelementptr inbounds double, ptr %1638, i64 9
+  %1639 = load double, ptr %arrayidx1453.9, align 8
+  %1640 = load double, ptr %arrayidx1313.9, align 8
+  %1641 = tail call double @llvm.fmuladd.f64(double %1639, double %1640, double %1637)
+  %1642 = load ptr, ptr %arrayidx1309.10, align 8
+  %arrayidx1453.10 = getelementptr inbounds double, ptr %1642, i64 10
+  %1643 = load double, ptr %arrayidx1453.10, align 8
+  %1644 = load double, ptr %arrayidx1313.10, align 8
+  %1645 = tail call double @llvm.fmuladd.f64(double %1643, double %1644, double %1641)
+  %1646 = load ptr, ptr %arrayidx1309.11, align 8
+  %arrayidx1453.11 = getelementptr inbounds double, ptr %1646, i64 11
+  %1647 = load double, ptr %arrayidx1453.11, align 8
+  %1648 = load double, ptr %arrayidx1313.11, align 8
+  %1649 = tail call double @llvm.fmuladd.f64(double %1647, double %1648, double %1645)
+  %1650 = load ptr, ptr %arrayidx1309.12, align 8
+  %arrayidx1453.12 = getelementptr inbounds double, ptr %1650, i64 12
+  %1651 = load double, ptr %arrayidx1453.12, align 8
+  %1652 = load double, ptr %arrayidx1313.12, align 8
+  %1653 = tail call double @llvm.fmuladd.f64(double %1651, double %1652, double %1649)
+  %1654 = load ptr, ptr %arrayidx1309.13, align 8
+  %arrayidx1453.13 = getelementptr inbounds double, ptr %1654, i64 13
+  %1655 = load double, ptr %arrayidx1453.13, align 8
+  %1656 = load double, ptr %arrayidx1313.13, align 8
+  %1657 = tail call double @llvm.fmuladd.f64(double %1655, double %1656, double %1653)
+  %1658 = load ptr, ptr %arrayidx1309.14, align 8
+  %arrayidx1453.14 = getelementptr inbounds double, ptr %1658, i64 14
+  %1659 = load double, ptr %arrayidx1453.14, align 8
+  %1660 = load double, ptr %arrayidx1313.14, align 8
+  %1661 = tail call double @llvm.fmuladd.f64(double %1659, double %1660, double %1657)
+  %1662 = load ptr, ptr %arrayidx1309.15, align 8
+  %arrayidx1453.15 = getelementptr inbounds double, ptr %1662, i64 15
+  %1663 = load double, ptr %arrayidx1453.15, align 8
+  %1664 = load double, ptr %arrayidx1313.15, align 8
+  %1665 = tail call double @llvm.fmuladd.f64(double %1663, double %1664, double %1661)
+  %1666 = load ptr, ptr %arrayidx1309.16, align 8
+  %arrayidx1453.16 = getelementptr inbounds double, ptr %1666, i64 16
+  %1667 = load double, ptr %arrayidx1453.16, align 8
+  %1668 = load double, ptr %arrayidx1313.16, align 8
+  %1669 = tail call double @llvm.fmuladd.f64(double %1667, double %1668, double %1665)
+  %1670 = load ptr, ptr %arrayidx1309.17, align 8
+  %arrayidx1453.17 = getelementptr inbounds double, ptr %1670, i64 17
+  %1671 = load double, ptr %arrayidx1453.17, align 8
+  %1672 = load double, ptr %arrayidx1313.17, align 8
+  %1673 = tail call double @llvm.fmuladd.f64(double %1671, double %1672, double %1669)
+  %1674 = load ptr, ptr %arrayidx1309.18, align 8
+  %arrayidx1453.18 = getelementptr inbounds double, ptr %1674, i64 18
+  %1675 = load double, ptr %arrayidx1453.18, align 8
+  %1676 = load double, ptr %arrayidx1313.18, align 8
+  %1677 = tail call double @llvm.fmuladd.f64(double %1675, double %1676, double %1673)
+  %1678 = load ptr, ptr %arrayidx1309.19, align 8
+  %arrayidx1453.19 = getelementptr inbounds double, ptr %1678, i64 19
+  %1679 = load double, ptr %arrayidx1453.19, align 8
+  %1680 = load double, ptr %arrayidx1313.19, align 8
+  %1681 = tail call double @llvm.fmuladd.f64(double %1679, double %1680, double %1677)
+  %1682 = load ptr, ptr @stdout, align 8
+  %call1460 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1682, ptr noundef nonnull @.str.28, double noundef %1681)
+  %1683 = load ptr, ptr @stderr, align 8
+  %1684 = load i32, ptr @penalty, align 4
+  %1685 = load i32, ptr @penalty_ex, align 4
+  %1686 = load i32, ptr @offset, align 4
+  %call1461 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1683, ptr noundef nonnull @.str.29, i32 noundef %1684, i32 noundef %1685, i32 noundef %1686) #16
   tail call void @exit(i32 noundef 1) #17
   unreachable
 
 for.cond1485.preheader:                           ; preds = %for.cond1467.preheader.preheader, %for.cond1485.preheader
   %indvars.iv3815 = phi i64 [ 0, %for.cond1467.preheader.preheader ], [ %indvars.iv.next3816, %for.cond1485.preheader ]
   %arrayidx1490 = getelementptr inbounds ptr, ptr %call1152, i64 %indvars.iv3815
-  %1777 = load ptr, ptr %arrayidx1490, align 8
+  %1687 = load ptr, ptr %arrayidx1490, align 8
   %arrayidx1497 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3815, i64 0
-  %1778 = load <4 x double>, ptr %1777, align 8
-  %1779 = fptosi <4 x double> %1778 to <4 x i32>
-  store <4 x i32> %1779, ptr %arrayidx1497, align 8
-  %arrayidx1492.4 = getelementptr inbounds double, ptr %1777, i64 4
+  %1688 = load <4 x double>, ptr %1687, align 8
+  %1689 = fptosi <4 x double> %1688 to <4 x i32>
+  store <4 x i32> %1689, ptr %arrayidx1497, align 8
+  %arrayidx1492.4 = getelementptr inbounds double, ptr %1687, i64 4
   %arrayidx1497.4 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3815, i64 4
-  %1780 = load <4 x double>, ptr %arrayidx1492.4, align 8
-  %1781 = fptosi <4 x double> %1780 to <4 x i32>
-  store <4 x i32> %1781, ptr %arrayidx1497.4, align 8
-  %arrayidx1492.8 = getelementptr inbounds double, ptr %1777, i64 8
+  %1690 = load <4 x double>, ptr %arrayidx1492.4, align 8
+  %1691 = fptosi <4 x double> %1690 to <4 x i32>
+  store <4 x i32> %1691, ptr %arrayidx1497.4, align 8
+  %arrayidx1492.8 = getelementptr inbounds double, ptr %1687, i64 8
   %arrayidx1497.8 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3815, i64 8
-  %1782 = load <4 x double>, ptr %arrayidx1492.8, align 8
-  %1783 = fptosi <4 x double> %1782 to <4 x i32>
-  store <4 x i32> %1783, ptr %arrayidx1497.8, align 8
-  %arrayidx1492.12 = getelementptr inbounds double, ptr %1777, i64 12
+  %1692 = load <4 x double>, ptr %arrayidx1492.8, align 8
+  %1693 = fptosi <4 x double> %1692 to <4 x i32>
+  store <4 x i32> %1693, ptr %arrayidx1497.8, align 8
+  %arrayidx1492.12 = getelementptr inbounds double, ptr %1687, i64 12
   %arrayidx1497.12 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3815, i64 12
-  %1784 = load <4 x double>, ptr %arrayidx1492.12, align 8
-  %1785 = fptosi <4 x double> %1784 to <4 x i32>
-  store <4 x i32> %1785, ptr %arrayidx1497.12, align 8
-  %arrayidx1492.16 = getelementptr inbounds double, ptr %1777, i64 16
+  %1694 = load <4 x double>, ptr %arrayidx1492.12, align 8
+  %1695 = fptosi <4 x double> %1694 to <4 x i32>
+  store <4 x i32> %1695, ptr %arrayidx1497.12, align 8
+  %arrayidx1492.16 = getelementptr inbounds double, ptr %1687, i64 16
   %arrayidx1497.16 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3815, i64 16
-  %1786 = load <4 x double>, ptr %arrayidx1492.16, align 8
-  %1787 = fptosi <4 x double> %1786 to <4 x i32>
-  store <4 x i32> %1787, ptr %arrayidx1497.16, align 8
+  %1696 = load <4 x double>, ptr %arrayidx1492.16, align 8
+  %1697 = fptosi <4 x double> %1696 to <4 x i32>
+  store <4 x i32> %1697, ptr %arrayidx1497.16, align 8
   %indvars.iv.next3816 = add nuw nsw i64 %indvars.iv3815, 1
   %exitcond3818.not = icmp eq i64 %indvars.iv.next3816, 20
   br i1 %exitcond3818.not, label %for.end1503, label %for.cond1485.preheader
@@ -6669,18 +6106,18 @@ for.end1503:                                      ; preds = %for.cond1485.prehea
   tail call void @FreeDoubleMtx(ptr noundef nonnull %call1152) #15
   tail call void @FreeDoubleVec(ptr noundef %call1153) #15
   tail call void @FreeDoubleVec(ptr noundef %call1154) #15
-  %1788 = load ptr, ptr @stderr, align 8
-  %1789 = tail call i64 @fwrite(ptr nonnull @.str.30, i64 6, i64 1, ptr %1788) #16
+  %1698 = load ptr, ptr @stderr, align 8
+  %1699 = tail call i64 @fwrite(ptr nonnull @.str.30, i64 6, i64 1, ptr %1698) #16
   br label %if.end2020
 
 if.else1505:                                      ; preds = %if.else1144
-  %cmp1509 = icmp eq i32 %1289, 2
+  %cmp1509 = icmp eq i32 %1199, 2
   %or.cond2451 = select i1 %cmp1145, i1 %cmp1509, i1 false
   br i1 %or.cond2451, label %if.then1511, label %if.else1513
 
 if.then1511:                                      ; preds = %if.else1505
-  %1790 = load ptr, ptr @stderr, align 8
-  %1791 = tail call i64 @fwrite(ptr nonnull @.str.31, i64 14, i64 1, ptr %1790) #16
+  %1700 = load ptr, ptr @stderr, align 8
+  %1701 = tail call i64 @fwrite(ptr nonnull @.str.31, i64 14, i64 1, ptr %1700) #16
   tail call void @exit(i32 noundef 1) #17
   unreachable
 
@@ -6691,8 +6128,8 @@ if.else1513:                                      ; preds = %if.else1505
   %call1523 = tail call ptr @AllocateDoubleVec(i32 noundef 20) #15
   %call1524 = tail call ptr @AllocateDoubleVec(i32 noundef 20) #15
   %call1525 = tail call ptr @AllocateDoubleVec(i32 noundef 20) #15
-  %1792 = load i32, ptr @ppenalty, align 4
-  %cmp1526 = icmp eq i32 %1792, 100009
+  %1702 = load i32, ptr @ppenalty, align 4
+  %cmp1526 = icmp eq i32 %1702, 100009
   br i1 %cmp1526, label %if.then1528, label %if.end1529
 
 if.then1528:                                      ; preds = %if.else1513
@@ -6700,9 +6137,9 @@ if.then1528:                                      ; preds = %if.else1513
   br label %if.end1529
 
 if.end1529:                                       ; preds = %if.then1528, %if.else1513
-  %1793 = phi i32 [ -1530, %if.then1528 ], [ %1792, %if.else1513 ]
-  %1794 = load i32, ptr @ppenalty_OP, align 4
-  %cmp1530 = icmp eq i32 %1794, 100009
+  %1703 = phi i32 [ -1530, %if.then1528 ], [ %1702, %if.else1513 ]
+  %1704 = load i32, ptr @ppenalty_OP, align 4
+  %cmp1530 = icmp eq i32 %1704, 100009
   br i1 %cmp1530, label %if.then1532, label %if.end1533
 
 if.then1532:                                      ; preds = %if.end1529
@@ -6710,9 +6147,9 @@ if.then1532:                                      ; preds = %if.end1529
   br label %if.end1533
 
 if.end1533:                                       ; preds = %if.then1532, %if.end1529
-  %1795 = phi i32 [ -1530, %if.then1532 ], [ %1794, %if.end1529 ]
-  %1796 = load i32, ptr @ppenalty_ex, align 4
-  %cmp1534 = icmp eq i32 %1796, 100009
+  %1705 = phi i32 [ -1530, %if.then1532 ], [ %1704, %if.end1529 ]
+  %1706 = load i32, ptr @ppenalty_ex, align 4
+  %cmp1534 = icmp eq i32 %1706, 100009
   br i1 %cmp1534, label %if.then1536, label %if.end1537
 
 if.then1536:                                      ; preds = %if.end1533
@@ -6720,9 +6157,9 @@ if.then1536:                                      ; preds = %if.end1533
   br label %if.end1537
 
 if.end1537:                                       ; preds = %if.then1536, %if.end1533
-  %1797 = phi i32 [ 0, %if.then1536 ], [ %1796, %if.end1533 ]
-  %1798 = load i32, ptr @ppenalty_EX, align 4
-  %cmp1538 = icmp eq i32 %1798, 100009
+  %1707 = phi i32 [ 0, %if.then1536 ], [ %1706, %if.end1533 ]
+  %1708 = load i32, ptr @ppenalty_EX, align 4
+  %cmp1538 = icmp eq i32 %1708, 100009
   br i1 %cmp1538, label %if.then1540, label %if.end1541
 
 if.then1540:                                      ; preds = %if.end1537
@@ -6730,9 +6167,9 @@ if.then1540:                                      ; preds = %if.end1537
   br label %if.end1541
 
 if.end1541:                                       ; preds = %if.then1540, %if.end1537
-  %1799 = phi i32 [ 0, %if.then1540 ], [ %1798, %if.end1537 ]
-  %1800 = load i32, ptr @poffset, align 4
-  %cmp1542 = icmp eq i32 %1800, 100009
+  %1709 = phi i32 [ 0, %if.then1540 ], [ %1708, %if.end1537 ]
+  %1710 = load i32, ptr @poffset, align 4
+  %cmp1542 = icmp eq i32 %1710, 100009
   br i1 %cmp1542, label %if.then1544, label %if.end1545
 
 if.then1544:                                      ; preds = %if.end1541
@@ -6740,9 +6177,9 @@ if.then1544:                                      ; preds = %if.end1541
   br label %if.end1545
 
 if.end1545:                                       ; preds = %if.then1544, %if.end1541
-  %1801 = phi i32 [ -123, %if.then1544 ], [ %1800, %if.end1541 ]
-  %1802 = load i32, ptr @pamN, align 4
-  %cmp1546 = icmp eq i32 %1802, 100009
+  %1711 = phi i32 [ -123, %if.then1544 ], [ %1710, %if.end1541 ]
+  %1712 = load i32, ptr @pamN, align 4
+  %cmp1546 = icmp eq i32 %1712, 100009
   br i1 %cmp1546, label %if.then1548, label %if.end1549
 
 if.then1548:                                      ; preds = %if.end1545
@@ -6750,9 +6187,9 @@ if.then1548:                                      ; preds = %if.end1545
   br label %if.end1549
 
 if.end1549:                                       ; preds = %if.then1548, %if.end1545
-  %1803 = phi i32 [ 200, %if.then1548 ], [ %1802, %if.end1545 ]
-  %1804 = load i32, ptr @kimuraR, align 4
-  %cmp1550 = icmp eq i32 %1804, 100009
+  %1713 = phi i32 [ 200, %if.then1548 ], [ %1712, %if.end1545 ]
+  %1714 = load i32, ptr @kimuraR, align 4
+  %cmp1550 = icmp eq i32 %1714, 100009
   br i1 %cmp1550, label %if.then1552, label %if.end1553
 
 if.then1552:                                      ; preds = %if.end1549
@@ -6760,147 +6197,147 @@ if.then1552:                                      ; preds = %if.end1549
   br label %if.end1553
 
 if.end1553:                                       ; preds = %if.then1552, %if.end1549
-  %conv1554 = sitofp i32 %1793 to double
-  %1805 = tail call double @llvm.fmuladd.f64(double %conv1554, double 6.000000e-01, double 5.000000e-01)
-  %conv1556 = fptosi double %1805 to i32
+  %conv1554 = sitofp i32 %1703 to double
+  %1715 = tail call double @llvm.fmuladd.f64(double %conv1554, double 6.000000e-01, double 5.000000e-01)
+  %conv1556 = fptosi double %1715 to i32
   store i32 %conv1556, ptr @penalty, align 4
-  %conv1557 = sitofp i32 %1795 to double
-  %1806 = tail call double @llvm.fmuladd.f64(double %conv1557, double 6.000000e-01, double 5.000000e-01)
-  %conv1559 = fptosi double %1806 to i32
+  %conv1557 = sitofp i32 %1705 to double
+  %1716 = tail call double @llvm.fmuladd.f64(double %conv1557, double 6.000000e-01, double 5.000000e-01)
+  %conv1559 = fptosi double %1716 to i32
   store i32 %conv1559, ptr @penalty_OP, align 4
-  %conv1560 = sitofp i32 %1797 to double
-  %1807 = tail call double @llvm.fmuladd.f64(double %conv1560, double 6.000000e-01, double 5.000000e-01)
-  %conv1562 = fptosi double %1807 to i32
+  %conv1560 = sitofp i32 %1707 to double
+  %1717 = tail call double @llvm.fmuladd.f64(double %conv1560, double 6.000000e-01, double 5.000000e-01)
+  %conv1562 = fptosi double %1717 to i32
   store i32 %conv1562, ptr @penalty_ex, align 4
-  %conv1563 = sitofp i32 %1799 to double
-  %1808 = tail call double @llvm.fmuladd.f64(double %conv1563, double 6.000000e-01, double 5.000000e-01)
-  %conv1565 = fptosi double %1808 to i32
+  %conv1563 = sitofp i32 %1709 to double
+  %1718 = tail call double @llvm.fmuladd.f64(double %conv1563, double 6.000000e-01, double 5.000000e-01)
+  %conv1565 = fptosi double %1718 to i32
   store i32 %conv1565, ptr @penalty_EX, align 4
-  %conv1566 = sitofp i32 %1801 to double
-  %1809 = tail call double @llvm.fmuladd.f64(double %conv1566, double 6.000000e-01, double 5.000000e-01)
-  %conv1568 = fptosi double %1809 to i32
+  %conv1566 = sitofp i32 %1711 to double
+  %1719 = tail call double @llvm.fmuladd.f64(double %conv1566, double 6.000000e-01, double 5.000000e-01)
+  %conv1568 = fptosi double %1719 to i32
   store i32 %conv1568, ptr @offset, align 4
   store i32 0, ptr @offsetFFT, align 4
   store i32 60, ptr @offsetLN, align 4
   store i32 -1199, ptr @penaltyLN, align 4
   store i32 -59, ptr @penalty_exLN, align 4
-  %1810 = load i32, ptr @TMorJTT, align 4
-  %cmp1569 = icmp eq i32 %1810, 202
+  %1720 = load i32, ptr @TMorJTT, align 4
+  %cmp1569 = icmp eq i32 %1720, 202
   %cond1571 = select i1 %cmp1569, ptr @.str.33, ptr @.str.34
   %div1574 = fdiv double %conv1554, -1.000000e+03
   %div1577 = fdiv double %conv1566, -1.000000e+03
-  %call1578 = tail call i32 (ptr, ptr, ...) @sprintf(ptr noundef nonnull dereferenceable(1) @modelname, ptr noundef nonnull dereferenceable(1) @.str.32, ptr noundef nonnull %cond1571, i32 noundef %1803, double noundef %div1574, double noundef %div1577) #15
-  %1811 = load i32, ptr @TMorJTT, align 4
-  %cmp1579 = icmp eq i32 %1811, 202
+  %call1578 = tail call i32 (ptr, ptr, ...) @sprintf(ptr noundef nonnull dereferenceable(1) @modelname, ptr noundef nonnull dereferenceable(1) @.str.32, ptr noundef nonnull %cond1571, i32 noundef %1713, double noundef %div1574, double noundef %div1577) #15
+  %1721 = load i32, ptr @TMorJTT, align 4
+  %cmp1579 = icmp eq i32 %1721, 202
   %conv1580 = zext i1 %cmp1579 to i32
   tail call void @JTTmtx(ptr noundef %call1520, ptr noundef %call1523, ptr noundef nonnull @amino, ptr noundef nonnull @amino_grp, i32 noundef %conv1580)
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(512) @amino_n, i8 -1, i64 512, i1 false)
-  %1812 = load i8, ptr @amino, align 16
-  %idxprom1597 = sext i8 %1812 to i64
+  %1722 = load i8, ptr @amino, align 16
+  %idxprom1597 = sext i8 %1722 to i64
   %arrayidx1598 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597
   store i32 0, ptr %arrayidx1598, align 4
-  %1813 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom1597.1 = sext i8 %1813 to i64
+  %1723 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom1597.1 = sext i8 %1723 to i64
   %arrayidx1598.1 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.1
   store i32 1, ptr %arrayidx1598.1, align 4
-  %1814 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom1597.2 = sext i8 %1814 to i64
+  %1724 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom1597.2 = sext i8 %1724 to i64
   %arrayidx1598.2 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.2
   store i32 2, ptr %arrayidx1598.2, align 4
-  %1815 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %idxprom1597.3 = sext i8 %1815 to i64
+  %1725 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %idxprom1597.3 = sext i8 %1725 to i64
   %arrayidx1598.3 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.3
   store i32 3, ptr %arrayidx1598.3, align 4
-  %1816 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %idxprom1597.4 = sext i8 %1816 to i64
+  %1726 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %idxprom1597.4 = sext i8 %1726 to i64
   %arrayidx1598.4 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.4
   store i32 4, ptr %arrayidx1598.4, align 4
-  %1817 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom1597.5 = sext i8 %1817 to i64
+  %1727 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom1597.5 = sext i8 %1727 to i64
   %arrayidx1598.5 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.5
   store i32 5, ptr %arrayidx1598.5, align 4
-  %1818 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom1597.6 = sext i8 %1818 to i64
+  %1728 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom1597.6 = sext i8 %1728 to i64
   %arrayidx1598.6 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.6
   store i32 6, ptr %arrayidx1598.6, align 4
-  %1819 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom1597.7 = sext i8 %1819 to i64
+  %1729 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom1597.7 = sext i8 %1729 to i64
   %arrayidx1598.7 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.7
   store i32 7, ptr %arrayidx1598.7, align 4
-  %1820 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %idxprom1597.8 = sext i8 %1820 to i64
+  %1730 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %idxprom1597.8 = sext i8 %1730 to i64
   %arrayidx1598.8 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.8
   store i32 8, ptr %arrayidx1598.8, align 4
-  %1821 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %idxprom1597.9 = sext i8 %1821 to i64
+  %1731 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %idxprom1597.9 = sext i8 %1731 to i64
   %arrayidx1598.9 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.9
   store i32 9, ptr %arrayidx1598.9, align 4
-  %1822 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
-  %idxprom1597.10 = sext i8 %1822 to i64
+  %1732 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
+  %idxprom1597.10 = sext i8 %1732 to i64
   %arrayidx1598.10 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.10
   store i32 10, ptr %arrayidx1598.10, align 4
-  %1823 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
-  %idxprom1597.11 = sext i8 %1823 to i64
+  %1733 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
+  %idxprom1597.11 = sext i8 %1733 to i64
   %arrayidx1598.11 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.11
   store i32 11, ptr %arrayidx1598.11, align 4
-  %1824 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
-  %idxprom1597.12 = sext i8 %1824 to i64
+  %1734 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
+  %idxprom1597.12 = sext i8 %1734 to i64
   %arrayidx1598.12 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.12
   store i32 12, ptr %arrayidx1598.12, align 4
-  %1825 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %idxprom1597.13 = sext i8 %1825 to i64
+  %1735 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %idxprom1597.13 = sext i8 %1735 to i64
   %arrayidx1598.13 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.13
   store i32 13, ptr %arrayidx1598.13, align 4
-  %1826 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %idxprom1597.14 = sext i8 %1826 to i64
+  %1736 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %idxprom1597.14 = sext i8 %1736 to i64
   %arrayidx1598.14 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.14
   store i32 14, ptr %arrayidx1598.14, align 4
-  %1827 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %idxprom1597.15 = sext i8 %1827 to i64
+  %1737 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %idxprom1597.15 = sext i8 %1737 to i64
   %arrayidx1598.15 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.15
   store i32 15, ptr %arrayidx1598.15, align 4
-  %1828 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %idxprom1597.16 = sext i8 %1828 to i64
+  %1738 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %idxprom1597.16 = sext i8 %1738 to i64
   %arrayidx1598.16 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.16
   store i32 16, ptr %arrayidx1598.16, align 4
-  %1829 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %idxprom1597.17 = sext i8 %1829 to i64
+  %1739 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %idxprom1597.17 = sext i8 %1739 to i64
   %arrayidx1598.17 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.17
   store i32 17, ptr %arrayidx1598.17, align 4
-  %1830 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %idxprom1597.18 = sext i8 %1830 to i64
+  %1740 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %idxprom1597.18 = sext i8 %1740 to i64
   %arrayidx1598.18 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.18
   store i32 18, ptr %arrayidx1598.18, align 4
-  %1831 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %idxprom1597.19 = sext i8 %1831 to i64
+  %1741 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %idxprom1597.19 = sext i8 %1741 to i64
   %arrayidx1598.19 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.19
   store i32 19, ptr %arrayidx1598.19, align 4
-  %1832 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
-  %idxprom1597.20 = sext i8 %1832 to i64
+  %1742 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
+  %idxprom1597.20 = sext i8 %1742 to i64
   %arrayidx1598.20 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.20
   store i32 20, ptr %arrayidx1598.20, align 4
-  %1833 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
-  %idxprom1597.21 = sext i8 %1833 to i64
+  %1743 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
+  %idxprom1597.21 = sext i8 %1743 to i64
   %arrayidx1598.21 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.21
   store i32 21, ptr %arrayidx1598.21, align 4
-  %1834 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
-  %idxprom1597.22 = sext i8 %1834 to i64
+  %1744 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
+  %idxprom1597.22 = sext i8 %1744 to i64
   %arrayidx1598.22 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.22
   store i32 22, ptr %arrayidx1598.22, align 4
-  %1835 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
-  %idxprom1597.23 = sext i8 %1835 to i64
+  %1745 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
+  %idxprom1597.23 = sext i8 %1745 to i64
   %arrayidx1598.23 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.23
   store i32 23, ptr %arrayidx1598.23, align 4
-  %1836 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
-  %idxprom1597.24 = sext i8 %1836 to i64
+  %1746 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
+  %idxprom1597.24 = sext i8 %1746 to i64
   %arrayidx1598.24 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.24
   store i32 24, ptr %arrayidx1598.24, align 4
-  %1837 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
-  %idxprom1597.25 = sext i8 %1837 to i64
+  %1747 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
+  %idxprom1597.25 = sext i8 %1747 to i64
   %arrayidx1598.25 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom1597.25
   store i32 25, ptr %arrayidx1598.25, align 4
-  %1838 = load i32, ptr @fmodel, align 4
-  %cmp1602 = icmp eq i32 %1838, 1
+  %1748 = load i32, ptr @fmodel, align 4
+  %cmp1602 = icmp eq i32 %1748, 1
   br i1 %cmp1602, label %if.then1604, label %if.end1606
 
 if.then1604:                                      ; preds = %if.end1553
@@ -6909,12 +6346,12 @@ if.then1604:                                      ; preds = %if.end1553
 
 if.end1606:                                       ; preds = %if.end1553, %if.then1604
   %freq11517.0 = phi ptr [ %call1525, %if.then1604 ], [ %call1523, %if.end1553 ]
-  %1839 = load ptr, ptr @stderr, align 8
-  %1840 = load i32, ptr @pamN, align 4
-  %1841 = load i32, ptr @TMorJTT, align 4
-  %cmp1607 = icmp eq i32 %1841, 202
+  %1749 = load ptr, ptr @stderr, align 8
+  %1750 = load i32, ptr @pamN, align 4
+  %1751 = load i32, ptr @TMorJTT, align 4
+  %cmp1607 = icmp eq i32 %1751, 202
   %cond1609 = select i1 %cmp1607, ptr @.str.33, ptr @.str.34
-  %call1610 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1839, ptr noundef nonnull @.str.35, i32 noundef %1840, ptr noundef nonnull %cond1609) #16
+  %call1610 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1749, ptr noundef nonnull @.str.35, i32 noundef %1750, ptr noundef nonnull %cond1609) #16
   %arrayidx1626.1 = getelementptr inbounds double, ptr %call1523, i64 1
   %arrayidx1626.2 = getelementptr inbounds double, ptr %call1523, i64 2
   %arrayidx1626.3 = getelementptr inbounds double, ptr %call1523, i64 3
@@ -6938,113 +6375,113 @@ if.end1606:                                       ; preds = %if.end1553, %if.the
 
 for.body1614:                                     ; preds = %if.end1606, %for.body1614
   %indvars.iv = phi i64 [ 0, %if.end1606 ], [ %indvars.iv.next, %for.body1614 ]
-  %tmp.03395 = phi double [ 0.000000e+00, %if.end1606 ], [ %1904, %for.body1614 ]
+  %tmp.03395 = phi double [ 0.000000e+00, %if.end1606 ], [ %1814, %for.body1614 ]
   %arrayidx1616 = getelementptr inbounds double, ptr %call1524, i64 %indvars.iv
   store double 0.000000e+00, ptr %arrayidx1616, align 8
   %arrayidx1622 = getelementptr inbounds ptr, ptr %call1520, i64 %indvars.iv
-  %1842 = load ptr, ptr %arrayidx1622, align 8
-  %1843 = load double, ptr %1842, align 8
-  %1844 = load double, ptr %call1523, align 8
-  %1845 = tail call double @llvm.fmuladd.f64(double %1843, double %1844, double 0.000000e+00)
-  store double %1845, ptr %arrayidx1616, align 8
-  %arrayidx1624.1 = getelementptr inbounds double, ptr %1842, i64 1
-  %1846 = load double, ptr %arrayidx1624.1, align 8
-  %1847 = load double, ptr %arrayidx1626.1, align 8
-  %1848 = tail call double @llvm.fmuladd.f64(double %1846, double %1847, double %1845)
-  store double %1848, ptr %arrayidx1616, align 8
-  %arrayidx1624.2 = getelementptr inbounds double, ptr %1842, i64 2
-  %1849 = load double, ptr %arrayidx1624.2, align 8
-  %1850 = load double, ptr %arrayidx1626.2, align 8
-  %1851 = tail call double @llvm.fmuladd.f64(double %1849, double %1850, double %1848)
-  store double %1851, ptr %arrayidx1616, align 8
-  %arrayidx1624.3 = getelementptr inbounds double, ptr %1842, i64 3
-  %1852 = load double, ptr %arrayidx1624.3, align 8
-  %1853 = load double, ptr %arrayidx1626.3, align 8
-  %1854 = tail call double @llvm.fmuladd.f64(double %1852, double %1853, double %1851)
-  store double %1854, ptr %arrayidx1616, align 8
-  %arrayidx1624.4 = getelementptr inbounds double, ptr %1842, i64 4
-  %1855 = load double, ptr %arrayidx1624.4, align 8
-  %1856 = load double, ptr %arrayidx1626.4, align 8
-  %1857 = tail call double @llvm.fmuladd.f64(double %1855, double %1856, double %1854)
-  store double %1857, ptr %arrayidx1616, align 8
-  %arrayidx1624.5 = getelementptr inbounds double, ptr %1842, i64 5
-  %1858 = load double, ptr %arrayidx1624.5, align 8
-  %1859 = load double, ptr %arrayidx1626.5, align 8
-  %1860 = tail call double @llvm.fmuladd.f64(double %1858, double %1859, double %1857)
-  store double %1860, ptr %arrayidx1616, align 8
-  %arrayidx1624.6 = getelementptr inbounds double, ptr %1842, i64 6
-  %1861 = load double, ptr %arrayidx1624.6, align 8
-  %1862 = load double, ptr %arrayidx1626.6, align 8
-  %1863 = tail call double @llvm.fmuladd.f64(double %1861, double %1862, double %1860)
-  store double %1863, ptr %arrayidx1616, align 8
-  %arrayidx1624.7 = getelementptr inbounds double, ptr %1842, i64 7
-  %1864 = load double, ptr %arrayidx1624.7, align 8
-  %1865 = load double, ptr %arrayidx1626.7, align 8
-  %1866 = tail call double @llvm.fmuladd.f64(double %1864, double %1865, double %1863)
-  store double %1866, ptr %arrayidx1616, align 8
-  %arrayidx1624.8 = getelementptr inbounds double, ptr %1842, i64 8
-  %1867 = load double, ptr %arrayidx1624.8, align 8
-  %1868 = load double, ptr %arrayidx1626.8, align 8
-  %1869 = tail call double @llvm.fmuladd.f64(double %1867, double %1868, double %1866)
-  store double %1869, ptr %arrayidx1616, align 8
-  %arrayidx1624.9 = getelementptr inbounds double, ptr %1842, i64 9
-  %1870 = load double, ptr %arrayidx1624.9, align 8
-  %1871 = load double, ptr %arrayidx1626.9, align 8
-  %1872 = tail call double @llvm.fmuladd.f64(double %1870, double %1871, double %1869)
-  store double %1872, ptr %arrayidx1616, align 8
-  %arrayidx1624.10 = getelementptr inbounds double, ptr %1842, i64 10
-  %1873 = load double, ptr %arrayidx1624.10, align 8
-  %1874 = load double, ptr %arrayidx1626.10, align 8
-  %1875 = tail call double @llvm.fmuladd.f64(double %1873, double %1874, double %1872)
-  store double %1875, ptr %arrayidx1616, align 8
-  %arrayidx1624.11 = getelementptr inbounds double, ptr %1842, i64 11
-  %1876 = load double, ptr %arrayidx1624.11, align 8
-  %1877 = load double, ptr %arrayidx1626.11, align 8
-  %1878 = tail call double @llvm.fmuladd.f64(double %1876, double %1877, double %1875)
-  store double %1878, ptr %arrayidx1616, align 8
-  %arrayidx1624.12 = getelementptr inbounds double, ptr %1842, i64 12
-  %1879 = load double, ptr %arrayidx1624.12, align 8
-  %1880 = load double, ptr %arrayidx1626.12, align 8
-  %1881 = tail call double @llvm.fmuladd.f64(double %1879, double %1880, double %1878)
-  store double %1881, ptr %arrayidx1616, align 8
-  %arrayidx1624.13 = getelementptr inbounds double, ptr %1842, i64 13
-  %1882 = load double, ptr %arrayidx1624.13, align 8
-  %1883 = load double, ptr %arrayidx1626.13, align 8
-  %1884 = tail call double @llvm.fmuladd.f64(double %1882, double %1883, double %1881)
-  store double %1884, ptr %arrayidx1616, align 8
-  %arrayidx1624.14 = getelementptr inbounds double, ptr %1842, i64 14
-  %1885 = load double, ptr %arrayidx1624.14, align 8
-  %1886 = load double, ptr %arrayidx1626.14, align 8
-  %1887 = tail call double @llvm.fmuladd.f64(double %1885, double %1886, double %1884)
-  store double %1887, ptr %arrayidx1616, align 8
-  %arrayidx1624.15 = getelementptr inbounds double, ptr %1842, i64 15
-  %1888 = load double, ptr %arrayidx1624.15, align 8
-  %1889 = load double, ptr %arrayidx1626.15, align 8
-  %1890 = tail call double @llvm.fmuladd.f64(double %1888, double %1889, double %1887)
-  store double %1890, ptr %arrayidx1616, align 8
-  %arrayidx1624.16 = getelementptr inbounds double, ptr %1842, i64 16
-  %1891 = load double, ptr %arrayidx1624.16, align 8
-  %1892 = load double, ptr %arrayidx1626.16, align 8
-  %1893 = tail call double @llvm.fmuladd.f64(double %1891, double %1892, double %1890)
-  store double %1893, ptr %arrayidx1616, align 8
-  %arrayidx1624.17 = getelementptr inbounds double, ptr %1842, i64 17
-  %1894 = load double, ptr %arrayidx1624.17, align 8
-  %1895 = load double, ptr %arrayidx1626.17, align 8
-  %1896 = tail call double @llvm.fmuladd.f64(double %1894, double %1895, double %1893)
-  store double %1896, ptr %arrayidx1616, align 8
-  %arrayidx1624.18 = getelementptr inbounds double, ptr %1842, i64 18
-  %1897 = load double, ptr %arrayidx1624.18, align 8
-  %1898 = load double, ptr %arrayidx1626.18, align 8
-  %1899 = tail call double @llvm.fmuladd.f64(double %1897, double %1898, double %1896)
-  store double %1899, ptr %arrayidx1616, align 8
-  %arrayidx1624.19 = getelementptr inbounds double, ptr %1842, i64 19
-  %1900 = load double, ptr %arrayidx1624.19, align 8
-  %1901 = load double, ptr %arrayidx1626.19, align 8
-  %1902 = tail call double @llvm.fmuladd.f64(double %1900, double %1901, double %1899)
-  store double %1902, ptr %arrayidx1616, align 8
+  %1752 = load ptr, ptr %arrayidx1622, align 8
+  %1753 = load double, ptr %1752, align 8
+  %1754 = load double, ptr %call1523, align 8
+  %1755 = tail call double @llvm.fmuladd.f64(double %1753, double %1754, double 0.000000e+00)
+  store double %1755, ptr %arrayidx1616, align 8
+  %arrayidx1624.1 = getelementptr inbounds double, ptr %1752, i64 1
+  %1756 = load double, ptr %arrayidx1624.1, align 8
+  %1757 = load double, ptr %arrayidx1626.1, align 8
+  %1758 = tail call double @llvm.fmuladd.f64(double %1756, double %1757, double %1755)
+  store double %1758, ptr %arrayidx1616, align 8
+  %arrayidx1624.2 = getelementptr inbounds double, ptr %1752, i64 2
+  %1759 = load double, ptr %arrayidx1624.2, align 8
+  %1760 = load double, ptr %arrayidx1626.2, align 8
+  %1761 = tail call double @llvm.fmuladd.f64(double %1759, double %1760, double %1758)
+  store double %1761, ptr %arrayidx1616, align 8
+  %arrayidx1624.3 = getelementptr inbounds double, ptr %1752, i64 3
+  %1762 = load double, ptr %arrayidx1624.3, align 8
+  %1763 = load double, ptr %arrayidx1626.3, align 8
+  %1764 = tail call double @llvm.fmuladd.f64(double %1762, double %1763, double %1761)
+  store double %1764, ptr %arrayidx1616, align 8
+  %arrayidx1624.4 = getelementptr inbounds double, ptr %1752, i64 4
+  %1765 = load double, ptr %arrayidx1624.4, align 8
+  %1766 = load double, ptr %arrayidx1626.4, align 8
+  %1767 = tail call double @llvm.fmuladd.f64(double %1765, double %1766, double %1764)
+  store double %1767, ptr %arrayidx1616, align 8
+  %arrayidx1624.5 = getelementptr inbounds double, ptr %1752, i64 5
+  %1768 = load double, ptr %arrayidx1624.5, align 8
+  %1769 = load double, ptr %arrayidx1626.5, align 8
+  %1770 = tail call double @llvm.fmuladd.f64(double %1768, double %1769, double %1767)
+  store double %1770, ptr %arrayidx1616, align 8
+  %arrayidx1624.6 = getelementptr inbounds double, ptr %1752, i64 6
+  %1771 = load double, ptr %arrayidx1624.6, align 8
+  %1772 = load double, ptr %arrayidx1626.6, align 8
+  %1773 = tail call double @llvm.fmuladd.f64(double %1771, double %1772, double %1770)
+  store double %1773, ptr %arrayidx1616, align 8
+  %arrayidx1624.7 = getelementptr inbounds double, ptr %1752, i64 7
+  %1774 = load double, ptr %arrayidx1624.7, align 8
+  %1775 = load double, ptr %arrayidx1626.7, align 8
+  %1776 = tail call double @llvm.fmuladd.f64(double %1774, double %1775, double %1773)
+  store double %1776, ptr %arrayidx1616, align 8
+  %arrayidx1624.8 = getelementptr inbounds double, ptr %1752, i64 8
+  %1777 = load double, ptr %arrayidx1624.8, align 8
+  %1778 = load double, ptr %arrayidx1626.8, align 8
+  %1779 = tail call double @llvm.fmuladd.f64(double %1777, double %1778, double %1776)
+  store double %1779, ptr %arrayidx1616, align 8
+  %arrayidx1624.9 = getelementptr inbounds double, ptr %1752, i64 9
+  %1780 = load double, ptr %arrayidx1624.9, align 8
+  %1781 = load double, ptr %arrayidx1626.9, align 8
+  %1782 = tail call double @llvm.fmuladd.f64(double %1780, double %1781, double %1779)
+  store double %1782, ptr %arrayidx1616, align 8
+  %arrayidx1624.10 = getelementptr inbounds double, ptr %1752, i64 10
+  %1783 = load double, ptr %arrayidx1624.10, align 8
+  %1784 = load double, ptr %arrayidx1626.10, align 8
+  %1785 = tail call double @llvm.fmuladd.f64(double %1783, double %1784, double %1782)
+  store double %1785, ptr %arrayidx1616, align 8
+  %arrayidx1624.11 = getelementptr inbounds double, ptr %1752, i64 11
+  %1786 = load double, ptr %arrayidx1624.11, align 8
+  %1787 = load double, ptr %arrayidx1626.11, align 8
+  %1788 = tail call double @llvm.fmuladd.f64(double %1786, double %1787, double %1785)
+  store double %1788, ptr %arrayidx1616, align 8
+  %arrayidx1624.12 = getelementptr inbounds double, ptr %1752, i64 12
+  %1789 = load double, ptr %arrayidx1624.12, align 8
+  %1790 = load double, ptr %arrayidx1626.12, align 8
+  %1791 = tail call double @llvm.fmuladd.f64(double %1789, double %1790, double %1788)
+  store double %1791, ptr %arrayidx1616, align 8
+  %arrayidx1624.13 = getelementptr inbounds double, ptr %1752, i64 13
+  %1792 = load double, ptr %arrayidx1624.13, align 8
+  %1793 = load double, ptr %arrayidx1626.13, align 8
+  %1794 = tail call double @llvm.fmuladd.f64(double %1792, double %1793, double %1791)
+  store double %1794, ptr %arrayidx1616, align 8
+  %arrayidx1624.14 = getelementptr inbounds double, ptr %1752, i64 14
+  %1795 = load double, ptr %arrayidx1624.14, align 8
+  %1796 = load double, ptr %arrayidx1626.14, align 8
+  %1797 = tail call double @llvm.fmuladd.f64(double %1795, double %1796, double %1794)
+  store double %1797, ptr %arrayidx1616, align 8
+  %arrayidx1624.15 = getelementptr inbounds double, ptr %1752, i64 15
+  %1798 = load double, ptr %arrayidx1624.15, align 8
+  %1799 = load double, ptr %arrayidx1626.15, align 8
+  %1800 = tail call double @llvm.fmuladd.f64(double %1798, double %1799, double %1797)
+  store double %1800, ptr %arrayidx1616, align 8
+  %arrayidx1624.16 = getelementptr inbounds double, ptr %1752, i64 16
+  %1801 = load double, ptr %arrayidx1624.16, align 8
+  %1802 = load double, ptr %arrayidx1626.16, align 8
+  %1803 = tail call double @llvm.fmuladd.f64(double %1801, double %1802, double %1800)
+  store double %1803, ptr %arrayidx1616, align 8
+  %arrayidx1624.17 = getelementptr inbounds double, ptr %1752, i64 17
+  %1804 = load double, ptr %arrayidx1624.17, align 8
+  %1805 = load double, ptr %arrayidx1626.17, align 8
+  %1806 = tail call double @llvm.fmuladd.f64(double %1804, double %1805, double %1803)
+  store double %1806, ptr %arrayidx1616, align 8
+  %arrayidx1624.18 = getelementptr inbounds double, ptr %1752, i64 18
+  %1807 = load double, ptr %arrayidx1624.18, align 8
+  %1808 = load double, ptr %arrayidx1626.18, align 8
+  %1809 = tail call double @llvm.fmuladd.f64(double %1807, double %1808, double %1806)
+  store double %1809, ptr %arrayidx1616, align 8
+  %arrayidx1624.19 = getelementptr inbounds double, ptr %1752, i64 19
+  %1810 = load double, ptr %arrayidx1624.19, align 8
+  %1811 = load double, ptr %arrayidx1626.19, align 8
+  %1812 = tail call double @llvm.fmuladd.f64(double %1810, double %1811, double %1809)
+  store double %1812, ptr %arrayidx1616, align 8
   %arrayidx1636 = getelementptr inbounds double, ptr %call1523, i64 %indvars.iv
-  %1903 = load double, ptr %arrayidx1636, align 8
-  %1904 = tail call double @llvm.fmuladd.f64(double %1902, double %1903, double %tmp.03395)
+  %1813 = load double, ptr %arrayidx1636, align 8
+  %1814 = tail call double @llvm.fmuladd.f64(double %1812, double %1813, double %tmp.03395)
   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
   %exitcond.not = icmp eq i64 %indvars.iv.next, 20
   br i1 %exitcond.not, label %for.end1640, label %for.body1614
@@ -7069,7 +6506,7 @@ for.end1640:                                      ; preds = %for.body1614
   %arrayidx1626.17.le = getelementptr inbounds double, ptr %call1523, i64 17
   %arrayidx1626.18.le = getelementptr inbounds double, ptr %call1523, i64 18
   %arrayidx1626.19.le = getelementptr inbounds double, ptr %call1523, i64 19
-  %div1641 = fdiv double 1.000000e-02, %1904
+  %div1641 = fdiv double 1.000000e-02, %1814
   %neg = fneg double %div1641
   br label %for.cond1646.preheader
 
@@ -7079,7 +6516,7 @@ for.cond1646.preheader:                           ; preds = %for.end1640, %for.i
   %arrayidx1659 = getelementptr inbounds double, ptr %call1523, i64 %indvars.iv3624
   %arrayidx1662 = getelementptr inbounds ptr, ptr %call1521, i64 %indvars.iv3624
   %arrayidx1667 = getelementptr inbounds double, ptr %call1524, i64 %indvars.iv3624
-  %1905 = load ptr, ptr %arrayidx1662, align 8
+  %1815 = load ptr, ptr %arrayidx1662, align 8
   br label %for.body1649
 
 for.body1649:                                     ; preds = %for.cond1646.preheader, %for.inc1674
@@ -7088,23 +6525,23 @@ for.body1649:                                     ; preds = %for.cond1646.prehea
   br i1 %cmp1650.not, label %if.else1665, label %if.then1652
 
 if.then1652:                                      ; preds = %for.body1649
-  %1906 = load ptr, ptr %arrayidx1654, align 8
-  %arrayidx1656 = getelementptr inbounds double, ptr %1906, i64 %indvars.iv3620
-  %1907 = load double, ptr %arrayidx1656, align 8
-  %mul1657 = fmul double %div1641, %1907
-  %1908 = load double, ptr %arrayidx1659, align 8
-  %mul1660 = fmul double %mul1657, %1908
+  %1816 = load ptr, ptr %arrayidx1654, align 8
+  %arrayidx1656 = getelementptr inbounds double, ptr %1816, i64 %indvars.iv3620
+  %1817 = load double, ptr %arrayidx1656, align 8
+  %mul1657 = fmul double %div1641, %1817
+  %1818 = load double, ptr %arrayidx1659, align 8
+  %mul1660 = fmul double %mul1657, %1818
   br label %for.inc1674
 
 if.else1665:                                      ; preds = %for.body1649
-  %1909 = load double, ptr %arrayidx1667, align 8
-  %1910 = tail call double @llvm.fmuladd.f64(double %neg, double %1909, double 1.000000e+00)
+  %1819 = load double, ptr %arrayidx1667, align 8
+  %1820 = tail call double @llvm.fmuladd.f64(double %neg, double %1819, double 1.000000e+00)
   br label %for.inc1674
 
 for.inc1674:                                      ; preds = %if.then1652, %if.else1665
   %indvars.iv3620.sink = phi i64 [ %indvars.iv3620, %if.then1652 ], [ %indvars.iv3624, %if.else1665 ]
-  %mul1660.sink = phi double [ %mul1660, %if.then1652 ], [ %1910, %if.else1665 ]
-  %arrayidx1664 = getelementptr inbounds double, ptr %1905, i64 %indvars.iv3620.sink
+  %mul1660.sink = phi double [ %mul1660, %if.then1652 ], [ %1820, %if.else1665 ]
+  %arrayidx1664 = getelementptr inbounds double, ptr %1815, i64 %indvars.iv3620.sink
   store double %mul1660.sink, ptr %arrayidx1664, align 8
   %indvars.iv.next3621 = add nuw nsw i64 %indvars.iv3620, 1
   %exitcond3623.not = icmp eq i64 %indvars.iv.next3621, 20
@@ -7116,135 +6553,135 @@ for.inc1677:                                      ; preds = %for.inc1674
   br i1 %exitcond3627.not, label %for.end1679, label %for.cond1646.preheader
 
 for.end1679:                                      ; preds = %for.inc1677
-  %1911 = load i32, ptr @disp, align 4
-  %tobool1680.not = icmp eq i32 %1911, 0
+  %1821 = load i32, ptr @disp, align 4
+  %tobool1680.not = icmp eq i32 %1821, 0
   br i1 %tobool1680.not, label %if.end1703, label %if.then1681
 
 if.then1681:                                      ; preds = %for.end1679
-  %1912 = load ptr, ptr @stdout, align 8
-  %1913 = tail call i64 @fwrite(ptr nonnull @.str.36, i64 8, i64 1, ptr %1912)
+  %1822 = load ptr, ptr @stdout, align 8
+  %1823 = tail call i64 @fwrite(ptr nonnull @.str.36, i64 8, i64 1, ptr %1822)
   br label %for.cond1687.preheader
 
 for.cond1687.preheader:                           ; preds = %if.then1681, %for.cond1687.preheader
   %indvars.iv3632 = phi i64 [ 0, %if.then1681 ], [ %indvars.iv.next3633, %for.cond1687.preheader ]
   %arrayidx1692 = getelementptr inbounds ptr, ptr %call1521, i64 %indvars.iv3632
-  %1914 = load ptr, ptr @stdout, align 8
-  %1915 = load ptr, ptr %arrayidx1692, align 8
-  %1916 = load double, ptr %1915, align 8
-  %call1695 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1914, ptr noundef nonnull @.str.37, double noundef %1916)
-  %1917 = load ptr, ptr @stdout, align 8
-  %1918 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.1 = getelementptr inbounds double, ptr %1918, i64 1
-  %1919 = load double, ptr %arrayidx1694.1, align 8
-  %call1695.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1917, ptr noundef nonnull @.str.37, double noundef %1919)
-  %1920 = load ptr, ptr @stdout, align 8
-  %1921 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.2 = getelementptr inbounds double, ptr %1921, i64 2
-  %1922 = load double, ptr %arrayidx1694.2, align 8
-  %call1695.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1920, ptr noundef nonnull @.str.37, double noundef %1922)
-  %1923 = load ptr, ptr @stdout, align 8
-  %1924 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.3 = getelementptr inbounds double, ptr %1924, i64 3
-  %1925 = load double, ptr %arrayidx1694.3, align 8
-  %call1695.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1923, ptr noundef nonnull @.str.37, double noundef %1925)
-  %1926 = load ptr, ptr @stdout, align 8
-  %1927 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.4 = getelementptr inbounds double, ptr %1927, i64 4
-  %1928 = load double, ptr %arrayidx1694.4, align 8
-  %call1695.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1926, ptr noundef nonnull @.str.37, double noundef %1928)
-  %1929 = load ptr, ptr @stdout, align 8
-  %1930 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.5 = getelementptr inbounds double, ptr %1930, i64 5
-  %1931 = load double, ptr %arrayidx1694.5, align 8
-  %call1695.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1929, ptr noundef nonnull @.str.37, double noundef %1931)
-  %1932 = load ptr, ptr @stdout, align 8
-  %1933 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.6 = getelementptr inbounds double, ptr %1933, i64 6
-  %1934 = load double, ptr %arrayidx1694.6, align 8
-  %call1695.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1932, ptr noundef nonnull @.str.37, double noundef %1934)
-  %1935 = load ptr, ptr @stdout, align 8
-  %1936 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.7 = getelementptr inbounds double, ptr %1936, i64 7
-  %1937 = load double, ptr %arrayidx1694.7, align 8
-  %call1695.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1935, ptr noundef nonnull @.str.37, double noundef %1937)
-  %1938 = load ptr, ptr @stdout, align 8
-  %1939 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.8 = getelementptr inbounds double, ptr %1939, i64 8
-  %1940 = load double, ptr %arrayidx1694.8, align 8
-  %call1695.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1938, ptr noundef nonnull @.str.37, double noundef %1940)
-  %1941 = load ptr, ptr @stdout, align 8
-  %1942 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.9 = getelementptr inbounds double, ptr %1942, i64 9
-  %1943 = load double, ptr %arrayidx1694.9, align 8
-  %call1695.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1941, ptr noundef nonnull @.str.37, double noundef %1943)
-  %1944 = load ptr, ptr @stdout, align 8
-  %1945 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.10 = getelementptr inbounds double, ptr %1945, i64 10
-  %1946 = load double, ptr %arrayidx1694.10, align 8
-  %call1695.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1944, ptr noundef nonnull @.str.37, double noundef %1946)
-  %1947 = load ptr, ptr @stdout, align 8
-  %1948 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.11 = getelementptr inbounds double, ptr %1948, i64 11
-  %1949 = load double, ptr %arrayidx1694.11, align 8
-  %call1695.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1947, ptr noundef nonnull @.str.37, double noundef %1949)
-  %1950 = load ptr, ptr @stdout, align 8
-  %1951 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.12 = getelementptr inbounds double, ptr %1951, i64 12
-  %1952 = load double, ptr %arrayidx1694.12, align 8
-  %call1695.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1950, ptr noundef nonnull @.str.37, double noundef %1952)
-  %1953 = load ptr, ptr @stdout, align 8
-  %1954 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.13 = getelementptr inbounds double, ptr %1954, i64 13
-  %1955 = load double, ptr %arrayidx1694.13, align 8
-  %call1695.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1953, ptr noundef nonnull @.str.37, double noundef %1955)
-  %1956 = load ptr, ptr @stdout, align 8
-  %1957 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.14 = getelementptr inbounds double, ptr %1957, i64 14
-  %1958 = load double, ptr %arrayidx1694.14, align 8
-  %call1695.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1956, ptr noundef nonnull @.str.37, double noundef %1958)
-  %1959 = load ptr, ptr @stdout, align 8
-  %1960 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.15 = getelementptr inbounds double, ptr %1960, i64 15
-  %1961 = load double, ptr %arrayidx1694.15, align 8
-  %call1695.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1959, ptr noundef nonnull @.str.37, double noundef %1961)
-  %1962 = load ptr, ptr @stdout, align 8
-  %1963 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.16 = getelementptr inbounds double, ptr %1963, i64 16
-  %1964 = load double, ptr %arrayidx1694.16, align 8
-  %call1695.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1962, ptr noundef nonnull @.str.37, double noundef %1964)
-  %1965 = load ptr, ptr @stdout, align 8
-  %1966 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.17 = getelementptr inbounds double, ptr %1966, i64 17
-  %1967 = load double, ptr %arrayidx1694.17, align 8
-  %call1695.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1965, ptr noundef nonnull @.str.37, double noundef %1967)
-  %1968 = load ptr, ptr @stdout, align 8
-  %1969 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.18 = getelementptr inbounds double, ptr %1969, i64 18
-  %1970 = load double, ptr %arrayidx1694.18, align 8
-  %call1695.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1968, ptr noundef nonnull @.str.37, double noundef %1970)
-  %1971 = load ptr, ptr @stdout, align 8
-  %1972 = load ptr, ptr %arrayidx1692, align 8
-  %arrayidx1694.19 = getelementptr inbounds double, ptr %1972, i64 19
-  %1973 = load double, ptr %arrayidx1694.19, align 8
-  %call1695.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1971, ptr noundef nonnull @.str.37, double noundef %1973)
-  %1974 = load ptr, ptr @stdout, align 8
-  %fputc3309 = tail call i32 @fputc(i32 10, ptr %1974)
+  %1824 = load ptr, ptr @stdout, align 8
+  %1825 = load ptr, ptr %arrayidx1692, align 8
+  %1826 = load double, ptr %1825, align 8
+  %call1695 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1824, ptr noundef nonnull @.str.37, double noundef %1826)
+  %1827 = load ptr, ptr @stdout, align 8
+  %1828 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.1 = getelementptr inbounds double, ptr %1828, i64 1
+  %1829 = load double, ptr %arrayidx1694.1, align 8
+  %call1695.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1827, ptr noundef nonnull @.str.37, double noundef %1829)
+  %1830 = load ptr, ptr @stdout, align 8
+  %1831 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.2 = getelementptr inbounds double, ptr %1831, i64 2
+  %1832 = load double, ptr %arrayidx1694.2, align 8
+  %call1695.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1830, ptr noundef nonnull @.str.37, double noundef %1832)
+  %1833 = load ptr, ptr @stdout, align 8
+  %1834 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.3 = getelementptr inbounds double, ptr %1834, i64 3
+  %1835 = load double, ptr %arrayidx1694.3, align 8
+  %call1695.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1833, ptr noundef nonnull @.str.37, double noundef %1835)
+  %1836 = load ptr, ptr @stdout, align 8
+  %1837 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.4 = getelementptr inbounds double, ptr %1837, i64 4
+  %1838 = load double, ptr %arrayidx1694.4, align 8
+  %call1695.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1836, ptr noundef nonnull @.str.37, double noundef %1838)
+  %1839 = load ptr, ptr @stdout, align 8
+  %1840 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.5 = getelementptr inbounds double, ptr %1840, i64 5
+  %1841 = load double, ptr %arrayidx1694.5, align 8
+  %call1695.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1839, ptr noundef nonnull @.str.37, double noundef %1841)
+  %1842 = load ptr, ptr @stdout, align 8
+  %1843 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.6 = getelementptr inbounds double, ptr %1843, i64 6
+  %1844 = load double, ptr %arrayidx1694.6, align 8
+  %call1695.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1842, ptr noundef nonnull @.str.37, double noundef %1844)
+  %1845 = load ptr, ptr @stdout, align 8
+  %1846 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.7 = getelementptr inbounds double, ptr %1846, i64 7
+  %1847 = load double, ptr %arrayidx1694.7, align 8
+  %call1695.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1845, ptr noundef nonnull @.str.37, double noundef %1847)
+  %1848 = load ptr, ptr @stdout, align 8
+  %1849 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.8 = getelementptr inbounds double, ptr %1849, i64 8
+  %1850 = load double, ptr %arrayidx1694.8, align 8
+  %call1695.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1848, ptr noundef nonnull @.str.37, double noundef %1850)
+  %1851 = load ptr, ptr @stdout, align 8
+  %1852 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.9 = getelementptr inbounds double, ptr %1852, i64 9
+  %1853 = load double, ptr %arrayidx1694.9, align 8
+  %call1695.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1851, ptr noundef nonnull @.str.37, double noundef %1853)
+  %1854 = load ptr, ptr @stdout, align 8
+  %1855 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.10 = getelementptr inbounds double, ptr %1855, i64 10
+  %1856 = load double, ptr %arrayidx1694.10, align 8
+  %call1695.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1854, ptr noundef nonnull @.str.37, double noundef %1856)
+  %1857 = load ptr, ptr @stdout, align 8
+  %1858 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.11 = getelementptr inbounds double, ptr %1858, i64 11
+  %1859 = load double, ptr %arrayidx1694.11, align 8
+  %call1695.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1857, ptr noundef nonnull @.str.37, double noundef %1859)
+  %1860 = load ptr, ptr @stdout, align 8
+  %1861 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.12 = getelementptr inbounds double, ptr %1861, i64 12
+  %1862 = load double, ptr %arrayidx1694.12, align 8
+  %call1695.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1860, ptr noundef nonnull @.str.37, double noundef %1862)
+  %1863 = load ptr, ptr @stdout, align 8
+  %1864 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.13 = getelementptr inbounds double, ptr %1864, i64 13
+  %1865 = load double, ptr %arrayidx1694.13, align 8
+  %call1695.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1863, ptr noundef nonnull @.str.37, double noundef %1865)
+  %1866 = load ptr, ptr @stdout, align 8
+  %1867 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.14 = getelementptr inbounds double, ptr %1867, i64 14
+  %1868 = load double, ptr %arrayidx1694.14, align 8
+  %call1695.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1866, ptr noundef nonnull @.str.37, double noundef %1868)
+  %1869 = load ptr, ptr @stdout, align 8
+  %1870 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.15 = getelementptr inbounds double, ptr %1870, i64 15
+  %1871 = load double, ptr %arrayidx1694.15, align 8
+  %call1695.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1869, ptr noundef nonnull @.str.37, double noundef %1871)
+  %1872 = load ptr, ptr @stdout, align 8
+  %1873 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.16 = getelementptr inbounds double, ptr %1873, i64 16
+  %1874 = load double, ptr %arrayidx1694.16, align 8
+  %call1695.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1872, ptr noundef nonnull @.str.37, double noundef %1874)
+  %1875 = load ptr, ptr @stdout, align 8
+  %1876 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.17 = getelementptr inbounds double, ptr %1876, i64 17
+  %1877 = load double, ptr %arrayidx1694.17, align 8
+  %call1695.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1875, ptr noundef nonnull @.str.37, double noundef %1877)
+  %1878 = load ptr, ptr @stdout, align 8
+  %1879 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.18 = getelementptr inbounds double, ptr %1879, i64 18
+  %1880 = load double, ptr %arrayidx1694.18, align 8
+  %call1695.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1878, ptr noundef nonnull @.str.37, double noundef %1880)
+  %1881 = load ptr, ptr @stdout, align 8
+  %1882 = load ptr, ptr %arrayidx1692, align 8
+  %arrayidx1694.19 = getelementptr inbounds double, ptr %1882, i64 19
+  %1883 = load double, ptr %arrayidx1694.19, align 8
+  %call1695.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1881, ptr noundef nonnull @.str.37, double noundef %1883)
+  %1884 = load ptr, ptr @stdout, align 8
+  %fputc3309 = tail call i32 @fputc(i32 10, ptr %1884)
   %indvars.iv.next3633 = add nuw nsw i64 %indvars.iv3632, 1
   %exitcond3635.not = icmp eq i64 %indvars.iv.next3633, 20
   br i1 %exitcond3635.not, label %if.end1703, label %for.cond1687.preheader
 
 if.end1703:                                       ; preds = %for.cond1687.preheader, %for.end1679
   tail call void @MtxuntDouble(ptr noundef %call1522, i32 noundef 20) #15
-  %1975 = load i32, ptr @pamN, align 4
-  %cmp17053401 = icmp sgt i32 %1975, 0
+  %1885 = load i32, ptr @pamN, align 4
+  %cmp17053401 = icmp sgt i32 %1885, 0
   br i1 %cmp17053401, label %for.body1707, label %for.cond1715.preheader.preheader
 
 for.body1707:                                     ; preds = %if.end1703, %for.body1707
   %x.13402 = phi i32 [ %inc1709, %for.body1707 ], [ 0, %if.end1703 ]
   tail call void @MtxmltDouble(ptr noundef %call1522, ptr noundef %call1521, i32 noundef 20) #15
   %inc1709 = add nuw nsw i32 %x.13402, 1
-  %1976 = load i32, ptr @pamN, align 4
-  %cmp1705 = icmp slt i32 %inc1709, %1976
+  %1886 = load i32, ptr @pamN, align 4
+  %cmp1705 = icmp slt i32 %inc1709, %1886
   br i1 %cmp1705, label %for.body1707, label %for.cond1715.preheader.preheader
 
 for.cond1715.preheader.preheader:                 ; preds = %for.body1707, %if.end1703
@@ -7253,105 +6690,105 @@ for.cond1715.preheader.preheader:                 ; preds = %for.body1707, %if.e
 for.cond1715.preheader:                           ; preds = %for.cond1715.preheader.preheader, %for.cond1715.preheader
   %indvars.iv3640 = phi i64 [ %indvars.iv.next3641, %for.cond1715.preheader ], [ 0, %for.cond1715.preheader.preheader ]
   %arrayidx1722 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3640
-  %1977 = load ptr, ptr %arrayidx1722, align 8
-  %1978 = load double, ptr %call1523, align 8
-  %1979 = load double, ptr %1977, align 8
-  %div1725 = fdiv double %1979, %1978
-  store double %div1725, ptr %1977, align 8
-  %1980 = load double, ptr %arrayidx1626.1.le, align 8
-  %arrayidx1724.1 = getelementptr inbounds double, ptr %1977, i64 1
-  %1981 = load double, ptr %arrayidx1724.1, align 8
-  %div1725.1 = fdiv double %1981, %1980
+  %1887 = load ptr, ptr %arrayidx1722, align 8
+  %1888 = load double, ptr %call1523, align 8
+  %1889 = load double, ptr %1887, align 8
+  %div1725 = fdiv double %1889, %1888
+  store double %div1725, ptr %1887, align 8
+  %1890 = load double, ptr %arrayidx1626.1.le, align 8
+  %arrayidx1724.1 = getelementptr inbounds double, ptr %1887, i64 1
+  %1891 = load double, ptr %arrayidx1724.1, align 8
+  %div1725.1 = fdiv double %1891, %1890
   store double %div1725.1, ptr %arrayidx1724.1, align 8
-  %1982 = load double, ptr %arrayidx1626.2.le, align 8
-  %arrayidx1724.2 = getelementptr inbounds double, ptr %1977, i64 2
-  %1983 = load double, ptr %arrayidx1724.2, align 8
-  %div1725.2 = fdiv double %1983, %1982
+  %1892 = load double, ptr %arrayidx1626.2.le, align 8
+  %arrayidx1724.2 = getelementptr inbounds double, ptr %1887, i64 2
+  %1893 = load double, ptr %arrayidx1724.2, align 8
+  %div1725.2 = fdiv double %1893, %1892
   store double %div1725.2, ptr %arrayidx1724.2, align 8
-  %1984 = load double, ptr %arrayidx1626.3.le, align 8
-  %arrayidx1724.3 = getelementptr inbounds double, ptr %1977, i64 3
-  %1985 = load double, ptr %arrayidx1724.3, align 8
-  %div1725.3 = fdiv double %1985, %1984
+  %1894 = load double, ptr %arrayidx1626.3.le, align 8
+  %arrayidx1724.3 = getelementptr inbounds double, ptr %1887, i64 3
+  %1895 = load double, ptr %arrayidx1724.3, align 8
+  %div1725.3 = fdiv double %1895, %1894
   store double %div1725.3, ptr %arrayidx1724.3, align 8
-  %1986 = load double, ptr %arrayidx1626.4.le, align 8
-  %arrayidx1724.4 = getelementptr inbounds double, ptr %1977, i64 4
-  %1987 = load double, ptr %arrayidx1724.4, align 8
-  %div1725.4 = fdiv double %1987, %1986
+  %1896 = load double, ptr %arrayidx1626.4.le, align 8
+  %arrayidx1724.4 = getelementptr inbounds double, ptr %1887, i64 4
+  %1897 = load double, ptr %arrayidx1724.4, align 8
+  %div1725.4 = fdiv double %1897, %1896
   store double %div1725.4, ptr %arrayidx1724.4, align 8
-  %1988 = load double, ptr %arrayidx1626.5.le, align 8
-  %arrayidx1724.5 = getelementptr inbounds double, ptr %1977, i64 5
-  %1989 = load double, ptr %arrayidx1724.5, align 8
-  %div1725.5 = fdiv double %1989, %1988
+  %1898 = load double, ptr %arrayidx1626.5.le, align 8
+  %arrayidx1724.5 = getelementptr inbounds double, ptr %1887, i64 5
+  %1899 = load double, ptr %arrayidx1724.5, align 8
+  %div1725.5 = fdiv double %1899, %1898
   store double %div1725.5, ptr %arrayidx1724.5, align 8
-  %1990 = load double, ptr %arrayidx1626.6.le, align 8
-  %arrayidx1724.6 = getelementptr inbounds double, ptr %1977, i64 6
-  %1991 = load double, ptr %arrayidx1724.6, align 8
-  %div1725.6 = fdiv double %1991, %1990
+  %1900 = load double, ptr %arrayidx1626.6.le, align 8
+  %arrayidx1724.6 = getelementptr inbounds double, ptr %1887, i64 6
+  %1901 = load double, ptr %arrayidx1724.6, align 8
+  %div1725.6 = fdiv double %1901, %1900
   store double %div1725.6, ptr %arrayidx1724.6, align 8
-  %1992 = load double, ptr %arrayidx1626.7.le, align 8
-  %arrayidx1724.7 = getelementptr inbounds double, ptr %1977, i64 7
-  %1993 = load double, ptr %arrayidx1724.7, align 8
-  %div1725.7 = fdiv double %1993, %1992
+  %1902 = load double, ptr %arrayidx1626.7.le, align 8
+  %arrayidx1724.7 = getelementptr inbounds double, ptr %1887, i64 7
+  %1903 = load double, ptr %arrayidx1724.7, align 8
+  %div1725.7 = fdiv double %1903, %1902
   store double %div1725.7, ptr %arrayidx1724.7, align 8
-  %1994 = load double, ptr %arrayidx1626.8.le, align 8
-  %arrayidx1724.8 = getelementptr inbounds double, ptr %1977, i64 8
-  %1995 = load double, ptr %arrayidx1724.8, align 8
-  %div1725.8 = fdiv double %1995, %1994
+  %1904 = load double, ptr %arrayidx1626.8.le, align 8
+  %arrayidx1724.8 = getelementptr inbounds double, ptr %1887, i64 8
+  %1905 = load double, ptr %arrayidx1724.8, align 8
+  %div1725.8 = fdiv double %1905, %1904
   store double %div1725.8, ptr %arrayidx1724.8, align 8
-  %1996 = load double, ptr %arrayidx1626.9.le, align 8
-  %arrayidx1724.9 = getelementptr inbounds double, ptr %1977, i64 9
-  %1997 = load double, ptr %arrayidx1724.9, align 8
-  %div1725.9 = fdiv double %1997, %1996
+  %1906 = load double, ptr %arrayidx1626.9.le, align 8
+  %arrayidx1724.9 = getelementptr inbounds double, ptr %1887, i64 9
+  %1907 = load double, ptr %arrayidx1724.9, align 8
+  %div1725.9 = fdiv double %1907, %1906
   store double %div1725.9, ptr %arrayidx1724.9, align 8
-  %1998 = load double, ptr %arrayidx1626.10.le, align 8
-  %arrayidx1724.10 = getelementptr inbounds double, ptr %1977, i64 10
-  %1999 = load double, ptr %arrayidx1724.10, align 8
-  %div1725.10 = fdiv double %1999, %1998
+  %1908 = load double, ptr %arrayidx1626.10.le, align 8
+  %arrayidx1724.10 = getelementptr inbounds double, ptr %1887, i64 10
+  %1909 = load double, ptr %arrayidx1724.10, align 8
+  %div1725.10 = fdiv double %1909, %1908
   store double %div1725.10, ptr %arrayidx1724.10, align 8
-  %2000 = load double, ptr %arrayidx1626.11.le, align 8
-  %arrayidx1724.11 = getelementptr inbounds double, ptr %1977, i64 11
-  %2001 = load double, ptr %arrayidx1724.11, align 8
-  %div1725.11 = fdiv double %2001, %2000
+  %1910 = load double, ptr %arrayidx1626.11.le, align 8
+  %arrayidx1724.11 = getelementptr inbounds double, ptr %1887, i64 11
+  %1911 = load double, ptr %arrayidx1724.11, align 8
+  %div1725.11 = fdiv double %1911, %1910
   store double %div1725.11, ptr %arrayidx1724.11, align 8
-  %2002 = load double, ptr %arrayidx1626.12.le, align 8
-  %arrayidx1724.12 = getelementptr inbounds double, ptr %1977, i64 12
-  %2003 = load double, ptr %arrayidx1724.12, align 8
-  %div1725.12 = fdiv double %2003, %2002
+  %1912 = load double, ptr %arrayidx1626.12.le, align 8
+  %arrayidx1724.12 = getelementptr inbounds double, ptr %1887, i64 12
+  %1913 = load double, ptr %arrayidx1724.12, align 8
+  %div1725.12 = fdiv double %1913, %1912
   store double %div1725.12, ptr %arrayidx1724.12, align 8
-  %2004 = load double, ptr %arrayidx1626.13.le, align 8
-  %arrayidx1724.13 = getelementptr inbounds double, ptr %1977, i64 13
-  %2005 = load double, ptr %arrayidx1724.13, align 8
-  %div1725.13 = fdiv double %2005, %2004
+  %1914 = load double, ptr %arrayidx1626.13.le, align 8
+  %arrayidx1724.13 = getelementptr inbounds double, ptr %1887, i64 13
+  %1915 = load double, ptr %arrayidx1724.13, align 8
+  %div1725.13 = fdiv double %1915, %1914
   store double %div1725.13, ptr %arrayidx1724.13, align 8
-  %2006 = load double, ptr %arrayidx1626.14.le, align 8
-  %arrayidx1724.14 = getelementptr inbounds double, ptr %1977, i64 14
-  %2007 = load double, ptr %arrayidx1724.14, align 8
-  %div1725.14 = fdiv double %2007, %2006
+  %1916 = load double, ptr %arrayidx1626.14.le, align 8
+  %arrayidx1724.14 = getelementptr inbounds double, ptr %1887, i64 14
+  %1917 = load double, ptr %arrayidx1724.14, align 8
+  %div1725.14 = fdiv double %1917, %1916
   store double %div1725.14, ptr %arrayidx1724.14, align 8
-  %2008 = load double, ptr %arrayidx1626.15.le, align 8
-  %arrayidx1724.15 = getelementptr inbounds double, ptr %1977, i64 15
-  %2009 = load double, ptr %arrayidx1724.15, align 8
-  %div1725.15 = fdiv double %2009, %2008
+  %1918 = load double, ptr %arrayidx1626.15.le, align 8
+  %arrayidx1724.15 = getelementptr inbounds double, ptr %1887, i64 15
+  %1919 = load double, ptr %arrayidx1724.15, align 8
+  %div1725.15 = fdiv double %1919, %1918
   store double %div1725.15, ptr %arrayidx1724.15, align 8
-  %2010 = load double, ptr %arrayidx1626.16.le, align 8
-  %arrayidx1724.16 = getelementptr inbounds double, ptr %1977, i64 16
-  %2011 = load double, ptr %arrayidx1724.16, align 8
-  %div1725.16 = fdiv double %2011, %2010
+  %1920 = load double, ptr %arrayidx1626.16.le, align 8
+  %arrayidx1724.16 = getelementptr inbounds double, ptr %1887, i64 16
+  %1921 = load double, ptr %arrayidx1724.16, align 8
+  %div1725.16 = fdiv double %1921, %1920
   store double %div1725.16, ptr %arrayidx1724.16, align 8
-  %2012 = load double, ptr %arrayidx1626.17.le, align 8
-  %arrayidx1724.17 = getelementptr inbounds double, ptr %1977, i64 17
-  %2013 = load double, ptr %arrayidx1724.17, align 8
-  %div1725.17 = fdiv double %2013, %2012
+  %1922 = load double, ptr %arrayidx1626.17.le, align 8
+  %arrayidx1724.17 = getelementptr inbounds double, ptr %1887, i64 17
+  %1923 = load double, ptr %arrayidx1724.17, align 8
+  %div1725.17 = fdiv double %1923, %1922
   store double %div1725.17, ptr %arrayidx1724.17, align 8
-  %2014 = load double, ptr %arrayidx1626.18.le, align 8
-  %arrayidx1724.18 = getelementptr inbounds double, ptr %1977, i64 18
-  %2015 = load double, ptr %arrayidx1724.18, align 8
-  %div1725.18 = fdiv double %2015, %2014
+  %1924 = load double, ptr %arrayidx1626.18.le, align 8
+  %arrayidx1724.18 = getelementptr inbounds double, ptr %1887, i64 18
+  %1925 = load double, ptr %arrayidx1724.18, align 8
+  %div1725.18 = fdiv double %1925, %1924
   store double %div1725.18, ptr %arrayidx1724.18, align 8
-  %2016 = load double, ptr %arrayidx1626.19.le, align 8
-  %arrayidx1724.19 = getelementptr inbounds double, ptr %1977, i64 19
-  %2017 = load double, ptr %arrayidx1724.19, align 8
-  %div1725.19 = fdiv double %2017, %2016
+  %1926 = load double, ptr %arrayidx1626.19.le, align 8
+  %arrayidx1724.19 = getelementptr inbounds double, ptr %1887, i64 19
+  %1927 = load double, ptr %arrayidx1724.19, align 8
+  %div1725.19 = fdiv double %1927, %1926
   store double %div1725.19, ptr %arrayidx1724.19, align 8
   %indvars.iv.next3641 = add nuw nsw i64 %indvars.iv3640, 1
   %exitcond3643.not = icmp eq i64 %indvars.iv.next3641, 20
@@ -7361,32 +6798,32 @@ for.cond1736.preheader:                           ; preds = %for.cond1715.prehea
   %indvars.iv3648 = phi i64 [ %indvars.iv.next3649, %for.inc1766 ], [ 0, %for.cond1715.preheader ]
   %arrayidx1741 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3648
   %.pre = load ptr, ptr %arrayidx1741, align 8
-  %2018 = trunc i64 %indvars.iv3648 to i32
+  %1928 = trunc i64 %indvars.iv3648 to i32
   br label %for.body1739
 
 for.body1739:                                     ; preds = %for.cond1736.preheader, %if.end1752
-  %2019 = phi ptr [ %.pre, %for.cond1736.preheader ], [ %2025, %if.end1752 ]
+  %1929 = phi ptr [ %.pre, %for.cond1736.preheader ], [ %1935, %if.end1752 ]
   %indvars.iv3644 = phi i64 [ 0, %for.cond1736.preheader ], [ %indvars.iv.next3645, %if.end1752 ]
-  %arrayidx1743 = getelementptr inbounds double, ptr %2019, i64 %indvars.iv3644
-  %2020 = load double, ptr %arrayidx1743, align 8
-  %cmp1744 = fcmp oeq double %2020, 0.000000e+00
+  %arrayidx1743 = getelementptr inbounds double, ptr %1929, i64 %indvars.iv3644
+  %1930 = load double, ptr %arrayidx1743, align 8
+  %cmp1744 = fcmp oeq double %1930, 0.000000e+00
   br i1 %cmp1744, label %if.then1746, label %if.end1752
 
 if.then1746:                                      ; preds = %for.body1739
-  %2021 = load ptr, ptr @stderr, align 8
-  %2022 = trunc i64 %indvars.iv3644 to i32
-  %call1747 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2021, ptr noundef nonnull @.str.38, i32 noundef %2018, i32 noundef %2022) #16
-  %2023 = load ptr, ptr %arrayidx1741, align 8
-  %arrayidx1751 = getelementptr inbounds double, ptr %2023, i64 %indvars.iv3644
+  %1931 = load ptr, ptr @stderr, align 8
+  %1932 = trunc i64 %indvars.iv3644 to i32
+  %call1747 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %1931, ptr noundef nonnull @.str.38, i32 noundef %1928, i32 noundef %1932) #16
+  %1933 = load ptr, ptr %arrayidx1741, align 8
+  %arrayidx1751 = getelementptr inbounds double, ptr %1933, i64 %indvars.iv3644
   store double 1.000000e-05, ptr %arrayidx1751, align 8
   br label %if.end1752
 
 if.end1752:                                       ; preds = %if.then1746, %for.body1739
-  %2024 = phi double [ 1.000000e-05, %if.then1746 ], [ %2020, %for.body1739 ]
-  %call1757 = tail call double @log10(double noundef %2024) #15
+  %1934 = phi double [ 1.000000e-05, %if.then1746 ], [ %1930, %for.body1739 ]
+  %call1757 = tail call double @log10(double noundef %1934) #15
   %mul1758 = fmul double %call1757, 1.000000e+03
-  %2025 = load ptr, ptr %arrayidx1741, align 8
-  %arrayidx1762 = getelementptr inbounds double, ptr %2025, i64 %indvars.iv3644
+  %1935 = load ptr, ptr %arrayidx1741, align 8
+  %arrayidx1762 = getelementptr inbounds double, ptr %1935, i64 %indvars.iv3644
   store double %mul1758, ptr %arrayidx1762, align 8
   %indvars.iv.next3645 = add nuw nsw i64 %indvars.iv3644, 1
   %exitcond3647.not = icmp eq i64 %indvars.iv.next3645, 20
@@ -7398,8 +6835,8 @@ for.inc1766:                                      ; preds = %if.end1752
   br i1 %exitcond3651.not, label %for.end1768, label %for.cond1736.preheader
 
 for.end1768:                                      ; preds = %for.inc1766
-  %2026 = load i32, ptr @fmodel, align 4
-  %cmp1769 = icmp eq i32 %2026, -1
+  %1936 = load i32, ptr @fmodel, align 4
+  %cmp1769 = icmp eq i32 %1936, -1
   br i1 %cmp1769, label %if.end1797, label %for.cond1777.preheader.preheader
 
 for.cond1777.preheader.preheader:                 ; preds = %for.end1768
@@ -7431,402 +6868,402 @@ for.cond1777.preheader.preheader:                 ; preds = %for.end1768
   %.pre4546 = load double, ptr %arrayidx1789.16.phi.trans.insert, align 8
   %arrayidx1789.17.phi.trans.insert = getelementptr inbounds double, ptr %freq11517.0, i64 17
   %.pre4547 = load double, ptr %arrayidx1789.17.phi.trans.insert, align 8
-  %2027 = load double, ptr %freq11517.0, align 8
+  %1937 = load double, ptr %freq11517.0, align 8
   %arrayidx1789.1 = getelementptr inbounds double, ptr %freq11517.0, i64 1
-  %2028 = load double, ptr %arrayidx1789.1, align 8
+  %1938 = load double, ptr %arrayidx1789.1, align 8
   %arrayidx1789.2 = getelementptr inbounds double, ptr %freq11517.0, i64 2
-  %2029 = load double, ptr %arrayidx1789.2, align 8
+  %1939 = load double, ptr %arrayidx1789.2, align 8
   %arrayidx1789.3 = getelementptr inbounds double, ptr %freq11517.0, i64 3
-  %2030 = load double, ptr %arrayidx1789.3, align 8
+  %1940 = load double, ptr %arrayidx1789.3, align 8
   %arrayidx1789.18 = getelementptr inbounds double, ptr %freq11517.0, i64 18
-  %2031 = load double, ptr %arrayidx1789.18, align 8
+  %1941 = load double, ptr %arrayidx1789.18, align 8
   %arrayidx1789.19 = getelementptr inbounds double, ptr %freq11517.0, i64 19
-  %2032 = load double, ptr %arrayidx1789.19, align 8
+  %1942 = load double, ptr %arrayidx1789.19, align 8
   br label %for.cond1777.preheader
 
 for.cond1777.preheader:                           ; preds = %for.cond1777.preheader.preheader, %for.cond1777.preheader
   %indvars.iv3656 = phi i64 [ 0, %for.cond1777.preheader.preheader ], [ %indvars.iv.next3657, %for.cond1777.preheader ]
-  %average1519.03409 = phi double [ 0.000000e+00, %for.cond1777.preheader.preheader ], [ %2074, %for.cond1777.preheader ]
+  %average1519.03409 = phi double [ 0.000000e+00, %for.cond1777.preheader.preheader ], [ %1984, %for.cond1777.preheader ]
   %arrayidx1782 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3656
-  %2033 = load ptr, ptr %arrayidx1782, align 8
+  %1943 = load ptr, ptr %arrayidx1782, align 8
   %arrayidx1786 = getelementptr inbounds double, ptr %freq11517.0, i64 %indvars.iv3656
-  %2034 = load double, ptr %arrayidx1786, align 8
-  %2035 = load double, ptr %2033, align 8
-  %mul1787 = fmul double %2035, %2034
-  %2036 = tail call double @llvm.fmuladd.f64(double %mul1787, double %2027, double %average1519.03409)
-  %arrayidx1784.1 = getelementptr inbounds double, ptr %2033, i64 1
-  %2037 = load double, ptr %arrayidx1784.1, align 8
-  %mul1787.1 = fmul double %2037, %2034
-  %2038 = tail call double @llvm.fmuladd.f64(double %mul1787.1, double %2028, double %2036)
-  %arrayidx1784.2 = getelementptr inbounds double, ptr %2033, i64 2
-  %2039 = load double, ptr %arrayidx1784.2, align 8
-  %mul1787.2 = fmul double %2039, %2034
-  %2040 = tail call double @llvm.fmuladd.f64(double %mul1787.2, double %2029, double %2038)
-  %arrayidx1784.3 = getelementptr inbounds double, ptr %2033, i64 3
-  %2041 = load double, ptr %arrayidx1784.3, align 8
-  %mul1787.3 = fmul double %2041, %2034
-  %2042 = tail call double @llvm.fmuladd.f64(double %mul1787.3, double %2030, double %2040)
-  %arrayidx1784.4 = getelementptr inbounds double, ptr %2033, i64 4
-  %2043 = load double, ptr %arrayidx1784.4, align 8
-  %mul1787.4 = fmul double %2043, %2034
-  %2044 = tail call double @llvm.fmuladd.f64(double %mul1787.4, double %.pre4534, double %2042)
-  %arrayidx1784.5 = getelementptr inbounds double, ptr %2033, i64 5
-  %2045 = load double, ptr %arrayidx1784.5, align 8
-  %mul1787.5 = fmul double %2045, %2034
-  %2046 = tail call double @llvm.fmuladd.f64(double %mul1787.5, double %.pre4535, double %2044)
-  %arrayidx1784.6 = getelementptr inbounds double, ptr %2033, i64 6
-  %2047 = load double, ptr %arrayidx1784.6, align 8
-  %mul1787.6 = fmul double %2047, %2034
-  %2048 = tail call double @llvm.fmuladd.f64(double %mul1787.6, double %.pre4536, double %2046)
-  %arrayidx1784.7 = getelementptr inbounds double, ptr %2033, i64 7
-  %2049 = load double, ptr %arrayidx1784.7, align 8
-  %mul1787.7 = fmul double %2049, %2034
-  %2050 = tail call double @llvm.fmuladd.f64(double %mul1787.7, double %.pre4537, double %2048)
-  %arrayidx1784.8 = getelementptr inbounds double, ptr %2033, i64 8
-  %2051 = load double, ptr %arrayidx1784.8, align 8
-  %mul1787.8 = fmul double %2051, %2034
-  %2052 = tail call double @llvm.fmuladd.f64(double %mul1787.8, double %.pre4538, double %2050)
-  %arrayidx1784.9 = getelementptr inbounds double, ptr %2033, i64 9
-  %2053 = load double, ptr %arrayidx1784.9, align 8
-  %mul1787.9 = fmul double %2053, %2034
-  %2054 = tail call double @llvm.fmuladd.f64(double %mul1787.9, double %.pre4539, double %2052)
-  %arrayidx1784.10 = getelementptr inbounds double, ptr %2033, i64 10
-  %2055 = load double, ptr %arrayidx1784.10, align 8
-  %mul1787.10 = fmul double %2055, %2034
-  %2056 = tail call double @llvm.fmuladd.f64(double %mul1787.10, double %.pre4540, double %2054)
-  %arrayidx1784.11 = getelementptr inbounds double, ptr %2033, i64 11
-  %2057 = load double, ptr %arrayidx1784.11, align 8
-  %mul1787.11 = fmul double %2057, %2034
-  %2058 = tail call double @llvm.fmuladd.f64(double %mul1787.11, double %.pre4541, double %2056)
-  %arrayidx1784.12 = getelementptr inbounds double, ptr %2033, i64 12
-  %2059 = load double, ptr %arrayidx1784.12, align 8
-  %mul1787.12 = fmul double %2059, %2034
-  %2060 = tail call double @llvm.fmuladd.f64(double %mul1787.12, double %.pre4542, double %2058)
-  %arrayidx1784.13 = getelementptr inbounds double, ptr %2033, i64 13
-  %2061 = load double, ptr %arrayidx1784.13, align 8
-  %mul1787.13 = fmul double %2061, %2034
-  %2062 = tail call double @llvm.fmuladd.f64(double %mul1787.13, double %.pre4543, double %2060)
-  %arrayidx1784.14 = getelementptr inbounds double, ptr %2033, i64 14
-  %2063 = load double, ptr %arrayidx1784.14, align 8
-  %mul1787.14 = fmul double %2063, %2034
-  %2064 = tail call double @llvm.fmuladd.f64(double %mul1787.14, double %.pre4544, double %2062)
-  %arrayidx1784.15 = getelementptr inbounds double, ptr %2033, i64 15
-  %2065 = load double, ptr %arrayidx1784.15, align 8
-  %mul1787.15 = fmul double %2065, %2034
-  %2066 = tail call double @llvm.fmuladd.f64(double %mul1787.15, double %.pre4545, double %2064)
-  %arrayidx1784.16 = getelementptr inbounds double, ptr %2033, i64 16
-  %2067 = load double, ptr %arrayidx1784.16, align 8
-  %mul1787.16 = fmul double %2067, %2034
-  %2068 = tail call double @llvm.fmuladd.f64(double %mul1787.16, double %.pre4546, double %2066)
-  %arrayidx1784.17 = getelementptr inbounds double, ptr %2033, i64 17
-  %2069 = load double, ptr %arrayidx1784.17, align 8
-  %mul1787.17 = fmul double %2069, %2034
-  %2070 = tail call double @llvm.fmuladd.f64(double %mul1787.17, double %.pre4547, double %2068)
-  %arrayidx1784.18 = getelementptr inbounds double, ptr %2033, i64 18
-  %2071 = load double, ptr %arrayidx1784.18, align 8
-  %mul1787.18 = fmul double %2071, %2034
-  %2072 = tail call double @llvm.fmuladd.f64(double %mul1787.18, double %2031, double %2070)
-  %arrayidx1784.19 = getelementptr inbounds double, ptr %2033, i64 19
-  %2073 = load double, ptr %arrayidx1784.19, align 8
-  %mul1787.19 = fmul double %2073, %2034
-  %2074 = tail call double @llvm.fmuladd.f64(double %mul1787.19, double %2032, double %2072)
+  %1944 = load double, ptr %arrayidx1786, align 8
+  %1945 = load double, ptr %1943, align 8
+  %mul1787 = fmul double %1945, %1944
+  %1946 = tail call double @llvm.fmuladd.f64(double %mul1787, double %1937, double %average1519.03409)
+  %arrayidx1784.1 = getelementptr inbounds double, ptr %1943, i64 1
+  %1947 = load double, ptr %arrayidx1784.1, align 8
+  %mul1787.1 = fmul double %1947, %1944
+  %1948 = tail call double @llvm.fmuladd.f64(double %mul1787.1, double %1938, double %1946)
+  %arrayidx1784.2 = getelementptr inbounds double, ptr %1943, i64 2
+  %1949 = load double, ptr %arrayidx1784.2, align 8
+  %mul1787.2 = fmul double %1949, %1944
+  %1950 = tail call double @llvm.fmuladd.f64(double %mul1787.2, double %1939, double %1948)
+  %arrayidx1784.3 = getelementptr inbounds double, ptr %1943, i64 3
+  %1951 = load double, ptr %arrayidx1784.3, align 8
+  %mul1787.3 = fmul double %1951, %1944
+  %1952 = tail call double @llvm.fmuladd.f64(double %mul1787.3, double %1940, double %1950)
+  %arrayidx1784.4 = getelementptr inbounds double, ptr %1943, i64 4
+  %1953 = load double, ptr %arrayidx1784.4, align 8
+  %mul1787.4 = fmul double %1953, %1944
+  %1954 = tail call double @llvm.fmuladd.f64(double %mul1787.4, double %.pre4534, double %1952)
+  %arrayidx1784.5 = getelementptr inbounds double, ptr %1943, i64 5
+  %1955 = load double, ptr %arrayidx1784.5, align 8
+  %mul1787.5 = fmul double %1955, %1944
+  %1956 = tail call double @llvm.fmuladd.f64(double %mul1787.5, double %.pre4535, double %1954)
+  %arrayidx1784.6 = getelementptr inbounds double, ptr %1943, i64 6
+  %1957 = load double, ptr %arrayidx1784.6, align 8
+  %mul1787.6 = fmul double %1957, %1944
+  %1958 = tail call double @llvm.fmuladd.f64(double %mul1787.6, double %.pre4536, double %1956)
+  %arrayidx1784.7 = getelementptr inbounds double, ptr %1943, i64 7
+  %1959 = load double, ptr %arrayidx1784.7, align 8
+  %mul1787.7 = fmul double %1959, %1944
+  %1960 = tail call double @llvm.fmuladd.f64(double %mul1787.7, double %.pre4537, double %1958)
+  %arrayidx1784.8 = getelementptr inbounds double, ptr %1943, i64 8
+  %1961 = load double, ptr %arrayidx1784.8, align 8
+  %mul1787.8 = fmul double %1961, %1944
+  %1962 = tail call double @llvm.fmuladd.f64(double %mul1787.8, double %.pre4538, double %1960)
+  %arrayidx1784.9 = getelementptr inbounds double, ptr %1943, i64 9
+  %1963 = load double, ptr %arrayidx1784.9, align 8
+  %mul1787.9 = fmul double %1963, %1944
+  %1964 = tail call double @llvm.fmuladd.f64(double %mul1787.9, double %.pre4539, double %1962)
+  %arrayidx1784.10 = getelementptr inbounds double, ptr %1943, i64 10
+  %1965 = load double, ptr %arrayidx1784.10, align 8
+  %mul1787.10 = fmul double %1965, %1944
+  %1966 = tail call double @llvm.fmuladd.f64(double %mul1787.10, double %.pre4540, double %1964)
+  %arrayidx1784.11 = getelementptr inbounds double, ptr %1943, i64 11
+  %1967 = load double, ptr %arrayidx1784.11, align 8
+  %mul1787.11 = fmul double %1967, %1944
+  %1968 = tail call double @llvm.fmuladd.f64(double %mul1787.11, double %.pre4541, double %1966)
+  %arrayidx1784.12 = getelementptr inbounds double, ptr %1943, i64 12
+  %1969 = load double, ptr %arrayidx1784.12, align 8
+  %mul1787.12 = fmul double %1969, %1944
+  %1970 = tail call double @llvm.fmuladd.f64(double %mul1787.12, double %.pre4542, double %1968)
+  %arrayidx1784.13 = getelementptr inbounds double, ptr %1943, i64 13
+  %1971 = load double, ptr %arrayidx1784.13, align 8
+  %mul1787.13 = fmul double %1971, %1944
+  %1972 = tail call double @llvm.fmuladd.f64(double %mul1787.13, double %.pre4543, double %1970)
+  %arrayidx1784.14 = getelementptr inbounds double, ptr %1943, i64 14
+  %1973 = load double, ptr %arrayidx1784.14, align 8
+  %mul1787.14 = fmul double %1973, %1944
+  %1974 = tail call double @llvm.fmuladd.f64(double %mul1787.14, double %.pre4544, double %1972)
+  %arrayidx1784.15 = getelementptr inbounds double, ptr %1943, i64 15
+  %1975 = load double, ptr %arrayidx1784.15, align 8
+  %mul1787.15 = fmul double %1975, %1944
+  %1976 = tail call double @llvm.fmuladd.f64(double %mul1787.15, double %.pre4545, double %1974)
+  %arrayidx1784.16 = getelementptr inbounds double, ptr %1943, i64 16
+  %1977 = load double, ptr %arrayidx1784.16, align 8
+  %mul1787.16 = fmul double %1977, %1944
+  %1978 = tail call double @llvm.fmuladd.f64(double %mul1787.16, double %.pre4546, double %1976)
+  %arrayidx1784.17 = getelementptr inbounds double, ptr %1943, i64 17
+  %1979 = load double, ptr %arrayidx1784.17, align 8
+  %mul1787.17 = fmul double %1979, %1944
+  %1980 = tail call double @llvm.fmuladd.f64(double %mul1787.17, double %.pre4547, double %1978)
+  %arrayidx1784.18 = getelementptr inbounds double, ptr %1943, i64 18
+  %1981 = load double, ptr %arrayidx1784.18, align 8
+  %mul1787.18 = fmul double %1981, %1944
+  %1982 = tail call double @llvm.fmuladd.f64(double %mul1787.18, double %1941, double %1980)
+  %arrayidx1784.19 = getelementptr inbounds double, ptr %1943, i64 19
+  %1983 = load double, ptr %arrayidx1784.19, align 8
+  %mul1787.19 = fmul double %1983, %1944
+  %1984 = tail call double @llvm.fmuladd.f64(double %mul1787.19, double %1942, double %1982)
   %indvars.iv.next3657 = add nuw nsw i64 %indvars.iv3656, 1
   %exitcond3659.not = icmp eq i64 %indvars.iv.next3657, 20
   br i1 %exitcond3659.not, label %if.end1797, label %for.cond1777.preheader
 
 if.end1797:                                       ; preds = %for.cond1777.preheader, %for.end1768
-  %average1519.2 = phi double [ 0.000000e+00, %for.end1768 ], [ %2074, %for.cond1777.preheader ]
-  %2075 = insertelement <2 x double> poison, double %average1519.2, i64 0
-  %2076 = shufflevector <2 x double> %2075, <2 x double> poison, <2 x i32> zeroinitializer
+  %average1519.2 = phi double [ 0.000000e+00, %for.end1768 ], [ %1984, %for.cond1777.preheader ]
+  %1985 = insertelement <2 x double> poison, double %average1519.2, i64 0
+  %1986 = shufflevector <2 x double> %1985, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond1802.preheader
 
 for.cond1802.preheader:                           ; preds = %if.end1797, %for.cond1802.preheader
   %indvars.iv3664 = phi i64 [ 0, %if.end1797 ], [ %indvars.iv.next3665, %for.cond1802.preheader ]
   %arrayidx1807 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3664
-  %2077 = load ptr, ptr %arrayidx1807, align 8
-  %2078 = load <2 x double>, ptr %2077, align 8
-  %2079 = fsub <2 x double> %2078, %2076
-  store <2 x double> %2079, ptr %2077, align 8
-  %arrayidx1809.2 = getelementptr inbounds double, ptr %2077, i64 2
-  %2080 = load <2 x double>, ptr %arrayidx1809.2, align 8
-  %2081 = fsub <2 x double> %2080, %2076
-  store <2 x double> %2081, ptr %arrayidx1809.2, align 8
-  %arrayidx1809.4 = getelementptr inbounds double, ptr %2077, i64 4
-  %2082 = load <2 x double>, ptr %arrayidx1809.4, align 8
-  %2083 = fsub <2 x double> %2082, %2076
-  store <2 x double> %2083, ptr %arrayidx1809.4, align 8
-  %arrayidx1809.6 = getelementptr inbounds double, ptr %2077, i64 6
-  %2084 = load <2 x double>, ptr %arrayidx1809.6, align 8
-  %2085 = fsub <2 x double> %2084, %2076
-  store <2 x double> %2085, ptr %arrayidx1809.6, align 8
-  %arrayidx1809.8 = getelementptr inbounds double, ptr %2077, i64 8
-  %2086 = load <2 x double>, ptr %arrayidx1809.8, align 8
-  %2087 = fsub <2 x double> %2086, %2076
-  store <2 x double> %2087, ptr %arrayidx1809.8, align 8
-  %arrayidx1809.10 = getelementptr inbounds double, ptr %2077, i64 10
-  %2088 = load <2 x double>, ptr %arrayidx1809.10, align 8
-  %2089 = fsub <2 x double> %2088, %2076
-  store <2 x double> %2089, ptr %arrayidx1809.10, align 8
-  %arrayidx1809.12 = getelementptr inbounds double, ptr %2077, i64 12
-  %2090 = load <2 x double>, ptr %arrayidx1809.12, align 8
-  %2091 = fsub <2 x double> %2090, %2076
-  store <2 x double> %2091, ptr %arrayidx1809.12, align 8
-  %arrayidx1809.14 = getelementptr inbounds double, ptr %2077, i64 14
-  %2092 = load <2 x double>, ptr %arrayidx1809.14, align 8
-  %2093 = fsub <2 x double> %2092, %2076
-  store <2 x double> %2093, ptr %arrayidx1809.14, align 8
-  %arrayidx1809.16 = getelementptr inbounds double, ptr %2077, i64 16
-  %2094 = load <2 x double>, ptr %arrayidx1809.16, align 8
-  %2095 = fsub <2 x double> %2094, %2076
-  store <2 x double> %2095, ptr %arrayidx1809.16, align 8
-  %arrayidx1809.18 = getelementptr inbounds double, ptr %2077, i64 18
-  %2096 = load <2 x double>, ptr %arrayidx1809.18, align 8
-  %2097 = fsub <2 x double> %2096, %2076
-  store <2 x double> %2097, ptr %arrayidx1809.18, align 8
+  %1987 = load ptr, ptr %arrayidx1807, align 8
+  %1988 = load <2 x double>, ptr %1987, align 8
+  %1989 = fsub <2 x double> %1988, %1986
+  store <2 x double> %1989, ptr %1987, align 8
+  %arrayidx1809.2 = getelementptr inbounds double, ptr %1987, i64 2
+  %1990 = load <2 x double>, ptr %arrayidx1809.2, align 8
+  %1991 = fsub <2 x double> %1990, %1986
+  store <2 x double> %1991, ptr %arrayidx1809.2, align 8
+  %arrayidx1809.4 = getelementptr inbounds double, ptr %1987, i64 4
+  %1992 = load <2 x double>, ptr %arrayidx1809.4, align 8
+  %1993 = fsub <2 x double> %1992, %1986
+  store <2 x double> %1993, ptr %arrayidx1809.4, align 8
+  %arrayidx1809.6 = getelementptr inbounds double, ptr %1987, i64 6
+  %1994 = load <2 x double>, ptr %arrayidx1809.6, align 8
+  %1995 = fsub <2 x double> %1994, %1986
+  store <2 x double> %1995, ptr %arrayidx1809.6, align 8
+  %arrayidx1809.8 = getelementptr inbounds double, ptr %1987, i64 8
+  %1996 = load <2 x double>, ptr %arrayidx1809.8, align 8
+  %1997 = fsub <2 x double> %1996, %1986
+  store <2 x double> %1997, ptr %arrayidx1809.8, align 8
+  %arrayidx1809.10 = getelementptr inbounds double, ptr %1987, i64 10
+  %1998 = load <2 x double>, ptr %arrayidx1809.10, align 8
+  %1999 = fsub <2 x double> %1998, %1986
+  store <2 x double> %1999, ptr %arrayidx1809.10, align 8
+  %arrayidx1809.12 = getelementptr inbounds double, ptr %1987, i64 12
+  %2000 = load <2 x double>, ptr %arrayidx1809.12, align 8
+  %2001 = fsub <2 x double> %2000, %1986
+  store <2 x double> %2001, ptr %arrayidx1809.12, align 8
+  %arrayidx1809.14 = getelementptr inbounds double, ptr %1987, i64 14
+  %2002 = load <2 x double>, ptr %arrayidx1809.14, align 8
+  %2003 = fsub <2 x double> %2002, %1986
+  store <2 x double> %2003, ptr %arrayidx1809.14, align 8
+  %arrayidx1809.16 = getelementptr inbounds double, ptr %1987, i64 16
+  %2004 = load <2 x double>, ptr %arrayidx1809.16, align 8
+  %2005 = fsub <2 x double> %2004, %1986
+  store <2 x double> %2005, ptr %arrayidx1809.16, align 8
+  %arrayidx1809.18 = getelementptr inbounds double, ptr %1987, i64 18
+  %2006 = load <2 x double>, ptr %arrayidx1809.18, align 8
+  %2007 = fsub <2 x double> %2006, %1986
+  store <2 x double> %2007, ptr %arrayidx1809.18, align 8
   %indvars.iv.next3665 = add nuw nsw i64 %indvars.iv3664, 1
   %exitcond3667.not = icmp eq i64 %indvars.iv.next3665, 20
   br i1 %exitcond3667.not, label %for.body1820.preheader, label %for.cond1802.preheader
 
 for.body1820.preheader:                           ; preds = %for.cond1802.preheader
-  %2098 = load ptr, ptr %call1522, align 8
-  %2099 = load double, ptr %2098, align 8
-  %2100 = load double, ptr %freq11517.0, align 8
-  %2101 = tail call double @llvm.fmuladd.f64(double %2099, double %2100, double 0.000000e+00)
+  %2008 = load ptr, ptr %call1522, align 8
+  %2009 = load double, ptr %2008, align 8
+  %2010 = load double, ptr %freq11517.0, align 8
+  %2011 = tail call double @llvm.fmuladd.f64(double %2009, double %2010, double 0.000000e+00)
   %arrayidx1822.1 = getelementptr inbounds ptr, ptr %call1522, i64 1
-  %2102 = load ptr, ptr %arrayidx1822.1, align 8
-  %arrayidx1824.1 = getelementptr inbounds double, ptr %2102, i64 1
-  %2103 = load double, ptr %arrayidx1824.1, align 8
+  %2012 = load ptr, ptr %arrayidx1822.1, align 8
+  %arrayidx1824.1 = getelementptr inbounds double, ptr %2012, i64 1
+  %2013 = load double, ptr %arrayidx1824.1, align 8
   %arrayidx1826.1 = getelementptr inbounds double, ptr %freq11517.0, i64 1
-  %2104 = load double, ptr %arrayidx1826.1, align 8
-  %2105 = tail call double @llvm.fmuladd.f64(double %2103, double %2104, double %2101)
+  %2014 = load double, ptr %arrayidx1826.1, align 8
+  %2015 = tail call double @llvm.fmuladd.f64(double %2013, double %2014, double %2011)
   %arrayidx1822.2 = getelementptr inbounds ptr, ptr %call1522, i64 2
-  %2106 = load ptr, ptr %arrayidx1822.2, align 8
-  %arrayidx1824.2 = getelementptr inbounds double, ptr %2106, i64 2
-  %2107 = load double, ptr %arrayidx1824.2, align 8
+  %2016 = load ptr, ptr %arrayidx1822.2, align 8
+  %arrayidx1824.2 = getelementptr inbounds double, ptr %2016, i64 2
+  %2017 = load double, ptr %arrayidx1824.2, align 8
   %arrayidx1826.2 = getelementptr inbounds double, ptr %freq11517.0, i64 2
-  %2108 = load double, ptr %arrayidx1826.2, align 8
-  %2109 = tail call double @llvm.fmuladd.f64(double %2107, double %2108, double %2105)
+  %2018 = load double, ptr %arrayidx1826.2, align 8
+  %2019 = tail call double @llvm.fmuladd.f64(double %2017, double %2018, double %2015)
   %arrayidx1822.3 = getelementptr inbounds ptr, ptr %call1522, i64 3
-  %2110 = load ptr, ptr %arrayidx1822.3, align 8
-  %arrayidx1824.3 = getelementptr inbounds double, ptr %2110, i64 3
-  %2111 = load double, ptr %arrayidx1824.3, align 8
+  %2020 = load ptr, ptr %arrayidx1822.3, align 8
+  %arrayidx1824.3 = getelementptr inbounds double, ptr %2020, i64 3
+  %2021 = load double, ptr %arrayidx1824.3, align 8
   %arrayidx1826.3 = getelementptr inbounds double, ptr %freq11517.0, i64 3
-  %2112 = load double, ptr %arrayidx1826.3, align 8
-  %2113 = tail call double @llvm.fmuladd.f64(double %2111, double %2112, double %2109)
+  %2022 = load double, ptr %arrayidx1826.3, align 8
+  %2023 = tail call double @llvm.fmuladd.f64(double %2021, double %2022, double %2019)
   %arrayidx1822.4 = getelementptr inbounds ptr, ptr %call1522, i64 4
-  %2114 = load ptr, ptr %arrayidx1822.4, align 8
-  %arrayidx1824.4 = getelementptr inbounds double, ptr %2114, i64 4
-  %2115 = load double, ptr %arrayidx1824.4, align 8
+  %2024 = load ptr, ptr %arrayidx1822.4, align 8
+  %arrayidx1824.4 = getelementptr inbounds double, ptr %2024, i64 4
+  %2025 = load double, ptr %arrayidx1824.4, align 8
   %arrayidx1826.4 = getelementptr inbounds double, ptr %freq11517.0, i64 4
-  %2116 = load double, ptr %arrayidx1826.4, align 8
-  %2117 = tail call double @llvm.fmuladd.f64(double %2115, double %2116, double %2113)
+  %2026 = load double, ptr %arrayidx1826.4, align 8
+  %2027 = tail call double @llvm.fmuladd.f64(double %2025, double %2026, double %2023)
   %arrayidx1822.5 = getelementptr inbounds ptr, ptr %call1522, i64 5
-  %2118 = load ptr, ptr %arrayidx1822.5, align 8
-  %arrayidx1824.5 = getelementptr inbounds double, ptr %2118, i64 5
-  %2119 = load double, ptr %arrayidx1824.5, align 8
+  %2028 = load ptr, ptr %arrayidx1822.5, align 8
+  %arrayidx1824.5 = getelementptr inbounds double, ptr %2028, i64 5
+  %2029 = load double, ptr %arrayidx1824.5, align 8
   %arrayidx1826.5 = getelementptr inbounds double, ptr %freq11517.0, i64 5
-  %2120 = load double, ptr %arrayidx1826.5, align 8
-  %2121 = tail call double @llvm.fmuladd.f64(double %2119, double %2120, double %2117)
+  %2030 = load double, ptr %arrayidx1826.5, align 8
+  %2031 = tail call double @llvm.fmuladd.f64(double %2029, double %2030, double %2027)
   %arrayidx1822.6 = getelementptr inbounds ptr, ptr %call1522, i64 6
-  %2122 = load ptr, ptr %arrayidx1822.6, align 8
-  %arrayidx1824.6 = getelementptr inbounds double, ptr %2122, i64 6
-  %2123 = load double, ptr %arrayidx1824.6, align 8
+  %2032 = load ptr, ptr %arrayidx1822.6, align 8
+  %arrayidx1824.6 = getelementptr inbounds double, ptr %2032, i64 6
+  %2033 = load double, ptr %arrayidx1824.6, align 8
   %arrayidx1826.6 = getelementptr inbounds double, ptr %freq11517.0, i64 6
-  %2124 = load double, ptr %arrayidx1826.6, align 8
-  %2125 = tail call double @llvm.fmuladd.f64(double %2123, double %2124, double %2121)
+  %2034 = load double, ptr %arrayidx1826.6, align 8
+  %2035 = tail call double @llvm.fmuladd.f64(double %2033, double %2034, double %2031)
   %arrayidx1822.7 = getelementptr inbounds ptr, ptr %call1522, i64 7
-  %2126 = load ptr, ptr %arrayidx1822.7, align 8
-  %arrayidx1824.7 = getelementptr inbounds double, ptr %2126, i64 7
-  %2127 = load double, ptr %arrayidx1824.7, align 8
+  %2036 = load ptr, ptr %arrayidx1822.7, align 8
+  %arrayidx1824.7 = getelementptr inbounds double, ptr %2036, i64 7
+  %2037 = load double, ptr %arrayidx1824.7, align 8
   %arrayidx1826.7 = getelementptr inbounds double, ptr %freq11517.0, i64 7
-  %2128 = load double, ptr %arrayidx1826.7, align 8
-  %2129 = tail call double @llvm.fmuladd.f64(double %2127, double %2128, double %2125)
+  %2038 = load double, ptr %arrayidx1826.7, align 8
+  %2039 = tail call double @llvm.fmuladd.f64(double %2037, double %2038, double %2035)
   %arrayidx1822.8 = getelementptr inbounds ptr, ptr %call1522, i64 8
-  %2130 = load ptr, ptr %arrayidx1822.8, align 8
-  %arrayidx1824.8 = getelementptr inbounds double, ptr %2130, i64 8
-  %2131 = load double, ptr %arrayidx1824.8, align 8
+  %2040 = load ptr, ptr %arrayidx1822.8, align 8
+  %arrayidx1824.8 = getelementptr inbounds double, ptr %2040, i64 8
+  %2041 = load double, ptr %arrayidx1824.8, align 8
   %arrayidx1826.8 = getelementptr inbounds double, ptr %freq11517.0, i64 8
-  %2132 = load double, ptr %arrayidx1826.8, align 8
-  %2133 = tail call double @llvm.fmuladd.f64(double %2131, double %2132, double %2129)
+  %2042 = load double, ptr %arrayidx1826.8, align 8
+  %2043 = tail call double @llvm.fmuladd.f64(double %2041, double %2042, double %2039)
   %arrayidx1822.9 = getelementptr inbounds ptr, ptr %call1522, i64 9
-  %2134 = load ptr, ptr %arrayidx1822.9, align 8
-  %arrayidx1824.9 = getelementptr inbounds double, ptr %2134, i64 9
-  %2135 = load double, ptr %arrayidx1824.9, align 8
+  %2044 = load ptr, ptr %arrayidx1822.9, align 8
+  %arrayidx1824.9 = getelementptr inbounds double, ptr %2044, i64 9
+  %2045 = load double, ptr %arrayidx1824.9, align 8
   %arrayidx1826.9 = getelementptr inbounds double, ptr %freq11517.0, i64 9
-  %2136 = load double, ptr %arrayidx1826.9, align 8
-  %2137 = tail call double @llvm.fmuladd.f64(double %2135, double %2136, double %2133)
+  %2046 = load double, ptr %arrayidx1826.9, align 8
+  %2047 = tail call double @llvm.fmuladd.f64(double %2045, double %2046, double %2043)
   %arrayidx1822.10 = getelementptr inbounds ptr, ptr %call1522, i64 10
-  %2138 = load ptr, ptr %arrayidx1822.10, align 8
-  %arrayidx1824.10 = getelementptr inbounds double, ptr %2138, i64 10
-  %2139 = load double, ptr %arrayidx1824.10, align 8
+  %2048 = load ptr, ptr %arrayidx1822.10, align 8
+  %arrayidx1824.10 = getelementptr inbounds double, ptr %2048, i64 10
+  %2049 = load double, ptr %arrayidx1824.10, align 8
   %arrayidx1826.10 = getelementptr inbounds double, ptr %freq11517.0, i64 10
-  %2140 = load double, ptr %arrayidx1826.10, align 8
-  %2141 = tail call double @llvm.fmuladd.f64(double %2139, double %2140, double %2137)
+  %2050 = load double, ptr %arrayidx1826.10, align 8
+  %2051 = tail call double @llvm.fmuladd.f64(double %2049, double %2050, double %2047)
   %arrayidx1822.11 = getelementptr inbounds ptr, ptr %call1522, i64 11
-  %2142 = load ptr, ptr %arrayidx1822.11, align 8
-  %arrayidx1824.11 = getelementptr inbounds double, ptr %2142, i64 11
-  %2143 = load double, ptr %arrayidx1824.11, align 8
+  %2052 = load ptr, ptr %arrayidx1822.11, align 8
+  %arrayidx1824.11 = getelementptr inbounds double, ptr %2052, i64 11
+  %2053 = load double, ptr %arrayidx1824.11, align 8
   %arrayidx1826.11 = getelementptr inbounds double, ptr %freq11517.0, i64 11
-  %2144 = load double, ptr %arrayidx1826.11, align 8
-  %2145 = tail call double @llvm.fmuladd.f64(double %2143, double %2144, double %2141)
+  %2054 = load double, ptr %arrayidx1826.11, align 8
+  %2055 = tail call double @llvm.fmuladd.f64(double %2053, double %2054, double %2051)
   %arrayidx1822.12 = getelementptr inbounds ptr, ptr %call1522, i64 12
-  %2146 = load ptr, ptr %arrayidx1822.12, align 8
-  %arrayidx1824.12 = getelementptr inbounds double, ptr %2146, i64 12
-  %2147 = load double, ptr %arrayidx1824.12, align 8
+  %2056 = load ptr, ptr %arrayidx1822.12, align 8
+  %arrayidx1824.12 = getelementptr inbounds double, ptr %2056, i64 12
+  %2057 = load double, ptr %arrayidx1824.12, align 8
   %arrayidx1826.12 = getelementptr inbounds double, ptr %freq11517.0, i64 12
-  %2148 = load double, ptr %arrayidx1826.12, align 8
-  %2149 = tail call double @llvm.fmuladd.f64(double %2147, double %2148, double %2145)
+  %2058 = load double, ptr %arrayidx1826.12, align 8
+  %2059 = tail call double @llvm.fmuladd.f64(double %2057, double %2058, double %2055)
   %arrayidx1822.13 = getelementptr inbounds ptr, ptr %call1522, i64 13
-  %2150 = load ptr, ptr %arrayidx1822.13, align 8
-  %arrayidx1824.13 = getelementptr inbounds double, ptr %2150, i64 13
-  %2151 = load double, ptr %arrayidx1824.13, align 8
+  %2060 = load ptr, ptr %arrayidx1822.13, align 8
+  %arrayidx1824.13 = getelementptr inbounds double, ptr %2060, i64 13
+  %2061 = load double, ptr %arrayidx1824.13, align 8
   %arrayidx1826.13 = getelementptr inbounds double, ptr %freq11517.0, i64 13
-  %2152 = load double, ptr %arrayidx1826.13, align 8
-  %2153 = tail call double @llvm.fmuladd.f64(double %2151, double %2152, double %2149)
+  %2062 = load double, ptr %arrayidx1826.13, align 8
+  %2063 = tail call double @llvm.fmuladd.f64(double %2061, double %2062, double %2059)
   %arrayidx1822.14 = getelementptr inbounds ptr, ptr %call1522, i64 14
-  %2154 = load ptr, ptr %arrayidx1822.14, align 8
-  %arrayidx1824.14 = getelementptr inbounds double, ptr %2154, i64 14
-  %2155 = load double, ptr %arrayidx1824.14, align 8
+  %2064 = load ptr, ptr %arrayidx1822.14, align 8
+  %arrayidx1824.14 = getelementptr inbounds double, ptr %2064, i64 14
+  %2065 = load double, ptr %arrayidx1824.14, align 8
   %arrayidx1826.14 = getelementptr inbounds double, ptr %freq11517.0, i64 14
-  %2156 = load double, ptr %arrayidx1826.14, align 8
-  %2157 = tail call double @llvm.fmuladd.f64(double %2155, double %2156, double %2153)
+  %2066 = load double, ptr %arrayidx1826.14, align 8
+  %2067 = tail call double @llvm.fmuladd.f64(double %2065, double %2066, double %2063)
   %arrayidx1822.15 = getelementptr inbounds ptr, ptr %call1522, i64 15
-  %2158 = load ptr, ptr %arrayidx1822.15, align 8
-  %arrayidx1824.15 = getelementptr inbounds double, ptr %2158, i64 15
-  %2159 = load double, ptr %arrayidx1824.15, align 8
+  %2068 = load ptr, ptr %arrayidx1822.15, align 8
+  %arrayidx1824.15 = getelementptr inbounds double, ptr %2068, i64 15
+  %2069 = load double, ptr %arrayidx1824.15, align 8
   %arrayidx1826.15 = getelementptr inbounds double, ptr %freq11517.0, i64 15
-  %2160 = load double, ptr %arrayidx1826.15, align 8
-  %2161 = tail call double @llvm.fmuladd.f64(double %2159, double %2160, double %2157)
+  %2070 = load double, ptr %arrayidx1826.15, align 8
+  %2071 = tail call double @llvm.fmuladd.f64(double %2069, double %2070, double %2067)
   %arrayidx1822.16 = getelementptr inbounds ptr, ptr %call1522, i64 16
-  %2162 = load ptr, ptr %arrayidx1822.16, align 8
-  %arrayidx1824.16 = getelementptr inbounds double, ptr %2162, i64 16
-  %2163 = load double, ptr %arrayidx1824.16, align 8
+  %2072 = load ptr, ptr %arrayidx1822.16, align 8
+  %arrayidx1824.16 = getelementptr inbounds double, ptr %2072, i64 16
+  %2073 = load double, ptr %arrayidx1824.16, align 8
   %arrayidx1826.16 = getelementptr inbounds double, ptr %freq11517.0, i64 16
-  %2164 = load double, ptr %arrayidx1826.16, align 8
-  %2165 = tail call double @llvm.fmuladd.f64(double %2163, double %2164, double %2161)
+  %2074 = load double, ptr %arrayidx1826.16, align 8
+  %2075 = tail call double @llvm.fmuladd.f64(double %2073, double %2074, double %2071)
   %arrayidx1822.17 = getelementptr inbounds ptr, ptr %call1522, i64 17
-  %2166 = load ptr, ptr %arrayidx1822.17, align 8
-  %arrayidx1824.17 = getelementptr inbounds double, ptr %2166, i64 17
-  %2167 = load double, ptr %arrayidx1824.17, align 8
+  %2076 = load ptr, ptr %arrayidx1822.17, align 8
+  %arrayidx1824.17 = getelementptr inbounds double, ptr %2076, i64 17
+  %2077 = load double, ptr %arrayidx1824.17, align 8
   %arrayidx1826.17 = getelementptr inbounds double, ptr %freq11517.0, i64 17
-  %2168 = load double, ptr %arrayidx1826.17, align 8
-  %2169 = tail call double @llvm.fmuladd.f64(double %2167, double %2168, double %2165)
+  %2078 = load double, ptr %arrayidx1826.17, align 8
+  %2079 = tail call double @llvm.fmuladd.f64(double %2077, double %2078, double %2075)
   %arrayidx1822.18 = getelementptr inbounds ptr, ptr %call1522, i64 18
-  %2170 = load ptr, ptr %arrayidx1822.18, align 8
-  %arrayidx1824.18 = getelementptr inbounds double, ptr %2170, i64 18
-  %2171 = load double, ptr %arrayidx1824.18, align 8
+  %2080 = load ptr, ptr %arrayidx1822.18, align 8
+  %arrayidx1824.18 = getelementptr inbounds double, ptr %2080, i64 18
+  %2081 = load double, ptr %arrayidx1824.18, align 8
   %arrayidx1826.18 = getelementptr inbounds double, ptr %freq11517.0, i64 18
-  %2172 = load double, ptr %arrayidx1826.18, align 8
-  %2173 = tail call double @llvm.fmuladd.f64(double %2171, double %2172, double %2169)
+  %2082 = load double, ptr %arrayidx1826.18, align 8
+  %2083 = tail call double @llvm.fmuladd.f64(double %2081, double %2082, double %2079)
   %arrayidx1822.19 = getelementptr inbounds ptr, ptr %call1522, i64 19
-  %2174 = load ptr, ptr %arrayidx1822.19, align 8
-  %arrayidx1824.19 = getelementptr inbounds double, ptr %2174, i64 19
-  %2175 = load double, ptr %arrayidx1824.19, align 8
+  %2084 = load ptr, ptr %arrayidx1822.19, align 8
+  %arrayidx1824.19 = getelementptr inbounds double, ptr %2084, i64 19
+  %2085 = load double, ptr %arrayidx1824.19, align 8
   %arrayidx1826.19 = getelementptr inbounds double, ptr %freq11517.0, i64 19
-  %2176 = load double, ptr %arrayidx1826.19, align 8
-  %2177 = tail call double @llvm.fmuladd.f64(double %2175, double %2176, double %2173)
-  %div1839 = fdiv double 6.000000e+02, %2177
-  %2178 = insertelement <2 x double> poison, double %div1839, i64 0
-  %2179 = shufflevector <2 x double> %2178, <2 x double> poison, <2 x i32> zeroinitializer
+  %2086 = load double, ptr %arrayidx1826.19, align 8
+  %2087 = tail call double @llvm.fmuladd.f64(double %2085, double %2086, double %2083)
+  %div1839 = fdiv double 6.000000e+02, %2087
+  %2088 = insertelement <2 x double> poison, double %div1839, i64 0
+  %2089 = shufflevector <2 x double> %2088, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond1835.preheader
 
 for.cond1835.preheader:                           ; preds = %for.body1820.preheader, %for.cond1835.preheader
   %indvars.iv3676 = phi i64 [ 0, %for.body1820.preheader ], [ %indvars.iv.next3677, %for.cond1835.preheader ]
   %arrayidx1841 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3676
-  %2180 = load ptr, ptr %arrayidx1841, align 8
-  %2181 = load <2 x double>, ptr %2180, align 8
-  %2182 = fmul <2 x double> %2179, %2181
-  store <2 x double> %2182, ptr %2180, align 8
-  %arrayidx1843.2 = getelementptr inbounds double, ptr %2180, i64 2
-  %2183 = load <2 x double>, ptr %arrayidx1843.2, align 8
-  %2184 = fmul <2 x double> %2179, %2183
-  store <2 x double> %2184, ptr %arrayidx1843.2, align 8
-  %arrayidx1843.4 = getelementptr inbounds double, ptr %2180, i64 4
-  %2185 = load <2 x double>, ptr %arrayidx1843.4, align 8
-  %2186 = fmul <2 x double> %2179, %2185
-  store <2 x double> %2186, ptr %arrayidx1843.4, align 8
-  %arrayidx1843.6 = getelementptr inbounds double, ptr %2180, i64 6
-  %2187 = load <2 x double>, ptr %arrayidx1843.6, align 8
-  %2188 = fmul <2 x double> %2179, %2187
-  store <2 x double> %2188, ptr %arrayidx1843.6, align 8
-  %arrayidx1843.8 = getelementptr inbounds double, ptr %2180, i64 8
-  %2189 = load <2 x double>, ptr %arrayidx1843.8, align 8
-  %2190 = fmul <2 x double> %2179, %2189
-  store <2 x double> %2190, ptr %arrayidx1843.8, align 8
-  %arrayidx1843.10 = getelementptr inbounds double, ptr %2180, i64 10
-  %2191 = load <2 x double>, ptr %arrayidx1843.10, align 8
-  %2192 = fmul <2 x double> %2179, %2191
-  store <2 x double> %2192, ptr %arrayidx1843.10, align 8
-  %arrayidx1843.12 = getelementptr inbounds double, ptr %2180, i64 12
-  %2193 = load <2 x double>, ptr %arrayidx1843.12, align 8
-  %2194 = fmul <2 x double> %2179, %2193
-  store <2 x double> %2194, ptr %arrayidx1843.12, align 8
-  %arrayidx1843.14 = getelementptr inbounds double, ptr %2180, i64 14
-  %2195 = load <2 x double>, ptr %arrayidx1843.14, align 8
-  %2196 = fmul <2 x double> %2179, %2195
-  store <2 x double> %2196, ptr %arrayidx1843.14, align 8
-  %arrayidx1843.16 = getelementptr inbounds double, ptr %2180, i64 16
-  %2197 = load <2 x double>, ptr %arrayidx1843.16, align 8
-  %2198 = fmul <2 x double> %2179, %2197
-  store <2 x double> %2198, ptr %arrayidx1843.16, align 8
-  %arrayidx1843.18 = getelementptr inbounds double, ptr %2180, i64 18
-  %2199 = load <2 x double>, ptr %arrayidx1843.18, align 8
-  %2200 = fmul <2 x double> %2179, %2199
-  store <2 x double> %2200, ptr %arrayidx1843.18, align 8
+  %2090 = load ptr, ptr %arrayidx1841, align 8
+  %2091 = load <2 x double>, ptr %2090, align 8
+  %2092 = fmul <2 x double> %2089, %2091
+  store <2 x double> %2092, ptr %2090, align 8
+  %arrayidx1843.2 = getelementptr inbounds double, ptr %2090, i64 2
+  %2093 = load <2 x double>, ptr %arrayidx1843.2, align 8
+  %2094 = fmul <2 x double> %2089, %2093
+  store <2 x double> %2094, ptr %arrayidx1843.2, align 8
+  %arrayidx1843.4 = getelementptr inbounds double, ptr %2090, i64 4
+  %2095 = load <2 x double>, ptr %arrayidx1843.4, align 8
+  %2096 = fmul <2 x double> %2089, %2095
+  store <2 x double> %2096, ptr %arrayidx1843.4, align 8
+  %arrayidx1843.6 = getelementptr inbounds double, ptr %2090, i64 6
+  %2097 = load <2 x double>, ptr %arrayidx1843.6, align 8
+  %2098 = fmul <2 x double> %2089, %2097
+  store <2 x double> %2098, ptr %arrayidx1843.6, align 8
+  %arrayidx1843.8 = getelementptr inbounds double, ptr %2090, i64 8
+  %2099 = load <2 x double>, ptr %arrayidx1843.8, align 8
+  %2100 = fmul <2 x double> %2089, %2099
+  store <2 x double> %2100, ptr %arrayidx1843.8, align 8
+  %arrayidx1843.10 = getelementptr inbounds double, ptr %2090, i64 10
+  %2101 = load <2 x double>, ptr %arrayidx1843.10, align 8
+  %2102 = fmul <2 x double> %2089, %2101
+  store <2 x double> %2102, ptr %arrayidx1843.10, align 8
+  %arrayidx1843.12 = getelementptr inbounds double, ptr %2090, i64 12
+  %2103 = load <2 x double>, ptr %arrayidx1843.12, align 8
+  %2104 = fmul <2 x double> %2089, %2103
+  store <2 x double> %2104, ptr %arrayidx1843.12, align 8
+  %arrayidx1843.14 = getelementptr inbounds double, ptr %2090, i64 14
+  %2105 = load <2 x double>, ptr %arrayidx1843.14, align 8
+  %2106 = fmul <2 x double> %2089, %2105
+  store <2 x double> %2106, ptr %arrayidx1843.14, align 8
+  %arrayidx1843.16 = getelementptr inbounds double, ptr %2090, i64 16
+  %2107 = load <2 x double>, ptr %arrayidx1843.16, align 8
+  %2108 = fmul <2 x double> %2089, %2107
+  store <2 x double> %2108, ptr %arrayidx1843.16, align 8
+  %arrayidx1843.18 = getelementptr inbounds double, ptr %2090, i64 18
+  %2109 = load <2 x double>, ptr %arrayidx1843.18, align 8
+  %2110 = fmul <2 x double> %2089, %2109
+  store <2 x double> %2110, ptr %arrayidx1843.18, align 8
   %indvars.iv.next3677 = add nuw nsw i64 %indvars.iv3676, 1
   %exitcond3679.not = icmp eq i64 %indvars.iv.next3677, 20
   br i1 %exitcond3679.not, label %for.cond1851.preheader, label %for.cond1835.preheader
 
 for.cond1851.preheader:                           ; preds = %for.cond1835.preheader
-  %2201 = load i32, ptr @offset, align 4
-  %conv1859 = sitofp i32 %2201 to double
-  %2202 = insertelement <2 x double> poison, double %conv1859, i64 0
-  %2203 = shufflevector <2 x double> %2202, <2 x double> poison, <2 x i32> zeroinitializer
+  %2111 = load i32, ptr @offset, align 4
+  %conv1859 = sitofp i32 %2111 to double
+  %2112 = insertelement <2 x double> poison, double %conv1859, i64 0
+  %2113 = shufflevector <2 x double> %2112, <2 x double> poison, <2 x i32> zeroinitializer
   br label %for.cond1855.preheader
 
 for.cond1855.preheader:                           ; preds = %for.cond1851.preheader, %for.cond1855.preheader
   %indvars.iv3684 = phi i64 [ 0, %for.cond1851.preheader ], [ %indvars.iv.next3685, %for.cond1855.preheader ]
   %arrayidx1861 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3684
-  %2204 = load ptr, ptr %arrayidx1861, align 8
-  %2205 = load <2 x double>, ptr %2204, align 8
-  %2206 = fsub <2 x double> %2205, %2203
-  store <2 x double> %2206, ptr %2204, align 8
-  %arrayidx1863.2 = getelementptr inbounds double, ptr %2204, i64 2
-  %2207 = load <2 x double>, ptr %arrayidx1863.2, align 8
-  %2208 = fsub <2 x double> %2207, %2203
-  store <2 x double> %2208, ptr %arrayidx1863.2, align 8
-  %arrayidx1863.4 = getelementptr inbounds double, ptr %2204, i64 4
-  %2209 = load <2 x double>, ptr %arrayidx1863.4, align 8
-  %2210 = fsub <2 x double> %2209, %2203
-  store <2 x double> %2210, ptr %arrayidx1863.4, align 8
-  %arrayidx1863.6 = getelementptr inbounds double, ptr %2204, i64 6
-  %2211 = load <2 x double>, ptr %arrayidx1863.6, align 8
-  %2212 = fsub <2 x double> %2211, %2203
-  store <2 x double> %2212, ptr %arrayidx1863.6, align 8
-  %arrayidx1863.8 = getelementptr inbounds double, ptr %2204, i64 8
-  %2213 = load <2 x double>, ptr %arrayidx1863.8, align 8
-  %2214 = fsub <2 x double> %2213, %2203
-  store <2 x double> %2214, ptr %arrayidx1863.8, align 8
-  %arrayidx1863.10 = getelementptr inbounds double, ptr %2204, i64 10
-  %2215 = load <2 x double>, ptr %arrayidx1863.10, align 8
-  %2216 = fsub <2 x double> %2215, %2203
-  store <2 x double> %2216, ptr %arrayidx1863.10, align 8
-  %arrayidx1863.12 = getelementptr inbounds double, ptr %2204, i64 12
-  %2217 = load <2 x double>, ptr %arrayidx1863.12, align 8
-  %2218 = fsub <2 x double> %2217, %2203
-  store <2 x double> %2218, ptr %arrayidx1863.12, align 8
-  %arrayidx1863.14 = getelementptr inbounds double, ptr %2204, i64 14
-  %2219 = load <2 x double>, ptr %arrayidx1863.14, align 8
-  %2220 = fsub <2 x double> %2219, %2203
-  store <2 x double> %2220, ptr %arrayidx1863.14, align 8
-  %arrayidx1863.16 = getelementptr inbounds double, ptr %2204, i64 16
-  %2221 = load <2 x double>, ptr %arrayidx1863.16, align 8
-  %2222 = fsub <2 x double> %2221, %2203
-  store <2 x double> %2222, ptr %arrayidx1863.16, align 8
-  %arrayidx1863.18 = getelementptr inbounds double, ptr %2204, i64 18
-  %2223 = load <2 x double>, ptr %arrayidx1863.18, align 8
-  %2224 = fsub <2 x double> %2223, %2203
-  store <2 x double> %2224, ptr %arrayidx1863.18, align 8
+  %2114 = load ptr, ptr %arrayidx1861, align 8
+  %2115 = load <2 x double>, ptr %2114, align 8
+  %2116 = fsub <2 x double> %2115, %2113
+  store <2 x double> %2116, ptr %2114, align 8
+  %arrayidx1863.2 = getelementptr inbounds double, ptr %2114, i64 2
+  %2117 = load <2 x double>, ptr %arrayidx1863.2, align 8
+  %2118 = fsub <2 x double> %2117, %2113
+  store <2 x double> %2118, ptr %arrayidx1863.2, align 8
+  %arrayidx1863.4 = getelementptr inbounds double, ptr %2114, i64 4
+  %2119 = load <2 x double>, ptr %arrayidx1863.4, align 8
+  %2120 = fsub <2 x double> %2119, %2113
+  store <2 x double> %2120, ptr %arrayidx1863.4, align 8
+  %arrayidx1863.6 = getelementptr inbounds double, ptr %2114, i64 6
+  %2121 = load <2 x double>, ptr %arrayidx1863.6, align 8
+  %2122 = fsub <2 x double> %2121, %2113
+  store <2 x double> %2122, ptr %arrayidx1863.6, align 8
+  %arrayidx1863.8 = getelementptr inbounds double, ptr %2114, i64 8
+  %2123 = load <2 x double>, ptr %arrayidx1863.8, align 8
+  %2124 = fsub <2 x double> %2123, %2113
+  store <2 x double> %2124, ptr %arrayidx1863.8, align 8
+  %arrayidx1863.10 = getelementptr inbounds double, ptr %2114, i64 10
+  %2125 = load <2 x double>, ptr %arrayidx1863.10, align 8
+  %2126 = fsub <2 x double> %2125, %2113
+  store <2 x double> %2126, ptr %arrayidx1863.10, align 8
+  %arrayidx1863.12 = getelementptr inbounds double, ptr %2114, i64 12
+  %2127 = load <2 x double>, ptr %arrayidx1863.12, align 8
+  %2128 = fsub <2 x double> %2127, %2113
+  store <2 x double> %2128, ptr %arrayidx1863.12, align 8
+  %arrayidx1863.14 = getelementptr inbounds double, ptr %2114, i64 14
+  %2129 = load <2 x double>, ptr %arrayidx1863.14, align 8
+  %2130 = fsub <2 x double> %2129, %2113
+  store <2 x double> %2130, ptr %arrayidx1863.14, align 8
+  %arrayidx1863.16 = getelementptr inbounds double, ptr %2114, i64 16
+  %2131 = load <2 x double>, ptr %arrayidx1863.16, align 8
+  %2132 = fsub <2 x double> %2131, %2113
+  store <2 x double> %2132, ptr %arrayidx1863.16, align 8
+  %arrayidx1863.18 = getelementptr inbounds double, ptr %2114, i64 18
+  %2133 = load <2 x double>, ptr %arrayidx1863.18, align 8
+  %2134 = fsub <2 x double> %2133, %2113
+  store <2 x double> %2134, ptr %arrayidx1863.18, align 8
   %indvars.iv.next3685 = add nuw nsw i64 %indvars.iv3684, 1
   %exitcond3687.not = icmp eq i64 %indvars.iv.next3685, 20
   br i1 %exitcond3687.not, label %for.cond1875.preheader, label %for.cond1855.preheader
@@ -7834,27 +7271,27 @@ for.cond1855.preheader:                           ; preds = %for.cond1851.prehea
 for.cond1875.preheader:                           ; preds = %for.cond1855.preheader, %for.inc1892
   %indvars.iv3692 = phi i64 [ %indvars.iv.next3693, %for.inc1892 ], [ 0, %for.cond1855.preheader ]
   %arrayidx1880 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3692
-  %2225 = load ptr, ptr %arrayidx1880, align 8
+  %2135 = load ptr, ptr %arrayidx1880, align 8
   br label %for.body1878
 
 for.body1878:                                     ; preds = %for.cond1875.preheader, %shishagonyuu.exit3383
   %indvars.iv3688 = phi i64 [ 0, %for.cond1875.preheader ], [ %indvars.iv.next3689, %shishagonyuu.exit3383 ]
-  %arrayidx1882 = getelementptr inbounds double, ptr %2225, i64 %indvars.iv3688
-  %2226 = load double, ptr %arrayidx1882, align 8
-  %cmp.i3373 = fcmp ogt double %2226, 0.000000e+00
+  %arrayidx1882 = getelementptr inbounds double, ptr %2135, i64 %indvars.iv3688
+  %2136 = load double, ptr %arrayidx1882, align 8
+  %cmp.i3373 = fcmp ogt double %2136, 0.000000e+00
   br i1 %cmp.i3373, label %if.then.i3380, label %if.else.i3374
 
 if.then.i3380:                                    ; preds = %for.body1878
-  %add.i3381 = fadd double %2226, 5.000000e-01
+  %add.i3381 = fadd double %2136, 5.000000e-01
   %conv.i3382 = fptosi double %add.i3381 to i32
   br label %shishagonyuu.exit3383
 
 if.else.i3374:                                    ; preds = %for.body1878
-  %or.cond.i3375 = fcmp olt double %2226, 0.000000e+00
+  %or.cond.i3375 = fcmp olt double %2136, 0.000000e+00
   br i1 %or.cond.i3375, label %if.then7.i3377, label %shishagonyuu.exit3383
 
 if.then7.i3377:                                   ; preds = %if.else.i3374
-  %sub.i3378 = fadd double %2226, -5.000000e-01
+  %sub.i3378 = fadd double %2136, -5.000000e-01
   %conv8.i3379 = fptosi double %sub.i3378 to i32
   br label %shishagonyuu.exit3383
 
@@ -7872,8 +7309,8 @@ for.inc1892:                                      ; preds = %shishagonyuu.exit33
   br i1 %exitcond3695.not, label %for.end1894, label %for.cond1875.preheader
 
 for.end1894:                                      ; preds = %for.inc1892
-  %2227 = load i32, ptr @disp, align 4
-  %tobool1895.not = icmp eq i32 %2227, 0
+  %2137 = load i32, ptr @disp, align 4
+  %tobool1895.not = icmp eq i32 %2137, 0
   br i1 %tobool1895.not, label %for.cond1980.preheader.preheader, label %if.then1896
 
 for.cond1980.preheader.preheader:                 ; preds = %for.end1894
@@ -7881,206 +7318,206 @@ for.cond1980.preheader.preheader:                 ; preds = %for.end1894
   br label %for.cond1998.preheader
 
 if.then1896:                                      ; preds = %for.end1894
-  %2228 = load ptr, ptr @stdout, align 8
-  %2229 = tail call i64 @fwrite(ptr nonnull @.str.23, i64 18, i64 1, ptr %2228)
+  %2138 = load ptr, ptr @stdout, align 8
+  %2139 = tail call i64 @fwrite(ptr nonnull @.str.23, i64 18, i64 1, ptr %2138)
   br label %for.body1901
 
 for.body1901:                                     ; preds = %if.then1896, %for.body1901
   %indvars.iv3700 = phi i64 [ 0, %if.then1896 ], [ %indvars.iv.next3701, %for.body1901 ]
-  %2230 = load ptr, ptr @stdout, align 8
+  %2140 = load ptr, ptr @stdout, align 8
   %arrayidx1903 = getelementptr inbounds [26 x i8], ptr @amino, i64 0, i64 %indvars.iv3700
-  %2231 = load i8, ptr %arrayidx1903, align 1
-  %conv1904 = sext i8 %2231 to i32
-  %call1905 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2230, ptr noundef nonnull @.str.24, i32 noundef %conv1904)
+  %2141 = load i8, ptr %arrayidx1903, align 1
+  %conv1904 = sext i8 %2141 to i32
+  %call1905 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2140, ptr noundef nonnull @.str.24, i32 noundef %conv1904)
   %arrayidx1911 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3700
-  %2232 = load ptr, ptr @stdout, align 8
-  %2233 = load ptr, ptr %arrayidx1911, align 8
-  %2234 = load double, ptr %2233, align 8
-  %call1914 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2232, ptr noundef nonnull @.str.25, double noundef %2234)
-  %2235 = load ptr, ptr @stdout, align 8
-  %2236 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.1 = getelementptr inbounds double, ptr %2236, i64 1
-  %2237 = load double, ptr %arrayidx1913.1, align 8
-  %call1914.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2235, ptr noundef nonnull @.str.25, double noundef %2237)
-  %2238 = load ptr, ptr @stdout, align 8
-  %2239 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.2 = getelementptr inbounds double, ptr %2239, i64 2
-  %2240 = load double, ptr %arrayidx1913.2, align 8
-  %call1914.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2238, ptr noundef nonnull @.str.25, double noundef %2240)
-  %2241 = load ptr, ptr @stdout, align 8
-  %2242 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.3 = getelementptr inbounds double, ptr %2242, i64 3
-  %2243 = load double, ptr %arrayidx1913.3, align 8
-  %call1914.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2241, ptr noundef nonnull @.str.25, double noundef %2243)
-  %2244 = load ptr, ptr @stdout, align 8
-  %2245 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.4 = getelementptr inbounds double, ptr %2245, i64 4
-  %2246 = load double, ptr %arrayidx1913.4, align 8
-  %call1914.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2244, ptr noundef nonnull @.str.25, double noundef %2246)
-  %2247 = load ptr, ptr @stdout, align 8
-  %2248 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.5 = getelementptr inbounds double, ptr %2248, i64 5
-  %2249 = load double, ptr %arrayidx1913.5, align 8
-  %call1914.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2247, ptr noundef nonnull @.str.25, double noundef %2249)
-  %2250 = load ptr, ptr @stdout, align 8
-  %2251 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.6 = getelementptr inbounds double, ptr %2251, i64 6
-  %2252 = load double, ptr %arrayidx1913.6, align 8
-  %call1914.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2250, ptr noundef nonnull @.str.25, double noundef %2252)
-  %2253 = load ptr, ptr @stdout, align 8
-  %2254 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.7 = getelementptr inbounds double, ptr %2254, i64 7
-  %2255 = load double, ptr %arrayidx1913.7, align 8
-  %call1914.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2253, ptr noundef nonnull @.str.25, double noundef %2255)
-  %2256 = load ptr, ptr @stdout, align 8
-  %2257 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.8 = getelementptr inbounds double, ptr %2257, i64 8
-  %2258 = load double, ptr %arrayidx1913.8, align 8
-  %call1914.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2256, ptr noundef nonnull @.str.25, double noundef %2258)
-  %2259 = load ptr, ptr @stdout, align 8
-  %2260 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.9 = getelementptr inbounds double, ptr %2260, i64 9
-  %2261 = load double, ptr %arrayidx1913.9, align 8
-  %call1914.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2259, ptr noundef nonnull @.str.25, double noundef %2261)
-  %2262 = load ptr, ptr @stdout, align 8
-  %2263 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.10 = getelementptr inbounds double, ptr %2263, i64 10
-  %2264 = load double, ptr %arrayidx1913.10, align 8
-  %call1914.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2262, ptr noundef nonnull @.str.25, double noundef %2264)
-  %2265 = load ptr, ptr @stdout, align 8
-  %2266 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.11 = getelementptr inbounds double, ptr %2266, i64 11
-  %2267 = load double, ptr %arrayidx1913.11, align 8
-  %call1914.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2265, ptr noundef nonnull @.str.25, double noundef %2267)
-  %2268 = load ptr, ptr @stdout, align 8
-  %2269 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.12 = getelementptr inbounds double, ptr %2269, i64 12
-  %2270 = load double, ptr %arrayidx1913.12, align 8
-  %call1914.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2268, ptr noundef nonnull @.str.25, double noundef %2270)
-  %2271 = load ptr, ptr @stdout, align 8
-  %2272 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.13 = getelementptr inbounds double, ptr %2272, i64 13
-  %2273 = load double, ptr %arrayidx1913.13, align 8
-  %call1914.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2271, ptr noundef nonnull @.str.25, double noundef %2273)
-  %2274 = load ptr, ptr @stdout, align 8
-  %2275 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.14 = getelementptr inbounds double, ptr %2275, i64 14
-  %2276 = load double, ptr %arrayidx1913.14, align 8
-  %call1914.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2274, ptr noundef nonnull @.str.25, double noundef %2276)
-  %2277 = load ptr, ptr @stdout, align 8
-  %2278 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.15 = getelementptr inbounds double, ptr %2278, i64 15
-  %2279 = load double, ptr %arrayidx1913.15, align 8
-  %call1914.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2277, ptr noundef nonnull @.str.25, double noundef %2279)
-  %2280 = load ptr, ptr @stdout, align 8
-  %2281 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.16 = getelementptr inbounds double, ptr %2281, i64 16
-  %2282 = load double, ptr %arrayidx1913.16, align 8
-  %call1914.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2280, ptr noundef nonnull @.str.25, double noundef %2282)
-  %2283 = load ptr, ptr @stdout, align 8
-  %2284 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.17 = getelementptr inbounds double, ptr %2284, i64 17
-  %2285 = load double, ptr %arrayidx1913.17, align 8
-  %call1914.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2283, ptr noundef nonnull @.str.25, double noundef %2285)
-  %2286 = load ptr, ptr @stdout, align 8
-  %2287 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.18 = getelementptr inbounds double, ptr %2287, i64 18
-  %2288 = load double, ptr %arrayidx1913.18, align 8
-  %call1914.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2286, ptr noundef nonnull @.str.25, double noundef %2288)
-  %2289 = load ptr, ptr @stdout, align 8
-  %2290 = load ptr, ptr %arrayidx1911, align 8
-  %arrayidx1913.19 = getelementptr inbounds double, ptr %2290, i64 19
-  %2291 = load double, ptr %arrayidx1913.19, align 8
-  %call1914.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2289, ptr noundef nonnull @.str.25, double noundef %2291)
-  %2292 = load ptr, ptr @stdout, align 8
-  %fputc = tail call i32 @fputc(i32 10, ptr %2292)
+  %2142 = load ptr, ptr @stdout, align 8
+  %2143 = load ptr, ptr %arrayidx1911, align 8
+  %2144 = load double, ptr %2143, align 8
+  %call1914 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2142, ptr noundef nonnull @.str.25, double noundef %2144)
+  %2145 = load ptr, ptr @stdout, align 8
+  %2146 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.1 = getelementptr inbounds double, ptr %2146, i64 1
+  %2147 = load double, ptr %arrayidx1913.1, align 8
+  %call1914.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2145, ptr noundef nonnull @.str.25, double noundef %2147)
+  %2148 = load ptr, ptr @stdout, align 8
+  %2149 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.2 = getelementptr inbounds double, ptr %2149, i64 2
+  %2150 = load double, ptr %arrayidx1913.2, align 8
+  %call1914.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2148, ptr noundef nonnull @.str.25, double noundef %2150)
+  %2151 = load ptr, ptr @stdout, align 8
+  %2152 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.3 = getelementptr inbounds double, ptr %2152, i64 3
+  %2153 = load double, ptr %arrayidx1913.3, align 8
+  %call1914.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2151, ptr noundef nonnull @.str.25, double noundef %2153)
+  %2154 = load ptr, ptr @stdout, align 8
+  %2155 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.4 = getelementptr inbounds double, ptr %2155, i64 4
+  %2156 = load double, ptr %arrayidx1913.4, align 8
+  %call1914.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2154, ptr noundef nonnull @.str.25, double noundef %2156)
+  %2157 = load ptr, ptr @stdout, align 8
+  %2158 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.5 = getelementptr inbounds double, ptr %2158, i64 5
+  %2159 = load double, ptr %arrayidx1913.5, align 8
+  %call1914.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2157, ptr noundef nonnull @.str.25, double noundef %2159)
+  %2160 = load ptr, ptr @stdout, align 8
+  %2161 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.6 = getelementptr inbounds double, ptr %2161, i64 6
+  %2162 = load double, ptr %arrayidx1913.6, align 8
+  %call1914.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2160, ptr noundef nonnull @.str.25, double noundef %2162)
+  %2163 = load ptr, ptr @stdout, align 8
+  %2164 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.7 = getelementptr inbounds double, ptr %2164, i64 7
+  %2165 = load double, ptr %arrayidx1913.7, align 8
+  %call1914.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2163, ptr noundef nonnull @.str.25, double noundef %2165)
+  %2166 = load ptr, ptr @stdout, align 8
+  %2167 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.8 = getelementptr inbounds double, ptr %2167, i64 8
+  %2168 = load double, ptr %arrayidx1913.8, align 8
+  %call1914.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2166, ptr noundef nonnull @.str.25, double noundef %2168)
+  %2169 = load ptr, ptr @stdout, align 8
+  %2170 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.9 = getelementptr inbounds double, ptr %2170, i64 9
+  %2171 = load double, ptr %arrayidx1913.9, align 8
+  %call1914.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2169, ptr noundef nonnull @.str.25, double noundef %2171)
+  %2172 = load ptr, ptr @stdout, align 8
+  %2173 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.10 = getelementptr inbounds double, ptr %2173, i64 10
+  %2174 = load double, ptr %arrayidx1913.10, align 8
+  %call1914.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2172, ptr noundef nonnull @.str.25, double noundef %2174)
+  %2175 = load ptr, ptr @stdout, align 8
+  %2176 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.11 = getelementptr inbounds double, ptr %2176, i64 11
+  %2177 = load double, ptr %arrayidx1913.11, align 8
+  %call1914.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2175, ptr noundef nonnull @.str.25, double noundef %2177)
+  %2178 = load ptr, ptr @stdout, align 8
+  %2179 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.12 = getelementptr inbounds double, ptr %2179, i64 12
+  %2180 = load double, ptr %arrayidx1913.12, align 8
+  %call1914.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2178, ptr noundef nonnull @.str.25, double noundef %2180)
+  %2181 = load ptr, ptr @stdout, align 8
+  %2182 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.13 = getelementptr inbounds double, ptr %2182, i64 13
+  %2183 = load double, ptr %arrayidx1913.13, align 8
+  %call1914.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2181, ptr noundef nonnull @.str.25, double noundef %2183)
+  %2184 = load ptr, ptr @stdout, align 8
+  %2185 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.14 = getelementptr inbounds double, ptr %2185, i64 14
+  %2186 = load double, ptr %arrayidx1913.14, align 8
+  %call1914.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2184, ptr noundef nonnull @.str.25, double noundef %2186)
+  %2187 = load ptr, ptr @stdout, align 8
+  %2188 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.15 = getelementptr inbounds double, ptr %2188, i64 15
+  %2189 = load double, ptr %arrayidx1913.15, align 8
+  %call1914.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2187, ptr noundef nonnull @.str.25, double noundef %2189)
+  %2190 = load ptr, ptr @stdout, align 8
+  %2191 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.16 = getelementptr inbounds double, ptr %2191, i64 16
+  %2192 = load double, ptr %arrayidx1913.16, align 8
+  %call1914.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2190, ptr noundef nonnull @.str.25, double noundef %2192)
+  %2193 = load ptr, ptr @stdout, align 8
+  %2194 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.17 = getelementptr inbounds double, ptr %2194, i64 17
+  %2195 = load double, ptr %arrayidx1913.17, align 8
+  %call1914.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2193, ptr noundef nonnull @.str.25, double noundef %2195)
+  %2196 = load ptr, ptr @stdout, align 8
+  %2197 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.18 = getelementptr inbounds double, ptr %2197, i64 18
+  %2198 = load double, ptr %arrayidx1913.18, align 8
+  %call1914.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2196, ptr noundef nonnull @.str.25, double noundef %2198)
+  %2199 = load ptr, ptr @stdout, align 8
+  %2200 = load ptr, ptr %arrayidx1911, align 8
+  %arrayidx1913.19 = getelementptr inbounds double, ptr %2200, i64 19
+  %2201 = load double, ptr %arrayidx1913.19, align 8
+  %call1914.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2199, ptr noundef nonnull @.str.25, double noundef %2201)
+  %2202 = load ptr, ptr @stdout, align 8
+  %fputc = tail call i32 @fputc(i32 10, ptr %2202)
   %indvars.iv.next3701 = add nuw nsw i64 %indvars.iv3700, 1
   %exitcond3703.not = icmp eq i64 %indvars.iv.next3701, 20
   br i1 %exitcond3703.not, label %for.end1921, label %for.body1901
 
 for.end1921:                                      ; preds = %for.body1901
-  %2293 = load ptr, ptr @stdout, align 8
-  %2294 = tail call i64 @fwrite(ptr nonnull @.str.26, i64 5, i64 1, ptr %2293)
-  %2295 = load ptr, ptr @stdout, align 8
-  %2296 = load i8, ptr @amino, align 16
-  %conv1929 = sext i8 %2296 to i32
-  %call1930 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2295, ptr noundef nonnull @.str.27, i32 noundef %conv1929)
-  %2297 = load ptr, ptr @stdout, align 8
-  %2298 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %conv1929.1 = sext i8 %2298 to i32
-  %call1930.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2297, ptr noundef nonnull @.str.27, i32 noundef %conv1929.1)
-  %2299 = load ptr, ptr @stdout, align 8
-  %2300 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %conv1929.2 = sext i8 %2300 to i32
-  %call1930.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2299, ptr noundef nonnull @.str.27, i32 noundef %conv1929.2)
-  %2301 = load ptr, ptr @stdout, align 8
-  %2302 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %conv1929.3 = sext i8 %2302 to i32
-  %call1930.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2301, ptr noundef nonnull @.str.27, i32 noundef %conv1929.3)
-  %2303 = load ptr, ptr @stdout, align 8
-  %2304 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %conv1929.4 = sext i8 %2304 to i32
-  %call1930.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2303, ptr noundef nonnull @.str.27, i32 noundef %conv1929.4)
-  %2305 = load ptr, ptr @stdout, align 8
-  %2306 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %conv1929.5 = sext i8 %2306 to i32
-  %call1930.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2305, ptr noundef nonnull @.str.27, i32 noundef %conv1929.5)
-  %2307 = load ptr, ptr @stdout, align 8
-  %2308 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %conv1929.6 = sext i8 %2308 to i32
-  %call1930.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2307, ptr noundef nonnull @.str.27, i32 noundef %conv1929.6)
-  %2309 = load ptr, ptr @stdout, align 8
-  %2310 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %conv1929.7 = sext i8 %2310 to i32
-  %call1930.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2309, ptr noundef nonnull @.str.27, i32 noundef %conv1929.7)
-  %2311 = load ptr, ptr @stdout, align 8
-  %2312 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %conv1929.8 = sext i8 %2312 to i32
-  %call1930.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2311, ptr noundef nonnull @.str.27, i32 noundef %conv1929.8)
-  %2313 = load ptr, ptr @stdout, align 8
-  %2314 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %conv1929.9 = sext i8 %2314 to i32
-  %call1930.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2313, ptr noundef nonnull @.str.27, i32 noundef %conv1929.9)
-  %2315 = load ptr, ptr @stdout, align 8
-  %2316 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
-  %conv1929.10 = sext i8 %2316 to i32
-  %call1930.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2315, ptr noundef nonnull @.str.27, i32 noundef %conv1929.10)
-  %2317 = load ptr, ptr @stdout, align 8
-  %2318 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
-  %conv1929.11 = sext i8 %2318 to i32
-  %call1930.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2317, ptr noundef nonnull @.str.27, i32 noundef %conv1929.11)
-  %2319 = load ptr, ptr @stdout, align 8
-  %2320 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
-  %conv1929.12 = sext i8 %2320 to i32
-  %call1930.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2319, ptr noundef nonnull @.str.27, i32 noundef %conv1929.12)
-  %2321 = load ptr, ptr @stdout, align 8
-  %2322 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %conv1929.13 = sext i8 %2322 to i32
-  %call1930.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2321, ptr noundef nonnull @.str.27, i32 noundef %conv1929.13)
-  %2323 = load ptr, ptr @stdout, align 8
-  %2324 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %conv1929.14 = sext i8 %2324 to i32
-  %call1930.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2323, ptr noundef nonnull @.str.27, i32 noundef %conv1929.14)
-  %2325 = load ptr, ptr @stdout, align 8
-  %2326 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %conv1929.15 = sext i8 %2326 to i32
-  %call1930.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2325, ptr noundef nonnull @.str.27, i32 noundef %conv1929.15)
-  %2327 = load ptr, ptr @stdout, align 8
-  %2328 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %conv1929.16 = sext i8 %2328 to i32
-  %call1930.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2327, ptr noundef nonnull @.str.27, i32 noundef %conv1929.16)
-  %2329 = load ptr, ptr @stdout, align 8
-  %2330 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %conv1929.17 = sext i8 %2330 to i32
-  %call1930.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2329, ptr noundef nonnull @.str.27, i32 noundef %conv1929.17)
-  %2331 = load ptr, ptr @stdout, align 8
-  %2332 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %conv1929.18 = sext i8 %2332 to i32
-  %call1930.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2331, ptr noundef nonnull @.str.27, i32 noundef %conv1929.18)
-  %2333 = load ptr, ptr @stdout, align 8
-  %2334 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %conv1929.19 = sext i8 %2334 to i32
-  %call1930.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2333, ptr noundef nonnull @.str.27, i32 noundef %conv1929.19)
+  %2203 = load ptr, ptr @stdout, align 8
+  %2204 = tail call i64 @fwrite(ptr nonnull @.str.26, i64 5, i64 1, ptr %2203)
+  %2205 = load ptr, ptr @stdout, align 8
+  %2206 = load i8, ptr @amino, align 16
+  %conv1929 = sext i8 %2206 to i32
+  %call1930 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2205, ptr noundef nonnull @.str.27, i32 noundef %conv1929)
+  %2207 = load ptr, ptr @stdout, align 8
+  %2208 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %conv1929.1 = sext i8 %2208 to i32
+  %call1930.1 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2207, ptr noundef nonnull @.str.27, i32 noundef %conv1929.1)
+  %2209 = load ptr, ptr @stdout, align 8
+  %2210 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %conv1929.2 = sext i8 %2210 to i32
+  %call1930.2 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2209, ptr noundef nonnull @.str.27, i32 noundef %conv1929.2)
+  %2211 = load ptr, ptr @stdout, align 8
+  %2212 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %conv1929.3 = sext i8 %2212 to i32
+  %call1930.3 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2211, ptr noundef nonnull @.str.27, i32 noundef %conv1929.3)
+  %2213 = load ptr, ptr @stdout, align 8
+  %2214 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %conv1929.4 = sext i8 %2214 to i32
+  %call1930.4 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2213, ptr noundef nonnull @.str.27, i32 noundef %conv1929.4)
+  %2215 = load ptr, ptr @stdout, align 8
+  %2216 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %conv1929.5 = sext i8 %2216 to i32
+  %call1930.5 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2215, ptr noundef nonnull @.str.27, i32 noundef %conv1929.5)
+  %2217 = load ptr, ptr @stdout, align 8
+  %2218 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %conv1929.6 = sext i8 %2218 to i32
+  %call1930.6 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2217, ptr noundef nonnull @.str.27, i32 noundef %conv1929.6)
+  %2219 = load ptr, ptr @stdout, align 8
+  %2220 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %conv1929.7 = sext i8 %2220 to i32
+  %call1930.7 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2219, ptr noundef nonnull @.str.27, i32 noundef %conv1929.7)
+  %2221 = load ptr, ptr @stdout, align 8
+  %2222 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %conv1929.8 = sext i8 %2222 to i32
+  %call1930.8 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2221, ptr noundef nonnull @.str.27, i32 noundef %conv1929.8)
+  %2223 = load ptr, ptr @stdout, align 8
+  %2224 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %conv1929.9 = sext i8 %2224 to i32
+  %call1930.9 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2223, ptr noundef nonnull @.str.27, i32 noundef %conv1929.9)
+  %2225 = load ptr, ptr @stdout, align 8
+  %2226 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
+  %conv1929.10 = sext i8 %2226 to i32
+  %call1930.10 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2225, ptr noundef nonnull @.str.27, i32 noundef %conv1929.10)
+  %2227 = load ptr, ptr @stdout, align 8
+  %2228 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
+  %conv1929.11 = sext i8 %2228 to i32
+  %call1930.11 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2227, ptr noundef nonnull @.str.27, i32 noundef %conv1929.11)
+  %2229 = load ptr, ptr @stdout, align 8
+  %2230 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
+  %conv1929.12 = sext i8 %2230 to i32
+  %call1930.12 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2229, ptr noundef nonnull @.str.27, i32 noundef %conv1929.12)
+  %2231 = load ptr, ptr @stdout, align 8
+  %2232 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %conv1929.13 = sext i8 %2232 to i32
+  %call1930.13 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2231, ptr noundef nonnull @.str.27, i32 noundef %conv1929.13)
+  %2233 = load ptr, ptr @stdout, align 8
+  %2234 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %conv1929.14 = sext i8 %2234 to i32
+  %call1930.14 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2233, ptr noundef nonnull @.str.27, i32 noundef %conv1929.14)
+  %2235 = load ptr, ptr @stdout, align 8
+  %2236 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %conv1929.15 = sext i8 %2236 to i32
+  %call1930.15 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2235, ptr noundef nonnull @.str.27, i32 noundef %conv1929.15)
+  %2237 = load ptr, ptr @stdout, align 8
+  %2238 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %conv1929.16 = sext i8 %2238 to i32
+  %call1930.16 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2237, ptr noundef nonnull @.str.27, i32 noundef %conv1929.16)
+  %2239 = load ptr, ptr @stdout, align 8
+  %2240 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %conv1929.17 = sext i8 %2240 to i32
+  %call1930.17 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2239, ptr noundef nonnull @.str.27, i32 noundef %conv1929.17)
+  %2241 = load ptr, ptr @stdout, align 8
+  %2242 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %conv1929.18 = sext i8 %2242 to i32
+  %call1930.18 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2241, ptr noundef nonnull @.str.27, i32 noundef %conv1929.18)
+  %2243 = load ptr, ptr @stdout, align 8
+  %2244 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %conv1929.19 = sext i8 %2244 to i32
+  %call1930.19 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2243, ptr noundef nonnull @.str.27, i32 noundef %conv1929.19)
   %.pre4548 = load double, ptr %arrayidx1826.4, align 8
   %.pre4549 = load double, ptr %arrayidx1826.5, align 8
   %.pre4550 = load double, ptr %arrayidx1826.6, align 8
@@ -8100,246 +7537,246 @@ for.end1921:                                      ; preds = %for.body1901
   %.pre4615 = load double, ptr %arrayidx1826.1, align 8
   %.pre4616 = load double, ptr %arrayidx1826.2, align 8
   %.pre4617 = load double, ptr %arrayidx1826.3, align 8
-  %2335 = load double, ptr %freq11517.0, align 8
+  %2245 = load double, ptr %freq11517.0, align 8
   br label %for.cond1938.preheader
 
 for.cond1938.preheader:                           ; preds = %for.end1921, %for.cond1938.preheader
   %indvars.iv3712 = phi i64 [ 0, %for.end1921 ], [ %indvars.iv.next3713, %for.cond1938.preheader ]
-  %average1519.43426 = phi double [ 0.000000e+00, %for.end1921 ], [ %2377, %for.cond1938.preheader ]
+  %average1519.43426 = phi double [ 0.000000e+00, %for.end1921 ], [ %2287, %for.cond1938.preheader ]
   %arrayidx1943 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3712
-  %2336 = load ptr, ptr %arrayidx1943, align 8
+  %2246 = load ptr, ptr %arrayidx1943, align 8
   %arrayidx1947 = getelementptr inbounds double, ptr %freq11517.0, i64 %indvars.iv3712
-  %2337 = load double, ptr %arrayidx1947, align 8
-  %2338 = load double, ptr %2336, align 8
-  %mul1948 = fmul double %2338, %2337
-  %2339 = tail call double @llvm.fmuladd.f64(double %mul1948, double %2335, double %average1519.43426)
-  %arrayidx1945.1 = getelementptr inbounds double, ptr %2336, i64 1
-  %2340 = load double, ptr %arrayidx1945.1, align 8
-  %mul1948.1 = fmul double %2340, %2337
-  %2341 = tail call double @llvm.fmuladd.f64(double %mul1948.1, double %.pre4615, double %2339)
-  %arrayidx1945.2 = getelementptr inbounds double, ptr %2336, i64 2
-  %2342 = load double, ptr %arrayidx1945.2, align 8
-  %mul1948.2 = fmul double %2342, %2337
-  %2343 = tail call double @llvm.fmuladd.f64(double %mul1948.2, double %.pre4616, double %2341)
-  %arrayidx1945.3 = getelementptr inbounds double, ptr %2336, i64 3
-  %2344 = load double, ptr %arrayidx1945.3, align 8
-  %mul1948.3 = fmul double %2344, %2337
-  %2345 = tail call double @llvm.fmuladd.f64(double %mul1948.3, double %.pre4617, double %2343)
-  %arrayidx1945.4 = getelementptr inbounds double, ptr %2336, i64 4
-  %2346 = load double, ptr %arrayidx1945.4, align 8
-  %mul1948.4 = fmul double %2346, %2337
-  %2347 = tail call double @llvm.fmuladd.f64(double %mul1948.4, double %.pre4548, double %2345)
-  %arrayidx1945.5 = getelementptr inbounds double, ptr %2336, i64 5
-  %2348 = load double, ptr %arrayidx1945.5, align 8
-  %mul1948.5 = fmul double %2348, %2337
-  %2349 = tail call double @llvm.fmuladd.f64(double %mul1948.5, double %.pre4549, double %2347)
-  %arrayidx1945.6 = getelementptr inbounds double, ptr %2336, i64 6
-  %2350 = load double, ptr %arrayidx1945.6, align 8
-  %mul1948.6 = fmul double %2350, %2337
-  %2351 = tail call double @llvm.fmuladd.f64(double %mul1948.6, double %.pre4550, double %2349)
-  %arrayidx1945.7 = getelementptr inbounds double, ptr %2336, i64 7
-  %2352 = load double, ptr %arrayidx1945.7, align 8
-  %mul1948.7 = fmul double %2352, %2337
-  %2353 = tail call double @llvm.fmuladd.f64(double %mul1948.7, double %.pre4551, double %2351)
-  %arrayidx1945.8 = getelementptr inbounds double, ptr %2336, i64 8
-  %2354 = load double, ptr %arrayidx1945.8, align 8
-  %mul1948.8 = fmul double %2354, %2337
-  %2355 = tail call double @llvm.fmuladd.f64(double %mul1948.8, double %.pre4552, double %2353)
-  %arrayidx1945.9 = getelementptr inbounds double, ptr %2336, i64 9
-  %2356 = load double, ptr %arrayidx1945.9, align 8
-  %mul1948.9 = fmul double %2356, %2337
-  %2357 = tail call double @llvm.fmuladd.f64(double %mul1948.9, double %.pre4553, double %2355)
-  %arrayidx1945.10 = getelementptr inbounds double, ptr %2336, i64 10
-  %2358 = load double, ptr %arrayidx1945.10, align 8
-  %mul1948.10 = fmul double %2358, %2337
-  %2359 = tail call double @llvm.fmuladd.f64(double %mul1948.10, double %.pre4554, double %2357)
-  %arrayidx1945.11 = getelementptr inbounds double, ptr %2336, i64 11
-  %2360 = load double, ptr %arrayidx1945.11, align 8
-  %mul1948.11 = fmul double %2360, %2337
-  %2361 = tail call double @llvm.fmuladd.f64(double %mul1948.11, double %.pre4555, double %2359)
-  %arrayidx1945.12 = getelementptr inbounds double, ptr %2336, i64 12
-  %2362 = load double, ptr %arrayidx1945.12, align 8
-  %mul1948.12 = fmul double %2362, %2337
-  %2363 = tail call double @llvm.fmuladd.f64(double %mul1948.12, double %.pre4556, double %2361)
-  %arrayidx1945.13 = getelementptr inbounds double, ptr %2336, i64 13
-  %2364 = load double, ptr %arrayidx1945.13, align 8
-  %mul1948.13 = fmul double %2364, %2337
-  %2365 = tail call double @llvm.fmuladd.f64(double %mul1948.13, double %.pre4557, double %2363)
-  %arrayidx1945.14 = getelementptr inbounds double, ptr %2336, i64 14
-  %2366 = load double, ptr %arrayidx1945.14, align 8
-  %mul1948.14 = fmul double %2366, %2337
-  %2367 = tail call double @llvm.fmuladd.f64(double %mul1948.14, double %.pre4558, double %2365)
-  %arrayidx1945.15 = getelementptr inbounds double, ptr %2336, i64 15
-  %2368 = load double, ptr %arrayidx1945.15, align 8
-  %mul1948.15 = fmul double %2368, %2337
-  %2369 = tail call double @llvm.fmuladd.f64(double %mul1948.15, double %.pre4559, double %2367)
-  %arrayidx1945.16 = getelementptr inbounds double, ptr %2336, i64 16
-  %2370 = load double, ptr %arrayidx1945.16, align 8
-  %mul1948.16 = fmul double %2370, %2337
-  %2371 = tail call double @llvm.fmuladd.f64(double %mul1948.16, double %.pre4560, double %2369)
-  %arrayidx1945.17 = getelementptr inbounds double, ptr %2336, i64 17
-  %2372 = load double, ptr %arrayidx1945.17, align 8
-  %mul1948.17 = fmul double %2372, %2337
-  %2373 = tail call double @llvm.fmuladd.f64(double %mul1948.17, double %.pre4561, double %2371)
-  %arrayidx1945.18 = getelementptr inbounds double, ptr %2336, i64 18
-  %2374 = load double, ptr %arrayidx1945.18, align 8
-  %mul1948.18 = fmul double %2374, %2337
-  %2375 = tail call double @llvm.fmuladd.f64(double %mul1948.18, double %.pre4562, double %2373)
-  %arrayidx1945.19 = getelementptr inbounds double, ptr %2336, i64 19
-  %2376 = load double, ptr %arrayidx1945.19, align 8
-  %mul1948.19 = fmul double %2376, %2337
-  %2377 = tail call double @llvm.fmuladd.f64(double %mul1948.19, double %.pre4563, double %2375)
+  %2247 = load double, ptr %arrayidx1947, align 8
+  %2248 = load double, ptr %2246, align 8
+  %mul1948 = fmul double %2248, %2247
+  %2249 = tail call double @llvm.fmuladd.f64(double %mul1948, double %2245, double %average1519.43426)
+  %arrayidx1945.1 = getelementptr inbounds double, ptr %2246, i64 1
+  %2250 = load double, ptr %arrayidx1945.1, align 8
+  %mul1948.1 = fmul double %2250, %2247
+  %2251 = tail call double @llvm.fmuladd.f64(double %mul1948.1, double %.pre4615, double %2249)
+  %arrayidx1945.2 = getelementptr inbounds double, ptr %2246, i64 2
+  %2252 = load double, ptr %arrayidx1945.2, align 8
+  %mul1948.2 = fmul double %2252, %2247
+  %2253 = tail call double @llvm.fmuladd.f64(double %mul1948.2, double %.pre4616, double %2251)
+  %arrayidx1945.3 = getelementptr inbounds double, ptr %2246, i64 3
+  %2254 = load double, ptr %arrayidx1945.3, align 8
+  %mul1948.3 = fmul double %2254, %2247
+  %2255 = tail call double @llvm.fmuladd.f64(double %mul1948.3, double %.pre4617, double %2253)
+  %arrayidx1945.4 = getelementptr inbounds double, ptr %2246, i64 4
+  %2256 = load double, ptr %arrayidx1945.4, align 8
+  %mul1948.4 = fmul double %2256, %2247
+  %2257 = tail call double @llvm.fmuladd.f64(double %mul1948.4, double %.pre4548, double %2255)
+  %arrayidx1945.5 = getelementptr inbounds double, ptr %2246, i64 5
+  %2258 = load double, ptr %arrayidx1945.5, align 8
+  %mul1948.5 = fmul double %2258, %2247
+  %2259 = tail call double @llvm.fmuladd.f64(double %mul1948.5, double %.pre4549, double %2257)
+  %arrayidx1945.6 = getelementptr inbounds double, ptr %2246, i64 6
+  %2260 = load double, ptr %arrayidx1945.6, align 8
+  %mul1948.6 = fmul double %2260, %2247
+  %2261 = tail call double @llvm.fmuladd.f64(double %mul1948.6, double %.pre4550, double %2259)
+  %arrayidx1945.7 = getelementptr inbounds double, ptr %2246, i64 7
+  %2262 = load double, ptr %arrayidx1945.7, align 8
+  %mul1948.7 = fmul double %2262, %2247
+  %2263 = tail call double @llvm.fmuladd.f64(double %mul1948.7, double %.pre4551, double %2261)
+  %arrayidx1945.8 = getelementptr inbounds double, ptr %2246, i64 8
+  %2264 = load double, ptr %arrayidx1945.8, align 8
+  %mul1948.8 = fmul double %2264, %2247
+  %2265 = tail call double @llvm.fmuladd.f64(double %mul1948.8, double %.pre4552, double %2263)
+  %arrayidx1945.9 = getelementptr inbounds double, ptr %2246, i64 9
+  %2266 = load double, ptr %arrayidx1945.9, align 8
+  %mul1948.9 = fmul double %2266, %2247
+  %2267 = tail call double @llvm.fmuladd.f64(double %mul1948.9, double %.pre4553, double %2265)
+  %arrayidx1945.10 = getelementptr inbounds double, ptr %2246, i64 10
+  %2268 = load double, ptr %arrayidx1945.10, align 8
+  %mul1948.10 = fmul double %2268, %2247
+  %2269 = tail call double @llvm.fmuladd.f64(double %mul1948.10, double %.pre4554, double %2267)
+  %arrayidx1945.11 = getelementptr inbounds double, ptr %2246, i64 11
+  %2270 = load double, ptr %arrayidx1945.11, align 8
+  %mul1948.11 = fmul double %2270, %2247
+  %2271 = tail call double @llvm.fmuladd.f64(double %mul1948.11, double %.pre4555, double %2269)
+  %arrayidx1945.12 = getelementptr inbounds double, ptr %2246, i64 12
+  %2272 = load double, ptr %arrayidx1945.12, align 8
+  %mul1948.12 = fmul double %2272, %2247
+  %2273 = tail call double @llvm.fmuladd.f64(double %mul1948.12, double %.pre4556, double %2271)
+  %arrayidx1945.13 = getelementptr inbounds double, ptr %2246, i64 13
+  %2274 = load double, ptr %arrayidx1945.13, align 8
+  %mul1948.13 = fmul double %2274, %2247
+  %2275 = tail call double @llvm.fmuladd.f64(double %mul1948.13, double %.pre4557, double %2273)
+  %arrayidx1945.14 = getelementptr inbounds double, ptr %2246, i64 14
+  %2276 = load double, ptr %arrayidx1945.14, align 8
+  %mul1948.14 = fmul double %2276, %2247
+  %2277 = tail call double @llvm.fmuladd.f64(double %mul1948.14, double %.pre4558, double %2275)
+  %arrayidx1945.15 = getelementptr inbounds double, ptr %2246, i64 15
+  %2278 = load double, ptr %arrayidx1945.15, align 8
+  %mul1948.15 = fmul double %2278, %2247
+  %2279 = tail call double @llvm.fmuladd.f64(double %mul1948.15, double %.pre4559, double %2277)
+  %arrayidx1945.16 = getelementptr inbounds double, ptr %2246, i64 16
+  %2280 = load double, ptr %arrayidx1945.16, align 8
+  %mul1948.16 = fmul double %2280, %2247
+  %2281 = tail call double @llvm.fmuladd.f64(double %mul1948.16, double %.pre4560, double %2279)
+  %arrayidx1945.17 = getelementptr inbounds double, ptr %2246, i64 17
+  %2282 = load double, ptr %arrayidx1945.17, align 8
+  %mul1948.17 = fmul double %2282, %2247
+  %2283 = tail call double @llvm.fmuladd.f64(double %mul1948.17, double %.pre4561, double %2281)
+  %arrayidx1945.18 = getelementptr inbounds double, ptr %2246, i64 18
+  %2284 = load double, ptr %arrayidx1945.18, align 8
+  %mul1948.18 = fmul double %2284, %2247
+  %2285 = tail call double @llvm.fmuladd.f64(double %mul1948.18, double %.pre4562, double %2283)
+  %arrayidx1945.19 = getelementptr inbounds double, ptr %2246, i64 19
+  %2286 = load double, ptr %arrayidx1945.19, align 8
+  %mul1948.19 = fmul double %2286, %2247
+  %2287 = tail call double @llvm.fmuladd.f64(double %mul1948.19, double %.pre4563, double %2285)
   %indvars.iv.next3713 = add nuw nsw i64 %indvars.iv3712, 1
   %exitcond3715.not = icmp eq i64 %indvars.iv.next3713, 20
   br i1 %exitcond3715.not, label %for.end1957, label %for.cond1938.preheader
 
 for.end1957:                                      ; preds = %for.cond1938.preheader
-  %2378 = load ptr, ptr @stdout, align 8
-  %call1958 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2378, ptr noundef nonnull @.str.4, double noundef %2377)
-  %2379 = load ptr, ptr %call1522, align 8
-  %2380 = load double, ptr %2379, align 8
-  %2381 = load double, ptr %freq11517.0, align 8
-  %2382 = tail call double @llvm.fmuladd.f64(double %2380, double %2381, double 0.000000e+00)
-  %2383 = load ptr, ptr %arrayidx1822.1, align 8
-  %arrayidx1966.1 = getelementptr inbounds double, ptr %2383, i64 1
-  %2384 = load double, ptr %arrayidx1966.1, align 8
-  %2385 = load double, ptr %arrayidx1826.1, align 8
-  %2386 = tail call double @llvm.fmuladd.f64(double %2384, double %2385, double %2382)
-  %2387 = load ptr, ptr %arrayidx1822.2, align 8
-  %arrayidx1966.2 = getelementptr inbounds double, ptr %2387, i64 2
-  %2388 = load double, ptr %arrayidx1966.2, align 8
-  %2389 = load double, ptr %arrayidx1826.2, align 8
-  %2390 = tail call double @llvm.fmuladd.f64(double %2388, double %2389, double %2386)
-  %2391 = load ptr, ptr %arrayidx1822.3, align 8
-  %arrayidx1966.3 = getelementptr inbounds double, ptr %2391, i64 3
-  %2392 = load double, ptr %arrayidx1966.3, align 8
-  %2393 = load double, ptr %arrayidx1826.3, align 8
-  %2394 = tail call double @llvm.fmuladd.f64(double %2392, double %2393, double %2390)
-  %2395 = load ptr, ptr %arrayidx1822.4, align 8
-  %arrayidx1966.4 = getelementptr inbounds double, ptr %2395, i64 4
-  %2396 = load double, ptr %arrayidx1966.4, align 8
-  %2397 = load double, ptr %arrayidx1826.4, align 8
-  %2398 = tail call double @llvm.fmuladd.f64(double %2396, double %2397, double %2394)
-  %2399 = load ptr, ptr %arrayidx1822.5, align 8
-  %arrayidx1966.5 = getelementptr inbounds double, ptr %2399, i64 5
-  %2400 = load double, ptr %arrayidx1966.5, align 8
-  %2401 = load double, ptr %arrayidx1826.5, align 8
-  %2402 = tail call double @llvm.fmuladd.f64(double %2400, double %2401, double %2398)
-  %2403 = load ptr, ptr %arrayidx1822.6, align 8
-  %arrayidx1966.6 = getelementptr inbounds double, ptr %2403, i64 6
-  %2404 = load double, ptr %arrayidx1966.6, align 8
-  %2405 = load double, ptr %arrayidx1826.6, align 8
-  %2406 = tail call double @llvm.fmuladd.f64(double %2404, double %2405, double %2402)
-  %2407 = load ptr, ptr %arrayidx1822.7, align 8
-  %arrayidx1966.7 = getelementptr inbounds double, ptr %2407, i64 7
-  %2408 = load double, ptr %arrayidx1966.7, align 8
-  %2409 = load double, ptr %arrayidx1826.7, align 8
-  %2410 = tail call double @llvm.fmuladd.f64(double %2408, double %2409, double %2406)
-  %2411 = load ptr, ptr %arrayidx1822.8, align 8
-  %arrayidx1966.8 = getelementptr inbounds double, ptr %2411, i64 8
-  %2412 = load double, ptr %arrayidx1966.8, align 8
-  %2413 = load double, ptr %arrayidx1826.8, align 8
-  %2414 = tail call double @llvm.fmuladd.f64(double %2412, double %2413, double %2410)
-  %2415 = load ptr, ptr %arrayidx1822.9, align 8
-  %arrayidx1966.9 = getelementptr inbounds double, ptr %2415, i64 9
-  %2416 = load double, ptr %arrayidx1966.9, align 8
-  %2417 = load double, ptr %arrayidx1826.9, align 8
-  %2418 = tail call double @llvm.fmuladd.f64(double %2416, double %2417, double %2414)
-  %2419 = load ptr, ptr %arrayidx1822.10, align 8
-  %arrayidx1966.10 = getelementptr inbounds double, ptr %2419, i64 10
-  %2420 = load double, ptr %arrayidx1966.10, align 8
-  %2421 = load double, ptr %arrayidx1826.10, align 8
-  %2422 = tail call double @llvm.fmuladd.f64(double %2420, double %2421, double %2418)
-  %2423 = load ptr, ptr %arrayidx1822.11, align 8
-  %arrayidx1966.11 = getelementptr inbounds double, ptr %2423, i64 11
-  %2424 = load double, ptr %arrayidx1966.11, align 8
-  %2425 = load double, ptr %arrayidx1826.11, align 8
-  %2426 = tail call double @llvm.fmuladd.f64(double %2424, double %2425, double %2422)
-  %2427 = load ptr, ptr %arrayidx1822.12, align 8
-  %arrayidx1966.12 = getelementptr inbounds double, ptr %2427, i64 12
-  %2428 = load double, ptr %arrayidx1966.12, align 8
-  %2429 = load double, ptr %arrayidx1826.12, align 8
-  %2430 = tail call double @llvm.fmuladd.f64(double %2428, double %2429, double %2426)
-  %2431 = load ptr, ptr %arrayidx1822.13, align 8
-  %arrayidx1966.13 = getelementptr inbounds double, ptr %2431, i64 13
-  %2432 = load double, ptr %arrayidx1966.13, align 8
-  %2433 = load double, ptr %arrayidx1826.13, align 8
-  %2434 = tail call double @llvm.fmuladd.f64(double %2432, double %2433, double %2430)
-  %2435 = load ptr, ptr %arrayidx1822.14, align 8
-  %arrayidx1966.14 = getelementptr inbounds double, ptr %2435, i64 14
-  %2436 = load double, ptr %arrayidx1966.14, align 8
-  %2437 = load double, ptr %arrayidx1826.14, align 8
-  %2438 = tail call double @llvm.fmuladd.f64(double %2436, double %2437, double %2434)
-  %2439 = load ptr, ptr %arrayidx1822.15, align 8
-  %arrayidx1966.15 = getelementptr inbounds double, ptr %2439, i64 15
-  %2440 = load double, ptr %arrayidx1966.15, align 8
-  %2441 = load double, ptr %arrayidx1826.15, align 8
-  %2442 = tail call double @llvm.fmuladd.f64(double %2440, double %2441, double %2438)
-  %2443 = load ptr, ptr %arrayidx1822.16, align 8
-  %arrayidx1966.16 = getelementptr inbounds double, ptr %2443, i64 16
-  %2444 = load double, ptr %arrayidx1966.16, align 8
-  %2445 = load double, ptr %arrayidx1826.16, align 8
-  %2446 = tail call double @llvm.fmuladd.f64(double %2444, double %2445, double %2442)
-  %2447 = load ptr, ptr %arrayidx1822.17, align 8
-  %arrayidx1966.17 = getelementptr inbounds double, ptr %2447, i64 17
-  %2448 = load double, ptr %arrayidx1966.17, align 8
-  %2449 = load double, ptr %arrayidx1826.17, align 8
-  %2450 = tail call double @llvm.fmuladd.f64(double %2448, double %2449, double %2446)
-  %2451 = load ptr, ptr %arrayidx1822.18, align 8
-  %arrayidx1966.18 = getelementptr inbounds double, ptr %2451, i64 18
-  %2452 = load double, ptr %arrayidx1966.18, align 8
-  %2453 = load double, ptr %arrayidx1826.18, align 8
-  %2454 = tail call double @llvm.fmuladd.f64(double %2452, double %2453, double %2450)
-  %2455 = load ptr, ptr %arrayidx1822.19, align 8
-  %arrayidx1966.19 = getelementptr inbounds double, ptr %2455, i64 19
-  %2456 = load double, ptr %arrayidx1966.19, align 8
-  %2457 = load double, ptr %arrayidx1826.19, align 8
-  %2458 = tail call double @llvm.fmuladd.f64(double %2456, double %2457, double %2454)
-  %2459 = load ptr, ptr @stdout, align 8
-  %call1973 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2459, ptr noundef nonnull @.str.28, double noundef %2458)
-  %2460 = load ptr, ptr @stderr, align 8
-  %2461 = load i32, ptr @penalty, align 4
-  %2462 = load i32, ptr @penalty_ex, align 4
-  %2463 = load i32, ptr @offset, align 4
-  %call1974 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2460, ptr noundef nonnull @.str.29, i32 noundef %2461, i32 noundef %2462, i32 noundef %2463) #16
+  %2288 = load ptr, ptr @stdout, align 8
+  %call1958 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2288, ptr noundef nonnull @.str.4, double noundef %2287)
+  %2289 = load ptr, ptr %call1522, align 8
+  %2290 = load double, ptr %2289, align 8
+  %2291 = load double, ptr %freq11517.0, align 8
+  %2292 = tail call double @llvm.fmuladd.f64(double %2290, double %2291, double 0.000000e+00)
+  %2293 = load ptr, ptr %arrayidx1822.1, align 8
+  %arrayidx1966.1 = getelementptr inbounds double, ptr %2293, i64 1
+  %2294 = load double, ptr %arrayidx1966.1, align 8
+  %2295 = load double, ptr %arrayidx1826.1, align 8
+  %2296 = tail call double @llvm.fmuladd.f64(double %2294, double %2295, double %2292)
+  %2297 = load ptr, ptr %arrayidx1822.2, align 8
+  %arrayidx1966.2 = getelementptr inbounds double, ptr %2297, i64 2
+  %2298 = load double, ptr %arrayidx1966.2, align 8
+  %2299 = load double, ptr %arrayidx1826.2, align 8
+  %2300 = tail call double @llvm.fmuladd.f64(double %2298, double %2299, double %2296)
+  %2301 = load ptr, ptr %arrayidx1822.3, align 8
+  %arrayidx1966.3 = getelementptr inbounds double, ptr %2301, i64 3
+  %2302 = load double, ptr %arrayidx1966.3, align 8
+  %2303 = load double, ptr %arrayidx1826.3, align 8
+  %2304 = tail call double @llvm.fmuladd.f64(double %2302, double %2303, double %2300)
+  %2305 = load ptr, ptr %arrayidx1822.4, align 8
+  %arrayidx1966.4 = getelementptr inbounds double, ptr %2305, i64 4
+  %2306 = load double, ptr %arrayidx1966.4, align 8
+  %2307 = load double, ptr %arrayidx1826.4, align 8
+  %2308 = tail call double @llvm.fmuladd.f64(double %2306, double %2307, double %2304)
+  %2309 = load ptr, ptr %arrayidx1822.5, align 8
+  %arrayidx1966.5 = getelementptr inbounds double, ptr %2309, i64 5
+  %2310 = load double, ptr %arrayidx1966.5, align 8
+  %2311 = load double, ptr %arrayidx1826.5, align 8
+  %2312 = tail call double @llvm.fmuladd.f64(double %2310, double %2311, double %2308)
+  %2313 = load ptr, ptr %arrayidx1822.6, align 8
+  %arrayidx1966.6 = getelementptr inbounds double, ptr %2313, i64 6
+  %2314 = load double, ptr %arrayidx1966.6, align 8
+  %2315 = load double, ptr %arrayidx1826.6, align 8
+  %2316 = tail call double @llvm.fmuladd.f64(double %2314, double %2315, double %2312)
+  %2317 = load ptr, ptr %arrayidx1822.7, align 8
+  %arrayidx1966.7 = getelementptr inbounds double, ptr %2317, i64 7
+  %2318 = load double, ptr %arrayidx1966.7, align 8
+  %2319 = load double, ptr %arrayidx1826.7, align 8
+  %2320 = tail call double @llvm.fmuladd.f64(double %2318, double %2319, double %2316)
+  %2321 = load ptr, ptr %arrayidx1822.8, align 8
+  %arrayidx1966.8 = getelementptr inbounds double, ptr %2321, i64 8
+  %2322 = load double, ptr %arrayidx1966.8, align 8
+  %2323 = load double, ptr %arrayidx1826.8, align 8
+  %2324 = tail call double @llvm.fmuladd.f64(double %2322, double %2323, double %2320)
+  %2325 = load ptr, ptr %arrayidx1822.9, align 8
+  %arrayidx1966.9 = getelementptr inbounds double, ptr %2325, i64 9
+  %2326 = load double, ptr %arrayidx1966.9, align 8
+  %2327 = load double, ptr %arrayidx1826.9, align 8
+  %2328 = tail call double @llvm.fmuladd.f64(double %2326, double %2327, double %2324)
+  %2329 = load ptr, ptr %arrayidx1822.10, align 8
+  %arrayidx1966.10 = getelementptr inbounds double, ptr %2329, i64 10
+  %2330 = load double, ptr %arrayidx1966.10, align 8
+  %2331 = load double, ptr %arrayidx1826.10, align 8
+  %2332 = tail call double @llvm.fmuladd.f64(double %2330, double %2331, double %2328)
+  %2333 = load ptr, ptr %arrayidx1822.11, align 8
+  %arrayidx1966.11 = getelementptr inbounds double, ptr %2333, i64 11
+  %2334 = load double, ptr %arrayidx1966.11, align 8
+  %2335 = load double, ptr %arrayidx1826.11, align 8
+  %2336 = tail call double @llvm.fmuladd.f64(double %2334, double %2335, double %2332)
+  %2337 = load ptr, ptr %arrayidx1822.12, align 8
+  %arrayidx1966.12 = getelementptr inbounds double, ptr %2337, i64 12
+  %2338 = load double, ptr %arrayidx1966.12, align 8
+  %2339 = load double, ptr %arrayidx1826.12, align 8
+  %2340 = tail call double @llvm.fmuladd.f64(double %2338, double %2339, double %2336)
+  %2341 = load ptr, ptr %arrayidx1822.13, align 8
+  %arrayidx1966.13 = getelementptr inbounds double, ptr %2341, i64 13
+  %2342 = load double, ptr %arrayidx1966.13, align 8
+  %2343 = load double, ptr %arrayidx1826.13, align 8
+  %2344 = tail call double @llvm.fmuladd.f64(double %2342, double %2343, double %2340)
+  %2345 = load ptr, ptr %arrayidx1822.14, align 8
+  %arrayidx1966.14 = getelementptr inbounds double, ptr %2345, i64 14
+  %2346 = load double, ptr %arrayidx1966.14, align 8
+  %2347 = load double, ptr %arrayidx1826.14, align 8
+  %2348 = tail call double @llvm.fmuladd.f64(double %2346, double %2347, double %2344)
+  %2349 = load ptr, ptr %arrayidx1822.15, align 8
+  %arrayidx1966.15 = getelementptr inbounds double, ptr %2349, i64 15
+  %2350 = load double, ptr %arrayidx1966.15, align 8
+  %2351 = load double, ptr %arrayidx1826.15, align 8
+  %2352 = tail call double @llvm.fmuladd.f64(double %2350, double %2351, double %2348)
+  %2353 = load ptr, ptr %arrayidx1822.16, align 8
+  %arrayidx1966.16 = getelementptr inbounds double, ptr %2353, i64 16
+  %2354 = load double, ptr %arrayidx1966.16, align 8
+  %2355 = load double, ptr %arrayidx1826.16, align 8
+  %2356 = tail call double @llvm.fmuladd.f64(double %2354, double %2355, double %2352)
+  %2357 = load ptr, ptr %arrayidx1822.17, align 8
+  %arrayidx1966.17 = getelementptr inbounds double, ptr %2357, i64 17
+  %2358 = load double, ptr %arrayidx1966.17, align 8
+  %2359 = load double, ptr %arrayidx1826.17, align 8
+  %2360 = tail call double @llvm.fmuladd.f64(double %2358, double %2359, double %2356)
+  %2361 = load ptr, ptr %arrayidx1822.18, align 8
+  %arrayidx1966.18 = getelementptr inbounds double, ptr %2361, i64 18
+  %2362 = load double, ptr %arrayidx1966.18, align 8
+  %2363 = load double, ptr %arrayidx1826.18, align 8
+  %2364 = tail call double @llvm.fmuladd.f64(double %2362, double %2363, double %2360)
+  %2365 = load ptr, ptr %arrayidx1822.19, align 8
+  %arrayidx1966.19 = getelementptr inbounds double, ptr %2365, i64 19
+  %2366 = load double, ptr %arrayidx1966.19, align 8
+  %2367 = load double, ptr %arrayidx1826.19, align 8
+  %2368 = tail call double @llvm.fmuladd.f64(double %2366, double %2367, double %2364)
+  %2369 = load ptr, ptr @stdout, align 8
+  %call1973 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2369, ptr noundef nonnull @.str.28, double noundef %2368)
+  %2370 = load ptr, ptr @stderr, align 8
+  %2371 = load i32, ptr @penalty, align 4
+  %2372 = load i32, ptr @penalty_ex, align 4
+  %2373 = load i32, ptr @offset, align 4
+  %call1974 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2370, ptr noundef nonnull @.str.29, i32 noundef %2371, i32 noundef %2372, i32 noundef %2373) #16
   tail call void @exit(i32 noundef 1) #17
   unreachable
 
 for.cond1998.preheader:                           ; preds = %for.cond1980.preheader.preheader, %for.cond1998.preheader
   %indvars.iv3728 = phi i64 [ 0, %for.cond1980.preheader.preheader ], [ %indvars.iv.next3729, %for.cond1998.preheader ]
   %arrayidx2003 = getelementptr inbounds ptr, ptr %call1522, i64 %indvars.iv3728
-  %2464 = load ptr, ptr %arrayidx2003, align 8
+  %2374 = load ptr, ptr %arrayidx2003, align 8
   %arrayidx2010 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3728, i64 0
-  %2465 = load <4 x double>, ptr %2464, align 8
-  %2466 = fptosi <4 x double> %2465 to <4 x i32>
-  store <4 x i32> %2466, ptr %arrayidx2010, align 8
-  %arrayidx2005.4 = getelementptr inbounds double, ptr %2464, i64 4
+  %2375 = load <4 x double>, ptr %2374, align 8
+  %2376 = fptosi <4 x double> %2375 to <4 x i32>
+  store <4 x i32> %2376, ptr %arrayidx2010, align 8
+  %arrayidx2005.4 = getelementptr inbounds double, ptr %2374, i64 4
   %arrayidx2010.4 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3728, i64 4
-  %2467 = load <4 x double>, ptr %arrayidx2005.4, align 8
-  %2468 = fptosi <4 x double> %2467 to <4 x i32>
-  store <4 x i32> %2468, ptr %arrayidx2010.4, align 8
-  %arrayidx2005.8 = getelementptr inbounds double, ptr %2464, i64 8
+  %2377 = load <4 x double>, ptr %arrayidx2005.4, align 8
+  %2378 = fptosi <4 x double> %2377 to <4 x i32>
+  store <4 x i32> %2378, ptr %arrayidx2010.4, align 8
+  %arrayidx2005.8 = getelementptr inbounds double, ptr %2374, i64 8
   %arrayidx2010.8 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3728, i64 8
-  %2469 = load <4 x double>, ptr %arrayidx2005.8, align 8
-  %2470 = fptosi <4 x double> %2469 to <4 x i32>
-  store <4 x i32> %2470, ptr %arrayidx2010.8, align 8
-  %arrayidx2005.12 = getelementptr inbounds double, ptr %2464, i64 12
+  %2379 = load <4 x double>, ptr %arrayidx2005.8, align 8
+  %2380 = fptosi <4 x double> %2379 to <4 x i32>
+  store <4 x i32> %2380, ptr %arrayidx2010.8, align 8
+  %arrayidx2005.12 = getelementptr inbounds double, ptr %2374, i64 12
   %arrayidx2010.12 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3728, i64 12
-  %2471 = load <4 x double>, ptr %arrayidx2005.12, align 8
-  %2472 = fptosi <4 x double> %2471 to <4 x i32>
-  store <4 x i32> %2472, ptr %arrayidx2010.12, align 8
-  %arrayidx2005.16 = getelementptr inbounds double, ptr %2464, i64 16
+  %2381 = load <4 x double>, ptr %arrayidx2005.12, align 8
+  %2382 = fptosi <4 x double> %2381 to <4 x i32>
+  store <4 x i32> %2382, ptr %arrayidx2010.12, align 8
+  %arrayidx2005.16 = getelementptr inbounds double, ptr %2374, i64 16
   %arrayidx2010.16 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv3728, i64 16
-  %2473 = load <4 x double>, ptr %arrayidx2005.16, align 8
-  %2474 = fptosi <4 x double> %2473 to <4 x i32>
-  store <4 x i32> %2474, ptr %arrayidx2010.16, align 8
+  %2383 = load <4 x double>, ptr %arrayidx2005.16, align 8
+  %2384 = fptosi <4 x double> %2383 to <4 x i32>
+  store <4 x i32> %2384, ptr %arrayidx2010.16, align 8
   %indvars.iv.next3729 = add nuw nsw i64 %indvars.iv3728, 1
   %exitcond3731.not = icmp eq i64 %indvars.iv.next3729, 20
   br i1 %exitcond3731.not, label %for.end2016, label %for.cond1998.preheader
 
 for.end2016:                                      ; preds = %for.cond1998.preheader
-  %2475 = load ptr, ptr @stderr, align 8
-  %2476 = tail call i64 @fwrite(ptr nonnull @.str.30, i64 6, i64 1, ptr %2475) #16
+  %2385 = load ptr, ptr @stderr, align 8
+  %2386 = tail call i64 @fwrite(ptr nonnull @.str.30, i64 6, i64 1, ptr %2385) #16
   tail call void @FreeDoubleMtx(ptr noundef %call1520) #15
   tail call void @FreeDoubleMtx(ptr noundef %call1521) #15
   tail call void @FreeDoubleMtx(ptr noundef nonnull %call1522) #15
@@ -8349,142 +7786,142 @@ for.end2016:                                      ; preds = %for.cond1998.prehea
   br label %if.end2020
 
 if.end2020:                                       ; preds = %for.end1503, %for.end2016, %if.end1142
-  %2477 = load ptr, ptr @stderr, align 8
-  %2478 = load i32, ptr @scoremtx, align 4
-  %call2021 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2477, ptr noundef nonnull @.str.39, i32 noundef %2478) #16
+  %2387 = load ptr, ptr @stderr, align 8
+  %2388 = load i32, ptr @scoremtx, align 4
+  %call2021 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %2387, ptr noundef nonnull @.str.39, i32 noundef %2388) #16
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(512) @amino_n, i8 -1, i64 512, i1 false)
-  %2479 = load i8, ptr @amino, align 16
-  %idxprom2038 = sext i8 %2479 to i64
+  %2389 = load i8, ptr @amino, align 16
+  %idxprom2038 = sext i8 %2389 to i64
   %arrayidx2039 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038
   store i32 0, ptr %arrayidx2039, align 4
-  %2480 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom2038.1 = sext i8 %2480 to i64
+  %2390 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom2038.1 = sext i8 %2390 to i64
   %arrayidx2039.1 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.1
   store i32 1, ptr %arrayidx2039.1, align 4
-  %2481 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom2038.2 = sext i8 %2481 to i64
+  %2391 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom2038.2 = sext i8 %2391 to i64
   %arrayidx2039.2 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.2
   store i32 2, ptr %arrayidx2039.2, align 4
-  %2482 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %idxprom2038.3 = sext i8 %2482 to i64
+  %2392 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %idxprom2038.3 = sext i8 %2392 to i64
   %arrayidx2039.3 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.3
   store i32 3, ptr %arrayidx2039.3, align 4
-  %2483 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %idxprom2038.4 = sext i8 %2483 to i64
+  %2393 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %idxprom2038.4 = sext i8 %2393 to i64
   %arrayidx2039.4 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.4
   store i32 4, ptr %arrayidx2039.4, align 4
-  %2484 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom2038.5 = sext i8 %2484 to i64
+  %2394 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom2038.5 = sext i8 %2394 to i64
   %arrayidx2039.5 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.5
   store i32 5, ptr %arrayidx2039.5, align 4
-  %2485 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom2038.6 = sext i8 %2485 to i64
+  %2395 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom2038.6 = sext i8 %2395 to i64
   %arrayidx2039.6 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.6
   store i32 6, ptr %arrayidx2039.6, align 4
-  %2486 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom2038.7 = sext i8 %2486 to i64
+  %2396 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom2038.7 = sext i8 %2396 to i64
   %arrayidx2039.7 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.7
   store i32 7, ptr %arrayidx2039.7, align 4
-  %2487 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %idxprom2038.8 = sext i8 %2487 to i64
+  %2397 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %idxprom2038.8 = sext i8 %2397 to i64
   %arrayidx2039.8 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.8
   store i32 8, ptr %arrayidx2039.8, align 4
-  %2488 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %idxprom2038.9 = sext i8 %2488 to i64
+  %2398 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %idxprom2038.9 = sext i8 %2398 to i64
   %arrayidx2039.9 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.9
   store i32 9, ptr %arrayidx2039.9, align 4
-  %2489 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
-  %idxprom2038.10 = sext i8 %2489 to i64
+  %2399 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 10), align 2
+  %idxprom2038.10 = sext i8 %2399 to i64
   %arrayidx2039.10 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.10
   store i32 10, ptr %arrayidx2039.10, align 4
-  %2490 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
-  %idxprom2038.11 = sext i8 %2490 to i64
+  %2400 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 11), align 1
+  %idxprom2038.11 = sext i8 %2400 to i64
   %arrayidx2039.11 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.11
   store i32 11, ptr %arrayidx2039.11, align 4
-  %2491 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
-  %idxprom2038.12 = sext i8 %2491 to i64
+  %2401 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 12), align 4
+  %idxprom2038.12 = sext i8 %2401 to i64
   %arrayidx2039.12 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.12
   store i32 12, ptr %arrayidx2039.12, align 4
-  %2492 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %idxprom2038.13 = sext i8 %2492 to i64
+  %2402 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %idxprom2038.13 = sext i8 %2402 to i64
   %arrayidx2039.13 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.13
   store i32 13, ptr %arrayidx2039.13, align 4
-  %2493 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %idxprom2038.14 = sext i8 %2493 to i64
+  %2403 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %idxprom2038.14 = sext i8 %2403 to i64
   %arrayidx2039.14 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.14
   store i32 14, ptr %arrayidx2039.14, align 4
-  %2494 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %idxprom2038.15 = sext i8 %2494 to i64
+  %2404 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %idxprom2038.15 = sext i8 %2404 to i64
   %arrayidx2039.15 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.15
   store i32 15, ptr %arrayidx2039.15, align 4
-  %2495 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %idxprom2038.16 = sext i8 %2495 to i64
+  %2405 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %idxprom2038.16 = sext i8 %2405 to i64
   %arrayidx2039.16 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.16
   store i32 16, ptr %arrayidx2039.16, align 4
-  %2496 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %idxprom2038.17 = sext i8 %2496 to i64
+  %2406 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %idxprom2038.17 = sext i8 %2406 to i64
   %arrayidx2039.17 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.17
   store i32 17, ptr %arrayidx2039.17, align 4
-  %2497 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %idxprom2038.18 = sext i8 %2497 to i64
+  %2407 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %idxprom2038.18 = sext i8 %2407 to i64
   %arrayidx2039.18 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.18
   store i32 18, ptr %arrayidx2039.18, align 4
-  %2498 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %idxprom2038.19 = sext i8 %2498 to i64
+  %2408 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %idxprom2038.19 = sext i8 %2408 to i64
   %arrayidx2039.19 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.19
   store i32 19, ptr %arrayidx2039.19, align 4
-  %2499 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
-  %idxprom2038.20 = sext i8 %2499 to i64
+  %2409 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 20), align 4
+  %idxprom2038.20 = sext i8 %2409 to i64
   %arrayidx2039.20 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.20
   store i32 20, ptr %arrayidx2039.20, align 4
-  %2500 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
-  %idxprom2038.21 = sext i8 %2500 to i64
+  %2410 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 21), align 1
+  %idxprom2038.21 = sext i8 %2410 to i64
   %arrayidx2039.21 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.21
   store i32 21, ptr %arrayidx2039.21, align 4
-  %2501 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
-  %idxprom2038.22 = sext i8 %2501 to i64
+  %2411 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 22), align 2
+  %idxprom2038.22 = sext i8 %2411 to i64
   %arrayidx2039.22 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.22
   store i32 22, ptr %arrayidx2039.22, align 4
-  %2502 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
-  %idxprom2038.23 = sext i8 %2502 to i64
+  %2412 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 23), align 1
+  %idxprom2038.23 = sext i8 %2412 to i64
   %arrayidx2039.23 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.23
   store i32 23, ptr %arrayidx2039.23, align 4
-  %2503 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
-  %idxprom2038.24 = sext i8 %2503 to i64
+  %2413 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 24), align 8
+  %idxprom2038.24 = sext i8 %2413 to i64
   %arrayidx2039.24 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.24
   store i32 24, ptr %arrayidx2039.24, align 4
-  %2504 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
-  %idxprom2038.25 = sext i8 %2504 to i64
+  %2414 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 25), align 1
+  %idxprom2038.25 = sext i8 %2414 to i64
   %arrayidx2039.25 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom2038.25
   store i32 25, ptr %arrayidx2039.25, align 4
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(65536) @amino_dis, i8 0, i64 65536, i1 false)
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(65536) @amino_disLN, i8 0, i64 65536, i1 false)
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(131072) @amino_dis_consweight_multi, i8 0, i64 131072, i1 false)
-  %2505 = load float, ptr @consweight_multi, align 4
-  %conv2134 = fpext float %2505 to double
+  %2415 = load float, ptr @consweight_multi, align 4
+  %conv2134 = fpext float %2415 to double
   br label %for.cond2101.preheader
 
 for.cond2101.preheader:                           ; preds = %if.end2020, %for.inc2149
   %indvars.iv4372 = phi i64 [ 0, %if.end2020 ], [ %indvars.iv.next4373, %for.inc2149 ]
   %arrayidx2110 = getelementptr inbounds [26 x i8], ptr @amino, i64 0, i64 %indvars.iv4372
-  %2506 = load i8, ptr %arrayidx2110, align 1
-  %idxprom2112 = sext i8 %2506 to i64
+  %2416 = load i8, ptr %arrayidx2110, align 1
+  %idxprom2112 = sext i8 %2416 to i64
   br label %for.body2104
 
 for.body2104:                                     ; preds = %for.cond2101.preheader, %for.body2104
   %indvars.iv4368 = phi i64 [ 0, %for.cond2101.preheader ], [ %indvars.iv.next4369, %for.body2104 ]
   %arrayidx2108 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4372, i64 %indvars.iv4368
-  %2507 = load i32, ptr %arrayidx2108, align 4
+  %2417 = load i32, ptr %arrayidx2108, align 4
   %arrayidx2115 = getelementptr inbounds [26 x i8], ptr @amino, i64 0, i64 %indvars.iv4368
-  %2508 = load i8, ptr %arrayidx2115, align 1
-  %idxprom2117 = sext i8 %2508 to i64
+  %2418 = load i8, ptr %arrayidx2115, align 1
+  %idxprom2117 = sext i8 %2418 to i64
   %arrayidx2118 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_dis, i64 0, i64 %idxprom2112, i64 %idxprom2117
-  store i32 %2507, ptr %arrayidx2118, align 4
-  %conv2123 = sitofp i32 %2507 to float
-  %mul2124 = fmul float %2505, %conv2123
+  store i32 %2417, ptr %arrayidx2118, align 4
+  %conv2123 = sitofp i32 %2417 to float
+  %mul2124 = fmul float %2415, %conv2123
   %arrayidx2128 = getelementptr inbounds [26 x [26 x float]], ptr @n_dis_consweight_multi, i64 0, i64 %indvars.iv4372, i64 %indvars.iv4368
   store float %mul2124, ptr %arrayidx2128, align 4
-  %conv2133 = sitofp i32 %2507 to double
+  %conv2133 = sitofp i32 %2417 to double
   %mul2135 = fmul double %conv2133, %conv2134
   %arrayidx2145 = getelementptr inbounds [128 x [128 x double]], ptr @amino_dis_consweight_multi, i64 0, i64 %idxprom2112, i64 %idxprom2117
   store double %mul2135, ptr %arrayidx2145, align 8
@@ -8498,549 +7935,549 @@ for.inc2149:                                      ; preds = %for.body2104
   br i1 %exitcond4375.not, label %for.end2151, label %for.cond2101.preheader
 
 for.end2151:                                      ; preds = %for.inc2149
-  %2509 = load i32, ptr @dorp, align 4
-  %cmp2152 = icmp eq i32 %2509, 100
-  %2510 = load i32, ptr @offset, align 4
-  %2511 = load i32, ptr @offsetLN, align 4
-  %2512 = load i8, ptr @amino, align 16
-  %idxprom2172 = sext i8 %2512 to i64
+  %2419 = load i32, ptr @dorp, align 4
+  %cmp2152 = icmp eq i32 %2419, 100
+  %2420 = load i32, ptr @offset, align 4
+  %2421 = load i32, ptr @offsetLN, align 4
+  %2422 = load i8, ptr @amino, align 16
+  %idxprom2172 = sext i8 %2422 to i64
   br i1 %cmp2152, label %for.cond2155.preheader, label %for.cond2264.preheader
 
 for.cond2264.preheader:                           ; preds = %for.end2151
-  %2513 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom2286.1 = sext i8 %2513 to i64
-  %2514 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom2286.2 = sext i8 %2514 to i64
-  %2515 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %idxprom2286.3 = sext i8 %2515 to i64
-  %2516 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %idxprom2286.4 = sext i8 %2516 to i64
-  %2517 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom2286.5 = sext i8 %2517 to i64
-  %2518 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom2286.6 = sext i8 %2518 to i64
-  %2519 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom2286.7 = sext i8 %2519 to i64
-  %2520 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
-  %idxprom2286.13 = sext i8 %2520 to i64
-  %2521 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
-  %idxprom2286.14 = sext i8 %2521 to i64
-  %2522 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
-  %idxprom2286.15 = sext i8 %2522 to i64
-  %2523 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
-  %idxprom2286.16 = sext i8 %2523 to i64
-  %2524 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
-  %idxprom2286.17 = sext i8 %2524 to i64
-  %2525 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
-  %idxprom2286.18 = sext i8 %2525 to i64
-  %2526 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
-  %idxprom2286.19 = sext i8 %2526 to i64
+  %2423 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom2286.1 = sext i8 %2423 to i64
+  %2424 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom2286.2 = sext i8 %2424 to i64
+  %2425 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %idxprom2286.3 = sext i8 %2425 to i64
+  %2426 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %idxprom2286.4 = sext i8 %2426 to i64
+  %2427 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom2286.5 = sext i8 %2427 to i64
+  %2428 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom2286.6 = sext i8 %2428 to i64
+  %2429 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom2286.7 = sext i8 %2429 to i64
+  %2430 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 13), align 1
+  %idxprom2286.13 = sext i8 %2430 to i64
+  %2431 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 14), align 2
+  %idxprom2286.14 = sext i8 %2431 to i64
+  %2432 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 15), align 1
+  %idxprom2286.15 = sext i8 %2432 to i64
+  %2433 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 16), align 16
+  %idxprom2286.16 = sext i8 %2433 to i64
+  %2434 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 17), align 1
+  %idxprom2286.17 = sext i8 %2434 to i64
+  %2435 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 18), align 2
+  %idxprom2286.18 = sext i8 %2435 to i64
+  %2436 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 19), align 1
+  %idxprom2286.19 = sext i8 %2436 to i64
   br label %for.cond2268.preheader
 
 for.cond2155.preheader:                           ; preds = %for.end2151
-  %2527 = load i32, ptr @n_dis, align 16
-  %add2167 = add nsw i32 %2510, %2527
-  %sub2168 = sub i32 %add2167, %2511
+  %2437 = load i32, ptr @n_dis, align 16
+  %add2167 = add nsw i32 %2420, %2437
+  %sub2168 = sub i32 %add2167, %2421
   %arrayidx2178 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2172, i64 %idxprom2172
   store i32 %sub2168, ptr %arrayidx2178, align 4
-  %2528 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 1), align 4
-  %add2167.1 = add nsw i32 %2510, %2528
-  %sub2168.1 = sub i32 %add2167.1, %2511
-  %2529 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom2177.1 = sext i8 %2529 to i64
+  %2438 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 1), align 4
+  %add2167.1 = add nsw i32 %2420, %2438
+  %sub2168.1 = sub i32 %add2167.1, %2421
+  %2439 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom2177.1 = sext i8 %2439 to i64
   %arrayidx2178.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2172, i64 %idxprom2177.1
   store i32 %sub2168.1, ptr %arrayidx2178.1, align 4
-  %2530 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 2), align 8
-  %add2167.2 = add nsw i32 %2510, %2530
-  %sub2168.2 = sub i32 %add2167.2, %2511
-  %2531 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom2177.2 = sext i8 %2531 to i64
+  %2440 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 2), align 8
+  %add2167.2 = add nsw i32 %2420, %2440
+  %sub2168.2 = sub i32 %add2167.2, %2421
+  %2441 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom2177.2 = sext i8 %2441 to i64
   %arrayidx2178.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2172, i64 %idxprom2177.2
   store i32 %sub2168.2, ptr %arrayidx2178.2, align 4
-  %2532 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 3), align 4
-  %add2167.3 = add nsw i32 %2510, %2532
-  %sub2168.3 = sub i32 %add2167.3, %2511
+  %2442 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 3), align 4
+  %add2167.3 = add nsw i32 %2420, %2442
+  %sub2168.3 = sub i32 %add2167.3, %2421
   %arrayidx2178.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2172, i64 %idxprom2038.3
   store i32 %sub2168.3, ptr %arrayidx2178.3, align 4
-  %2533 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 4), align 16
-  %add2167.4 = add nsw i32 %2510, %2533
-  %sub2168.4 = sub i32 %add2167.4, %2511
+  %2443 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 4), align 16
+  %add2167.4 = add nsw i32 %2420, %2443
+  %sub2168.4 = sub i32 %add2167.4, %2421
   %arrayidx2178.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2172, i64 %idxprom2038.4
   store i32 %sub2168.4, ptr %arrayidx2178.4, align 4
-  %2534 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 0), align 8
-  %add2167.14401 = add nsw i32 %2510, %2534
-  %sub2168.14402 = sub i32 %add2167.14401, %2511
+  %2444 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 0), align 8
+  %add2167.14401 = add nsw i32 %2420, %2444
+  %sub2168.14402 = sub i32 %add2167.14401, %2421
   %arrayidx2178.14404 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.1, i64 %idxprom2172
   store i32 %sub2168.14402, ptr %arrayidx2178.14404, align 4
-  %2535 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 1), align 4
-  %add2167.1.1 = add nsw i32 %2510, %2535
-  %sub2168.1.1 = sub i32 %add2167.1.1, %2511
+  %2445 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 1), align 4
+  %add2167.1.1 = add nsw i32 %2420, %2445
+  %sub2168.1.1 = sub i32 %add2167.1.1, %2421
   %arrayidx2178.1.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.1, i64 %idxprom2177.1
   store i32 %sub2168.1.1, ptr %arrayidx2178.1.1, align 4
-  %2536 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 2), align 16
-  %add2167.2.1 = add nsw i32 %2510, %2536
-  %sub2168.2.1 = sub i32 %add2167.2.1, %2511
+  %2446 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 2), align 16
+  %add2167.2.1 = add nsw i32 %2420, %2446
+  %sub2168.2.1 = sub i32 %add2167.2.1, %2421
   %arrayidx2178.2.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.1, i64 %idxprom2177.2
   store i32 %sub2168.2.1, ptr %arrayidx2178.2.1, align 4
-  %2537 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 3), align 4
-  %add2167.3.1 = add nsw i32 %2510, %2537
-  %sub2168.3.1 = sub i32 %add2167.3.1, %2511
+  %2447 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 3), align 4
+  %add2167.3.1 = add nsw i32 %2420, %2447
+  %sub2168.3.1 = sub i32 %add2167.3.1, %2421
   %arrayidx2178.3.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.1, i64 %idxprom2038.3
   store i32 %sub2168.3.1, ptr %arrayidx2178.3.1, align 4
-  %2538 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 4), align 8
-  %add2167.4.1 = add nsw i32 %2510, %2538
-  %sub2168.4.1 = sub i32 %add2167.4.1, %2511
+  %2448 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 4), align 8
+  %add2167.4.1 = add nsw i32 %2420, %2448
+  %sub2168.4.1 = sub i32 %add2167.4.1, %2421
   %arrayidx2178.4.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.1, i64 %idxprom2038.4
   store i32 %sub2168.4.1, ptr %arrayidx2178.4.1, align 4
-  %2539 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 0), align 16
-  %add2167.24406 = add nsw i32 %2510, %2539
-  %sub2168.24407 = sub i32 %add2167.24406, %2511
+  %2449 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 0), align 16
+  %add2167.24406 = add nsw i32 %2420, %2449
+  %sub2168.24407 = sub i32 %add2167.24406, %2421
   %arrayidx2178.24409 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.2, i64 %idxprom2172
   store i32 %sub2168.24407, ptr %arrayidx2178.24409, align 4
-  %2540 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 1), align 4
-  %add2167.1.2 = add nsw i32 %2510, %2540
-  %sub2168.1.2 = sub i32 %add2167.1.2, %2511
+  %2450 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 1), align 4
+  %add2167.1.2 = add nsw i32 %2420, %2450
+  %sub2168.1.2 = sub i32 %add2167.1.2, %2421
   %arrayidx2178.1.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.2, i64 %idxprom2177.1
   store i32 %sub2168.1.2, ptr %arrayidx2178.1.2, align 4
-  %2541 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 2), align 8
-  %add2167.2.2 = add nsw i32 %2510, %2541
-  %sub2168.2.2 = sub i32 %add2167.2.2, %2511
+  %2451 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 2), align 8
+  %add2167.2.2 = add nsw i32 %2420, %2451
+  %sub2168.2.2 = sub i32 %add2167.2.2, %2421
   %arrayidx2178.2.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.2, i64 %idxprom2177.2
   store i32 %sub2168.2.2, ptr %arrayidx2178.2.2, align 4
-  %2542 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 3), align 4
-  %add2167.3.2 = add nsw i32 %2510, %2542
-  %sub2168.3.2 = sub i32 %add2167.3.2, %2511
+  %2452 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 3), align 4
+  %add2167.3.2 = add nsw i32 %2420, %2452
+  %sub2168.3.2 = sub i32 %add2167.3.2, %2421
   %arrayidx2178.3.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.2, i64 %idxprom2038.3
   store i32 %sub2168.3.2, ptr %arrayidx2178.3.2, align 4
-  %2543 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 4), align 16
-  %add2167.4.2 = add nsw i32 %2510, %2543
-  %sub2168.4.2 = sub i32 %add2167.4.2, %2511
+  %2453 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 4), align 16
+  %add2167.4.2 = add nsw i32 %2420, %2453
+  %sub2168.4.2 = sub i32 %add2167.4.2, %2421
   %arrayidx2178.4.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.2, i64 %idxprom2038.4
   store i32 %sub2168.4.2, ptr %arrayidx2178.4.2, align 4
-  %2544 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 0), align 8
-  %add2167.34411 = add nsw i32 %2510, %2544
-  %sub2168.34412 = sub i32 %add2167.34411, %2511
+  %2454 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 0), align 8
+  %add2167.34411 = add nsw i32 %2420, %2454
+  %sub2168.34412 = sub i32 %add2167.34411, %2421
   %arrayidx2178.34414 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2038.3, i64 %idxprom2172
   store i32 %sub2168.34412, ptr %arrayidx2178.34414, align 4
-  %2545 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 1), align 4
-  %add2167.1.3 = add nsw i32 %2510, %2545
-  %sub2168.1.3 = sub i32 %add2167.1.3, %2511
+  %2455 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 1), align 4
+  %add2167.1.3 = add nsw i32 %2420, %2455
+  %sub2168.1.3 = sub i32 %add2167.1.3, %2421
   %arrayidx2178.1.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2038.3, i64 %idxprom2177.1
   store i32 %sub2168.1.3, ptr %arrayidx2178.1.3, align 4
-  %2546 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 2), align 16
-  %add2167.2.3 = add nsw i32 %2510, %2546
-  %sub2168.2.3 = sub i32 %add2167.2.3, %2511
+  %2456 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 2), align 16
+  %add2167.2.3 = add nsw i32 %2420, %2456
+  %sub2168.2.3 = sub i32 %add2167.2.3, %2421
   %arrayidx2178.2.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2038.3, i64 %idxprom2177.2
   store i32 %sub2168.2.3, ptr %arrayidx2178.2.3, align 4
-  %2547 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 3), align 4
-  %add2167.3.3 = add nsw i32 %2510, %2547
-  %sub2168.3.3 = sub i32 %add2167.3.3, %2511
-  %2548 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
-  %idxprom2177.3.3 = sext i8 %2548 to i64
+  %2457 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 3), align 4
+  %add2167.3.3 = add nsw i32 %2420, %2457
+  %sub2168.3.3 = sub i32 %add2167.3.3, %2421
+  %2458 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 3), align 1
+  %idxprom2177.3.3 = sext i8 %2458 to i64
   %arrayidx2178.3.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2038.3, i64 %idxprom2177.3.3
   store i32 %sub2168.3.3, ptr %arrayidx2178.3.3, align 4
-  %2549 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 4), align 8
-  %add2167.4.3 = add nsw i32 %2510, %2549
-  %sub2168.4.3 = sub i32 %add2167.4.3, %2511
-  %2550 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
-  %idxprom2177.4.3 = sext i8 %2550 to i64
+  %2459 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 4), align 8
+  %add2167.4.3 = add nsw i32 %2420, %2459
+  %sub2168.4.3 = sub i32 %add2167.4.3, %2421
+  %2460 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 4), align 4
+  %idxprom2177.4.3 = sext i8 %2460 to i64
   %arrayidx2178.4.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2038.3, i64 %idxprom2177.4.3
   store i32 %sub2168.4.3, ptr %arrayidx2178.4.3, align 4
-  %2551 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 0), align 16
-  %add2167.44416 = add nsw i32 %2510, %2551
-  %sub2168.44417 = sub i32 %add2167.44416, %2511
-  %2552 = load i8, ptr @amino, align 16
-  %idxprom2177.44418 = sext i8 %2552 to i64
+  %2461 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 0), align 16
+  %add2167.44416 = add nsw i32 %2420, %2461
+  %sub2168.44417 = sub i32 %add2167.44416, %2421
+  %2462 = load i8, ptr @amino, align 16
+  %idxprom2177.44418 = sext i8 %2462 to i64
   %arrayidx2178.44419 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.4.3, i64 %idxprom2177.44418
   store i32 %sub2168.44417, ptr %arrayidx2178.44419, align 4
-  %2553 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 1), align 4
-  %add2167.1.4 = add nsw i32 %2510, %2553
-  %sub2168.1.4 = sub i32 %add2167.1.4, %2511
-  %2554 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
-  %idxprom2177.1.4 = sext i8 %2554 to i64
+  %2463 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 1), align 4
+  %add2167.1.4 = add nsw i32 %2420, %2463
+  %sub2168.1.4 = sub i32 %add2167.1.4, %2421
+  %2464 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 1), align 1
+  %idxprom2177.1.4 = sext i8 %2464 to i64
   %arrayidx2178.1.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.4.3, i64 %idxprom2177.1.4
   store i32 %sub2168.1.4, ptr %arrayidx2178.1.4, align 4
-  %2555 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 2), align 8
-  %add2167.2.4 = add nsw i32 %2510, %2555
-  %sub2168.2.4 = sub i32 %add2167.2.4, %2511
-  %2556 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
-  %idxprom2177.2.4 = sext i8 %2556 to i64
+  %2465 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 2), align 8
+  %add2167.2.4 = add nsw i32 %2420, %2465
+  %sub2168.2.4 = sub i32 %add2167.2.4, %2421
+  %2466 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 2), align 2
+  %idxprom2177.2.4 = sext i8 %2466 to i64
   %arrayidx2178.2.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.4.3, i64 %idxprom2177.2.4
   store i32 %sub2168.2.4, ptr %arrayidx2178.2.4, align 4
-  %2557 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 3), align 4
-  %add2167.3.4 = add nsw i32 %2510, %2557
-  %sub2168.3.4 = sub i32 %add2167.3.4, %2511
+  %2467 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 3), align 4
+  %add2167.3.4 = add nsw i32 %2420, %2467
+  %sub2168.3.4 = sub i32 %add2167.3.4, %2421
   %arrayidx2178.3.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.4.3, i64 %idxprom2177.3.3
   store i32 %sub2168.3.4, ptr %arrayidx2178.3.4, align 4
-  %2558 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 4), align 16
-  %add2167.4.4 = add nsw i32 %2510, %2558
-  %sub2168.4.4 = sub i32 %add2167.4.4, %2511
+  %2468 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 4), align 16
+  %add2167.4.4 = add nsw i32 %2420, %2468
+  %sub2168.4.4 = sub i32 %add2167.4.4, %2421
   %arrayidx2178.4.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2177.4.3, i64 %idxprom2177.4.3
   store i32 %sub2168.4.4, ptr %arrayidx2178.4.4, align 4
-  %2559 = load i32, ptr @offset, align 4
-  %2560 = load i32, ptr @offsetLN, align 4
-  %2561 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom2202 = sext i8 %2561 to i64
-  %2562 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 5), align 4
-  %add2197 = add nsw i32 %2559, %2562
-  %sub2198 = sub i32 %add2197, %2560
+  %2469 = load i32, ptr @offset, align 4
+  %2470 = load i32, ptr @offsetLN, align 4
+  %2471 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom2202 = sext i8 %2471 to i64
+  %2472 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 5), align 4
+  %add2197 = add nsw i32 %2469, %2472
+  %sub2198 = sub i32 %add2197, %2470
   %arrayidx2208 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2202, i64 %idxprom2202
   store i32 %sub2198, ptr %arrayidx2208, align 4
-  %2563 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 6), align 16
-  %add2197.1 = add nsw i32 %2559, %2563
-  %sub2198.1 = sub i32 %add2197.1, %2560
-  %2564 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom2207.1 = sext i8 %2564 to i64
+  %2473 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 6), align 16
+  %add2197.1 = add nsw i32 %2469, %2473
+  %sub2198.1 = sub i32 %add2197.1, %2470
+  %2474 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom2207.1 = sext i8 %2474 to i64
   %arrayidx2208.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2202, i64 %idxprom2207.1
   store i32 %sub2198.1, ptr %arrayidx2208.1, align 4
-  %2565 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 7), align 4
-  %add2197.2 = add nsw i32 %2559, %2565
-  %sub2198.2 = sub i32 %add2197.2, %2560
-  %2566 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom2207.2 = sext i8 %2566 to i64
+  %2475 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 7), align 4
+  %add2197.2 = add nsw i32 %2469, %2475
+  %sub2198.2 = sub i32 %add2197.2, %2470
+  %2476 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom2207.2 = sext i8 %2476 to i64
   %arrayidx2208.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2202, i64 %idxprom2207.2
   store i32 %sub2198.2, ptr %arrayidx2208.2, align 4
-  %2567 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 8), align 8
-  %add2197.3 = add nsw i32 %2559, %2567
-  %sub2198.3 = sub i32 %add2197.3, %2560
-  %2568 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %idxprom2207.3 = sext i8 %2568 to i64
+  %2477 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 8), align 8
+  %add2197.3 = add nsw i32 %2469, %2477
+  %sub2198.3 = sub i32 %add2197.3, %2470
+  %2478 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %idxprom2207.3 = sext i8 %2478 to i64
   %arrayidx2208.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2202, i64 %idxprom2207.3
   store i32 %sub2198.3, ptr %arrayidx2208.3, align 4
-  %2569 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 9), align 4
-  %add2197.4 = add nsw i32 %2559, %2569
-  %sub2198.4 = sub i32 %add2197.4, %2560
-  %2570 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %idxprom2207.4 = sext i8 %2570 to i64
+  %2479 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 9), align 4
+  %add2197.4 = add nsw i32 %2469, %2479
+  %sub2198.4 = sub i32 %add2197.4, %2470
+  %2480 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %idxprom2207.4 = sext i8 %2480 to i64
   %arrayidx2208.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2202, i64 %idxprom2207.4
   store i32 %sub2198.4, ptr %arrayidx2208.4, align 4
-  %2571 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 5), align 4
-  %add2197.14429 = add nsw i32 %2559, %2571
-  %sub2198.14430 = sub i32 %add2197.14429, %2560
+  %2481 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 5), align 4
+  %add2197.14429 = add nsw i32 %2469, %2481
+  %sub2198.14430 = sub i32 %add2197.14429, %2470
   %arrayidx2208.14432 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.1, i64 %idxprom2202
   store i32 %sub2198.14430, ptr %arrayidx2208.14432, align 4
-  %2572 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 6), align 8
-  %add2197.1.1 = add nsw i32 %2559, %2572
-  %sub2198.1.1 = sub i32 %add2197.1.1, %2560
+  %2482 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 6), align 8
+  %add2197.1.1 = add nsw i32 %2469, %2482
+  %sub2198.1.1 = sub i32 %add2197.1.1, %2470
   %arrayidx2208.1.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.1, i64 %idxprom2207.1
   store i32 %sub2198.1.1, ptr %arrayidx2208.1.1, align 4
-  %2573 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 7), align 4
-  %add2197.2.1 = add nsw i32 %2559, %2573
-  %sub2198.2.1 = sub i32 %add2197.2.1, %2560
+  %2483 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 7), align 4
+  %add2197.2.1 = add nsw i32 %2469, %2483
+  %sub2198.2.1 = sub i32 %add2197.2.1, %2470
   %arrayidx2208.2.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.1, i64 %idxprom2207.2
   store i32 %sub2198.2.1, ptr %arrayidx2208.2.1, align 4
-  %2574 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 8), align 16
-  %add2197.3.1 = add nsw i32 %2559, %2574
-  %sub2198.3.1 = sub i32 %add2197.3.1, %2560
+  %2484 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 8), align 16
+  %add2197.3.1 = add nsw i32 %2469, %2484
+  %sub2198.3.1 = sub i32 %add2197.3.1, %2470
   %arrayidx2208.3.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.1, i64 %idxprom2207.3
   store i32 %sub2198.3.1, ptr %arrayidx2208.3.1, align 4
-  %2575 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 9), align 4
-  %add2197.4.1 = add nsw i32 %2559, %2575
-  %sub2198.4.1 = sub i32 %add2197.4.1, %2560
+  %2485 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 9), align 4
+  %add2197.4.1 = add nsw i32 %2469, %2485
+  %sub2198.4.1 = sub i32 %add2197.4.1, %2470
   %arrayidx2208.4.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.1, i64 %idxprom2207.4
   store i32 %sub2198.4.1, ptr %arrayidx2208.4.1, align 4
-  %2576 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 5), align 4
-  %add2197.24434 = add nsw i32 %2559, %2576
-  %sub2198.24435 = sub i32 %add2197.24434, %2560
+  %2486 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 5), align 4
+  %add2197.24434 = add nsw i32 %2469, %2486
+  %sub2198.24435 = sub i32 %add2197.24434, %2470
   %arrayidx2208.24437 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.2, i64 %idxprom2202
   store i32 %sub2198.24435, ptr %arrayidx2208.24437, align 4
-  %2577 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 6), align 16
-  %add2197.1.2 = add nsw i32 %2559, %2577
-  %sub2198.1.2 = sub i32 %add2197.1.2, %2560
+  %2487 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 6), align 16
+  %add2197.1.2 = add nsw i32 %2469, %2487
+  %sub2198.1.2 = sub i32 %add2197.1.2, %2470
   %arrayidx2208.1.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.2, i64 %idxprom2207.1
   store i32 %sub2198.1.2, ptr %arrayidx2208.1.2, align 4
-  %2578 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 7), align 4
-  %add2197.2.2 = add nsw i32 %2559, %2578
-  %sub2198.2.2 = sub i32 %add2197.2.2, %2560
+  %2488 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 7), align 4
+  %add2197.2.2 = add nsw i32 %2469, %2488
+  %sub2198.2.2 = sub i32 %add2197.2.2, %2470
   %arrayidx2208.2.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.2, i64 %idxprom2207.2
   store i32 %sub2198.2.2, ptr %arrayidx2208.2.2, align 4
-  %2579 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 8), align 8
-  %add2197.3.2 = add nsw i32 %2559, %2579
-  %sub2198.3.2 = sub i32 %add2197.3.2, %2560
+  %2489 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 8), align 8
+  %add2197.3.2 = add nsw i32 %2469, %2489
+  %sub2198.3.2 = sub i32 %add2197.3.2, %2470
   %arrayidx2208.3.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.2, i64 %idxprom2207.3
   store i32 %sub2198.3.2, ptr %arrayidx2208.3.2, align 4
-  %2580 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 9), align 4
-  %add2197.4.2 = add nsw i32 %2559, %2580
-  %sub2198.4.2 = sub i32 %add2197.4.2, %2560
+  %2490 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 9), align 4
+  %add2197.4.2 = add nsw i32 %2469, %2490
+  %sub2198.4.2 = sub i32 %add2197.4.2, %2470
   %arrayidx2208.4.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.2, i64 %idxprom2207.4
   store i32 %sub2198.4.2, ptr %arrayidx2208.4.2, align 4
-  %2581 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 5), align 4
-  %add2197.34439 = add nsw i32 %2559, %2581
-  %sub2198.34440 = sub i32 %add2197.34439, %2560
+  %2491 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 5), align 4
+  %add2197.34439 = add nsw i32 %2469, %2491
+  %sub2198.34440 = sub i32 %add2197.34439, %2470
   %arrayidx2208.34442 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.3, i64 %idxprom2202
   store i32 %sub2198.34440, ptr %arrayidx2208.34442, align 4
-  %2582 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 6), align 8
-  %add2197.1.3 = add nsw i32 %2559, %2582
-  %sub2198.1.3 = sub i32 %add2197.1.3, %2560
+  %2492 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 6), align 8
+  %add2197.1.3 = add nsw i32 %2469, %2492
+  %sub2198.1.3 = sub i32 %add2197.1.3, %2470
   %arrayidx2208.1.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.3, i64 %idxprom2207.1
   store i32 %sub2198.1.3, ptr %arrayidx2208.1.3, align 4
-  %2583 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 7), align 4
-  %add2197.2.3 = add nsw i32 %2559, %2583
-  %sub2198.2.3 = sub i32 %add2197.2.3, %2560
+  %2493 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 7), align 4
+  %add2197.2.3 = add nsw i32 %2469, %2493
+  %sub2198.2.3 = sub i32 %add2197.2.3, %2470
   %arrayidx2208.2.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.3, i64 %idxprom2207.2
   store i32 %sub2198.2.3, ptr %arrayidx2208.2.3, align 4
-  %2584 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 8), align 16
-  %add2197.3.3 = add nsw i32 %2559, %2584
-  %sub2198.3.3 = sub i32 %add2197.3.3, %2560
+  %2494 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 8), align 16
+  %add2197.3.3 = add nsw i32 %2469, %2494
+  %sub2198.3.3 = sub i32 %add2197.3.3, %2470
   %arrayidx2208.3.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.3, i64 %idxprom2207.3
   store i32 %sub2198.3.3, ptr %arrayidx2208.3.3, align 4
-  %2585 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 9), align 4
-  %add2197.4.3 = add nsw i32 %2559, %2585
-  %sub2198.4.3 = sub i32 %add2197.4.3, %2560
+  %2495 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 9), align 4
+  %add2197.4.3 = add nsw i32 %2469, %2495
+  %sub2198.4.3 = sub i32 %add2197.4.3, %2470
   %arrayidx2208.4.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.3, i64 %idxprom2207.4
   store i32 %sub2198.4.3, ptr %arrayidx2208.4.3, align 4
-  %2586 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 5), align 4
-  %add2197.44444 = add nsw i32 %2559, %2586
-  %sub2198.44445 = sub i32 %add2197.44444, %2560
-  %2587 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
-  %idxprom2207.44446 = sext i8 %2587 to i64
+  %2496 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 5), align 4
+  %add2197.44444 = add nsw i32 %2469, %2496
+  %sub2198.44445 = sub i32 %add2197.44444, %2470
+  %2497 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 5), align 1
+  %idxprom2207.44446 = sext i8 %2497 to i64
   %arrayidx2208.44447 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.4, i64 %idxprom2207.44446
   store i32 %sub2198.44445, ptr %arrayidx2208.44447, align 4
-  %2588 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 6), align 16
-  %add2197.1.4 = add nsw i32 %2559, %2588
-  %sub2198.1.4 = sub i32 %add2197.1.4, %2560
-  %2589 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
-  %idxprom2207.1.4 = sext i8 %2589 to i64
+  %2498 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 6), align 16
+  %add2197.1.4 = add nsw i32 %2469, %2498
+  %sub2198.1.4 = sub i32 %add2197.1.4, %2470
+  %2499 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 6), align 2
+  %idxprom2207.1.4 = sext i8 %2499 to i64
   %arrayidx2208.1.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.4, i64 %idxprom2207.1.4
   store i32 %sub2198.1.4, ptr %arrayidx2208.1.4, align 4
-  %2590 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 7), align 4
-  %add2197.2.4 = add nsw i32 %2559, %2590
-  %sub2198.2.4 = sub i32 %add2197.2.4, %2560
-  %2591 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
-  %idxprom2207.2.4 = sext i8 %2591 to i64
+  %2500 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 7), align 4
+  %add2197.2.4 = add nsw i32 %2469, %2500
+  %sub2198.2.4 = sub i32 %add2197.2.4, %2470
+  %2501 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 7), align 1
+  %idxprom2207.2.4 = sext i8 %2501 to i64
   %arrayidx2208.2.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.4, i64 %idxprom2207.2.4
   store i32 %sub2198.2.4, ptr %arrayidx2208.2.4, align 4
-  %2592 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 8), align 8
-  %add2197.3.4 = add nsw i32 %2559, %2592
-  %sub2198.3.4 = sub i32 %add2197.3.4, %2560
-  %2593 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
-  %idxprom2207.3.4 = sext i8 %2593 to i64
+  %2502 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 8), align 8
+  %add2197.3.4 = add nsw i32 %2469, %2502
+  %sub2198.3.4 = sub i32 %add2197.3.4, %2470
+  %2503 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 8), align 8
+  %idxprom2207.3.4 = sext i8 %2503 to i64
   %arrayidx2208.3.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.4, i64 %idxprom2207.3.4
   store i32 %sub2198.3.4, ptr %arrayidx2208.3.4, align 4
-  %2594 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 9), align 4
-  %add2197.4.4 = add nsw i32 %2559, %2594
-  %sub2198.4.4 = sub i32 %add2197.4.4, %2560
-  %2595 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
-  %idxprom2207.4.4 = sext i8 %2595 to i64
+  %2504 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 9), align 4
+  %add2197.4.4 = add nsw i32 %2469, %2504
+  %sub2198.4.4 = sub i32 %add2197.4.4, %2470
+  %2505 = load i8, ptr getelementptr inbounds ([26 x i8], ptr @amino, i64 0, i64 9), align 1
+  %idxprom2207.4.4 = sext i8 %2505 to i64
   %arrayidx2208.4.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2207.4, i64 %idxprom2207.4.4
   store i32 %sub2198.4.4, ptr %arrayidx2208.4.4, align 4
-  %2596 = load i32, ptr @offset, align 4
-  %2597 = load i32, ptr @offsetFFT, align 4
-  %2598 = load <4 x i32>, ptr @n_dis, align 16
-  %2599 = insertelement <4 x i32> poison, i32 %2596, i64 0
-  %2600 = shufflevector <4 x i32> %2599, <4 x i32> poison, <4 x i32> zeroinitializer
-  %2601 = add nsw <4 x i32> %2600, %2598
-  %2602 = insertelement <4 x i32> poison, i32 %2597, i64 0
-  %2603 = shufflevector <4 x i32> %2602, <4 x i32> poison, <4 x i32> zeroinitializer
-  %2604 = sub <4 x i32> %2601, %2603
-  store <4 x i32> %2604, ptr @n_disFFT, align 16
-  %2605 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 4), align 16
-  %add2227.4 = add nsw i32 %2596, %2605
-  %sub2228.4 = sub i32 %add2227.4, %2597
+  %2506 = load i32, ptr @offset, align 4
+  %2507 = load i32, ptr @offsetFFT, align 4
+  %2508 = load <4 x i32>, ptr @n_dis, align 16
+  %2509 = insertelement <4 x i32> poison, i32 %2506, i64 0
+  %2510 = shufflevector <4 x i32> %2509, <4 x i32> poison, <4 x i32> zeroinitializer
+  %2511 = add nsw <4 x i32> %2510, %2508
+  %2512 = insertelement <4 x i32> poison, i32 %2507, i64 0
+  %2513 = shufflevector <4 x i32> %2512, <4 x i32> poison, <4 x i32> zeroinitializer
+  %2514 = sub <4 x i32> %2511, %2513
+  store <4 x i32> %2514, ptr @n_disFFT, align 16
+  %2515 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 0, i64 4), align 16
+  %add2227.4 = add nsw i32 %2506, %2515
+  %sub2228.4 = sub i32 %add2227.4, %2507
   store i32 %sub2228.4, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 0, i64 4), align 16
-  %2606 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 0), align 8
-  %2607 = add nsw <4 x i32> %2600, %2606
-  %2608 = sub <4 x i32> %2607, %2603
-  store <4 x i32> %2608, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 1, i64 0), align 8
-  %2609 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 4), align 8
-  %add2227.4.1 = add nsw i32 %2596, %2609
-  %sub2228.4.1 = sub i32 %add2227.4.1, %2597
+  %2516 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 0), align 8
+  %2517 = add nsw <4 x i32> %2510, %2516
+  %2518 = sub <4 x i32> %2517, %2513
+  store <4 x i32> %2518, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 1, i64 0), align 8
+  %2519 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 1, i64 4), align 8
+  %add2227.4.1 = add nsw i32 %2506, %2519
+  %sub2228.4.1 = sub i32 %add2227.4.1, %2507
   store i32 %sub2228.4.1, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 1, i64 4), align 8
-  %2610 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 0), align 16
-  %2611 = add nsw <4 x i32> %2600, %2610
-  %2612 = sub <4 x i32> %2611, %2603
-  store <4 x i32> %2612, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 2, i64 0), align 16
-  %2613 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 4), align 16
-  %add2227.4.2 = add nsw i32 %2596, %2613
-  %sub2228.4.2 = sub i32 %add2227.4.2, %2597
+  %2520 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 0), align 16
+  %2521 = add nsw <4 x i32> %2510, %2520
+  %2522 = sub <4 x i32> %2521, %2513
+  store <4 x i32> %2522, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 2, i64 0), align 16
+  %2523 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 2, i64 4), align 16
+  %add2227.4.2 = add nsw i32 %2506, %2523
+  %sub2228.4.2 = sub i32 %add2227.4.2, %2507
   store i32 %sub2228.4.2, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 2, i64 4), align 16
-  %2614 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 0), align 8
-  %2615 = add nsw <4 x i32> %2600, %2614
-  %2616 = sub <4 x i32> %2615, %2603
-  store <4 x i32> %2616, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 3, i64 0), align 8
-  %2617 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 4), align 8
-  %add2227.4.3 = add nsw i32 %2596, %2617
-  %sub2228.4.3 = sub i32 %add2227.4.3, %2597
+  %2524 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 0), align 8
+  %2525 = add nsw <4 x i32> %2510, %2524
+  %2526 = sub <4 x i32> %2525, %2513
+  store <4 x i32> %2526, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 3, i64 0), align 8
+  %2527 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 3, i64 4), align 8
+  %add2227.4.3 = add nsw i32 %2506, %2527
+  %sub2228.4.3 = sub i32 %add2227.4.3, %2507
   store i32 %sub2228.4.3, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 3, i64 4), align 8
-  %2618 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 0), align 16
-  %2619 = add nsw <4 x i32> %2600, %2618
-  %2620 = sub <4 x i32> %2619, %2603
-  store <4 x i32> %2620, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 4, i64 0), align 16
-  %2621 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 4), align 16
-  %add2227.4.4 = add nsw i32 %2596, %2621
-  %sub2228.4.4 = sub i32 %add2227.4.4, %2597
+  %2528 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 0), align 16
+  %2529 = add nsw <4 x i32> %2510, %2528
+  %2530 = sub <4 x i32> %2529, %2513
+  store <4 x i32> %2530, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 4, i64 0), align 16
+  %2531 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 4, i64 4), align 16
+  %add2227.4.4 = add nsw i32 %2506, %2531
+  %sub2228.4.4 = sub i32 %add2227.4.4, %2507
   store i32 %sub2228.4.4, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 4, i64 4), align 16
-  %2622 = load i32, ptr @offset, align 4
-  %2623 = load i32, ptr @offsetFFT, align 4
-  %2624 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 5), align 4
-  %2625 = insertelement <4 x i32> poison, i32 %2622, i64 0
-  %2626 = shufflevector <4 x i32> %2625, <4 x i32> poison, <4 x i32> zeroinitializer
-  %2627 = add nsw <4 x i32> %2626, %2624
-  %2628 = insertelement <4 x i32> poison, i32 %2623, i64 0
-  %2629 = shufflevector <4 x i32> %2628, <4 x i32> poison, <4 x i32> zeroinitializer
-  %2630 = sub <4 x i32> %2627, %2629
-  store <4 x i32> %2630, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 5, i64 5), align 4
-  %2631 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 9), align 4
-  %add2251.4 = add nsw i32 %2622, %2631
-  %sub2252.4 = sub i32 %add2251.4, %2623
+  %2532 = load i32, ptr @offset, align 4
+  %2533 = load i32, ptr @offsetFFT, align 4
+  %2534 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 5), align 4
+  %2535 = insertelement <4 x i32> poison, i32 %2532, i64 0
+  %2536 = shufflevector <4 x i32> %2535, <4 x i32> poison, <4 x i32> zeroinitializer
+  %2537 = add nsw <4 x i32> %2536, %2534
+  %2538 = insertelement <4 x i32> poison, i32 %2533, i64 0
+  %2539 = shufflevector <4 x i32> %2538, <4 x i32> poison, <4 x i32> zeroinitializer
+  %2540 = sub <4 x i32> %2537, %2539
+  store <4 x i32> %2540, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 5, i64 5), align 4
+  %2541 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 5, i64 9), align 4
+  %add2251.4 = add nsw i32 %2532, %2541
+  %sub2252.4 = sub i32 %add2251.4, %2533
   store i32 %sub2252.4, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 5, i64 9), align 4
-  %2632 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 5), align 4
-  %2633 = add nsw <4 x i32> %2626, %2632
-  %2634 = sub <4 x i32> %2633, %2629
-  store <4 x i32> %2634, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 6, i64 5), align 4
-  %2635 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 9), align 4
-  %add2251.4.1 = add nsw i32 %2622, %2635
-  %sub2252.4.1 = sub i32 %add2251.4.1, %2623
+  %2542 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 5), align 4
+  %2543 = add nsw <4 x i32> %2536, %2542
+  %2544 = sub <4 x i32> %2543, %2539
+  store <4 x i32> %2544, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 6, i64 5), align 4
+  %2545 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 6, i64 9), align 4
+  %add2251.4.1 = add nsw i32 %2532, %2545
+  %sub2252.4.1 = sub i32 %add2251.4.1, %2533
   store i32 %sub2252.4.1, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 6, i64 9), align 4
-  %2636 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 5), align 4
-  %2637 = add nsw <4 x i32> %2626, %2636
-  %2638 = sub <4 x i32> %2637, %2629
-  store <4 x i32> %2638, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 7, i64 5), align 4
-  %2639 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 9), align 4
-  %add2251.4.2 = add nsw i32 %2622, %2639
-  %sub2252.4.2 = sub i32 %add2251.4.2, %2623
+  %2546 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 5), align 4
+  %2547 = add nsw <4 x i32> %2536, %2546
+  %2548 = sub <4 x i32> %2547, %2539
+  store <4 x i32> %2548, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 7, i64 5), align 4
+  %2549 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 7, i64 9), align 4
+  %add2251.4.2 = add nsw i32 %2532, %2549
+  %sub2252.4.2 = sub i32 %add2251.4.2, %2533
   store i32 %sub2252.4.2, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 7, i64 9), align 4
-  %2640 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 5), align 4
-  %2641 = add nsw <4 x i32> %2626, %2640
-  %2642 = sub <4 x i32> %2641, %2629
-  store <4 x i32> %2642, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 8, i64 5), align 4
-  %2643 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 9), align 4
-  %add2251.4.3 = add nsw i32 %2622, %2643
-  %sub2252.4.3 = sub i32 %add2251.4.3, %2623
+  %2550 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 5), align 4
+  %2551 = add nsw <4 x i32> %2536, %2550
+  %2552 = sub <4 x i32> %2551, %2539
+  store <4 x i32> %2552, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 8, i64 5), align 4
+  %2553 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 8, i64 9), align 4
+  %add2251.4.3 = add nsw i32 %2532, %2553
+  %sub2252.4.3 = sub i32 %add2251.4.3, %2533
   store i32 %sub2252.4.3, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 8, i64 9), align 4
-  %2644 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 5), align 4
-  %2645 = add nsw <4 x i32> %2626, %2644
-  %2646 = sub <4 x i32> %2645, %2629
-  store <4 x i32> %2646, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 9, i64 5), align 4
-  %2647 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 9), align 4
-  %add2251.4.4 = add nsw i32 %2622, %2647
-  %sub2252.4.4 = sub i32 %add2251.4.4, %2623
+  %2554 = load <4 x i32>, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 5), align 4
+  %2555 = add nsw <4 x i32> %2536, %2554
+  %2556 = sub <4 x i32> %2555, %2539
+  store <4 x i32> %2556, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 9, i64 5), align 4
+  %2557 = load i32, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_dis, i64 0, i64 9, i64 9), align 4
+  %add2251.4.4 = add nsw i32 %2532, %2557
+  %sub2252.4.4 = sub i32 %add2251.4.4, %2533
   store i32 %sub2252.4.4, ptr getelementptr inbounds ([26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 9, i64 9), align 4
   br label %if.end2318
 
 for.cond2268.preheader:                           ; preds = %for.cond2264.preheader, %for.cond2268.preheader
   %indvars.iv4380 = phi i64 [ 0, %for.cond2264.preheader ], [ %indvars.iv.next4381, %for.cond2268.preheader ]
   %arrayidx2279 = getelementptr inbounds [26 x i8], ptr @amino, i64 0, i64 %indvars.iv4380
-  %2648 = load i8, ptr %arrayidx2279, align 1
-  %idxprom2281 = sext i8 %2648 to i64
+  %2558 = load i8, ptr %arrayidx2279, align 1
+  %idxprom2281 = sext i8 %2558 to i64
   %arrayidx2275 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 0
-  %2649 = load i32, ptr %arrayidx2275, align 8
-  %add2276 = add nsw i32 %2510, %2649
-  %sub2277 = sub i32 %add2276, %2511
+  %2559 = load i32, ptr %arrayidx2275, align 8
+  %add2276 = add nsw i32 %2420, %2559
+  %sub2277 = sub i32 %add2276, %2421
   %arrayidx2287 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2172
   store i32 %sub2277, ptr %arrayidx2287, align 4
   %arrayidx2275.1 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 1
-  %2650 = load i32, ptr %arrayidx2275.1, align 4
-  %add2276.1 = add nsw i32 %2510, %2650
-  %sub2277.1 = sub i32 %add2276.1, %2511
+  %2560 = load i32, ptr %arrayidx2275.1, align 4
+  %add2276.1 = add nsw i32 %2420, %2560
+  %sub2277.1 = sub i32 %add2276.1, %2421
   %arrayidx2287.1 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.1
   store i32 %sub2277.1, ptr %arrayidx2287.1, align 4
   %arrayidx2275.2 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 2
-  %2651 = load i32, ptr %arrayidx2275.2, align 8
-  %add2276.2 = add nsw i32 %2510, %2651
-  %sub2277.2 = sub i32 %add2276.2, %2511
+  %2561 = load i32, ptr %arrayidx2275.2, align 8
+  %add2276.2 = add nsw i32 %2420, %2561
+  %sub2277.2 = sub i32 %add2276.2, %2421
   %arrayidx2287.2 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.2
   store i32 %sub2277.2, ptr %arrayidx2287.2, align 4
   %arrayidx2275.3 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 3
-  %2652 = load i32, ptr %arrayidx2275.3, align 4
-  %add2276.3 = add nsw i32 %2510, %2652
-  %sub2277.3 = sub i32 %add2276.3, %2511
+  %2562 = load i32, ptr %arrayidx2275.3, align 4
+  %add2276.3 = add nsw i32 %2420, %2562
+  %sub2277.3 = sub i32 %add2276.3, %2421
   %arrayidx2287.3 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.3
   store i32 %sub2277.3, ptr %arrayidx2287.3, align 4
   %arrayidx2275.4 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 4
-  %2653 = load i32, ptr %arrayidx2275.4, align 8
-  %add2276.4 = add nsw i32 %2510, %2653
-  %sub2277.4 = sub i32 %add2276.4, %2511
+  %2563 = load i32, ptr %arrayidx2275.4, align 8
+  %add2276.4 = add nsw i32 %2420, %2563
+  %sub2277.4 = sub i32 %add2276.4, %2421
   %arrayidx2287.4 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.4
   store i32 %sub2277.4, ptr %arrayidx2287.4, align 4
   %arrayidx2275.5 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 5
-  %2654 = load i32, ptr %arrayidx2275.5, align 4
-  %add2276.5 = add nsw i32 %2510, %2654
-  %sub2277.5 = sub i32 %add2276.5, %2511
+  %2564 = load i32, ptr %arrayidx2275.5, align 4
+  %add2276.5 = add nsw i32 %2420, %2564
+  %sub2277.5 = sub i32 %add2276.5, %2421
   %arrayidx2287.5 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.5
   store i32 %sub2277.5, ptr %arrayidx2287.5, align 4
   %arrayidx2275.6 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 6
-  %2655 = load i32, ptr %arrayidx2275.6, align 8
-  %add2276.6 = add nsw i32 %2510, %2655
-  %sub2277.6 = sub i32 %add2276.6, %2511
+  %2565 = load i32, ptr %arrayidx2275.6, align 8
+  %add2276.6 = add nsw i32 %2420, %2565
+  %sub2277.6 = sub i32 %add2276.6, %2421
   %arrayidx2287.6 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.6
   store i32 %sub2277.6, ptr %arrayidx2287.6, align 4
   %arrayidx2275.7 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 7
-  %2656 = load i32, ptr %arrayidx2275.7, align 4
-  %add2276.7 = add nsw i32 %2510, %2656
-  %sub2277.7 = sub i32 %add2276.7, %2511
+  %2566 = load i32, ptr %arrayidx2275.7, align 4
+  %add2276.7 = add nsw i32 %2420, %2566
+  %sub2277.7 = sub i32 %add2276.7, %2421
   %arrayidx2287.7 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.7
   store i32 %sub2277.7, ptr %arrayidx2287.7, align 4
   %arrayidx2275.8 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 8
-  %2657 = load i32, ptr %arrayidx2275.8, align 8
-  %add2276.8 = add nsw i32 %2510, %2657
-  %sub2277.8 = sub i32 %add2276.8, %2511
+  %2567 = load i32, ptr %arrayidx2275.8, align 8
+  %add2276.8 = add nsw i32 %2420, %2567
+  %sub2277.8 = sub i32 %add2276.8, %2421
   %arrayidx2287.8 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2038.8
   store i32 %sub2277.8, ptr %arrayidx2287.8, align 4
   %arrayidx2275.9 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 9
-  %2658 = load i32, ptr %arrayidx2275.9, align 4
-  %add2276.9 = add nsw i32 %2510, %2658
-  %sub2277.9 = sub i32 %add2276.9, %2511
+  %2568 = load i32, ptr %arrayidx2275.9, align 4
+  %add2276.9 = add nsw i32 %2420, %2568
+  %sub2277.9 = sub i32 %add2276.9, %2421
   %arrayidx2287.9 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2038.9
   store i32 %sub2277.9, ptr %arrayidx2287.9, align 4
   %arrayidx2275.10 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 10
-  %2659 = load i32, ptr %arrayidx2275.10, align 8
-  %add2276.10 = add nsw i32 %2510, %2659
-  %sub2277.10 = sub i32 %add2276.10, %2511
+  %2569 = load i32, ptr %arrayidx2275.10, align 8
+  %add2276.10 = add nsw i32 %2420, %2569
+  %sub2277.10 = sub i32 %add2276.10, %2421
   %arrayidx2287.10 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2038.10
   store i32 %sub2277.10, ptr %arrayidx2287.10, align 4
   %arrayidx2275.11 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 11
-  %2660 = load i32, ptr %arrayidx2275.11, align 4
-  %add2276.11 = add nsw i32 %2510, %2660
-  %sub2277.11 = sub i32 %add2276.11, %2511
+  %2570 = load i32, ptr %arrayidx2275.11, align 4
+  %add2276.11 = add nsw i32 %2420, %2570
+  %sub2277.11 = sub i32 %add2276.11, %2421
   %arrayidx2287.11 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2038.11
   store i32 %sub2277.11, ptr %arrayidx2287.11, align 4
   %arrayidx2275.12 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 12
-  %2661 = load i32, ptr %arrayidx2275.12, align 8
-  %add2276.12 = add nsw i32 %2510, %2661
-  %sub2277.12 = sub i32 %add2276.12, %2511
+  %2571 = load i32, ptr %arrayidx2275.12, align 8
+  %add2276.12 = add nsw i32 %2420, %2571
+  %sub2277.12 = sub i32 %add2276.12, %2421
   %arrayidx2287.12 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2038.12
   store i32 %sub2277.12, ptr %arrayidx2287.12, align 4
   %arrayidx2275.13 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 13
-  %2662 = load i32, ptr %arrayidx2275.13, align 4
-  %add2276.13 = add nsw i32 %2510, %2662
-  %sub2277.13 = sub i32 %add2276.13, %2511
+  %2572 = load i32, ptr %arrayidx2275.13, align 4
+  %add2276.13 = add nsw i32 %2420, %2572
+  %sub2277.13 = sub i32 %add2276.13, %2421
   %arrayidx2287.13 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.13
   store i32 %sub2277.13, ptr %arrayidx2287.13, align 4
   %arrayidx2275.14 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 14
-  %2663 = load i32, ptr %arrayidx2275.14, align 8
-  %add2276.14 = add nsw i32 %2510, %2663
-  %sub2277.14 = sub i32 %add2276.14, %2511
+  %2573 = load i32, ptr %arrayidx2275.14, align 8
+  %add2276.14 = add nsw i32 %2420, %2573
+  %sub2277.14 = sub i32 %add2276.14, %2421
   %arrayidx2287.14 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.14
   store i32 %sub2277.14, ptr %arrayidx2287.14, align 4
   %arrayidx2275.15 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 15
-  %2664 = load i32, ptr %arrayidx2275.15, align 4
-  %add2276.15 = add nsw i32 %2510, %2664
-  %sub2277.15 = sub i32 %add2276.15, %2511
+  %2574 = load i32, ptr %arrayidx2275.15, align 4
+  %add2276.15 = add nsw i32 %2420, %2574
+  %sub2277.15 = sub i32 %add2276.15, %2421
   %arrayidx2287.15 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.15
   store i32 %sub2277.15, ptr %arrayidx2287.15, align 4
   %arrayidx2275.16 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 16
-  %2665 = load i32, ptr %arrayidx2275.16, align 8
-  %add2276.16 = add nsw i32 %2510, %2665
-  %sub2277.16 = sub i32 %add2276.16, %2511
+  %2575 = load i32, ptr %arrayidx2275.16, align 8
+  %add2276.16 = add nsw i32 %2420, %2575
+  %sub2277.16 = sub i32 %add2276.16, %2421
   %arrayidx2287.16 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.16
   store i32 %sub2277.16, ptr %arrayidx2287.16, align 4
   %arrayidx2275.17 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 17
-  %2666 = load i32, ptr %arrayidx2275.17, align 4
-  %add2276.17 = add nsw i32 %2510, %2666
-  %sub2277.17 = sub i32 %add2276.17, %2511
+  %2576 = load i32, ptr %arrayidx2275.17, align 4
+  %add2276.17 = add nsw i32 %2420, %2576
+  %sub2277.17 = sub i32 %add2276.17, %2421
   %arrayidx2287.17 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.17
   store i32 %sub2277.17, ptr %arrayidx2287.17, align 4
   %arrayidx2275.18 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 18
-  %2667 = load i32, ptr %arrayidx2275.18, align 8
-  %add2276.18 = add nsw i32 %2510, %2667
-  %sub2277.18 = sub i32 %add2276.18, %2511
+  %2577 = load i32, ptr %arrayidx2275.18, align 8
+  %add2276.18 = add nsw i32 %2420, %2577
+  %sub2277.18 = sub i32 %add2276.18, %2421
   %arrayidx2287.18 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.18
   store i32 %sub2277.18, ptr %arrayidx2287.18, align 4
   %arrayidx2275.19 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4380, i64 19
-  %2668 = load i32, ptr %arrayidx2275.19, align 4
-  %add2276.19 = add nsw i32 %2510, %2668
-  %sub2277.19 = sub i32 %add2276.19, %2511
+  %2578 = load i32, ptr %arrayidx2275.19, align 4
+  %add2276.19 = add nsw i32 %2420, %2578
+  %sub2277.19 = sub i32 %add2276.19, %2421
   %arrayidx2287.19 = getelementptr inbounds [128 x [128 x i32]], ptr @amino_disLN, i64 0, i64 %idxprom2281, i64 %idxprom2286.19
   store i32 %sub2277.19, ptr %arrayidx2287.19, align 4
   %indvars.iv.next4381 = add nuw nsw i64 %indvars.iv4380, 1
@@ -9048,54 +8485,54 @@ for.cond2268.preheader:                           ; preds = %for.cond2264.prehea
   br i1 %exitcond4383.not, label %for.cond2294.preheader, label %for.cond2268.preheader
 
 for.cond2294.preheader:                           ; preds = %for.cond2268.preheader
-  %2669 = load i32, ptr @offset, align 4
-  %2670 = load i32, ptr @offsetFFT, align 4
-  %2671 = insertelement <4 x i32> poison, i32 %2669, i64 0
-  %2672 = shufflevector <4 x i32> %2671, <4 x i32> poison, <4 x i32> zeroinitializer
-  %2673 = insertelement <4 x i32> poison, i32 %2670, i64 0
-  %2674 = shufflevector <4 x i32> %2673, <4 x i32> poison, <4 x i32> zeroinitializer
+  %2579 = load i32, ptr @offset, align 4
+  %2580 = load i32, ptr @offsetFFT, align 4
+  %2581 = insertelement <4 x i32> poison, i32 %2579, i64 0
+  %2582 = shufflevector <4 x i32> %2581, <4 x i32> poison, <4 x i32> zeroinitializer
+  %2583 = insertelement <4 x i32> poison, i32 %2580, i64 0
+  %2584 = shufflevector <4 x i32> %2583, <4 x i32> poison, <4 x i32> zeroinitializer
   br label %for.cond2298.preheader
 
 for.cond2298.preheader:                           ; preds = %for.cond2294.preheader, %for.cond2298.preheader
   %indvars.iv4388 = phi i64 [ 0, %for.cond2294.preheader ], [ %indvars.iv.next4389, %for.cond2298.preheader ]
   %arrayidx2305 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4388, i64 0
   %arrayidx2311 = getelementptr inbounds [26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 %indvars.iv4388, i64 0
-  %2675 = load <4 x i32>, ptr %arrayidx2305, align 8
-  %2676 = add nsw <4 x i32> %2672, %2675
-  %2677 = sub <4 x i32> %2676, %2674
-  store <4 x i32> %2677, ptr %arrayidx2311, align 8
+  %2585 = load <4 x i32>, ptr %arrayidx2305, align 8
+  %2586 = add nsw <4 x i32> %2582, %2585
+  %2587 = sub <4 x i32> %2586, %2584
+  store <4 x i32> %2587, ptr %arrayidx2311, align 8
   %arrayidx2305.4 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4388, i64 4
   %arrayidx2311.4 = getelementptr inbounds [26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 %indvars.iv4388, i64 4
-  %2678 = load <4 x i32>, ptr %arrayidx2305.4, align 8
-  %2679 = add nsw <4 x i32> %2672, %2678
-  %2680 = sub <4 x i32> %2679, %2674
-  store <4 x i32> %2680, ptr %arrayidx2311.4, align 8
+  %2588 = load <4 x i32>, ptr %arrayidx2305.4, align 8
+  %2589 = add nsw <4 x i32> %2582, %2588
+  %2590 = sub <4 x i32> %2589, %2584
+  store <4 x i32> %2590, ptr %arrayidx2311.4, align 8
   %arrayidx2305.8 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4388, i64 8
   %arrayidx2311.8 = getelementptr inbounds [26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 %indvars.iv4388, i64 8
-  %2681 = load <4 x i32>, ptr %arrayidx2305.8, align 8
-  %2682 = add nsw <4 x i32> %2672, %2681
-  %2683 = sub <4 x i32> %2682, %2674
-  store <4 x i32> %2683, ptr %arrayidx2311.8, align 8
+  %2591 = load <4 x i32>, ptr %arrayidx2305.8, align 8
+  %2592 = add nsw <4 x i32> %2582, %2591
+  %2593 = sub <4 x i32> %2592, %2584
+  store <4 x i32> %2593, ptr %arrayidx2311.8, align 8
   %arrayidx2305.12 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4388, i64 12
   %arrayidx2311.12 = getelementptr inbounds [26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 %indvars.iv4388, i64 12
-  %2684 = load <4 x i32>, ptr %arrayidx2305.12, align 8
-  %2685 = add nsw <4 x i32> %2672, %2684
-  %2686 = sub <4 x i32> %2685, %2674
-  store <4 x i32> %2686, ptr %arrayidx2311.12, align 8
+  %2594 = load <4 x i32>, ptr %arrayidx2305.12, align 8
+  %2595 = add nsw <4 x i32> %2582, %2594
+  %2596 = sub <4 x i32> %2595, %2584
+  store <4 x i32> %2596, ptr %arrayidx2311.12, align 8
   %arrayidx2305.16 = getelementptr inbounds [26 x [26 x i32]], ptr @n_dis, i64 0, i64 %indvars.iv4388, i64 16
   %arrayidx2311.16 = getelementptr inbounds [26 x [26 x i32]], ptr @n_disFFT, i64 0, i64 %indvars.iv4388, i64 16
-  %2687 = load <4 x i32>, ptr %arrayidx2305.16, align 8
-  %2688 = add nsw <4 x i32> %2672, %2687
-  %2689 = sub <4 x i32> %2688, %2674
-  store <4 x i32> %2689, ptr %arrayidx2311.16, align 8
+  %2597 = load <4 x i32>, ptr %arrayidx2305.16, align 8
+  %2598 = add nsw <4 x i32> %2582, %2597
+  %2599 = sub <4 x i32> %2598, %2584
+  store <4 x i32> %2599, ptr %arrayidx2311.16, align 8
   %indvars.iv.next4389 = add nuw nsw i64 %indvars.iv4388, 1
   %exitcond4391.not = icmp eq i64 %indvars.iv.next4389, 20
   br i1 %exitcond4391.not, label %if.end2318, label %for.cond2298.preheader
 
 if.end2318:                                       ; preds = %for.cond2298.preheader, %for.cond2155.preheader
   store i32 0, ptr @ppid, align 4
-  %2690 = load i32, ptr @fftThreshold, align 4
-  %cmp2319 = icmp eq i32 %2690, 100009
+  %2600 = load i32, ptr @fftThreshold, align 4
+  %cmp2319 = icmp eq i32 %2600, 100009
   br i1 %cmp2319, label %if.then2321, label %if.end2322
 
 if.then2321:                                      ; preds = %if.end2318
@@ -9103,8 +8540,8 @@ if.then2321:                                      ; preds = %if.end2318
   br label %if.end2322
 
 if.end2322:                                       ; preds = %if.then2321, %if.end2318
-  %2691 = load i32, ptr @fftWinSize, align 4
-  %cmp2323 = icmp eq i32 %2691, 100009
+  %2601 = load i32, ptr @fftWinSize, align 4
+  %cmp2323 = icmp eq i32 %2601, 100009
   br i1 %cmp2323, label %if.then2325, label %if.end2331
 
 if.then2325:                                      ; preds = %if.end2322
@@ -9113,267 +8550,267 @@ if.then2325:                                      ; preds = %if.end2322
   br label %if.end2331
 
 if.end2331:                                       ; preds = %if.then2325, %if.end2322
-  %2692 = load i32, ptr @fftscore, align 4
-  %tobool2332.not = icmp eq i32 %2692, 0
+  %2602 = load i32, ptr @fftscore, align 4
+  %tobool2332.not = icmp eq i32 %2602, 0
   br i1 %tobool2332.not, label %if.end2450, label %for.body2337.preheader
 
 for.body2337.preheader:                           ; preds = %if.end2331
   tail call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 16 dereferenceable(160) @polarity, ptr noundef nonnull align 16 dereferenceable(160) @polarity_, i64 160, i1 false)
-  %2693 = load double, ptr @polarity, align 16
-  %add2351 = fadd double %2693, 0.000000e+00
-  %2694 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 1), align 8
-  %add2351.1 = fadd double %add2351, %2694
-  %2695 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 2), align 16
-  %add2351.2 = fadd double %add2351.1, %2695
-  %2696 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 3), align 8
-  %add2351.3 = fadd double %add2351.2, %2696
-  %2697 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 4), align 16
-  %add2351.4 = fadd double %add2351.3, %2697
-  %2698 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 5), align 8
-  %add2351.5 = fadd double %add2351.4, %2698
-  %2699 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 6), align 16
-  %add2351.6 = fadd double %add2351.5, %2699
-  %2700 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 7), align 8
-  %add2351.7 = fadd double %add2351.6, %2700
-  %2701 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 8), align 16
-  %add2351.8 = fadd double %add2351.7, %2701
-  %2702 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 9), align 8
-  %add2351.9 = fadd double %add2351.8, %2702
-  %2703 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 10), align 16
-  %add2351.10 = fadd double %add2351.9, %2703
-  %2704 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 11), align 8
-  %add2351.11 = fadd double %add2351.10, %2704
-  %2705 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 12), align 16
-  %add2351.12 = fadd double %add2351.11, %2705
-  %2706 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 13), align 8
-  %add2351.13 = fadd double %add2351.12, %2706
-  %2707 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 14), align 16
-  %add2351.14 = fadd double %add2351.13, %2707
-  %2708 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 15), align 8
-  %add2351.15 = fadd double %add2351.14, %2708
-  %2709 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 16), align 16
-  %add2351.16 = fadd double %add2351.15, %2709
-  %2710 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 17), align 8
-  %add2351.17 = fadd double %add2351.16, %2710
-  %2711 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 18), align 16
-  %add2351.18 = fadd double %add2351.17, %2711
-  %2712 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 19), align 8
-  %add2351.19 = fadd double %add2351.18, %2712
+  %2603 = load double, ptr @polarity, align 16
+  %add2351 = fadd double %2603, 0.000000e+00
+  %2604 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 1), align 8
+  %add2351.1 = fadd double %add2351, %2604
+  %2605 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 2), align 16
+  %add2351.2 = fadd double %add2351.1, %2605
+  %2606 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 3), align 8
+  %add2351.3 = fadd double %add2351.2, %2606
+  %2607 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 4), align 16
+  %add2351.4 = fadd double %add2351.3, %2607
+  %2608 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 5), align 8
+  %add2351.5 = fadd double %add2351.4, %2608
+  %2609 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 6), align 16
+  %add2351.6 = fadd double %add2351.5, %2609
+  %2610 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 7), align 8
+  %add2351.7 = fadd double %add2351.6, %2610
+  %2611 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 8), align 16
+  %add2351.8 = fadd double %add2351.7, %2611
+  %2612 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 9), align 8
+  %add2351.9 = fadd double %add2351.8, %2612
+  %2613 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 10), align 16
+  %add2351.10 = fadd double %add2351.9, %2613
+  %2614 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 11), align 8
+  %add2351.11 = fadd double %add2351.10, %2614
+  %2615 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 12), align 16
+  %add2351.12 = fadd double %add2351.11, %2615
+  %2616 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 13), align 8
+  %add2351.13 = fadd double %add2351.12, %2616
+  %2617 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 14), align 16
+  %add2351.14 = fadd double %add2351.13, %2617
+  %2618 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 15), align 8
+  %add2351.15 = fadd double %add2351.14, %2618
+  %2619 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 16), align 16
+  %add2351.16 = fadd double %add2351.15, %2619
+  %2620 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 17), align 8
+  %add2351.17 = fadd double %add2351.16, %2620
+  %2621 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 18), align 16
+  %add2351.18 = fadd double %add2351.17, %2621
+  %2622 = load double, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 19), align 8
+  %add2351.19 = fadd double %add2351.18, %2622
   %div2355 = fdiv double %add2351.19, 2.000000e+01
-  %sub2362 = fsub double %2693, %div2355
-  %2713 = tail call double @llvm.fmuladd.f64(double %sub2362, double %sub2362, double 0.000000e+00)
-  %sub2362.1 = fsub double %2694, %div2355
-  %2714 = tail call double @llvm.fmuladd.f64(double %sub2362.1, double %sub2362.1, double %2713)
-  %sub2362.2 = fsub double %2695, %div2355
-  %2715 = tail call double @llvm.fmuladd.f64(double %sub2362.2, double %sub2362.2, double %2714)
-  %sub2362.3 = fsub double %2696, %div2355
-  %2716 = tail call double @llvm.fmuladd.f64(double %sub2362.3, double %sub2362.3, double %2715)
-  %sub2362.4 = fsub double %2697, %div2355
-  %2717 = tail call double @llvm.fmuladd.f64(double %sub2362.4, double %sub2362.4, double %2716)
-  %sub2362.5 = fsub double %2698, %div2355
-  %2718 = tail call double @llvm.fmuladd.f64(double %sub2362.5, double %sub2362.5, double %2717)
-  %sub2362.6 = fsub double %2699, %div2355
-  %2719 = tail call double @llvm.fmuladd.f64(double %sub2362.6, double %sub2362.6, double %2718)
-  %sub2362.7 = fsub double %2700, %div2355
-  %2720 = tail call double @llvm.fmuladd.f64(double %sub2362.7, double %sub2362.7, double %2719)
-  %sub2362.8 = fsub double %2701, %div2355
-  %2721 = tail call double @llvm.fmuladd.f64(double %sub2362.8, double %sub2362.8, double %2720)
-  %sub2362.9 = fsub double %2702, %div2355
-  %2722 = tail call double @llvm.fmuladd.f64(double %sub2362.9, double %sub2362.9, double %2721)
-  %sub2362.10 = fsub double %2703, %div2355
-  %2723 = tail call double @llvm.fmuladd.f64(double %sub2362.10, double %sub2362.10, double %2722)
-  %sub2362.11 = fsub double %2704, %div2355
-  %2724 = tail call double @llvm.fmuladd.f64(double %sub2362.11, double %sub2362.11, double %2723)
-  %sub2362.12 = fsub double %2705, %div2355
-  %2725 = tail call double @llvm.fmuladd.f64(double %sub2362.12, double %sub2362.12, double %2724)
-  %sub2362.13 = fsub double %2706, %div2355
-  %2726 = tail call double @llvm.fmuladd.f64(double %sub2362.13, double %sub2362.13, double %2725)
-  %sub2362.14 = fsub double %2707, %div2355
-  %2727 = tail call double @llvm.fmuladd.f64(double %sub2362.14, double %sub2362.14, double %2726)
-  %sub2362.15 = fsub double %2708, %div2355
-  %2728 = tail call double @llvm.fmuladd.f64(double %sub2362.15, double %sub2362.15, double %2727)
-  %sub2362.16 = fsub double %2709, %div2355
-  %2729 = tail call double @llvm.fmuladd.f64(double %sub2362.16, double %sub2362.16, double %2728)
-  %sub2362.17 = fsub double %2710, %div2355
-  %2730 = tail call double @llvm.fmuladd.f64(double %sub2362.17, double %sub2362.17, double %2729)
-  %sub2362.18 = fsub double %2711, %div2355
-  %2731 = tail call double @llvm.fmuladd.f64(double %sub2362.18, double %sub2362.18, double %2730)
-  %sub2362.19 = fsub double %2712, %div2355
-  %2732 = tail call double @llvm.fmuladd.f64(double %sub2362.19, double %sub2362.19, double %2731)
-  %div2370 = fdiv double %2732, 2.000000e+01
+  %sub2362 = fsub double %2603, %div2355
+  %2623 = tail call double @llvm.fmuladd.f64(double %sub2362, double %sub2362, double 0.000000e+00)
+  %sub2362.1 = fsub double %2604, %div2355
+  %2624 = tail call double @llvm.fmuladd.f64(double %sub2362.1, double %sub2362.1, double %2623)
+  %sub2362.2 = fsub double %2605, %div2355
+  %2625 = tail call double @llvm.fmuladd.f64(double %sub2362.2, double %sub2362.2, double %2624)
+  %sub2362.3 = fsub double %2606, %div2355
+  %2626 = tail call double @llvm.fmuladd.f64(double %sub2362.3, double %sub2362.3, double %2625)
+  %sub2362.4 = fsub double %2607, %div2355
+  %2627 = tail call double @llvm.fmuladd.f64(double %sub2362.4, double %sub2362.4, double %2626)
+  %sub2362.5 = fsub double %2608, %div2355
+  %2628 = tail call double @llvm.fmuladd.f64(double %sub2362.5, double %sub2362.5, double %2627)
+  %sub2362.6 = fsub double %2609, %div2355
+  %2629 = tail call double @llvm.fmuladd.f64(double %sub2362.6, double %sub2362.6, double %2628)
+  %sub2362.7 = fsub double %2610, %div2355
+  %2630 = tail call double @llvm.fmuladd.f64(double %sub2362.7, double %sub2362.7, double %2629)
+  %sub2362.8 = fsub double %2611, %div2355
+  %2631 = tail call double @llvm.fmuladd.f64(double %sub2362.8, double %sub2362.8, double %2630)
+  %sub2362.9 = fsub double %2612, %div2355
+  %2632 = tail call double @llvm.fmuladd.f64(double %sub2362.9, double %sub2362.9, double %2631)
+  %sub2362.10 = fsub double %2613, %div2355
+  %2633 = tail call double @llvm.fmuladd.f64(double %sub2362.10, double %sub2362.10, double %2632)
+  %sub2362.11 = fsub double %2614, %div2355
+  %2634 = tail call double @llvm.fmuladd.f64(double %sub2362.11, double %sub2362.11, double %2633)
+  %sub2362.12 = fsub double %2615, %div2355
+  %2635 = tail call double @llvm.fmuladd.f64(double %sub2362.12, double %sub2362.12, double %2634)
+  %sub2362.13 = fsub double %2616, %div2355
+  %2636 = tail call double @llvm.fmuladd.f64(double %sub2362.13, double %sub2362.13, double %2635)
+  %sub2362.14 = fsub double %2617, %div2355
+  %2637 = tail call double @llvm.fmuladd.f64(double %sub2362.14, double %sub2362.14, double %2636)
+  %sub2362.15 = fsub double %2618, %div2355
+  %2638 = tail call double @llvm.fmuladd.f64(double %sub2362.15, double %sub2362.15, double %2637)
+  %sub2362.16 = fsub double %2619, %div2355
+  %2639 = tail call double @llvm.fmuladd.f64(double %sub2362.16, double %sub2362.16, double %2638)
+  %sub2362.17 = fsub double %2620, %div2355
+  %2640 = tail call double @llvm.fmuladd.f64(double %sub2362.17, double %sub2362.17, double %2639)
+  %sub2362.18 = fsub double %2621, %div2355
+  %2641 = tail call double @llvm.fmuladd.f64(double %sub2362.18, double %sub2362.18, double %2640)
+  %sub2362.19 = fsub double %2622, %div2355
+  %2642 = tail call double @llvm.fmuladd.f64(double %sub2362.19, double %sub2362.19, double %2641)
+  %div2370 = fdiv double %2642, 2.000000e+01
   %call2371 = tail call double @sqrt(double noundef %div2370) #15
-  %2733 = load <2 x double>, ptr @polarity, align 16
-  %2734 = insertelement <2 x double> poison, double %div2355, i64 0
-  %2735 = shufflevector <2 x double> %2734, <2 x double> poison, <2 x i32> zeroinitializer
-  %2736 = fsub <2 x double> %2733, %2735
-  %2737 = insertelement <2 x double> poison, double %call2371, i64 0
-  %2738 = shufflevector <2 x double> %2737, <2 x double> poison, <2 x i32> zeroinitializer
-  %2739 = fdiv <2 x double> %2736, %2738
-  store <2 x double> %2739, ptr @polarity, align 16
-  %2740 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 2), align 16
-  %2741 = fsub <2 x double> %2740, %2735
-  %2742 = fdiv <2 x double> %2741, %2738
-  store <2 x double> %2742, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 2), align 16
-  %2743 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 4), align 16
-  %2744 = fsub <2 x double> %2743, %2735
-  %2745 = fdiv <2 x double> %2744, %2738
-  store <2 x double> %2745, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 4), align 16
-  %2746 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 6), align 16
-  %2747 = fsub <2 x double> %2746, %2735
-  %2748 = fdiv <2 x double> %2747, %2738
-  store <2 x double> %2748, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 6), align 16
-  %2749 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 8), align 16
-  %2750 = fsub <2 x double> %2749, %2735
-  %2751 = fdiv <2 x double> %2750, %2738
-  store <2 x double> %2751, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 8), align 16
-  %2752 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 10), align 16
-  %2753 = fsub <2 x double> %2752, %2735
-  %2754 = fdiv <2 x double> %2753, %2738
-  store <2 x double> %2754, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 10), align 16
-  %2755 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 12), align 16
-  %2756 = fsub <2 x double> %2755, %2735
-  %2757 = fdiv <2 x double> %2756, %2738
-  store <2 x double> %2757, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 12), align 16
-  %2758 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 14), align 16
-  %2759 = fsub <2 x double> %2758, %2735
-  %2760 = fdiv <2 x double> %2759, %2738
-  store <2 x double> %2760, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 14), align 16
-  %2761 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 16), align 16
-  %2762 = fsub <2 x double> %2761, %2735
-  %2763 = fdiv <2 x double> %2762, %2738
-  store <2 x double> %2763, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 16), align 16
-  %2764 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 18), align 16
-  %2765 = fsub <2 x double> %2764, %2735
-  %2766 = fdiv <2 x double> %2765, %2738
-  store <2 x double> %2766, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 18), align 16
+  %2643 = load <2 x double>, ptr @polarity, align 16
+  %2644 = insertelement <2 x double> poison, double %div2355, i64 0
+  %2645 = shufflevector <2 x double> %2644, <2 x double> poison, <2 x i32> zeroinitializer
+  %2646 = fsub <2 x double> %2643, %2645
+  %2647 = insertelement <2 x double> poison, double %call2371, i64 0
+  %2648 = shufflevector <2 x double> %2647, <2 x double> poison, <2 x i32> zeroinitializer
+  %2649 = fdiv <2 x double> %2646, %2648
+  store <2 x double> %2649, ptr @polarity, align 16
+  %2650 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 2), align 16
+  %2651 = fsub <2 x double> %2650, %2645
+  %2652 = fdiv <2 x double> %2651, %2648
+  store <2 x double> %2652, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 2), align 16
+  %2653 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 4), align 16
+  %2654 = fsub <2 x double> %2653, %2645
+  %2655 = fdiv <2 x double> %2654, %2648
+  store <2 x double> %2655, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 4), align 16
+  %2656 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 6), align 16
+  %2657 = fsub <2 x double> %2656, %2645
+  %2658 = fdiv <2 x double> %2657, %2648
+  store <2 x double> %2658, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 6), align 16
+  %2659 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 8), align 16
+  %2660 = fsub <2 x double> %2659, %2645
+  %2661 = fdiv <2 x double> %2660, %2648
+  store <2 x double> %2661, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 8), align 16
+  %2662 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 10), align 16
+  %2663 = fsub <2 x double> %2662, %2645
+  %2664 = fdiv <2 x double> %2663, %2648
+  store <2 x double> %2664, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 10), align 16
+  %2665 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 12), align 16
+  %2666 = fsub <2 x double> %2665, %2645
+  %2667 = fdiv <2 x double> %2666, %2648
+  store <2 x double> %2667, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 12), align 16
+  %2668 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 14), align 16
+  %2669 = fsub <2 x double> %2668, %2645
+  %2670 = fdiv <2 x double> %2669, %2648
+  store <2 x double> %2670, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 14), align 16
+  %2671 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 16), align 16
+  %2672 = fsub <2 x double> %2671, %2645
+  %2673 = fdiv <2 x double> %2672, %2648
+  store <2 x double> %2673, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 16), align 16
+  %2674 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 18), align 16
+  %2675 = fsub <2 x double> %2674, %2645
+  %2676 = fdiv <2 x double> %2675, %2648
+  store <2 x double> %2676, ptr getelementptr inbounds ([20 x double], ptr @polarity, i64 0, i64 18), align 16
   tail call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 16 dereferenceable(160) @volume, ptr noundef nonnull align 16 dereferenceable(160) @volume_, i64 160, i1 false)
-  %2767 = load double, ptr @volume, align 16
-  %add2409 = fadd double %2767, 0.000000e+00
-  %2768 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 1), align 8
-  %add2409.1 = fadd double %add2409, %2768
-  %2769 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 2), align 16
-  %add2409.2 = fadd double %add2409.1, %2769
-  %2770 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 3), align 8
-  %add2409.3 = fadd double %add2409.2, %2770
-  %2771 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 4), align 16
-  %add2409.4 = fadd double %add2409.3, %2771
-  %2772 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 5), align 8
-  %add2409.5 = fadd double %add2409.4, %2772
-  %2773 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 6), align 16
-  %add2409.6 = fadd double %add2409.5, %2773
-  %2774 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 7), align 8
-  %add2409.7 = fadd double %add2409.6, %2774
-  %2775 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 8), align 16
-  %add2409.8 = fadd double %add2409.7, %2775
-  %2776 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 9), align 8
-  %add2409.9 = fadd double %add2409.8, %2776
-  %2777 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 10), align 16
-  %add2409.10 = fadd double %add2409.9, %2777
-  %2778 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 11), align 8
-  %add2409.11 = fadd double %add2409.10, %2778
-  %2779 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 12), align 16
-  %add2409.12 = fadd double %add2409.11, %2779
-  %2780 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 13), align 8
-  %add2409.13 = fadd double %add2409.12, %2780
-  %2781 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 14), align 16
-  %add2409.14 = fadd double %add2409.13, %2781
-  %2782 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 15), align 8
-  %add2409.15 = fadd double %add2409.14, %2782
-  %2783 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 16), align 16
-  %add2409.16 = fadd double %add2409.15, %2783
-  %2784 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 17), align 8
-  %add2409.17 = fadd double %add2409.16, %2784
-  %2785 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 18), align 16
-  %add2409.18 = fadd double %add2409.17, %2785
-  %2786 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 19), align 8
-  %add2409.19 = fadd double %add2409.18, %2786
+  %2677 = load double, ptr @volume, align 16
+  %add2409 = fadd double %2677, 0.000000e+00
+  %2678 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 1), align 8
+  %add2409.1 = fadd double %add2409, %2678
+  %2679 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 2), align 16
+  %add2409.2 = fadd double %add2409.1, %2679
+  %2680 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 3), align 8
+  %add2409.3 = fadd double %add2409.2, %2680
+  %2681 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 4), align 16
+  %add2409.4 = fadd double %add2409.3, %2681
+  %2682 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 5), align 8
+  %add2409.5 = fadd double %add2409.4, %2682
+  %2683 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 6), align 16
+  %add2409.6 = fadd double %add2409.5, %2683
+  %2684 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 7), align 8
+  %add2409.7 = fadd double %add2409.6, %2684
+  %2685 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 8), align 16
+  %add2409.8 = fadd double %add2409.7, %2685
+  %2686 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 9), align 8
+  %add2409.9 = fadd double %add2409.8, %2686
+  %2687 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 10), align 16
+  %add2409.10 = fadd double %add2409.9, %2687
+  %2688 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 11), align 8
+  %add2409.11 = fadd double %add2409.10, %2688
+  %2689 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 12), align 16
+  %add2409.12 = fadd double %add2409.11, %2689
+  %2690 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 13), align 8
+  %add2409.13 = fadd double %add2409.12, %2690
+  %2691 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 14), align 16
+  %add2409.14 = fadd double %add2409.13, %2691
+  %2692 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 15), align 8
+  %add2409.15 = fadd double %add2409.14, %2692
+  %2693 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 16), align 16
+  %add2409.16 = fadd double %add2409.15, %2693
+  %2694 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 17), align 8
+  %add2409.17 = fadd double %add2409.16, %2694
+  %2695 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 18), align 16
+  %add2409.18 = fadd double %add2409.17, %2695
+  %2696 = load double, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 19), align 8
+  %add2409.19 = fadd double %add2409.18, %2696
   %div2413 = fdiv double %add2409.19, 2.000000e+01
-  %sub2420 = fsub double %2767, %div2413
-  %2787 = tail call double @llvm.fmuladd.f64(double %sub2420, double %sub2420, double 0.000000e+00)
-  %sub2420.1 = fsub double %2768, %div2413
-  %2788 = tail call double @llvm.fmuladd.f64(double %sub2420.1, double %sub2420.1, double %2787)
-  %sub2420.2 = fsub double %2769, %div2413
-  %2789 = tail call double @llvm.fmuladd.f64(double %sub2420.2, double %sub2420.2, double %2788)
-  %sub2420.3 = fsub double %2770, %div2413
-  %2790 = tail call double @llvm.fmuladd.f64(double %sub2420.3, double %sub2420.3, double %2789)
-  %sub2420.4 = fsub double %2771, %div2413
-  %2791 = tail call double @llvm.fmuladd.f64(double %sub2420.4, double %sub2420.4, double %2790)
-  %sub2420.5 = fsub double %2772, %div2413
-  %2792 = tail call double @llvm.fmuladd.f64(double %sub2420.5, double %sub2420.5, double %2791)
-  %sub2420.6 = fsub double %2773, %div2413
-  %2793 = tail call double @llvm.fmuladd.f64(double %sub2420.6, double %sub2420.6, double %2792)
-  %sub2420.7 = fsub double %2774, %div2413
-  %2794 = tail call double @llvm.fmuladd.f64(double %sub2420.7, double %sub2420.7, double %2793)
-  %sub2420.8 = fsub double %2775, %div2413
-  %2795 = tail call double @llvm.fmuladd.f64(double %sub2420.8, double %sub2420.8, double %2794)
-  %sub2420.9 = fsub double %2776, %div2413
-  %2796 = tail call double @llvm.fmuladd.f64(double %sub2420.9, double %sub2420.9, double %2795)
-  %sub2420.10 = fsub double %2777, %div2413
-  %2797 = tail call double @llvm.fmuladd.f64(double %sub2420.10, double %sub2420.10, double %2796)
-  %sub2420.11 = fsub double %2778, %div2413
-  %2798 = tail call double @llvm.fmuladd.f64(double %sub2420.11, double %sub2420.11, double %2797)
-  %sub2420.12 = fsub double %2779, %div2413
-  %2799 = tail call double @llvm.fmuladd.f64(double %sub2420.12, double %sub2420.12, double %2798)
-  %sub2420.13 = fsub double %2780, %div2413
-  %2800 = tail call double @llvm.fmuladd.f64(double %sub2420.13, double %sub2420.13, double %2799)
-  %sub2420.14 = fsub double %2781, %div2413
-  %2801 = tail call double @llvm.fmuladd.f64(double %sub2420.14, double %sub2420.14, double %2800)
-  %sub2420.15 = fsub double %2782, %div2413
-  %2802 = tail call double @llvm.fmuladd.f64(double %sub2420.15, double %sub2420.15, double %2801)
-  %sub2420.16 = fsub double %2783, %div2413
-  %2803 = tail call double @llvm.fmuladd.f64(double %sub2420.16, double %sub2420.16, double %2802)
-  %sub2420.17 = fsub double %2784, %div2413
-  %2804 = tail call double @llvm.fmuladd.f64(double %sub2420.17, double %sub2420.17, double %2803)
-  %sub2420.18 = fsub double %2785, %div2413
-  %2805 = tail call double @llvm.fmuladd.f64(double %sub2420.18, double %sub2420.18, double %2804)
-  %sub2420.19 = fsub double %2786, %div2413
-  %2806 = tail call double @llvm.fmuladd.f64(double %sub2420.19, double %sub2420.19, double %2805)
-  %div2428 = fdiv double %2806, 2.000000e+01
+  %sub2420 = fsub double %2677, %div2413
+  %2697 = tail call double @llvm.fmuladd.f64(double %sub2420, double %sub2420, double 0.000000e+00)
+  %sub2420.1 = fsub double %2678, %div2413
+  %2698 = tail call double @llvm.fmuladd.f64(double %sub2420.1, double %sub2420.1, double %2697)
+  %sub2420.2 = fsub double %2679, %div2413
+  %2699 = tail call double @llvm.fmuladd.f64(double %sub2420.2, double %sub2420.2, double %2698)
+  %sub2420.3 = fsub double %2680, %div2413
+  %2700 = tail call double @llvm.fmuladd.f64(double %sub2420.3, double %sub2420.3, double %2699)
+  %sub2420.4 = fsub double %2681, %div2413
+  %2701 = tail call double @llvm.fmuladd.f64(double %sub2420.4, double %sub2420.4, double %2700)
+  %sub2420.5 = fsub double %2682, %div2413
+  %2702 = tail call double @llvm.fmuladd.f64(double %sub2420.5, double %sub2420.5, double %2701)
+  %sub2420.6 = fsub double %2683, %div2413
+  %2703 = tail call double @llvm.fmuladd.f64(double %sub2420.6, double %sub2420.6, double %2702)
+  %sub2420.7 = fsub double %2684, %div2413
+  %2704 = tail call double @llvm.fmuladd.f64(double %sub2420.7, double %sub2420.7, double %2703)
+  %sub2420.8 = fsub double %2685, %div2413
+  %2705 = tail call double @llvm.fmuladd.f64(double %sub2420.8, double %sub2420.8, double %2704)
+  %sub2420.9 = fsub double %2686, %div2413
+  %2706 = tail call double @llvm.fmuladd.f64(double %sub2420.9, double %sub2420.9, double %2705)
+  %sub2420.10 = fsub double %2687, %div2413
+  %2707 = tail call double @llvm.fmuladd.f64(double %sub2420.10, double %sub2420.10, double %2706)
+  %sub2420.11 = fsub double %2688, %div2413
+  %2708 = tail call double @llvm.fmuladd.f64(double %sub2420.11, double %sub2420.11, double %2707)
+  %sub2420.12 = fsub double %2689, %div2413
+  %2709 = tail call double @llvm.fmuladd.f64(double %sub2420.12, double %sub2420.12, double %2708)
+  %sub2420.13 = fsub double %2690, %div2413
+  %2710 = tail call double @llvm.fmuladd.f64(double %sub2420.13, double %sub2420.13, double %2709)
+  %sub2420.14 = fsub double %2691, %div2413
+  %2711 = tail call double @llvm.fmuladd.f64(double %sub2420.14, double %sub2420.14, double %2710)
+  %sub2420.15 = fsub double %2692, %div2413
+  %2712 = tail call double @llvm.fmuladd.f64(double %sub2420.15, double %sub2420.15, double %2711)
+  %sub2420.16 = fsub double %2693, %div2413
+  %2713 = tail call double @llvm.fmuladd.f64(double %sub2420.16, double %sub2420.16, double %2712)
+  %sub2420.17 = fsub double %2694, %div2413
+  %2714 = tail call double @llvm.fmuladd.f64(double %sub2420.17, double %sub2420.17, double %2713)
+  %sub2420.18 = fsub double %2695, %div2413
+  %2715 = tail call double @llvm.fmuladd.f64(double %sub2420.18, double %sub2420.18, double %2714)
+  %sub2420.19 = fsub double %2696, %div2413
+  %2716 = tail call double @llvm.fmuladd.f64(double %sub2420.19, double %sub2420.19, double %2715)
+  %div2428 = fdiv double %2716, 2.000000e+01
   %call2429 = tail call double @sqrt(double noundef %div2428) #15
-  %2807 = load <2 x double>, ptr @volume, align 16
-  %2808 = insertelement <2 x double> poison, double %div2413, i64 0
-  %2809 = shufflevector <2 x double> %2808, <2 x double> poison, <2 x i32> zeroinitializer
-  %2810 = fsub <2 x double> %2807, %2809
-  %2811 = insertelement <2 x double> poison, double %call2429, i64 0
-  %2812 = shufflevector <2 x double> %2811, <2 x double> poison, <2 x i32> zeroinitializer
-  %2813 = fdiv <2 x double> %2810, %2812
-  store <2 x double> %2813, ptr @volume, align 16
-  %2814 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 2), align 16
-  %2815 = fsub <2 x double> %2814, %2809
-  %2816 = fdiv <2 x double> %2815, %2812
-  store <2 x double> %2816, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 2), align 16
-  %2817 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 4), align 16
-  %2818 = fsub <2 x double> %2817, %2809
-  %2819 = fdiv <2 x double> %2818, %2812
-  store <2 x double> %2819, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 4), align 16
-  %2820 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 6), align 16
-  %2821 = fsub <2 x double> %2820, %2809
-  %2822 = fdiv <2 x double> %2821, %2812
-  store <2 x double> %2822, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 6), align 16
-  %2823 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 8), align 16
-  %2824 = fsub <2 x double> %2823, %2809
-  %2825 = fdiv <2 x double> %2824, %2812
-  store <2 x double> %2825, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 8), align 16
-  %2826 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 10), align 16
-  %2827 = fsub <2 x double> %2826, %2809
-  %2828 = fdiv <2 x double> %2827, %2812
-  store <2 x double> %2828, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 10), align 16
-  %2829 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 12), align 16
-  %2830 = fsub <2 x double> %2829, %2809
-  %2831 = fdiv <2 x double> %2830, %2812
-  store <2 x double> %2831, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 12), align 16
-  %2832 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 14), align 16
-  %2833 = fsub <2 x double> %2832, %2809
-  %2834 = fdiv <2 x double> %2833, %2812
-  store <2 x double> %2834, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 14), align 16
-  %2835 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 16), align 16
-  %2836 = fsub <2 x double> %2835, %2809
-  %2837 = fdiv <2 x double> %2836, %2812
-  store <2 x double> %2837, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 16), align 16
-  %2838 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 18), align 16
-  %2839 = fsub <2 x double> %2838, %2809
-  %2840 = fdiv <2 x double> %2839, %2812
-  store <2 x double> %2840, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 18), align 16
+  %2717 = load <2 x double>, ptr @volume, align 16
+  %2718 = insertelement <2 x double> poison, double %div2413, i64 0
+  %2719 = shufflevector <2 x double> %2718, <2 x double> poison, <2 x i32> zeroinitializer
+  %2720 = fsub <2 x double> %2717, %2719
+  %2721 = insertelement <2 x double> poison, double %call2429, i64 0
+  %2722 = shufflevector <2 x double> %2721, <2 x double> poison, <2 x i32> zeroinitializer
+  %2723 = fdiv <2 x double> %2720, %2722
+  store <2 x double> %2723, ptr @volume, align 16
+  %2724 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 2), align 16
+  %2725 = fsub <2 x double> %2724, %2719
+  %2726 = fdiv <2 x double> %2725, %2722
+  store <2 x double> %2726, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 2), align 16
+  %2727 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 4), align 16
+  %2728 = fsub <2 x double> %2727, %2719
+  %2729 = fdiv <2 x double> %2728, %2722
+  store <2 x double> %2729, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 4), align 16
+  %2730 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 6), align 16
+  %2731 = fsub <2 x double> %2730, %2719
+  %2732 = fdiv <2 x double> %2731, %2722
+  store <2 x double> %2732, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 6), align 16
+  %2733 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 8), align 16
+  %2734 = fsub <2 x double> %2733, %2719
+  %2735 = fdiv <2 x double> %2734, %2722
+  store <2 x double> %2735, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 8), align 16
+  %2736 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 10), align 16
+  %2737 = fsub <2 x double> %2736, %2719
+  %2738 = fdiv <2 x double> %2737, %2722
+  store <2 x double> %2738, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 10), align 16
+  %2739 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 12), align 16
+  %2740 = fsub <2 x double> %2739, %2719
+  %2741 = fdiv <2 x double> %2740, %2722
+  store <2 x double> %2741, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 12), align 16
+  %2742 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 14), align 16
+  %2743 = fsub <2 x double> %2742, %2719
+  %2744 = fdiv <2 x double> %2743, %2722
+  store <2 x double> %2744, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 14), align 16
+  %2745 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 16), align 16
+  %2746 = fsub <2 x double> %2745, %2719
+  %2747 = fdiv <2 x double> %2746, %2722
+  store <2 x double> %2747, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 16), align 16
+  %2748 = load <2 x double>, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 18), align 16
+  %2749 = fsub <2 x double> %2748, %2719
+  %2750 = fdiv <2 x double> %2749, %2722
+  store <2 x double> %2750, ptr getelementptr inbounds ([20 x double], ptr @volume, i64 0, i64 18), align 16
   br label %if.end2450
 
 if.end2450:                                       ; preds = %for.body2337.preheader, %if.end2331
@@ -9424,86 +8861,34 @@ for.body3:                                        ; preds = %for.body3.preheader
 
 for.body9.preheader:                              ; preds = %for.body3
   %wide.trip.count = and i64 %call, 4294967295
-  %xtraiter = and i64 %call, 1
-  %1 = icmp eq i64 %wide.trip.count, 1
-  br i1 %1, label %for.inc31.loopexit.unr-lcssa, label %for.body9.preheader.new
-
-for.body9.preheader.new:                          ; preds = %for.body9.preheader
-  %unroll_iter = sub nsw i64 %wide.trip.count, %xtraiter
   br label %for.body9
 
-for.body9:                                        ; preds = %for.inc28.1, %for.body9.preheader.new
-  %indvars.iv = phi i64 [ 0, %for.body9.preheader.new ], [ %indvars.iv.next.1, %for.inc28.1 ]
-  %niter = phi i64 [ 0, %for.body9.preheader.new ], [ %niter.next.1, %for.inc28.1 ]
+for.body9:                                        ; preds = %for.body9.preheader, %for.inc28
+  %indvars.iv = phi i64 [ 0, %for.body9.preheader ], [ %indvars.iv.next, %for.inc28 ]
   %arrayidx13 = getelementptr inbounds i8, ptr %0, i64 %indvars.iv
-  %2 = load i8, ptr %arrayidx13, align 1
-  %idxprom15 = sext i8 %2 to i64
+  %1 = load i8, ptr %arrayidx13, align 1
+  %idxprom15 = sext i8 %1 to i64
   %arrayidx16 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom15
-  %3 = load i32, ptr %arrayidx16, align 4
-  %cmp17 = icmp eq i32 %3, 4
-  %spec.store.select = select i1 %cmp17, i32 3, i32 %3
+  %2 = load i32, ptr %arrayidx16, align 4
+  %cmp17 = icmp eq i32 %2, 4
+  %spec.store.select = select i1 %cmp17, i32 3, i32 %2
   %or.cond = icmp ult i32 %spec.store.select, 4
   br i1 %or.cond, label %if.then23, label %for.inc28
 
 if.then23:                                        ; preds = %for.body9
   %idxprom24 = zext i32 %spec.store.select to i64
   %arrayidx25 = getelementptr inbounds double, ptr %datafreq, i64 %idxprom24
-  %4 = load double, ptr %arrayidx25, align 8
-  %add = fadd double %4, 1.000000e+00
+  %3 = load double, ptr %arrayidx25, align 8
+  %add = fadd double %3, 1.000000e+00
   store double %add, ptr %arrayidx25, align 8
   br label %for.inc28
 
 for.inc28:                                        ; preds = %for.body9, %if.then23
-  %indvars.iv.next = or i64 %indvars.iv, 1
-  %arrayidx13.1 = getelementptr inbounds i8, ptr %0, i64 %indvars.iv.next
-  %5 = load i8, ptr %arrayidx13.1, align 1
-  %idxprom15.1 = sext i8 %5 to i64
-  %arrayidx16.1 = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom15.1
-  %6 = load i32, ptr %arrayidx16.1, align 4
-  %cmp17.1 = icmp eq i32 %6, 4
-  %spec.store.select.1 = select i1 %cmp17.1, i32 3, i32 %6
-  %or.cond.1 = icmp ult i32 %spec.store.select.1, 4
-  br i1 %or.cond.1, label %if.then23.1, label %for.inc28.1
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond.not = icmp eq i64 %indvars.iv.next, %wide.trip.count
+  br i1 %exitcond.not, label %for.inc31, label %for.body9
 
-if.then23.1:                                      ; preds = %for.inc28
-  %idxprom24.1 = zext i32 %spec.store.select.1 to i64
-  %arrayidx25.1 = getelementptr inbounds double, ptr %datafreq, i64 %idxprom24.1
-  %7 = load double, ptr %arrayidx25.1, align 8
-  %add.1 = fadd double %7, 1.000000e+00
-  store double %add.1, ptr %arrayidx25.1, align 8
-  br label %for.inc28.1
-
-for.inc28.1:                                      ; preds = %if.then23.1, %for.inc28
-  %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv, 2
-  %niter.next.1 = add i64 %niter, 2
-  %niter.ncmp.1 = icmp eq i64 %niter.next.1, %unroll_iter
-  br i1 %niter.ncmp.1, label %for.inc31.loopexit.unr-lcssa, label %for.body9
-
-for.inc31.loopexit.unr-lcssa:                     ; preds = %for.inc28.1, %for.body9.preheader
-  %indvars.iv.unr = phi i64 [ 0, %for.body9.preheader ], [ %indvars.iv.next.1, %for.inc28.1 ]
-  %lcmp.mod.not = icmp eq i64 %xtraiter, 0
-  br i1 %lcmp.mod.not, label %for.inc31, label %for.body9.epil
-
-for.body9.epil:                                   ; preds = %for.inc31.loopexit.unr-lcssa
-  %arrayidx13.epil = getelementptr inbounds i8, ptr %0, i64 %indvars.iv.unr
-  %8 = load i8, ptr %arrayidx13.epil, align 1
-  %idxprom15.epil = sext i8 %8 to i64
-  %arrayidx16.epil = getelementptr inbounds [128 x i32], ptr @amino_n, i64 0, i64 %idxprom15.epil
-  %9 = load i32, ptr %arrayidx16.epil, align 4
-  %cmp17.epil = icmp eq i32 %9, 4
-  %spec.store.select.epil = select i1 %cmp17.epil, i32 3, i32 %9
-  %or.cond.epil = icmp ult i32 %spec.store.select.epil, 4
-  br i1 %or.cond.epil, label %if.then23.epil, label %for.inc31
-
-if.then23.epil:                                   ; preds = %for.body9.epil
-  %idxprom24.epil = zext i32 %spec.store.select.epil to i64
-  %arrayidx25.epil = getelementptr inbounds double, ptr %datafreq, i64 %idxprom24.epil
-  %10 = load double, ptr %arrayidx25.epil, align 8
-  %add.epil = fadd double %10, 1.000000e+00
-  store double %add.epil, ptr %arrayidx25.epil, align 8
-  br label %for.inc31
-
-for.inc31:                                        ; preds = %for.inc31.loopexit.unr-lcssa, %if.then23.epil, %for.body9.epil, %for.body3
+for.inc31:                                        ; preds = %for.inc28, %for.body3
   %indvars.iv.next111 = add nuw nsw i64 %indvars.iv110, 1
   %exitcond114.not = icmp eq i64 %indvars.iv.next111, %wide.trip.count113
   br i1 %exitcond114.not, label %for.cond34.preheader, label %for.body3
@@ -9512,29 +8897,29 @@ if.then42:                                        ; preds = %entry, %for.cond34.
   br label %for.inc46
 
 for.inc46:                                        ; preds = %for.cond34.preheader, %if.then42
-  %11 = phi double [ %.pre, %for.cond34.preheader ], [ 1.000000e-04, %if.then42 ]
+  %4 = phi double [ %.pre, %for.cond34.preheader ], [ 1.000000e-04, %if.then42 ]
   %arrayidx39.1 = getelementptr inbounds double, ptr %datafreq, i64 1
-  %12 = load double, ptr %arrayidx39.1, align 8
-  %cmp40.1 = fcmp olt double %12, 1.000000e-04
-  %13 = select i1 %cmp40.1, double 1.000000e-04, double %12
+  %5 = load double, ptr %arrayidx39.1, align 8
+  %cmp40.1 = fcmp olt double %5, 1.000000e-04
+  %6 = select i1 %cmp40.1, double 1.000000e-04, double %5
   %arrayidx39.2 = getelementptr inbounds double, ptr %datafreq, i64 2
-  %add55 = fadd double %11, 0.000000e+00
-  %add55.1 = fadd double %add55, %13
-  %14 = insertelement <2 x double> poison, double %11, i64 0
-  %15 = insertelement <2 x double> %14, double %13, i64 1
-  %16 = load <2 x double>, ptr %arrayidx39.2, align 8
-  %17 = fcmp olt <2 x double> %16, <double 1.000000e-04, double 1.000000e-04>
-  %18 = select <2 x i1> %17, <2 x double> <double 1.000000e-04, double 1.000000e-04>, <2 x double> %16
-  %19 = extractelement <2 x double> %18, i64 0
-  %add55.2 = fadd double %add55.1, %19
-  %20 = extractelement <2 x double> %18, i64 1
-  %add55.3 = fadd double %add55.2, %20
-  %21 = insertelement <2 x double> poison, double %add55.3, i64 0
-  %22 = shufflevector <2 x double> %21, <2 x double> poison, <2 x i32> zeroinitializer
-  %23 = fdiv <2 x double> %15, %22
-  store <2 x double> %23, ptr %datafreq, align 8
-  %24 = fdiv <2 x double> %18, %22
-  store <2 x double> %24, ptr %arrayidx39.2, align 8
+  %add55 = fadd double %4, 0.000000e+00
+  %add55.1 = fadd double %add55, %6
+  %7 = insertelement <2 x double> poison, double %4, i64 0
+  %8 = insertelement <2 x double> %7, double %6, i64 1
+  %9 = load <2 x double>, ptr %arrayidx39.2, align 8
+  %10 = fcmp olt <2 x double> %9, <double 1.000000e-04, double 1.000000e-04>
+  %11 = select <2 x i1> %10, <2 x double> <double 1.000000e-04, double 1.000000e-04>, <2 x double> %9
+  %12 = extractelement <2 x double> %11, i64 0
+  %add55.2 = fadd double %add55.1, %12
+  %13 = extractelement <2 x double> %11, i64 1
+  %add55.3 = fadd double %add55.2, %13
+  %14 = insertelement <2 x double> poison, double %add55.3, i64 0
+  %15 = shufflevector <2 x double> %14, <2 x double> poison, <2 x i32> zeroinitializer
+  %16 = fdiv <2 x double> %8, %15
+  store <2 x double> %16, ptr %datafreq, align 8
+  %17 = fdiv <2 x double> %11, %15
+  store <2 x double> %17, ptr %arrayidx39.2, align 8
   ret void
 }
 
@@ -10084,13 +9469,15 @@ attributes #18 = { nounwind willreturn memory(read) }
 !59 = distinct !{!59, !10}
 !60 = distinct !{!60, !10}
 !61 = distinct !{!61, !10}
-!62 = !{!63, !63, i64 0}
-!63 = !{!"float", !7, i64 0}
-!64 = distinct !{!64, !10}
-!65 = distinct !{!65, !10}
+!62 = distinct !{!62, !10}
+!63 = distinct !{!63, !10}
+!64 = !{!65, !65, i64 0}
+!65 = !{!"float", !7, i64 0}
 !66 = distinct !{!66, !10}
 !67 = distinct !{!67, !10}
 !68 = distinct !{!68, !10}
 !69 = distinct !{!69, !10}
 !70 = distinct !{!70, !10}
 !71 = distinct !{!71, !10}
+!72 = distinct !{!72, !10}
+!73 = distinct !{!73, !10}

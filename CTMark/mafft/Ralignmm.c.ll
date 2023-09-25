@@ -684,13 +684,13 @@ if.then17:                                        ; preds = %if.then12
   tail call void @FreeFloatMtx(ptr noundef %34) #12
   %35 = load ptr, ptr @R__align.intwork, align 8
   tail call void @FreeIntMtx(ptr noundef %35) #12
-  %.pre1537 = load i32, ptr @R__align.orlgth1, align 4
-  %.pre1538 = load i32, ptr @R__align.orlgth2, align 4
+  %.pre1536 = load i32, ptr @R__align.orlgth1, align 4
+  %.pre1537 = load i32, ptr @R__align.orlgth2, align 4
   br label %if.end18
 
 if.end18:                                         ; preds = %if.then17, %if.then12
-  %36 = phi i32 [ %.pre1538, %if.then17 ], [ %7, %if.then12 ]
-  %37 = phi i32 [ %.pre1537, %if.then17 ], [ %4, %if.then12 ]
+  %36 = phi i32 [ %.pre1537, %if.then17 ], [ %7, %if.then12 ]
+  %37 = phi i32 [ %.pre1536, %if.then17 ], [ %4, %if.then12 ]
   %conv19 = sitofp i32 %conv4 to double
   %mul = fmul double %conv19, 1.300000e+00
   %conv20 = fptosi double %mul to i32
@@ -814,12 +814,12 @@ for.body121.lr.ph:                                ; preds = %for.cond118.prehead
   %idxprom129 = ashr exact i64 %sext1233, 32
   %48 = sext i32 %icyc to i64
   %wide.trip.count1467 = zext i32 %jcyc to i64
-  %xtraiter1831 = and i64 %wide.trip.count1467, 1
+  %xtraiter1830 = and i64 %wide.trip.count1467, 1
   %49 = icmp eq i32 %jcyc, 1
   br i1 %49, label %for.end133.loopexit.unr-lcssa, label %for.body121.lr.ph.new
 
 for.body121.lr.ph.new:                            ; preds = %for.body121.lr.ph
-  %unroll_iter1833 = and i64 %wide.trip.count1467, 4294967294
+  %unroll_iter1832 = and i64 %wide.trip.count1467, 4294967294
   br label %for.body121
 
 for.body:                                         ; preds = %for.body, %for.body.lr.ph.new
@@ -849,7 +849,7 @@ for.body:                                         ; preds = %for.body, %for.body
 
 for.body121:                                      ; preds = %for.body121, %for.body121.lr.ph.new
   %indvars.iv1463 = phi i64 [ 0, %for.body121.lr.ph.new ], [ %indvars.iv.next1464.1, %for.body121 ]
-  %niter1834 = phi i64 [ 0, %for.body121.lr.ph.new ], [ %niter1834.next.1, %for.body121 ]
+  %niter1833 = phi i64 [ 0, %for.body121.lr.ph.new ], [ %niter1833.next.1, %for.body121 ]
   %54 = add nsw i64 %indvars.iv1463, %48
   %arrayidx124 = getelementptr inbounds ptr, ptr %46, i64 %54
   %55 = load ptr, ptr %arrayidx124, align 8
@@ -870,14 +870,14 @@ for.body121:                                      ; preds = %for.body121, %for.b
   %arrayidx130.1 = getelementptr inbounds i8, ptr %59, i64 %idxprom129
   store i8 0, ptr %arrayidx130.1, align 1
   %indvars.iv.next1464.1 = add nuw nsw i64 %indvars.iv1463, 2
-  %niter1834.next.1 = add i64 %niter1834, 2
-  %niter1834.ncmp.1 = icmp eq i64 %niter1834.next.1, %unroll_iter1833
-  br i1 %niter1834.ncmp.1, label %for.end133.loopexit.unr-lcssa, label %for.body121
+  %niter1833.next.1 = add i64 %niter1833, 2
+  %niter1833.ncmp.1 = icmp eq i64 %niter1833.next.1, %unroll_iter1832
+  br i1 %niter1833.ncmp.1, label %for.end133.loopexit.unr-lcssa, label %for.body121
 
 for.end133.loopexit.unr-lcssa:                    ; preds = %for.body121, %for.body121.lr.ph
   %indvars.iv1463.unr = phi i64 [ 0, %for.body121.lr.ph ], [ %indvars.iv.next1464.1, %for.body121 ]
-  %lcmp.mod1832.not = icmp eq i64 %xtraiter1831, 0
-  br i1 %lcmp.mod1832.not, label %for.end133, label %for.body121.epil
+  %lcmp.mod1831.not = icmp eq i64 %xtraiter1830, 0
+  br i1 %lcmp.mod1831.not, label %for.end133, label %for.body121.epil
 
 for.body121.epil:                                 ; preds = %for.end133.loopexit.unr-lcssa
   %60 = add nsw i64 %indvars.iv1463.unr, %48
@@ -894,35 +894,35 @@ for.body121.epil:                                 ; preds = %for.end133.loopexit
 for.end133:                                       ; preds = %for.body121.epil, %for.end133.loopexit.unr-lcssa, %for.cond118.preheader
   %63 = load i32, ptr @commonAlloc1, align 4
   %cmp134 = icmp sgt i32 %40, %63
-  %.pre1539 = load i32, ptr @commonAlloc2, align 4
-  %cmp137 = icmp sgt i32 %39, %.pre1539
-  %or.cond1553 = select i1 %cmp134, i1 true, i1 %cmp137
-  br i1 %or.cond1553, label %if.then139, label %lor.lhs.false136.if.end161_crit_edge
+  %.pre1538 = load i32, ptr @commonAlloc2, align 4
+  %cmp137 = icmp sgt i32 %39, %.pre1538
+  %or.cond1552 = select i1 %cmp134, i1 true, i1 %cmp137
+  br i1 %or.cond1552, label %if.then139, label %lor.lhs.false136.if.end161_crit_edge
 
 lor.lhs.false136.if.end161_crit_edge:             ; preds = %for.end133
-  %.pre1544 = load ptr, ptr @commonIP, align 8
+  %.pre1543 = load ptr, ptr @commonIP, align 8
   br label %if.end161
 
 if.then139:                                       ; preds = %for.end133
   %tobool = icmp ne i32 %63, 0
-  %tobool143 = icmp ne i32 %.pre1539, 0
+  %tobool143 = icmp ne i32 %.pre1538, 0
   %or.cond820 = select i1 %tobool, i1 %tobool143, i1 false
   br i1 %or.cond820, label %if.then144, label %if.end145
 
 if.then144:                                       ; preds = %if.then139
   %64 = load ptr, ptr @commonIP, align 8
   tail call void @FreeIntMtx(ptr noundef %64) #12
-  %.pre1540 = load i32, ptr @R__align.orlgth1, align 4
-  %.pre1541 = load i32, ptr @commonAlloc1, align 4
-  %.pre1542 = load i32, ptr @R__align.orlgth2, align 4
-  %.pre1543 = load i32, ptr @commonAlloc2, align 4
+  %.pre1539 = load i32, ptr @R__align.orlgth1, align 4
+  %.pre1540 = load i32, ptr @commonAlloc1, align 4
+  %.pre1541 = load i32, ptr @R__align.orlgth2, align 4
+  %.pre1542 = load i32, ptr @commonAlloc2, align 4
   br label %if.end145
 
 if.end145:                                        ; preds = %if.then144, %if.then139
-  %65 = phi i32 [ %.pre1543, %if.then144 ], [ %.pre1539, %if.then139 ]
-  %66 = phi i32 [ %.pre1542, %if.then144 ], [ %39, %if.then139 ]
-  %67 = phi i32 [ %.pre1541, %if.then144 ], [ %63, %if.then139 ]
-  %68 = phi i32 [ %.pre1540, %if.then144 ], [ %40, %if.then139 ]
+  %65 = phi i32 [ %.pre1542, %if.then144 ], [ %.pre1538, %if.then139 ]
+  %66 = phi i32 [ %.pre1541, %if.then144 ], [ %39, %if.then139 ]
+  %67 = phi i32 [ %.pre1540, %if.then144 ], [ %63, %if.then139 ]
+  %68 = phi i32 [ %.pre1539, %if.then144 ], [ %40, %if.then139 ]
   %cond151 = tail call i32 @llvm.smax.i32(i32 %68, i32 %67)
   %cond157 = tail call i32 @llvm.smax.i32(i32 %66, i32 %65)
   %add158 = add nsw i32 %cond151, 10
@@ -934,7 +934,7 @@ if.end145:                                        ; preds = %if.then144, %if.the
   br label %if.end161
 
 if.end161:                                        ; preds = %lor.lhs.false136.if.end161_crit_edge, %if.end145
-  %69 = phi ptr [ %.pre1544, %lor.lhs.false136.if.end161_crit_edge ], [ %call160, %if.end145 ]
+  %69 = phi ptr [ %.pre1543, %lor.lhs.false136.if.end161_crit_edge ], [ %call160, %if.end145 ]
   store ptr %69, ptr @R__align.ijp, align 8
   %70 = load ptr, ptr @R__align.cpmx1, align 8
   tail call void @cpmx_calc_new(ptr noundef nonnull %seq1, ptr noundef %70, ptr noundef %eff1, i32 noundef %conv4, i32 noundef %icyc) #12
@@ -1018,18 +1018,18 @@ for.body.lr.ph.i:                                 ; preds = %if.then166
   %104 = load ptr, ptr @impmtx, align 8
   %wide.trip.count.i = and i64 %call3, 4294967295
   %105 = add nsw i64 %wide.trip.count.i, -1
-  %xtraiter1835 = and i64 %call3, 3
+  %xtraiter1834 = and i64 %call3, 3
   %106 = icmp ult i64 %105, 3
   br i1 %106, label %imp_match_out_vead_tateR.exit.loopexit.unr-lcssa, label %for.body.lr.ph.i.new
 
 for.body.lr.ph.i.new:                             ; preds = %for.body.lr.ph.i
-  %unroll_iter1837 = sub nsw i64 %wide.trip.count.i, %xtraiter1835
+  %unroll_iter1836 = sub nsw i64 %wide.trip.count.i, %xtraiter1834
   br label %for.body.i
 
 for.body.i:                                       ; preds = %for.body.i, %for.body.lr.ph.i.new
   %indvars.iv.i = phi i64 [ 0, %for.body.lr.ph.i.new ], [ %indvars.iv.next.i.3, %for.body.i ]
   %imp.addr.06.i = phi ptr [ %103, %for.body.lr.ph.i.new ], [ %incdec.ptr.i.3, %for.body.i ]
-  %niter1838 = phi i64 [ 0, %for.body.lr.ph.i.new ], [ %niter1838.next.3, %for.body.i ]
+  %niter1837 = phi i64 [ 0, %for.body.lr.ph.i.new ], [ %niter1837.next.3, %for.body.i ]
   %arrayidx.i = getelementptr inbounds ptr, ptr %104, i64 %indvars.iv.i
   %107 = load ptr, ptr %arrayidx.i, align 8
   %108 = load float, ptr %107, align 4
@@ -1062,15 +1062,15 @@ for.body.i:                                       ; preds = %for.body.i, %for.bo
   %add.i.3 = fadd float %117, %118
   store float %add.i.3, ptr %incdec.ptr.i.2, align 4
   %indvars.iv.next.i.3 = add nuw nsw i64 %indvars.iv.i, 4
-  %niter1838.next.3 = add i64 %niter1838, 4
-  %niter1838.ncmp.3 = icmp eq i64 %niter1838.next.3, %unroll_iter1837
-  br i1 %niter1838.ncmp.3, label %imp_match_out_vead_tateR.exit.loopexit.unr-lcssa, label %for.body.i
+  %niter1837.next.3 = add i64 %niter1837, 4
+  %niter1837.ncmp.3 = icmp eq i64 %niter1837.next.3, %unroll_iter1836
+  br i1 %niter1837.ncmp.3, label %imp_match_out_vead_tateR.exit.loopexit.unr-lcssa, label %for.body.i
 
 imp_match_out_vead_tateR.exit.loopexit.unr-lcssa: ; preds = %for.body.i, %for.body.lr.ph.i
   %indvars.iv.i.unr = phi i64 [ 0, %for.body.lr.ph.i ], [ %indvars.iv.next.i.3, %for.body.i ]
   %imp.addr.06.i.unr = phi ptr [ %103, %for.body.lr.ph.i ], [ %incdec.ptr.i.3, %for.body.i ]
-  %lcmp.mod1836.not = icmp eq i64 %xtraiter1835, 0
-  br i1 %lcmp.mod1836.not, label %imp_match_out_vead_tateR.exit, label %for.body.i.epil
+  %lcmp.mod1835.not = icmp eq i64 %xtraiter1834, 0
+  br i1 %lcmp.mod1835.not, label %imp_match_out_vead_tateR.exit, label %for.body.i.epil
 
 for.body.i.epil:                                  ; preds = %imp_match_out_vead_tateR.exit.loopexit.unr-lcssa, %for.body.i.epil
   %indvars.iv.i.epil = phi i64 [ %indvars.iv.next.i.epil, %for.body.i.epil ], [ %indvars.iv.i.unr, %imp_match_out_vead_tateR.exit.loopexit.unr-lcssa ]
@@ -1085,7 +1085,7 @@ for.body.i.epil:                                  ; preds = %imp_match_out_vead_
   store float %add.i.epil, ptr %imp.addr.06.i.epil, align 4
   %indvars.iv.next.i.epil = add nuw nsw i64 %indvars.iv.i.epil, 1
   %epil.iter.next = add i64 %epil.iter, 1
-  %epil.iter.cmp.not = icmp eq i64 %epil.iter.next, %xtraiter1835
+  %epil.iter.cmp.not = icmp eq i64 %epil.iter.next, %xtraiter1834
   br i1 %epil.iter.cmp.not, label %imp_match_out_vead_tateR.exit, label %for.body.i.epil
 
 imp_match_out_vead_tateR.exit:                    ; preds = %imp_match_out_vead_tateR.exit.loopexit.unr-lcssa, %for.body.i.epil, %if.then166
@@ -1110,8 +1110,8 @@ vector.memcheck:                                  ; preds = %while.body.preheade
   %131 = and i64 %130, 17179869180
   %132 = add nuw nsw i64 %131, 4
   %scevgep = getelementptr i8, ptr %95, i64 %132
-  %scevgep1556 = getelementptr i8, ptr %127, i64 %132
-  %bound0 = icmp ult ptr %95, %scevgep1556
+  %scevgep1555 = getelementptr i8, ptr %127, i64 %132
+  %bound0 = icmp ult ptr %95, %scevgep1555
   %bound1 = icmp ult ptr %127, %scevgep
   %found.conflict = and i1 %bound0, %bound1
   br i1 %found.conflict, label %while.body.i.preheader, label %vector.ph
@@ -1122,9 +1122,9 @@ vector.ph:                                        ; preds = %vector.memcheck
   %133 = shl nsw i64 %n.vec, 2
   %ind.end = getelementptr i8, ptr %127, i64 %133
   %.cast = trunc i64 %n.vec to i32
-  %ind.end1557 = sub i32 %conv7, %.cast
+  %ind.end1556 = sub i32 %conv7, %.cast
   %134 = shl nsw i64 %n.vec, 2
-  %ind.end1559 = getelementptr i8, ptr %95, i64 %134
+  %ind.end1558 = getelementptr i8, ptr %95, i64 %134
   br label %vector.body
 
 vector.body:                                      ; preds = %vector.body, %vector.ph
@@ -1132,16 +1132,16 @@ vector.body:                                      ; preds = %vector.body, %vecto
   %135 = shl i64 %index, 2
   %next.gep = getelementptr i8, ptr %127, i64 %135
   %136 = shl i64 %index, 2
-  %next.gep1562 = getelementptr i8, ptr %95, i64 %136
+  %next.gep1561 = getelementptr i8, ptr %95, i64 %136
   %wide.load = load <4 x float>, ptr %next.gep, align 4
   %137 = getelementptr float, ptr %next.gep, i64 4
-  %wide.load1564 = load <4 x float>, ptr %137, align 4
-  %wide.load1565 = load <4 x float>, ptr %next.gep1562, align 4
-  %138 = getelementptr float, ptr %next.gep1562, i64 4
-  %wide.load1566 = load <4 x float>, ptr %138, align 4
-  %139 = fadd <4 x float> %wide.load, %wide.load1565
-  %140 = fadd <4 x float> %wide.load1564, %wide.load1566
-  store <4 x float> %139, ptr %next.gep1562, align 4
+  %wide.load1563 = load <4 x float>, ptr %137, align 4
+  %wide.load1564 = load <4 x float>, ptr %next.gep1561, align 4
+  %138 = getelementptr float, ptr %next.gep1561, i64 4
+  %wide.load1565 = load <4 x float>, ptr %138, align 4
+  %139 = fadd <4 x float> %wide.load, %wide.load1564
+  %140 = fadd <4 x float> %wide.load1563, %wide.load1565
+  store <4 x float> %139, ptr %next.gep1561, align 4
   store <4 x float> %140, ptr %138, align 4
   %index.next = add nuw i64 %index, 8
   %141 = icmp eq i64 %index.next, %n.vec
@@ -1153,12 +1153,12 @@ middle.block:                                     ; preds = %vector.body
 
 while.body.i.preheader:                           ; preds = %vector.memcheck, %while.body.preheader.i, %middle.block
   %pt.05.i.ph = phi ptr [ %127, %vector.memcheck ], [ %127, %while.body.preheader.i ], [ %ind.end, %middle.block ]
-  %lgth2.addr.04.i.ph = phi i32 [ %conv7, %vector.memcheck ], [ %conv7, %while.body.preheader.i ], [ %ind.end1557, %middle.block ]
-  %imp.addr.03.i.ph = phi ptr [ %95, %vector.memcheck ], [ %95, %while.body.preheader.i ], [ %ind.end1559, %middle.block ]
+  %lgth2.addr.04.i.ph = phi i32 [ %conv7, %vector.memcheck ], [ %conv7, %while.body.preheader.i ], [ %ind.end1556, %middle.block ]
+  %imp.addr.03.i.ph = phi ptr [ %95, %vector.memcheck ], [ %95, %while.body.preheader.i ], [ %ind.end1558, %middle.block ]
   %142 = add nsw i32 %lgth2.addr.04.i.ph, -1
-  %xtraiter1839 = and i32 %lgth2.addr.04.i.ph, 3
-  %lcmp.mod1840.not = icmp eq i32 %xtraiter1839, 0
-  br i1 %lcmp.mod1840.not, label %while.body.i.prol.loopexit, label %while.body.i.prol
+  %xtraiter1838 = and i32 %lgth2.addr.04.i.ph, 3
+  %lcmp.mod1839.not = icmp eq i32 %xtraiter1838, 0
+  br i1 %lcmp.mod1839.not, label %while.body.i.prol.loopexit, label %while.body.i.prol
 
 while.body.i.prol:                                ; preds = %while.body.i.preheader, %while.body.i.prol
   %pt.05.i.prol = phi ptr [ %incdec.ptr.i1236.prol, %while.body.i.prol ], [ %pt.05.i.ph, %while.body.i.preheader ]
@@ -1173,7 +1173,7 @@ while.body.i.prol:                                ; preds = %while.body.i.prehea
   %add.i1237.prol = fadd float %143, %144
   store float %add.i1237.prol, ptr %imp.addr.03.i.prol, align 4
   %prol.iter.next = add i32 %prol.iter, 1
-  %prol.iter.cmp.not = icmp eq i32 %prol.iter.next, %xtraiter1839
+  %prol.iter.cmp.not = icmp eq i32 %prol.iter.next, %xtraiter1838
   br i1 %prol.iter.cmp.not, label %while.body.i.prol.loopexit, label %while.body.i.prol
 
 while.body.i.prol.loopexit:                       ; preds = %while.body.i.prol, %while.body.i.preheader
@@ -1230,8 +1230,8 @@ if.end170:                                        ; preds = %while.body.i.prol.l
 
 if.end170.thread:                                 ; preds = %imp_match_out_vead_tateR.exit
   %159 = load i32, ptr @outgap, align 4
-  %cmp1711548 = icmp eq i32 %159, 1
-  br i1 %cmp1711548, label %if.then173, label %for.cond409.preheader
+  %cmp1711547 = icmp eq i32 %159, 1
+  br i1 %cmp1711547, label %if.then173, label %for.cond409.preheader
 
 for.cond394.preheader:                            ; preds = %if.end170
   %cmp396.not1415 = icmp slt i32 %conv7, 1
@@ -1242,40 +1242,40 @@ for.body398.lr.ph:                                ; preds = %for.cond394.prehead
   %161 = add i64 %call6, 1
   %wide.trip.count1472 = and i64 %161, 4294967295
   %162 = add nsw i64 %wide.trip.count1472, -1
-  %min.iters.check1569 = icmp ult i64 %162, 4
-  br i1 %min.iters.check1569, label %for.body398.preheader, label %vector.ph1570
+  %min.iters.check1568 = icmp ult i64 %162, 4
+  br i1 %min.iters.check1568, label %for.body398.preheader, label %vector.ph1569
 
-vector.ph1570:                                    ; preds = %for.body398.lr.ph
-  %n.vec1572 = and i64 %162, -4
-  %ind.end1573 = or i64 %n.vec1572, 1
+vector.ph1569:                                    ; preds = %for.body398.lr.ph
+  %n.vec1571 = and i64 %162, -4
+  %ind.end1572 = or i64 %n.vec1571, 1
   %broadcast.splatinsert = insertelement <4 x i32> poison, i32 %160, i64 0
   %broadcast.splat = shufflevector <4 x i32> %broadcast.splatinsert, <4 x i32> poison, <4 x i32> zeroinitializer
-  br label %vector.body1576
+  br label %vector.body1575
 
-vector.body1576:                                  ; preds = %vector.body1576, %vector.ph1570
-  %index1577 = phi i64 [ 0, %vector.ph1570 ], [ %index.next1579, %vector.body1576 ]
-  %vec.ind = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1570 ], [ %vec.ind.next, %vector.body1576 ]
-  %offset.idx = or i64 %index1577, 1
+vector.body1575:                                  ; preds = %vector.body1575, %vector.ph1569
+  %index1576 = phi i64 [ 0, %vector.ph1569 ], [ %index.next1578, %vector.body1575 ]
+  %vec.ind = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1569 ], [ %vec.ind.next, %vector.body1575 ]
+  %offset.idx = or i64 %index1576, 1
   %163 = mul nsw <4 x i32> %broadcast.splat, %vec.ind
   %164 = sitofp <4 x i32> %163 to <4 x double>
   %165 = fmul <4 x double> %164, <double 5.000000e-01, double 5.000000e-01, double 5.000000e-01, double 5.000000e-01>
   %166 = getelementptr inbounds float, ptr %95, i64 %offset.idx
-  %wide.load1578 = load <4 x float>, ptr %166, align 4
-  %167 = fpext <4 x float> %wide.load1578 to <4 x double>
+  %wide.load1577 = load <4 x float>, ptr %166, align 4
+  %167 = fpext <4 x float> %wide.load1577 to <4 x double>
   %168 = fsub <4 x double> %167, %165
   %169 = fptrunc <4 x double> %168 to <4 x float>
   store <4 x float> %169, ptr %166, align 4
-  %index.next1579 = add nuw i64 %index1577, 4
+  %index.next1578 = add nuw i64 %index1576, 4
   %vec.ind.next = add <4 x i32> %vec.ind, <i32 4, i32 4, i32 4, i32 4>
-  %170 = icmp eq i64 %index.next1579, %n.vec1572
-  br i1 %170, label %middle.block1567, label %vector.body1576
+  %170 = icmp eq i64 %index.next1578, %n.vec1571
+  br i1 %170, label %middle.block1566, label %vector.body1575
 
-middle.block1567:                                 ; preds = %vector.body1576
-  %cmp.n1575 = icmp eq i64 %162, %n.vec1572
-  br i1 %cmp.n1575, label %for.cond409.preheader, label %for.body398.preheader
+middle.block1566:                                 ; preds = %vector.body1575
+  %cmp.n1574 = icmp eq i64 %162, %n.vec1571
+  br i1 %cmp.n1574, label %for.cond409.preheader, label %for.body398.preheader
 
-for.body398.preheader:                            ; preds = %for.body398.lr.ph, %middle.block1567
-  %indvars.iv1469.ph = phi i64 [ 1, %for.body398.lr.ph ], [ %ind.end1573, %middle.block1567 ]
+for.body398.preheader:                            ; preds = %for.body398.lr.ph, %middle.block1566
+  %indvars.iv1469.ph = phi i64 [ 1, %for.body398.lr.ph ], [ %ind.end1572, %middle.block1566 ]
   br label %for.body398
 
 if.then173:                                       ; preds = %if.end170.thread, %if.end170
@@ -1494,7 +1494,7 @@ for.body310:                                      ; preds = %for.body310.lr.ph, 
   %exitcond1488.not = icmp eq i64 %indvars.iv.next1485, %wide.trip.count1487
   br i1 %exitcond1488.not, label %if.end425, label %for.body310
 
-for.cond409.preheader:                            ; preds = %for.body398, %middle.block1567, %if.end170.thread, %for.cond394.preheader
+for.cond409.preheader:                            ; preds = %for.body398, %middle.block1566, %if.end170.thread, %for.cond394.preheader
   %cmp411.not1417 = icmp slt i32 %conv4, 1
   br i1 %cmp411.not1417, label %if.end425, label %for.body413.lr.ph
 
@@ -1504,40 +1504,40 @@ for.body413.lr.ph:                                ; preds = %for.cond409.prehead
   %229 = add i64 %call3, 1
   %wide.trip.count1477 = and i64 %229, 4294967295
   %230 = add nsw i64 %wide.trip.count1477, -1
-  %min.iters.check1582 = icmp ult i64 %230, 4
-  br i1 %min.iters.check1582, label %for.body413.preheader, label %vector.ph1583
+  %min.iters.check1581 = icmp ult i64 %230, 4
+  br i1 %min.iters.check1581, label %for.body413.preheader, label %vector.ph1582
 
-vector.ph1583:                                    ; preds = %for.body413.lr.ph
-  %n.vec1585 = and i64 %230, -4
-  %ind.end1586 = or i64 %n.vec1585, 1
-  %broadcast.splatinsert1594 = insertelement <4 x i32> poison, i32 %227, i64 0
-  %broadcast.splat1595 = shufflevector <4 x i32> %broadcast.splatinsert1594, <4 x i32> poison, <4 x i32> zeroinitializer
-  br label %vector.body1589
+vector.ph1582:                                    ; preds = %for.body413.lr.ph
+  %n.vec1584 = and i64 %230, -4
+  %ind.end1585 = or i64 %n.vec1584, 1
+  %broadcast.splatinsert1593 = insertelement <4 x i32> poison, i32 %227, i64 0
+  %broadcast.splat1594 = shufflevector <4 x i32> %broadcast.splatinsert1593, <4 x i32> poison, <4 x i32> zeroinitializer
+  br label %vector.body1588
 
-vector.body1589:                                  ; preds = %vector.body1589, %vector.ph1583
-  %index1590 = phi i64 [ 0, %vector.ph1583 ], [ %index.next1597, %vector.body1589 ]
-  %vec.ind1591 = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1583 ], [ %vec.ind.next1592, %vector.body1589 ]
-  %offset.idx1593 = or i64 %index1590, 1
-  %231 = mul nsw <4 x i32> %broadcast.splat1595, %vec.ind1591
+vector.body1588:                                  ; preds = %vector.body1588, %vector.ph1582
+  %index1589 = phi i64 [ 0, %vector.ph1582 ], [ %index.next1596, %vector.body1588 ]
+  %vec.ind1590 = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1582 ], [ %vec.ind.next1591, %vector.body1588 ]
+  %offset.idx1592 = or i64 %index1589, 1
+  %231 = mul nsw <4 x i32> %broadcast.splat1594, %vec.ind1590
   %232 = sitofp <4 x i32> %231 to <4 x double>
   %233 = fmul <4 x double> %232, <double 5.000000e-01, double 5.000000e-01, double 5.000000e-01, double 5.000000e-01>
-  %234 = getelementptr inbounds float, ptr %228, i64 %offset.idx1593
-  %wide.load1596 = load <4 x float>, ptr %234, align 4
-  %235 = fpext <4 x float> %wide.load1596 to <4 x double>
+  %234 = getelementptr inbounds float, ptr %228, i64 %offset.idx1592
+  %wide.load1595 = load <4 x float>, ptr %234, align 4
+  %235 = fpext <4 x float> %wide.load1595 to <4 x double>
   %236 = fsub <4 x double> %235, %233
   %237 = fptrunc <4 x double> %236 to <4 x float>
   store <4 x float> %237, ptr %234, align 4
-  %index.next1597 = add nuw i64 %index1590, 4
-  %vec.ind.next1592 = add <4 x i32> %vec.ind1591, <i32 4, i32 4, i32 4, i32 4>
-  %238 = icmp eq i64 %index.next1597, %n.vec1585
-  br i1 %238, label %middle.block1580, label %vector.body1589
+  %index.next1596 = add nuw i64 %index1589, 4
+  %vec.ind.next1591 = add <4 x i32> %vec.ind1590, <i32 4, i32 4, i32 4, i32 4>
+  %238 = icmp eq i64 %index.next1596, %n.vec1584
+  br i1 %238, label %middle.block1579, label %vector.body1588
 
-middle.block1580:                                 ; preds = %vector.body1589
-  %cmp.n1588 = icmp eq i64 %230, %n.vec1585
-  br i1 %cmp.n1588, label %if.end425, label %for.body413.preheader
+middle.block1579:                                 ; preds = %vector.body1588
+  %cmp.n1587 = icmp eq i64 %230, %n.vec1584
+  br i1 %cmp.n1587, label %if.end425, label %for.body413.preheader
 
-for.body413.preheader:                            ; preds = %for.body413.lr.ph, %middle.block1580
-  %indvars.iv1474.ph = phi i64 [ 1, %for.body413.lr.ph ], [ %ind.end1586, %middle.block1580 ]
+for.body413.preheader:                            ; preds = %for.body413.lr.ph, %middle.block1579
+  %indvars.iv1474.ph = phi i64 [ 1, %for.body413.lr.ph ], [ %ind.end1585, %middle.block1579 ]
   br label %for.body413
 
 for.body398:                                      ; preds = %for.body398.preheader, %for.body398
@@ -1572,7 +1572,7 @@ for.body413:                                      ; preds = %for.body413.prehead
   %exitcond1478.not = icmp eq i64 %indvars.iv.next1475, %wide.trip.count1477
   br i1 %exitcond1478.not, label %if.end425, label %for.body413
 
-if.end425:                                        ; preds = %for.body413, %for.body310, %middle.block1580, %for.cond409.preheader
+if.end425:                                        ; preds = %for.body413, %for.body310, %middle.block1579, %for.cond409.preheader
   %243 = load ptr, ptr @R__align.m, align 8
   %244 = ptrtoint ptr %243 to i64
   store float 0.000000e+00, ptr %243, align 4
@@ -1584,53 +1584,53 @@ for.body431.lr.ph:                                ; preds = %if.end425
   %246 = add i64 %call6, 1
   %wide.trip.count1493 = and i64 %246, 4294967295
   %247 = add nsw i64 %wide.trip.count1493, -1
-  %min.iters.check1601 = icmp ult i64 %247, 8
-  br i1 %min.iters.check1601, label %for.body431.preheader, label %vector.memcheck1598
+  %min.iters.check1600 = icmp ult i64 %247, 8
+  br i1 %min.iters.check1600, label %for.body431.preheader, label %vector.memcheck1597
 
-vector.memcheck1598:                              ; preds = %for.body431.lr.ph
+vector.memcheck1597:                              ; preds = %for.body431.lr.ph
   %248 = add i64 %244, 4
   %249 = sub i64 %248, %96
   %diff.check = icmp ult i64 %249, 32
-  br i1 %diff.check, label %for.body431.preheader, label %vector.ph1602
+  br i1 %diff.check, label %for.body431.preheader, label %vector.ph1601
 
-vector.ph1602:                                    ; preds = %vector.memcheck1598
-  %n.vec1604 = and i64 %247, -8
-  %ind.end1605 = or i64 %n.vec1604, 1
-  %broadcast.splatinsert1613 = insertelement <4 x float> poison, float %conv, i64 0
-  %broadcast.splat1614 = shufflevector <4 x float> %broadcast.splatinsert1613, <4 x float> poison, <4 x i32> zeroinitializer
-  br label %vector.body1608
+vector.ph1601:                                    ; preds = %vector.memcheck1597
+  %n.vec1603 = and i64 %247, -8
+  %ind.end1604 = or i64 %n.vec1603, 1
+  %broadcast.splatinsert1612 = insertelement <4 x float> poison, float %conv, i64 0
+  %broadcast.splat1613 = shufflevector <4 x float> %broadcast.splatinsert1612, <4 x float> poison, <4 x i32> zeroinitializer
+  br label %vector.body1607
 
-vector.body1608:                                  ; preds = %vector.body1608, %vector.ph1602
-  %index1609 = phi i64 [ 0, %vector.ph1602 ], [ %index.next1615, %vector.body1608 ]
-  %offset.idx1610 = or i64 %index1609, 1
-  %250 = getelementptr inbounds i32, ptr %245, i64 %offset.idx1610
+vector.body1607:                                  ; preds = %vector.body1607, %vector.ph1601
+  %index1608 = phi i64 [ 0, %vector.ph1601 ], [ %index.next1614, %vector.body1607 ]
+  %offset.idx1609 = or i64 %index1608, 1
+  %250 = getelementptr inbounds i32, ptr %245, i64 %offset.idx1609
   store <4 x i32> zeroinitializer, ptr %250, align 4
   %251 = getelementptr inbounds i32, ptr %250, i64 4
   store <4 x i32> zeroinitializer, ptr %251, align 4
-  %252 = getelementptr inbounds float, ptr %95, i64 %index1609
-  %wide.load1611 = load <4 x float>, ptr %252, align 4
+  %252 = getelementptr inbounds float, ptr %95, i64 %index1608
+  %wide.load1610 = load <4 x float>, ptr %252, align 4
   %253 = getelementptr inbounds float, ptr %252, i64 4
-  %wide.load1612 = load <4 x float>, ptr %253, align 4
-  %254 = tail call <4 x float> @llvm.fmuladd.v4f32(<4 x float> %broadcast.splat1614, <4 x float> <float 1.000000e+04, float 1.000000e+04, float 1.000000e+04, float 1.000000e+04>, <4 x float> %wide.load1611)
-  %255 = tail call <4 x float> @llvm.fmuladd.v4f32(<4 x float> %broadcast.splat1614, <4 x float> <float 1.000000e+04, float 1.000000e+04, float 1.000000e+04, float 1.000000e+04>, <4 x float> %wide.load1612)
-  %256 = getelementptr inbounds float, ptr %243, i64 %offset.idx1610
+  %wide.load1611 = load <4 x float>, ptr %253, align 4
+  %254 = tail call <4 x float> @llvm.fmuladd.v4f32(<4 x float> %broadcast.splat1613, <4 x float> <float 1.000000e+04, float 1.000000e+04, float 1.000000e+04, float 1.000000e+04>, <4 x float> %wide.load1610)
+  %255 = tail call <4 x float> @llvm.fmuladd.v4f32(<4 x float> %broadcast.splat1613, <4 x float> <float 1.000000e+04, float 1.000000e+04, float 1.000000e+04, float 1.000000e+04>, <4 x float> %wide.load1611)
+  %256 = getelementptr inbounds float, ptr %243, i64 %offset.idx1609
   store <4 x float> %254, ptr %256, align 4
   %257 = getelementptr inbounds float, ptr %256, i64 4
   store <4 x float> %255, ptr %257, align 4
-  %index.next1615 = add nuw i64 %index1609, 8
-  %258 = icmp eq i64 %index.next1615, %n.vec1604
-  br i1 %258, label %middle.block1599, label %vector.body1608
+  %index.next1614 = add nuw i64 %index1608, 8
+  %258 = icmp eq i64 %index.next1614, %n.vec1603
+  br i1 %258, label %middle.block1598, label %vector.body1607
 
-middle.block1599:                                 ; preds = %vector.body1608
-  %cmp.n1607 = icmp eq i64 %247, %n.vec1604
-  br i1 %cmp.n1607, label %for.end442, label %for.body431.preheader
+middle.block1598:                                 ; preds = %vector.body1607
+  %cmp.n1606 = icmp eq i64 %247, %n.vec1603
+  br i1 %cmp.n1606, label %for.end442, label %for.body431.preheader
 
-for.body431.preheader:                            ; preds = %vector.memcheck1598, %for.body431.lr.ph, %middle.block1599
-  %indvars.iv1489.ph = phi i64 [ 1, %vector.memcheck1598 ], [ 1, %for.body431.lr.ph ], [ %ind.end1605, %middle.block1599 ]
+for.body431.preheader:                            ; preds = %vector.memcheck1597, %for.body431.lr.ph, %middle.block1598
+  %indvars.iv1489.ph = phi i64 [ 1, %vector.memcheck1597 ], [ 1, %for.body431.lr.ph ], [ %ind.end1604, %middle.block1598 ]
   %.neg = add nsw i64 %indvars.iv1489.ph, 1
-  %xtraiter1841 = and i64 %call6, 1
-  %lcmp.mod1842.not = icmp eq i64 %xtraiter1841, 0
-  br i1 %lcmp.mod1842.not, label %for.body431.prol.loopexit, label %for.body431.prol
+  %xtraiter1840 = and i64 %call6, 1
+  %lcmp.mod1841.not = icmp eq i64 %xtraiter1840, 0
+  br i1 %lcmp.mod1841.not, label %for.body431.prol.loopexit, label %for.body431.prol
 
 for.body431.prol:                                 ; preds = %for.body431.preheader
   %arrayidx433.prol = getelementptr inbounds i32, ptr %245, i64 %indvars.iv1489.ph
@@ -1671,8 +1671,8 @@ for.body431:                                      ; preds = %for.body431.prol.lo
   %exitcond1494.not.1 = icmp eq i64 %indvars.iv.next1490.1, %wide.trip.count1493
   br i1 %exitcond1494.not.1, label %for.end442, label %for.body431
 
-for.end442:                                       ; preds = %for.body431.prol.loopexit, %for.body431, %middle.block1599, %if.end425.thread, %if.end425
-  %cmp429.not14251551 = phi i1 [ true, %if.end425.thread ], [ true, %if.end425 ], [ %cmp429.not1425, %middle.block1599 ], [ %cmp429.not1425, %for.body431 ], [ %cmp429.not1425, %for.body431.prol.loopexit ]
+for.end442:                                       ; preds = %for.body431.prol.loopexit, %for.body431, %middle.block1598, %if.end425.thread, %if.end425
+  %cmp429.not14251550 = phi i1 [ true, %if.end425.thread ], [ true, %if.end425 ], [ %cmp429.not1425, %middle.block1598 ], [ %cmp429.not1425, %for.body431 ], [ %cmp429.not1425, %for.body431.prol.loopexit ]
   %cmp443 = icmp eq i32 %conv7, 0
   br i1 %cmp443, label %if.then445, label %if.else447
 
@@ -1707,388 +1707,226 @@ for.body461.lr.ph:                                ; preds = %if.end452
   %sext1230 = add i64 %sub731, -4294967296
   %idxprom732 = ashr exact i64 %sext1230, 32
   %273 = add i64 %call6, 1
-  %wide.trip.count1507 = zext i32 %lasti.0 to i64
-  %.pre1545 = load ptr, ptr @R__align.initverticalw, align 8
+  %wide.trip.count1506 = zext i32 %lasti.0 to i64
+  %.pre1544 = load ptr, ptr @R__align.initverticalw, align 8
   %wide.trip.count1499 = and i64 %273, 4294967295
-  %exitcond1500.peel.not = icmp eq i64 %wide.trip.count1499, 2
   %274 = shl i64 %call6, 2
   %275 = add i64 %274, 17179869180
   %276 = and i64 %275, 17179869180
   %277 = add nuw nsw i64 %276, 4
   %278 = and i64 %call6, 4294967295
-  %279 = insertelement <2 x double> poison, double %conv498, i64 0
-  %280 = shufflevector <2 x double> %279, <2 x double> poison, <2 x i32> zeroinitializer
+  %min.iters.check1623 = icmp ult i64 %278, 8
+  %n.mod.vf1625 = and i64 %call6, 7
+  %n.vec1626 = sub nsw i64 %278, %n.mod.vf1625
+  %279 = shl nsw i64 %n.vec1626, 2
+  %.cast1629 = trunc i64 %n.vec1626 to i32
+  %ind.end1630 = sub i32 %conv7, %.cast1629
+  %280 = shl nsw i64 %n.vec1626, 2
+  %cmp.n1634 = icmp eq i64 %n.mod.vf1625, 0
   %281 = insertelement <2 x double> <double 5.000000e-01, double poison>, double %conv498, i64 1
   %282 = insertelement <2 x double> <double poison, double 5.000000e-01>, double %conv498, i64 0
-  %min.iters.check1624 = icmp ult i64 %278, 8
-  %n.mod.vf1626 = and i64 %call6, 7
-  %n.vec1627 = sub nsw i64 %278, %n.mod.vf1626
-  %283 = shl nsw i64 %n.vec1627, 2
-  %.cast1630 = trunc i64 %n.vec1627 to i32
-  %ind.end1631 = sub i32 %conv7, %.cast1630
-  %284 = shl nsw i64 %n.vec1627, 2
-  %cmp.n1635 = icmp eq i64 %n.mod.vf1626, 0
   br label %for.body461
 
 for.body461:                                      ; preds = %for.body461.lr.ph, %for.end730
-  %285 = phi ptr [ %.pre1545, %for.body461.lr.ph ], [ %314, %for.end730 ]
-  %indvars.iv1502 = phi i64 [ 1, %for.body461.lr.ph ], [ %indvars.iv.next1503.pre-phi, %for.end730 ]
+  %283 = phi ptr [ %.pre1544, %for.body461.lr.ph ], [ %312, %for.end730 ]
+  %indvars.iv1501 = phi i64 [ 1, %for.body461.lr.ph ], [ %indvars.iv.next1502.pre-phi, %for.end730 ]
   %wm.01447 = phi float [ 0.000000e+00, %for.body461.lr.ph ], [ %wm.1.lcssa, %for.end730 ]
   %currentw.01446 = phi ptr [ %95, %for.body461.lr.ph ], [ %previousw.01445, %for.end730 ]
   %previousw.01445 = phi ptr [ %97, %for.body461.lr.ph ], [ %currentw.01446, %for.end730 ]
-  %286 = add nsw i64 %indvars.iv1502, -1
-  %arrayidx464 = getelementptr inbounds float, ptr %285, i64 %286
-  %287 = load float, ptr %arrayidx464, align 4
-  store float %287, ptr %currentw.01446, align 4
-  %288 = load ptr, ptr @R__align.cpmx1, align 8
-  %289 = load ptr, ptr @R__align.cpmx2, align 8
-  %290 = load ptr, ptr @R__align.floatwork, align 8
-  %291 = load ptr, ptr @R__align.intwork, align 8
-  %292 = trunc i64 %indvars.iv1502 to i32
-  tail call fastcc void @match_calc(ptr noundef %previousw.01445, ptr noundef %288, ptr noundef %289, i32 noundef %292, i32 noundef %conv7, ptr noundef %290, ptr noundef %291, i32 noundef 0)
+  %284 = add nsw i64 %indvars.iv1501, -1
+  %arrayidx464 = getelementptr inbounds float, ptr %283, i64 %284
+  %285 = load float, ptr %arrayidx464, align 4
+  store float %285, ptr %currentw.01446, align 4
+  %286 = load ptr, ptr @R__align.cpmx1, align 8
+  %287 = load ptr, ptr @R__align.cpmx2, align 8
+  %288 = load ptr, ptr @R__align.floatwork, align 8
+  %289 = load ptr, ptr @R__align.intwork, align 8
+  %290 = trunc i64 %indvars.iv1501 to i32
+  tail call fastcc void @match_calc(ptr noundef %previousw.01445, ptr noundef %286, ptr noundef %287, i32 noundef %290, i32 noundef %conv7, ptr noundef %288, ptr noundef %289, i32 noundef 0)
   br i1 %brmerge, label %if.end468, label %while.body.preheader.i1239
 
 while.body.preheader.i1239:                       ; preds = %for.body461
-  %293 = load ptr, ptr @impmtx, align 8
-  %arrayidx.i1240 = getelementptr inbounds ptr, ptr %293, i64 %indvars.iv1502
-  %294 = load ptr, ptr %arrayidx.i1240, align 8
-  br i1 %min.iters.check1624, label %while.body.i1241.preheader, label %vector.memcheck1616
+  %291 = load ptr, ptr @impmtx, align 8
+  %arrayidx.i1240 = getelementptr inbounds ptr, ptr %291, i64 %indvars.iv1501
+  %292 = load ptr, ptr %arrayidx.i1240, align 8
+  br i1 %min.iters.check1623, label %while.body.i1241.preheader, label %vector.memcheck1615
 
-vector.memcheck1616:                              ; preds = %while.body.preheader.i1239
-  %scevgep1617 = getelementptr i8, ptr %previousw.01445, i64 %277
-  %scevgep1618 = getelementptr i8, ptr %294, i64 %277
-  %bound01619 = icmp ult ptr %previousw.01445, %scevgep1618
-  %bound11620 = icmp ult ptr %294, %scevgep1617
-  %found.conflict1621 = and i1 %bound01619, %bound11620
-  br i1 %found.conflict1621, label %while.body.i1241.preheader, label %vector.ph1625
+vector.memcheck1615:                              ; preds = %while.body.preheader.i1239
+  %scevgep1616 = getelementptr i8, ptr %previousw.01445, i64 %277
+  %scevgep1617 = getelementptr i8, ptr %292, i64 %277
+  %bound01618 = icmp ult ptr %previousw.01445, %scevgep1617
+  %bound11619 = icmp ult ptr %292, %scevgep1616
+  %found.conflict1620 = and i1 %bound01618, %bound11619
+  br i1 %found.conflict1620, label %while.body.i1241.preheader, label %vector.ph1624
 
-vector.ph1625:                                    ; preds = %vector.memcheck1616
-  %ind.end1628 = getelementptr i8, ptr %294, i64 %283
-  %ind.end1633 = getelementptr i8, ptr %previousw.01445, i64 %284
-  br label %vector.body1636
+vector.ph1624:                                    ; preds = %vector.memcheck1615
+  %ind.end1627 = getelementptr i8, ptr %292, i64 %279
+  %ind.end1632 = getelementptr i8, ptr %previousw.01445, i64 %280
+  br label %vector.body1635
 
-vector.body1636:                                  ; preds = %vector.body1636, %vector.ph1625
-  %index1637 = phi i64 [ 0, %vector.ph1625 ], [ %index.next1646, %vector.body1636 ]
-  %295 = shl i64 %index1637, 2
-  %next.gep1638 = getelementptr i8, ptr %294, i64 %295
-  %296 = shl i64 %index1637, 2
-  %next.gep1640 = getelementptr i8, ptr %previousw.01445, i64 %296
-  %wide.load1642 = load <4 x float>, ptr %next.gep1638, align 4
-  %297 = getelementptr float, ptr %next.gep1638, i64 4
-  %wide.load1643 = load <4 x float>, ptr %297, align 4
-  %wide.load1644 = load <4 x float>, ptr %next.gep1640, align 4
-  %298 = getelementptr float, ptr %next.gep1640, i64 4
-  %wide.load1645 = load <4 x float>, ptr %298, align 4
-  %299 = fadd <4 x float> %wide.load1642, %wide.load1644
-  %300 = fadd <4 x float> %wide.load1643, %wide.load1645
-  store <4 x float> %299, ptr %next.gep1640, align 4
-  store <4 x float> %300, ptr %298, align 4
-  %index.next1646 = add nuw i64 %index1637, 8
-  %301 = icmp eq i64 %index.next1646, %n.vec1627
-  br i1 %301, label %middle.block1622, label %vector.body1636
+vector.body1635:                                  ; preds = %vector.body1635, %vector.ph1624
+  %index1636 = phi i64 [ 0, %vector.ph1624 ], [ %index.next1645, %vector.body1635 ]
+  %293 = shl i64 %index1636, 2
+  %next.gep1637 = getelementptr i8, ptr %292, i64 %293
+  %294 = shl i64 %index1636, 2
+  %next.gep1639 = getelementptr i8, ptr %previousw.01445, i64 %294
+  %wide.load1641 = load <4 x float>, ptr %next.gep1637, align 4
+  %295 = getelementptr float, ptr %next.gep1637, i64 4
+  %wide.load1642 = load <4 x float>, ptr %295, align 4
+  %wide.load1643 = load <4 x float>, ptr %next.gep1639, align 4
+  %296 = getelementptr float, ptr %next.gep1639, i64 4
+  %wide.load1644 = load <4 x float>, ptr %296, align 4
+  %297 = fadd <4 x float> %wide.load1641, %wide.load1643
+  %298 = fadd <4 x float> %wide.load1642, %wide.load1644
+  store <4 x float> %297, ptr %next.gep1639, align 4
+  store <4 x float> %298, ptr %296, align 4
+  %index.next1645 = add nuw i64 %index1636, 8
+  %299 = icmp eq i64 %index.next1645, %n.vec1626
+  br i1 %299, label %middle.block1621, label %vector.body1635
 
-middle.block1622:                                 ; preds = %vector.body1636
-  br i1 %cmp.n1635, label %if.end468, label %while.body.i1241.preheader
+middle.block1621:                                 ; preds = %vector.body1635
+  br i1 %cmp.n1634, label %if.end468, label %while.body.i1241.preheader
 
-while.body.i1241.preheader:                       ; preds = %vector.memcheck1616, %while.body.preheader.i1239, %middle.block1622
-  %pt.05.i1242.ph = phi ptr [ %294, %vector.memcheck1616 ], [ %294, %while.body.preheader.i1239 ], [ %ind.end1628, %middle.block1622 ]
-  %lgth2.addr.04.i1243.ph = phi i32 [ %conv7, %vector.memcheck1616 ], [ %conv7, %while.body.preheader.i1239 ], [ %ind.end1631, %middle.block1622 ]
-  %imp.addr.03.i1244.ph = phi ptr [ %previousw.01445, %vector.memcheck1616 ], [ %previousw.01445, %while.body.preheader.i1239 ], [ %ind.end1633, %middle.block1622 ]
-  %302 = add nsw i32 %lgth2.addr.04.i1243.ph, -1
-  %xtraiter1844 = and i32 %lgth2.addr.04.i1243.ph, 3
-  %lcmp.mod1845.not = icmp eq i32 %xtraiter1844, 0
-  br i1 %lcmp.mod1845.not, label %while.body.i1241.prol.loopexit, label %while.body.i1241.prol
+while.body.i1241.preheader:                       ; preds = %vector.memcheck1615, %while.body.preheader.i1239, %middle.block1621
+  %pt.05.i1242.ph = phi ptr [ %292, %vector.memcheck1615 ], [ %292, %while.body.preheader.i1239 ], [ %ind.end1627, %middle.block1621 ]
+  %lgth2.addr.04.i1243.ph = phi i32 [ %conv7, %vector.memcheck1615 ], [ %conv7, %while.body.preheader.i1239 ], [ %ind.end1630, %middle.block1621 ]
+  %imp.addr.03.i1244.ph = phi ptr [ %previousw.01445, %vector.memcheck1615 ], [ %previousw.01445, %while.body.preheader.i1239 ], [ %ind.end1632, %middle.block1621 ]
+  %300 = add nsw i32 %lgth2.addr.04.i1243.ph, -1
+  %xtraiter1843 = and i32 %lgth2.addr.04.i1243.ph, 3
+  %lcmp.mod1844.not = icmp eq i32 %xtraiter1843, 0
+  br i1 %lcmp.mod1844.not, label %while.body.i1241.prol.loopexit, label %while.body.i1241.prol
 
 while.body.i1241.prol:                            ; preds = %while.body.i1241.preheader, %while.body.i1241.prol
   %pt.05.i1242.prol = phi ptr [ %incdec.ptr.i1246.prol, %while.body.i1241.prol ], [ %pt.05.i1242.ph, %while.body.i1241.preheader ]
   %lgth2.addr.04.i1243.prol = phi i32 [ %dec.i1245.prol, %while.body.i1241.prol ], [ %lgth2.addr.04.i1243.ph, %while.body.i1241.preheader ]
   %imp.addr.03.i1244.prol = phi ptr [ %incdec.ptr1.i1247.prol, %while.body.i1241.prol ], [ %imp.addr.03.i1244.ph, %while.body.i1241.preheader ]
-  %prol.iter1846 = phi i32 [ %prol.iter1846.next, %while.body.i1241.prol ], [ 0, %while.body.i1241.preheader ]
+  %prol.iter1845 = phi i32 [ %prol.iter1845.next, %while.body.i1241.prol ], [ 0, %while.body.i1241.preheader ]
   %dec.i1245.prol = add nsw i32 %lgth2.addr.04.i1243.prol, -1
   %incdec.ptr.i1246.prol = getelementptr inbounds float, ptr %pt.05.i1242.prol, i64 1
-  %303 = load float, ptr %pt.05.i1242.prol, align 4
+  %301 = load float, ptr %pt.05.i1242.prol, align 4
   %incdec.ptr1.i1247.prol = getelementptr inbounds float, ptr %imp.addr.03.i1244.prol, i64 1
-  %304 = load float, ptr %imp.addr.03.i1244.prol, align 4
-  %add.i1248.prol = fadd float %303, %304
+  %302 = load float, ptr %imp.addr.03.i1244.prol, align 4
+  %add.i1248.prol = fadd float %301, %302
   store float %add.i1248.prol, ptr %imp.addr.03.i1244.prol, align 4
-  %prol.iter1846.next = add i32 %prol.iter1846, 1
-  %prol.iter1846.cmp.not = icmp eq i32 %prol.iter1846.next, %xtraiter1844
-  br i1 %prol.iter1846.cmp.not, label %while.body.i1241.prol.loopexit, label %while.body.i1241.prol
+  %prol.iter1845.next = add i32 %prol.iter1845, 1
+  %prol.iter1845.cmp.not = icmp eq i32 %prol.iter1845.next, %xtraiter1843
+  br i1 %prol.iter1845.cmp.not, label %while.body.i1241.prol.loopexit, label %while.body.i1241.prol
 
 while.body.i1241.prol.loopexit:                   ; preds = %while.body.i1241.prol, %while.body.i1241.preheader
   %pt.05.i1242.unr = phi ptr [ %pt.05.i1242.ph, %while.body.i1241.preheader ], [ %incdec.ptr.i1246.prol, %while.body.i1241.prol ]
   %lgth2.addr.04.i1243.unr = phi i32 [ %lgth2.addr.04.i1243.ph, %while.body.i1241.preheader ], [ %dec.i1245.prol, %while.body.i1241.prol ]
   %imp.addr.03.i1244.unr = phi ptr [ %imp.addr.03.i1244.ph, %while.body.i1241.preheader ], [ %incdec.ptr1.i1247.prol, %while.body.i1241.prol ]
-  %305 = icmp ult i32 %302, 3
-  br i1 %305, label %if.end468, label %while.body.i1241
+  %303 = icmp ult i32 %300, 3
+  br i1 %303, label %if.end468, label %while.body.i1241
 
 while.body.i1241:                                 ; preds = %while.body.i1241.prol.loopexit, %while.body.i1241
   %pt.05.i1242 = phi ptr [ %incdec.ptr.i1246.3, %while.body.i1241 ], [ %pt.05.i1242.unr, %while.body.i1241.prol.loopexit ]
   %lgth2.addr.04.i1243 = phi i32 [ %dec.i1245.3, %while.body.i1241 ], [ %lgth2.addr.04.i1243.unr, %while.body.i1241.prol.loopexit ]
   %imp.addr.03.i1244 = phi ptr [ %incdec.ptr1.i1247.3, %while.body.i1241 ], [ %imp.addr.03.i1244.unr, %while.body.i1241.prol.loopexit ]
   %incdec.ptr.i1246 = getelementptr inbounds float, ptr %pt.05.i1242, i64 1
-  %306 = load float, ptr %pt.05.i1242, align 4
+  %304 = load float, ptr %pt.05.i1242, align 4
   %incdec.ptr1.i1247 = getelementptr inbounds float, ptr %imp.addr.03.i1244, i64 1
-  %307 = load float, ptr %imp.addr.03.i1244, align 4
-  %add.i1248 = fadd float %306, %307
+  %305 = load float, ptr %imp.addr.03.i1244, align 4
+  %add.i1248 = fadd float %304, %305
   store float %add.i1248, ptr %imp.addr.03.i1244, align 4
   %incdec.ptr.i1246.1 = getelementptr inbounds float, ptr %pt.05.i1242, i64 2
-  %308 = load float, ptr %incdec.ptr.i1246, align 4
+  %306 = load float, ptr %incdec.ptr.i1246, align 4
   %incdec.ptr1.i1247.1 = getelementptr inbounds float, ptr %imp.addr.03.i1244, i64 2
-  %309 = load float, ptr %incdec.ptr1.i1247, align 4
-  %add.i1248.1 = fadd float %308, %309
+  %307 = load float, ptr %incdec.ptr1.i1247, align 4
+  %add.i1248.1 = fadd float %306, %307
   store float %add.i1248.1, ptr %incdec.ptr1.i1247, align 4
   %incdec.ptr.i1246.2 = getelementptr inbounds float, ptr %pt.05.i1242, i64 3
-  %310 = load float, ptr %incdec.ptr.i1246.1, align 4
+  %308 = load float, ptr %incdec.ptr.i1246.1, align 4
   %incdec.ptr1.i1247.2 = getelementptr inbounds float, ptr %imp.addr.03.i1244, i64 3
-  %311 = load float, ptr %incdec.ptr1.i1247.1, align 4
-  %add.i1248.2 = fadd float %310, %311
+  %309 = load float, ptr %incdec.ptr1.i1247.1, align 4
+  %add.i1248.2 = fadd float %308, %309
   store float %add.i1248.2, ptr %incdec.ptr1.i1247.1, align 4
   %dec.i1245.3 = add nsw i32 %lgth2.addr.04.i1243, -4
   %incdec.ptr.i1246.3 = getelementptr inbounds float, ptr %pt.05.i1242, i64 4
-  %312 = load float, ptr %incdec.ptr.i1246.2, align 4
+  %310 = load float, ptr %incdec.ptr.i1246.2, align 4
   %incdec.ptr1.i1247.3 = getelementptr inbounds float, ptr %imp.addr.03.i1244, i64 4
-  %313 = load float, ptr %incdec.ptr1.i1247.2, align 4
-  %add.i1248.3 = fadd float %312, %313
+  %311 = load float, ptr %incdec.ptr1.i1247.2, align 4
+  %add.i1248.3 = fadd float %310, %311
   store float %add.i1248.3, ptr %incdec.ptr1.i1247.2, align 4
   %tobool.not.i1249.3 = icmp eq i32 %dec.i1245.3, 0
   br i1 %tobool.not.i1249.3, label %if.end468, label %while.body.i1241
 
-if.end468:                                        ; preds = %while.body.i1241.prol.loopexit, %while.body.i1241, %middle.block1622, %for.body461
-  %314 = load ptr, ptr @R__align.initverticalw, align 8
-  %arrayidx470 = getelementptr inbounds float, ptr %314, i64 %indvars.iv1502
-  %315 = load float, ptr %arrayidx470, align 4
-  store float %315, ptr %previousw.01445, align 4
-  %316 = load float, ptr %currentw.01446, align 4
-  %317 = tail call float @llvm.fmuladd.f32(float %conv, float 1.000000e+04, float %316)
-  %318 = load ptr, ptr @R__align.m, align 8
-  br i1 %cmp429.not14251551, label %if.end468.for.end730_crit_edge, label %for.body489.lr.ph
+if.end468:                                        ; preds = %while.body.i1241.prol.loopexit, %while.body.i1241, %middle.block1621, %for.body461
+  %312 = load ptr, ptr @R__align.initverticalw, align 8
+  %arrayidx470 = getelementptr inbounds float, ptr %312, i64 %indvars.iv1501
+  %313 = load float, ptr %arrayidx470, align 4
+  store float %313, ptr %previousw.01445, align 4
+  %314 = load ptr, ptr @R__align.m, align 8
+  br i1 %cmp429.not14251550, label %if.end468.for.end730_crit_edge, label %for.body489.lr.ph
 
 if.end468.for.end730_crit_edge:                   ; preds = %if.end468
-  %.pre1547 = add nuw nsw i64 %indvars.iv1502, 1
+  %.pre1546 = add nuw nsw i64 %indvars.iv1501, 1
   br label %for.end730
 
 for.body489.lr.ph:                                ; preds = %if.end468
-  %319 = load ptr, ptr @R__align.ijp, align 8
-  %arrayidx475 = getelementptr inbounds ptr, ptr %319, i64 %indvars.iv1502
-  %320 = load ptr, ptr %arrayidx475, align 8
-  %321 = load ptr, ptr @R__align.mp, align 8
-  %322 = load ptr, ptr @R__align.ogcp1g, align 8
-  %arrayidx491 = getelementptr inbounds float, ptr %322, i64 %indvars.iv1502
-  %323 = load ptr, ptr @R__align.ogcp2g, align 8
-  %324 = load ptr, ptr @R__align.fgcp1g, align 8
-  %arrayidx517 = getelementptr inbounds float, ptr %324, i64 %indvars.iv1502
-  %325 = load ptr, ptr @R__align.fgcp2g, align 8
-  %326 = load ptr, ptr @R__align.gapz1, align 8
-  %327 = add nuw nsw i64 %indvars.iv1502, 1
-  %arrayidx544 = getelementptr inbounds float, ptr %326, i64 %327
-  %328 = load ptr, ptr @R__align.digf2, align 8
-  %329 = load ptr, ptr @R__align.diaf2, align 8
-  %arrayidx581 = getelementptr inbounds float, ptr %326, i64 %indvars.iv1502
-  %330 = load ptr, ptr @R__align.gapz2, align 8
-  %331 = load ptr, ptr @R__align.digf1, align 8
-  %arrayidx650 = getelementptr inbounds float, ptr %331, i64 %indvars.iv1502
-  %332 = load ptr, ptr @R__align.diaf1, align 8
-  %arrayidx654 = getelementptr inbounds float, ptr %332, i64 %indvars.iv1502
-  %cmp703.not = icmp eq i64 %indvars.iv1502, 1
-  %mpjpt.01440.peel = getelementptr inbounds i32, ptr %321, i64 1
-  %mjpt.01441.peel = getelementptr inbounds float, ptr %318, i64 1
-  %ijppt.01442.peel = getelementptr inbounds i32, ptr %320, i64 1
-  %curpt.01443.peel = getelementptr inbounds float, ptr %previousw.01445, i64 1
-  %333 = load float, ptr %arrayidx491, align 4
-  %arrayidx494.peel = getelementptr inbounds float, ptr %323, i64 1
-  %334 = load float, ptr %arrayidx494.peel, align 4
-  %335 = load float, ptr %arrayidx517, align 4
-  %arrayidx520.peel = getelementptr inbounds float, ptr %325, i64 1
-  %336 = load float, ptr %arrayidx520.peel, align 4
-  %337 = insertelement <2 x float> poison, float %335, i64 0
-  %338 = insertelement <2 x float> %337, float %334, i64 1
-  %339 = fpext <2 x float> %338 to <2 x double>
-  %340 = insertelement <2 x float> poison, float %333, i64 0
-  %341 = insertelement <2 x float> %340, float %336, i64 1
-  %342 = fpext <2 x float> %341 to <2 x double>
-  %343 = fsub <2 x double> <double 1.000000e+00, double 1.000000e+00>, %339
-  %344 = extractelement <2 x double> %342, i64 0
-  %shift = shufflevector <2 x double> %343, <2 x double> poison, <2 x i32> <i32 1, i32 poison>
-  %345 = fmul <2 x double> %shift, %342
-  %mul497.peel = extractelement <2 x double> %345, i64 0
-  %mul499.peel = fmul double %mul497.peel, %conv498
-  %mul500.peel = fmul double %mul499.peel, 5.000000e-01
-  %conv501.peel = fptrunc double %mul500.peel to float
-  %add502.peel = fadd float %316, %conv501.peel
-  %sub509.peel = fsub double 1.000000e+00, %344
-  %346 = extractelement <2 x double> %339, i64 1
-  %mul510.peel = fmul double %sub509.peel, %346
-  %mul512.peel = fmul double %mul510.peel, %conv498
-  %mul513.peel = fmul double %mul512.peel, 5.000000e-01
-  %conv514.peel = fptrunc double %mul513.peel to float
-  %add515.peel = fadd float %add502.peel, %conv514.peel
-  %347 = extractelement <2 x double> %342, i64 1
-  %sub522.peel = fsub double 1.000000e+00, %347
-  %348 = extractelement <2 x double> %339, i64 0
-  %mul523.peel = fmul double %sub522.peel, %348
-  %mul525.peel = fmul double %mul523.peel, %conv498
-  %mul526.peel = fmul double %mul525.peel, 5.000000e-01
-  %conv527.peel = fptrunc double %mul526.peel to float
-  %add528.peel = fadd float %add515.peel, %conv527.peel
-  %349 = extractelement <2 x double> %343, i64 0
-  %mul536.peel = fmul double %349, %347
-  store i32 0, ptr %ijppt.01442.peel, align 4
-  %350 = load float, ptr %arrayidx544, align 4
-  %conv545.peel = fpext float %350 to double
-  %sub546.peel = fsub double 1.000000e+00, %conv545.peel
-  %add554.peel = fadd double %sub522.peel, %346
-  %arrayidx561.peel = getelementptr inbounds float, ptr %328, i64 1
-  %351 = load float, ptr %arrayidx561.peel, align 4
-  %conv562.peel = fpext float %351 to double
-  %sub563.peel = fsub double 1.000000e+00, %conv562.peel
-  %arrayidx565.peel = getelementptr inbounds float, ptr %329, i64 1
-  %352 = load float, ptr %arrayidx565.peel, align 4
-  %conv566.peel = fpext float %352 to double
-  %sub567.peel = fsub double %sub563.peel, %conv566.peel
-  %mul568.peel = fmul double %sub567.peel, %conv545.peel
-  %353 = tail call double @llvm.fmuladd.f64(double %sub546.peel, double %add554.peel, double %mul568.peel)
-  %354 = insertelement <2 x double> poison, double %353, i64 0
-  %355 = insertelement <2 x double> %354, double %mul536.peel, i64 1
-  %356 = fmul <2 x double> %355, %281
-  %357 = fmul <2 x double> %356, %282
-  %358 = fptrunc <2 x double> %357 to <2 x float>
-  %359 = insertelement <2 x float> poison, float %317, i64 0
-  %360 = insertelement <2 x float> %359, float %add528.peel, i64 1
-  %361 = fadd <2 x float> %360, %358
-  %362 = extractelement <2 x float> %361, i64 0
-  %363 = extractelement <2 x float> %361, i64 1
-  %cmp574.peel = fcmp ogt float %362, %363
-  br i1 %cmp574.peel, label %if.then576.peel, label %if.end579.peel
-
-if.then576.peel:                                  ; preds = %for.body489.lr.ph
-  store i32 -1, ptr %ijppt.01442.peel, align 4
-  br label %if.end579.peel
-
-if.end579.peel:                                   ; preds = %if.then576.peel, %for.body489.lr.ph
-  %wm.2.peel = phi float [ %362, %if.then576.peel ], [ %363, %for.body489.lr.ph ]
-  %364 = load float, ptr %arrayidx581, align 4
-  %365 = fadd <2 x double> %343, %342
-  %arrayidx633.peel = getelementptr inbounds float, ptr %330, i64 2
-  %366 = load float, ptr %arrayidx633.peel, align 4
-  %367 = load float, ptr %arrayidx650, align 4
-  %conv651.peel = fpext float %367 to double
-  %sub652.peel = fsub double 1.000000e+00, %conv651.peel
-  %368 = load float, ptr %arrayidx654, align 4
-  %conv655.peel = fpext float %368 to double
-  %sub656.peel = fsub double %sub652.peel, %conv655.peel
-  %369 = load float, ptr %mjpt.01441.peel, align 4
-  %370 = insertelement <2 x float> poison, float %366, i64 0
-  %371 = insertelement <2 x float> %370, float %364, i64 1
-  %372 = fpext <2 x float> %371 to <2 x double>
-  %373 = fsub <2 x double> <double 1.000000e+00, double 1.000000e+00>, %372
-  %374 = insertelement <2 x double> poison, double %sub656.peel, i64 0
-  %375 = insertelement <2 x double> %374, double %sub567.peel, i64 1
-  %376 = fmul <2 x double> %375, %372
-  %377 = tail call <2 x double> @llvm.fmuladd.v2f64(<2 x double> %373, <2 x double> %365, <2 x double> %376)
-  %378 = fmul <2 x double> %377, <double 5.000000e-01, double 5.000000e-01>
-  %379 = fmul <2 x double> %378, %280
-  %380 = fptrunc <2 x double> %379 to <2 x float>
-  %381 = insertelement <2 x float> poison, float %369, i64 0
-  %382 = insertelement <2 x float> %381, float %316, i64 1
-  %383 = fadd <2 x float> %382, %380
-  %384 = extractelement <2 x float> %383, i64 1
-  %385 = fcmp ult float %384, %317
-  %386 = extractelement <2 x float> %383, i64 1
-  %conv6281427.peel = select i1 %385, float %317, float %386
-  %387 = extractelement <2 x float> %383, i64 0
-  %388 = fcmp ogt float %387, %wm.2.peel
-  br i1 %388, label %if.then665.peel, label %if.end667.peel
-
-if.then665.peel:                                  ; preds = %if.end579.peel
-  %389 = load i32, ptr %mpjpt.01440.peel, align 4
-  %sub666.peel = sub nsw i32 %292, %389
-  store i32 %sub666.peel, ptr %ijppt.01442.peel, align 4
-  %390 = extractelement <2 x float> %383, i64 0
-  br label %if.end667.peel
-
-if.end667.peel:                                   ; preds = %if.then665.peel, %if.end579.peel
-  %wm.3.peel = phi float [ %390, %if.then665.peel ], [ %wm.2.peel, %if.end579.peel ]
-  %arrayidx669.peel = getelementptr inbounds float, ptr %330, i64 1
-  %391 = load float, ptr %arrayidx669.peel, align 4
-  %conv670.peel = fpext float %391 to double
-  %sub671.peel = fsub double 1.000000e+00, %conv670.peel
-  %add679.peel = fadd double %sub509.peel, %348
-  %mul692.peel = fmul double %sub656.peel, %conv670.peel
-  %392 = tail call double @llvm.fmuladd.f64(double %sub671.peel, double %add679.peel, double %mul692.peel)
-  %mul693.peel = fmul double %392, 5.000000e-01
-  %mul695.peel = fmul double %mul693.peel, %conv498
-  %conv696.peel = fptrunc double %mul695.peel to float
-  %add697.peel = fadd float %316, %conv696.peel
-  %cmp698.peel = fcmp ult float %add697.peel, %369
-  br i1 %cmp698.peel, label %if.else702.peel, label %if.then700.peel
-
-if.then700.peel:                                  ; preds = %if.end667.peel
-  store float %add697.peel, ptr %mjpt.01441.peel, align 4
-  %393 = trunc i64 %286 to i32
-  store i32 %393, ptr %mpjpt.01440.peel, align 4
-  br label %if.end720.peel
-
-if.else702.peel:                                  ; preds = %if.end667.peel
-  br i1 %cmp703.not, label %if.end720.peel, label %if.then705.peel
-
-if.then705.peel:                                  ; preds = %if.else702.peel
-  %add711.peel = fadd float %333, %335
-  %mul712.peel = fmul float %add711.peel, %conv
-  %conv713.peel = fpext float %mul712.peel to double
-  %conv717.peel = fpext float %369 to double
-  %394 = tail call double @llvm.fmuladd.f64(double %conv713.peel, double 5.000000e-01, double %conv717.peel)
-  %conv718.peel = fptrunc double %394 to float
-  store float %conv718.peel, ptr %mjpt.01441.peel, align 4
-  br label %if.end720.peel
-
-if.end720.peel:                                   ; preds = %if.then705.peel, %if.else702.peel, %if.then700.peel
-  %395 = load float, ptr %curpt.01443.peel, align 4
-  %add721.peel = fadd float %wm.3.peel, %395
-  store float %add721.peel, ptr %curpt.01443.peel, align 4
-  br i1 %exitcond1500.peel.not, label %for.end730, label %for.body489.peel.next
-
-for.body489.peel.next:                            ; preds = %if.end720.peel
-  %396 = trunc i64 %286 to i32
+  %315 = load float, ptr %currentw.01446, align 4
+  %316 = tail call float @llvm.fmuladd.f32(float %conv, float 1.000000e+04, float %315)
+  %317 = load ptr, ptr @R__align.ijp, align 8
+  %arrayidx475 = getelementptr inbounds ptr, ptr %317, i64 %indvars.iv1501
+  %318 = load ptr, ptr %arrayidx475, align 8
+  %319 = load ptr, ptr @R__align.mp, align 8
+  %320 = load ptr, ptr @R__align.ogcp1g, align 8
+  %arrayidx491 = getelementptr inbounds float, ptr %320, i64 %indvars.iv1501
+  %321 = load ptr, ptr @R__align.ogcp2g, align 8
+  %322 = load ptr, ptr @R__align.fgcp1g, align 8
+  %arrayidx517 = getelementptr inbounds float, ptr %322, i64 %indvars.iv1501
+  %323 = load ptr, ptr @R__align.fgcp2g, align 8
+  %324 = load ptr, ptr @R__align.gapz1, align 8
+  %325 = add nuw nsw i64 %indvars.iv1501, 1
+  %arrayidx544 = getelementptr inbounds float, ptr %324, i64 %325
+  %326 = load ptr, ptr @R__align.digf2, align 8
+  %327 = load ptr, ptr @R__align.diaf2, align 8
+  %arrayidx581 = getelementptr inbounds float, ptr %324, i64 %indvars.iv1501
+  %328 = load ptr, ptr @R__align.gapz2, align 8
+  %329 = load ptr, ptr @R__align.digf1, align 8
+  %arrayidx650 = getelementptr inbounds float, ptr %329, i64 %indvars.iv1501
+  %330 = load ptr, ptr @R__align.diaf1, align 8
+  %arrayidx654 = getelementptr inbounds float, ptr %330, i64 %indvars.iv1501
+  %cmp703.not = icmp eq i64 %indvars.iv1501, 1
+  %331 = trunc i64 %284 to i32
   br label %for.body489
 
-for.body489:                                      ; preds = %for.body489.peel.next, %if.end720
-  %indvars.iv1495 = phi i64 [ 2, %for.body489.peel.next ], [ %indvars.iv.next1496, %if.end720 ]
-  %previousw.01445.pn = phi ptr [ %curpt.01443.peel, %for.body489.peel.next ], [ %curpt.01443, %if.end720 ]
-  %.pn = phi ptr [ %ijppt.01442.peel, %for.body489.peel.next ], [ %ijppt.01442, %if.end720 ]
-  %.pn1459 = phi ptr [ %mjpt.01441.peel, %for.body489.peel.next ], [ %mjpt.01441, %if.end720 ]
-  %.pn1460 = phi ptr [ %mpjpt.01440.peel, %for.body489.peel.next ], [ %mpjpt.01440, %if.end720 ]
-  %currentw.01446.pn = phi ptr [ %currentw.01446, %for.body489.peel.next ], [ %prept.01438, %if.end720 ]
-  %conv62814281437 = phi float [ %conv6281427.peel, %for.body489.peel.next ], [ %conv6281427, %if.end720 ]
-  %sub61314301436 = phi i32 [ 0, %for.body489.peel.next ], [ %sub6131429, %if.end720 ]
-  %prept.01438 = getelementptr inbounds float, ptr %currentw.01446.pn, i64 1
+for.body489:                                      ; preds = %for.body489.lr.ph, %if.end720
+  %indvars.iv1495 = phi i64 [ 1, %for.body489.lr.ph ], [ %indvars.iv.next1496, %if.end720 ]
+  %previousw.01445.pn = phi ptr [ %previousw.01445, %for.body489.lr.ph ], [ %curpt.01443, %if.end720 ]
+  %.pn = phi ptr [ %318, %for.body489.lr.ph ], [ %ijppt.01442, %if.end720 ]
+  %.pn1459 = phi ptr [ %314, %for.body489.lr.ph ], [ %mjpt.01441, %if.end720 ]
+  %.pn1460 = phi ptr [ %319, %for.body489.lr.ph ], [ %mpjpt.01440, %if.end720 ]
+  %prept.01438 = phi ptr [ %currentw.01446, %for.body489.lr.ph ], [ %incdec.ptr724, %if.end720 ]
+  %conv62814281437 = phi float [ %316, %for.body489.lr.ph ], [ %conv6281427, %if.end720 ]
+  %sub61314301436 = phi i32 [ 0, %for.body489.lr.ph ], [ %sub6131429, %if.end720 ]
   %mpjpt.01440 = getelementptr inbounds i32, ptr %.pn1460, i64 1
   %mjpt.01441 = getelementptr inbounds float, ptr %.pn1459, i64 1
   %ijppt.01442 = getelementptr inbounds i32, ptr %.pn, i64 1
   %curpt.01443 = getelementptr inbounds float, ptr %previousw.01445.pn, i64 1
-  %397 = load float, ptr %prept.01438, align 4
-  %398 = load float, ptr %arrayidx491, align 4
-  %conv492 = fpext float %398 to double
-  %arrayidx494 = getelementptr inbounds float, ptr %323, i64 %indvars.iv1495
-  %399 = load float, ptr %arrayidx494, align 4
-  %conv495 = fpext float %399 to double
+  %332 = load float, ptr %prept.01438, align 4
+  %333 = load float, ptr %arrayidx491, align 4
+  %conv492 = fpext float %333 to double
+  %arrayidx494 = getelementptr inbounds float, ptr %321, i64 %indvars.iv1495
+  %334 = load float, ptr %arrayidx494, align 4
+  %conv495 = fpext float %334 to double
   %sub496 = fsub double 1.000000e+00, %conv495
   %mul497 = fmul double %sub496, %conv492
   %mul499 = fmul double %mul497, %conv498
   %mul500 = fmul double %mul499, 5.000000e-01
   %conv501 = fptrunc double %mul500 to float
-  %add502 = fadd float %397, %conv501
+  %add502 = fadd float %332, %conv501
   %sub509 = fsub double 1.000000e+00, %conv492
   %mul510 = fmul double %sub509, %conv495
   %mul512 = fmul double %mul510, %conv498
   %mul513 = fmul double %mul512, 5.000000e-01
   %conv514 = fptrunc double %mul513 to float
   %add515 = fadd float %add502, %conv514
-  %400 = load float, ptr %arrayidx517, align 4
-  %conv518 = fpext float %400 to double
-  %arrayidx520 = getelementptr inbounds float, ptr %325, i64 %indvars.iv1495
-  %401 = load float, ptr %arrayidx520, align 4
-  %conv521 = fpext float %401 to double
+  %335 = load float, ptr %arrayidx517, align 4
+  %conv518 = fpext float %335 to double
+  %arrayidx520 = getelementptr inbounds float, ptr %323, i64 %indvars.iv1495
+  %336 = load float, ptr %arrayidx520, align 4
+  %conv521 = fpext float %336 to double
   %sub522 = fsub double 1.000000e+00, %conv521
   %mul523 = fmul double %sub522, %conv518
   %mul525 = fmul double %mul523, %conv498
@@ -2098,474 +1936,479 @@ for.body489:                                      ; preds = %for.body489.peel.ne
   %sub535 = fsub double 1.000000e+00, %conv518
   %mul536 = fmul double %sub535, %conv521
   store i32 0, ptr %ijppt.01442, align 4
-  %402 = load float, ptr %arrayidx544, align 4
-  %conv545 = fpext float %402 to double
+  %337 = load float, ptr %arrayidx544, align 4
+  %conv545 = fpext float %337 to double
   %sub546 = fsub double 1.000000e+00, %conv545
   %add554 = fadd double %sub522, %conv495
-  %arrayidx561 = getelementptr inbounds float, ptr %328, i64 %indvars.iv1495
-  %403 = load float, ptr %arrayidx561, align 4
-  %conv562 = fpext float %403 to double
+  %arrayidx561 = getelementptr inbounds float, ptr %326, i64 %indvars.iv1495
+  %338 = load float, ptr %arrayidx561, align 4
+  %conv562 = fpext float %338 to double
   %sub563 = fsub double 1.000000e+00, %conv562
-  %arrayidx565 = getelementptr inbounds float, ptr %329, i64 %indvars.iv1495
-  %404 = load float, ptr %arrayidx565, align 4
-  %conv566 = fpext float %404 to double
+  %arrayidx565 = getelementptr inbounds float, ptr %327, i64 %indvars.iv1495
+  %339 = load float, ptr %arrayidx565, align 4
+  %conv566 = fpext float %339 to double
   %sub567 = fsub double %sub563, %conv566
   %mul568 = fmul double %sub567, %conv545
-  %405 = tail call double @llvm.fmuladd.f64(double %sub546, double %add554, double %mul568)
-  %406 = insertelement <2 x double> poison, double %405, i64 0
-  %407 = insertelement <2 x double> %406, double %mul536, i64 1
-  %408 = fmul <2 x double> %407, %281
-  %409 = fmul <2 x double> %408, %282
-  %410 = fptrunc <2 x double> %409 to <2 x float>
-  %411 = insertelement <2 x float> poison, float %conv62814281437, i64 0
-  %412 = insertelement <2 x float> %411, float %add528, i64 1
-  %413 = fadd <2 x float> %412, %410
-  %414 = extractelement <2 x float> %413, i64 0
-  %415 = extractelement <2 x float> %413, i64 1
-  %cmp574 = fcmp ogt float %414, %415
+  %340 = tail call double @llvm.fmuladd.f64(double %sub546, double %add554, double %mul568)
+  %341 = insertelement <2 x double> poison, double %340, i64 0
+  %342 = insertelement <2 x double> %341, double %mul536, i64 1
+  %343 = fmul <2 x double> %342, %281
+  %344 = fmul <2 x double> %343, %282
+  %345 = fptrunc <2 x double> %344 to <2 x float>
+  %346 = insertelement <2 x float> poison, float %conv62814281437, i64 0
+  %347 = insertelement <2 x float> %346, float %add528, i64 1
+  %348 = fadd <2 x float> %347, %345
+  %349 = extractelement <2 x float> %348, i64 0
+  %350 = extractelement <2 x float> %348, i64 1
+  %cmp574 = fcmp ogt float %349, %350
   br i1 %cmp574, label %if.then576, label %if.end579
 
 if.then576:                                       ; preds = %for.body489
-  %416 = trunc i64 %indvars.iv1495 to i32
-  %sub577.neg = sub nsw i32 %sub61314301436, %416
+  %351 = trunc i64 %indvars.iv1495 to i32
+  %sub577.neg = sub nsw i32 %sub61314301436, %351
   store i32 %sub577.neg, ptr %ijppt.01442, align 4
   br label %if.end579
 
 if.end579:                                        ; preds = %if.then576, %for.body489
-  %wm.2 = phi float [ %414, %if.then576 ], [ %415, %for.body489 ]
-  %417 = load float, ptr %arrayidx581, align 4
-  %conv582 = fpext float %417 to double
+  %wm.2 = phi float [ %349, %if.then576 ], [ %350, %for.body489 ]
+  %352 = load float, ptr %arrayidx581, align 4
+  %conv582 = fpext float %352 to double
   %sub583 = fsub double 1.000000e+00, %conv582
   %add591 = fadd double %sub496, %conv521
   %mul604 = fmul double %sub567, %conv582
-  %418 = tail call double @llvm.fmuladd.f64(double %sub583, double %add591, double %mul604)
-  %mul605 = fmul double %418, 5.000000e-01
+  %353 = tail call double @llvm.fmuladd.f64(double %sub583, double %add591, double %mul604)
+  %mul605 = fmul double %353, 5.000000e-01
   %mul607 = fmul double %mul605, %conv498
   %conv608 = fptrunc double %mul607 to float
-  %add609 = fadd float %397, %conv608
+  %add609 = fadd float %332, %conv608
   %cmp610 = fcmp ult float %add609, %conv62814281437
-  br i1 %cmp610, label %if.then617, label %if.then612
+  br i1 %cmp610, label %if.else614, label %if.then612
 
 if.then612:                                       ; preds = %if.end579
-  %419 = trunc i64 %indvars.iv1495 to i32
-  %420 = add i32 %419, -1
+  %354 = trunc i64 %indvars.iv1495 to i32
+  %355 = add i32 %354, -1
   br label %if.end630
 
-if.then617:                                       ; preds = %if.end579
-  %add623 = fadd float %399, %401
+if.else614:                                       ; preds = %if.end579
+  %cmp615.not = icmp eq i64 %indvars.iv1495, 1
+  br i1 %cmp615.not, label %if.end630, label %if.then617
+
+if.then617:                                       ; preds = %if.else614
+  %add623 = fadd float %334, %336
   %mul624 = fmul float %add623, %conv
   %conv625 = fpext float %mul624 to double
   %conv627 = fpext float %conv62814281437 to double
-  %421 = tail call double @llvm.fmuladd.f64(double %conv625, double 5.000000e-01, double %conv627)
-  %conv628 = fptrunc double %421 to float
+  %356 = tail call double @llvm.fmuladd.f64(double %conv625, double 5.000000e-01, double %conv627)
+  %conv628 = fptrunc double %356 to float
   br label %if.end630
 
-if.end630:                                        ; preds = %if.then617, %if.then612
-  %sub6131429 = phi i32 [ %sub61314301436, %if.then617 ], [ %420, %if.then612 ]
-  %conv6281427 = phi float [ %conv628, %if.then617 ], [ %add609, %if.then612 ]
+if.end630:                                        ; preds = %if.else614, %if.then617, %if.then612
+  %sub6131429 = phi i32 [ %sub61314301436, %if.else614 ], [ %sub61314301436, %if.then617 ], [ %355, %if.then612 ]
+  %conv6281427 = phi float [ %conv62814281437, %if.else614 ], [ %conv628, %if.then617 ], [ %add609, %if.then612 ]
   %indvars.iv.next1496 = add nuw nsw i64 %indvars.iv1495, 1
-  %arrayidx633 = getelementptr inbounds float, ptr %330, i64 %indvars.iv.next1496
-  %422 = load float, ptr %arrayidx633, align 4
-  %conv634 = fpext float %422 to double
+  %arrayidx633 = getelementptr inbounds float, ptr %328, i64 %indvars.iv.next1496
+  %357 = load float, ptr %arrayidx633, align 4
+  %conv634 = fpext float %357 to double
   %sub635 = fsub double 1.000000e+00, %conv634
   %add643 = fadd double %sub535, %conv492
-  %423 = load float, ptr %arrayidx650, align 4
-  %conv651 = fpext float %423 to double
+  %358 = load float, ptr %arrayidx650, align 4
+  %conv651 = fpext float %358 to double
   %sub652 = fsub double 1.000000e+00, %conv651
-  %424 = load float, ptr %arrayidx654, align 4
-  %conv655 = fpext float %424 to double
+  %359 = load float, ptr %arrayidx654, align 4
+  %conv655 = fpext float %359 to double
   %sub656 = fsub double %sub652, %conv655
   %mul657 = fmul double %sub656, %conv634
-  %425 = tail call double @llvm.fmuladd.f64(double %sub635, double %add643, double %mul657)
-  %mul658 = fmul double %425, 5.000000e-01
+  %360 = tail call double @llvm.fmuladd.f64(double %sub635, double %add643, double %mul657)
+  %mul658 = fmul double %360, 5.000000e-01
   %mul660 = fmul double %mul658, %conv498
   %conv661 = fptrunc double %mul660 to float
-  %426 = load float, ptr %mjpt.01441, align 4
-  %add662 = fadd float %426, %conv661
+  %361 = load float, ptr %mjpt.01441, align 4
+  %add662 = fadd float %361, %conv661
   %cmp663 = fcmp ogt float %add662, %wm.2
   br i1 %cmp663, label %if.then665, label %if.end667
 
 if.then665:                                       ; preds = %if.end630
-  %427 = load i32, ptr %mpjpt.01440, align 4
-  %sub666 = sub nsw i32 %292, %427
+  %362 = load i32, ptr %mpjpt.01440, align 4
+  %sub666 = sub nsw i32 %290, %362
   store i32 %sub666, ptr %ijppt.01442, align 4
   br label %if.end667
 
 if.end667:                                        ; preds = %if.then665, %if.end630
   %wm.3 = phi float [ %add662, %if.then665 ], [ %wm.2, %if.end630 ]
-  %arrayidx669 = getelementptr inbounds float, ptr %330, i64 %indvars.iv1495
-  %428 = load float, ptr %arrayidx669, align 4
-  %conv670 = fpext float %428 to double
+  %arrayidx669 = getelementptr inbounds float, ptr %328, i64 %indvars.iv1495
+  %363 = load float, ptr %arrayidx669, align 4
+  %conv670 = fpext float %363 to double
   %sub671 = fsub double 1.000000e+00, %conv670
   %add679 = fadd double %sub509, %conv518
   %mul692 = fmul double %sub656, %conv670
-  %429 = tail call double @llvm.fmuladd.f64(double %sub671, double %add679, double %mul692)
-  %mul693 = fmul double %429, 5.000000e-01
+  %364 = tail call double @llvm.fmuladd.f64(double %sub671, double %add679, double %mul692)
+  %mul693 = fmul double %364, 5.000000e-01
   %mul695 = fmul double %mul693, %conv498
   %conv696 = fptrunc double %mul695 to float
-  %add697 = fadd float %397, %conv696
-  %cmp698 = fcmp ult float %add697, %426
+  %add697 = fadd float %332, %conv696
+  %cmp698 = fcmp ult float %add697, %361
   br i1 %cmp698, label %if.else702, label %if.then700
 
 if.then700:                                       ; preds = %if.end667
   store float %add697, ptr %mjpt.01441, align 4
-  store i32 %396, ptr %mpjpt.01440, align 4
+  store i32 %331, ptr %mpjpt.01440, align 4
   br label %if.end720
 
 if.else702:                                       ; preds = %if.end667
   br i1 %cmp703.not, label %if.end720, label %if.then705
 
 if.then705:                                       ; preds = %if.else702
-  %add711 = fadd float %398, %400
+  %add711 = fadd float %333, %335
   %mul712 = fmul float %add711, %conv
   %conv713 = fpext float %mul712 to double
-  %arrayidx716 = getelementptr inbounds float, ptr %318, i64 %indvars.iv1495
-  %430 = load float, ptr %arrayidx716, align 4
-  %conv717 = fpext float %430 to double
-  %431 = tail call double @llvm.fmuladd.f64(double %conv713, double 5.000000e-01, double %conv717)
-  %conv718 = fptrunc double %431 to float
+  %arrayidx716 = getelementptr inbounds float, ptr %314, i64 %indvars.iv1495
+  %365 = load float, ptr %arrayidx716, align 4
+  %conv717 = fpext float %365 to double
+  %366 = tail call double @llvm.fmuladd.f64(double %conv713, double 5.000000e-01, double %conv717)
+  %conv718 = fptrunc double %366 to float
   store float %conv718, ptr %arrayidx716, align 4
   br label %if.end720
 
 if.end720:                                        ; preds = %if.else702, %if.then705, %if.then700
-  %432 = load float, ptr %curpt.01443, align 4
-  %add721 = fadd float %wm.3, %432
+  %367 = load float, ptr %curpt.01443, align 4
+  %add721 = fadd float %wm.3, %367
   store float %add721, ptr %curpt.01443, align 4
+  %incdec.ptr724 = getelementptr inbounds float, ptr %prept.01438, i64 1
   %exitcond1500.not = icmp eq i64 %indvars.iv.next1496, %wide.trip.count1499
   br i1 %exitcond1500.not, label %for.end730, label %for.body489
 
-for.end730:                                       ; preds = %if.end720, %if.end720.peel, %if.end468.for.end730_crit_edge
-  %indvars.iv.next1503.pre-phi = phi i64 [ %.pre1547, %if.end468.for.end730_crit_edge ], [ %327, %if.end720.peel ], [ %327, %if.end720 ]
-  %wm.1.lcssa = phi float [ %wm.01447, %if.end468.for.end730_crit_edge ], [ %wm.3.peel, %if.end720.peel ], [ %wm.3, %if.end720 ]
+for.end730:                                       ; preds = %if.end720, %if.end468.for.end730_crit_edge
+  %indvars.iv.next1502.pre-phi = phi i64 [ %.pre1546, %if.end468.for.end730_crit_edge ], [ %325, %if.end720 ]
+  %wm.1.lcssa = phi float [ %wm.01447, %if.end468.for.end730_crit_edge ], [ %wm.3, %if.end720 ]
   %arrayidx733 = getelementptr inbounds float, ptr %previousw.01445, i64 %idxprom732
-  %433 = load float, ptr %arrayidx733, align 4
-  %434 = load ptr, ptr @R__align.lastverticalw, align 8
-  %arrayidx735 = getelementptr inbounds float, ptr %434, i64 %indvars.iv1502
-  store float %433, ptr %arrayidx735, align 4
-  %exitcond1508.not = icmp eq i64 %indvars.iv.next1503.pre-phi, %wide.trip.count1507
-  br i1 %exitcond1508.not, label %for.end738.loopexit, label %for.body461
+  %368 = load float, ptr %arrayidx733, align 4
+  %369 = load ptr, ptr @R__align.lastverticalw, align 8
+  %arrayidx735 = getelementptr inbounds float, ptr %369, i64 %indvars.iv1501
+  store float %368, ptr %arrayidx735, align 4
+  %exitcond1507.not = icmp eq i64 %indvars.iv.next1502.pre-phi, %wide.trip.count1506
+  br i1 %exitcond1507.not, label %for.end738.loopexit, label %for.body461
 
 for.end738.loopexit:                              ; preds = %for.end730
-  %.pre1546 = load i32, ptr @outgap, align 4
+  %.pre1545 = load i32, ptr @outgap, align 4
   br label %for.end738
 
 for.end738:                                       ; preds = %for.end738.loopexit, %if.end452
-  %435 = phi ptr [ %271, %if.end452 ], [ %434, %for.end738.loopexit ]
-  %436 = phi i32 [ %272, %if.end452 ], [ %.pre1546, %for.end738.loopexit ]
+  %370 = phi ptr [ %271, %if.end452 ], [ %369, %for.end738.loopexit ]
+  %371 = phi i32 [ %272, %if.end452 ], [ %.pre1545, %for.end738.loopexit ]
   %currentw.0.lcssa = phi ptr [ %95, %if.end452 ], [ %previousw.01445, %for.end738.loopexit ]
   %wm.0.lcssa = phi float [ 0.000000e+00, %if.end452 ], [ %wm.1.lcssa, %for.end738.loopexit ]
-  %tobool739.not = icmp eq i32 %436, 0
+  %tobool739.not = icmp eq i32 %371, 0
   br i1 %tobool739.not, label %for.cond741.preheader, label %if.end777
 
 for.cond741.preheader:                            ; preds = %for.end738
-  br i1 %cmp429.not14251551, label %for.cond758.preheader, label %for.body745.lr.ph
+  br i1 %cmp429.not14251550, label %for.cond758.preheader, label %for.body745.lr.ph
 
 for.body745.lr.ph:                                ; preds = %for.cond741.preheader
-  %437 = load i32, ptr @offset, align 4
-  %438 = add i64 %call6, 1
-  %wide.trip.count1512 = and i64 %438, 4294967295
-  %439 = add nsw i64 %wide.trip.count1512, -1
-  %min.iters.check1649 = icmp ult i64 %439, 4
-  br i1 %min.iters.check1649, label %for.body745.preheader, label %vector.ph1650
+  %372 = load i32, ptr @offset, align 4
+  %373 = add i64 %call6, 1
+  %wide.trip.count1511 = and i64 %373, 4294967295
+  %374 = add nsw i64 %wide.trip.count1511, -1
+  %min.iters.check1648 = icmp ult i64 %374, 4
+  br i1 %min.iters.check1648, label %for.body745.preheader, label %vector.ph1649
 
-vector.ph1650:                                    ; preds = %for.body745.lr.ph
-  %n.vec1652 = and i64 %439, -4
-  %ind.end1653 = or i64 %n.vec1652, 1
-  %broadcast.splatinsert1661 = insertelement <4 x i32> poison, i32 %conv7, i64 0
-  %broadcast.splat1662 = shufflevector <4 x i32> %broadcast.splatinsert1661, <4 x i32> poison, <4 x i32> zeroinitializer
-  %broadcast.splatinsert1663 = insertelement <4 x i32> poison, i32 %437, i64 0
-  %broadcast.splat1664 = shufflevector <4 x i32> %broadcast.splatinsert1663, <4 x i32> poison, <4 x i32> zeroinitializer
-  br label %vector.body1656
+vector.ph1649:                                    ; preds = %for.body745.lr.ph
+  %n.vec1651 = and i64 %374, -4
+  %ind.end1652 = or i64 %n.vec1651, 1
+  %broadcast.splatinsert1660 = insertelement <4 x i32> poison, i32 %conv7, i64 0
+  %broadcast.splat1661 = shufflevector <4 x i32> %broadcast.splatinsert1660, <4 x i32> poison, <4 x i32> zeroinitializer
+  %broadcast.splatinsert1662 = insertelement <4 x i32> poison, i32 %372, i64 0
+  %broadcast.splat1663 = shufflevector <4 x i32> %broadcast.splatinsert1662, <4 x i32> poison, <4 x i32> zeroinitializer
+  br label %vector.body1655
 
-vector.body1656:                                  ; preds = %vector.body1656, %vector.ph1650
-  %index1657 = phi i64 [ 0, %vector.ph1650 ], [ %index.next1666, %vector.body1656 ]
-  %vec.ind1658 = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1650 ], [ %vec.ind.next1659, %vector.body1656 ]
-  %offset.idx1660 = or i64 %index1657, 1
-  %440 = sub nsw <4 x i32> %broadcast.splat1662, %vec.ind1658
-  %441 = mul nsw <4 x i32> %broadcast.splat1664, %440
-  %442 = sitofp <4 x i32> %441 to <4 x double>
-  %443 = fmul <4 x double> %442, <double 5.000000e-01, double 5.000000e-01, double 5.000000e-01, double 5.000000e-01>
-  %444 = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %offset.idx1660
-  %wide.load1665 = load <4 x float>, ptr %444, align 4
-  %445 = fpext <4 x float> %wide.load1665 to <4 x double>
-  %446 = fsub <4 x double> %445, %443
-  %447 = fptrunc <4 x double> %446 to <4 x float>
-  store <4 x float> %447, ptr %444, align 4
-  %index.next1666 = add nuw i64 %index1657, 4
-  %vec.ind.next1659 = add <4 x i32> %vec.ind1658, <i32 4, i32 4, i32 4, i32 4>
-  %448 = icmp eq i64 %index.next1666, %n.vec1652
-  br i1 %448, label %middle.block1647, label %vector.body1656
+vector.body1655:                                  ; preds = %vector.body1655, %vector.ph1649
+  %index1656 = phi i64 [ 0, %vector.ph1649 ], [ %index.next1665, %vector.body1655 ]
+  %vec.ind1657 = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1649 ], [ %vec.ind.next1658, %vector.body1655 ]
+  %offset.idx1659 = or i64 %index1656, 1
+  %375 = sub nsw <4 x i32> %broadcast.splat1661, %vec.ind1657
+  %376 = mul nsw <4 x i32> %broadcast.splat1663, %375
+  %377 = sitofp <4 x i32> %376 to <4 x double>
+  %378 = fmul <4 x double> %377, <double 5.000000e-01, double 5.000000e-01, double 5.000000e-01, double 5.000000e-01>
+  %379 = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %offset.idx1659
+  %wide.load1664 = load <4 x float>, ptr %379, align 4
+  %380 = fpext <4 x float> %wide.load1664 to <4 x double>
+  %381 = fsub <4 x double> %380, %378
+  %382 = fptrunc <4 x double> %381 to <4 x float>
+  store <4 x float> %382, ptr %379, align 4
+  %index.next1665 = add nuw i64 %index1656, 4
+  %vec.ind.next1658 = add <4 x i32> %vec.ind1657, <i32 4, i32 4, i32 4, i32 4>
+  %383 = icmp eq i64 %index.next1665, %n.vec1651
+  br i1 %383, label %middle.block1646, label %vector.body1655
 
-middle.block1647:                                 ; preds = %vector.body1656
-  %cmp.n1655 = icmp eq i64 %439, %n.vec1652
-  br i1 %cmp.n1655, label %for.cond758.preheader, label %for.body745.preheader
+middle.block1646:                                 ; preds = %vector.body1655
+  %cmp.n1654 = icmp eq i64 %374, %n.vec1651
+  br i1 %cmp.n1654, label %for.cond758.preheader, label %for.body745.preheader
 
-for.body745.preheader:                            ; preds = %for.body745.lr.ph, %middle.block1647
-  %indvars.iv1509.ph = phi i64 [ 1, %for.body745.lr.ph ], [ %ind.end1653, %middle.block1647 ]
+for.body745.preheader:                            ; preds = %for.body745.lr.ph, %middle.block1646
+  %indvars.iv1508.ph = phi i64 [ 1, %for.body745.lr.ph ], [ %ind.end1652, %middle.block1646 ]
   br label %for.body745
 
-for.cond758.preheader:                            ; preds = %for.body745, %middle.block1647, %for.cond741.preheader
+for.cond758.preheader:                            ; preds = %for.body745, %middle.block1646, %for.cond741.preheader
   %cmp760.not1453 = icmp slt i32 %conv4, 1
   br i1 %cmp760.not1453, label %if.end777, label %for.body762.lr.ph
 
 for.body762.lr.ph:                                ; preds = %for.cond758.preheader
-  %449 = load i32, ptr @offset, align 4
-  %conv763 = sitofp i32 %449 to double
+  %384 = load i32, ptr @offset, align 4
+  %conv763 = sitofp i32 %384 to double
   %conv764 = sitofp i32 %conv4 to double
   %neg772 = fneg double %conv763
-  %450 = add i64 %call3, 1
-  %wide.trip.count1517 = and i64 %450, 4294967295
-  %451 = add nsw i64 %wide.trip.count1517, -1
-  %min.iters.check1669 = icmp ult i64 %451, 4
-  br i1 %min.iters.check1669, label %for.body762.preheader, label %vector.ph1670
+  %385 = add i64 %call3, 1
+  %wide.trip.count1516 = and i64 %385, 4294967295
+  %386 = add nsw i64 %wide.trip.count1516, -1
+  %min.iters.check1668 = icmp ult i64 %386, 4
+  br i1 %min.iters.check1668, label %for.body762.preheader, label %vector.ph1669
 
-vector.ph1670:                                    ; preds = %for.body762.lr.ph
-  %n.vec1672 = and i64 %451, -4
-  %ind.end1673 = or i64 %n.vec1672, 1
-  %broadcast.splatinsert1681 = insertelement <4 x double> poison, double %conv764, i64 0
-  %broadcast.splat1682 = shufflevector <4 x double> %broadcast.splatinsert1681, <4 x double> poison, <4 x i32> zeroinitializer
-  %broadcast.splatinsert1684 = insertelement <4 x double> poison, double %neg772, i64 0
-  %broadcast.splat1685 = shufflevector <4 x double> %broadcast.splatinsert1684, <4 x double> poison, <4 x i32> zeroinitializer
-  br label %vector.body1676
+vector.ph1669:                                    ; preds = %for.body762.lr.ph
+  %n.vec1671 = and i64 %386, -4
+  %ind.end1672 = or i64 %n.vec1671, 1
+  %broadcast.splatinsert1680 = insertelement <4 x double> poison, double %conv764, i64 0
+  %broadcast.splat1681 = shufflevector <4 x double> %broadcast.splatinsert1680, <4 x double> poison, <4 x i32> zeroinitializer
+  %broadcast.splatinsert1683 = insertelement <4 x double> poison, double %neg772, i64 0
+  %broadcast.splat1684 = shufflevector <4 x double> %broadcast.splatinsert1683, <4 x double> poison, <4 x i32> zeroinitializer
+  br label %vector.body1675
 
-vector.body1676:                                  ; preds = %vector.body1676, %vector.ph1670
-  %index1677 = phi i64 [ 0, %vector.ph1670 ], [ %index.next1686, %vector.body1676 ]
-  %vec.ind1678 = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1670 ], [ %vec.ind.next1679, %vector.body1676 ]
-  %offset.idx1680 = or i64 %index1677, 1
-  %452 = sitofp <4 x i32> %vec.ind1678 to <4 x double>
-  %453 = fmul <4 x double> %452, <double 5.000000e-01, double 5.000000e-01, double 5.000000e-01, double 5.000000e-01>
-  %454 = fsub <4 x double> %broadcast.splat1682, %453
-  %455 = getelementptr inbounds float, ptr %435, i64 %offset.idx1680
-  %wide.load1683 = load <4 x float>, ptr %455, align 4
-  %456 = fpext <4 x float> %wide.load1683 to <4 x double>
-  %457 = tail call <4 x double> @llvm.fmuladd.v4f64(<4 x double> %broadcast.splat1685, <4 x double> %454, <4 x double> %456)
-  %458 = fptrunc <4 x double> %457 to <4 x float>
-  store <4 x float> %458, ptr %455, align 4
-  %index.next1686 = add nuw i64 %index1677, 4
-  %vec.ind.next1679 = add <4 x i32> %vec.ind1678, <i32 4, i32 4, i32 4, i32 4>
-  %459 = icmp eq i64 %index.next1686, %n.vec1672
-  br i1 %459, label %middle.block1667, label %vector.body1676
+vector.body1675:                                  ; preds = %vector.body1675, %vector.ph1669
+  %index1676 = phi i64 [ 0, %vector.ph1669 ], [ %index.next1685, %vector.body1675 ]
+  %vec.ind1677 = phi <4 x i32> [ <i32 1, i32 2, i32 3, i32 4>, %vector.ph1669 ], [ %vec.ind.next1678, %vector.body1675 ]
+  %offset.idx1679 = or i64 %index1676, 1
+  %387 = sitofp <4 x i32> %vec.ind1677 to <4 x double>
+  %388 = fmul <4 x double> %387, <double 5.000000e-01, double 5.000000e-01, double 5.000000e-01, double 5.000000e-01>
+  %389 = fsub <4 x double> %broadcast.splat1681, %388
+  %390 = getelementptr inbounds float, ptr %370, i64 %offset.idx1679
+  %wide.load1682 = load <4 x float>, ptr %390, align 4
+  %391 = fpext <4 x float> %wide.load1682 to <4 x double>
+  %392 = tail call <4 x double> @llvm.fmuladd.v4f64(<4 x double> %broadcast.splat1684, <4 x double> %389, <4 x double> %391)
+  %393 = fptrunc <4 x double> %392 to <4 x float>
+  store <4 x float> %393, ptr %390, align 4
+  %index.next1685 = add nuw i64 %index1676, 4
+  %vec.ind.next1678 = add <4 x i32> %vec.ind1677, <i32 4, i32 4, i32 4, i32 4>
+  %394 = icmp eq i64 %index.next1685, %n.vec1671
+  br i1 %394, label %middle.block1666, label %vector.body1675
 
-middle.block1667:                                 ; preds = %vector.body1676
-  %cmp.n1675 = icmp eq i64 %451, %n.vec1672
-  br i1 %cmp.n1675, label %if.end777, label %for.body762.preheader
+middle.block1666:                                 ; preds = %vector.body1675
+  %cmp.n1674 = icmp eq i64 %386, %n.vec1671
+  br i1 %cmp.n1674, label %if.end777, label %for.body762.preheader
 
-for.body762.preheader:                            ; preds = %for.body762.lr.ph, %middle.block1667
-  %indvars.iv1514.ph = phi i64 [ 1, %for.body762.lr.ph ], [ %ind.end1673, %middle.block1667 ]
+for.body762.preheader:                            ; preds = %for.body762.lr.ph, %middle.block1666
+  %indvars.iv1513.ph = phi i64 [ 1, %for.body762.lr.ph ], [ %ind.end1672, %middle.block1666 ]
   br label %for.body762
 
 for.body745:                                      ; preds = %for.body745.preheader, %for.body745
-  %indvars.iv1509 = phi i64 [ %indvars.iv.next1510, %for.body745 ], [ %indvars.iv1509.ph, %for.body745.preheader ]
-  %460 = trunc i64 %indvars.iv1509 to i32
-  %sub746 = sub nsw i32 %conv7, %460
-  %mul747 = mul nsw i32 %437, %sub746
+  %indvars.iv1508 = phi i64 [ %indvars.iv.next1509, %for.body745 ], [ %indvars.iv1508.ph, %for.body745.preheader ]
+  %395 = trunc i64 %indvars.iv1508 to i32
+  %sub746 = sub nsw i32 %conv7, %395
+  %mul747 = mul nsw i32 %372, %sub746
   %conv748 = sitofp i32 %mul747 to double
   %div749 = fmul double %conv748, 5.000000e-01
-  %arrayidx751 = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv1509
-  %461 = load float, ptr %arrayidx751, align 4
-  %conv752 = fpext float %461 to double
+  %arrayidx751 = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv1508
+  %396 = load float, ptr %arrayidx751, align 4
+  %conv752 = fpext float %396 to double
   %sub753 = fsub double %conv752, %div749
   %conv754 = fptrunc double %sub753 to float
   store float %conv754, ptr %arrayidx751, align 4
-  %indvars.iv.next1510 = add nuw nsw i64 %indvars.iv1509, 1
-  %exitcond1513.not = icmp eq i64 %indvars.iv.next1510, %wide.trip.count1512
-  br i1 %exitcond1513.not, label %for.cond758.preheader, label %for.body745
+  %indvars.iv.next1509 = add nuw nsw i64 %indvars.iv1508, 1
+  %exitcond1512.not = icmp eq i64 %indvars.iv.next1509, %wide.trip.count1511
+  br i1 %exitcond1512.not, label %for.cond758.preheader, label %for.body745
 
 for.body762:                                      ; preds = %for.body762.preheader, %for.body762
-  %indvars.iv1514 = phi i64 [ %indvars.iv.next1515, %for.body762 ], [ %indvars.iv1514.ph, %for.body762.preheader ]
-  %462 = trunc i64 %indvars.iv1514 to i32
-  %conv765 = sitofp i32 %462 to double
+  %indvars.iv1513 = phi i64 [ %indvars.iv.next1514, %for.body762 ], [ %indvars.iv1513.ph, %for.body762.preheader ]
+  %397 = trunc i64 %indvars.iv1513 to i32
+  %conv765 = sitofp i32 %397 to double
   %div766 = fmul double %conv765, 5.000000e-01
   %sub767 = fsub double %conv764, %div766
-  %arrayidx770 = getelementptr inbounds float, ptr %435, i64 %indvars.iv1514
-  %463 = load float, ptr %arrayidx770, align 4
-  %conv771 = fpext float %463 to double
-  %464 = tail call double @llvm.fmuladd.f64(double %neg772, double %sub767, double %conv771)
-  %conv773 = fptrunc double %464 to float
+  %arrayidx770 = getelementptr inbounds float, ptr %370, i64 %indvars.iv1513
+  %398 = load float, ptr %arrayidx770, align 4
+  %conv771 = fpext float %398 to double
+  %399 = tail call double @llvm.fmuladd.f64(double %neg772, double %sub767, double %conv771)
+  %conv773 = fptrunc double %399 to float
   store float %conv773, ptr %arrayidx770, align 4
-  %indvars.iv.next1515 = add nuw nsw i64 %indvars.iv1514, 1
-  %exitcond1518.not = icmp eq i64 %indvars.iv.next1515, %wide.trip.count1517
-  br i1 %exitcond1518.not, label %if.end777, label %for.body762
+  %indvars.iv.next1514 = add nuw nsw i64 %indvars.iv1513, 1
+  %exitcond1517.not = icmp eq i64 %indvars.iv.next1514, %wide.trip.count1516
+  br i1 %exitcond1517.not, label %if.end777, label %for.body762
 
-if.end777:                                        ; preds = %for.body762, %middle.block1667, %for.cond758.preheader, %for.end738
-  %465 = load ptr, ptr @R__align.mseq1, align 8
-  %466 = load ptr, ptr @R__align.mseq2, align 8
-  %467 = load ptr, ptr @R__align.ijp, align 8
-  %468 = load ptr, ptr %seq1, align 8
-  %call.i1263 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %468) #13
+if.end777:                                        ; preds = %for.body762, %middle.block1666, %for.cond758.preheader, %for.end738
+  %400 = load ptr, ptr @R__align.mseq1, align 8
+  %401 = load ptr, ptr @R__align.mseq2, align 8
+  %402 = load ptr, ptr @R__align.ijp, align 8
+  %403 = load ptr, ptr %seq1, align 8
+  %call.i1263 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %403) #13
   %conv.i1264 = trunc i64 %call.i1263 to i32
-  %469 = load ptr, ptr %seq2, align 8
-  %call2.i1265 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %469) #13
+  %404 = load ptr, ptr %seq2, align 8
+  %call2.i1265 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %404) #13
   %conv3.i1266 = trunc i64 %call2.i1265 to i32
   %add.i1267 = add nsw i32 %conv3.i1266, %conv.i1264
   %add4.i1268 = add nsw i32 %add.i1267, 1
   %call5.i1269 = tail call ptr @AllocateCharVec(i32 noundef %add4.i1268) #12
   %call8.i1270 = tail call ptr @AllocateCharVec(i32 noundef %add4.i1268) #12
-  %470 = load i32, ptr @outgap, align 4
-  %cmp.i1271 = icmp eq i32 %470, 1
+  %405 = load i32, ptr @outgap, align 4
+  %cmp.i1271 = icmp eq i32 %405, 1
   br i1 %tobool165.not, label %if.else780, label %if.then779
 
 if.then779:                                       ; preds = %if.end777
   br i1 %cmp.i1271, label %if.end46.i, label %if.else.i
 
 if.else.i:                                        ; preds = %if.then779
-  %471 = load float, ptr %435, align 4
+  %406 = load float, ptr %370, align 4
   %cmp111.i = icmp sgt i32 %conv.i1264, 0
   br i1 %cmp111.i, label %for.body.lr.ph.i1257, label %for.cond24.preheader.i
 
 for.body.lr.ph.i1257:                             ; preds = %if.else.i
   %sext275.i = shl i64 %call.i1263, 32
   %idxprom20.i = ashr exact i64 %sext275.i, 32
-  %arrayidx21.i = getelementptr inbounds ptr, ptr %467, i64 %idxprom20.i
+  %arrayidx21.i = getelementptr inbounds ptr, ptr %402, i64 %idxprom20.i
   %sext276.i = shl i64 %call2.i1265, 32
   %idxprom22.i = ashr exact i64 %sext276.i, 32
   %wide.trip.count.i1258 = and i64 %call.i1263, 4294967295
-  %xtraiter1847 = and i64 %call.i1263, 1
-  %472 = icmp eq i64 %wide.trip.count.i1258, 1
-  br i1 %472, label %for.cond24.preheader.i.loopexit.unr-lcssa, label %for.body.lr.ph.i1257.new
+  %xtraiter1846 = and i64 %call.i1263, 1
+  %407 = icmp eq i64 %wide.trip.count.i1258, 1
+  br i1 %407, label %for.cond24.preheader.i.loopexit.unr-lcssa, label %for.body.lr.ph.i1257.new
 
 for.body.lr.ph.i1257.new:                         ; preds = %for.body.lr.ph.i1257
-  %unroll_iter1851 = sub nsw i64 %wide.trip.count.i1258, %xtraiter1847
+  %unroll_iter1850 = sub nsw i64 %wide.trip.count.i1258, %xtraiter1846
   br label %for.body.i1259
 
 for.cond24.preheader.i.loopexit.unr-lcssa:        ; preds = %for.inc.i.1, %for.body.lr.ph.i1257
   %wm.1.i.lcssa.ph = phi float [ undef, %for.body.lr.ph.i1257 ], [ %wm.1.i.1, %for.inc.i.1 ]
   %indvars.iv.i1260.unr = phi i64 [ 0, %for.body.lr.ph.i1257 ], [ %indvars.iv.next.i1261.1, %for.inc.i.1 ]
-  %wm.02.i.unr = phi float [ %471, %for.body.lr.ph.i1257 ], [ %wm.1.i.1, %for.inc.i.1 ]
-  %lcmp.mod1849.not = icmp eq i64 %xtraiter1847, 0
-  br i1 %lcmp.mod1849.not, label %for.cond24.preheader.i, label %for.body.i1259.epil
+  %wm.02.i.unr = phi float [ %406, %for.body.lr.ph.i1257 ], [ %wm.1.i.1, %for.inc.i.1 ]
+  %lcmp.mod1848.not = icmp eq i64 %xtraiter1846, 0
+  br i1 %lcmp.mod1848.not, label %for.cond24.preheader.i, label %for.body.i1259.epil
 
 for.body.i1259.epil:                              ; preds = %for.cond24.preheader.i.loopexit.unr-lcssa
-  %arrayidx13.i.epil = getelementptr inbounds float, ptr %435, i64 %indvars.iv.i1260.unr
-  %473 = load float, ptr %arrayidx13.i.epil, align 4
-  %cmp14.i.epil = fcmp ult float %473, %wm.02.i.unr
+  %arrayidx13.i.epil = getelementptr inbounds float, ptr %370, i64 %indvars.iv.i1260.unr
+  %408 = load float, ptr %arrayidx13.i.epil, align 4
+  %cmp14.i.epil = fcmp ult float %408, %wm.02.i.unr
   br i1 %cmp14.i.epil, label %for.cond24.preheader.i, label %if.then16.i.epil
 
 if.then16.i.epil:                                 ; preds = %for.body.i1259.epil
-  %474 = trunc i64 %indvars.iv.i1260.unr to i32
-  %sub19.i.epil = sub nsw i32 %conv.i1264, %474
-  %475 = load ptr, ptr %arrayidx21.i, align 8
-  %arrayidx23.i.epil = getelementptr inbounds i32, ptr %475, i64 %idxprom22.i
+  %409 = trunc i64 %indvars.iv.i1260.unr to i32
+  %sub19.i.epil = sub nsw i32 %conv.i1264, %409
+  %410 = load ptr, ptr %arrayidx21.i, align 8
+  %arrayidx23.i.epil = getelementptr inbounds i32, ptr %410, i64 %idxprom22.i
   store i32 %sub19.i.epil, ptr %arrayidx23.i.epil, align 4
   br label %for.cond24.preheader.i
 
 for.cond24.preheader.i:                           ; preds = %for.cond24.preheader.i.loopexit.unr-lcssa, %if.then16.i.epil, %for.body.i1259.epil, %if.else.i
-  %wm.0.lcssa.i = phi float [ %471, %if.else.i ], [ %wm.1.i.lcssa.ph, %for.cond24.preheader.i.loopexit.unr-lcssa ], [ %473, %if.then16.i.epil ], [ %wm.02.i.unr, %for.body.i1259.epil ]
+  %wm.0.lcssa.i = phi float [ %406, %if.else.i ], [ %wm.1.i.lcssa.ph, %for.cond24.preheader.i.loopexit.unr-lcssa ], [ %408, %if.then16.i.epil ], [ %wm.02.i.unr, %for.body.i1259.epil ]
   %cmp254.i = icmp sgt i32 %conv3.i1266, 0
   br i1 %cmp254.i, label %for.body27.lr.ph.i, label %if.end46.i
 
 for.body27.lr.ph.i:                               ; preds = %for.cond24.preheader.i
   %sext.i = shl i64 %call.i1263, 32
   %idxprom38.i = ashr exact i64 %sext.i, 32
-  %arrayidx39.i = getelementptr inbounds ptr, ptr %467, i64 %idxprom38.i
+  %arrayidx39.i = getelementptr inbounds ptr, ptr %402, i64 %idxprom38.i
   %sext274.i = shl i64 %call2.i1265, 32
   %idxprom40.i = ashr exact i64 %sext274.i, 32
   %wide.trip.count47.i = and i64 %call2.i1265, 4294967295
-  %xtraiter1853 = and i64 %call2.i1265, 1
-  %476 = icmp eq i64 %wide.trip.count47.i, 1
-  br i1 %476, label %if.end46.i.loopexit.unr-lcssa, label %for.body27.lr.ph.i.new
+  %xtraiter1852 = and i64 %call2.i1265, 1
+  %411 = icmp eq i64 %wide.trip.count47.i, 1
+  br i1 %411, label %if.end46.i.loopexit.unr-lcssa, label %for.body27.lr.ph.i.new
 
 for.body27.lr.ph.i.new:                           ; preds = %for.body27.lr.ph.i
-  %unroll_iter1856 = sub nsw i64 %wide.trip.count47.i, %xtraiter1853
+  %unroll_iter1855 = sub nsw i64 %wide.trip.count47.i, %xtraiter1852
   br label %for.body27.i
 
 for.body.i1259:                                   ; preds = %for.inc.i.1, %for.body.lr.ph.i1257.new
   %indvars.iv.i1260 = phi i64 [ 0, %for.body.lr.ph.i1257.new ], [ %indvars.iv.next.i1261.1, %for.inc.i.1 ]
-  %wm.02.i = phi float [ %471, %for.body.lr.ph.i1257.new ], [ %wm.1.i.1, %for.inc.i.1 ]
-  %niter1852 = phi i64 [ 0, %for.body.lr.ph.i1257.new ], [ %niter1852.next.1, %for.inc.i.1 ]
-  %arrayidx13.i = getelementptr inbounds float, ptr %435, i64 %indvars.iv.i1260
-  %477 = load float, ptr %arrayidx13.i, align 4
-  %cmp14.i = fcmp ult float %477, %wm.02.i
+  %wm.02.i = phi float [ %406, %for.body.lr.ph.i1257.new ], [ %wm.1.i.1, %for.inc.i.1 ]
+  %niter1851 = phi i64 [ 0, %for.body.lr.ph.i1257.new ], [ %niter1851.next.1, %for.inc.i.1 ]
+  %arrayidx13.i = getelementptr inbounds float, ptr %370, i64 %indvars.iv.i1260
+  %412 = load float, ptr %arrayidx13.i, align 4
+  %cmp14.i = fcmp ult float %412, %wm.02.i
   br i1 %cmp14.i, label %for.inc.i, label %if.then16.i
 
 if.then16.i:                                      ; preds = %for.body.i1259
-  %478 = trunc i64 %indvars.iv.i1260 to i32
-  %sub19.i = sub nsw i32 %conv.i1264, %478
-  %479 = load ptr, ptr %arrayidx21.i, align 8
-  %arrayidx23.i = getelementptr inbounds i32, ptr %479, i64 %idxprom22.i
+  %413 = trunc i64 %indvars.iv.i1260 to i32
+  %sub19.i = sub nsw i32 %conv.i1264, %413
+  %414 = load ptr, ptr %arrayidx21.i, align 8
+  %arrayidx23.i = getelementptr inbounds i32, ptr %414, i64 %idxprom22.i
   store i32 %sub19.i, ptr %arrayidx23.i, align 4
   br label %for.inc.i
 
 for.inc.i:                                        ; preds = %if.then16.i, %for.body.i1259
-  %wm.1.i = phi float [ %477, %if.then16.i ], [ %wm.02.i, %for.body.i1259 ]
+  %wm.1.i = phi float [ %412, %if.then16.i ], [ %wm.02.i, %for.body.i1259 ]
   %indvars.iv.next.i1261 = or i64 %indvars.iv.i1260, 1
-  %arrayidx13.i.1 = getelementptr inbounds float, ptr %435, i64 %indvars.iv.next.i1261
-  %480 = load float, ptr %arrayidx13.i.1, align 4
-  %cmp14.i.1 = fcmp ult float %480, %wm.1.i
+  %arrayidx13.i.1 = getelementptr inbounds float, ptr %370, i64 %indvars.iv.next.i1261
+  %415 = load float, ptr %arrayidx13.i.1, align 4
+  %cmp14.i.1 = fcmp ult float %415, %wm.1.i
   br i1 %cmp14.i.1, label %for.inc.i.1, label %if.then16.i.1
 
 if.then16.i.1:                                    ; preds = %for.inc.i
-  %481 = trunc i64 %indvars.iv.next.i1261 to i32
-  %sub19.i.1 = sub nsw i32 %conv.i1264, %481
-  %482 = load ptr, ptr %arrayidx21.i, align 8
-  %arrayidx23.i.1 = getelementptr inbounds i32, ptr %482, i64 %idxprom22.i
+  %416 = trunc i64 %indvars.iv.next.i1261 to i32
+  %sub19.i.1 = sub nsw i32 %conv.i1264, %416
+  %417 = load ptr, ptr %arrayidx21.i, align 8
+  %arrayidx23.i.1 = getelementptr inbounds i32, ptr %417, i64 %idxprom22.i
   store i32 %sub19.i.1, ptr %arrayidx23.i.1, align 4
   br label %for.inc.i.1
 
 for.inc.i.1:                                      ; preds = %if.then16.i.1, %for.inc.i
-  %wm.1.i.1 = phi float [ %480, %if.then16.i.1 ], [ %wm.1.i, %for.inc.i ]
+  %wm.1.i.1 = phi float [ %415, %if.then16.i.1 ], [ %wm.1.i, %for.inc.i ]
   %indvars.iv.next.i1261.1 = add nuw nsw i64 %indvars.iv.i1260, 2
-  %niter1852.next.1 = add i64 %niter1852, 2
-  %niter1852.ncmp.1 = icmp eq i64 %niter1852.next.1, %unroll_iter1851
-  br i1 %niter1852.ncmp.1, label %for.cond24.preheader.i.loopexit.unr-lcssa, label %for.body.i1259
+  %niter1851.next.1 = add i64 %niter1851, 2
+  %niter1851.ncmp.1 = icmp eq i64 %niter1851.next.1, %unroll_iter1850
+  br i1 %niter1851.ncmp.1, label %for.cond24.preheader.i.loopexit.unr-lcssa, label %for.body.i1259
 
 for.body27.i:                                     ; preds = %for.inc43.i.1, %for.body27.lr.ph.i.new
   %indvars.iv44.i = phi i64 [ 0, %for.body27.lr.ph.i.new ], [ %indvars.iv.next45.i.1, %for.inc43.i.1 ]
   %wm.25.i = phi float [ %wm.0.lcssa.i, %for.body27.lr.ph.i.new ], [ %wm.3.i.1, %for.inc43.i.1 ]
-  %niter1857 = phi i64 [ 0, %for.body27.lr.ph.i.new ], [ %niter1857.next.1, %for.inc43.i.1 ]
+  %niter1856 = phi i64 [ 0, %for.body27.lr.ph.i.new ], [ %niter1856.next.1, %for.inc43.i.1 ]
   %arrayidx29.i = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv44.i
-  %483 = load float, ptr %arrayidx29.i, align 4
-  %cmp30.i = fcmp ult float %483, %wm.25.i
+  %418 = load float, ptr %arrayidx29.i, align 4
+  %cmp30.i = fcmp ult float %418, %wm.25.i
   br i1 %cmp30.i, label %for.inc43.i, label %if.then32.i
 
 if.then32.i:                                      ; preds = %for.body27.i
-  %484 = trunc i64 %indvars.iv44.i to i32
-  %sub36.neg.i = sub nsw i32 %484, %conv3.i1266
-  %485 = load ptr, ptr %arrayidx39.i, align 8
-  %arrayidx41.i = getelementptr inbounds i32, ptr %485, i64 %idxprom40.i
+  %419 = trunc i64 %indvars.iv44.i to i32
+  %sub36.neg.i = sub nsw i32 %419, %conv3.i1266
+  %420 = load ptr, ptr %arrayidx39.i, align 8
+  %arrayidx41.i = getelementptr inbounds i32, ptr %420, i64 %idxprom40.i
   store i32 %sub36.neg.i, ptr %arrayidx41.i, align 4
   br label %for.inc43.i
 
 for.inc43.i:                                      ; preds = %if.then32.i, %for.body27.i
-  %wm.3.i = phi float [ %483, %if.then32.i ], [ %wm.25.i, %for.body27.i ]
+  %wm.3.i = phi float [ %418, %if.then32.i ], [ %wm.25.i, %for.body27.i ]
   %indvars.iv.next45.i = or i64 %indvars.iv44.i, 1
   %arrayidx29.i.1 = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv.next45.i
-  %486 = load float, ptr %arrayidx29.i.1, align 4
-  %cmp30.i.1 = fcmp ult float %486, %wm.3.i
+  %421 = load float, ptr %arrayidx29.i.1, align 4
+  %cmp30.i.1 = fcmp ult float %421, %wm.3.i
   br i1 %cmp30.i.1, label %for.inc43.i.1, label %if.then32.i.1
 
 if.then32.i.1:                                    ; preds = %for.inc43.i
-  %487 = trunc i64 %indvars.iv.next45.i to i32
-  %sub36.neg.i.1 = sub nsw i32 %487, %conv3.i1266
-  %488 = load ptr, ptr %arrayidx39.i, align 8
-  %arrayidx41.i.1 = getelementptr inbounds i32, ptr %488, i64 %idxprom40.i
+  %422 = trunc i64 %indvars.iv.next45.i to i32
+  %sub36.neg.i.1 = sub nsw i32 %422, %conv3.i1266
+  %423 = load ptr, ptr %arrayidx39.i, align 8
+  %arrayidx41.i.1 = getelementptr inbounds i32, ptr %423, i64 %idxprom40.i
   store i32 %sub36.neg.i.1, ptr %arrayidx41.i.1, align 4
   br label %for.inc43.i.1
 
 for.inc43.i.1:                                    ; preds = %if.then32.i.1, %for.inc43.i
-  %wm.3.i.1 = phi float [ %486, %if.then32.i.1 ], [ %wm.3.i, %for.inc43.i ]
+  %wm.3.i.1 = phi float [ %421, %if.then32.i.1 ], [ %wm.3.i, %for.inc43.i ]
   %indvars.iv.next45.i.1 = add nuw nsw i64 %indvars.iv44.i, 2
-  %niter1857.next.1 = add i64 %niter1857, 2
-  %niter1857.ncmp.1 = icmp eq i64 %niter1857.next.1, %unroll_iter1856
-  br i1 %niter1857.ncmp.1, label %if.end46.i.loopexit.unr-lcssa, label %for.body27.i
+  %niter1856.next.1 = add i64 %niter1856, 2
+  %niter1856.ncmp.1 = icmp eq i64 %niter1856.next.1, %unroll_iter1855
+  br i1 %niter1856.ncmp.1, label %if.end46.i.loopexit.unr-lcssa, label %for.body27.i
 
 if.end46.i.loopexit.unr-lcssa:                    ; preds = %for.inc43.i.1, %for.body27.lr.ph.i
   %indvars.iv44.i.unr = phi i64 [ 0, %for.body27.lr.ph.i ], [ %indvars.iv.next45.i.1, %for.inc43.i.1 ]
   %wm.25.i.unr = phi float [ %wm.0.lcssa.i, %for.body27.lr.ph.i ], [ %wm.3.i.1, %for.inc43.i.1 ]
-  %lcmp.mod1855.not = icmp eq i64 %xtraiter1853, 0
-  br i1 %lcmp.mod1855.not, label %if.end46.i, label %for.body27.i.epil
+  %lcmp.mod1854.not = icmp eq i64 %xtraiter1852, 0
+  br i1 %lcmp.mod1854.not, label %if.end46.i, label %for.body27.i.epil
 
 for.body27.i.epil:                                ; preds = %if.end46.i.loopexit.unr-lcssa
   %arrayidx29.i.epil = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv44.i.unr
-  %489 = load float, ptr %arrayidx29.i.epil, align 4
-  %cmp30.i.epil = fcmp ult float %489, %wm.25.i.unr
+  %424 = load float, ptr %arrayidx29.i.epil, align 4
+  %cmp30.i.epil = fcmp ult float %424, %wm.25.i.unr
   br i1 %cmp30.i.epil, label %if.end46.i, label %if.then32.i.epil
 
 if.then32.i.epil:                                 ; preds = %for.body27.i.epil
-  %490 = trunc i64 %indvars.iv44.i.unr to i32
-  %sub36.neg.i.epil = sub nsw i32 %490, %conv3.i1266
-  %491 = load ptr, ptr %arrayidx39.i, align 8
-  %arrayidx41.i.epil = getelementptr inbounds i32, ptr %491, i64 %idxprom40.i
+  %425 = trunc i64 %indvars.iv44.i.unr to i32
+  %sub36.neg.i.epil = sub nsw i32 %425, %conv3.i1266
+  %426 = load ptr, ptr %arrayidx39.i, align 8
+  %arrayidx41.i.epil = getelementptr inbounds i32, ptr %426, i64 %idxprom40.i
   store i32 %sub36.neg.i.epil, ptr %arrayidx41.i.epil, align 4
   br label %if.end46.i
 
@@ -2574,130 +2417,130 @@ if.end46.i:                                       ; preds = %if.end46.i.loopexit
   br i1 %cmp49.not7.i, label %for.cond59.preheader.i, label %for.body51.preheader.i
 
 for.body51.preheader.i:                           ; preds = %if.end46.i
-  %492 = add i64 %call.i1263, 1
-  %wide.trip.count52.i = and i64 %492, 4294967295
-  %493 = add nsw i64 %wide.trip.count52.i, -1
-  %xtraiter1858 = and i64 %492, 7
-  %494 = icmp ult i64 %493, 7
-  br i1 %494, label %for.cond59.preheader.i.loopexit.unr-lcssa, label %for.body51.preheader.i.new
+  %427 = add i64 %call.i1263, 1
+  %wide.trip.count52.i = and i64 %427, 4294967295
+  %428 = add nsw i64 %wide.trip.count52.i, -1
+  %xtraiter1857 = and i64 %427, 7
+  %429 = icmp ult i64 %428, 7
+  br i1 %429, label %for.cond59.preheader.i.loopexit.unr-lcssa, label %for.body51.preheader.i.new
 
 for.body51.preheader.i.new:                       ; preds = %for.body51.preheader.i
-  %unroll_iter1861 = sub nsw i64 %wide.trip.count52.i, %xtraiter1858
+  %unroll_iter1860 = sub nsw i64 %wide.trip.count52.i, %xtraiter1857
   br label %for.body51.i
 
 for.cond59.preheader.i.loopexit.unr-lcssa:        ; preds = %for.body51.i, %for.body51.preheader.i
   %indvars.iv49.i.unr = phi i64 [ 0, %for.body51.preheader.i ], [ %indvars.iv.next50.i.7, %for.body51.i ]
-  %lcmp.mod1860.not = icmp eq i64 %xtraiter1858, 0
-  br i1 %lcmp.mod1860.not, label %for.cond59.preheader.i, label %for.body51.i.epil
+  %lcmp.mod1859.not = icmp eq i64 %xtraiter1857, 0
+  br i1 %lcmp.mod1859.not, label %for.cond59.preheader.i, label %for.body51.i.epil
 
 for.body51.i.epil:                                ; preds = %for.cond59.preheader.i.loopexit.unr-lcssa, %for.body51.i.epil
   %indvars.iv49.i.epil = phi i64 [ %indvars.iv.next50.i.epil, %for.body51.i.epil ], [ %indvars.iv49.i.unr, %for.cond59.preheader.i.loopexit.unr-lcssa ]
-  %epil.iter1859 = phi i64 [ %epil.iter1859.next, %for.body51.i.epil ], [ 0, %for.cond59.preheader.i.loopexit.unr-lcssa ]
+  %epil.iter1858 = phi i64 [ %epil.iter1858.next, %for.body51.i.epil ], [ 0, %for.cond59.preheader.i.loopexit.unr-lcssa ]
   %indvars.iv.next50.i.epil = add nuw nsw i64 %indvars.iv49.i.epil, 1
-  %arrayidx54.i.epil = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv49.i.epil
-  %495 = load ptr, ptr %arrayidx54.i.epil, align 8
-  %496 = trunc i64 %indvars.iv.next50.i.epil to i32
-  store i32 %496, ptr %495, align 4
-  %epil.iter1859.next = add i64 %epil.iter1859, 1
-  %epil.iter1859.cmp.not = icmp eq i64 %epil.iter1859.next, %xtraiter1858
-  br i1 %epil.iter1859.cmp.not, label %for.cond59.preheader.i, label %for.body51.i.epil
+  %arrayidx54.i.epil = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv49.i.epil
+  %430 = load ptr, ptr %arrayidx54.i.epil, align 8
+  %431 = trunc i64 %indvars.iv.next50.i.epil to i32
+  store i32 %431, ptr %430, align 4
+  %epil.iter1858.next = add i64 %epil.iter1858, 1
+  %epil.iter1858.cmp.not = icmp eq i64 %epil.iter1858.next, %xtraiter1857
+  br i1 %epil.iter1858.cmp.not, label %for.cond59.preheader.i, label %for.body51.i.epil
 
 for.cond59.preheader.i:                           ; preds = %for.cond59.preheader.i.loopexit.unr-lcssa, %for.body51.i.epil, %if.end46.i
   %cmp61.not9.i = icmp slt i32 %conv3.i1266, 0
   br i1 %cmp61.not9.i, label %for.end71.i, label %for.body63.lr.ph.i
 
 for.body63.lr.ph.i:                               ; preds = %for.cond59.preheader.i
-  %497 = load ptr, ptr %467, align 8
-  %498 = add i64 %call2.i1265, 1
-  %wide.trip.count58.i = and i64 %498, 4294967295
-  %min.iters.check1689 = icmp ult i64 %wide.trip.count58.i, 8
-  br i1 %min.iters.check1689, label %for.body63.i.preheader, label %vector.ph1690
+  %432 = load ptr, ptr %402, align 8
+  %433 = add i64 %call2.i1265, 1
+  %wide.trip.count58.i = and i64 %433, 4294967295
+  %min.iters.check1688 = icmp ult i64 %wide.trip.count58.i, 8
+  br i1 %min.iters.check1688, label %for.body63.i.preheader, label %vector.ph1689
 
-vector.ph1690:                                    ; preds = %for.body63.lr.ph.i
-  %n.mod.vf1691 = and i64 %498, 7
-  %n.vec1692 = sub nsw i64 %wide.trip.count58.i, %n.mod.vf1691
-  br label %vector.body1695
+vector.ph1689:                                    ; preds = %for.body63.lr.ph.i
+  %n.mod.vf1690 = and i64 %433, 7
+  %n.vec1691 = sub nsw i64 %wide.trip.count58.i, %n.mod.vf1690
+  br label %vector.body1694
 
-vector.body1695:                                  ; preds = %vector.body1695, %vector.ph1690
-  %index1696 = phi i64 [ 0, %vector.ph1690 ], [ %index.next1700, %vector.body1695 ]
-  %vec.ind1697 = phi <4 x i32> [ <i32 0, i32 1, i32 2, i32 3>, %vector.ph1690 ], [ %vec.ind.next1699, %vector.body1695 ]
-  %499 = xor <4 x i32> %vec.ind1697, <i32 -1, i32 -1, i32 -1, i32 -1>
-  %500 = sub <4 x i32> <i32 -5, i32 -5, i32 -5, i32 -5>, %vec.ind1697
-  %501 = getelementptr inbounds i32, ptr %497, i64 %index1696
-  store <4 x i32> %499, ptr %501, align 4
-  %502 = getelementptr inbounds i32, ptr %501, i64 4
-  store <4 x i32> %500, ptr %502, align 4
-  %index.next1700 = add nuw i64 %index1696, 8
-  %vec.ind.next1699 = add <4 x i32> %vec.ind1697, <i32 8, i32 8, i32 8, i32 8>
-  %503 = icmp eq i64 %index.next1700, %n.vec1692
-  br i1 %503, label %middle.block1687, label %vector.body1695
+vector.body1694:                                  ; preds = %vector.body1694, %vector.ph1689
+  %index1695 = phi i64 [ 0, %vector.ph1689 ], [ %index.next1699, %vector.body1694 ]
+  %vec.ind1696 = phi <4 x i32> [ <i32 0, i32 1, i32 2, i32 3>, %vector.ph1689 ], [ %vec.ind.next1698, %vector.body1694 ]
+  %434 = xor <4 x i32> %vec.ind1696, <i32 -1, i32 -1, i32 -1, i32 -1>
+  %435 = sub <4 x i32> <i32 -5, i32 -5, i32 -5, i32 -5>, %vec.ind1696
+  %436 = getelementptr inbounds i32, ptr %432, i64 %index1695
+  store <4 x i32> %434, ptr %436, align 4
+  %437 = getelementptr inbounds i32, ptr %436, i64 4
+  store <4 x i32> %435, ptr %437, align 4
+  %index.next1699 = add nuw i64 %index1695, 8
+  %vec.ind.next1698 = add <4 x i32> %vec.ind1696, <i32 8, i32 8, i32 8, i32 8>
+  %438 = icmp eq i64 %index.next1699, %n.vec1691
+  br i1 %438, label %middle.block1686, label %vector.body1694
 
-middle.block1687:                                 ; preds = %vector.body1695
-  %cmp.n1694 = icmp eq i64 %n.mod.vf1691, 0
-  br i1 %cmp.n1694, label %for.end71.i, label %for.body63.i.preheader
+middle.block1686:                                 ; preds = %vector.body1694
+  %cmp.n1693 = icmp eq i64 %n.mod.vf1690, 0
+  br i1 %cmp.n1693, label %for.end71.i, label %for.body63.i.preheader
 
-for.body63.i.preheader:                           ; preds = %for.body63.lr.ph.i, %middle.block1687
-  %indvars.iv54.i.ph = phi i64 [ 0, %for.body63.lr.ph.i ], [ %n.vec1692, %middle.block1687 ]
+for.body63.i.preheader:                           ; preds = %for.body63.lr.ph.i, %middle.block1686
+  %indvars.iv54.i.ph = phi i64 [ 0, %for.body63.lr.ph.i ], [ %n.vec1691, %middle.block1686 ]
   br label %for.body63.i
 
 for.body51.i:                                     ; preds = %for.body51.i, %for.body51.preheader.i.new
   %indvars.iv49.i = phi i64 [ 0, %for.body51.preheader.i.new ], [ %indvars.iv.next50.i.7, %for.body51.i ]
-  %niter1862 = phi i64 [ 0, %for.body51.preheader.i.new ], [ %niter1862.next.7, %for.body51.i ]
+  %niter1861 = phi i64 [ 0, %for.body51.preheader.i.new ], [ %niter1861.next.7, %for.body51.i ]
   %indvars.iv.next50.i = or i64 %indvars.iv49.i, 1
-  %arrayidx54.i = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv49.i
-  %504 = load ptr, ptr %arrayidx54.i, align 8
-  %505 = trunc i64 %indvars.iv.next50.i to i32
-  store i32 %505, ptr %504, align 4
+  %arrayidx54.i = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv49.i
+  %439 = load ptr, ptr %arrayidx54.i, align 8
+  %440 = trunc i64 %indvars.iv.next50.i to i32
+  store i32 %440, ptr %439, align 4
   %indvars.iv.next50.i.1 = or i64 %indvars.iv49.i, 2
-  %arrayidx54.i.1 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i
-  %506 = load ptr, ptr %arrayidx54.i.1, align 8
-  %507 = trunc i64 %indvars.iv.next50.i.1 to i32
-  store i32 %507, ptr %506, align 4
+  %arrayidx54.i.1 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i
+  %441 = load ptr, ptr %arrayidx54.i.1, align 8
+  %442 = trunc i64 %indvars.iv.next50.i.1 to i32
+  store i32 %442, ptr %441, align 4
   %indvars.iv.next50.i.2 = or i64 %indvars.iv49.i, 3
-  %arrayidx54.i.2 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i.1
-  %508 = load ptr, ptr %arrayidx54.i.2, align 8
-  %509 = trunc i64 %indvars.iv.next50.i.2 to i32
-  store i32 %509, ptr %508, align 4
+  %arrayidx54.i.2 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i.1
+  %443 = load ptr, ptr %arrayidx54.i.2, align 8
+  %444 = trunc i64 %indvars.iv.next50.i.2 to i32
+  store i32 %444, ptr %443, align 4
   %indvars.iv.next50.i.3 = or i64 %indvars.iv49.i, 4
-  %arrayidx54.i.3 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i.2
-  %510 = load ptr, ptr %arrayidx54.i.3, align 8
-  %511 = trunc i64 %indvars.iv.next50.i.3 to i32
-  store i32 %511, ptr %510, align 4
+  %arrayidx54.i.3 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i.2
+  %445 = load ptr, ptr %arrayidx54.i.3, align 8
+  %446 = trunc i64 %indvars.iv.next50.i.3 to i32
+  store i32 %446, ptr %445, align 4
   %indvars.iv.next50.i.4 = or i64 %indvars.iv49.i, 5
-  %arrayidx54.i.4 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i.3
-  %512 = load ptr, ptr %arrayidx54.i.4, align 8
-  %513 = trunc i64 %indvars.iv.next50.i.4 to i32
-  store i32 %513, ptr %512, align 4
+  %arrayidx54.i.4 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i.3
+  %447 = load ptr, ptr %arrayidx54.i.4, align 8
+  %448 = trunc i64 %indvars.iv.next50.i.4 to i32
+  store i32 %448, ptr %447, align 4
   %indvars.iv.next50.i.5 = or i64 %indvars.iv49.i, 6
-  %arrayidx54.i.5 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i.4
-  %514 = load ptr, ptr %arrayidx54.i.5, align 8
-  %515 = trunc i64 %indvars.iv.next50.i.5 to i32
-  store i32 %515, ptr %514, align 4
+  %arrayidx54.i.5 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i.4
+  %449 = load ptr, ptr %arrayidx54.i.5, align 8
+  %450 = trunc i64 %indvars.iv.next50.i.5 to i32
+  store i32 %450, ptr %449, align 4
   %indvars.iv.next50.i.6 = or i64 %indvars.iv49.i, 7
-  %arrayidx54.i.6 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i.5
-  %516 = load ptr, ptr %arrayidx54.i.6, align 8
-  %517 = trunc i64 %indvars.iv.next50.i.6 to i32
-  store i32 %517, ptr %516, align 4
+  %arrayidx54.i.6 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i.5
+  %451 = load ptr, ptr %arrayidx54.i.6, align 8
+  %452 = trunc i64 %indvars.iv.next50.i.6 to i32
+  store i32 %452, ptr %451, align 4
   %indvars.iv.next50.i.7 = add nuw nsw i64 %indvars.iv49.i, 8
-  %arrayidx54.i.7 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i.6
-  %518 = load ptr, ptr %arrayidx54.i.7, align 8
-  %519 = trunc i64 %indvars.iv.next50.i.7 to i32
-  store i32 %519, ptr %518, align 4
-  %niter1862.next.7 = add i64 %niter1862, 8
-  %niter1862.ncmp.7 = icmp eq i64 %niter1862.next.7, %unroll_iter1861
-  br i1 %niter1862.ncmp.7, label %for.cond59.preheader.i.loopexit.unr-lcssa, label %for.body51.i
+  %arrayidx54.i.7 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i.6
+  %453 = load ptr, ptr %arrayidx54.i.7, align 8
+  %454 = trunc i64 %indvars.iv.next50.i.7 to i32
+  store i32 %454, ptr %453, align 4
+  %niter1861.next.7 = add i64 %niter1861, 8
+  %niter1861.ncmp.7 = icmp eq i64 %niter1861.next.7, %unroll_iter1860
+  br i1 %niter1861.ncmp.7, label %for.cond59.preheader.i.loopexit.unr-lcssa, label %for.body51.i
 
 for.body63.i:                                     ; preds = %for.body63.i.preheader, %for.body63.i
   %indvars.iv54.i = phi i64 [ %indvars.iv.next55.i, %for.body63.i ], [ %indvars.iv54.i.ph, %for.body63.i.preheader ]
   %indvars57.i = trunc i64 %indvars.iv54.i to i32
   %indvars.iv.next55.i = add nuw nsw i64 %indvars.iv54.i, 1
   %sub65.i = xor i32 %indvars57.i, -1
-  %arrayidx68.i = getelementptr inbounds i32, ptr %497, i64 %indvars.iv54.i
+  %arrayidx68.i = getelementptr inbounds i32, ptr %432, i64 %indvars.iv54.i
   store i32 %sub65.i, ptr %arrayidx68.i, align 4
   %exitcond59.not.i = icmp eq i64 %indvars.iv.next55.i, %wide.trip.count58.i
   br i1 %exitcond59.not.i, label %for.end71.i, label %for.body63.i
 
-for.end71.i:                                      ; preds = %for.body63.i, %middle.block1687, %for.cond59.preheader.i
+for.end71.i:                                      ; preds = %for.body63.i, %middle.block1686, %for.cond59.preheader.i
   %sext277.i = shl i64 %call.i1263, 32
   %idx.ext.i = ashr exact i64 %sext277.i, 32
   %add.ptr.i = getelementptr inbounds i8, ptr %call5.i1269, i64 %idx.ext.i
@@ -2718,15 +2561,15 @@ for.body82.i:                                     ; preds = %for.end71.i, %if.en
   %k.032.i = phi i32 [ %inc147.i, %if.end142.i ], [ 0, %for.end71.i ]
   %iin.031.i = phi i32 [ %ifi.0.i, %if.end142.i ], [ %conv.i1264, %for.end71.i ]
   %jin.030.i = phi i32 [ %jfi.0.i, %if.end142.i ], [ %conv3.i1266, %for.end71.i ]
-  %gaptable1.033.i1728 = ptrtoint ptr %gaptable1.033.i to i64
-  %gaptable2.034.i1729 = ptrtoint ptr %gaptable2.034.i to i64
+  %gaptable1.033.i1727 = ptrtoint ptr %gaptable1.033.i to i64
+  %gaptable2.034.i1728 = ptrtoint ptr %gaptable2.034.i to i64
   %idxprom83.i = sext i32 %iin.031.i to i64
-  %arrayidx84.i = getelementptr inbounds ptr, ptr %467, i64 %idxprom83.i
-  %520 = load ptr, ptr %arrayidx84.i, align 8
+  %arrayidx84.i = getelementptr inbounds ptr, ptr %402, i64 %idxprom83.i
+  %455 = load ptr, ptr %arrayidx84.i, align 8
   %idxprom85.i = sext i32 %jin.030.i to i64
-  %arrayidx86.i = getelementptr inbounds i32, ptr %520, i64 %idxprom85.i
-  %521 = load i32, ptr %arrayidx86.i, align 4
-  %cmp87.i = icmp slt i32 %521, 0
+  %arrayidx86.i = getelementptr inbounds i32, ptr %455, i64 %idxprom85.i
+  %456 = load i32, ptr %arrayidx86.i, align 4
+  %cmp87.i = icmp slt i32 %456, 0
   br i1 %cmp87.i, label %if.then89.i, label %if.else96.i
 
 if.then89.i:                                      ; preds = %for.body82.i
@@ -2734,11 +2577,11 @@ if.then89.i:                                      ; preds = %for.body82.i
   br label %if.end114.i
 
 if.else96.i:                                      ; preds = %for.body82.i
-  %cmp101.not.i = icmp eq i32 %521, 0
+  %cmp101.not.i = icmp eq i32 %456, 0
   br i1 %cmp101.not.i, label %if.else110.i, label %if.then103.i
 
 if.then103.i:                                     ; preds = %if.else96.i
-  %sub108.i = sub nsw i32 %iin.031.i, %521
+  %sub108.i = sub nsw i32 %iin.031.i, %456
   br label %if.end114.i
 
 if.else110.i:                                     ; preds = %if.else96.i
@@ -2747,84 +2590,84 @@ if.else110.i:                                     ; preds = %if.else96.i
 
 if.end114.i:                                      ; preds = %if.else110.i, %if.then103.i, %if.then89.i
   %ifi.0.i = phi i32 [ %sub90.i, %if.then89.i ], [ %sub108.i, %if.then103.i ], [ %sub111.i, %if.else110.i ]
-  %.pn.i = phi i32 [ %521, %if.then89.i ], [ -1, %if.then103.i ], [ -1, %if.else110.i ]
+  %.pn.i = phi i32 [ %456, %if.then89.i ], [ -1, %if.then103.i ], [ -1, %if.else110.i ]
   %jfi.0.i = add nsw i32 %.pn.i, %jin.030.i
-  %522 = xor i32 %ifi.0.i, -1
-  %dec11.i = add i32 %iin.031.i, %522
+  %457 = xor i32 %ifi.0.i, -1
+  %dec11.i = add i32 %iin.031.i, %457
   %tobool.not12.i = icmp eq i32 %dec11.i, 0
   br i1 %tobool.not12.i, label %while.end.i, label %while.body.preheader.i1252
 
 while.body.preheader.i1252:                       ; preds = %if.end114.i
-  %523 = add i32 %iin.031.i, -1
-  %524 = add i32 %iin.031.i, -2
-  %525 = sub i32 %524, %ifi.0.i
-  %526 = zext i32 %525 to i64
-  %527 = add nuw nsw i64 %526, 1
-  %min.iters.check1733 = icmp ult i32 %525, 15
-  %528 = sub i64 %gaptable1.033.i1728, %gaptable2.034.i1729
-  %diff.check1730 = icmp ult i64 %528, 16
-  %or.cond1817 = or i1 %min.iters.check1733, %diff.check1730
-  br i1 %or.cond1817, label %while.body.i1253.preheader, label %vector.ph1734
+  %458 = add i32 %iin.031.i, -1
+  %459 = add i32 %iin.031.i, -2
+  %460 = sub i32 %459, %ifi.0.i
+  %461 = zext i32 %460 to i64
+  %462 = add nuw nsw i64 %461, 1
+  %min.iters.check1732 = icmp ult i32 %460, 15
+  %463 = sub i64 %gaptable1.033.i1727, %gaptable2.034.i1728
+  %diff.check1729 = icmp ult i64 %463, 16
+  %or.cond1816 = or i1 %min.iters.check1732, %diff.check1729
+  br i1 %or.cond1816, label %while.body.i1253.preheader, label %vector.ph1733
 
-vector.ph1734:                                    ; preds = %while.body.preheader.i1252
-  %n.vec1736 = and i64 %527, 8589934576
-  %.cast1737 = trunc i64 %n.vec1736 to i32
-  %ind.end1738 = sub i32 %dec11.i, %.cast1737
-  %529 = sub nsw i64 0, %n.vec1736
-  %ind.end1740 = getelementptr i8, ptr %gaptable2.034.i, i64 %529
-  %530 = sub nsw i64 0, %n.vec1736
-  %ind.end1742 = getelementptr i8, ptr %gaptable1.033.i, i64 %530
+vector.ph1733:                                    ; preds = %while.body.preheader.i1252
+  %n.vec1735 = and i64 %462, 8589934576
+  %.cast1736 = trunc i64 %n.vec1735 to i32
+  %ind.end1737 = sub i32 %dec11.i, %.cast1736
+  %464 = sub nsw i64 0, %n.vec1735
+  %ind.end1739 = getelementptr i8, ptr %gaptable2.034.i, i64 %464
+  %465 = sub nsw i64 0, %n.vec1735
+  %ind.end1741 = getelementptr i8, ptr %gaptable1.033.i, i64 %465
   %invariant.gep = getelementptr i8, ptr %gaptable1.033.i, i64 -16
-  %invariant.gep1895 = getelementptr i8, ptr %gaptable2.034.i, i64 -16
-  br label %vector.body1745
+  %invariant.gep1894 = getelementptr i8, ptr %gaptable2.034.i, i64 -16
+  br label %vector.body1744
 
-vector.body1745:                                  ; preds = %vector.body1745, %vector.ph1734
-  %index1746 = phi i64 [ 0, %vector.ph1734 ], [ %index.next1749, %vector.body1745 ]
-  %531 = sub i64 0, %index1746
-  %532 = sub i64 0, %index1746
-  %gep = getelementptr i8, ptr %invariant.gep, i64 %532
+vector.body1744:                                  ; preds = %vector.body1744, %vector.ph1733
+  %index1745 = phi i64 [ 0, %vector.ph1733 ], [ %index.next1748, %vector.body1744 ]
+  %466 = sub i64 0, %index1745
+  %467 = sub i64 0, %index1745
+  %gep = getelementptr i8, ptr %invariant.gep, i64 %467
   store <16 x i8> <i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111>, ptr %gep, align 1
-  %gep1896 = getelementptr i8, ptr %invariant.gep1895, i64 %531
-  store <16 x i8> <i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45>, ptr %gep1896, align 1
-  %index.next1749 = add nuw i64 %index1746, 16
-  %533 = icmp eq i64 %index.next1749, %n.vec1736
-  br i1 %533, label %middle.block1731, label %vector.body1745
+  %gep1895 = getelementptr i8, ptr %invariant.gep1894, i64 %466
+  store <16 x i8> <i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45>, ptr %gep1895, align 1
+  %index.next1748 = add nuw i64 %index1745, 16
+  %468 = icmp eq i64 %index.next1748, %n.vec1735
+  br i1 %468, label %middle.block1730, label %vector.body1744
 
-middle.block1731:                                 ; preds = %vector.body1745
-  %cmp.n1744 = icmp eq i64 %527, %n.vec1736
-  br i1 %cmp.n1744, label %while.end.loopexit.i, label %while.body.i1253.preheader
+middle.block1730:                                 ; preds = %vector.body1744
+  %cmp.n1743 = icmp eq i64 %462, %n.vec1735
+  br i1 %cmp.n1743, label %while.end.loopexit.i, label %while.body.i1253.preheader
 
-while.body.i1253.preheader:                       ; preds = %while.body.preheader.i1252, %middle.block1731
-  %dec16.i.ph = phi i32 [ %dec11.i, %while.body.preheader.i1252 ], [ %ind.end1738, %middle.block1731 ]
-  %gaptable2.115.i.ph = phi ptr [ %gaptable2.034.i, %while.body.preheader.i1252 ], [ %ind.end1740, %middle.block1731 ]
-  %gaptable1.114.i.ph = phi ptr [ %gaptable1.033.i, %while.body.preheader.i1252 ], [ %ind.end1742, %middle.block1731 ]
-  %534 = add nsw i32 %dec16.i.ph, -1
-  %xtraiter1863 = and i32 %dec16.i.ph, 7
-  %lcmp.mod1864.not = icmp eq i32 %xtraiter1863, 0
-  br i1 %lcmp.mod1864.not, label %while.body.i1253.prol.loopexit, label %while.body.i1253.prol
+while.body.i1253.preheader:                       ; preds = %while.body.preheader.i1252, %middle.block1730
+  %dec16.i.ph = phi i32 [ %dec11.i, %while.body.preheader.i1252 ], [ %ind.end1737, %middle.block1730 ]
+  %gaptable2.115.i.ph = phi ptr [ %gaptable2.034.i, %while.body.preheader.i1252 ], [ %ind.end1739, %middle.block1730 ]
+  %gaptable1.114.i.ph = phi ptr [ %gaptable1.033.i, %while.body.preheader.i1252 ], [ %ind.end1741, %middle.block1730 ]
+  %469 = add nsw i32 %dec16.i.ph, -1
+  %xtraiter1862 = and i32 %dec16.i.ph, 7
+  %lcmp.mod1863.not = icmp eq i32 %xtraiter1862, 0
+  br i1 %lcmp.mod1863.not, label %while.body.i1253.prol.loopexit, label %while.body.i1253.prol
 
 while.body.i1253.prol:                            ; preds = %while.body.i1253.preheader, %while.body.i1253.prol
   %dec16.i.prol = phi i32 [ %dec.i1255.prol, %while.body.i1253.prol ], [ %dec16.i.ph, %while.body.i1253.preheader ]
   %gaptable2.115.i.prol = phi ptr [ %incdec.ptr116.i.prol, %while.body.i1253.prol ], [ %gaptable2.115.i.ph, %while.body.i1253.preheader ]
   %gaptable1.114.i.prol = phi ptr [ %incdec.ptr.i1254.prol, %while.body.i1253.prol ], [ %gaptable1.114.i.ph, %while.body.i1253.preheader ]
-  %prol.iter1865 = phi i32 [ %prol.iter1865.next, %while.body.i1253.prol ], [ 0, %while.body.i1253.preheader ]
+  %prol.iter1864 = phi i32 [ %prol.iter1864.next, %while.body.i1253.prol ], [ 0, %while.body.i1253.preheader ]
   %incdec.ptr.i1254.prol = getelementptr inbounds i8, ptr %gaptable1.114.i.prol, i64 -1
   store i8 111, ptr %incdec.ptr.i1254.prol, align 1
   %incdec.ptr116.i.prol = getelementptr inbounds i8, ptr %gaptable2.115.i.prol, i64 -1
   store i8 45, ptr %incdec.ptr116.i.prol, align 1
   %dec.i1255.prol = add nsw i32 %dec16.i.prol, -1
-  %prol.iter1865.next = add i32 %prol.iter1865, 1
-  %prol.iter1865.cmp.not = icmp eq i32 %prol.iter1865.next, %xtraiter1863
-  br i1 %prol.iter1865.cmp.not, label %while.body.i1253.prol.loopexit, label %while.body.i1253.prol
+  %prol.iter1864.next = add i32 %prol.iter1864, 1
+  %prol.iter1864.cmp.not = icmp eq i32 %prol.iter1864.next, %xtraiter1862
+  br i1 %prol.iter1864.cmp.not, label %while.body.i1253.prol.loopexit, label %while.body.i1253.prol
 
 while.body.i1253.prol.loopexit:                   ; preds = %while.body.i1253.prol, %while.body.i1253.preheader
-  %incdec.ptr.i1254.lcssa1826.unr = phi ptr [ undef, %while.body.i1253.preheader ], [ %incdec.ptr.i1254.prol, %while.body.i1253.prol ]
-  %incdec.ptr116.i.lcssa1825.unr = phi ptr [ undef, %while.body.i1253.preheader ], [ %incdec.ptr116.i.prol, %while.body.i1253.prol ]
+  %incdec.ptr.i1254.lcssa1825.unr = phi ptr [ undef, %while.body.i1253.preheader ], [ %incdec.ptr.i1254.prol, %while.body.i1253.prol ]
+  %incdec.ptr116.i.lcssa1824.unr = phi ptr [ undef, %while.body.i1253.preheader ], [ %incdec.ptr116.i.prol, %while.body.i1253.prol ]
   %dec16.i.unr = phi i32 [ %dec16.i.ph, %while.body.i1253.preheader ], [ %dec.i1255.prol, %while.body.i1253.prol ]
   %gaptable2.115.i.unr = phi ptr [ %gaptable2.115.i.ph, %while.body.i1253.preheader ], [ %incdec.ptr116.i.prol, %while.body.i1253.prol ]
   %gaptable1.114.i.unr = phi ptr [ %gaptable1.114.i.ph, %while.body.i1253.preheader ], [ %incdec.ptr.i1254.prol, %while.body.i1253.prol ]
-  %535 = icmp ult i32 %534, 7
-  br i1 %535, label %while.end.loopexit.i, label %while.body.i1253
+  %470 = icmp ult i32 %469, 7
+  br i1 %470, label %while.end.loopexit.i, label %while.body.i1253
 
 while.body.i1253:                                 ; preds = %while.body.i1253.prol.loopexit, %while.body.i1253
   %dec16.i = phi i32 [ %dec.i1255.7, %while.body.i1253 ], [ %dec16.i.unr, %while.body.i1253.prol.loopexit ]
@@ -2866,97 +2709,97 @@ while.body.i1253:                                 ; preds = %while.body.i1253.pr
   %tobool.not.i1256.7 = icmp eq i32 %dec.i1255.7, 0
   br i1 %tobool.not.i1256.7, label %while.end.loopexit.i, label %while.body.i1253
 
-while.end.loopexit.i:                             ; preds = %while.body.i1253.prol.loopexit, %while.body.i1253, %middle.block1731
-  %incdec.ptr.i1254.lcssa = phi ptr [ %ind.end1742, %middle.block1731 ], [ %incdec.ptr.i1254.lcssa1826.unr, %while.body.i1253.prol.loopexit ], [ %incdec.ptr.i1254.7, %while.body.i1253 ]
-  %incdec.ptr116.i.lcssa = phi ptr [ %ind.end1740, %middle.block1731 ], [ %incdec.ptr116.i.lcssa1825.unr, %while.body.i1253.prol.loopexit ], [ %incdec.ptr116.i.7, %while.body.i1253 ]
-  %536 = add i32 %523, %k.032.i
-  %537 = sub i32 %536, %ifi.0.i
+while.end.loopexit.i:                             ; preds = %while.body.i1253.prol.loopexit, %while.body.i1253, %middle.block1730
+  %incdec.ptr.i1254.lcssa = phi ptr [ %ind.end1741, %middle.block1730 ], [ %incdec.ptr.i1254.lcssa1825.unr, %while.body.i1253.prol.loopexit ], [ %incdec.ptr.i1254.7, %while.body.i1253 ]
+  %incdec.ptr116.i.lcssa = phi ptr [ %ind.end1739, %middle.block1730 ], [ %incdec.ptr116.i.lcssa1824.unr, %while.body.i1253.prol.loopexit ], [ %incdec.ptr116.i.7, %while.body.i1253 ]
+  %471 = add i32 %458, %k.032.i
+  %472 = sub i32 %471, %ifi.0.i
   br label %while.end.i
 
 while.end.i:                                      ; preds = %while.end.loopexit.i, %if.end114.i
-  %k.1.lcssa.i = phi i32 [ %k.032.i, %if.end114.i ], [ %537, %while.end.loopexit.i ]
+  %k.1.lcssa.i = phi i32 [ %k.032.i, %if.end114.i ], [ %472, %while.end.loopexit.i ]
   %gaptable1.1.lcssa.i = phi ptr [ %gaptable1.033.i, %if.end114.i ], [ %incdec.ptr.i1254.lcssa, %while.end.loopexit.i ]
   %gaptable2.1.lcssa.i = phi ptr [ %gaptable2.034.i, %if.end114.i ], [ %incdec.ptr116.i.lcssa, %while.end.loopexit.i ]
   %tobool121.not21.i = icmp eq i32 %.pn.i, -1
   br i1 %tobool121.not21.i, label %while.end126.i, label %while.body122.preheader.i
 
 while.body122.preheader.i:                        ; preds = %while.end.i
-  %gaptable2.1.lcssa.i1703 = ptrtoint ptr %gaptable2.1.lcssa.i to i64
-  %gaptable1.1.lcssa.i1702 = ptrtoint ptr %gaptable1.1.lcssa.i to i64
+  %gaptable2.1.lcssa.i1702 = ptrtoint ptr %gaptable2.1.lcssa.i to i64
+  %gaptable1.1.lcssa.i1701 = ptrtoint ptr %gaptable1.1.lcssa.i to i64
   %dec12020.i = xor i32 %.pn.i, -1
-  %538 = sub i32 -2, %.pn.i
-  %539 = zext i32 %538 to i64
-  %540 = add nuw nsw i64 %539, 1
-  %min.iters.check1707 = icmp ult i32 %538, 7
-  %541 = sub i64 %gaptable1.1.lcssa.i1702, %gaptable2.1.lcssa.i1703
-  %diff.check1704 = icmp ult i64 %541, 8
-  %or.cond1818 = select i1 %min.iters.check1707, i1 true, i1 %diff.check1704
-  br i1 %or.cond1818, label %while.body122.i.preheader, label %vector.ph1708
+  %473 = sub i32 -2, %.pn.i
+  %474 = zext i32 %473 to i64
+  %475 = add nuw nsw i64 %474, 1
+  %min.iters.check1706 = icmp ult i32 %473, 7
+  %476 = sub i64 %gaptable1.1.lcssa.i1701, %gaptable2.1.lcssa.i1702
+  %diff.check1703 = icmp ult i64 %476, 8
+  %or.cond1817 = select i1 %min.iters.check1706, i1 true, i1 %diff.check1703
+  br i1 %or.cond1817, label %while.body122.i.preheader, label %vector.ph1707
 
-vector.ph1708:                                    ; preds = %while.body122.preheader.i
-  %n.vec1710 = and i64 %540, 8589934584
-  %.cast1711 = trunc i64 %n.vec1710 to i32
-  %ind.end1712 = sub i32 %dec12020.i, %.cast1711
-  %542 = sub nsw i64 0, %n.vec1710
-  %ind.end1714 = getelementptr i8, ptr %gaptable2.1.lcssa.i, i64 %542
-  %543 = sub nsw i64 0, %n.vec1710
-  %ind.end1716 = getelementptr i8, ptr %gaptable1.1.lcssa.i, i64 %543
-  %544 = insertelement <4 x i32> <i32 poison, i32 0, i32 0, i32 0>, i32 %k.1.lcssa.i, i64 0
-  br label %vector.body1719
+vector.ph1707:                                    ; preds = %while.body122.preheader.i
+  %n.vec1709 = and i64 %475, 8589934584
+  %.cast1710 = trunc i64 %n.vec1709 to i32
+  %ind.end1711 = sub i32 %dec12020.i, %.cast1710
+  %477 = sub nsw i64 0, %n.vec1709
+  %ind.end1713 = getelementptr i8, ptr %gaptable2.1.lcssa.i, i64 %477
+  %478 = sub nsw i64 0, %n.vec1709
+  %ind.end1715 = getelementptr i8, ptr %gaptable1.1.lcssa.i, i64 %478
+  %479 = insertelement <4 x i32> <i32 poison, i32 0, i32 0, i32 0>, i32 %k.1.lcssa.i, i64 0
+  br label %vector.body1718
 
-vector.body1719:                                  ; preds = %vector.body1719, %vector.ph1708
-  %index1720 = phi i64 [ 0, %vector.ph1708 ], [ %index.next1726, %vector.body1719 ]
-  %vec.phi = phi <4 x i32> [ %544, %vector.ph1708 ], [ %551, %vector.body1719 ]
-  %vec.phi1725 = phi <4 x i32> [ zeroinitializer, %vector.ph1708 ], [ %552, %vector.body1719 ]
-  %545 = sub i64 0, %index1720
-  %next.gep1721 = getelementptr i8, ptr %gaptable2.1.lcssa.i, i64 %545
-  %546 = sub i64 0, %index1720
-  %next.gep1723 = getelementptr i8, ptr %gaptable1.1.lcssa.i, i64 %546
-  %547 = getelementptr inbounds i8, ptr %next.gep1723, i64 -4
-  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %547, align 1
-  %548 = getelementptr inbounds i8, ptr %next.gep1723, i64 -8
-  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %548, align 1
-  %549 = getelementptr inbounds i8, ptr %next.gep1721, i64 -4
-  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %549, align 1
-  %550 = getelementptr inbounds i8, ptr %next.gep1721, i64 -8
-  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %550, align 1
-  %551 = add <4 x i32> %vec.phi, <i32 1, i32 1, i32 1, i32 1>
-  %552 = add <4 x i32> %vec.phi1725, <i32 1, i32 1, i32 1, i32 1>
-  %index.next1726 = add nuw i64 %index1720, 8
-  %553 = icmp eq i64 %index.next1726, %n.vec1710
-  br i1 %553, label %middle.block1705, label %vector.body1719
+vector.body1718:                                  ; preds = %vector.body1718, %vector.ph1707
+  %index1719 = phi i64 [ 0, %vector.ph1707 ], [ %index.next1725, %vector.body1718 ]
+  %vec.phi = phi <4 x i32> [ %479, %vector.ph1707 ], [ %486, %vector.body1718 ]
+  %vec.phi1724 = phi <4 x i32> [ zeroinitializer, %vector.ph1707 ], [ %487, %vector.body1718 ]
+  %480 = sub i64 0, %index1719
+  %next.gep1720 = getelementptr i8, ptr %gaptable2.1.lcssa.i, i64 %480
+  %481 = sub i64 0, %index1719
+  %next.gep1722 = getelementptr i8, ptr %gaptable1.1.lcssa.i, i64 %481
+  %482 = getelementptr inbounds i8, ptr %next.gep1722, i64 -4
+  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %482, align 1
+  %483 = getelementptr inbounds i8, ptr %next.gep1722, i64 -8
+  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %483, align 1
+  %484 = getelementptr inbounds i8, ptr %next.gep1720, i64 -4
+  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %484, align 1
+  %485 = getelementptr inbounds i8, ptr %next.gep1720, i64 -8
+  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %485, align 1
+  %486 = add <4 x i32> %vec.phi, <i32 1, i32 1, i32 1, i32 1>
+  %487 = add <4 x i32> %vec.phi1724, <i32 1, i32 1, i32 1, i32 1>
+  %index.next1725 = add nuw i64 %index1719, 8
+  %488 = icmp eq i64 %index.next1725, %n.vec1709
+  br i1 %488, label %middle.block1704, label %vector.body1718
 
-middle.block1705:                                 ; preds = %vector.body1719
-  %bin.rdx = add <4 x i32> %552, %551
-  %554 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %bin.rdx)
-  %cmp.n1718 = icmp eq i64 %540, %n.vec1710
-  br i1 %cmp.n1718, label %while.end126.i, label %while.body122.i.preheader
+middle.block1704:                                 ; preds = %vector.body1718
+  %bin.rdx = add <4 x i32> %487, %486
+  %489 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %bin.rdx)
+  %cmp.n1717 = icmp eq i64 %475, %n.vec1709
+  br i1 %cmp.n1717, label %while.end126.i, label %while.body122.i.preheader
 
-while.body122.i.preheader:                        ; preds = %while.body122.preheader.i, %middle.block1705
-  %dec12025.i.ph = phi i32 [ %dec12020.i, %while.body122.preheader.i ], [ %ind.end1712, %middle.block1705 ]
-  %gaptable2.224.i.ph = phi ptr [ %gaptable2.1.lcssa.i, %while.body122.preheader.i ], [ %ind.end1714, %middle.block1705 ]
-  %gaptable1.223.i.ph = phi ptr [ %gaptable1.1.lcssa.i, %while.body122.preheader.i ], [ %ind.end1716, %middle.block1705 ]
-  %k.222.i.ph = phi i32 [ %k.1.lcssa.i, %while.body122.preheader.i ], [ %554, %middle.block1705 ]
-  %555 = add nsw i32 %dec12025.i.ph, -1
-  %xtraiter1866 = and i32 %dec12025.i.ph, 3
-  %lcmp.mod1867.not = icmp eq i32 %xtraiter1866, 0
-  br i1 %lcmp.mod1867.not, label %while.body122.i.prol.loopexit, label %while.body122.i.prol
+while.body122.i.preheader:                        ; preds = %while.body122.preheader.i, %middle.block1704
+  %dec12025.i.ph = phi i32 [ %dec12020.i, %while.body122.preheader.i ], [ %ind.end1711, %middle.block1704 ]
+  %gaptable2.224.i.ph = phi ptr [ %gaptable2.1.lcssa.i, %while.body122.preheader.i ], [ %ind.end1713, %middle.block1704 ]
+  %gaptable1.223.i.ph = phi ptr [ %gaptable1.1.lcssa.i, %while.body122.preheader.i ], [ %ind.end1715, %middle.block1704 ]
+  %k.222.i.ph = phi i32 [ %k.1.lcssa.i, %while.body122.preheader.i ], [ %489, %middle.block1704 ]
+  %490 = add nsw i32 %dec12025.i.ph, -1
+  %xtraiter1865 = and i32 %dec12025.i.ph, 3
+  %lcmp.mod1866.not = icmp eq i32 %xtraiter1865, 0
+  br i1 %lcmp.mod1866.not, label %while.body122.i.prol.loopexit, label %while.body122.i.prol
 
 while.body122.i.prol:                             ; preds = %while.body122.i.preheader, %while.body122.i.prol
   %dec12025.i.prol = phi i32 [ %dec120.i.prol, %while.body122.i.prol ], [ %dec12025.i.ph, %while.body122.i.preheader ]
   %gaptable2.224.i.prol = phi ptr [ %incdec.ptr124.i.prol, %while.body122.i.prol ], [ %gaptable2.224.i.ph, %while.body122.i.preheader ]
   %gaptable1.223.i.prol = phi ptr [ %incdec.ptr123.i.prol, %while.body122.i.prol ], [ %gaptable1.223.i.ph, %while.body122.i.preheader ]
   %k.222.i.prol = phi i32 [ %inc125.i.prol, %while.body122.i.prol ], [ %k.222.i.ph, %while.body122.i.preheader ]
-  %prol.iter1868 = phi i32 [ %prol.iter1868.next, %while.body122.i.prol ], [ 0, %while.body122.i.preheader ]
+  %prol.iter1867 = phi i32 [ %prol.iter1867.next, %while.body122.i.prol ], [ 0, %while.body122.i.preheader ]
   %incdec.ptr123.i.prol = getelementptr inbounds i8, ptr %gaptable1.223.i.prol, i64 -1
   store i8 45, ptr %incdec.ptr123.i.prol, align 1
   %incdec.ptr124.i.prol = getelementptr inbounds i8, ptr %gaptable2.224.i.prol, i64 -1
   store i8 111, ptr %incdec.ptr124.i.prol, align 1
   %inc125.i.prol = add nsw i32 %k.222.i.prol, 1
   %dec120.i.prol = add nsw i32 %dec12025.i.prol, -1
-  %prol.iter1868.next = add i32 %prol.iter1868, 1
-  %prol.iter1868.cmp.not = icmp eq i32 %prol.iter1868.next, %xtraiter1866
-  br i1 %prol.iter1868.cmp.not, label %while.body122.i.prol.loopexit, label %while.body122.i.prol
+  %prol.iter1867.next = add i32 %prol.iter1867, 1
+  %prol.iter1867.cmp.not = icmp eq i32 %prol.iter1867.next, %xtraiter1865
+  br i1 %prol.iter1867.cmp.not, label %while.body122.i.prol.loopexit, label %while.body122.i.prol
 
 while.body122.i.prol.loopexit:                    ; preds = %while.body122.i.prol, %while.body122.i.preheader
   %incdec.ptr123.i.lcssa.unr = phi ptr [ undef, %while.body122.i.preheader ], [ %incdec.ptr123.i.prol, %while.body122.i.prol ]
@@ -2966,8 +2809,8 @@ while.body122.i.prol.loopexit:                    ; preds = %while.body122.i.pro
   %gaptable2.224.i.unr = phi ptr [ %gaptable2.224.i.ph, %while.body122.i.preheader ], [ %incdec.ptr124.i.prol, %while.body122.i.prol ]
   %gaptable1.223.i.unr = phi ptr [ %gaptable1.223.i.ph, %while.body122.i.preheader ], [ %incdec.ptr123.i.prol, %while.body122.i.prol ]
   %k.222.i.unr = phi i32 [ %k.222.i.ph, %while.body122.i.preheader ], [ %inc125.i.prol, %while.body122.i.prol ]
-  %556 = icmp ult i32 %555, 3
-  br i1 %556, label %while.end126.i, label %while.body122.i
+  %491 = icmp ult i32 %490, 3
+  br i1 %491, label %while.end126.i, label %while.body122.i
 
 while.body122.i:                                  ; preds = %while.body122.i.prol.loopexit, %while.body122.i
   %dec12025.i = phi i32 [ %dec120.i.3, %while.body122.i ], [ %dec12025.i.unr, %while.body122.i.prol.loopexit ]
@@ -2995,23 +2838,23 @@ while.body122.i:                                  ; preds = %while.body122.i.pro
   %tobool121.not.i.3 = icmp eq i32 %dec120.i.3, 0
   br i1 %tobool121.not.i.3, label %while.end126.i, label %while.body122.i
 
-while.end126.i:                                   ; preds = %while.body122.i.prol.loopexit, %while.body122.i, %middle.block1705, %while.end.i
-  %k.2.lcssa.i = phi i32 [ %k.1.lcssa.i, %while.end.i ], [ %554, %middle.block1705 ], [ %inc125.i.lcssa.unr, %while.body122.i.prol.loopexit ], [ %inc125.i.3, %while.body122.i ]
-  %gaptable1.2.lcssa.i = phi ptr [ %gaptable1.1.lcssa.i, %while.end.i ], [ %ind.end1716, %middle.block1705 ], [ %incdec.ptr123.i.lcssa.unr, %while.body122.i.prol.loopexit ], [ %incdec.ptr123.i.3, %while.body122.i ]
-  %gaptable2.2.lcssa.i = phi ptr [ %gaptable2.1.lcssa.i, %while.end.i ], [ %ind.end1714, %middle.block1705 ], [ %incdec.ptr124.i.lcssa.unr, %while.body122.i.prol.loopexit ], [ %incdec.ptr124.i.3, %while.body122.i ]
+while.end126.i:                                   ; preds = %while.body122.i.prol.loopexit, %while.body122.i, %middle.block1704, %while.end.i
+  %k.2.lcssa.i = phi i32 [ %k.1.lcssa.i, %while.end.i ], [ %489, %middle.block1704 ], [ %inc125.i.lcssa.unr, %while.body122.i.prol.loopexit ], [ %inc125.i.3, %while.body122.i ]
+  %gaptable1.2.lcssa.i = phi ptr [ %gaptable1.1.lcssa.i, %while.end.i ], [ %ind.end1715, %middle.block1704 ], [ %incdec.ptr123.i.lcssa.unr, %while.body122.i.prol.loopexit ], [ %incdec.ptr123.i.3, %while.body122.i ]
+  %gaptable2.2.lcssa.i = phi ptr [ %gaptable2.1.lcssa.i, %while.end.i ], [ %ind.end1713, %middle.block1704 ], [ %incdec.ptr124.i.lcssa.unr, %while.body122.i.prol.loopexit ], [ %incdec.ptr124.i.3, %while.body122.i ]
   %cmp127.i = icmp eq i32 %iin.031.i, %conv.i1264
   %cmp129.i = icmp eq i32 %jin.030.i, %conv3.i1266
   %or.cond279.i = or i1 %cmp127.i, %cmp129.i
   br i1 %or.cond279.i, label %if.end135.i, label %if.else132.i
 
 if.else132.i:                                     ; preds = %while.end126.i
-  %557 = load ptr, ptr @impmtx, align 8
-  %arrayidx.i.i = getelementptr inbounds ptr, ptr %557, i64 %idxprom83.i
-  %558 = load ptr, ptr %arrayidx.i.i, align 8
-  %arrayidx2.i.i = getelementptr inbounds float, ptr %558, i64 %idxprom85.i
-  %559 = load float, ptr %arrayidx2.i.i, align 4
-  %560 = load float, ptr %impmatch, align 4
-  %add134.i = fadd float %559, %560
+  %492 = load ptr, ptr @impmtx, align 8
+  %arrayidx.i.i = getelementptr inbounds ptr, ptr %492, i64 %idxprom83.i
+  %493 = load ptr, ptr %arrayidx.i.i, align 8
+  %arrayidx2.i.i = getelementptr inbounds float, ptr %493, i64 %idxprom85.i
+  %494 = load float, ptr %arrayidx2.i.i, align 4
+  %495 = load float, ptr %impmatch, align 4
+  %add134.i = fadd float %494, %495
   store float %add134.i, ptr %impmatch, align 4
   br label %if.end135.i
 
@@ -3048,22 +2891,22 @@ for.body163.preheader.i:                          ; preds = %for.cond160.prehead
 
 for.body152.i:                                    ; preds = %for.body152.i, %for.body152.preheader.i
   %indvars.iv64.i = phi i64 [ 0, %for.body152.preheader.i ], [ %indvars.iv.next65.i, %for.body152.i ]
-  %arrayidx154.i = getelementptr inbounds ptr, ptr %465, i64 %indvars.iv64.i
-  %561 = load ptr, ptr %arrayidx154.i, align 8
+  %arrayidx154.i = getelementptr inbounds ptr, ptr %400, i64 %indvars.iv64.i
+  %496 = load ptr, ptr %arrayidx154.i, align 8
   %arrayidx156.i = getelementptr inbounds ptr, ptr %seq1, i64 %indvars.iv64.i
-  %562 = load ptr, ptr %arrayidx156.i, align 8
-  tail call void @gapireru(ptr noundef %561, ptr noundef %562, ptr noundef %gaptable1.3.i) #12
+  %497 = load ptr, ptr %arrayidx156.i, align 8
+  tail call void @gapireru(ptr noundef %496, ptr noundef %497, ptr noundef %gaptable1.3.i) #12
   %indvars.iv.next65.i = add nuw nsw i64 %indvars.iv64.i, 1
   %exitcond68.not.i = icmp eq i64 %indvars.iv.next65.i, %wide.trip.count67.i
   br i1 %exitcond68.not.i, label %for.cond160.preheader.i, label %for.body152.i
 
 for.body163.i:                                    ; preds = %for.body163.i, %for.body163.preheader.i
   %indvars.iv69.i = phi i64 [ 0, %for.body163.preheader.i ], [ %indvars.iv.next70.i, %for.body163.i ]
-  %arrayidx165.i = getelementptr inbounds ptr, ptr %466, i64 %indvars.iv69.i
-  %563 = load ptr, ptr %arrayidx165.i, align 8
+  %arrayidx165.i = getelementptr inbounds ptr, ptr %401, i64 %indvars.iv69.i
+  %498 = load ptr, ptr %arrayidx165.i, align 8
   %arrayidx167.i = getelementptr inbounds ptr, ptr %seq2, i64 %indvars.iv69.i
-  %564 = load ptr, ptr %arrayidx167.i, align 8
-  tail call void @gapireru(ptr noundef %563, ptr noundef %564, ptr noundef %gaptable2.3.i) #12
+  %499 = load ptr, ptr %arrayidx167.i, align 8
+  tail call void @gapireru(ptr noundef %498, ptr noundef %499, ptr noundef %gaptable2.3.i) #12
   %indvars.iv.next70.i = add nuw nsw i64 %indvars.iv69.i, 1
   %exitcond73.not.i = icmp eq i64 %indvars.iv.next70.i, %wide.trip.count72.i
   br i1 %exitcond73.not.i, label %if.end782, label %for.body163.i
@@ -3072,163 +2915,163 @@ if.else780:                                       ; preds = %if.end777
   br i1 %cmp.i1271, label %if.end46.i1277, label %if.else.i1272
 
 if.else.i1272:                                    ; preds = %if.else780
-  %565 = load float, ptr %435, align 4
+  %500 = load float, ptr %370, align 4
   %cmp111.i1273 = icmp sgt i32 %conv.i1264, 0
   br i1 %cmp111.i1273, label %for.body.lr.ph.i1393, label %for.cond24.preheader.i1274
 
 for.body.lr.ph.i1393:                             ; preds = %if.else.i1272
   %sext258.i = shl i64 %call.i1263, 32
   %idxprom20.i1394 = ashr exact i64 %sext258.i, 32
-  %arrayidx21.i1395 = getelementptr inbounds ptr, ptr %467, i64 %idxprom20.i1394
+  %arrayidx21.i1395 = getelementptr inbounds ptr, ptr %402, i64 %idxprom20.i1394
   %sext259.i = shl i64 %call2.i1265, 32
   %idxprom22.i1396 = ashr exact i64 %sext259.i, 32
   %wide.trip.count.i1397 = and i64 %call.i1263, 4294967295
-  %xtraiter1869 = and i64 %call.i1263, 1
-  %566 = icmp eq i64 %wide.trip.count.i1397, 1
-  br i1 %566, label %for.cond24.preheader.i1274.loopexit.unr-lcssa, label %for.body.lr.ph.i1393.new
+  %xtraiter1868 = and i64 %call.i1263, 1
+  %501 = icmp eq i64 %wide.trip.count.i1397, 1
+  br i1 %501, label %for.cond24.preheader.i1274.loopexit.unr-lcssa, label %for.body.lr.ph.i1393.new
 
 for.body.lr.ph.i1393.new:                         ; preds = %for.body.lr.ph.i1393
-  %unroll_iter1873 = sub nsw i64 %wide.trip.count.i1397, %xtraiter1869
+  %unroll_iter1872 = sub nsw i64 %wide.trip.count.i1397, %xtraiter1868
   br label %for.body.i1398
 
 for.cond24.preheader.i1274.loopexit.unr-lcssa:    ; preds = %for.inc.i1406.1, %for.body.lr.ph.i1393
   %wm.1.i1407.lcssa.ph = phi float [ undef, %for.body.lr.ph.i1393 ], [ %wm.1.i1407.1, %for.inc.i1406.1 ]
   %indvars.iv.i1399.unr = phi i64 [ 0, %for.body.lr.ph.i1393 ], [ %indvars.iv.next.i1408.1, %for.inc.i1406.1 ]
-  %wm.02.i1400.unr = phi float [ %565, %for.body.lr.ph.i1393 ], [ %wm.1.i1407.1, %for.inc.i1406.1 ]
-  %lcmp.mod1871.not = icmp eq i64 %xtraiter1869, 0
-  br i1 %lcmp.mod1871.not, label %for.cond24.preheader.i1274, label %for.body.i1398.epil
+  %wm.02.i1400.unr = phi float [ %500, %for.body.lr.ph.i1393 ], [ %wm.1.i1407.1, %for.inc.i1406.1 ]
+  %lcmp.mod1870.not = icmp eq i64 %xtraiter1868, 0
+  br i1 %lcmp.mod1870.not, label %for.cond24.preheader.i1274, label %for.body.i1398.epil
 
 for.body.i1398.epil:                              ; preds = %for.cond24.preheader.i1274.loopexit.unr-lcssa
-  %arrayidx13.i1401.epil = getelementptr inbounds float, ptr %435, i64 %indvars.iv.i1399.unr
-  %567 = load float, ptr %arrayidx13.i1401.epil, align 4
-  %cmp14.i1402.epil = fcmp ult float %567, %wm.02.i1400.unr
+  %arrayidx13.i1401.epil = getelementptr inbounds float, ptr %370, i64 %indvars.iv.i1399.unr
+  %502 = load float, ptr %arrayidx13.i1401.epil, align 4
+  %cmp14.i1402.epil = fcmp ult float %502, %wm.02.i1400.unr
   br i1 %cmp14.i1402.epil, label %for.cond24.preheader.i1274, label %if.then16.i1403.epil
 
 if.then16.i1403.epil:                             ; preds = %for.body.i1398.epil
-  %568 = trunc i64 %indvars.iv.i1399.unr to i32
-  %sub19.i1404.epil = sub nsw i32 %conv.i1264, %568
-  %569 = load ptr, ptr %arrayidx21.i1395, align 8
-  %arrayidx23.i1405.epil = getelementptr inbounds i32, ptr %569, i64 %idxprom22.i1396
+  %503 = trunc i64 %indvars.iv.i1399.unr to i32
+  %sub19.i1404.epil = sub nsw i32 %conv.i1264, %503
+  %504 = load ptr, ptr %arrayidx21.i1395, align 8
+  %arrayidx23.i1405.epil = getelementptr inbounds i32, ptr %504, i64 %idxprom22.i1396
   store i32 %sub19.i1404.epil, ptr %arrayidx23.i1405.epil, align 4
   br label %for.cond24.preheader.i1274
 
 for.cond24.preheader.i1274:                       ; preds = %for.cond24.preheader.i1274.loopexit.unr-lcssa, %if.then16.i1403.epil, %for.body.i1398.epil, %if.else.i1272
-  %wm.0.lcssa.i1275 = phi float [ %565, %if.else.i1272 ], [ %wm.1.i1407.lcssa.ph, %for.cond24.preheader.i1274.loopexit.unr-lcssa ], [ %567, %if.then16.i1403.epil ], [ %wm.02.i1400.unr, %for.body.i1398.epil ]
+  %wm.0.lcssa.i1275 = phi float [ %500, %if.else.i1272 ], [ %wm.1.i1407.lcssa.ph, %for.cond24.preheader.i1274.loopexit.unr-lcssa ], [ %502, %if.then16.i1403.epil ], [ %wm.02.i1400.unr, %for.body.i1398.epil ]
   %cmp254.i1276 = icmp sgt i32 %conv3.i1266, 0
   br i1 %cmp254.i1276, label %for.body27.lr.ph.i1375, label %if.end46.i1277
 
 for.body27.lr.ph.i1375:                           ; preds = %for.cond24.preheader.i1274
   %sext.i1376 = shl i64 %call.i1263, 32
   %idxprom38.i1377 = ashr exact i64 %sext.i1376, 32
-  %arrayidx39.i1378 = getelementptr inbounds ptr, ptr %467, i64 %idxprom38.i1377
+  %arrayidx39.i1378 = getelementptr inbounds ptr, ptr %402, i64 %idxprom38.i1377
   %sext257.i = shl i64 %call2.i1265, 32
   %idxprom40.i1379 = ashr exact i64 %sext257.i, 32
   %wide.trip.count47.i1380 = and i64 %call2.i1265, 4294967295
-  %xtraiter1875 = and i64 %call2.i1265, 1
-  %570 = icmp eq i64 %wide.trip.count47.i1380, 1
-  br i1 %570, label %if.end46.i1277.loopexit.unr-lcssa, label %for.body27.lr.ph.i1375.new
+  %xtraiter1874 = and i64 %call2.i1265, 1
+  %505 = icmp eq i64 %wide.trip.count47.i1380, 1
+  br i1 %505, label %if.end46.i1277.loopexit.unr-lcssa, label %for.body27.lr.ph.i1375.new
 
 for.body27.lr.ph.i1375.new:                       ; preds = %for.body27.lr.ph.i1375
-  %unroll_iter1878 = sub nsw i64 %wide.trip.count47.i1380, %xtraiter1875
+  %unroll_iter1877 = sub nsw i64 %wide.trip.count47.i1380, %xtraiter1874
   br label %for.body27.i1381
 
 for.body.i1398:                                   ; preds = %for.inc.i1406.1, %for.body.lr.ph.i1393.new
   %indvars.iv.i1399 = phi i64 [ 0, %for.body.lr.ph.i1393.new ], [ %indvars.iv.next.i1408.1, %for.inc.i1406.1 ]
-  %wm.02.i1400 = phi float [ %565, %for.body.lr.ph.i1393.new ], [ %wm.1.i1407.1, %for.inc.i1406.1 ]
-  %niter1874 = phi i64 [ 0, %for.body.lr.ph.i1393.new ], [ %niter1874.next.1, %for.inc.i1406.1 ]
-  %arrayidx13.i1401 = getelementptr inbounds float, ptr %435, i64 %indvars.iv.i1399
-  %571 = load float, ptr %arrayidx13.i1401, align 4
-  %cmp14.i1402 = fcmp ult float %571, %wm.02.i1400
+  %wm.02.i1400 = phi float [ %500, %for.body.lr.ph.i1393.new ], [ %wm.1.i1407.1, %for.inc.i1406.1 ]
+  %niter1873 = phi i64 [ 0, %for.body.lr.ph.i1393.new ], [ %niter1873.next.1, %for.inc.i1406.1 ]
+  %arrayidx13.i1401 = getelementptr inbounds float, ptr %370, i64 %indvars.iv.i1399
+  %506 = load float, ptr %arrayidx13.i1401, align 4
+  %cmp14.i1402 = fcmp ult float %506, %wm.02.i1400
   br i1 %cmp14.i1402, label %for.inc.i1406, label %if.then16.i1403
 
 if.then16.i1403:                                  ; preds = %for.body.i1398
-  %572 = trunc i64 %indvars.iv.i1399 to i32
-  %sub19.i1404 = sub nsw i32 %conv.i1264, %572
-  %573 = load ptr, ptr %arrayidx21.i1395, align 8
-  %arrayidx23.i1405 = getelementptr inbounds i32, ptr %573, i64 %idxprom22.i1396
+  %507 = trunc i64 %indvars.iv.i1399 to i32
+  %sub19.i1404 = sub nsw i32 %conv.i1264, %507
+  %508 = load ptr, ptr %arrayidx21.i1395, align 8
+  %arrayidx23.i1405 = getelementptr inbounds i32, ptr %508, i64 %idxprom22.i1396
   store i32 %sub19.i1404, ptr %arrayidx23.i1405, align 4
   br label %for.inc.i1406
 
 for.inc.i1406:                                    ; preds = %if.then16.i1403, %for.body.i1398
-  %wm.1.i1407 = phi float [ %571, %if.then16.i1403 ], [ %wm.02.i1400, %for.body.i1398 ]
+  %wm.1.i1407 = phi float [ %506, %if.then16.i1403 ], [ %wm.02.i1400, %for.body.i1398 ]
   %indvars.iv.next.i1408 = or i64 %indvars.iv.i1399, 1
-  %arrayidx13.i1401.1 = getelementptr inbounds float, ptr %435, i64 %indvars.iv.next.i1408
-  %574 = load float, ptr %arrayidx13.i1401.1, align 4
-  %cmp14.i1402.1 = fcmp ult float %574, %wm.1.i1407
+  %arrayidx13.i1401.1 = getelementptr inbounds float, ptr %370, i64 %indvars.iv.next.i1408
+  %509 = load float, ptr %arrayidx13.i1401.1, align 4
+  %cmp14.i1402.1 = fcmp ult float %509, %wm.1.i1407
   br i1 %cmp14.i1402.1, label %for.inc.i1406.1, label %if.then16.i1403.1
 
 if.then16.i1403.1:                                ; preds = %for.inc.i1406
-  %575 = trunc i64 %indvars.iv.next.i1408 to i32
-  %sub19.i1404.1 = sub nsw i32 %conv.i1264, %575
-  %576 = load ptr, ptr %arrayidx21.i1395, align 8
-  %arrayidx23.i1405.1 = getelementptr inbounds i32, ptr %576, i64 %idxprom22.i1396
+  %510 = trunc i64 %indvars.iv.next.i1408 to i32
+  %sub19.i1404.1 = sub nsw i32 %conv.i1264, %510
+  %511 = load ptr, ptr %arrayidx21.i1395, align 8
+  %arrayidx23.i1405.1 = getelementptr inbounds i32, ptr %511, i64 %idxprom22.i1396
   store i32 %sub19.i1404.1, ptr %arrayidx23.i1405.1, align 4
   br label %for.inc.i1406.1
 
 for.inc.i1406.1:                                  ; preds = %if.then16.i1403.1, %for.inc.i1406
-  %wm.1.i1407.1 = phi float [ %574, %if.then16.i1403.1 ], [ %wm.1.i1407, %for.inc.i1406 ]
+  %wm.1.i1407.1 = phi float [ %509, %if.then16.i1403.1 ], [ %wm.1.i1407, %for.inc.i1406 ]
   %indvars.iv.next.i1408.1 = add nuw nsw i64 %indvars.iv.i1399, 2
-  %niter1874.next.1 = add i64 %niter1874, 2
-  %niter1874.ncmp.1 = icmp eq i64 %niter1874.next.1, %unroll_iter1873
-  br i1 %niter1874.ncmp.1, label %for.cond24.preheader.i1274.loopexit.unr-lcssa, label %for.body.i1398
+  %niter1873.next.1 = add i64 %niter1873, 2
+  %niter1873.ncmp.1 = icmp eq i64 %niter1873.next.1, %unroll_iter1872
+  br i1 %niter1873.ncmp.1, label %for.cond24.preheader.i1274.loopexit.unr-lcssa, label %for.body.i1398
 
 for.body27.i1381:                                 ; preds = %for.inc43.i1389.1, %for.body27.lr.ph.i1375.new
   %indvars.iv44.i1382 = phi i64 [ 0, %for.body27.lr.ph.i1375.new ], [ %indvars.iv.next45.i1391.1, %for.inc43.i1389.1 ]
   %wm.25.i1383 = phi float [ %wm.0.lcssa.i1275, %for.body27.lr.ph.i1375.new ], [ %wm.3.i1390.1, %for.inc43.i1389.1 ]
-  %niter1879 = phi i64 [ 0, %for.body27.lr.ph.i1375.new ], [ %niter1879.next.1, %for.inc43.i1389.1 ]
+  %niter1878 = phi i64 [ 0, %for.body27.lr.ph.i1375.new ], [ %niter1878.next.1, %for.inc43.i1389.1 ]
   %arrayidx29.i1384 = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv44.i1382
-  %577 = load float, ptr %arrayidx29.i1384, align 4
-  %cmp30.i1385 = fcmp ult float %577, %wm.25.i1383
+  %512 = load float, ptr %arrayidx29.i1384, align 4
+  %cmp30.i1385 = fcmp ult float %512, %wm.25.i1383
   br i1 %cmp30.i1385, label %for.inc43.i1389, label %if.then32.i1386
 
 if.then32.i1386:                                  ; preds = %for.body27.i1381
-  %578 = trunc i64 %indvars.iv44.i1382 to i32
-  %sub36.neg.i1387 = sub nsw i32 %578, %conv3.i1266
-  %579 = load ptr, ptr %arrayidx39.i1378, align 8
-  %arrayidx41.i1388 = getelementptr inbounds i32, ptr %579, i64 %idxprom40.i1379
+  %513 = trunc i64 %indvars.iv44.i1382 to i32
+  %sub36.neg.i1387 = sub nsw i32 %513, %conv3.i1266
+  %514 = load ptr, ptr %arrayidx39.i1378, align 8
+  %arrayidx41.i1388 = getelementptr inbounds i32, ptr %514, i64 %idxprom40.i1379
   store i32 %sub36.neg.i1387, ptr %arrayidx41.i1388, align 4
   br label %for.inc43.i1389
 
 for.inc43.i1389:                                  ; preds = %if.then32.i1386, %for.body27.i1381
-  %wm.3.i1390 = phi float [ %577, %if.then32.i1386 ], [ %wm.25.i1383, %for.body27.i1381 ]
+  %wm.3.i1390 = phi float [ %512, %if.then32.i1386 ], [ %wm.25.i1383, %for.body27.i1381 ]
   %indvars.iv.next45.i1391 = or i64 %indvars.iv44.i1382, 1
   %arrayidx29.i1384.1 = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv.next45.i1391
-  %580 = load float, ptr %arrayidx29.i1384.1, align 4
-  %cmp30.i1385.1 = fcmp ult float %580, %wm.3.i1390
+  %515 = load float, ptr %arrayidx29.i1384.1, align 4
+  %cmp30.i1385.1 = fcmp ult float %515, %wm.3.i1390
   br i1 %cmp30.i1385.1, label %for.inc43.i1389.1, label %if.then32.i1386.1
 
 if.then32.i1386.1:                                ; preds = %for.inc43.i1389
-  %581 = trunc i64 %indvars.iv.next45.i1391 to i32
-  %sub36.neg.i1387.1 = sub nsw i32 %581, %conv3.i1266
-  %582 = load ptr, ptr %arrayidx39.i1378, align 8
-  %arrayidx41.i1388.1 = getelementptr inbounds i32, ptr %582, i64 %idxprom40.i1379
+  %516 = trunc i64 %indvars.iv.next45.i1391 to i32
+  %sub36.neg.i1387.1 = sub nsw i32 %516, %conv3.i1266
+  %517 = load ptr, ptr %arrayidx39.i1378, align 8
+  %arrayidx41.i1388.1 = getelementptr inbounds i32, ptr %517, i64 %idxprom40.i1379
   store i32 %sub36.neg.i1387.1, ptr %arrayidx41.i1388.1, align 4
   br label %for.inc43.i1389.1
 
 for.inc43.i1389.1:                                ; preds = %if.then32.i1386.1, %for.inc43.i1389
-  %wm.3.i1390.1 = phi float [ %580, %if.then32.i1386.1 ], [ %wm.3.i1390, %for.inc43.i1389 ]
+  %wm.3.i1390.1 = phi float [ %515, %if.then32.i1386.1 ], [ %wm.3.i1390, %for.inc43.i1389 ]
   %indvars.iv.next45.i1391.1 = add nuw nsw i64 %indvars.iv44.i1382, 2
-  %niter1879.next.1 = add i64 %niter1879, 2
-  %niter1879.ncmp.1 = icmp eq i64 %niter1879.next.1, %unroll_iter1878
-  br i1 %niter1879.ncmp.1, label %if.end46.i1277.loopexit.unr-lcssa, label %for.body27.i1381
+  %niter1878.next.1 = add i64 %niter1878, 2
+  %niter1878.ncmp.1 = icmp eq i64 %niter1878.next.1, %unroll_iter1877
+  br i1 %niter1878.ncmp.1, label %if.end46.i1277.loopexit.unr-lcssa, label %for.body27.i1381
 
 if.end46.i1277.loopexit.unr-lcssa:                ; preds = %for.inc43.i1389.1, %for.body27.lr.ph.i1375
   %indvars.iv44.i1382.unr = phi i64 [ 0, %for.body27.lr.ph.i1375 ], [ %indvars.iv.next45.i1391.1, %for.inc43.i1389.1 ]
   %wm.25.i1383.unr = phi float [ %wm.0.lcssa.i1275, %for.body27.lr.ph.i1375 ], [ %wm.3.i1390.1, %for.inc43.i1389.1 ]
-  %lcmp.mod1877.not = icmp eq i64 %xtraiter1875, 0
-  br i1 %lcmp.mod1877.not, label %if.end46.i1277, label %for.body27.i1381.epil
+  %lcmp.mod1876.not = icmp eq i64 %xtraiter1874, 0
+  br i1 %lcmp.mod1876.not, label %if.end46.i1277, label %for.body27.i1381.epil
 
 for.body27.i1381.epil:                            ; preds = %if.end46.i1277.loopexit.unr-lcssa
   %arrayidx29.i1384.epil = getelementptr inbounds float, ptr %currentw.0.lcssa, i64 %indvars.iv44.i1382.unr
-  %583 = load float, ptr %arrayidx29.i1384.epil, align 4
-  %cmp30.i1385.epil = fcmp ult float %583, %wm.25.i1383.unr
+  %518 = load float, ptr %arrayidx29.i1384.epil, align 4
+  %cmp30.i1385.epil = fcmp ult float %518, %wm.25.i1383.unr
   br i1 %cmp30.i1385.epil, label %if.end46.i1277, label %if.then32.i1386.epil
 
 if.then32.i1386.epil:                             ; preds = %for.body27.i1381.epil
-  %584 = trunc i64 %indvars.iv44.i1382.unr to i32
-  %sub36.neg.i1387.epil = sub nsw i32 %584, %conv3.i1266
-  %585 = load ptr, ptr %arrayidx39.i1378, align 8
-  %arrayidx41.i1388.epil = getelementptr inbounds i32, ptr %585, i64 %idxprom40.i1379
+  %519 = trunc i64 %indvars.iv44.i1382.unr to i32
+  %sub36.neg.i1387.epil = sub nsw i32 %519, %conv3.i1266
+  %520 = load ptr, ptr %arrayidx39.i1378, align 8
+  %arrayidx41.i1388.epil = getelementptr inbounds i32, ptr %520, i64 %idxprom40.i1379
   store i32 %sub36.neg.i1387.epil, ptr %arrayidx41.i1388.epil, align 4
   br label %if.end46.i1277
 
@@ -3237,130 +3080,130 @@ if.end46.i1277:                                   ; preds = %if.end46.i1277.loop
   br i1 %cmp49.not7.i1278, label %for.cond59.preheader.i1286, label %for.body51.preheader.i1279
 
 for.body51.preheader.i1279:                       ; preds = %if.end46.i1277
-  %586 = add i64 %call.i1263, 1
-  %wide.trip.count52.i1280 = and i64 %586, 4294967295
-  %587 = add nsw i64 %wide.trip.count52.i1280, -1
-  %xtraiter1880 = and i64 %586, 7
-  %588 = icmp ult i64 %587, 7
-  br i1 %588, label %for.cond59.preheader.i1286.loopexit.unr-lcssa, label %for.body51.preheader.i1279.new
+  %521 = add i64 %call.i1263, 1
+  %wide.trip.count52.i1280 = and i64 %521, 4294967295
+  %522 = add nsw i64 %wide.trip.count52.i1280, -1
+  %xtraiter1879 = and i64 %521, 7
+  %523 = icmp ult i64 %522, 7
+  br i1 %523, label %for.cond59.preheader.i1286.loopexit.unr-lcssa, label %for.body51.preheader.i1279.new
 
 for.body51.preheader.i1279.new:                   ; preds = %for.body51.preheader.i1279
-  %unroll_iter1883 = sub nsw i64 %wide.trip.count52.i1280, %xtraiter1880
+  %unroll_iter1882 = sub nsw i64 %wide.trip.count52.i1280, %xtraiter1879
   br label %for.body51.i1281
 
 for.cond59.preheader.i1286.loopexit.unr-lcssa:    ; preds = %for.body51.i1281, %for.body51.preheader.i1279
   %indvars.iv49.i1282.unr = phi i64 [ 0, %for.body51.preheader.i1279 ], [ %indvars.iv.next50.i1283.7, %for.body51.i1281 ]
-  %lcmp.mod1882.not = icmp eq i64 %xtraiter1880, 0
-  br i1 %lcmp.mod1882.not, label %for.cond59.preheader.i1286, label %for.body51.i1281.epil
+  %lcmp.mod1881.not = icmp eq i64 %xtraiter1879, 0
+  br i1 %lcmp.mod1881.not, label %for.cond59.preheader.i1286, label %for.body51.i1281.epil
 
 for.body51.i1281.epil:                            ; preds = %for.cond59.preheader.i1286.loopexit.unr-lcssa, %for.body51.i1281.epil
   %indvars.iv49.i1282.epil = phi i64 [ %indvars.iv.next50.i1283.epil, %for.body51.i1281.epil ], [ %indvars.iv49.i1282.unr, %for.cond59.preheader.i1286.loopexit.unr-lcssa ]
-  %epil.iter1881 = phi i64 [ %epil.iter1881.next, %for.body51.i1281.epil ], [ 0, %for.cond59.preheader.i1286.loopexit.unr-lcssa ]
+  %epil.iter1880 = phi i64 [ %epil.iter1880.next, %for.body51.i1281.epil ], [ 0, %for.cond59.preheader.i1286.loopexit.unr-lcssa ]
   %indvars.iv.next50.i1283.epil = add nuw nsw i64 %indvars.iv49.i1282.epil, 1
-  %arrayidx54.i1284.epil = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv49.i1282.epil
-  %589 = load ptr, ptr %arrayidx54.i1284.epil, align 8
-  %590 = trunc i64 %indvars.iv.next50.i1283.epil to i32
-  store i32 %590, ptr %589, align 4
-  %epil.iter1881.next = add i64 %epil.iter1881, 1
-  %epil.iter1881.cmp.not = icmp eq i64 %epil.iter1881.next, %xtraiter1880
-  br i1 %epil.iter1881.cmp.not, label %for.cond59.preheader.i1286, label %for.body51.i1281.epil
+  %arrayidx54.i1284.epil = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv49.i1282.epil
+  %524 = load ptr, ptr %arrayidx54.i1284.epil, align 8
+  %525 = trunc i64 %indvars.iv.next50.i1283.epil to i32
+  store i32 %525, ptr %524, align 4
+  %epil.iter1880.next = add i64 %epil.iter1880, 1
+  %epil.iter1880.cmp.not = icmp eq i64 %epil.iter1880.next, %xtraiter1879
+  br i1 %epil.iter1880.cmp.not, label %for.cond59.preheader.i1286, label %for.body51.i1281.epil
 
 for.cond59.preheader.i1286:                       ; preds = %for.cond59.preheader.i1286.loopexit.unr-lcssa, %for.body51.i1281.epil, %if.end46.i1277
   %cmp61.not9.i1287 = icmp slt i32 %conv3.i1266, 0
   br i1 %cmp61.not9.i1287, label %for.end71.i1297, label %for.body63.lr.ph.i1288
 
 for.body63.lr.ph.i1288:                           ; preds = %for.cond59.preheader.i1286
-  %591 = load ptr, ptr %467, align 8
-  %592 = add i64 %call2.i1265, 1
-  %wide.trip.count58.i1289 = and i64 %592, 4294967295
-  %min.iters.check1752 = icmp ult i64 %wide.trip.count58.i1289, 8
-  br i1 %min.iters.check1752, label %for.body63.i1290.preheader, label %vector.ph1753
+  %526 = load ptr, ptr %402, align 8
+  %527 = add i64 %call2.i1265, 1
+  %wide.trip.count58.i1289 = and i64 %527, 4294967295
+  %min.iters.check1751 = icmp ult i64 %wide.trip.count58.i1289, 8
+  br i1 %min.iters.check1751, label %for.body63.i1290.preheader, label %vector.ph1752
 
-vector.ph1753:                                    ; preds = %for.body63.lr.ph.i1288
-  %n.mod.vf1754 = and i64 %592, 7
-  %n.vec1755 = sub nsw i64 %wide.trip.count58.i1289, %n.mod.vf1754
-  br label %vector.body1758
+vector.ph1752:                                    ; preds = %for.body63.lr.ph.i1288
+  %n.mod.vf1753 = and i64 %527, 7
+  %n.vec1754 = sub nsw i64 %wide.trip.count58.i1289, %n.mod.vf1753
+  br label %vector.body1757
 
-vector.body1758:                                  ; preds = %vector.body1758, %vector.ph1753
-  %index1759 = phi i64 [ 0, %vector.ph1753 ], [ %index.next1764, %vector.body1758 ]
-  %vec.ind1760 = phi <4 x i32> [ <i32 0, i32 1, i32 2, i32 3>, %vector.ph1753 ], [ %vec.ind.next1763, %vector.body1758 ]
-  %593 = xor <4 x i32> %vec.ind1760, <i32 -1, i32 -1, i32 -1, i32 -1>
-  %594 = sub <4 x i32> <i32 -5, i32 -5, i32 -5, i32 -5>, %vec.ind1760
-  %595 = getelementptr inbounds i32, ptr %591, i64 %index1759
-  store <4 x i32> %593, ptr %595, align 4
-  %596 = getelementptr inbounds i32, ptr %595, i64 4
-  store <4 x i32> %594, ptr %596, align 4
-  %index.next1764 = add nuw i64 %index1759, 8
-  %vec.ind.next1763 = add <4 x i32> %vec.ind1760, <i32 8, i32 8, i32 8, i32 8>
-  %597 = icmp eq i64 %index.next1764, %n.vec1755
-  br i1 %597, label %middle.block1750, label %vector.body1758
+vector.body1757:                                  ; preds = %vector.body1757, %vector.ph1752
+  %index1758 = phi i64 [ 0, %vector.ph1752 ], [ %index.next1763, %vector.body1757 ]
+  %vec.ind1759 = phi <4 x i32> [ <i32 0, i32 1, i32 2, i32 3>, %vector.ph1752 ], [ %vec.ind.next1762, %vector.body1757 ]
+  %528 = xor <4 x i32> %vec.ind1759, <i32 -1, i32 -1, i32 -1, i32 -1>
+  %529 = sub <4 x i32> <i32 -5, i32 -5, i32 -5, i32 -5>, %vec.ind1759
+  %530 = getelementptr inbounds i32, ptr %526, i64 %index1758
+  store <4 x i32> %528, ptr %530, align 4
+  %531 = getelementptr inbounds i32, ptr %530, i64 4
+  store <4 x i32> %529, ptr %531, align 4
+  %index.next1763 = add nuw i64 %index1758, 8
+  %vec.ind.next1762 = add <4 x i32> %vec.ind1759, <i32 8, i32 8, i32 8, i32 8>
+  %532 = icmp eq i64 %index.next1763, %n.vec1754
+  br i1 %532, label %middle.block1749, label %vector.body1757
 
-middle.block1750:                                 ; preds = %vector.body1758
-  %cmp.n1757 = icmp eq i64 %n.mod.vf1754, 0
-  br i1 %cmp.n1757, label %for.end71.i1297, label %for.body63.i1290.preheader
+middle.block1749:                                 ; preds = %vector.body1757
+  %cmp.n1756 = icmp eq i64 %n.mod.vf1753, 0
+  br i1 %cmp.n1756, label %for.end71.i1297, label %for.body63.i1290.preheader
 
-for.body63.i1290.preheader:                       ; preds = %for.body63.lr.ph.i1288, %middle.block1750
-  %indvars.iv54.i1291.ph = phi i64 [ 0, %for.body63.lr.ph.i1288 ], [ %n.vec1755, %middle.block1750 ]
+for.body63.i1290.preheader:                       ; preds = %for.body63.lr.ph.i1288, %middle.block1749
+  %indvars.iv54.i1291.ph = phi i64 [ 0, %for.body63.lr.ph.i1288 ], [ %n.vec1754, %middle.block1749 ]
   br label %for.body63.i1290
 
 for.body51.i1281:                                 ; preds = %for.body51.i1281, %for.body51.preheader.i1279.new
   %indvars.iv49.i1282 = phi i64 [ 0, %for.body51.preheader.i1279.new ], [ %indvars.iv.next50.i1283.7, %for.body51.i1281 ]
-  %niter1884 = phi i64 [ 0, %for.body51.preheader.i1279.new ], [ %niter1884.next.7, %for.body51.i1281 ]
+  %niter1883 = phi i64 [ 0, %for.body51.preheader.i1279.new ], [ %niter1883.next.7, %for.body51.i1281 ]
   %indvars.iv.next50.i1283 = or i64 %indvars.iv49.i1282, 1
-  %arrayidx54.i1284 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv49.i1282
-  %598 = load ptr, ptr %arrayidx54.i1284, align 8
-  %599 = trunc i64 %indvars.iv.next50.i1283 to i32
-  store i32 %599, ptr %598, align 4
+  %arrayidx54.i1284 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv49.i1282
+  %533 = load ptr, ptr %arrayidx54.i1284, align 8
+  %534 = trunc i64 %indvars.iv.next50.i1283 to i32
+  store i32 %534, ptr %533, align 4
   %indvars.iv.next50.i1283.1 = or i64 %indvars.iv49.i1282, 2
-  %arrayidx54.i1284.1 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i1283
-  %600 = load ptr, ptr %arrayidx54.i1284.1, align 8
-  %601 = trunc i64 %indvars.iv.next50.i1283.1 to i32
-  store i32 %601, ptr %600, align 4
+  %arrayidx54.i1284.1 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i1283
+  %535 = load ptr, ptr %arrayidx54.i1284.1, align 8
+  %536 = trunc i64 %indvars.iv.next50.i1283.1 to i32
+  store i32 %536, ptr %535, align 4
   %indvars.iv.next50.i1283.2 = or i64 %indvars.iv49.i1282, 3
-  %arrayidx54.i1284.2 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i1283.1
-  %602 = load ptr, ptr %arrayidx54.i1284.2, align 8
-  %603 = trunc i64 %indvars.iv.next50.i1283.2 to i32
-  store i32 %603, ptr %602, align 4
+  %arrayidx54.i1284.2 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i1283.1
+  %537 = load ptr, ptr %arrayidx54.i1284.2, align 8
+  %538 = trunc i64 %indvars.iv.next50.i1283.2 to i32
+  store i32 %538, ptr %537, align 4
   %indvars.iv.next50.i1283.3 = or i64 %indvars.iv49.i1282, 4
-  %arrayidx54.i1284.3 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i1283.2
-  %604 = load ptr, ptr %arrayidx54.i1284.3, align 8
-  %605 = trunc i64 %indvars.iv.next50.i1283.3 to i32
-  store i32 %605, ptr %604, align 4
+  %arrayidx54.i1284.3 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i1283.2
+  %539 = load ptr, ptr %arrayidx54.i1284.3, align 8
+  %540 = trunc i64 %indvars.iv.next50.i1283.3 to i32
+  store i32 %540, ptr %539, align 4
   %indvars.iv.next50.i1283.4 = or i64 %indvars.iv49.i1282, 5
-  %arrayidx54.i1284.4 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i1283.3
-  %606 = load ptr, ptr %arrayidx54.i1284.4, align 8
-  %607 = trunc i64 %indvars.iv.next50.i1283.4 to i32
-  store i32 %607, ptr %606, align 4
+  %arrayidx54.i1284.4 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i1283.3
+  %541 = load ptr, ptr %arrayidx54.i1284.4, align 8
+  %542 = trunc i64 %indvars.iv.next50.i1283.4 to i32
+  store i32 %542, ptr %541, align 4
   %indvars.iv.next50.i1283.5 = or i64 %indvars.iv49.i1282, 6
-  %arrayidx54.i1284.5 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i1283.4
-  %608 = load ptr, ptr %arrayidx54.i1284.5, align 8
-  %609 = trunc i64 %indvars.iv.next50.i1283.5 to i32
-  store i32 %609, ptr %608, align 4
+  %arrayidx54.i1284.5 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i1283.4
+  %543 = load ptr, ptr %arrayidx54.i1284.5, align 8
+  %544 = trunc i64 %indvars.iv.next50.i1283.5 to i32
+  store i32 %544, ptr %543, align 4
   %indvars.iv.next50.i1283.6 = or i64 %indvars.iv49.i1282, 7
-  %arrayidx54.i1284.6 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i1283.5
-  %610 = load ptr, ptr %arrayidx54.i1284.6, align 8
-  %611 = trunc i64 %indvars.iv.next50.i1283.6 to i32
-  store i32 %611, ptr %610, align 4
+  %arrayidx54.i1284.6 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i1283.5
+  %545 = load ptr, ptr %arrayidx54.i1284.6, align 8
+  %546 = trunc i64 %indvars.iv.next50.i1283.6 to i32
+  store i32 %546, ptr %545, align 4
   %indvars.iv.next50.i1283.7 = add nuw nsw i64 %indvars.iv49.i1282, 8
-  %arrayidx54.i1284.7 = getelementptr inbounds ptr, ptr %467, i64 %indvars.iv.next50.i1283.6
-  %612 = load ptr, ptr %arrayidx54.i1284.7, align 8
-  %613 = trunc i64 %indvars.iv.next50.i1283.7 to i32
-  store i32 %613, ptr %612, align 4
-  %niter1884.next.7 = add i64 %niter1884, 8
-  %niter1884.ncmp.7 = icmp eq i64 %niter1884.next.7, %unroll_iter1883
-  br i1 %niter1884.ncmp.7, label %for.cond59.preheader.i1286.loopexit.unr-lcssa, label %for.body51.i1281
+  %arrayidx54.i1284.7 = getelementptr inbounds ptr, ptr %402, i64 %indvars.iv.next50.i1283.6
+  %547 = load ptr, ptr %arrayidx54.i1284.7, align 8
+  %548 = trunc i64 %indvars.iv.next50.i1283.7 to i32
+  store i32 %548, ptr %547, align 4
+  %niter1883.next.7 = add i64 %niter1883, 8
+  %niter1883.ncmp.7 = icmp eq i64 %niter1883.next.7, %unroll_iter1882
+  br i1 %niter1883.ncmp.7, label %for.cond59.preheader.i1286.loopexit.unr-lcssa, label %for.body51.i1281
 
 for.body63.i1290:                                 ; preds = %for.body63.i1290.preheader, %for.body63.i1290
   %indvars.iv54.i1291 = phi i64 [ %indvars.iv.next55.i1293, %for.body63.i1290 ], [ %indvars.iv54.i1291.ph, %for.body63.i1290.preheader ]
   %indvars57.i1292 = trunc i64 %indvars.iv54.i1291 to i32
   %indvars.iv.next55.i1293 = add nuw nsw i64 %indvars.iv54.i1291, 1
   %sub65.i1294 = xor i32 %indvars57.i1292, -1
-  %arrayidx68.i1295 = getelementptr inbounds i32, ptr %591, i64 %indvars.iv54.i1291
+  %arrayidx68.i1295 = getelementptr inbounds i32, ptr %526, i64 %indvars.iv54.i1291
   store i32 %sub65.i1294, ptr %arrayidx68.i1295, align 4
   %exitcond59.not.i1296 = icmp eq i64 %indvars.iv.next55.i1293, %wide.trip.count58.i1289
   br i1 %exitcond59.not.i1296, label %for.end71.i1297, label %for.body63.i1290
 
-for.end71.i1297:                                  ; preds = %for.body63.i1290, %middle.block1750, %for.cond59.preheader.i1286
+for.end71.i1297:                                  ; preds = %for.body63.i1290, %middle.block1749, %for.cond59.preheader.i1286
   %sext260.i = shl i64 %call.i1263, 32
   %idx.ext.i1298 = ashr exact i64 %sext260.i, 32
   %add.ptr.i1299 = getelementptr inbounds i8, ptr %call5.i1269, i64 %idx.ext.i1298
@@ -3380,15 +3223,15 @@ for.body82.i1305:                                 ; preds = %for.end71.i1297, %i
   %k.032.i1308 = phi i32 [ %inc137.i, %if.end132.i ], [ 0, %for.end71.i1297 ]
   %iin.031.i1309 = phi i32 [ %ifi.0.i1321, %if.end132.i ], [ %conv.i1264, %for.end71.i1297 ]
   %jin.030.i1310 = phi i32 [ %jfi.0.i1323, %if.end132.i ], [ %conv3.i1266, %for.end71.i1297 ]
-  %gaptable1.033.i13071795 = ptrtoint ptr %gaptable1.033.i1307 to i64
-  %gaptable2.034.i13061796 = ptrtoint ptr %gaptable2.034.i1306 to i64
+  %gaptable1.033.i13071794 = ptrtoint ptr %gaptable1.033.i1307 to i64
+  %gaptable2.034.i13061795 = ptrtoint ptr %gaptable2.034.i1306 to i64
   %idxprom83.i1311 = sext i32 %iin.031.i1309 to i64
-  %arrayidx84.i1312 = getelementptr inbounds ptr, ptr %467, i64 %idxprom83.i1311
-  %614 = load ptr, ptr %arrayidx84.i1312, align 8
+  %arrayidx84.i1312 = getelementptr inbounds ptr, ptr %402, i64 %idxprom83.i1311
+  %549 = load ptr, ptr %arrayidx84.i1312, align 8
   %idxprom85.i1313 = sext i32 %jin.030.i1310 to i64
-  %arrayidx86.i1314 = getelementptr inbounds i32, ptr %614, i64 %idxprom85.i1313
-  %615 = load i32, ptr %arrayidx86.i1314, align 4
-  %cmp87.i1315 = icmp slt i32 %615, 0
+  %arrayidx86.i1314 = getelementptr inbounds i32, ptr %549, i64 %idxprom85.i1313
+  %550 = load i32, ptr %arrayidx86.i1314, align 4
+  %cmp87.i1315 = icmp slt i32 %550, 0
   br i1 %cmp87.i1315, label %if.then89.i1373, label %if.else96.i1316
 
 if.then89.i1373:                                  ; preds = %for.body82.i1305
@@ -3396,11 +3239,11 @@ if.then89.i1373:                                  ; preds = %for.body82.i1305
   br label %if.end114.i1320
 
 if.else96.i1316:                                  ; preds = %for.body82.i1305
-  %cmp101.not.i1317 = icmp eq i32 %615, 0
+  %cmp101.not.i1317 = icmp eq i32 %550, 0
   br i1 %cmp101.not.i1317, label %if.else110.i1371, label %if.then103.i1318
 
 if.then103.i1318:                                 ; preds = %if.else96.i1316
-  %sub108.i1319 = sub nsw i32 %iin.031.i1309, %615
+  %sub108.i1319 = sub nsw i32 %iin.031.i1309, %550
   br label %if.end114.i1320
 
 if.else110.i1371:                                 ; preds = %if.else96.i1316
@@ -3409,84 +3252,84 @@ if.else110.i1371:                                 ; preds = %if.else96.i1316
 
 if.end114.i1320:                                  ; preds = %if.else110.i1371, %if.then103.i1318, %if.then89.i1373
   %ifi.0.i1321 = phi i32 [ %sub90.i1374, %if.then89.i1373 ], [ %sub108.i1319, %if.then103.i1318 ], [ %sub111.i1372, %if.else110.i1371 ]
-  %.pn.i1322 = phi i32 [ %615, %if.then89.i1373 ], [ -1, %if.then103.i1318 ], [ -1, %if.else110.i1371 ]
+  %.pn.i1322 = phi i32 [ %550, %if.then89.i1373 ], [ -1, %if.then103.i1318 ], [ -1, %if.else110.i1371 ]
   %jfi.0.i1323 = add nsw i32 %.pn.i1322, %jin.030.i1310
-  %616 = xor i32 %ifi.0.i1321, -1
-  %dec11.i1324 = add i32 %iin.031.i1309, %616
+  %551 = xor i32 %ifi.0.i1321, -1
+  %dec11.i1324 = add i32 %iin.031.i1309, %551
   %tobool.not12.i1325 = icmp eq i32 %dec11.i1324, 0
   br i1 %tobool.not12.i1325, label %while.end.i1336, label %while.body.preheader.i1326
 
 while.body.preheader.i1326:                       ; preds = %if.end114.i1320
-  %617 = add i32 %iin.031.i1309, -1
-  %618 = add i32 %iin.031.i1309, -2
-  %619 = sub i32 %618, %ifi.0.i1321
-  %620 = zext i32 %619 to i64
-  %621 = add nuw nsw i64 %620, 1
-  %min.iters.check1800 = icmp ult i32 %619, 15
-  %622 = sub i64 %gaptable1.033.i13071795, %gaptable2.034.i13061796
-  %diff.check1797 = icmp ult i64 %622, 16
-  %or.cond1819 = or i1 %min.iters.check1800, %diff.check1797
-  br i1 %or.cond1819, label %while.body.i1327.preheader, label %vector.ph1801
+  %552 = add i32 %iin.031.i1309, -1
+  %553 = add i32 %iin.031.i1309, -2
+  %554 = sub i32 %553, %ifi.0.i1321
+  %555 = zext i32 %554 to i64
+  %556 = add nuw nsw i64 %555, 1
+  %min.iters.check1799 = icmp ult i32 %554, 15
+  %557 = sub i64 %gaptable1.033.i13071794, %gaptable2.034.i13061795
+  %diff.check1796 = icmp ult i64 %557, 16
+  %or.cond1818 = or i1 %min.iters.check1799, %diff.check1796
+  br i1 %or.cond1818, label %while.body.i1327.preheader, label %vector.ph1800
 
-vector.ph1801:                                    ; preds = %while.body.preheader.i1326
-  %n.vec1803 = and i64 %621, 8589934576
-  %.cast1804 = trunc i64 %n.vec1803 to i32
-  %ind.end1805 = sub i32 %dec11.i1324, %.cast1804
-  %623 = sub nsw i64 0, %n.vec1803
-  %ind.end1807 = getelementptr i8, ptr %gaptable2.034.i1306, i64 %623
-  %624 = sub nsw i64 0, %n.vec1803
-  %ind.end1809 = getelementptr i8, ptr %gaptable1.033.i1307, i64 %624
-  %invariant.gep1897 = getelementptr i8, ptr %gaptable1.033.i1307, i64 -16
-  %invariant.gep1899 = getelementptr i8, ptr %gaptable2.034.i1306, i64 -16
-  br label %vector.body1812
+vector.ph1800:                                    ; preds = %while.body.preheader.i1326
+  %n.vec1802 = and i64 %556, 8589934576
+  %.cast1803 = trunc i64 %n.vec1802 to i32
+  %ind.end1804 = sub i32 %dec11.i1324, %.cast1803
+  %558 = sub nsw i64 0, %n.vec1802
+  %ind.end1806 = getelementptr i8, ptr %gaptable2.034.i1306, i64 %558
+  %559 = sub nsw i64 0, %n.vec1802
+  %ind.end1808 = getelementptr i8, ptr %gaptable1.033.i1307, i64 %559
+  %invariant.gep1896 = getelementptr i8, ptr %gaptable1.033.i1307, i64 -16
+  %invariant.gep1898 = getelementptr i8, ptr %gaptable2.034.i1306, i64 -16
+  br label %vector.body1811
 
-vector.body1812:                                  ; preds = %vector.body1812, %vector.ph1801
-  %index1813 = phi i64 [ 0, %vector.ph1801 ], [ %index.next1816, %vector.body1812 ]
-  %625 = sub i64 0, %index1813
-  %626 = sub i64 0, %index1813
-  %gep1898 = getelementptr i8, ptr %invariant.gep1897, i64 %626
-  store <16 x i8> <i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111>, ptr %gep1898, align 1
-  %gep1900 = getelementptr i8, ptr %invariant.gep1899, i64 %625
-  store <16 x i8> <i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45>, ptr %gep1900, align 1
-  %index.next1816 = add nuw i64 %index1813, 16
-  %627 = icmp eq i64 %index.next1816, %n.vec1803
-  br i1 %627, label %middle.block1798, label %vector.body1812
+vector.body1811:                                  ; preds = %vector.body1811, %vector.ph1800
+  %index1812 = phi i64 [ 0, %vector.ph1800 ], [ %index.next1815, %vector.body1811 ]
+  %560 = sub i64 0, %index1812
+  %561 = sub i64 0, %index1812
+  %gep1897 = getelementptr i8, ptr %invariant.gep1896, i64 %561
+  store <16 x i8> <i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111, i8 111>, ptr %gep1897, align 1
+  %gep1899 = getelementptr i8, ptr %invariant.gep1898, i64 %560
+  store <16 x i8> <i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45, i8 45>, ptr %gep1899, align 1
+  %index.next1815 = add nuw i64 %index1812, 16
+  %562 = icmp eq i64 %index.next1815, %n.vec1802
+  br i1 %562, label %middle.block1797, label %vector.body1811
 
-middle.block1798:                                 ; preds = %vector.body1812
-  %cmp.n1811 = icmp eq i64 %621, %n.vec1803
-  br i1 %cmp.n1811, label %while.end.loopexit.i1335, label %while.body.i1327.preheader
+middle.block1797:                                 ; preds = %vector.body1811
+  %cmp.n1810 = icmp eq i64 %556, %n.vec1802
+  br i1 %cmp.n1810, label %while.end.loopexit.i1335, label %while.body.i1327.preheader
 
-while.body.i1327.preheader:                       ; preds = %while.body.preheader.i1326, %middle.block1798
-  %dec16.i1328.ph = phi i32 [ %dec11.i1324, %while.body.preheader.i1326 ], [ %ind.end1805, %middle.block1798 ]
-  %gaptable2.115.i1329.ph = phi ptr [ %gaptable2.034.i1306, %while.body.preheader.i1326 ], [ %ind.end1807, %middle.block1798 ]
-  %gaptable1.114.i1330.ph = phi ptr [ %gaptable1.033.i1307, %while.body.preheader.i1326 ], [ %ind.end1809, %middle.block1798 ]
-  %628 = add nsw i32 %dec16.i1328.ph, -1
-  %xtraiter1885 = and i32 %dec16.i1328.ph, 7
-  %lcmp.mod1886.not = icmp eq i32 %xtraiter1885, 0
-  br i1 %lcmp.mod1886.not, label %while.body.i1327.prol.loopexit, label %while.body.i1327.prol
+while.body.i1327.preheader:                       ; preds = %while.body.preheader.i1326, %middle.block1797
+  %dec16.i1328.ph = phi i32 [ %dec11.i1324, %while.body.preheader.i1326 ], [ %ind.end1804, %middle.block1797 ]
+  %gaptable2.115.i1329.ph = phi ptr [ %gaptable2.034.i1306, %while.body.preheader.i1326 ], [ %ind.end1806, %middle.block1797 ]
+  %gaptable1.114.i1330.ph = phi ptr [ %gaptable1.033.i1307, %while.body.preheader.i1326 ], [ %ind.end1808, %middle.block1797 ]
+  %563 = add nsw i32 %dec16.i1328.ph, -1
+  %xtraiter1884 = and i32 %dec16.i1328.ph, 7
+  %lcmp.mod1885.not = icmp eq i32 %xtraiter1884, 0
+  br i1 %lcmp.mod1885.not, label %while.body.i1327.prol.loopexit, label %while.body.i1327.prol
 
 while.body.i1327.prol:                            ; preds = %while.body.i1327.preheader, %while.body.i1327.prol
   %dec16.i1328.prol = phi i32 [ %dec.i1333.prol, %while.body.i1327.prol ], [ %dec16.i1328.ph, %while.body.i1327.preheader ]
   %gaptable2.115.i1329.prol = phi ptr [ %incdec.ptr116.i1332.prol, %while.body.i1327.prol ], [ %gaptable2.115.i1329.ph, %while.body.i1327.preheader ]
   %gaptable1.114.i1330.prol = phi ptr [ %incdec.ptr.i1331.prol, %while.body.i1327.prol ], [ %gaptable1.114.i1330.ph, %while.body.i1327.preheader ]
-  %prol.iter1887 = phi i32 [ %prol.iter1887.next, %while.body.i1327.prol ], [ 0, %while.body.i1327.preheader ]
+  %prol.iter1886 = phi i32 [ %prol.iter1886.next, %while.body.i1327.prol ], [ 0, %while.body.i1327.preheader ]
   %incdec.ptr.i1331.prol = getelementptr inbounds i8, ptr %gaptable1.114.i1330.prol, i64 -1
   store i8 111, ptr %incdec.ptr.i1331.prol, align 1
   %incdec.ptr116.i1332.prol = getelementptr inbounds i8, ptr %gaptable2.115.i1329.prol, i64 -1
   store i8 45, ptr %incdec.ptr116.i1332.prol, align 1
   %dec.i1333.prol = add nsw i32 %dec16.i1328.prol, -1
-  %prol.iter1887.next = add i32 %prol.iter1887, 1
-  %prol.iter1887.cmp.not = icmp eq i32 %prol.iter1887.next, %xtraiter1885
-  br i1 %prol.iter1887.cmp.not, label %while.body.i1327.prol.loopexit, label %while.body.i1327.prol
+  %prol.iter1886.next = add i32 %prol.iter1886, 1
+  %prol.iter1886.cmp.not = icmp eq i32 %prol.iter1886.next, %xtraiter1884
+  br i1 %prol.iter1886.cmp.not, label %while.body.i1327.prol.loopexit, label %while.body.i1327.prol
 
 while.body.i1327.prol.loopexit:                   ; preds = %while.body.i1327.prol, %while.body.i1327.preheader
-  %incdec.ptr.i1331.lcssa1822.unr = phi ptr [ undef, %while.body.i1327.preheader ], [ %incdec.ptr.i1331.prol, %while.body.i1327.prol ]
-  %incdec.ptr116.i1332.lcssa1821.unr = phi ptr [ undef, %while.body.i1327.preheader ], [ %incdec.ptr116.i1332.prol, %while.body.i1327.prol ]
+  %incdec.ptr.i1331.lcssa1821.unr = phi ptr [ undef, %while.body.i1327.preheader ], [ %incdec.ptr.i1331.prol, %while.body.i1327.prol ]
+  %incdec.ptr116.i1332.lcssa1820.unr = phi ptr [ undef, %while.body.i1327.preheader ], [ %incdec.ptr116.i1332.prol, %while.body.i1327.prol ]
   %dec16.i1328.unr = phi i32 [ %dec16.i1328.ph, %while.body.i1327.preheader ], [ %dec.i1333.prol, %while.body.i1327.prol ]
   %gaptable2.115.i1329.unr = phi ptr [ %gaptable2.115.i1329.ph, %while.body.i1327.preheader ], [ %incdec.ptr116.i1332.prol, %while.body.i1327.prol ]
   %gaptable1.114.i1330.unr = phi ptr [ %gaptable1.114.i1330.ph, %while.body.i1327.preheader ], [ %incdec.ptr.i1331.prol, %while.body.i1327.prol ]
-  %629 = icmp ult i32 %628, 7
-  br i1 %629, label %while.end.loopexit.i1335, label %while.body.i1327
+  %564 = icmp ult i32 %563, 7
+  br i1 %564, label %while.end.loopexit.i1335, label %while.body.i1327
 
 while.body.i1327:                                 ; preds = %while.body.i1327.prol.loopexit, %while.body.i1327
   %dec16.i1328 = phi i32 [ %dec.i1333.7, %while.body.i1327 ], [ %dec16.i1328.unr, %while.body.i1327.prol.loopexit ]
@@ -3528,97 +3371,97 @@ while.body.i1327:                                 ; preds = %while.body.i1327.pr
   %tobool.not.i1334.7 = icmp eq i32 %dec.i1333.7, 0
   br i1 %tobool.not.i1334.7, label %while.end.loopexit.i1335, label %while.body.i1327
 
-while.end.loopexit.i1335:                         ; preds = %while.body.i1327.prol.loopexit, %while.body.i1327, %middle.block1798
-  %incdec.ptr.i1331.lcssa = phi ptr [ %ind.end1809, %middle.block1798 ], [ %incdec.ptr.i1331.lcssa1822.unr, %while.body.i1327.prol.loopexit ], [ %incdec.ptr.i1331.7, %while.body.i1327 ]
-  %incdec.ptr116.i1332.lcssa = phi ptr [ %ind.end1807, %middle.block1798 ], [ %incdec.ptr116.i1332.lcssa1821.unr, %while.body.i1327.prol.loopexit ], [ %incdec.ptr116.i1332.7, %while.body.i1327 ]
-  %630 = add i32 %617, %k.032.i1308
-  %631 = sub i32 %630, %ifi.0.i1321
+while.end.loopexit.i1335:                         ; preds = %while.body.i1327.prol.loopexit, %while.body.i1327, %middle.block1797
+  %incdec.ptr.i1331.lcssa = phi ptr [ %ind.end1808, %middle.block1797 ], [ %incdec.ptr.i1331.lcssa1821.unr, %while.body.i1327.prol.loopexit ], [ %incdec.ptr.i1331.7, %while.body.i1327 ]
+  %incdec.ptr116.i1332.lcssa = phi ptr [ %ind.end1806, %middle.block1797 ], [ %incdec.ptr116.i1332.lcssa1820.unr, %while.body.i1327.prol.loopexit ], [ %incdec.ptr116.i1332.7, %while.body.i1327 ]
+  %565 = add i32 %552, %k.032.i1308
+  %566 = sub i32 %565, %ifi.0.i1321
   br label %while.end.i1336
 
 while.end.i1336:                                  ; preds = %while.end.loopexit.i1335, %if.end114.i1320
-  %k.1.lcssa.i1337 = phi i32 [ %k.032.i1308, %if.end114.i1320 ], [ %631, %while.end.loopexit.i1335 ]
+  %k.1.lcssa.i1337 = phi i32 [ %k.032.i1308, %if.end114.i1320 ], [ %566, %while.end.loopexit.i1335 ]
   %gaptable1.1.lcssa.i1338 = phi ptr [ %gaptable1.033.i1307, %if.end114.i1320 ], [ %incdec.ptr.i1331.lcssa, %while.end.loopexit.i1335 ]
   %gaptable2.1.lcssa.i1339 = phi ptr [ %gaptable2.034.i1306, %if.end114.i1320 ], [ %incdec.ptr116.i1332.lcssa, %while.end.loopexit.i1335 ]
   %tobool121.not21.i1340 = icmp eq i32 %.pn.i1322, -1
   br i1 %tobool121.not21.i1340, label %while.end126.i1353, label %while.body122.preheader.i1341
 
 while.body122.preheader.i1341:                    ; preds = %while.end.i1336
-  %gaptable2.1.lcssa.i13391767 = ptrtoint ptr %gaptable2.1.lcssa.i1339 to i64
-  %gaptable1.1.lcssa.i13381766 = ptrtoint ptr %gaptable1.1.lcssa.i1338 to i64
+  %gaptable2.1.lcssa.i13391766 = ptrtoint ptr %gaptable2.1.lcssa.i1339 to i64
+  %gaptable1.1.lcssa.i13381765 = ptrtoint ptr %gaptable1.1.lcssa.i1338 to i64
   %dec12020.i1342 = xor i32 %.pn.i1322, -1
-  %632 = sub i32 -2, %.pn.i1322
-  %633 = zext i32 %632 to i64
-  %634 = add nuw nsw i64 %633, 1
-  %min.iters.check1771 = icmp ult i32 %632, 7
-  %635 = sub i64 %gaptable1.1.lcssa.i13381766, %gaptable2.1.lcssa.i13391767
-  %diff.check1768 = icmp ult i64 %635, 8
-  %or.cond1820 = select i1 %min.iters.check1771, i1 true, i1 %diff.check1768
-  br i1 %or.cond1820, label %while.body122.i1343.preheader, label %vector.ph1772
+  %567 = sub i32 -2, %.pn.i1322
+  %568 = zext i32 %567 to i64
+  %569 = add nuw nsw i64 %568, 1
+  %min.iters.check1770 = icmp ult i32 %567, 7
+  %570 = sub i64 %gaptable1.1.lcssa.i13381765, %gaptable2.1.lcssa.i13391766
+  %diff.check1767 = icmp ult i64 %570, 8
+  %or.cond1819 = select i1 %min.iters.check1770, i1 true, i1 %diff.check1767
+  br i1 %or.cond1819, label %while.body122.i1343.preheader, label %vector.ph1771
 
-vector.ph1772:                                    ; preds = %while.body122.preheader.i1341
-  %n.vec1774 = and i64 %634, 8589934584
-  %.cast1775 = trunc i64 %n.vec1774 to i32
-  %ind.end1776 = sub i32 %dec12020.i1342, %.cast1775
-  %636 = sub nsw i64 0, %n.vec1774
-  %ind.end1778 = getelementptr i8, ptr %gaptable2.1.lcssa.i1339, i64 %636
-  %637 = sub nsw i64 0, %n.vec1774
-  %ind.end1780 = getelementptr i8, ptr %gaptable1.1.lcssa.i1338, i64 %637
-  %638 = insertelement <4 x i32> <i32 poison, i32 0, i32 0, i32 0>, i32 %k.1.lcssa.i1337, i64 0
-  br label %vector.body1783
+vector.ph1771:                                    ; preds = %while.body122.preheader.i1341
+  %n.vec1773 = and i64 %569, 8589934584
+  %.cast1774 = trunc i64 %n.vec1773 to i32
+  %ind.end1775 = sub i32 %dec12020.i1342, %.cast1774
+  %571 = sub nsw i64 0, %n.vec1773
+  %ind.end1777 = getelementptr i8, ptr %gaptable2.1.lcssa.i1339, i64 %571
+  %572 = sub nsw i64 0, %n.vec1773
+  %ind.end1779 = getelementptr i8, ptr %gaptable1.1.lcssa.i1338, i64 %572
+  %573 = insertelement <4 x i32> <i32 poison, i32 0, i32 0, i32 0>, i32 %k.1.lcssa.i1337, i64 0
+  br label %vector.body1782
 
-vector.body1783:                                  ; preds = %vector.body1783, %vector.ph1772
-  %index1784 = phi i64 [ 0, %vector.ph1772 ], [ %index.next1791, %vector.body1783 ]
-  %vec.phi1789 = phi <4 x i32> [ %638, %vector.ph1772 ], [ %645, %vector.body1783 ]
-  %vec.phi1790 = phi <4 x i32> [ zeroinitializer, %vector.ph1772 ], [ %646, %vector.body1783 ]
-  %639 = sub i64 0, %index1784
-  %next.gep1785 = getelementptr i8, ptr %gaptable2.1.lcssa.i1339, i64 %639
-  %640 = sub i64 0, %index1784
-  %next.gep1787 = getelementptr i8, ptr %gaptable1.1.lcssa.i1338, i64 %640
-  %641 = getelementptr inbounds i8, ptr %next.gep1787, i64 -4
-  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %641, align 1
-  %642 = getelementptr inbounds i8, ptr %next.gep1787, i64 -8
-  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %642, align 1
-  %643 = getelementptr inbounds i8, ptr %next.gep1785, i64 -4
-  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %643, align 1
-  %644 = getelementptr inbounds i8, ptr %next.gep1785, i64 -8
-  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %644, align 1
-  %645 = add <4 x i32> %vec.phi1789, <i32 1, i32 1, i32 1, i32 1>
-  %646 = add <4 x i32> %vec.phi1790, <i32 1, i32 1, i32 1, i32 1>
-  %index.next1791 = add nuw i64 %index1784, 8
-  %647 = icmp eq i64 %index.next1791, %n.vec1774
-  br i1 %647, label %middle.block1769, label %vector.body1783
+vector.body1782:                                  ; preds = %vector.body1782, %vector.ph1771
+  %index1783 = phi i64 [ 0, %vector.ph1771 ], [ %index.next1790, %vector.body1782 ]
+  %vec.phi1788 = phi <4 x i32> [ %573, %vector.ph1771 ], [ %580, %vector.body1782 ]
+  %vec.phi1789 = phi <4 x i32> [ zeroinitializer, %vector.ph1771 ], [ %581, %vector.body1782 ]
+  %574 = sub i64 0, %index1783
+  %next.gep1784 = getelementptr i8, ptr %gaptable2.1.lcssa.i1339, i64 %574
+  %575 = sub i64 0, %index1783
+  %next.gep1786 = getelementptr i8, ptr %gaptable1.1.lcssa.i1338, i64 %575
+  %576 = getelementptr inbounds i8, ptr %next.gep1786, i64 -4
+  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %576, align 1
+  %577 = getelementptr inbounds i8, ptr %next.gep1786, i64 -8
+  store <4 x i8> <i8 45, i8 45, i8 45, i8 45>, ptr %577, align 1
+  %578 = getelementptr inbounds i8, ptr %next.gep1784, i64 -4
+  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %578, align 1
+  %579 = getelementptr inbounds i8, ptr %next.gep1784, i64 -8
+  store <4 x i8> <i8 111, i8 111, i8 111, i8 111>, ptr %579, align 1
+  %580 = add <4 x i32> %vec.phi1788, <i32 1, i32 1, i32 1, i32 1>
+  %581 = add <4 x i32> %vec.phi1789, <i32 1, i32 1, i32 1, i32 1>
+  %index.next1790 = add nuw i64 %index1783, 8
+  %582 = icmp eq i64 %index.next1790, %n.vec1773
+  br i1 %582, label %middle.block1768, label %vector.body1782
 
-middle.block1769:                                 ; preds = %vector.body1783
-  %bin.rdx1792 = add <4 x i32> %646, %645
-  %648 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %bin.rdx1792)
-  %cmp.n1782 = icmp eq i64 %634, %n.vec1774
-  br i1 %cmp.n1782, label %while.end126.i1353, label %while.body122.i1343.preheader
+middle.block1768:                                 ; preds = %vector.body1782
+  %bin.rdx1791 = add <4 x i32> %581, %580
+  %583 = tail call i32 @llvm.vector.reduce.add.v4i32(<4 x i32> %bin.rdx1791)
+  %cmp.n1781 = icmp eq i64 %569, %n.vec1773
+  br i1 %cmp.n1781, label %while.end126.i1353, label %while.body122.i1343.preheader
 
-while.body122.i1343.preheader:                    ; preds = %while.body122.preheader.i1341, %middle.block1769
-  %dec12025.i1344.ph = phi i32 [ %dec12020.i1342, %while.body122.preheader.i1341 ], [ %ind.end1776, %middle.block1769 ]
-  %gaptable2.224.i1345.ph = phi ptr [ %gaptable2.1.lcssa.i1339, %while.body122.preheader.i1341 ], [ %ind.end1778, %middle.block1769 ]
-  %gaptable1.223.i1346.ph = phi ptr [ %gaptable1.1.lcssa.i1338, %while.body122.preheader.i1341 ], [ %ind.end1780, %middle.block1769 ]
-  %k.222.i1347.ph = phi i32 [ %k.1.lcssa.i1337, %while.body122.preheader.i1341 ], [ %648, %middle.block1769 ]
-  %649 = add nsw i32 %dec12025.i1344.ph, -1
-  %xtraiter1888 = and i32 %dec12025.i1344.ph, 3
-  %lcmp.mod1889.not = icmp eq i32 %xtraiter1888, 0
-  br i1 %lcmp.mod1889.not, label %while.body122.i1343.prol.loopexit, label %while.body122.i1343.prol
+while.body122.i1343.preheader:                    ; preds = %while.body122.preheader.i1341, %middle.block1768
+  %dec12025.i1344.ph = phi i32 [ %dec12020.i1342, %while.body122.preheader.i1341 ], [ %ind.end1775, %middle.block1768 ]
+  %gaptable2.224.i1345.ph = phi ptr [ %gaptable2.1.lcssa.i1339, %while.body122.preheader.i1341 ], [ %ind.end1777, %middle.block1768 ]
+  %gaptable1.223.i1346.ph = phi ptr [ %gaptable1.1.lcssa.i1338, %while.body122.preheader.i1341 ], [ %ind.end1779, %middle.block1768 ]
+  %k.222.i1347.ph = phi i32 [ %k.1.lcssa.i1337, %while.body122.preheader.i1341 ], [ %583, %middle.block1768 ]
+  %584 = add nsw i32 %dec12025.i1344.ph, -1
+  %xtraiter1887 = and i32 %dec12025.i1344.ph, 3
+  %lcmp.mod1888.not = icmp eq i32 %xtraiter1887, 0
+  br i1 %lcmp.mod1888.not, label %while.body122.i1343.prol.loopexit, label %while.body122.i1343.prol
 
 while.body122.i1343.prol:                         ; preds = %while.body122.i1343.preheader, %while.body122.i1343.prol
   %dec12025.i1344.prol = phi i32 [ %dec120.i1351.prol, %while.body122.i1343.prol ], [ %dec12025.i1344.ph, %while.body122.i1343.preheader ]
   %gaptable2.224.i1345.prol = phi ptr [ %incdec.ptr124.i1349.prol, %while.body122.i1343.prol ], [ %gaptable2.224.i1345.ph, %while.body122.i1343.preheader ]
   %gaptable1.223.i1346.prol = phi ptr [ %incdec.ptr123.i1348.prol, %while.body122.i1343.prol ], [ %gaptable1.223.i1346.ph, %while.body122.i1343.preheader ]
   %k.222.i1347.prol = phi i32 [ %inc125.i1350.prol, %while.body122.i1343.prol ], [ %k.222.i1347.ph, %while.body122.i1343.preheader ]
-  %prol.iter1890 = phi i32 [ %prol.iter1890.next, %while.body122.i1343.prol ], [ 0, %while.body122.i1343.preheader ]
+  %prol.iter1889 = phi i32 [ %prol.iter1889.next, %while.body122.i1343.prol ], [ 0, %while.body122.i1343.preheader ]
   %incdec.ptr123.i1348.prol = getelementptr inbounds i8, ptr %gaptable1.223.i1346.prol, i64 -1
   store i8 45, ptr %incdec.ptr123.i1348.prol, align 1
   %incdec.ptr124.i1349.prol = getelementptr inbounds i8, ptr %gaptable2.224.i1345.prol, i64 -1
   store i8 111, ptr %incdec.ptr124.i1349.prol, align 1
   %inc125.i1350.prol = add nsw i32 %k.222.i1347.prol, 1
   %dec120.i1351.prol = add nsw i32 %dec12025.i1344.prol, -1
-  %prol.iter1890.next = add i32 %prol.iter1890, 1
-  %prol.iter1890.cmp.not = icmp eq i32 %prol.iter1890.next, %xtraiter1888
-  br i1 %prol.iter1890.cmp.not, label %while.body122.i1343.prol.loopexit, label %while.body122.i1343.prol
+  %prol.iter1889.next = add i32 %prol.iter1889, 1
+  %prol.iter1889.cmp.not = icmp eq i32 %prol.iter1889.next, %xtraiter1887
+  br i1 %prol.iter1889.cmp.not, label %while.body122.i1343.prol.loopexit, label %while.body122.i1343.prol
 
 while.body122.i1343.prol.loopexit:                ; preds = %while.body122.i1343.prol, %while.body122.i1343.preheader
   %incdec.ptr123.i1348.lcssa.unr = phi ptr [ undef, %while.body122.i1343.preheader ], [ %incdec.ptr123.i1348.prol, %while.body122.i1343.prol ]
@@ -3628,8 +3471,8 @@ while.body122.i1343.prol.loopexit:                ; preds = %while.body122.i1343
   %gaptable2.224.i1345.unr = phi ptr [ %gaptable2.224.i1345.ph, %while.body122.i1343.preheader ], [ %incdec.ptr124.i1349.prol, %while.body122.i1343.prol ]
   %gaptable1.223.i1346.unr = phi ptr [ %gaptable1.223.i1346.ph, %while.body122.i1343.preheader ], [ %incdec.ptr123.i1348.prol, %while.body122.i1343.prol ]
   %k.222.i1347.unr = phi i32 [ %k.222.i1347.ph, %while.body122.i1343.preheader ], [ %inc125.i1350.prol, %while.body122.i1343.prol ]
-  %650 = icmp ult i32 %649, 3
-  br i1 %650, label %while.end126.i1353, label %while.body122.i1343
+  %585 = icmp ult i32 %584, 3
+  br i1 %585, label %while.end126.i1353, label %while.body122.i1343
 
 while.body122.i1343:                              ; preds = %while.body122.i1343.prol.loopexit, %while.body122.i1343
   %dec12025.i1344 = phi i32 [ %dec120.i1351.3, %while.body122.i1343 ], [ %dec12025.i1344.unr, %while.body122.i1343.prol.loopexit ]
@@ -3657,10 +3500,10 @@ while.body122.i1343:                              ; preds = %while.body122.i1343
   %tobool121.not.i1352.3 = icmp eq i32 %dec120.i1351.3, 0
   br i1 %tobool121.not.i1352.3, label %while.end126.i1353, label %while.body122.i1343
 
-while.end126.i1353:                               ; preds = %while.body122.i1343.prol.loopexit, %while.body122.i1343, %middle.block1769, %while.end.i1336
-  %k.2.lcssa.i1354 = phi i32 [ %k.1.lcssa.i1337, %while.end.i1336 ], [ %648, %middle.block1769 ], [ %inc125.i1350.lcssa.unr, %while.body122.i1343.prol.loopexit ], [ %inc125.i1350.3, %while.body122.i1343 ]
-  %gaptable1.2.lcssa.i1355 = phi ptr [ %gaptable1.1.lcssa.i1338, %while.end.i1336 ], [ %ind.end1780, %middle.block1769 ], [ %incdec.ptr123.i1348.lcssa.unr, %while.body122.i1343.prol.loopexit ], [ %incdec.ptr123.i1348.3, %while.body122.i1343 ]
-  %gaptable2.2.lcssa.i1356 = phi ptr [ %gaptable2.1.lcssa.i1339, %while.end.i1336 ], [ %ind.end1778, %middle.block1769 ], [ %incdec.ptr124.i1349.lcssa.unr, %while.body122.i1343.prol.loopexit ], [ %incdec.ptr124.i1349.3, %while.body122.i1343 ]
+while.end126.i1353:                               ; preds = %while.body122.i1343.prol.loopexit, %while.body122.i1343, %middle.block1768, %while.end.i1336
+  %k.2.lcssa.i1354 = phi i32 [ %k.1.lcssa.i1337, %while.end.i1336 ], [ %583, %middle.block1768 ], [ %inc125.i1350.lcssa.unr, %while.body122.i1343.prol.loopexit ], [ %inc125.i1350.3, %while.body122.i1343 ]
+  %gaptable1.2.lcssa.i1355 = phi ptr [ %gaptable1.1.lcssa.i1338, %while.end.i1336 ], [ %ind.end1779, %middle.block1768 ], [ %incdec.ptr123.i1348.lcssa.unr, %while.body122.i1343.prol.loopexit ], [ %incdec.ptr123.i1348.3, %while.body122.i1343 ]
+  %gaptable2.2.lcssa.i1356 = phi ptr [ %gaptable2.1.lcssa.i1339, %while.end.i1336 ], [ %ind.end1777, %middle.block1768 ], [ %incdec.ptr124.i1349.lcssa.unr, %while.body122.i1343.prol.loopexit ], [ %incdec.ptr124.i1349.3, %while.body122.i1343 ]
   %cmp127.i1357 = icmp slt i32 %iin.031.i1309, 1
   %cmp129.i1358 = icmp slt i32 %jin.030.i1310, 1
   %or.cond.i1359 = or i1 %cmp127.i1357, %cmp129.i1358
@@ -3693,22 +3536,22 @@ for.body153.preheader.i:                          ; preds = %for.cond150.prehead
 
 for.body142.i:                                    ; preds = %for.body142.i, %for.body142.preheader.i
   %indvars.iv64.i1368 = phi i64 [ 0, %for.body142.preheader.i ], [ %indvars.iv.next65.i1369, %for.body142.i ]
-  %arrayidx144.i = getelementptr inbounds ptr, ptr %465, i64 %indvars.iv64.i1368
-  %651 = load ptr, ptr %arrayidx144.i, align 8
+  %arrayidx144.i = getelementptr inbounds ptr, ptr %400, i64 %indvars.iv64.i1368
+  %586 = load ptr, ptr %arrayidx144.i, align 8
   %arrayidx146.i = getelementptr inbounds ptr, ptr %seq1, i64 %indvars.iv64.i1368
-  %652 = load ptr, ptr %arrayidx146.i, align 8
-  tail call void @gapireru(ptr noundef %651, ptr noundef %652, ptr noundef %gaptable1.3.i1361) #12
+  %587 = load ptr, ptr %arrayidx146.i, align 8
+  tail call void @gapireru(ptr noundef %586, ptr noundef %587, ptr noundef %gaptable1.3.i1361) #12
   %indvars.iv.next65.i1369 = add nuw nsw i64 %indvars.iv64.i1368, 1
   %exitcond68.not.i1370 = icmp eq i64 %indvars.iv.next65.i1369, %wide.trip.count67.i1367
   br i1 %exitcond68.not.i1370, label %for.cond150.preheader.i, label %for.body142.i
 
 for.body153.i:                                    ; preds = %for.body153.i, %for.body153.preheader.i
   %indvars.iv69.i1364 = phi i64 [ 0, %for.body153.preheader.i ], [ %indvars.iv.next70.i1365, %for.body153.i ]
-  %arrayidx155.i = getelementptr inbounds ptr, ptr %466, i64 %indvars.iv69.i1364
-  %653 = load ptr, ptr %arrayidx155.i, align 8
+  %arrayidx155.i = getelementptr inbounds ptr, ptr %401, i64 %indvars.iv69.i1364
+  %588 = load ptr, ptr %arrayidx155.i, align 8
   %arrayidx157.i = getelementptr inbounds ptr, ptr %seq2, i64 %indvars.iv69.i1364
-  %654 = load ptr, ptr %arrayidx157.i, align 8
-  tail call void @gapireru(ptr noundef %653, ptr noundef %654, ptr noundef %gaptable2.3.i1362) #12
+  %589 = load ptr, ptr %arrayidx157.i, align 8
+  tail call void @gapireru(ptr noundef %588, ptr noundef %589, ptr noundef %gaptable2.3.i1362) #12
   %indvars.iv.next70.i1365 = add nuw nsw i64 %indvars.iv69.i1364, 1
   %exitcond73.not.i1366 = icmp eq i64 %indvars.iv.next70.i1365, %wide.trip.count72.i1363
   br i1 %exitcond73.not.i1366, label %if.end782, label %for.body153.i
@@ -3716,9 +3559,9 @@ for.body153.i:                                    ; preds = %for.body153.i, %for
 if.end782:                                        ; preds = %for.body163.i, %for.body153.i, %for.cond150.preheader.i, %for.cond160.preheader.i
   tail call void @free(ptr noundef %call5.i1269) #12
   tail call void @free(ptr noundef %call8.i1270) #12
-  %655 = load ptr, ptr @R__align.mseq1, align 8
-  %656 = load ptr, ptr %655, align 8
-  %call784 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %656) #13
+  %590 = load ptr, ptr @R__align.mseq1, align 8
+  %591 = load ptr, ptr %590, align 8
+  %call784 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %591) #13
   %conv785 = trunc i64 %call784 to i32
   %cmp786 = icmp sgt i32 %conv785, %alloclen
   %cmp789 = icmp sgt i32 %conv785, 5000000
@@ -3726,8 +3569,8 @@ if.end782:                                        ; preds = %for.body163.i, %for
   br i1 %or.cond821, label %if.then791, label %if.end793
 
 if.then791:                                       ; preds = %if.end782
-  %657 = load ptr, ptr @stderr, align 8
-  %call792 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %657, ptr noundef nonnull @.str, i32 noundef %alloclen, i32 noundef %conv785, i32 noundef 5000000) #14
+  %592 = load ptr, ptr @stderr, align 8
+  %call792 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %592, ptr noundef nonnull @.str, i32 noundef %alloclen, i32 noundef %conv785, i32 noundef 5000000) #14
   tail call void @ErrorExit(ptr noundef nonnull @.str.1) #12
   br label %if.end793
 
@@ -3735,44 +3578,44 @@ if.end793:                                        ; preds = %if.end782, %if.then
   br i1 %cmp1091411, label %for.body797.lr.ph, label %for.cond806.preheader
 
 for.body797.lr.ph:                                ; preds = %if.end793
-  %658 = load ptr, ptr @R__align.mseq1, align 8
-  %wide.trip.count1530 = zext i32 %icyc to i64
+  %593 = load ptr, ptr @R__align.mseq1, align 8
+  %wide.trip.count1529 = zext i32 %icyc to i64
   br label %for.body797
 
 for.cond806.preheader:                            ; preds = %for.body797, %if.end793
   br i1 %cmp1191413, label %for.body809.lr.ph, label %for.end817
 
 for.body809.lr.ph:                                ; preds = %for.cond806.preheader
-  %659 = load ptr, ptr @R__align.mseq2, align 8
-  %wide.trip.count1535 = zext i32 %jcyc to i64
+  %594 = load ptr, ptr @R__align.mseq2, align 8
+  %wide.trip.count1534 = zext i32 %jcyc to i64
   br label %for.body809
 
 for.body797:                                      ; preds = %for.body797.lr.ph, %for.body797
-  %indvars.iv1527 = phi i64 [ 0, %for.body797.lr.ph ], [ %indvars.iv.next1528, %for.body797 ]
-  %arrayidx799 = getelementptr inbounds ptr, ptr %seq1, i64 %indvars.iv1527
-  %660 = load ptr, ptr %arrayidx799, align 8
-  %arrayidx801 = getelementptr inbounds ptr, ptr %658, i64 %indvars.iv1527
-  %661 = load ptr, ptr %arrayidx801, align 8
-  %call802 = tail call ptr @strcpy(ptr noundef nonnull dereferenceable(1) %660, ptr noundef nonnull dereferenceable(1) %661) #12
-  %indvars.iv.next1528 = add nuw nsw i64 %indvars.iv1527, 1
-  %exitcond1531.not = icmp eq i64 %indvars.iv.next1528, %wide.trip.count1530
-  br i1 %exitcond1531.not, label %for.cond806.preheader, label %for.body797
+  %indvars.iv1526 = phi i64 [ 0, %for.body797.lr.ph ], [ %indvars.iv.next1527, %for.body797 ]
+  %arrayidx799 = getelementptr inbounds ptr, ptr %seq1, i64 %indvars.iv1526
+  %595 = load ptr, ptr %arrayidx799, align 8
+  %arrayidx801 = getelementptr inbounds ptr, ptr %593, i64 %indvars.iv1526
+  %596 = load ptr, ptr %arrayidx801, align 8
+  %call802 = tail call ptr @strcpy(ptr noundef nonnull dereferenceable(1) %595, ptr noundef nonnull dereferenceable(1) %596) #12
+  %indvars.iv.next1527 = add nuw nsw i64 %indvars.iv1526, 1
+  %exitcond1530.not = icmp eq i64 %indvars.iv.next1527, %wide.trip.count1529
+  br i1 %exitcond1530.not, label %for.cond806.preheader, label %for.body797
 
 for.body809:                                      ; preds = %for.body809.lr.ph, %for.body809
-  %indvars.iv1532 = phi i64 [ 0, %for.body809.lr.ph ], [ %indvars.iv.next1533, %for.body809 ]
-  %arrayidx811 = getelementptr inbounds ptr, ptr %seq2, i64 %indvars.iv1532
-  %662 = load ptr, ptr %arrayidx811, align 8
-  %arrayidx813 = getelementptr inbounds ptr, ptr %659, i64 %indvars.iv1532
-  %663 = load ptr, ptr %arrayidx813, align 8
-  %call814 = tail call ptr @strcpy(ptr noundef nonnull dereferenceable(1) %662, ptr noundef nonnull dereferenceable(1) %663) #12
-  %indvars.iv.next1533 = add nuw nsw i64 %indvars.iv1532, 1
-  %exitcond1536.not = icmp eq i64 %indvars.iv.next1533, %wide.trip.count1535
-  br i1 %exitcond1536.not, label %for.end817, label %for.body809
+  %indvars.iv1531 = phi i64 [ 0, %for.body809.lr.ph ], [ %indvars.iv.next1532, %for.body809 ]
+  %arrayidx811 = getelementptr inbounds ptr, ptr %seq2, i64 %indvars.iv1531
+  %597 = load ptr, ptr %arrayidx811, align 8
+  %arrayidx813 = getelementptr inbounds ptr, ptr %594, i64 %indvars.iv1531
+  %598 = load ptr, ptr %arrayidx813, align 8
+  %call814 = tail call ptr @strcpy(ptr noundef nonnull dereferenceable(1) %597, ptr noundef nonnull dereferenceable(1) %598) #12
+  %indvars.iv.next1532 = add nuw nsw i64 %indvars.iv1531, 1
+  %exitcond1535.not = icmp eq i64 %indvars.iv.next1532, %wide.trip.count1534
+  br i1 %exitcond1535.not, label %for.end817, label %for.body809
 
 for.end817:                                       ; preds = %for.body809, %for.cond806.preheader
-  %664 = load ptr, ptr @stderr, align 8
+  %599 = load ptr, ptr @stderr, align 8
   %conv818 = fpext float %wm.0.lcssa to double
-  %call819 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %664, ptr noundef nonnull @.str.2, double noundef %conv818) #14
+  %call819 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %599, ptr noundef nonnull @.str.2, double noundef %conv818) #14
   ret float %wm.0.lcssa
 }
 
@@ -4384,9 +4227,6 @@ declare <4 x double> @llvm.fmuladd.v4f64(<4 x double>, <4 x double>, <4 x double
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i32 @llvm.vector.reduce.add.v4i32(<4 x i32>) #10
 
-; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
-declare <2 x double> @llvm.fmuladd.v2f64(<2 x double>, <2 x double>, <2 x double>) #10
-
 attributes #0 = { mustprogress nofree norecurse nosync nounwind willreturn memory(read, inaccessiblemem: none) uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
 attributes #1 = { nounwind uwtable "min-legal-vector-width"="0" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="x86-64" "target-features"="+cmov,+cx8,+fxsr,+mmx,+sse,+sse2,+x87" "tune-cpu"="generic" }
 attributes #2 = { mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: readwrite) }
@@ -4474,47 +4314,46 @@ attributes #14 = { cold }
 !65 = distinct !{!65, !15, !48, !49}
 !66 = distinct !{!66, !21}
 !67 = distinct !{!67, !15, !48}
-!68 = distinct !{!68, !15, !69}
-!69 = !{!"llvm.loop.peeled.count", i32 1}
-!70 = distinct !{!70, !15}
+!68 = distinct !{!68, !15}
+!69 = distinct !{!69, !15}
+!70 = distinct !{!70, !15, !48, !49}
 !71 = distinct !{!71, !15, !48, !49}
-!72 = distinct !{!72, !15, !48, !49}
+!72 = distinct !{!72, !15, !49, !48}
 !73 = distinct !{!73, !15, !49, !48}
-!74 = distinct !{!74, !15, !49, !48}
+!74 = distinct !{!74, !15}
 !75 = distinct !{!75, !15}
-!76 = distinct !{!76, !15}
-!77 = distinct !{!77, !21}
-!78 = distinct !{!78, !15, !48, !49}
-!79 = distinct !{!79, !15}
-!80 = distinct !{!80, !15, !49, !48}
-!81 = distinct !{!81, !15, !48, !49}
-!82 = distinct !{!82, !21}
-!83 = distinct !{!83, !15, !48}
-!84 = distinct !{!84, !15, !48, !49}
-!85 = distinct !{!85, !21}
-!86 = distinct !{!86, !15, !48}
+!76 = distinct !{!76, !21}
+!77 = distinct !{!77, !15, !48, !49}
+!78 = distinct !{!78, !15}
+!79 = distinct !{!79, !15, !49, !48}
+!80 = distinct !{!80, !15, !48, !49}
+!81 = distinct !{!81, !21}
+!82 = distinct !{!82, !15, !48}
+!83 = distinct !{!83, !15, !48, !49}
+!84 = distinct !{!84, !21}
+!85 = distinct !{!85, !15, !48}
+!86 = distinct !{!86, !15}
 !87 = distinct !{!87, !15}
 !88 = distinct !{!88, !15}
 !89 = distinct !{!89, !15}
 !90 = distinct !{!90, !15}
-!91 = distinct !{!91, !15}
-!92 = distinct !{!92, !21}
-!93 = distinct !{!93, !15, !48, !49}
-!94 = distinct !{!94, !15}
-!95 = distinct !{!95, !15, !49, !48}
-!96 = distinct !{!96, !15, !48, !49}
-!97 = distinct !{!97, !21}
-!98 = distinct !{!98, !15, !48}
-!99 = distinct !{!99, !15, !48, !49}
-!100 = distinct !{!100, !21}
-!101 = distinct !{!101, !15, !48}
+!91 = distinct !{!91, !21}
+!92 = distinct !{!92, !15, !48, !49}
+!93 = distinct !{!93, !15}
+!94 = distinct !{!94, !15, !49, !48}
+!95 = distinct !{!95, !15, !48, !49}
+!96 = distinct !{!96, !21}
+!97 = distinct !{!97, !15, !48}
+!98 = distinct !{!98, !15, !48, !49}
+!99 = distinct !{!99, !21}
+!100 = distinct !{!100, !15, !48}
+!101 = distinct !{!101, !15}
 !102 = distinct !{!102, !15}
 !103 = distinct !{!103, !15}
 !104 = distinct !{!104, !15}
 !105 = distinct !{!105, !15}
 !106 = distinct !{!106, !15}
 !107 = distinct !{!107, !15}
-!108 = distinct !{!108, !15}
-!109 = distinct !{!109, !15, !48, !49}
+!108 = distinct !{!108, !15, !48, !49}
+!109 = distinct !{!109, !15}
 !110 = distinct !{!110, !15}
-!111 = distinct !{!111, !15}

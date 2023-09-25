@@ -4065,49 +4065,11 @@ for.body63.lr.ph:                                 ; preds = %if.end59
   %_items.i.i261 = getelementptr inbounds %class.CBaseRecordVector, ptr %folders, i64 0, i32 3
   %40 = load ptr, ptr %_items.i.i261, align 8
   %wide.trip.count = zext i32 %38 to i64
-  %xtraiter = and i64 %wide.trip.count, 1
-  %41 = icmp eq i32 %38, 1
-  br i1 %41, label %for.cond76.preheader.loopexit.unr-lcssa, label %for.body63.lr.ph.new
-
-for.body63.lr.ph.new:                             ; preds = %for.body63.lr.ph
-  %unroll_iter = and i64 %wide.trip.count, 4294967294
   br label %for.body63
 
-for.cond76.preheader.loopexit.unr-lcssa:          ; preds = %if.end71.1, %for.body63.lr.ph
-  %numDigests.1.lcssa.ph = phi i32 [ undef, %for.body63.lr.ph ], [ %numDigests.1.1, %if.end71.1 ]
-  %add72.lcssa.ph = phi i32 [ undef, %for.body63.lr.ph ], [ %add72.1, %if.end71.1 ]
-  %indvars.iv370.unr = phi i64 [ 0, %for.body63.lr.ph ], [ %indvars.iv.next371.1, %if.end71.1 ]
-  %numDigestsTotal.0349.unr = phi i32 [ 0, %for.body63.lr.ph ], [ %add72.1, %if.end71.1 ]
-  %numDigests.0348.unr = phi i32 [ 0, %for.body63.lr.ph ], [ %numDigests.1.1, %if.end71.1 ]
-  %lcmp.mod.not = icmp eq i64 %xtraiter, 0
-  br i1 %lcmp.mod.not, label %for.cond76.preheader, label %for.body63.epil
-
-for.body63.epil:                                  ; preds = %for.cond76.preheader.loopexit.unr-lcssa
-  %arrayidx.i260.epil = getelementptr inbounds i32, ptr %39, i64 %indvars.iv370.unr
-  %42 = load i32, ptr %arrayidx.i260.epil, align 4
-  %cmp66.not.epil = icmp eq i32 %42, 1
-  br i1 %cmp66.not.epil, label %lor.lhs.false67.epil, label %if.then69.epil
-
-lor.lhs.false67.epil:                             ; preds = %for.body63.epil
-  %arrayidx.i.i263.epil = getelementptr inbounds ptr, ptr %40, i64 %indvars.iv370.unr
-  %43 = load ptr, ptr %arrayidx.i.i263.epil, align 8
-  %UnpackCRCDefined.epil = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %43, i64 0, i32 5
-  %44 = load i8, ptr %UnpackCRCDefined.epil, align 4
-  %tobool.not.epil = icmp eq i8 %44, 0
-  br i1 %tobool.not.epil, label %if.then69.epil, label %if.end71.epil
-
-if.then69.epil:                                   ; preds = %lor.lhs.false67.epil, %for.body63.epil
-  %add70.epil = add i32 %42, %numDigests.0348.unr
-  br label %if.end71.epil
-
-if.end71.epil:                                    ; preds = %if.then69.epil, %lor.lhs.false67.epil
-  %numDigests.1.epil = phi i32 [ %add70.epil, %if.then69.epil ], [ %numDigests.0348.unr, %lor.lhs.false67.epil ]
-  %add72.epil = add i32 %42, %numDigestsTotal.0349.unr
-  br label %for.cond76.preheader
-
-for.cond76.preheader:                             ; preds = %if.end71.epil, %for.cond76.preheader.loopexit.unr-lcssa, %if.end59
-  %numDigests.0.lcssa = phi i32 [ 0, %if.end59 ], [ %numDigests.1.lcssa.ph, %for.cond76.preheader.loopexit.unr-lcssa ], [ %numDigests.1.epil, %if.end71.epil ]
-  %numDigestsTotal.0.lcssa = phi i32 [ 0, %if.end59 ], [ %add72.lcssa.ph, %for.cond76.preheader.loopexit.unr-lcssa ], [ %add72.epil, %if.end71.epil ]
+for.cond76.preheader:                             ; preds = %if.end71, %if.end59
+  %numDigests.0.lcssa = phi i32 [ 0, %if.end59 ], [ %numDigests.1, %if.end71 ]
+  %numDigestsTotal.0.lcssa = phi i32 [ 0, %if.end59 ], [ %add72, %if.end71 ]
   %_capacity.i.i = getelementptr inbounds %class.CBaseRecordVector, ptr %digestsDefined2, i64 0, i32 1
   %_itemSize.i.i = getelementptr inbounds %class.CBaseRecordVector, ptr %digestsDefined2, i64 0, i32 4
   %_capacity.i.i264 = getelementptr inbounds %class.CBaseRecordVector, ptr %digests2, i64 0, i32 1
@@ -4121,56 +4083,33 @@ for.cond76.preheader:                             ; preds = %if.end71.epil, %for
   %_items.i292 = getelementptr inbounds %class.CBaseRecordVector, ptr %digests2, i64 0, i32 3
   br label %for.cond76
 
-for.body63:                                       ; preds = %if.end71.1, %for.body63.lr.ph.new
-  %indvars.iv370 = phi i64 [ 0, %for.body63.lr.ph.new ], [ %indvars.iv.next371.1, %if.end71.1 ]
-  %numDigestsTotal.0349 = phi i32 [ 0, %for.body63.lr.ph.new ], [ %add72.1, %if.end71.1 ]
-  %numDigests.0348 = phi i32 [ 0, %for.body63.lr.ph.new ], [ %numDigests.1.1, %if.end71.1 ]
-  %niter = phi i64 [ 0, %for.body63.lr.ph.new ], [ %niter.next.1, %if.end71.1 ]
+for.body63:                                       ; preds = %for.body63.lr.ph, %if.end71
+  %indvars.iv370 = phi i64 [ 0, %for.body63.lr.ph ], [ %indvars.iv.next371, %if.end71 ]
+  %numDigestsTotal.0349 = phi i32 [ 0, %for.body63.lr.ph ], [ %add72, %if.end71 ]
+  %numDigests.0348 = phi i32 [ 0, %for.body63.lr.ph ], [ %numDigests.1, %if.end71 ]
   %arrayidx.i260 = getelementptr inbounds i32, ptr %39, i64 %indvars.iv370
-  %45 = load i32, ptr %arrayidx.i260, align 4
-  %cmp66.not = icmp eq i32 %45, 1
+  %41 = load i32, ptr %arrayidx.i260, align 4
+  %cmp66.not = icmp eq i32 %41, 1
   br i1 %cmp66.not, label %lor.lhs.false67, label %if.then69
 
 lor.lhs.false67:                                  ; preds = %for.body63
   %arrayidx.i.i263 = getelementptr inbounds ptr, ptr %40, i64 %indvars.iv370
-  %46 = load ptr, ptr %arrayidx.i.i263, align 8
-  %UnpackCRCDefined = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %46, i64 0, i32 5
-  %47 = load i8, ptr %UnpackCRCDefined, align 4
-  %tobool.not = icmp eq i8 %47, 0
+  %42 = load ptr, ptr %arrayidx.i.i263, align 8
+  %UnpackCRCDefined = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %42, i64 0, i32 5
+  %43 = load i8, ptr %UnpackCRCDefined, align 4
+  %tobool.not = icmp eq i8 %43, 0
   br i1 %tobool.not, label %if.then69, label %if.end71
 
 if.then69:                                        ; preds = %lor.lhs.false67, %for.body63
-  %add70 = add i32 %45, %numDigests.0348
+  %add70 = add i32 %41, %numDigests.0348
   br label %if.end71
 
 if.end71:                                         ; preds = %if.then69, %lor.lhs.false67
   %numDigests.1 = phi i32 [ %add70, %if.then69 ], [ %numDigests.0348, %lor.lhs.false67 ]
-  %add72 = add i32 %45, %numDigestsTotal.0349
-  %indvars.iv.next371 = or i64 %indvars.iv370, 1
-  %arrayidx.i260.1 = getelementptr inbounds i32, ptr %39, i64 %indvars.iv.next371
-  %48 = load i32, ptr %arrayidx.i260.1, align 4
-  %cmp66.not.1 = icmp eq i32 %48, 1
-  br i1 %cmp66.not.1, label %lor.lhs.false67.1, label %if.then69.1
-
-lor.lhs.false67.1:                                ; preds = %if.end71
-  %arrayidx.i.i263.1 = getelementptr inbounds ptr, ptr %40, i64 %indvars.iv.next371
-  %49 = load ptr, ptr %arrayidx.i.i263.1, align 8
-  %UnpackCRCDefined.1 = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %49, i64 0, i32 5
-  %50 = load i8, ptr %UnpackCRCDefined.1, align 4
-  %tobool.not.1 = icmp eq i8 %50, 0
-  br i1 %tobool.not.1, label %if.then69.1, label %if.end71.1
-
-if.then69.1:                                      ; preds = %lor.lhs.false67.1, %if.end71
-  %add70.1 = add i32 %48, %numDigests.1
-  br label %if.end71.1
-
-if.end71.1:                                       ; preds = %if.then69.1, %lor.lhs.false67.1
-  %numDigests.1.1 = phi i32 [ %add70.1, %if.then69.1 ], [ %numDigests.1, %lor.lhs.false67.1 ]
-  %add72.1 = add i32 %48, %add72
-  %indvars.iv.next371.1 = add nuw nsw i64 %indvars.iv370, 2
-  %niter.next.1 = add i64 %niter, 2
-  %niter.ncmp.1 = icmp eq i64 %niter.next.1, %unroll_iter
-  br i1 %niter.ncmp.1, label %for.cond76.preheader.loopexit.unr-lcssa, label %for.body63
+  %add72 = add i32 %41, %numDigestsTotal.0349
+  %indvars.iv.next371 = add nuw nsw i64 %indvars.iv370, 1
+  %exitcond373.not = icmp eq i64 %indvars.iv.next371, %wide.trip.count
+  br i1 %exitcond373.not, label %for.cond76.preheader, label %for.body63
 
 for.cond76:                                       ; preds = %for.cond76.preheader, %if.end150
   %type.1 = phi i64 [ %call.i324, %if.end150 ], [ %type.0, %for.cond76.preheader ]
@@ -4192,32 +4131,32 @@ if.then78:                                        ; preds = %for.cond76
           to label %for.cond81.preheader unwind label %lpad79
 
 for.cond81.preheader:                             ; preds = %if.then78
-  %51 = load i32, ptr %_size.i, align 4
-  %cmp85355 = icmp sgt i32 %51, 0
+  %44 = load i32, ptr %_size.i, align 4
+  %cmp85355 = icmp sgt i32 %44, 0
   br i1 %cmp85355, label %for.body86, label %for.end126
 
 for.body86:                                       ; preds = %for.cond81.preheader, %if.end122
   %indvars.iv378 = phi i64 [ %indvars.iv.next379, %if.end122 ], [ 0, %for.cond81.preheader ]
   %digestIndex.0357 = phi i32 [ %digestIndex.2, %if.end122 ], [ 0, %for.cond81.preheader ]
-  %52 = load ptr, ptr %_items.i, align 8
-  %arrayidx.i269 = getelementptr inbounds i32, ptr %52, i64 %indvars.iv378
-  %53 = load i32, ptr %arrayidx.i269, align 4
-  %54 = load ptr, ptr %_items.i.i270, align 8
-  %arrayidx.i.i272 = getelementptr inbounds ptr, ptr %54, i64 %indvars.iv378
-  %55 = load ptr, ptr %arrayidx.i.i272, align 8
-  %cmp94 = icmp ne i32 %53, 1
-  %UnpackCRCDefined95 = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %55, i64 0, i32 5
-  %56 = load i8, ptr %UnpackCRCDefined95, align 4
-  %tobool96.not = icmp eq i8 %56, 0
+  %45 = load ptr, ptr %_items.i, align 8
+  %arrayidx.i269 = getelementptr inbounds i32, ptr %45, i64 %indvars.iv378
+  %46 = load i32, ptr %arrayidx.i269, align 4
+  %47 = load ptr, ptr %_items.i.i270, align 8
+  %arrayidx.i.i272 = getelementptr inbounds ptr, ptr %47, i64 %indvars.iv378
+  %48 = load ptr, ptr %arrayidx.i.i272, align 8
+  %cmp94 = icmp ne i32 %46, 1
+  %UnpackCRCDefined95 = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %48, i64 0, i32 5
+  %49 = load i8, ptr %UnpackCRCDefined95, align 4
+  %tobool96.not = icmp eq i8 %49, 0
   %or.cond = select i1 %cmp94, i1 true, i1 %tobool96.not
   br i1 %or.cond, label %for.cond103.preheader, label %if.then97
 
 for.cond103.preheader:                            ; preds = %for.body86
-  %cmp104351.not = icmp eq i32 %53, 0
+  %cmp104351.not = icmp eq i32 %46, 0
   br i1 %cmp104351.not, label %if.end122, label %for.body106.preheader
 
 for.body106.preheader:                            ; preds = %for.cond103.preheader
-  %57 = sext i32 %digestIndex.0357 to i64
+  %50 = sext i32 %digestIndex.0357 to i64
   br label %for.body106
 
 if.then97:                                        ; preds = %for.body86
@@ -4225,91 +4164,91 @@ if.then97:                                        ; preds = %for.body86
           to label %invoke.cont98 unwind label %lpad91
 
 invoke.cont98:                                    ; preds = %if.then97
-  %58 = load ptr, ptr %_items.i273, align 8
-  %59 = load i32, ptr %_size.i274, align 4
-  %idxprom.i275 = sext i32 %59 to i64
-  %arrayidx.i276 = getelementptr inbounds i8, ptr %58, i64 %idxprom.i275
+  %51 = load ptr, ptr %_items.i273, align 8
+  %52 = load i32, ptr %_size.i274, align 4
+  %idxprom.i275 = sext i32 %52 to i64
+  %arrayidx.i276 = getelementptr inbounds i8, ptr %51, i64 %idxprom.i275
   store i8 1, ptr %arrayidx.i276, align 1
-  %inc.i277 = add nsw i32 %59, 1
+  %inc.i277 = add nsw i32 %52, 1
   store i32 %inc.i277, ptr %_size.i274, align 4
-  %UnpackCRC = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %55, i64 0, i32 4
-  %60 = load i32, ptr %UnpackCRC, align 8
+  %UnpackCRC = getelementptr inbounds %"struct.NArchive::N7z::CFolder", ptr %48, i64 0, i32 4
+  %53 = load i32, ptr %UnpackCRC, align 8
   invoke void @_ZN17CBaseRecordVector18ReserveOnePositionEv(ptr noundef nonnull align 8 dereferenceable(32) %digests)
           to label %_ZN13CRecordVectorIjE3AddEj.exit unwind label %lpad91
 
 _ZN13CRecordVectorIjE3AddEj.exit:                 ; preds = %invoke.cont98
-  %61 = load ptr, ptr %_items.i278, align 8
-  %62 = load i32, ptr %_size.i279, align 4
-  %idxprom.i280 = sext i32 %62 to i64
-  %arrayidx.i281 = getelementptr inbounds i32, ptr %61, i64 %idxprom.i280
-  store i32 %60, ptr %arrayidx.i281, align 4
-  %63 = load i32, ptr %_size.i279, align 4
-  %inc.i282 = add nsw i32 %63, 1
+  %54 = load ptr, ptr %_items.i278, align 8
+  %55 = load i32, ptr %_size.i279, align 4
+  %idxprom.i280 = sext i32 %55 to i64
+  %arrayidx.i281 = getelementptr inbounds i32, ptr %54, i64 %idxprom.i280
+  store i32 %53, ptr %arrayidx.i281, align 4
+  %56 = load i32, ptr %_size.i279, align 4
+  %inc.i282 = add nsw i32 %56, 1
   store i32 %inc.i282, ptr %_size.i279, align 4
   br label %if.end122
 
 lpad79:                                           ; preds = %if.then78
-  %64 = landingpad { ptr, i32 }
+  %57 = landingpad { ptr, i32 }
           cleanup
   br label %ehcleanup128
 
 lpad91:                                           ; preds = %invoke.cont98, %if.then97
-  %65 = landingpad { ptr, i32 }
+  %58 = landingpad { ptr, i32 }
           cleanup
   br label %ehcleanup128
 
 for.body106:                                      ; preds = %for.body106.preheader, %for.inc117
-  %indvars.iv374 = phi i64 [ %57, %for.body106.preheader ], [ %indvars.iv.next375, %for.inc117 ]
+  %indvars.iv374 = phi i64 [ %50, %for.body106.preheader ], [ %indvars.iv.next375, %for.inc117 ]
   %j102.0353 = phi i32 [ 0, %for.body106.preheader ], [ %inc118, %for.inc117 ]
-  %66 = load ptr, ptr %_items.i283, align 8
-  %arrayidx.i285 = getelementptr inbounds i8, ptr %66, i64 %indvars.iv374
-  %67 = load i8, ptr %arrayidx.i285, align 1
+  %59 = load ptr, ptr %_items.i283, align 8
+  %arrayidx.i285 = getelementptr inbounds i8, ptr %59, i64 %indvars.iv374
+  %60 = load i8, ptr %arrayidx.i285, align 1
   invoke void @_ZN17CBaseRecordVector18ReserveOnePositionEv(ptr noundef nonnull align 8 dereferenceable(32) %digestsDefined)
           to label %invoke.cont111 unwind label %lpad107
 
 invoke.cont111:                                   ; preds = %for.body106
-  %68 = load ptr, ptr %_items.i273, align 8
-  %69 = load i32, ptr %_size.i274, align 4
-  %idxprom.i288 = sext i32 %69 to i64
-  %arrayidx.i289 = getelementptr inbounds i8, ptr %68, i64 %idxprom.i288
-  store i8 %67, ptr %arrayidx.i289, align 1
-  %inc.i290 = add nsw i32 %69, 1
+  %61 = load ptr, ptr %_items.i273, align 8
+  %62 = load i32, ptr %_size.i274, align 4
+  %idxprom.i288 = sext i32 %62 to i64
+  %arrayidx.i289 = getelementptr inbounds i8, ptr %61, i64 %idxprom.i288
+  store i8 %60, ptr %arrayidx.i289, align 1
+  %inc.i290 = add nsw i32 %62, 1
   store i32 %inc.i290, ptr %_size.i274, align 4
-  %70 = load ptr, ptr %_items.i292, align 8
-  %arrayidx.i294 = getelementptr inbounds i32, ptr %70, i64 %indvars.iv374
-  %71 = load i32, ptr %arrayidx.i294, align 4
+  %63 = load ptr, ptr %_items.i292, align 8
+  %arrayidx.i294 = getelementptr inbounds i32, ptr %63, i64 %indvars.iv374
+  %64 = load i32, ptr %arrayidx.i294, align 4
   invoke void @_ZN17CBaseRecordVector18ReserveOnePositionEv(ptr noundef nonnull align 8 dereferenceable(32) %digests)
           to label %for.inc117 unwind label %lpad107
 
 for.inc117:                                       ; preds = %invoke.cont111
-  %72 = load ptr, ptr %_items.i278, align 8
-  %73 = load i32, ptr %_size.i279, align 4
-  %idxprom.i297 = sext i32 %73 to i64
-  %arrayidx.i298 = getelementptr inbounds i32, ptr %72, i64 %idxprom.i297
-  store i32 %71, ptr %arrayidx.i298, align 4
-  %74 = load i32, ptr %_size.i279, align 4
-  %inc.i299 = add nsw i32 %74, 1
+  %65 = load ptr, ptr %_items.i278, align 8
+  %66 = load i32, ptr %_size.i279, align 4
+  %idxprom.i297 = sext i32 %66 to i64
+  %arrayidx.i298 = getelementptr inbounds i32, ptr %65, i64 %idxprom.i297
+  store i32 %64, ptr %arrayidx.i298, align 4
+  %67 = load i32, ptr %_size.i279, align 4
+  %inc.i299 = add nsw i32 %67, 1
   store i32 %inc.i299, ptr %_size.i279, align 4
   %inc118 = add nuw i32 %j102.0353, 1
   %indvars.iv.next375 = add nsw i64 %indvars.iv374, 1
-  %exitcond377.not = icmp eq i32 %inc118, %53
+  %exitcond377.not = icmp eq i32 %inc118, %46
   br i1 %exitcond377.not, label %if.end122.loopexit, label %for.body106
 
 lpad107:                                          ; preds = %invoke.cont111, %for.body106
-  %75 = landingpad { ptr, i32 }
+  %68 = landingpad { ptr, i32 }
           cleanup
   br label %ehcleanup128
 
 if.end122.loopexit:                               ; preds = %for.inc117
-  %76 = trunc i64 %indvars.iv.next375 to i32
+  %69 = trunc i64 %indvars.iv.next375 to i32
   br label %if.end122
 
 if.end122:                                        ; preds = %if.end122.loopexit, %for.cond103.preheader, %_ZN13CRecordVectorIjE3AddEj.exit
-  %digestIndex.2 = phi i32 [ %digestIndex.0357, %_ZN13CRecordVectorIjE3AddEj.exit ], [ %digestIndex.0357, %for.cond103.preheader ], [ %76, %if.end122.loopexit ]
+  %digestIndex.2 = phi i32 [ %digestIndex.0357, %_ZN13CRecordVectorIjE3AddEj.exit ], [ %digestIndex.0357, %for.cond103.preheader ], [ %69, %if.end122.loopexit ]
   %indvars.iv.next379 = add nuw nsw i64 %indvars.iv378, 1
-  %77 = load i32, ptr %_size.i, align 4
-  %78 = sext i32 %77 to i64
-  %cmp85 = icmp slt i64 %indvars.iv.next379, %78
+  %70 = load i32, ptr %_size.i, align 4
+  %71 = sext i32 %70 to i64
+  %cmp85 = icmp slt i64 %indvars.iv.next379, %71
   br i1 %cmp85, label %for.body86, label %for.end126
 
 for.end126:                                       ; preds = %if.end122, %for.cond81.preheader
@@ -4320,7 +4259,7 @@ for.end126:                                       ; preds = %if.end122, %for.con
   br label %if.end150
 
 ehcleanup128:                                     ; preds = %lpad91, %lpad107, %lpad79
-  %.pn.pn = phi { ptr, i32 } [ %64, %lpad79 ], [ %65, %lpad91 ], [ %75, %lpad107 ]
+  %.pn.pn = phi { ptr, i32 } [ %57, %lpad79 ], [ %58, %lpad91 ], [ %68, %lpad107 ]
   call void @_ZN17CBaseRecordVectorD2Ev(ptr noundef nonnull align 8 dereferenceable(32) %digests2) #16
   call void @llvm.lifetime.end.p0(i64 32, ptr nonnull %digests2) #16
   call void @_ZN17CBaseRecordVectorD2Ev(ptr noundef nonnull align 8 dereferenceable(32) %digestsDefined2) #16
@@ -4328,8 +4267,8 @@ ehcleanup128:                                     ; preds = %lpad91, %lpad107, %
   resume { ptr, i32 } %.pn.pn
 
 if.then134:                                       ; preds = %for.cond76
-  %79 = load i32, ptr %_size.i274, align 4
-  %cmp.i302 = icmp eq i32 %79, 0
+  %72 = load i32, ptr %_size.i274, align 4
+  %cmp.i302 = icmp eq i32 %72, 0
   br i1 %cmp.i302, label %if.then136, label %if.end147
 
 if.then136:                                       ; preds = %if.then134
@@ -4345,12 +4284,12 @@ _ZN8NArchive3N7zL21BoolVector_Fill_FalseER13CRecordVectorIbEi.exit.thread: ; pre
 for.body.i:                                       ; preds = %if.then136, %for.body.i
   %i.06.i = phi i32 [ %inc.i307, %for.body.i ], [ 0, %if.then136 ]
   call void @_ZN17CBaseRecordVector18ReserveOnePositionEv(ptr noundef nonnull align 8 dereferenceable(32) %digestsDefined)
-  %80 = load ptr, ptr %_items.i273, align 8
-  %81 = load i32, ptr %_size.i274, align 4
-  %idxprom.i.i305 = sext i32 %81 to i64
-  %arrayidx.i.i306 = getelementptr inbounds i8, ptr %80, i64 %idxprom.i.i305
+  %73 = load ptr, ptr %_items.i273, align 8
+  %74 = load i32, ptr %_size.i274, align 4
+  %idxprom.i.i305 = sext i32 %74 to i64
+  %arrayidx.i.i306 = getelementptr inbounds i8, ptr %73, i64 %idxprom.i.i305
   store i8 0, ptr %arrayidx.i.i306, align 1
-  %inc.i.i = add nsw i32 %81, 1
+  %inc.i.i = add nsw i32 %74, 1
   store i32 %inc.i.i, ptr %_size.i274, align 4
   %inc.i307 = add nuw nsw i32 %i.06.i, 1
   %exitcond.not.i = icmp eq i32 %inc.i307, %numDigestsTotal.0.lcssa
@@ -4363,13 +4302,13 @@ _ZN8NArchive3N7zL21BoolVector_Fill_FalseER13CRecordVectorIbEi.exit: ; preds = %f
 for.body141:                                      ; preds = %_ZN8NArchive3N7zL21BoolVector_Fill_FalseER13CRecordVectorIbEi.exit, %for.body141
   %i137.0359 = phi i32 [ %inc144, %for.body141 ], [ 0, %_ZN8NArchive3N7zL21BoolVector_Fill_FalseER13CRecordVectorIbEi.exit ]
   call void @_ZN17CBaseRecordVector18ReserveOnePositionEv(ptr noundef nonnull align 8 dereferenceable(32) %digests)
-  %82 = load ptr, ptr %_items.i278, align 8
-  %83 = load i32, ptr %_size.i279, align 4
-  %idxprom.i310 = sext i32 %83 to i64
-  %arrayidx.i311 = getelementptr inbounds i32, ptr %82, i64 %idxprom.i310
+  %75 = load ptr, ptr %_items.i278, align 8
+  %76 = load i32, ptr %_size.i279, align 4
+  %idxprom.i310 = sext i32 %76 to i64
+  %arrayidx.i311 = getelementptr inbounds i32, ptr %75, i64 %idxprom.i310
   store i32 0, ptr %arrayidx.i311, align 4
-  %84 = load i32, ptr %_size.i279, align 4
-  %inc.i312 = add nsw i32 %84, 1
+  %77 = load i32, ptr %_size.i279, align 4
+  %inc.i312 = add nsw i32 %77, 1
   store i32 %inc.i312, ptr %_size.i279, align 4
   %inc144 = add nuw nsw i32 %i137.0359, 1
   %exitcond381.not = icmp eq i32 %inc144, %numDigestsTotal.0.lcssa
@@ -4379,13 +4318,13 @@ if.end147:                                        ; preds = %for.body141, %_ZN8N
   ret void
 
 if.else148:                                       ; preds = %for.cond76
-  %85 = load ptr, ptr %_inByteBack.i, align 8
-  %call.i.i314 = call noundef i64 @_ZN8NArchive3N7z8CInByte210ReadNumberEv(ptr noundef nonnull align 8 dereferenceable(24) %85)
-  %_size.i.i.i315 = getelementptr inbounds %"class.NArchive::N7z::CInByte2", ptr %85, i64 0, i32 1
-  %86 = load i64, ptr %_size.i.i.i315, align 8
-  %_pos.i.i.i316 = getelementptr inbounds %"class.NArchive::N7z::CInByte2", ptr %85, i64 0, i32 2
-  %87 = load i64, ptr %_pos.i.i.i316, align 8
-  %sub.i.i.i317 = sub i64 %86, %87
+  %78 = load ptr, ptr %_inByteBack.i, align 8
+  %call.i.i314 = call noundef i64 @_ZN8NArchive3N7z8CInByte210ReadNumberEv(ptr noundef nonnull align 8 dereferenceable(24) %78)
+  %_size.i.i.i315 = getelementptr inbounds %"class.NArchive::N7z::CInByte2", ptr %78, i64 0, i32 1
+  %79 = load i64, ptr %_size.i.i.i315, align 8
+  %_pos.i.i.i316 = getelementptr inbounds %"class.NArchive::N7z::CInByte2", ptr %78, i64 0, i32 2
+  %80 = load i64, ptr %_pos.i.i.i316, align 8
+  %sub.i.i.i317 = sub i64 %79, %80
   %cmp.i.i.i318 = icmp ult i64 %sub.i.i.i317, %call.i.i314
   br i1 %cmp.i.i.i318, label %if.then.i.i.i320, label %_ZN8NArchive3N7z10CInArchive8SkipDataEv.exit322
 
@@ -4395,13 +4334,13 @@ if.then.i.i.i320:                                 ; preds = %if.else148
   unreachable
 
 _ZN8NArchive3N7z10CInArchive8SkipDataEv.exit322:  ; preds = %if.else148
-  %add.i.i.i319 = add i64 %87, %call.i.i314
+  %add.i.i.i319 = add i64 %80, %call.i.i314
   store i64 %add.i.i.i319, ptr %_pos.i.i.i316, align 8
   br label %if.end150
 
 if.end150:                                        ; preds = %_ZN8NArchive3N7z10CInArchive8SkipDataEv.exit322, %for.end126
-  %88 = load ptr, ptr %_inByteBack.i, align 8
-  %call.i324 = call noundef i64 @_ZN8NArchive3N7z8CInByte210ReadNumberEv(ptr noundef nonnull align 8 dereferenceable(24) %88)
+  %81 = load ptr, ptr %_inByteBack.i, align 8
+  %call.i324 = call noundef i64 @_ZN8NArchive3N7z8CInByte210ReadNumberEv(ptr noundef nonnull align 8 dereferenceable(24) %81)
   br label %for.cond76
 }
 

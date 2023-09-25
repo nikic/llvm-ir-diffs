@@ -12490,112 +12490,71 @@ for.body.lr.ph:                                   ; preds = %if.then
   %syms = getelementptr inbounds %struct.qtm_model, ptr %model, i64 0, i32 2
   %2 = load ptr, ptr %syms, align 8
   %3 = zext i32 %1 to i64
-  %xtraiter = and i64 %3, 1
-  %lcmp.mod.not = icmp eq i64 %xtraiter, 0
-  br i1 %lcmp.mod.not, label %for.body.prol.loopexit, label %for.body.prol
+  br label %for.body
 
-for.body.prol:                                    ; preds = %for.body.lr.ph
-  %indvars.iv.next.prol = add nsw i64 %3, -1
-  %idxprom.prol = and i64 %indvars.iv.next.prol, 4294967295
-  %cumfreq.prol = getelementptr inbounds %struct.qtm_modelsym, ptr %2, i64 %idxprom.prol, i32 1
-  %4 = load i16, ptr %cumfreq.prol, align 2
-  %5 = lshr i16 %4, 1
-  store i16 %5, ptr %cumfreq.prol, align 2
-  %cumfreq10.prol = getelementptr inbounds %struct.qtm_modelsym, ptr %2, i64 %3, i32 1
-  %6 = load i16, ptr %cumfreq10.prol, align 2
-  %cmp12.not.prol = icmp ugt i16 %5, %6
-  br i1 %cmp12.not.prol, label %for.body.prol.loopexit, label %if.then14.prol
-
-if.then14.prol:                                   ; preds = %for.body.prol
-  %add21.prol = add i16 %6, 1
-  store i16 %add21.prol, ptr %cumfreq.prol, align 2
-  br label %for.body.prol.loopexit
-
-for.body.prol.loopexit:                           ; preds = %for.body.prol, %if.then14.prol, %for.body.lr.ph
-  %indvars.iv.unr = phi i64 [ %3, %for.body.lr.ph ], [ %indvars.iv.next.prol, %if.then14.prol ], [ %indvars.iv.next.prol, %for.body.prol ]
-  %7 = icmp eq i32 %1, 1
-  br i1 %7, label %if.end127, label %for.body
-
-for.body:                                         ; preds = %for.body.prol.loopexit, %for.inc.1
-  %indvars.iv = phi i64 [ %indvars.iv.next.1, %for.inc.1 ], [ %indvars.iv.unr, %for.body.prol.loopexit ]
+for.body:                                         ; preds = %for.body.lr.ph, %for.inc
+  %indvars.iv = phi i64 [ %3, %for.body.lr.ph ], [ %indvars.iv.next, %for.inc ]
   %indvars.iv.next = add nsw i64 %indvars.iv, -1
   %idxprom = and i64 %indvars.iv.next, 4294967295
   %cumfreq = getelementptr inbounds %struct.qtm_modelsym, ptr %2, i64 %idxprom, i32 1
-  %8 = load i16, ptr %cumfreq, align 2
-  %9 = lshr i16 %8, 1
-  store i16 %9, ptr %cumfreq, align 2
+  %4 = load i16, ptr %cumfreq, align 2
+  %5 = lshr i16 %4, 1
+  store i16 %5, ptr %cumfreq, align 2
   %cumfreq10 = getelementptr inbounds %struct.qtm_modelsym, ptr %2, i64 %indvars.iv, i32 1
-  %10 = load i16, ptr %cumfreq10, align 2
-  %cmp12.not = icmp ugt i16 %9, %10
+  %6 = load i16, ptr %cumfreq10, align 2
+  %cmp12.not = icmp ugt i16 %5, %6
   br i1 %cmp12.not, label %for.inc, label %if.then14
 
 if.then14:                                        ; preds = %for.body
-  %add21 = add i16 %10, 1
+  %add21 = add i16 %6, 1
   store i16 %add21, ptr %cumfreq, align 2
   br label %for.inc
 
 for.inc:                                          ; preds = %for.body, %if.then14
-  %indvars.iv.next.1 = add nsw i64 %indvars.iv, -2
-  %idxprom.1 = and i64 %indvars.iv.next.1, 4294967295
-  %cumfreq.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %2, i64 %idxprom.1, i32 1
-  %11 = load i16, ptr %cumfreq.1, align 2
-  %12 = lshr i16 %11, 1
-  store i16 %12, ptr %cumfreq.1, align 2
-  %cumfreq10.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %2, i64 %indvars.iv.next, i32 1
-  %13 = load i16, ptr %cumfreq10.1, align 2
-  %cmp12.not.1 = icmp ugt i16 %12, %13
-  br i1 %cmp12.not.1, label %for.inc.1, label %if.then14.1
-
-if.then14.1:                                      ; preds = %for.inc
-  %add21.1 = add i16 %13, 1
-  store i16 %add21.1, ptr %cumfreq.1, align 2
-  br label %for.inc.1
-
-for.inc.1:                                        ; preds = %if.then14.1, %for.inc
-  %cmp.1 = icmp ugt i64 %indvars.iv.next, 1
-  br i1 %cmp.1, label %for.body, label %if.end127
+  %cmp = icmp ugt i64 %indvars.iv, 1
+  br i1 %cmp, label %for.body, label %if.end127
 
 if.else:                                          ; preds = %entry
   store i32 50, ptr %model, align 8
   %entries30 = getelementptr inbounds %struct.qtm_model, ptr %model, i64 0, i32 1
-  %14 = load i32, ptr %entries30, align 4
-  %cmp31182 = icmp sgt i32 %14, 0
+  %7 = load i32, ptr %entries30, align 4
+  %cmp31182 = icmp sgt i32 %7, 0
   br i1 %cmp31182, label %for.body33.lr.ph, label %if.end127
 
 for.body33.lr.ph:                                 ; preds = %if.else
   %syms34 = getelementptr inbounds %struct.qtm_model, ptr %model, i64 0, i32 2
-  %15 = load ptr, ptr %syms34, align 8
-  %wide.trip.count = zext i32 %14 to i64
-  %cumfreq43.phi.trans.insert = getelementptr inbounds %struct.qtm_modelsym, ptr %15, i64 0, i32 1
+  %8 = load ptr, ptr %syms34, align 8
+  %wide.trip.count = zext i32 %7 to i64
+  %cumfreq43.phi.trans.insert = getelementptr inbounds %struct.qtm_modelsym, ptr %8, i64 0, i32 1
   %.pre = load i16, ptr %cumfreq43.phi.trans.insert, align 2
-  %xtraiter224 = and i64 %wide.trip.count, 1
-  %16 = icmp eq i32 %14, 1
-  br i1 %16, label %for.cond61.preheader.unr-lcssa, label %for.body33.lr.ph.new
+  %xtraiter = and i64 %wide.trip.count, 1
+  %9 = icmp eq i32 %7, 1
+  br i1 %9, label %for.cond61.preheader.unr-lcssa, label %for.body33.lr.ph.new
 
 for.body33.lr.ph.new:                             ; preds = %for.body33.lr.ph
   %unroll_iter = and i64 %wide.trip.count, 4294967294
   br label %for.body33
 
 for.cond61.preheader.unr-lcssa:                   ; preds = %for.body33, %for.body33.lr.ph
-  %.unr = phi i16 [ %.pre, %for.body33.lr.ph ], [ %22, %for.body33 ]
+  %.unr = phi i16 [ %.pre, %for.body33.lr.ph ], [ %15, %for.body33 ]
   %indvars.iv194.unr = phi i64 [ 0, %for.body33.lr.ph ], [ %indvars.iv.next195.1, %for.body33 ]
-  %lcmp.mod225.not = icmp eq i64 %xtraiter224, 0
-  br i1 %lcmp.mod225.not, label %for.cond61.preheader, label %for.body33.epil
+  %lcmp.mod.not = icmp eq i64 %xtraiter, 0
+  br i1 %lcmp.mod.not, label %for.cond61.preheader, label %for.body33.epil
 
 for.body33.epil:                                  ; preds = %for.cond61.preheader.unr-lcssa
   %indvars.iv.next195.epil = add nuw nsw i64 %indvars.iv194.unr, 1
-  %cumfreq38.epil = getelementptr inbounds %struct.qtm_modelsym, ptr %15, i64 %indvars.iv.next195.epil, i32 1
-  %17 = load i16, ptr %cumfreq38.epil, align 2
-  %cumfreq43.epil = getelementptr inbounds %struct.qtm_modelsym, ptr %15, i64 %indvars.iv194.unr, i32 1
-  %reass.sub.epil = sub i16 %.unr, %17
+  %cumfreq38.epil = getelementptr inbounds %struct.qtm_modelsym, ptr %8, i64 %indvars.iv.next195.epil, i32 1
+  %10 = load i16, ptr %cumfreq38.epil, align 2
+  %cumfreq43.epil = getelementptr inbounds %struct.qtm_modelsym, ptr %8, i64 %indvars.iv194.unr, i32 1
+  %reass.sub.epil = sub i16 %.unr, %10
   %inc.epil = add i16 %reass.sub.epil, 1
-  %18 = lshr i16 %inc.epil, 1
-  store i16 %18, ptr %cumfreq43.epil, align 2
+  %11 = lshr i16 %inc.epil, 1
+  store i16 %11, ptr %cumfreq43.epil, align 2
   br label %for.cond61.preheader
 
 for.cond61.preheader:                             ; preds = %for.cond61.preheader.unr-lcssa, %for.body33.epil
-  %sub63186 = add nsw i32 %14, -1
-  %cmp64187 = icmp sgt i32 %14, 1
+  %sub63186 = add nsw i32 %7, -1
+  %cmp64187 = icmp sgt i32 %7, 1
   br i1 %cmp64187, label %for.body66.lr.ph, label %for.cond107.preheader
 
 for.body66.lr.ph:                                 ; preds = %for.cond61.preheader
@@ -12603,34 +12562,34 @@ for.body66.lr.ph:                                 ; preds = %for.cond61.preheade
   br label %for.body66
 
 for.body33:                                       ; preds = %for.body33, %for.body33.lr.ph.new
-  %19 = phi i16 [ %.pre, %for.body33.lr.ph.new ], [ %22, %for.body33 ]
+  %12 = phi i16 [ %.pre, %for.body33.lr.ph.new ], [ %15, %for.body33 ]
   %indvars.iv194 = phi i64 [ 0, %for.body33.lr.ph.new ], [ %indvars.iv.next195.1, %for.body33 ]
   %niter = phi i64 [ 0, %for.body33.lr.ph.new ], [ %niter.next.1, %for.body33 ]
   %indvars.iv.next195 = or i64 %indvars.iv194, 1
-  %cumfreq38 = getelementptr inbounds %struct.qtm_modelsym, ptr %15, i64 %indvars.iv.next195, i32 1
-  %20 = load i16, ptr %cumfreq38, align 2
-  %cumfreq43 = getelementptr inbounds %struct.qtm_modelsym, ptr %15, i64 %indvars.iv194, i32 1
-  %reass.sub = sub i16 %19, %20
+  %cumfreq38 = getelementptr inbounds %struct.qtm_modelsym, ptr %8, i64 %indvars.iv.next195, i32 1
+  %13 = load i16, ptr %cumfreq38, align 2
+  %cumfreq43 = getelementptr inbounds %struct.qtm_modelsym, ptr %8, i64 %indvars.iv194, i32 1
+  %reass.sub = sub i16 %12, %13
   %inc = add i16 %reass.sub, 1
-  %21 = lshr i16 %inc, 1
-  store i16 %21, ptr %cumfreq43, align 2
+  %14 = lshr i16 %inc, 1
+  store i16 %14, ptr %cumfreq43, align 2
   %indvars.iv.next195.1 = add nuw nsw i64 %indvars.iv194, 2
-  %cumfreq38.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %15, i64 %indvars.iv.next195.1, i32 1
-  %22 = load i16, ptr %cumfreq38.1, align 2
-  %cumfreq43.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %15, i64 %indvars.iv.next195, i32 1
-  %reass.sub.1 = sub i16 %20, %22
+  %cumfreq38.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %8, i64 %indvars.iv.next195.1, i32 1
+  %15 = load i16, ptr %cumfreq38.1, align 2
+  %cumfreq43.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %8, i64 %indvars.iv.next195, i32 1
+  %reass.sub.1 = sub i16 %13, %15
   %inc.1 = add i16 %reass.sub.1, 1
-  %23 = lshr i16 %inc.1, 1
-  store i16 %23, ptr %cumfreq43.1, align 2
+  %16 = lshr i16 %inc.1, 1
+  store i16 %16, ptr %cumfreq43.1, align 2
   %niter.next.1 = add i64 %niter, 2
   %niter.ncmp.1 = icmp eq i64 %niter.next.1, %unroll_iter
   br i1 %niter.ncmp.1, label %for.cond61.preheader.unr-lcssa, label %for.body33
 
 for.cond61.loopexit:                              ; preds = %for.inc99, %for.body66
-  %24 = phi i32 [ %33, %for.body66 ], [ %43, %for.inc99 ]
-  %sub63 = add nsw i32 %24, -1
-  %25 = sext i32 %sub63 to i64
-  %cmp64 = icmp slt i64 %indvars.iv.next205, %25
+  %17 = phi i32 [ %26, %for.body66 ], [ %36, %for.inc99 ]
+  %sub63 = add nsw i32 %17, -1
+  %18 = sext i32 %sub63 to i64
+  %cmp64 = icmp slt i64 %indvars.iv.next205, %18
   %indvars.iv.next199 = add nuw nsw i64 %indvars.iv198, 1
   br i1 %cmp64, label %for.body66, label %for.cond107.preheader
 
@@ -12641,88 +12600,88 @@ for.cond107.preheader:                            ; preds = %for.cond61.loopexit
 
 for.body110.lr.ph:                                ; preds = %for.cond107.preheader
   %syms111 = getelementptr inbounds %struct.qtm_model, ptr %model, i64 0, i32 2
-  %26 = load ptr, ptr %syms111, align 8
-  %27 = zext i32 %sub63.lcssa to i64
-  %28 = and i64 %27, 1
-  %lcmp.mod227.not.not = icmp eq i64 %28, 0
-  br i1 %lcmp.mod227.not.not, label %for.body110.prol, label %for.body110.prol.loopexit
+  %19 = load ptr, ptr %syms111, align 8
+  %20 = zext i32 %sub63.lcssa to i64
+  %21 = and i64 %20, 1
+  %lcmp.mod225.not.not = icmp eq i64 %21, 0
+  br i1 %lcmp.mod225.not.not, label %for.body110.prol, label %for.body110.prol.loopexit
 
 for.body110.prol:                                 ; preds = %for.body110.lr.ph
-  %29 = add nuw nsw i64 %27, 1
-  %cumfreq115.prol = getelementptr inbounds %struct.qtm_modelsym, ptr %26, i64 %29, i32 1
-  %30 = load i16, ptr %cumfreq115.prol, align 2
-  %cumfreq120.prol = getelementptr inbounds %struct.qtm_modelsym, ptr %26, i64 %27, i32 1
-  %31 = load i16, ptr %cumfreq120.prol, align 2
-  %add122.prol = add i16 %31, %30
+  %22 = add nuw nsw i64 %20, 1
+  %cumfreq115.prol = getelementptr inbounds %struct.qtm_modelsym, ptr %19, i64 %22, i32 1
+  %23 = load i16, ptr %cumfreq115.prol, align 2
+  %cumfreq120.prol = getelementptr inbounds %struct.qtm_modelsym, ptr %19, i64 %20, i32 1
+  %24 = load i16, ptr %cumfreq120.prol, align 2
+  %add122.prol = add i16 %24, %23
   store i16 %add122.prol, ptr %cumfreq120.prol, align 2
-  %indvars.iv.next209.prol = add nsw i64 %27, -1
+  %indvars.iv.next209.prol = add nsw i64 %20, -1
   br label %for.body110.prol.loopexit
 
 for.body110.prol.loopexit:                        ; preds = %for.body110.prol, %for.body110.lr.ph
-  %indvars.iv208.unr = phi i64 [ %27, %for.body110.lr.ph ], [ %indvars.iv.next209.prol, %for.body110.prol ]
-  %32 = icmp eq i32 %sub63.lcssa, 0
-  br i1 %32, label %if.end127, label %for.body110
+  %indvars.iv208.unr = phi i64 [ %20, %for.body110.lr.ph ], [ %indvars.iv.next209.prol, %for.body110.prol ]
+  %25 = icmp eq i32 %sub63.lcssa, 0
+  br i1 %25, label %if.end127, label %for.body110
 
 for.body66:                                       ; preds = %for.body66.lr.ph, %for.cond61.loopexit
-  %33 = phi i32 [ %14, %for.body66.lr.ph ], [ %24, %for.cond61.loopexit ]
+  %26 = phi i32 [ %7, %for.body66.lr.ph ], [ %17, %for.cond61.loopexit ]
   %indvars.iv204 = phi i64 [ 0, %for.body66.lr.ph ], [ %indvars.iv.next205, %for.cond61.loopexit ]
   %indvars.iv198 = phi i64 [ 1, %for.body66.lr.ph ], [ %indvars.iv.next199, %for.cond61.loopexit ]
   %indvars.iv.next205 = add nuw nsw i64 %indvars.iv204, 1
-  %34 = sext i32 %33 to i64
-  %cmp70184 = icmp slt i64 %indvars.iv.next205, %34
+  %27 = sext i32 %26 to i64
+  %cmp70184 = icmp slt i64 %indvars.iv.next205, %27
   br i1 %cmp70184, label %for.body72, label %for.cond61.loopexit
 
 for.body72:                                       ; preds = %for.body66, %for.inc99
-  %35 = phi i32 [ %43, %for.inc99 ], [ %33, %for.body66 ]
-  %36 = phi i32 [ %44, %for.inc99 ], [ %33, %for.body66 ]
+  %28 = phi i32 [ %36, %for.inc99 ], [ %26, %for.body66 ]
+  %29 = phi i32 [ %37, %for.inc99 ], [ %26, %for.body66 ]
   %indvars.iv200 = phi i64 [ %indvars.iv.next201, %for.inc99 ], [ %indvars.iv198, %for.body66 ]
-  %37 = load ptr, ptr %syms73, align 8
-  %cumfreq76 = getelementptr inbounds %struct.qtm_modelsym, ptr %37, i64 %indvars.iv204, i32 1
-  %38 = load i16, ptr %cumfreq76, align 2
-  %cumfreq81 = getelementptr inbounds %struct.qtm_modelsym, ptr %37, i64 %indvars.iv200, i32 1
-  %39 = load i16, ptr %cumfreq81, align 2
-  %cmp83 = icmp ult i16 %38, %39
+  %30 = load ptr, ptr %syms73, align 8
+  %cumfreq76 = getelementptr inbounds %struct.qtm_modelsym, ptr %30, i64 %indvars.iv204, i32 1
+  %31 = load i16, ptr %cumfreq76, align 2
+  %cumfreq81 = getelementptr inbounds %struct.qtm_modelsym, ptr %30, i64 %indvars.iv200, i32 1
+  %32 = load i16, ptr %cumfreq81, align 2
+  %cmp83 = icmp ult i16 %31, %32
   br i1 %cmp83, label %if.then85, label %for.inc99
 
 if.then85:                                        ; preds = %for.body72
-  %arrayidx75 = getelementptr inbounds %struct.qtm_modelsym, ptr %37, i64 %indvars.iv204
-  %40 = load i32, ptr %arrayidx75, align 2
-  %arrayidx94 = getelementptr inbounds %struct.qtm_modelsym, ptr %37, i64 %indvars.iv200
-  %41 = load i32, ptr %arrayidx94, align 2
-  store i32 %41, ptr %arrayidx75, align 2
-  %42 = load ptr, ptr %syms73, align 8
-  %arrayidx97 = getelementptr inbounds %struct.qtm_modelsym, ptr %42, i64 %indvars.iv200
-  store i32 %40, ptr %arrayidx97, align 2
+  %arrayidx75 = getelementptr inbounds %struct.qtm_modelsym, ptr %30, i64 %indvars.iv204
+  %33 = load i32, ptr %arrayidx75, align 2
+  %arrayidx94 = getelementptr inbounds %struct.qtm_modelsym, ptr %30, i64 %indvars.iv200
+  %34 = load i32, ptr %arrayidx94, align 2
+  store i32 %34, ptr %arrayidx75, align 2
+  %35 = load ptr, ptr %syms73, align 8
+  %arrayidx97 = getelementptr inbounds %struct.qtm_modelsym, ptr %35, i64 %indvars.iv200
+  store i32 %33, ptr %arrayidx97, align 2
   %.pre213 = load i32, ptr %entries30, align 4
   br label %for.inc99
 
 for.inc99:                                        ; preds = %for.body72, %if.then85
-  %43 = phi i32 [ %35, %for.body72 ], [ %.pre213, %if.then85 ]
-  %44 = phi i32 [ %36, %for.body72 ], [ %.pre213, %if.then85 ]
+  %36 = phi i32 [ %28, %for.body72 ], [ %.pre213, %if.then85 ]
+  %37 = phi i32 [ %29, %for.body72 ], [ %.pre213, %if.then85 ]
   %indvars.iv.next201 = add nuw nsw i64 %indvars.iv200, 1
-  %45 = sext i32 %44 to i64
-  %cmp70 = icmp slt i64 %indvars.iv.next201, %45
+  %38 = sext i32 %37 to i64
+  %cmp70 = icmp slt i64 %indvars.iv.next201, %38
   br i1 %cmp70, label %for.body72, label %for.cond61.loopexit
 
 for.body110:                                      ; preds = %for.body110.prol.loopexit, %for.body110
   %indvars.iv208 = phi i64 [ %indvars.iv.next209.1, %for.body110 ], [ %indvars.iv208.unr, %for.body110.prol.loopexit ]
-  %46 = add nuw nsw i64 %indvars.iv208, 1
-  %cumfreq115 = getelementptr inbounds %struct.qtm_modelsym, ptr %26, i64 %46, i32 1
-  %47 = load i16, ptr %cumfreq115, align 2
-  %cumfreq120 = getelementptr inbounds %struct.qtm_modelsym, ptr %26, i64 %indvars.iv208, i32 1
-  %48 = load i16, ptr %cumfreq120, align 2
-  %add122 = add i16 %48, %47
+  %39 = add nuw nsw i64 %indvars.iv208, 1
+  %cumfreq115 = getelementptr inbounds %struct.qtm_modelsym, ptr %19, i64 %39, i32 1
+  %40 = load i16, ptr %cumfreq115, align 2
+  %cumfreq120 = getelementptr inbounds %struct.qtm_modelsym, ptr %19, i64 %indvars.iv208, i32 1
+  %41 = load i16, ptr %cumfreq120, align 2
+  %add122 = add i16 %41, %40
   store i16 %add122, ptr %cumfreq120, align 2
   %indvars.iv.next209 = add nsw i64 %indvars.iv208, -1
-  %cumfreq120.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %26, i64 %indvars.iv.next209, i32 1
-  %49 = load i16, ptr %cumfreq120.1, align 2
-  %add122.1 = add i16 %49, %add122
+  %cumfreq120.1 = getelementptr inbounds %struct.qtm_modelsym, ptr %19, i64 %indvars.iv.next209, i32 1
+  %42 = load i16, ptr %cumfreq120.1, align 2
+  %add122.1 = add i16 %42, %add122
   store i16 %add122.1, ptr %cumfreq120.1, align 2
   %indvars.iv.next209.1 = add nsw i64 %indvars.iv208, -2
   %cmp108.not.1 = icmp eq i64 %indvars.iv.next209, 0
   br i1 %cmp108.not.1, label %if.end127, label %for.body110
 
-if.end127:                                        ; preds = %for.body.prol.loopexit, %for.inc.1, %for.body110.prol.loopexit, %for.body110, %if.else, %if.then, %for.cond107.preheader
+if.end127:                                        ; preds = %for.inc, %for.body110.prol.loopexit, %for.body110, %if.else, %if.then, %for.cond107.preheader
   ret void
 }
 

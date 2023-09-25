@@ -7635,66 +7635,28 @@ entry:
 for.body.lr.ph:                                   ; preds = %entry
   %m_data.i = getelementptr inbounds %class.btSoftBody, ptr %this, i64 0, i32 9, i32 5
   %wide.trip.count = zext i32 %0 to i64
-  %xtraiter = and i64 %wide.trip.count, 1
-  %1 = icmp eq i32 %0, 1
-  br i1 %1, label %for.cond.cleanup.loopexit.unr-lcssa, label %for.body.lr.ph.new
-
-for.body.lr.ph.new:                               ; preds = %for.body.lr.ph
-  %unroll_iter = and i64 %wide.trip.count, 4294967294
   br label %for.body
 
-for.cond.cleanup.loopexit.unr-lcssa:              ; preds = %if.end.1, %for.body.lr.ph
-  %indvars.iv.unr = phi i64 [ 0, %for.body.lr.ph ], [ %indvars.iv.next.1, %if.end.1 ]
-  %lcmp.mod.not = icmp eq i64 %xtraiter, 0
-  br i1 %lcmp.mod.not, label %for.cond.cleanup, label %for.body.epil
-
-for.body.epil:                                    ; preds = %for.cond.cleanup.loopexit.unr-lcssa
-  %2 = load ptr, ptr %m_data.i, align 8
-  %m_im.epil = getelementptr inbounds %"struct.btSoftBody::Node", ptr %2, i64 %indvars.iv.unr, i32 6
-  %3 = load float, ptr %m_im.epil, align 8
-  %cmp4.epil = fcmp ogt float %3, 0.000000e+00
-  br i1 %cmp4.epil, label %if.then.epil, label %for.cond.cleanup
-
-if.then.epil:                                     ; preds = %for.body.epil
-  %m_v.epil = getelementptr inbounds %"struct.btSoftBody::Node", ptr %2, i64 %indvars.iv.unr, i32 3
-  tail call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(16) %m_v.epil, ptr noundef nonnull align 4 dereferenceable(16) %velocity, i64 16, i1 false)
-  br label %for.cond.cleanup
-
-for.cond.cleanup:                                 ; preds = %for.cond.cleanup.loopexit.unr-lcssa, %if.then.epil, %for.body.epil, %entry
+for.cond.cleanup:                                 ; preds = %if.end, %entry
   ret void
 
-for.body:                                         ; preds = %if.end.1, %for.body.lr.ph.new
-  %indvars.iv = phi i64 [ 0, %for.body.lr.ph.new ], [ %indvars.iv.next.1, %if.end.1 ]
-  %niter = phi i64 [ 0, %for.body.lr.ph.new ], [ %niter.next.1, %if.end.1 ]
-  %4 = load ptr, ptr %m_data.i, align 8
-  %m_im = getelementptr inbounds %"struct.btSoftBody::Node", ptr %4, i64 %indvars.iv, i32 6
-  %5 = load float, ptr %m_im, align 8
-  %cmp4 = fcmp ogt float %5, 0.000000e+00
+for.body:                                         ; preds = %for.body.lr.ph, %if.end
+  %indvars.iv = phi i64 [ 0, %for.body.lr.ph ], [ %indvars.iv.next, %if.end ]
+  %1 = load ptr, ptr %m_data.i, align 8
+  %m_im = getelementptr inbounds %"struct.btSoftBody::Node", ptr %1, i64 %indvars.iv, i32 6
+  %2 = load float, ptr %m_im, align 8
+  %cmp4 = fcmp ogt float %2, 0.000000e+00
   br i1 %cmp4, label %if.then, label %if.end
 
 if.then:                                          ; preds = %for.body
-  %m_v = getelementptr inbounds %"struct.btSoftBody::Node", ptr %4, i64 %indvars.iv, i32 3
+  %m_v = getelementptr inbounds %"struct.btSoftBody::Node", ptr %1, i64 %indvars.iv, i32 3
   tail call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(16) %m_v, ptr noundef nonnull align 4 dereferenceable(16) %velocity, i64 16, i1 false)
   br label %if.end
 
 if.end:                                           ; preds = %if.then, %for.body
-  %indvars.iv.next = or i64 %indvars.iv, 1
-  %6 = load ptr, ptr %m_data.i, align 8
-  %m_im.1 = getelementptr inbounds %"struct.btSoftBody::Node", ptr %6, i64 %indvars.iv.next, i32 6
-  %7 = load float, ptr %m_im.1, align 8
-  %cmp4.1 = fcmp ogt float %7, 0.000000e+00
-  br i1 %cmp4.1, label %if.then.1, label %if.end.1
-
-if.then.1:                                        ; preds = %if.end
-  %m_v.1 = getelementptr inbounds %"struct.btSoftBody::Node", ptr %6, i64 %indvars.iv.next, i32 3
-  tail call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 8 dereferenceable(16) %m_v.1, ptr noundef nonnull align 4 dereferenceable(16) %velocity, i64 16, i1 false)
-  br label %if.end.1
-
-if.end.1:                                         ; preds = %if.then.1, %if.end
-  %indvars.iv.next.1 = add nuw nsw i64 %indvars.iv, 2
-  %niter.next.1 = add i64 %niter, 2
-  %niter.ncmp.1 = icmp eq i64 %niter.next.1, %unroll_iter
-  br i1 %niter.ncmp.1, label %for.cond.cleanup.loopexit.unr-lcssa, label %for.body
+  %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
+  %exitcond.not = icmp eq i64 %indvars.iv.next, %wide.trip.count
+  br i1 %exitcond.not, label %for.cond.cleanup, label %for.body
 }
 
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(write, argmem: readwrite, inaccessiblemem: none) uwtable
