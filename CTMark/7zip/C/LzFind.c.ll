@@ -243,54 +243,134 @@ entry:
   store i32 4, ptr %numHashBytes.i, align 8, !tbaa !31
   %bigHash.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 22
   store i32 0, ptr %bigHash.i, align 4, !tbaa !32
-  br label %vector.body
-
-vector.body:                                      ; preds = %vector.body, %entry
-  %index = phi i64 [ 0, %entry ], [ %index.next, %vector.body ]
-  %vec.ind = phi <4 x i32> [ <i32 0, i32 1, i32 2, i32 3>, %entry ], [ %vec.ind.next, %vector.body ]
-  %0 = lshr <4 x i32> %vec.ind, <i32 1, i32 1, i32 1, i32 1>
-  %1 = and <4 x i32> %vec.ind, <i32 1, i32 1, i32 1, i32 1>
-  %2 = icmp eq <4 x i32> %1, zeroinitializer
-  %3 = select <4 x i1> %2, <4 x i32> zeroinitializer, <4 x i32> <i32 -306674912, i32 -306674912, i32 -306674912, i32 -306674912>
-  %4 = xor <4 x i32> %3, %0
-  %5 = lshr <4 x i32> %4, <i32 1, i32 1, i32 1, i32 1>
-  %6 = and <4 x i32> %vec.ind, <i32 2, i32 2, i32 2, i32 2>
-  %7 = icmp eq <4 x i32> %6, zeroinitializer
-  %8 = select <4 x i1> %7, <4 x i32> zeroinitializer, <4 x i32> <i32 -306674912, i32 -306674912, i32 -306674912, i32 -306674912>
-  %9 = xor <4 x i32> %8, %5
-  %10 = lshr <4 x i32> %9, <i32 6, i32 6, i32 6, i32 6>
-  %11 = and <4 x i32> %vec.ind, <i32 4, i32 4, i32 4, i32 4>
-  %12 = icmp eq <4 x i32> %11, zeroinitializer
-  %13 = select <4 x i1> %12, <4 x i32> zeroinitializer, <4 x i32> <i32 124634137, i32 124634137, i32 124634137, i32 124634137>
-  %14 = xor <4 x i32> %13, %10
-  %15 = and <4 x i32> %vec.ind, <i32 8, i32 8, i32 8, i32 8>
-  %16 = icmp eq <4 x i32> %15, zeroinitializer
-  %17 = select <4 x i1> %16, <4 x i32> zeroinitializer, <4 x i32> <i32 249268274, i32 249268274, i32 249268274, i32 249268274>
-  %18 = xor <4 x i32> %17, %14
-  %19 = and <4 x i32> %vec.ind, <i32 16, i32 16, i32 16, i32 16>
-  %20 = icmp eq <4 x i32> %19, zeroinitializer
-  %21 = select <4 x i1> %20, <4 x i32> zeroinitializer, <4 x i32> <i32 498536548, i32 498536548, i32 498536548, i32 498536548>
-  %22 = xor <4 x i32> %21, %18
-  %23 = and <4 x i32> %vec.ind, <i32 32, i32 32, i32 32, i32 32>
-  %24 = icmp eq <4 x i32> %23, zeroinitializer
-  %25 = select <4 x i1> %24, <4 x i32> zeroinitializer, <4 x i32> <i32 997073096, i32 997073096, i32 997073096, i32 997073096>
-  %26 = xor <4 x i32> %25, %22
-  %27 = and <4 x i32> %4, <i32 32, i32 32, i32 32, i32 32>
-  %28 = icmp eq <4 x i32> %27, zeroinitializer
-  %29 = select <4 x i1> %28, <4 x i32> zeroinitializer, <4 x i32> <i32 1994146192, i32 1994146192, i32 1994146192, i32 1994146192>
-  %30 = xor <4 x i32> %29, %26
-  %31 = and <4 x i32> %9, <i32 32, i32 32, i32 32, i32 32>
-  %32 = icmp eq <4 x i32> %31, zeroinitializer
-  %33 = select <4 x i1> %32, <4 x i32> zeroinitializer, <4 x i32> <i32 -306674912, i32 -306674912, i32 -306674912, i32 -306674912>
-  %34 = xor <4 x i32> %33, %30
-  %35 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 %index
-  store <4 x i32> %34, ptr %35, align 4, !tbaa !15
-  %index.next = add nuw i64 %index, 4
-  %vec.ind.next = add <4 x i32> %vec.ind, <i32 4, i32 4, i32 4, i32 4>
-  %36 = icmp eq i64 %index.next, 256
-  br i1 %36, label %for.end7, label %vector.body, !llvm.loop !33
-
-for.end7:                                         ; preds = %vector.body
+  %0 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 0
+  store <4 x i32> <i32 0, i32 1996959894, i32 -301047508, i32 -1727442502>, ptr %0, align 4, !tbaa !15
+  %1 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 4
+  store <4 x i32> <i32 124634137, i32 1886057615, i32 -379345611, i32 -1637575261>, ptr %1, align 4, !tbaa !15
+  %2 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 8
+  store <4 x i32> <i32 249268274, i32 2044508324, i32 -522852066, i32 -1747789432>, ptr %2, align 4, !tbaa !15
+  %3 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 12
+  store <4 x i32> <i32 162941995, i32 2125561021, i32 -407360249, i32 -1866523247>, ptr %3, align 4, !tbaa !15
+  %4 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 16
+  store <4 x i32> <i32 498536548, i32 1789927666, i32 -205950648, i32 -2067906082>, ptr %4, align 4, !tbaa !15
+  %5 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 20
+  store <4 x i32> <i32 450548861, i32 1843258603, i32 -187386543, i32 -2083289657>, ptr %5, align 4, !tbaa !15
+  %6 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 24
+  store <4 x i32> <i32 325883990, i32 1684777152, i32 -43845254, i32 -1973040660>, ptr %6, align 4, !tbaa !15
+  %7 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 28
+  store <4 x i32> <i32 335633487, i32 1661365465, i32 -99664541, i32 -1928851979>, ptr %7, align 4, !tbaa !15
+  %8 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 32
+  store <4 x i32> <i32 997073096, i32 1281953886, i32 -715111964, i32 -1570279054>, ptr %8, align 4, !tbaa !15
+  %9 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 36
+  store <4 x i32> <i32 1006888145, i32 1258607687, i32 -770865667, i32 -1526024853>, ptr %9, align 4, !tbaa !15
+  %10 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 40
+  store <4 x i32> <i32 901097722, i32 1119000684, i32 -608450090, i32 -1396901568>, ptr %10, align 4, !tbaa !15
+  %11 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 44
+  store <4 x i32> <i32 853044451, i32 1172266101, i32 -589951537, i32 -1412350631>, ptr %11, align 4, !tbaa !15
+  %12 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 48
+  store <4 x i32> <i32 651767980, i32 1373503546, i32 -925412992, i32 -1076862698>, ptr %12, align 4, !tbaa !15
+  %13 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 52
+  store <4 x i32> <i32 565507253, i32 1454621731, i32 -809855591, i32 -1195530993>, ptr %13, align 4, !tbaa !15
+  %14 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 56
+  store <4 x i32> <i32 671266974, i32 1594198024, i32 -972236366, i32 -1324619484>, ptr %14, align 4, !tbaa !15
+  %15 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 60
+  store <4 x i32> <i32 795835527, i32 1483230225, i32 -1050600021, i32 -1234817731>, ptr %15, align 4, !tbaa !15
+  %16 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 64
+  store <4 x i32> <i32 1994146192, i32 31158534, i32 -1731059524, i32 -271249366>, ptr %16, align 4, !tbaa !15
+  %17 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 68
+  store <4 x i32> <i32 1907459465, i32 112637215, i32 -1614814043, i32 -390540237>, ptr %17, align 4, !tbaa !15
+  %18 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 72
+  store <4 x i32> <i32 2013776290, i32 251722036, i32 -1777751922, i32 -519137256>, ptr %18, align 4, !tbaa !15
+  %19 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 76
+  store <4 x i32> <i32 2137656763, i32 141376813, i32 -1855689577, i32 -429695999>, ptr %19, align 4, !tbaa !15
+  %20 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 80
+  store <4 x i32> <i32 1802195444, i32 476864866, i32 -2056965928, i32 -228458418>, ptr %20, align 4, !tbaa !15
+  %21 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 84
+  store <4 x i32> <i32 1812370925, i32 453092731, i32 -2113342271, i32 -183516073>, ptr %21, align 4, !tbaa !15
+  %22 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 88
+  store <4 x i32> <i32 1706088902, i32 314042704, i32 -1950435094, i32 -54949764>, ptr %22, align 4, !tbaa !15
+  %23 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 92
+  store <4 x i32> <i32 1658658271, i32 366619977, i32 -1932296973, i32 -69972891>, ptr %23, align 4, !tbaa !15
+  %24 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 96
+  store <4 x i32> <i32 1303535960, i32 984961486, i32 -1547960204, i32 -725929758>, ptr %24, align 4, !tbaa !15
+  %25 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 100
+  store <4 x i32> <i32 1256170817, i32 1037604311, i32 -1529756563, i32 -740887301>, ptr %25, align 4, !tbaa !15
+  %26 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 104
+  store <4 x i32> <i32 1131014506, i32 879679996, i32 -1385723834, i32 -631195440>, ptr %26, align 4, !tbaa !15
+  %27 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 108
+  store <4 x i32> <i32 1141124467, i32 855842277, i32 -1442165665, i32 -586318647>, ptr %27, align 4, !tbaa !15
+  %28 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 112
+  store <4 x i32> <i32 1342533948, i32 654459306, i32 -1106571248, i32 -921952122>, ptr %28, align 4, !tbaa !15
+  %29 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 116
+  store <4 x i32> <i32 1466479909, i32 544179635, i32 -1184443383, i32 -832445281>, ptr %29, align 4, !tbaa !15
+  %30 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 120
+  store <4 x i32> <i32 1591671054, i32 702138776, i32 -1328506846, i32 -942167884>, ptr %30, align 4, !tbaa !15
+  %31 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 124
+  store <4 x i32> <i32 1504918807, i32 783551873, i32 -1212326853, i32 -1061524307>, ptr %31, align 4, !tbaa !15
+  %32 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 128
+  store <4 x i32> <i32 -306674912, i32 -1698712650, i32 62317068, i32 1957810842>, ptr %32, align 4, !tbaa !15
+  %33 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 132
+  store <4 x i32> <i32 -355121351, i32 -1647151185, i32 81470997, i32 1943803523>, ptr %33, align 4, !tbaa !15
+  %34 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 136
+  store <4 x i32> <i32 -480048366, i32 -1805370492, i32 225274430, i32 2053790376>, ptr %34, align 4, !tbaa !15
+  %35 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 140
+  store <4 x i32> <i32 -468791541, i32 -1828061283, i32 167816743, i32 2097651377>, ptr %35, align 4, !tbaa !15
+  %36 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 144
+  store <4 x i32> <i32 -267414716, i32 -2029476910, i32 503444072, i32 1762050814>, ptr %36, align 4, !tbaa !15
+  %37 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 148
+  store <4 x i32> <i32 -144550051, i32 -2140837941, i32 426522225, i32 1852507879>, ptr %37, align 4, !tbaa !15
+  %38 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 152
+  store <4 x i32> <i32 -19653770, i32 -1982649376, i32 282753626, i32 1742555852>, ptr %38, align 4, !tbaa !15
+  %39 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 156
+  store <4 x i32> <i32 -105259153, i32 -1900089351, i32 397917763, i32 1622183637>, ptr %39, align 4, !tbaa !15
+  %40 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 160
+  store <4 x i32> <i32 -690576408, i32 -1580100738, i32 953729732, i32 1340076626>, ptr %40, align 4, !tbaa !15
+  %41 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 164
+  store <4 x i32> <i32 -776247311, i32 -1497606297, i32 1068828381, i32 1219638859>, ptr %41, align 4, !tbaa !15
+  %42 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 168
+  store <4 x i32> <i32 -670225446, i32 -1358292148, i32 906185462, i32 1090812512>, ptr %42, align 4, !tbaa !15
+  %43 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 172
+  store <4 x i32> <i32 -547295293, i32 -1469587627, i32 829329135, i32 1181335161>, ptr %43, align 4, !tbaa !15
+  %44 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 176
+  store <4 x i32> <i32 -882789492, i32 -1134132454, i32 628085408, i32 1382605366>, ptr %44, align 4, !tbaa !15
+  %45 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 180
+  store <4 x i32> <i32 -871598187, i32 -1156888829, i32 570562233, i32 1426400815>, ptr %45, align 4, !tbaa !15
+  %46 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 184
+  store <4 x i32> <i32 -977650754, i32 -1296233688, i32 733239954, i32 1555261956>, ptr %46, align 4, !tbaa !15
+  %47 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 188
+  store <4 x i32> <i32 -1026031705, i32 -1244606671, i32 752459403, i32 1541320221>, ptr %47, align 4, !tbaa !15
+  %48 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 192
+  store <4 x i32> <i32 -1687895376, i32 -328994266, i32 1969922972, i32 40735498>, ptr %48, align 4, !tbaa !15
+  %49 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 196
+  store <4 x i32> <i32 -1677130071, i32 -351390145, i32 1913087877, i32 83908371>, ptr %49, align 4, !tbaa !15
+  %50 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 200
+  store <4 x i32> <i32 -1782625662, i32 -491226604, i32 2075208622, i32 213261112>, ptr %50, align 4, !tbaa !15
+  %51 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 204
+  store <4 x i32> <i32 -1831694693, i32 -438977011, i32 2094854071, i32 198958881>, ptr %51, align 4, !tbaa !15
+  %52 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 208
+  store <4 x i32> <i32 -2032938284, i32 -237706686, i32 1759359992, i32 534414190>, ptr %52, align 4, !tbaa !15
+  %53 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 212
+  store <4 x i32> <i32 -2118248755, i32 -155638181, i32 1873836001, i32 414664567>, ptr %53, align 4, !tbaa !15
+  %54 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 216
+  store <4 x i32> <i32 -2012718362, i32 -15766928, i32 1711684554, i32 285281116>, ptr %54, align 4, !tbaa !15
+  %55 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 220
+  store <4 x i32> <i32 -1889165569, i32 -127750551, i32 1634467795, i32 376229701>, ptr %55, align 4, !tbaa !15
+  %56 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 224
+  store <4 x i32> <i32 -1609899400, i32 -686959890, i32 1308918612, i32 956543938>, ptr %56, align 4, !tbaa !15
+  %57 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 228
+  store <4 x i32> <i32 -1486412191, i32 -799009033, i32 1231636301, i32 1047427035>, ptr %57, align 4, !tbaa !15
+  %58 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 232
+  store <4 x i32> <i32 -1362007478, i32 -640263460, i32 1088359270, i32 936918000>, ptr %58, align 4, !tbaa !15
+  %59 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 236
+  store <4 x i32> <i32 -1447252397, i32 -558129467, i32 1202900863, i32 817233897>, ptr %59, align 4, !tbaa !15
+  %60 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 240
+  store <4 x i32> <i32 -1111625188, i32 -893730166, i32 1404277552, i32 615818150>, ptr %60, align 4, !tbaa !15
+  %61 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 244
+  store <4 x i32> <i32 -1160759803, i32 -841546093, i32 1423857449, i32 601450431>, ptr %61, align 4, !tbaa !15
+  %62 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 248
+  store <4 x i32> <i32 -1285129682, i32 -1000256840, i32 1567103746, i32 711928724>, ptr %62, align 4, !tbaa !15
+  %63 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 28, i64 252
+  store <4 x i32> <i32 -1274298825, i32 -1022587231, i32 1510334235, i32 755167117>, ptr %63, align 4, !tbaa !15
   ret void
 }
 
@@ -304,7 +384,7 @@ declare void @llvm.lifetime.end.p0(i64 immarg, ptr nocapture) #7
 define dso_local void @MatchFinder_Free(ptr nocapture noundef %p, ptr noundef %alloc) local_unnamed_addr #5 {
 entry:
   %Free.i = getelementptr inbounds %struct.ISzAlloc, ptr %alloc, i64 0, i32 1
-  %0 = load ptr, ptr %Free.i, align 8, !tbaa !37
+  %0 = load ptr, ptr %Free.i, align 8, !tbaa !33
   %hash.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 8
   %1 = load ptr, ptr %hash.i, align 8, !tbaa !28
   tail call void %0(ptr noundef %alloc, ptr noundef %1) #11
@@ -315,7 +395,7 @@ entry:
   br i1 %tobool.not.i, label %if.then.i, label %LzInWindow_Free.exit
 
 if.then.i:                                        ; preds = %entry
-  %3 = load ptr, ptr %Free.i, align 8, !tbaa !37
+  %3 = load ptr, ptr %Free.i, align 8, !tbaa !33
   %bufferBase.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 12
   %4 = load ptr, ptr %bufferBase.i, align 8, !tbaa !16
   tail call void %3(ptr noundef nonnull %alloc, ptr noundef %4) #11
@@ -334,7 +414,7 @@ entry:
 
 if.then:                                          ; preds = %entry
   %Free.i.i = getelementptr inbounds %struct.ISzAlloc, ptr %alloc, i64 0, i32 1
-  %0 = load ptr, ptr %Free.i.i, align 8, !tbaa !37
+  %0 = load ptr, ptr %Free.i.i, align 8, !tbaa !33
   %hash.i.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 8
   %1 = load ptr, ptr %hash.i.i, align 8, !tbaa !28
   tail call void %0(ptr noundef %alloc, ptr noundef %1) #11
@@ -345,7 +425,7 @@ if.then:                                          ; preds = %entry
   br i1 %tobool.not.i.i, label %if.then.i.i, label %cleanup81
 
 if.then.i.i:                                      ; preds = %if.then
-  %3 = load ptr, ptr %Free.i.i, align 8, !tbaa !37
+  %3 = load ptr, ptr %Free.i.i, align 8, !tbaa !33
   %bufferBase.i.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 12
   %4 = load ptr, ptr %bufferBase.i.i, align 8, !tbaa !16
   tail call void %3(ptr noundef nonnull %alloc, ptr noundef %4) #11
@@ -393,12 +473,12 @@ lor.lhs.false.i:                                  ; preds = %if.end.i
 
 LzInWindow_Create.exit:                           ; preds = %if.end.i, %lor.lhs.false.i
   %Free.i.i153 = getelementptr inbounds %struct.ISzAlloc, ptr %alloc, i64 0, i32 1
-  %8 = load ptr, ptr %Free.i.i153, align 8, !tbaa !37
+  %8 = load ptr, ptr %Free.i.i153, align 8, !tbaa !33
   tail call void %8(ptr noundef %alloc, ptr noundef %6) #11
   store ptr null, ptr %bufferBase.i, align 8, !tbaa !16
   %blockSize6.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 15
   store i32 %add1.i, ptr %blockSize6.i, align 4, !tbaa !19
-  %9 = load ptr, ptr %alloc, align 8, !tbaa !39
+  %9 = load ptr, ptr %alloc, align 8, !tbaa !35
   %conv.i = zext i32 %add1.i to i64
   %call.i = tail call ptr %9(ptr noundef nonnull %alloc, i64 noundef %conv.i) #11
   store ptr %call.i, ptr %bufferBase.i, align 8, !tbaa !16
@@ -412,9 +492,9 @@ LzInWindow_Create.exit.if.end80_crit_edge:        ; preds = %LzInWindow_Create.e
 
 if.then11:                                        ; preds = %lor.lhs.false.i, %if.then.i, %LzInWindow_Create.exit
   %matchMaxLen13 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 7
-  store i32 %matchMaxLen, ptr %matchMaxLen13, align 8, !tbaa !40
+  store i32 %matchMaxLen, ptr %matchMaxLen13, align 8, !tbaa !36
   %fixedHashSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 24
-  store i32 0, ptr %fixedHashSize, align 4, !tbaa !41
+  store i32 0, ptr %fixedHashSize, align 4, !tbaa !37
   %numHashBytes = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 18
   %10 = load i32, ptr %numHashBytes, align 8, !tbaa !31
   %cmp14 = icmp eq i32 %10, 2
@@ -422,7 +502,7 @@ if.then11:                                        ; preds = %lor.lhs.false.i, %i
 
 if.end34.thread:                                  ; preds = %if.then11
   %hashMask167 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 10
-  store i32 65535, ptr %hashMask167, align 8, !tbaa !42
+  store i32 65535, ptr %hashMask167, align 8, !tbaa !38
   br label %if.end52
 
 if.else:                                          ; preds = %if.then11
@@ -443,13 +523,13 @@ if.else:                                          ; preds = %if.then11
   %spec.select152 = select i1 %cmp28, i32 16777215, i32 %shr31
   %hs.0 = select i1 %cmp25, i32 %spec.select152, i32 %or24
   %hashMask = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 10
-  store i32 %hs.0, ptr %hashMask, align 8, !tbaa !42
+  store i32 %hs.0, ptr %hashMask, align 8, !tbaa !38
   %inc = add nuw nsw i32 %hs.0, 1
   %cmp36 = icmp ugt i32 %10, 2
   br i1 %cmp36, label %if.end40, label %if.end52
 
 if.end40:                                         ; preds = %if.else
-  store i32 1024, ptr %fixedHashSize, align 4, !tbaa !41
+  store i32 1024, ptr %fixedHashSize, align 4, !tbaa !37
   br i1 %cmp28, label %if.end52, label %if.end46
 
 if.end46:                                         ; preds = %if.end40
@@ -464,20 +544,20 @@ if.end52:                                         ; preds = %if.end46, %if.else,
   %inc170173176 = phi i32 [ %inc, %if.end40 ], [ %inc, %if.else ], [ 65536, %if.end34.thread ], [ %inc, %if.end46 ]
   %add54 = add nuw i32 %13, %inc170173176
   %hashSizeSum = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 25
-  %14 = load i32, ptr %hashSizeSum, align 8, !tbaa !43
+  %14 = load i32, ptr %hashSizeSum, align 8, !tbaa !39
   %numSons = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 26
-  %15 = load i32, ptr %numSons, align 4, !tbaa !44
+  %15 = load i32, ptr %numSons, align 4, !tbaa !40
   %historySize56 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 23
-  store i32 %historySize, ptr %historySize56, align 8, !tbaa !45
-  store i32 %add54, ptr %hashSizeSum, align 8, !tbaa !43
+  store i32 %historySize, ptr %historySize56, align 8, !tbaa !41
+  store i32 %add54, ptr %hashSizeSum, align 8, !tbaa !39
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  store i32 %add8, ptr %cyclicBufferSize, align 4, !tbaa !46
+  store i32 %add8, ptr %cyclicBufferSize, align 4, !tbaa !42
   %btMode = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 21
   %16 = load i32, ptr %btMode, align 8, !tbaa !30
   %tobool58.not = icmp ne i32 %16, 0
   %mul = zext i1 %tobool58.not to i32
   %cond = shl i32 %add8, %mul
-  store i32 %cond, ptr %numSons, align 4, !tbaa !44
+  store i32 %cond, ptr %numSons, align 4, !tbaa !40
   %add62 = add i32 %cond, %add54
   %hash = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 8
   %17 = load ptr, ptr %hash, align 8, !tbaa !28
@@ -489,29 +569,29 @@ if.end52:                                         ; preds = %if.end46, %if.else,
 
 if.end66:                                         ; preds = %if.end52
   %Free.i = getelementptr inbounds %struct.ISzAlloc, ptr %alloc, i64 0, i32 1
-  %18 = load ptr, ptr %Free.i, align 8, !tbaa !37
+  %18 = load ptr, ptr %Free.i, align 8, !tbaa !33
   tail call void %18(ptr noundef %alloc, ptr noundef %17) #11
   store ptr null, ptr %hash, align 8, !tbaa !28
   %conv.i154 = zext i32 %add62 to i64
   %mul.i = shl nuw nsw i64 %conv.i154, 2
-  %19 = load ptr, ptr %alloc, align 8, !tbaa !39
+  %19 = load ptr, ptr %alloc, align 8, !tbaa !35
   %call.i155 = tail call ptr %19(ptr noundef nonnull %alloc, i64 noundef %mul.i) #11
   store ptr %call.i155, ptr %hash, align 8, !tbaa !28
   %cmp70.not = icmp eq ptr %call.i155, null
   br i1 %cmp70.not, label %if.end80, label %if.then71
 
 if.then71:                                        ; preds = %if.end66
-  %20 = load i32, ptr %hashSizeSum, align 8, !tbaa !43
+  %20 = load i32, ptr %hashSizeSum, align 8, !tbaa !39
   %idx.ext = zext i32 %20 to i64
   %add.ptr = getelementptr inbounds i32, ptr %call.i155, i64 %idx.ext
   %son = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  store ptr %add.ptr, ptr %son, align 8, !tbaa !47
+  store ptr %add.ptr, ptr %son, align 8, !tbaa !43
   br label %cleanup81
 
 if.end80:                                         ; preds = %LzInWindow_Create.exit.if.end80_crit_edge, %if.end66
   %21 = phi ptr [ %.pre, %LzInWindow_Create.exit.if.end80_crit_edge ], [ null, %if.end66 ]
   %Free.i.i156 = getelementptr inbounds %struct.ISzAlloc, ptr %alloc, i64 0, i32 1
-  %22 = load ptr, ptr %Free.i.i156, align 8, !tbaa !37
+  %22 = load ptr, ptr %Free.i.i156, align 8, !tbaa !33
   %hash.i.i157 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 8
   tail call void %22(ptr noundef nonnull %alloc, ptr noundef %21) #11
   store ptr null, ptr %hash.i.i157, align 8, !tbaa !28
@@ -520,7 +600,7 @@ if.end80:                                         ; preds = %LzInWindow_Create.e
   br i1 %tobool.not.i.i159, label %if.then.i.i161, label %cleanup81
 
 if.then.i.i161:                                   ; preds = %if.end80
-  %24 = load ptr, ptr %Free.i.i156, align 8, !tbaa !37
+  %24 = load ptr, ptr %Free.i.i156, align 8, !tbaa !33
   %bufferBase.i.i162 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 12
   %25 = load ptr, ptr %bufferBase.i.i162, align 8, !tbaa !16
   tail call void %24(ptr noundef nonnull %alloc, ptr noundef %25) #11
@@ -537,7 +617,7 @@ define dso_local void @MatchFinder_Init(ptr nocapture noundef %p) #5 {
 entry:
   %size.i = alloca i64, align 8
   %hashSizeSum = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 25
-  %0 = load i32, ptr %hashSizeSum, align 8, !tbaa !43
+  %0 = load i32, ptr %hashSizeSum, align 8, !tbaa !39
   %cmp19.not = icmp eq i32 %0, 0
   br i1 %cmp19.not, label %if.end.i, label %for.body.lr.ph
 
@@ -551,19 +631,19 @@ for.body:                                         ; preds = %for.body.lr.ph, %fo
   %arrayidx = getelementptr inbounds i32, ptr %1, i64 %indvars.iv
   store i32 0, ptr %arrayidx, align 4, !tbaa !15
   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
-  %2 = load i32, ptr %hashSizeSum, align 8, !tbaa !43
+  %2 = load i32, ptr %hashSizeSum, align 8, !tbaa !39
   %3 = zext i32 %2 to i64
   %cmp = icmp ult i64 %indvars.iv.next, %3
-  br i1 %cmp, label %for.body, label %if.end.i, !llvm.loop !48
+  br i1 %cmp, label %for.body, label %if.end.i, !llvm.loop !44
 
 if.end.i:                                         ; preds = %for.body, %entry
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  store i32 0, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 0, ptr %cyclicBufferPos, align 8, !tbaa !46
   %bufferBase = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 12
   %4 = load ptr, ptr %bufferBase, align 8, !tbaa !16
   store ptr %4, ptr %p, align 8, !tbaa !5
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %5 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %5 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %streamPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 3
   store i32 %5, ptr %streamPos, align 8, !tbaa !13
   %pos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 1
@@ -661,8 +741,8 @@ MatchFinder_ReadBlock.exit:                       ; preds = %cleanup.i, %if.then
   %19 = phi i32 [ %add.i, %if.then2.i ], [ %add.i, %if.then16.i ], [ %.pre22, %cleanup.thread.i ], [ %add42.i, %cleanup.i ]
   %20 = phi i32 [ %5, %if.then2.i ], [ %5, %if.then16.i ], [ %.pre, %cleanup.thread.i ], [ %17, %cleanup.i ]
   %sub.i15 = xor i32 %20, -1
-  %21 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
-  %22 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %21 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
+  %22 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %sub1.i = sub i32 %21, %22
   %spec.select.i16 = call i32 @llvm.umin.i32(i32 %sub1.i, i32 %sub.i15)
   %sub3.i = sub i32 %19, %20
@@ -675,13 +755,13 @@ MatchFinder_ReadBlock.exit:                       ; preds = %cleanup.i, %if.then
   %limit2.0.i = select i1 %cmp4.not.i, i32 %sub10.i, i32 %spec.store.select.i
   %limit.1.i = call i32 @llvm.umin.i32(i32 %limit2.0.i, i32 %spec.select.i16)
   %matchMaxLen.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 7
-  %24 = load i32, ptr %matchMaxLen.i, align 8, !tbaa !40
+  %24 = load i32, ptr %matchMaxLen.i, align 8, !tbaa !36
   %lenLimit.0.i = call i32 @llvm.umin.i32(i32 %sub3.i, i32 %24)
   %lenLimit22.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  store i32 %lenLimit.0.i, ptr %lenLimit22.i, align 4, !tbaa !50
+  store i32 %lenLimit.0.i, ptr %lenLimit22.i, align 4, !tbaa !47
   %add.i18 = add i32 %limit.1.i, %20
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  store i32 %add.i18, ptr %posLimit.i, align 4, !tbaa !51
+  store i32 %add.i18, ptr %posLimit.i, align 4, !tbaa !48
   ret void
 }
 
@@ -714,7 +794,7 @@ vector.body:                                      ; preds = %vector.body, %vecto
   store <4 x i32> %3, ptr %1, align 4, !tbaa !15
   %index.next = add nuw i64 %index, 8
   %4 = icmp eq i64 %index.next, %n.vec
-  br i1 %4, label %middle.block, label %vector.body, !llvm.loop !52
+  br i1 %4, label %middle.block, label %vector.body, !llvm.loop !49
 
 middle.block:                                     ; preds = %vector.body
   %cmp.n = icmp eq i64 %n.vec, %wide.trip.count
@@ -732,7 +812,7 @@ for.body:                                         ; preds = %for.body.preheader1
   store i32 %value.0, ptr %arrayidx, align 4, !tbaa !15
   %indvars.iv.next = add nuw nsw i64 %indvars.iv, 1
   %exitcond.not = icmp eq i64 %indvars.iv.next, %wide.trip.count
-  br i1 %exitcond.not, label %for.end, label %for.body, !llvm.loop !53
+  br i1 %exitcond.not, label %for.end, label %for.body, !llvm.loop !52
 
 for.end:                                          ; preds = %for.body, %middle.block, %entry
   ret void
@@ -815,7 +895,7 @@ while.body:                                       ; preds = %while.cond
   %arrayidx42 = getelementptr inbounds i8, ptr %cur, i64 %idxprom38
   %5 = load i8, ptr %arrayidx42, align 1, !tbaa !12
   %cmp44.not = icmp eq i8 %4, %5
-  br i1 %cmp44.not, label %while.cond, label %if.end48, !llvm.loop !54
+  br i1 %cmp44.not, label %while.cond, label %if.end48, !llvm.loop !53
 
 if.end48:                                         ; preds = %while.cond, %while.body, %land.lhs.true, %if.then23
   %len.1 = phi i32 [ %inc, %land.lhs.true ], [ %lenLimit, %if.then23 ], [ %lenLimit, %while.cond ], [ %inc35, %while.body ]
@@ -884,15 +964,15 @@ cleanup78:                                        ; preds = %if.then, %if.then56
 define dso_local i32 @Bt3Zip_MatchFinder_GetMatches(ptr nocapture noundef %p, ptr noundef %distances) local_unnamed_addr #5 {
 entry:
   %lenLimit1 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 3
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %cyclicBufferPos.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
@@ -901,7 +981,7 @@ if.then:                                          ; preds = %entry
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos.i, align 8, !tbaa !14
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -931,11 +1011,11 @@ if.end:                                           ; preds = %entry
   store i32 %12, ptr %arrayidx7, align 4, !tbaa !15
   %13 = load i32, ptr %pos, align 8, !tbaa !14
   %son = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %14 = load ptr, ptr %son, align 8, !tbaa !47
+  %14 = load ptr, ptr %son, align 8, !tbaa !43
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %16 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %16 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cutValue = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %17 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %15, 1
@@ -1012,7 +1092,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx42.i = getelementptr inbounds i8, ptr %5, i64 %idxprom38.i
   %23 = load i8, ptr %arrayidx42.i, align 1, !tbaa !12
   %cmp44.not.i = icmp eq i8 %22, %23
-  br i1 %cmp44.not.i, label %while.cond.i, label %if.end48.i, !llvm.loop !54
+  br i1 %cmp44.not.i, label %while.cond.i, label %if.end48.i, !llvm.loop !53
 
 if.end48.i:                                       ; preds = %while.body.i, %while.cond.i, %land.lhs.true.i, %if.then23.i
   %len.1.i = phi i32 [ %inc.i51, %land.lhs.true.i ], [ %0, %if.then23.i ], [ %inc35.i, %while.body.i ], [ %0, %while.cond.i ]
@@ -1079,15 +1159,15 @@ GetMatchesSpec1.exit:                             ; preds = %if.then.i49, %if.th
   %sub.ptr.sub = sub i64 %sub.ptr.lhs.cast, %sub.ptr.rhs.cast
   %28 = lshr exact i64 %sub.ptr.sub, 2
   %conv13 = trunc i64 %28 to i32
-  %29 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %29 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %29, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx4, ptr %p, align 8, !tbaa !5
   %30 = load i32, ptr %pos, align 8, !tbaa !14
   %inc17 = add i32 %30, 1
   store i32 %inc17, ptr %pos, align 8, !tbaa !14
   %posLimit = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %31 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %31 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp18 = icmp eq i32 %inc17, %31
   br i1 %cmp18, label %cleanup.sink.split, label %cleanup
 
@@ -1112,15 +1192,15 @@ entry:
 
 if.then:                                          ; preds = %entry
   %1 = getelementptr i8, ptr %p, i64 120
-  %p.val6.i = load i32, ptr %1, align 8, !tbaa !45
+  %p.val6.i = load i32, ptr %1, align 8, !tbaa !41
   %sub1.i.i = sub i32 -2, %p.val6.i
   %and.i.i = and i32 %sub1.i.i, -1024
   %hash.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 8
   %2 = load ptr, ptr %hash.i, align 8, !tbaa !28
   %hashSizeSum.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 25
-  %3 = load i32, ptr %hashSizeSum.i, align 8, !tbaa !43
+  %3 = load i32, ptr %hashSizeSum.i, align 8, !tbaa !39
   %numSons.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 26
-  %4 = load i32, ptr %numSons.i, align 4, !tbaa !44
+  %4 = load i32, ptr %numSons.i, align 4, !tbaa !40
   %add.i = add i32 %4, %3
   %cmp11.not.i.i = icmp eq i32 %add.i, 0
   br i1 %cmp11.not.i.i, label %MatchFinder_Normalize.exit, label %for.body.preheader.i.i
@@ -1148,7 +1228,7 @@ vector.body:                                      ; preds = %vector.body, %vecto
   store <4 x i32> %8, ptr %6, align 4, !tbaa !15
   %index.next = add nuw i64 %index, 8
   %9 = icmp eq i64 %index.next, %n.vec
-  br i1 %9, label %middle.block, label %vector.body, !llvm.loop !55
+  br i1 %9, label %middle.block, label %vector.body, !llvm.loop !54
 
 middle.block:                                     ; preds = %vector.body
   %cmp.n = icmp eq i64 %n.vec, %wide.trip.count.i.i
@@ -1166,7 +1246,7 @@ for.body.i.i:                                     ; preds = %for.body.i.i.prehea
   store i32 %value.0.i.i, ptr %arrayidx.i.i, align 4, !tbaa !15
   %indvars.iv.next.i.i = add nuw nsw i64 %indvars.iv.i.i, 1
   %exitcond.not.i.i = icmp eq i64 %indvars.iv.next.i.i, %wide.trip.count.i.i
-  br i1 %exitcond.not.i.i, label %MatchFinder_Normalize3.exit.loopexit.i, label %for.body.i.i, !llvm.loop !56
+  br i1 %exitcond.not.i.i, label %MatchFinder_Normalize3.exit.loopexit.i, label %for.body.i.i, !llvm.loop !55
 
 MatchFinder_Normalize3.exit.loopexit.i:           ; preds = %for.body.i.i, %middle.block
   %.pre.i = load i32, ptr %pos, align 8, !tbaa !14
@@ -1333,14 +1413,14 @@ cleanup.i.i:                                      ; preds = %if.end34.i.i
 
 if.end4:                                          ; preds = %cleanup.i.i, %cleanup.thread.i.i, %if.then16.i.i, %if.then2.i.i, %lor.lhs.false.i.i, %if.end.i, %land.lhs.true, %if.end
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %43 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %43 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %44 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %44 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cmp5 = icmp eq i32 %43, %44
   br i1 %cmp5, label %if.then6, label %if.end8
 
 if.then6:                                         ; preds = %if.end4
-  store i32 0, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 0, ptr %cyclicBufferPos, align 8, !tbaa !46
   br label %if.end8
 
 if.end8:                                          ; preds = %if.then6, %if.end4
@@ -1361,13 +1441,13 @@ if.end8:                                          ; preds = %if.then6, %if.end4
   %limit2.0.i = select i1 %cmp4.not.i, i32 %sub10.i, i32 %spec.store.select.i
   %limit.1.i = call i32 @llvm.umin.i32(i32 %limit2.0.i, i32 %spec.select.i)
   %matchMaxLen.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 7
-  %49 = load i32, ptr %matchMaxLen.i, align 8, !tbaa !40
+  %49 = load i32, ptr %matchMaxLen.i, align 8, !tbaa !36
   %lenLimit.0.i = call i32 @llvm.umin.i32(i32 %sub3.i, i32 %49)
   %lenLimit22.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  store i32 %lenLimit.0.i, ptr %lenLimit22.i, align 4, !tbaa !50
+  store i32 %lenLimit.0.i, ptr %lenLimit22.i, align 4, !tbaa !47
   %add.i21 = add i32 %limit.1.i, %46
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  store i32 %add.i21, ptr %posLimit.i, align 4, !tbaa !51
+  store i32 %add.i21, ptr %posLimit.i, align 4, !tbaa !48
   ret void
 }
 
@@ -1375,15 +1455,15 @@ if.end8:                                          ; preds = %if.then6, %if.end4
 define dso_local i32 @Hc3Zip_MatchFinder_GetMatches(ptr nocapture noundef %p, ptr noundef %distances) local_unnamed_addr #5 {
 entry:
   %lenLimit1 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 3
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %cyclicBufferPos.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
@@ -1392,7 +1472,7 @@ if.then:                                          ; preds = %entry
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos.i, align 8, !tbaa !14
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -1422,11 +1502,11 @@ if.end:                                           ; preds = %entry
   store i32 %12, ptr %arrayidx7, align 4, !tbaa !15
   %13 = load i32, ptr %pos, align 8, !tbaa !14
   %son = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %14 = load ptr, ptr %son, align 8, !tbaa !47
+  %14 = load ptr, ptr %son, align 8, !tbaa !43
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %16 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %16 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cutValue = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %17 = load i32, ptr %cutValue, align 4, !tbaa !29
   %idxprom.i = zext i32 %15 to i64
@@ -1486,7 +1566,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx24.i = getelementptr inbounds i8, ptr %5, i64 %idxprom20.i
   %25 = load i8, ptr %arrayidx24.i, align 1, !tbaa !12
   %cmp26.not.i = icmp eq i8 %24, %25
-  br i1 %cmp26.not.i, label %while.cond.i, label %while.end.thread.i, !llvm.loop !57
+  br i1 %cmp26.not.i, label %while.cond.i, label %while.end.thread.i, !llvm.loop !56
 
 while.end.i:                                      ; preds = %while.cond.i
   %cmp30.i = icmp ult i32 %maxLen.addr.0100.i, %0
@@ -1529,15 +1609,15 @@ Hc_GetMatchesSpec.exit:                           ; preds = %cleanup44.i, %if.en
   %sub.ptr.sub = sub i64 %sub.ptr.lhs.cast, %sub.ptr.rhs.cast
   %26 = lshr exact i64 %sub.ptr.sub, 2
   %conv13 = trunc i64 %26 to i32
-  %27 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %27 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %27, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx4, ptr %p, align 8, !tbaa !5
   %28 = load i32, ptr %pos, align 8, !tbaa !14
   %inc17 = add i32 %28, 1
   store i32 %inc17, ptr %pos, align 8, !tbaa !14
   %posLimit = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %29 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %29 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp18 = icmp eq i32 %inc17, %29
   br i1 %cmp18, label %cleanup.sink.split, label %cleanup
 
@@ -1566,21 +1646,21 @@ entry:
 
 do.body:                                          ; preds = %cleanup, %entry
   %num.addr.0 = phi i32 [ %num, %entry ], [ %dec, %cleanup ]
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 3
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %do.body
-  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
   %3 = load i32, ptr %pos, align 8, !tbaa !14
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos, align 8, !tbaa !14
-  %4 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -1607,9 +1687,9 @@ if.end:                                           ; preds = %do.body
   %12 = load i32, ptr %pos, align 8, !tbaa !14
   store i32 %12, ptr %arrayidx7, align 4, !tbaa !15
   %13 = load i32, ptr %pos, align 8, !tbaa !14
-  %14 = load ptr, ptr %son, align 8, !tbaa !47
-  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
-  %16 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %14 = load ptr, ptr %son, align 8, !tbaa !43
+  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
+  %16 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %17 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %15, 1
   %idx.ext.i = zext i32 %shl.i to i64
@@ -1668,7 +1748,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx30.i = getelementptr inbounds i8, ptr %5, i64 %idxprom26.i
   %21 = load i8, ptr %arrayidx30.i, align 1, !tbaa !12
   %cmp32.not.i = icmp eq i8 %20, %21
-  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !58
+  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !57
 
 if.then38.i:                                      ; preds = %while.cond.i
   %22 = load i32, ptr %add.ptr10.i, align 4, !tbaa !15
@@ -1710,14 +1790,14 @@ SkipMatchesSpec.exit:                             ; preds = %if.then.i47, %if.th
   %ptr0.0112.i = phi ptr [ %ptr0.0.lcssa.i, %if.then.i47 ], [ %ptr0.0122.i, %if.then38.i ]
   %storemerge.i = phi i32 [ 0, %if.then.i47 ], [ %23, %if.then38.i ]
   store i32 %storemerge.i, ptr %ptr0.0112.i, align 4, !tbaa !15
-  %26 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %26 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %26, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx4, ptr %p, align 8, !tbaa !5
   %27 = load i32, ptr %pos, align 8, !tbaa !14
   %inc16 = add i32 %27, 1
   store i32 %inc16, ptr %pos, align 8, !tbaa !14
-  %28 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %28 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp17 = icmp eq i32 %inc16, %28
   br i1 %cmp17, label %cleanup.sink.split, label %cleanup
 
@@ -1728,7 +1808,7 @@ cleanup.sink.split:                               ; preds = %SkipMatchesSpec.exi
 cleanup:                                          ; preds = %cleanup.sink.split, %if.then, %SkipMatchesSpec.exit
   %dec = add i32 %num.addr.0, -1
   %cmp24.not = icmp eq i32 %dec, 0
-  br i1 %cmp24.not, label %do.end, label %do.body, !llvm.loop !59
+  br i1 %cmp24.not, label %do.end, label %do.body, !llvm.loop !58
 
 do.end:                                           ; preds = %cleanup
   ret void
@@ -1747,21 +1827,21 @@ entry:
 
 do.body:                                          ; preds = %cleanup, %entry
   %num.addr.0 = phi i32 [ %num, %entry ], [ %dec, %cleanup ]
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 3
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %do.body
-  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
   %3 = load i32, ptr %pos, align 8, !tbaa !14
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos, align 8, !tbaa !14
-  %4 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -1787,19 +1867,19 @@ if.end:                                           ; preds = %do.body
   %11 = load i32, ptr %arrayidx7, align 4, !tbaa !15
   %12 = load i32, ptr %pos, align 8, !tbaa !14
   store i32 %12, ptr %arrayidx7, align 4, !tbaa !15
-  %13 = load ptr, ptr %son, align 8, !tbaa !47
-  %14 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %13 = load ptr, ptr %son, align 8, !tbaa !43
+  %14 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %idxprom11 = zext i32 %14 to i64
   %arrayidx12 = getelementptr inbounds i32, ptr %13, i64 %idxprom11
   store i32 %11, ptr %arrayidx12, align 4, !tbaa !15
-  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %15 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %15, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx4, ptr %p, align 8, !tbaa !5
   %16 = load i32, ptr %pos, align 8, !tbaa !14
   %inc16 = add i32 %16, 1
   store i32 %inc16, ptr %pos, align 8, !tbaa !14
-  %17 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %17 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp17 = icmp eq i32 %inc16, %17
   br i1 %cmp17, label %cleanup.sink.split, label %cleanup
 
@@ -1810,7 +1890,7 @@ cleanup.sink.split:                               ; preds = %if.end, %if.then
 cleanup:                                          ; preds = %cleanup.sink.split, %if.then, %if.end
   %dec = add i32 %num.addr.0, -1
   %cmp24.not = icmp eq i32 %dec, 0
-  br i1 %cmp24.not, label %do.end, label %do.body, !llvm.loop !60
+  br i1 %cmp24.not, label %do.end, label %do.body, !llvm.loop !59
 
 do.end:                                           ; preds = %cleanup
   ret void
@@ -1819,13 +1899,13 @@ do.end:                                           ; preds = %cleanup
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: readwrite) uwtable
 define dso_local void @MatchFinder_CreateVTable(ptr nocapture noundef readonly %p, ptr nocapture noundef writeonly %vTable) local_unnamed_addr #2 {
 entry:
-  store ptr @MatchFinder_Init, ptr %vTable, align 8, !tbaa !61
+  store ptr @MatchFinder_Init, ptr %vTable, align 8, !tbaa !60
   %GetIndexByte = getelementptr inbounds %struct._IMatchFinder, ptr %vTable, i64 0, i32 1
-  store ptr @MatchFinder_GetIndexByte, ptr %GetIndexByte, align 8, !tbaa !63
+  store ptr @MatchFinder_GetIndexByte, ptr %GetIndexByte, align 8, !tbaa !62
   %GetNumAvailableBytes = getelementptr inbounds %struct._IMatchFinder, ptr %vTable, i64 0, i32 2
-  store ptr @MatchFinder_GetNumAvailableBytes, ptr %GetNumAvailableBytes, align 8, !tbaa !64
+  store ptr @MatchFinder_GetNumAvailableBytes, ptr %GetNumAvailableBytes, align 8, !tbaa !63
   %GetPointerToCurrentPos = getelementptr inbounds %struct._IMatchFinder, ptr %vTable, i64 0, i32 3
-  store ptr @MatchFinder_GetPointerToCurrentPos, ptr %GetPointerToCurrentPos, align 8, !tbaa !65
+  store ptr @MatchFinder_GetPointerToCurrentPos, ptr %GetPointerToCurrentPos, align 8, !tbaa !64
   %btMode = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 21
   %0 = load i32, ptr %btMode, align 8, !tbaa !30
   %tobool.not = icmp eq i32 %0, 0
@@ -1833,9 +1913,9 @@ entry:
 
 if.then:                                          ; preds = %entry
   %GetMatches = getelementptr inbounds %struct._IMatchFinder, ptr %vTable, i64 0, i32 4
-  store ptr @Hc4_MatchFinder_GetMatches, ptr %GetMatches, align 8, !tbaa !66
+  store ptr @Hc4_MatchFinder_GetMatches, ptr %GetMatches, align 8, !tbaa !65
   %Skip = getelementptr inbounds %struct._IMatchFinder, ptr %vTable, i64 0, i32 5
-  store ptr @Hc4_MatchFinder_Skip, ptr %Skip, align 8, !tbaa !67
+  store ptr @Hc4_MatchFinder_Skip, ptr %Skip, align 8, !tbaa !66
   br label %if.end14
 
 if.else:                                          ; preds = %entry
@@ -1849,18 +1929,18 @@ if.else:                                          ; preds = %entry
   ]
 
 if.then1:                                         ; preds = %if.else
-  store ptr @Bt2_MatchFinder_GetMatches, ptr %GetMatches11, align 8, !tbaa !66
-  store ptr @Bt2_MatchFinder_Skip, ptr %Skip12, align 8, !tbaa !67
+  store ptr @Bt2_MatchFinder_GetMatches, ptr %GetMatches11, align 8, !tbaa !65
+  store ptr @Bt2_MatchFinder_Skip, ptr %Skip12, align 8, !tbaa !66
   br label %if.end14
 
 if.then7:                                         ; preds = %if.else
-  store ptr @Bt3_MatchFinder_GetMatches, ptr %GetMatches11, align 8, !tbaa !66
-  store ptr @Bt3_MatchFinder_Skip, ptr %Skip12, align 8, !tbaa !67
+  store ptr @Bt3_MatchFinder_GetMatches, ptr %GetMatches11, align 8, !tbaa !65
+  store ptr @Bt3_MatchFinder_Skip, ptr %Skip12, align 8, !tbaa !66
   br label %if.end14
 
 if.else10:                                        ; preds = %if.else
-  store ptr @Bt4_MatchFinder_GetMatches, ptr %GetMatches11, align 8, !tbaa !66
-  store ptr @Bt4_MatchFinder_Skip, ptr %Skip12, align 8, !tbaa !67
+  store ptr @Bt4_MatchFinder_GetMatches, ptr %GetMatches11, align 8, !tbaa !65
+  store ptr @Bt4_MatchFinder_Skip, ptr %Skip12, align 8, !tbaa !66
   br label %if.end14
 
 if.end14:                                         ; preds = %if.then1, %if.else10, %if.then7, %if.then
@@ -1871,15 +1951,15 @@ if.end14:                                         ; preds = %if.then1, %if.else1
 define internal i32 @Hc4_MatchFinder_GetMatches(ptr nocapture noundef %p, ptr noundef %distances) #5 {
 entry:
   %lenLimit1 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 4
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %cyclicBufferPos.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
@@ -1888,7 +1968,7 @@ if.then:                                          ; preds = %entry
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos.i, align 8, !tbaa !14
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -1917,7 +1997,7 @@ if.end:                                           ; preds = %entry
   %shl16 = shl i32 %11, 5
   %xor17 = xor i32 %xor6, %shl16
   %hashMask = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 10
-  %12 = load i32, ptr %hashMask, align 8, !tbaa !42
+  %12 = load i32, ptr %hashMask, align 8, !tbaa !38
   %and18 = and i32 %xor17, %12
   %pos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 1
   %13 = load i32, ptr %pos, align 8, !tbaa !14
@@ -1940,7 +2020,7 @@ if.end:                                           ; preds = %entry
   store i32 %13, ptr %arrayidx24, align 4, !tbaa !15
   store i32 %13, ptr %arrayidx20, align 4, !tbaa !15
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %18 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %18 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cmp42 = icmp ult i32 %sub, %18
   br i1 %cmp42, label %land.lhs.true, label %if.end52
 
@@ -1968,7 +2048,7 @@ if.end52:                                         ; preds = %if.then48, %land.lh
   br i1 %cmp53.not, label %if.end73, label %land.lhs.true55
 
 land.lhs.true55:                                  ; preds = %if.end52
-  %21 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %21 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cmp57 = icmp ult i32 %sub25, %21
   br i1 %cmp57, label %land.lhs.true59, label %if.end73
 
@@ -2014,7 +2094,7 @@ for.body:                                         ; preds = %for.body.lr.ph, %fo
 for.inc:                                          ; preds = %for.body
   %inc = add i32 %maxLen.2230, 1
   %cmp77.not = icmp eq i32 %inc, %0
-  br i1 %cmp77.not, label %if.then96, label %for.body, !llvm.loop !68
+  br i1 %cmp77.not, label %if.then96, label %for.body, !llvm.loop !67
 
 for.end:                                          ; preds = %for.body
   %sub91 = add nsw i32 %offset.1238, -2
@@ -2030,21 +2110,21 @@ if.then96:                                        ; preds = %for.inc
   %arrayidx93225 = getelementptr inbounds i32, ptr %distances, i64 %idxprom92224
   store i32 %0, ptr %arrayidx93225, align 4, !tbaa !15
   %son = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %27 = load ptr, ptr %son, align 8, !tbaa !47
+  %27 = load ptr, ptr %son, align 8, !tbaa !43
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %28 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %28 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %idxprom97 = zext i32 %28 to i64
   %arrayidx98 = getelementptr inbounds i32, ptr %27, i64 %idxprom97
   store i32 %17, ptr %arrayidx98, align 4, !tbaa !15
-  %29 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %29 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc100 = add i32 %29, 1
-  store i32 %inc100, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc100, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %30 = load i32, ptr %pos, align 8, !tbaa !14
   %inc103 = add i32 %30, 1
   store i32 %inc103, ptr %pos, align 8, !tbaa !14
   %posLimit = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %31 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %31 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp104 = icmp eq i32 %inc103, %31
   br i1 %cmp104, label %cleanup.sink.split, label %cleanup
 
@@ -2053,10 +2133,10 @@ if.end109:                                        ; preds = %for.end, %if.end73
   %maxLen.3 = phi i32 [ %maxLen.2230, %for.end ], [ %maxLen.0, %if.end73 ]
   %32 = load i32, ptr %pos, align 8, !tbaa !14
   %son116 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %33 = load ptr, ptr %son116, align 8, !tbaa !47
+  %33 = load ptr, ptr %son116, align 8, !tbaa !43
   %cyclicBufferPos117 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %34 = load i32, ptr %cyclicBufferPos117, align 8, !tbaa !49
-  %35 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %34 = load i32, ptr %cyclicBufferPos117, align 8, !tbaa !46
+  %35 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cutValue = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %36 = load i32, ptr %cutValue, align 4, !tbaa !29
   %add.ptr120 = getelementptr inbounds i32, ptr %distances, i64 %offset.1239
@@ -2118,7 +2198,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx24.i = getelementptr inbounds i8, ptr %5, i64 %idxprom20.i
   %44 = load i8, ptr %arrayidx24.i, align 1, !tbaa !12
   %cmp26.not.i = icmp eq i8 %43, %44
-  br i1 %cmp26.not.i, label %while.cond.i, label %while.end.thread.i, !llvm.loop !57
+  br i1 %cmp26.not.i, label %while.cond.i, label %while.end.thread.i, !llvm.loop !56
 
 while.end.i:                                      ; preds = %while.cond.i
   %cmp30.i = icmp ult i32 %maxLen.addr.0100.i, %0
@@ -2161,15 +2241,15 @@ Hc_GetMatchesSpec.exit:                           ; preds = %cleanup44.i, %if.en
   %sub.ptr.sub = sub i64 %sub.ptr.lhs.cast, %sub.ptr.rhs.cast
   %45 = lshr exact i64 %sub.ptr.sub, 2
   %conv121 = trunc i64 %45 to i32
-  %46 = load i32, ptr %cyclicBufferPos117, align 8, !tbaa !49
+  %46 = load i32, ptr %cyclicBufferPos117, align 8, !tbaa !46
   %inc123 = add i32 %46, 1
-  store i32 %inc123, ptr %cyclicBufferPos117, align 8, !tbaa !49
+  store i32 %inc123, ptr %cyclicBufferPos117, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %47 = load i32, ptr %pos, align 8, !tbaa !14
   %inc127 = add i32 %47, 1
   store i32 %inc127, ptr %pos, align 8, !tbaa !14
   %posLimit128 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %48 = load i32, ptr %posLimit128, align 4, !tbaa !51
+  %48 = load i32, ptr %posLimit128, align 4, !tbaa !48
   %cmp129 = icmp eq i32 %inc127, %48
   br i1 %cmp129, label %cleanup.sink.split, label %cleanup
 
@@ -2197,21 +2277,21 @@ entry:
 
 do.body:                                          ; preds = %cleanup, %entry
   %num.addr.0 = phi i32 [ %num, %entry ], [ %dec, %cleanup ]
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 4
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %do.body
-  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
   %3 = load i32, ptr %pos, align 8, !tbaa !14
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos, align 8, !tbaa !14
-  %4 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -2239,7 +2319,7 @@ if.end:                                           ; preds = %do.body
   %11 = load i32, ptr %arrayidx15, align 4, !tbaa !15
   %shl16 = shl i32 %11, 5
   %xor17 = xor i32 %xor6, %shl16
-  %12 = load i32, ptr %hashMask, align 8, !tbaa !42
+  %12 = load i32, ptr %hashMask, align 8, !tbaa !38
   %and18 = and i32 %xor17, %12
   %13 = load ptr, ptr %hash, align 8, !tbaa !28
   %add = add i32 %and18, 66560
@@ -2255,19 +2335,19 @@ if.end:                                           ; preds = %do.body
   %idxprom30 = zext i32 %and to i64
   %arrayidx31 = getelementptr inbounds i32, ptr %13, i64 %idxprom30
   store i32 %15, ptr %arrayidx31, align 4, !tbaa !15
-  %16 = load ptr, ptr %son, align 8, !tbaa !47
-  %17 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %16 = load ptr, ptr %son, align 8, !tbaa !43
+  %17 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %idxprom32 = zext i32 %17 to i64
   %arrayidx33 = getelementptr inbounds i32, ptr %16, i64 %idxprom32
   store i32 %14, ptr %arrayidx33, align 4, !tbaa !15
-  %18 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %18 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %18, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %19 = load i32, ptr %pos, align 8, !tbaa !14
   %inc37 = add i32 %19, 1
   store i32 %inc37, ptr %pos, align 8, !tbaa !14
-  %20 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %20 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp38 = icmp eq i32 %inc37, %20
   br i1 %cmp38, label %cleanup.sink.split, label %cleanup
 
@@ -2278,7 +2358,7 @@ cleanup.sink.split:                               ; preds = %if.end, %if.then
 cleanup:                                          ; preds = %cleanup.sink.split, %if.then, %if.end
   %dec = add i32 %num.addr.0, -1
   %cmp47.not = icmp eq i32 %dec, 0
-  br i1 %cmp47.not, label %do.end, label %do.body, !llvm.loop !69
+  br i1 %cmp47.not, label %do.end, label %do.body, !llvm.loop !68
 
 do.end:                                           ; preds = %cleanup
   ret void
@@ -2288,15 +2368,15 @@ do.end:                                           ; preds = %cleanup
 define internal i32 @Bt2_MatchFinder_GetMatches(ptr nocapture noundef %p, ptr noundef %distances) #5 {
 entry:
   %lenLimit1 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 2
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %cyclicBufferPos.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
@@ -2305,7 +2385,7 @@ if.then:                                          ; preds = %entry
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos.i, align 8, !tbaa !14
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -2323,11 +2403,11 @@ if.end:                                           ; preds = %entry
   store i32 %10, ptr %arrayidx4, align 4, !tbaa !15
   %11 = load i32, ptr %pos, align 8, !tbaa !14
   %son = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %12 = load ptr, ptr %son, align 8, !tbaa !47
+  %12 = load ptr, ptr %son, align 8, !tbaa !43
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %13 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %13 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %14 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %14 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cutValue = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %15 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %13, 1
@@ -2404,7 +2484,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx42.i = getelementptr inbounds i8, ptr %5, i64 %idxprom38.i
   %21 = load i8, ptr %arrayidx42.i, align 1, !tbaa !12
   %cmp44.not.i = icmp eq i8 %20, %21
-  br i1 %cmp44.not.i, label %while.cond.i, label %if.end48.i, !llvm.loop !54
+  br i1 %cmp44.not.i, label %while.cond.i, label %if.end48.i, !llvm.loop !53
 
 if.end48.i:                                       ; preds = %while.body.i, %while.cond.i, %land.lhs.true.i, %if.then23.i
   %len.1.i = phi i32 [ %inc.i46, %land.lhs.true.i ], [ %0, %if.then23.i ], [ %inc35.i, %while.body.i ], [ %0, %while.cond.i ]
@@ -2471,15 +2551,15 @@ GetMatchesSpec1.exit:                             ; preds = %if.then.i44, %if.th
   %sub.ptr.sub = sub i64 %sub.ptr.lhs.cast, %sub.ptr.rhs.cast
   %26 = lshr exact i64 %sub.ptr.sub, 2
   %conv10 = trunc i64 %26 to i32
-  %27 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %27 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %27, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx2, ptr %p, align 8, !tbaa !5
   %28 = load i32, ptr %pos, align 8, !tbaa !14
   %inc14 = add i32 %28, 1
   store i32 %inc14, ptr %pos, align 8, !tbaa !14
   %posLimit = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %29 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %29 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp15 = icmp eq i32 %inc14, %29
   br i1 %cmp15, label %cleanup.sink.split, label %cleanup
 
@@ -2508,21 +2588,21 @@ entry:
 
 do.body:                                          ; preds = %cleanup, %entry
   %num.addr.0 = phi i32 [ %num, %entry ], [ %dec, %cleanup ]
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 2
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %do.body
-  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
   %3 = load i32, ptr %pos, align 8, !tbaa !14
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos, align 8, !tbaa !14
-  %4 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -2537,9 +2617,9 @@ if.end:                                           ; preds = %do.body
   %10 = load i32, ptr %pos, align 8, !tbaa !14
   store i32 %10, ptr %arrayidx4, align 4, !tbaa !15
   %11 = load i32, ptr %pos, align 8, !tbaa !14
-  %12 = load ptr, ptr %son, align 8, !tbaa !47
-  %13 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
-  %14 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %12 = load ptr, ptr %son, align 8, !tbaa !43
+  %13 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
+  %14 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %15 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %13, 1
   %idx.ext.i = zext i32 %shl.i to i64
@@ -2598,7 +2678,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx30.i = getelementptr inbounds i8, ptr %5, i64 %idxprom26.i
   %19 = load i8, ptr %arrayidx30.i, align 1, !tbaa !12
   %cmp32.not.i = icmp eq i8 %18, %19
-  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !58
+  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !57
 
 if.then38.i:                                      ; preds = %while.cond.i
   %20 = load i32, ptr %add.ptr10.i, align 4, !tbaa !15
@@ -2640,14 +2720,14 @@ SkipMatchesSpec.exit:                             ; preds = %if.then.i42, %if.th
   %ptr0.0112.i = phi ptr [ %ptr0.0.lcssa.i, %if.then.i42 ], [ %ptr0.0122.i, %if.then38.i ]
   %storemerge.i = phi i32 [ 0, %if.then.i42 ], [ %21, %if.then38.i ]
   store i32 %storemerge.i, ptr %ptr0.0112.i, align 4, !tbaa !15
-  %24 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %24 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %24, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx2, ptr %p, align 8, !tbaa !5
   %25 = load i32, ptr %pos, align 8, !tbaa !14
   %inc13 = add i32 %25, 1
   store i32 %inc13, ptr %pos, align 8, !tbaa !14
-  %26 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %26 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp14 = icmp eq i32 %inc13, %26
   br i1 %cmp14, label %cleanup.sink.split, label %cleanup
 
@@ -2658,7 +2738,7 @@ cleanup.sink.split:                               ; preds = %SkipMatchesSpec.exi
 cleanup:                                          ; preds = %cleanup.sink.split, %if.then, %SkipMatchesSpec.exit
   %dec = add i32 %num.addr.0, -1
   %cmp21.not = icmp eq i32 %dec, 0
-  br i1 %cmp21.not, label %do.end, label %do.body, !llvm.loop !70
+  br i1 %cmp21.not, label %do.end, label %do.body, !llvm.loop !69
 
 do.end:                                           ; preds = %cleanup
   ret void
@@ -2668,15 +2748,15 @@ do.end:                                           ; preds = %cleanup
 define internal i32 @Bt3_MatchFinder_GetMatches(ptr nocapture noundef %p, ptr noundef %distances) #5 {
 entry:
   %lenLimit1 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 3
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %cyclicBufferPos.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
@@ -2685,7 +2765,7 @@ if.then:                                          ; preds = %entry
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos.i, align 8, !tbaa !14
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -2706,7 +2786,7 @@ if.end:                                           ; preds = %entry
   %shl = shl nuw nsw i32 %conv5, 8
   %xor6 = xor i32 %shl, %xor
   %hashMask = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 10
-  %10 = load i32, ptr %hashMask, align 8, !tbaa !42
+  %10 = load i32, ptr %hashMask, align 8, !tbaa !38
   %and7 = and i32 %xor6, %10
   %pos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 1
   %11 = load i32, ptr %pos, align 8, !tbaa !14
@@ -2723,7 +2803,7 @@ if.end:                                           ; preds = %entry
   store i32 %11, ptr %arrayidx12, align 4, !tbaa !15
   store i32 %11, ptr %arrayidx9, align 4, !tbaa !15
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %15 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %15 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cmp21 = icmp ult i32 %sub, %15
   br i1 %cmp21, label %land.lhs.true, label %if.end61
 
@@ -2750,14 +2830,14 @@ for.body:                                         ; preds = %land.lhs.true, %for
 for.inc:                                          ; preds = %for.body
   %inc = add nuw i32 %maxLen.0212, 1
   %cmp28.not = icmp eq i32 %inc, %0
-  br i1 %cmp28.not, label %if.then47, label %for.body, !llvm.loop !71
+  br i1 %cmp28.not, label %if.then47, label %for.body, !llvm.loop !70
 
 for.end:                                          ; preds = %for.body
   store i32 %maxLen.0212, ptr %distances, align 4, !tbaa !15
   %sub43 = add i32 %sub, -1
   %arrayidx44 = getelementptr inbounds i32, ptr %distances, i64 1
   store i32 %sub43, ptr %arrayidx44, align 4, !tbaa !15
-  %.pre = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %.pre = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   br label %if.end61
 
 if.then47:                                        ; preds = %for.inc
@@ -2767,10 +2847,10 @@ if.then47:                                        ; preds = %for.inc
   store i32 %sub43200, ptr %arrayidx44201, align 4, !tbaa !15
   %20 = load i32, ptr %pos, align 8, !tbaa !14
   %son = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %21 = load ptr, ptr %son, align 8, !tbaa !47
+  %21 = load ptr, ptr %son, align 8, !tbaa !43
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %22 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
-  %23 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %22 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
+  %23 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cutValue = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %24 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %22, 1
@@ -2830,7 +2910,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx30.i = getelementptr inbounds i8, ptr %5, i64 %idxprom26.i
   %28 = load i8, ptr %arrayidx30.i, align 1, !tbaa !12
   %cmp32.not.i = icmp eq i8 %27, %28
-  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !58
+  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !57
 
 if.then38.i:                                      ; preds = %while.cond.i
   %29 = load i32, ptr %add.ptr10.i, align 4, !tbaa !15
@@ -2872,15 +2952,15 @@ SkipMatchesSpec.exit:                             ; preds = %if.then.i150, %if.t
   %ptr0.0112.i = phi ptr [ %ptr0.0.lcssa.i, %if.then.i150 ], [ %ptr0.0122.i, %if.then38.i ]
   %storemerge.i = phi i32 [ 0, %if.then.i150 ], [ %30, %if.then38.i ]
   store i32 %storemerge.i, ptr %ptr0.0112.i, align 4, !tbaa !15
-  %33 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %33 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc52 = add i32 %33, 1
-  store i32 %inc52, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc52, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %34 = load i32, ptr %pos, align 8, !tbaa !14
   %inc55 = add i32 %34, 1
   store i32 %inc55, ptr %pos, align 8, !tbaa !14
   %posLimit = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %35 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %35 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp56 = icmp eq i32 %inc55, %35
   br i1 %cmp56, label %cleanup.sink.split, label %cleanup
 
@@ -2890,9 +2970,9 @@ if.end61:                                         ; preds = %for.end, %land.lhs.
   %maxLen.1 = phi i32 [ %maxLen.0212, %for.end ], [ 2, %land.lhs.true ], [ 2, %if.end ]
   %37 = load i32, ptr %pos, align 8, !tbaa !14
   %son64 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %38 = load ptr, ptr %son64, align 8, !tbaa !47
+  %38 = load ptr, ptr %son64, align 8, !tbaa !43
   %cyclicBufferPos65 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %39 = load i32, ptr %cyclicBufferPos65, align 8, !tbaa !49
+  %39 = load i32, ptr %cyclicBufferPos65, align 8, !tbaa !46
   %cutValue67 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %40 = load i32, ptr %cutValue67, align 4, !tbaa !29
   %add.ptr69 = getelementptr inbounds i32, ptr %distances, i64 %offset.0
@@ -2970,7 +3050,7 @@ while.body.i199:                                  ; preds = %while.cond.i197
   %arrayidx42.i = getelementptr inbounds i8, ptr %5, i64 %idxprom38.i
   %46 = load i8, ptr %arrayidx42.i, align 1, !tbaa !12
   %cmp44.not.i = icmp eq i8 %45, %46
-  br i1 %cmp44.not.i, label %while.cond.i197, label %if.end48.i, !llvm.loop !54
+  br i1 %cmp44.not.i, label %while.cond.i197, label %if.end48.i, !llvm.loop !53
 
 if.end48.i:                                       ; preds = %while.body.i199, %while.cond.i197, %land.lhs.true.i, %if.then23.i
   %len.1.i193 = phi i32 [ %inc.i188, %land.lhs.true.i ], [ %0, %if.then23.i ], [ %inc35.i, %while.body.i199 ], [ %0, %while.cond.i197 ]
@@ -3037,15 +3117,15 @@ GetMatchesSpec1.exit:                             ; preds = %if.then.i157, %if.t
   %sub.ptr.sub = sub i64 %sub.ptr.lhs.cast, %sub.ptr.rhs.cast
   %51 = lshr exact i64 %sub.ptr.sub, 2
   %conv70 = trunc i64 %51 to i32
-  %52 = load i32, ptr %cyclicBufferPos65, align 8, !tbaa !49
+  %52 = load i32, ptr %cyclicBufferPos65, align 8, !tbaa !46
   %inc72 = add i32 %52, 1
-  store i32 %inc72, ptr %cyclicBufferPos65, align 8, !tbaa !49
+  store i32 %inc72, ptr %cyclicBufferPos65, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %53 = load i32, ptr %pos, align 8, !tbaa !14
   %inc76 = add i32 %53, 1
   store i32 %inc76, ptr %pos, align 8, !tbaa !14
   %posLimit77 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %54 = load i32, ptr %posLimit77, align 4, !tbaa !51
+  %54 = load i32, ptr %posLimit77, align 4, !tbaa !48
   %cmp78 = icmp eq i32 %inc76, %54
   br i1 %cmp78, label %cleanup.sink.split, label %cleanup
 
@@ -3075,21 +3155,21 @@ entry:
 
 do.body:                                          ; preds = %cleanup, %entry
   %num.addr.0 = phi i32 [ %num, %entry ], [ %dec, %cleanup ]
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 3
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %do.body
-  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
   %3 = load i32, ptr %pos, align 8, !tbaa !14
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos, align 8, !tbaa !14
-  %4 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -3109,7 +3189,7 @@ if.end:                                           ; preds = %do.body
   %conv5 = zext i8 %9 to i32
   %shl = shl nuw nsw i32 %conv5, 8
   %xor6 = xor i32 %shl, %xor
-  %10 = load i32, ptr %hashMask, align 8, !tbaa !42
+  %10 = load i32, ptr %hashMask, align 8, !tbaa !38
   %and7 = and i32 %xor6, %10
   %11 = load ptr, ptr %hash, align 8, !tbaa !28
   %add = add i32 %and7, 1024
@@ -3122,9 +3202,9 @@ if.end:                                           ; preds = %do.body
   %arrayidx16 = getelementptr inbounds i32, ptr %11, i64 %idxprom15
   store i32 %13, ptr %arrayidx16, align 4, !tbaa !15
   %14 = load i32, ptr %pos, align 8, !tbaa !14
-  %15 = load ptr, ptr %son, align 8, !tbaa !47
-  %16 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
-  %17 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %15 = load ptr, ptr %son, align 8, !tbaa !43
+  %16 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
+  %17 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %18 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %16, 1
   %idx.ext.i = zext i32 %shl.i to i64
@@ -3183,7 +3263,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx30.i = getelementptr inbounds i8, ptr %5, i64 %idxprom26.i
   %22 = load i8, ptr %arrayidx30.i, align 1, !tbaa !12
   %cmp32.not.i = icmp eq i8 %21, %22
-  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !58
+  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !57
 
 if.then38.i:                                      ; preds = %while.cond.i
   %23 = load i32, ptr %add.ptr10.i, align 4, !tbaa !15
@@ -3225,14 +3305,14 @@ SkipMatchesSpec.exit:                             ; preds = %if.then.i57, %if.th
   %ptr0.0112.i = phi ptr [ %ptr0.0.lcssa.i, %if.then.i57 ], [ %ptr0.0122.i, %if.then38.i ]
   %storemerge.i = phi i32 [ 0, %if.then.i57 ], [ %24, %if.then38.i ]
   store i32 %storemerge.i, ptr %ptr0.0112.i, align 4, !tbaa !15
-  %27 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %27 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %27, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %28 = load i32, ptr %pos, align 8, !tbaa !14
   %inc22 = add i32 %28, 1
   store i32 %inc22, ptr %pos, align 8, !tbaa !14
-  %29 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %29 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp23 = icmp eq i32 %inc22, %29
   br i1 %cmp23, label %cleanup.sink.split, label %cleanup
 
@@ -3243,7 +3323,7 @@ cleanup.sink.split:                               ; preds = %SkipMatchesSpec.exi
 cleanup:                                          ; preds = %cleanup.sink.split, %if.then, %SkipMatchesSpec.exit
   %dec = add i32 %num.addr.0, -1
   %cmp31.not = icmp eq i32 %dec, 0
-  br i1 %cmp31.not, label %do.end, label %do.body, !llvm.loop !72
+  br i1 %cmp31.not, label %do.end, label %do.body, !llvm.loop !71
 
 do.end:                                           ; preds = %cleanup
   ret void
@@ -3253,15 +3333,15 @@ do.end:                                           ; preds = %cleanup
 define internal i32 @Bt4_MatchFinder_GetMatches(ptr nocapture noundef %p, ptr noundef %distances) #5 {
 entry:
   %lenLimit1 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 4
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 4
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %cyclicBufferPos.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos.i, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
@@ -3270,7 +3350,7 @@ if.then:                                          ; preds = %entry
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos.i, align 8, !tbaa !14
   %posLimit.i = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit.i, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -3299,7 +3379,7 @@ if.end:                                           ; preds = %entry
   %shl16 = shl i32 %11, 5
   %xor17 = xor i32 %xor6, %shl16
   %hashMask = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 10
-  %12 = load i32, ptr %hashMask, align 8, !tbaa !42
+  %12 = load i32, ptr %hashMask, align 8, !tbaa !38
   %and18 = and i32 %xor17, %12
   %pos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 1
   %13 = load i32, ptr %pos, align 8, !tbaa !14
@@ -3322,7 +3402,7 @@ if.end:                                           ; preds = %entry
   store i32 %13, ptr %arrayidx24, align 4, !tbaa !15
   store i32 %13, ptr %arrayidx20, align 4, !tbaa !15
   %cyclicBufferSize = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 6
-  %18 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %18 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cmp42 = icmp ult i32 %sub, %18
   br i1 %cmp42, label %land.lhs.true, label %if.end52
 
@@ -3350,7 +3430,7 @@ if.end52:                                         ; preds = %if.then48, %land.lh
   br i1 %cmp53.not, label %if.end73, label %land.lhs.true55
 
 land.lhs.true55:                                  ; preds = %if.end52
-  %21 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %21 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cmp57 = icmp ult i32 %sub25, %21
   br i1 %cmp57, label %land.lhs.true59, label %if.end73
 
@@ -3396,7 +3476,7 @@ for.body:                                         ; preds = %for.body.lr.ph, %fo
 for.inc:                                          ; preds = %for.body
   %inc = add i32 %maxLen.2291, 1
   %cmp77.not = icmp eq i32 %inc, %0
-  br i1 %cmp77.not, label %if.then96, label %for.body, !llvm.loop !73
+  br i1 %cmp77.not, label %if.then96, label %for.body, !llvm.loop !72
 
 for.end:                                          ; preds = %for.body
   %sub91 = add nsw i32 %offset.1305, -2
@@ -3413,10 +3493,10 @@ if.then96:                                        ; preds = %for.inc
   store i32 %0, ptr %arrayidx93280, align 4, !tbaa !15
   %27 = load i32, ptr %pos, align 8, !tbaa !14
   %son = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %28 = load ptr, ptr %son, align 8, !tbaa !47
+  %28 = load ptr, ptr %son, align 8, !tbaa !43
   %cyclicBufferPos = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %29 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
-  %30 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %29 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
+  %30 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cutValue = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %31 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %29, 1
@@ -3476,7 +3556,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx30.i = getelementptr inbounds i8, ptr %5, i64 %idxprom26.i
   %35 = load i8, ptr %arrayidx30.i, align 1, !tbaa !12
   %cmp32.not.i = icmp eq i8 %34, %35
-  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !58
+  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !57
 
 if.then38.i:                                      ; preds = %while.cond.i
   %36 = load i32, ptr %add.ptr10.i, align 4, !tbaa !15
@@ -3518,15 +3598,15 @@ SkipMatchesSpec.exit:                             ; preds = %if.then.i228, %if.t
   %ptr0.0112.i = phi ptr [ %ptr0.0.lcssa.i, %if.then.i228 ], [ %ptr0.0122.i, %if.then38.i ]
   %storemerge.i = phi i32 [ 0, %if.then.i228 ], [ %37, %if.then38.i ]
   store i32 %storemerge.i, ptr %ptr0.0112.i, align 4, !tbaa !15
-  %40 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %40 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc101 = add i32 %40, 1
-  store i32 %inc101, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc101, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %41 = load i32, ptr %pos, align 8, !tbaa !14
   %inc104 = add i32 %41, 1
   store i32 %inc104, ptr %pos, align 8, !tbaa !14
   %posLimit = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %42 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %42 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp105 = icmp eq i32 %inc104, %42
   br i1 %cmp105, label %cleanup.sink.split, label %cleanup
 
@@ -3535,10 +3615,10 @@ if.end110:                                        ; preds = %for.end, %if.end73
   %maxLen.3 = phi i32 [ %maxLen.2291, %for.end ], [ %maxLen.0, %if.end73 ]
   %43 = load i32, ptr %pos, align 8, !tbaa !14
   %son117 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 9
-  %44 = load ptr, ptr %son117, align 8, !tbaa !47
+  %44 = load ptr, ptr %son117, align 8, !tbaa !43
   %cyclicBufferPos118 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 5
-  %45 = load i32, ptr %cyclicBufferPos118, align 8, !tbaa !49
-  %46 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %45 = load i32, ptr %cyclicBufferPos118, align 8, !tbaa !46
+  %46 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %cutValue120 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 11
   %47 = load i32, ptr %cutValue120, align 4, !tbaa !29
   %add.ptr122 = getelementptr inbounds i32, ptr %distances, i64 %offset.1306
@@ -3620,7 +3700,7 @@ while.body.i277:                                  ; preds = %while.cond.i275
   %arrayidx42.i = getelementptr inbounds i8, ptr %5, i64 %idxprom38.i
   %53 = load i8, ptr %arrayidx42.i, align 1, !tbaa !12
   %cmp44.not.i = icmp eq i8 %52, %53
-  br i1 %cmp44.not.i, label %while.cond.i275, label %if.end48.i, !llvm.loop !54
+  br i1 %cmp44.not.i, label %while.cond.i275, label %if.end48.i, !llvm.loop !53
 
 if.end48.i:                                       ; preds = %while.body.i277, %while.cond.i275, %land.lhs.true.i, %if.then23.i
   %len.1.i271 = phi i32 [ %inc.i266, %land.lhs.true.i ], [ %0, %if.then23.i ], [ %inc35.i, %while.body.i277 ], [ %0, %while.cond.i275 ]
@@ -3687,15 +3767,15 @@ GetMatchesSpec1.exit:                             ; preds = %if.then.i235, %if.t
   %sub.ptr.sub = sub i64 %sub.ptr.lhs.cast, %sub.ptr.rhs.cast
   %58 = lshr exact i64 %sub.ptr.sub, 2
   %conv123 = trunc i64 %58 to i32
-  %59 = load i32, ptr %cyclicBufferPos118, align 8, !tbaa !49
+  %59 = load i32, ptr %cyclicBufferPos118, align 8, !tbaa !46
   %inc125 = add i32 %59, 1
-  store i32 %inc125, ptr %cyclicBufferPos118, align 8, !tbaa !49
+  store i32 %inc125, ptr %cyclicBufferPos118, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %60 = load i32, ptr %pos, align 8, !tbaa !14
   %inc129 = add i32 %60, 1
   store i32 %inc129, ptr %pos, align 8, !tbaa !14
   %posLimit130 = getelementptr inbounds %struct._CMatchFinder, ptr %p, i64 0, i32 2
-  %61 = load i32, ptr %posLimit130, align 4, !tbaa !51
+  %61 = load i32, ptr %posLimit130, align 4, !tbaa !48
   %cmp131 = icmp eq i32 %inc129, %61
   br i1 %cmp131, label %cleanup.sink.split, label %cleanup
 
@@ -3725,21 +3805,21 @@ entry:
 
 do.body:                                          ; preds = %cleanup, %entry
   %num.addr.0 = phi i32 [ %num, %entry ], [ %dec, %cleanup ]
-  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !50
+  %0 = load i32, ptr %lenLimit1, align 4, !tbaa !47
   %cmp = icmp ult i32 %0, 4
   br i1 %cmp, label %if.then, label %if.end
 
 if.then:                                          ; preds = %do.body
-  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %1 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc.i = add i32 %1, 1
-  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc.i, ptr %cyclicBufferPos, align 8, !tbaa !46
   %2 = load ptr, ptr %p, align 8, !tbaa !5
   %incdec.ptr.i = getelementptr inbounds i8, ptr %2, i64 1
   store ptr %incdec.ptr.i, ptr %p, align 8, !tbaa !5
   %3 = load i32, ptr %pos, align 8, !tbaa !14
   %inc1.i = add i32 %3, 1
   store i32 %inc1.i, ptr %pos, align 8, !tbaa !14
-  %4 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %4 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp.i = icmp eq i32 %inc1.i, %4
   br i1 %cmp.i, label %cleanup.sink.split, label %cleanup
 
@@ -3767,7 +3847,7 @@ if.end:                                           ; preds = %do.body
   %11 = load i32, ptr %arrayidx15, align 4, !tbaa !15
   %shl16 = shl i32 %11, 5
   %xor17 = xor i32 %xor6, %shl16
-  %12 = load i32, ptr %hashMask, align 8, !tbaa !42
+  %12 = load i32, ptr %hashMask, align 8, !tbaa !38
   %and18 = and i32 %xor17, %12
   %13 = load ptr, ptr %hash, align 8, !tbaa !28
   %add = add i32 %and18, 66560
@@ -3785,9 +3865,9 @@ if.end:                                           ; preds = %do.body
   %16 = load i32, ptr %pos, align 8, !tbaa !14
   store i32 %16, ptr %arrayidx20, align 4, !tbaa !15
   %17 = load i32, ptr %pos, align 8, !tbaa !14
-  %18 = load ptr, ptr %son, align 8, !tbaa !47
-  %19 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
-  %20 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !46
+  %18 = load ptr, ptr %son, align 8, !tbaa !43
+  %19 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
+  %20 = load i32, ptr %cyclicBufferSize, align 4, !tbaa !42
   %21 = load i32, ptr %cutValue, align 4, !tbaa !29
   %shl.i = shl i32 %19, 1
   %idx.ext.i = zext i32 %shl.i to i64
@@ -3846,7 +3926,7 @@ while.body.i:                                     ; preds = %while.cond.i
   %arrayidx30.i = getelementptr inbounds i8, ptr %5, i64 %idxprom26.i
   %25 = load i8, ptr %arrayidx30.i, align 1, !tbaa !12
   %cmp32.not.i = icmp eq i8 %24, %25
-  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !58
+  br i1 %cmp32.not.i, label %while.cond.i, label %if.end42.i, !llvm.loop !57
 
 if.then38.i:                                      ; preds = %while.cond.i
   %26 = load i32, ptr %add.ptr10.i, align 4, !tbaa !15
@@ -3888,14 +3968,14 @@ SkipMatchesSpec.exit:                             ; preds = %if.then.i80, %if.th
   %ptr0.0112.i = phi ptr [ %ptr0.0.lcssa.i, %if.then.i80 ], [ %ptr0.0122.i, %if.then38.i ]
   %storemerge.i = phi i32 [ 0, %if.then.i80 ], [ %27, %if.then38.i ]
   store i32 %storemerge.i, ptr %ptr0.0112.i, align 4, !tbaa !15
-  %30 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !49
+  %30 = load i32, ptr %cyclicBufferPos, align 8, !tbaa !46
   %inc = add i32 %30, 1
-  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !49
+  store i32 %inc, ptr %cyclicBufferPos, align 8, !tbaa !46
   store ptr %arrayidx3, ptr %p, align 8, !tbaa !5
   %31 = load i32, ptr %pos, align 8, !tbaa !14
   %inc38 = add i32 %31, 1
   store i32 %inc38, ptr %pos, align 8, !tbaa !14
-  %32 = load i32, ptr %posLimit, align 4, !tbaa !51
+  %32 = load i32, ptr %posLimit, align 4, !tbaa !48
   %cmp39 = icmp eq i32 %inc38, %32
   br i1 %cmp39, label %cleanup.sink.split, label %cleanup
 
@@ -3906,7 +3986,7 @@ cleanup.sink.split:                               ; preds = %SkipMatchesSpec.exi
 cleanup:                                          ; preds = %cleanup.sink.split, %if.then, %SkipMatchesSpec.exit
   %dec = add i32 %num.addr.0, -1
   %cmp48.not = icmp eq i32 %dec, 0
-  br i1 %cmp48.not, label %do.end, label %do.body, !llvm.loop !74
+  br i1 %cmp48.not, label %do.end, label %do.body, !llvm.loop !73
 
 do.end:                                           ; preds = %cleanup
   ret void
@@ -3973,45 +4053,44 @@ attributes #11 = { nounwind }
 !30 = !{!6, !10, i64 112}
 !31 = !{!6, !10, i64 96}
 !32 = !{!6, !10, i64 116}
-!33 = distinct !{!33, !34, !35, !36}
-!34 = !{!"llvm.loop.mustprogress"}
-!35 = !{!"llvm.loop.isvectorized", i32 1}
-!36 = !{!"llvm.loop.unroll.runtime.disable"}
-!37 = !{!38, !7, i64 8}
-!38 = !{!"", !7, i64 0, !7, i64 8}
-!39 = !{!38, !7, i64 0}
-!40 = !{!6, !10, i64 32}
-!41 = !{!6, !10, i64 124}
-!42 = !{!6, !10, i64 56}
-!43 = !{!6, !10, i64 128}
-!44 = !{!6, !10, i64 132}
-!45 = !{!6, !10, i64 120}
-!46 = !{!6, !10, i64 28}
-!47 = !{!6, !7, i64 48}
-!48 = distinct !{!48, !34}
-!49 = !{!6, !10, i64 24}
-!50 = !{!6, !10, i64 20}
-!51 = !{!6, !10, i64 12}
-!52 = distinct !{!52, !34, !35, !36}
-!53 = distinct !{!53, !34, !36, !35}
-!54 = distinct !{!54, !34}
-!55 = distinct !{!55, !34, !35, !36}
-!56 = distinct !{!56, !34, !36, !35}
-!57 = distinct !{!57, !34}
-!58 = distinct !{!58, !34}
-!59 = distinct !{!59, !34}
-!60 = distinct !{!60, !34}
-!61 = !{!62, !7, i64 0}
-!62 = !{!"_IMatchFinder", !7, i64 0, !7, i64 8, !7, i64 16, !7, i64 24, !7, i64 32, !7, i64 40}
-!63 = !{!62, !7, i64 8}
-!64 = !{!62, !7, i64 16}
-!65 = !{!62, !7, i64 24}
-!66 = !{!62, !7, i64 32}
-!67 = !{!62, !7, i64 40}
-!68 = distinct !{!68, !34}
-!69 = distinct !{!69, !34}
-!70 = distinct !{!70, !34}
-!71 = distinct !{!71, !34}
-!72 = distinct !{!72, !34}
-!73 = distinct !{!73, !34}
-!74 = distinct !{!74, !34}
+!33 = !{!34, !7, i64 8}
+!34 = !{!"", !7, i64 0, !7, i64 8}
+!35 = !{!34, !7, i64 0}
+!36 = !{!6, !10, i64 32}
+!37 = !{!6, !10, i64 124}
+!38 = !{!6, !10, i64 56}
+!39 = !{!6, !10, i64 128}
+!40 = !{!6, !10, i64 132}
+!41 = !{!6, !10, i64 120}
+!42 = !{!6, !10, i64 28}
+!43 = !{!6, !7, i64 48}
+!44 = distinct !{!44, !45}
+!45 = !{!"llvm.loop.mustprogress"}
+!46 = !{!6, !10, i64 24}
+!47 = !{!6, !10, i64 20}
+!48 = !{!6, !10, i64 12}
+!49 = distinct !{!49, !45, !50, !51}
+!50 = !{!"llvm.loop.isvectorized", i32 1}
+!51 = !{!"llvm.loop.unroll.runtime.disable"}
+!52 = distinct !{!52, !45, !51, !50}
+!53 = distinct !{!53, !45}
+!54 = distinct !{!54, !45, !50, !51}
+!55 = distinct !{!55, !45, !51, !50}
+!56 = distinct !{!56, !45}
+!57 = distinct !{!57, !45}
+!58 = distinct !{!58, !45}
+!59 = distinct !{!59, !45}
+!60 = !{!61, !7, i64 0}
+!61 = !{!"_IMatchFinder", !7, i64 0, !7, i64 8, !7, i64 16, !7, i64 24, !7, i64 32, !7, i64 40}
+!62 = !{!61, !7, i64 8}
+!63 = !{!61, !7, i64 16}
+!64 = !{!61, !7, i64 24}
+!65 = !{!61, !7, i64 32}
+!66 = !{!61, !7, i64 40}
+!67 = distinct !{!67, !45}
+!68 = distinct !{!68, !45}
+!69 = distinct !{!69, !45}
+!70 = distinct !{!70, !45}
+!71 = distinct !{!71, !45}
+!72 = distinct !{!72, !45}
+!73 = distinct !{!73, !45}

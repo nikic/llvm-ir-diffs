@@ -73,53 +73,337 @@ entry:
 
 if.then:                                          ; preds = %entry
   %call = tail call i32 @pthread_mutex_lock(ptr noundef nonnull @VirtualAlloc.mutex) #16
-  br label %for.body
+  %0 = load ptr, ptr @g_HugePageAddr, align 16, !tbaa !5
+  %cmp1 = icmp eq ptr %0, null
+  br i1 %cmp1, label %if.then2, label %for.cond
 
-for.cond:                                         ; preds = %for.body
-  %indvars.iv.next = or i64 %indvars.iv, 1
-  %arrayidx.1 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next
-  %0 = load ptr, ptr %arrayidx.1, align 8, !tbaa !5
-  %cmp1.1 = icmp eq ptr %0, null
+for.cond:                                         ; preds = %if.then
+  %1 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 1), align 8, !tbaa !5
+  %cmp1.1 = icmp eq ptr %1, null
   br i1 %cmp1.1, label %if.then2, label %for.cond.1
 
 for.cond.1:                                       ; preds = %for.cond
-  %indvars.iv.next.1 = or i64 %indvars.iv, 2
-  %arrayidx.2 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.1
-  %1 = load ptr, ptr %arrayidx.2, align 16, !tbaa !5
-  %cmp1.2 = icmp eq ptr %1, null
+  %2 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 2), align 16, !tbaa !5
+  %cmp1.2 = icmp eq ptr %2, null
   br i1 %cmp1.2, label %if.then2, label %for.cond.2
 
 for.cond.2:                                       ; preds = %for.cond.1
-  %indvars.iv.next.2 = or i64 %indvars.iv, 3
-  %arrayidx.3 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.2
-  %2 = load ptr, ptr %arrayidx.3, align 8, !tbaa !5
-  %cmp1.3 = icmp eq ptr %2, null
+  %3 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 3), align 8, !tbaa !5
+  %cmp1.3 = icmp eq ptr %3, null
   br i1 %cmp1.3, label %if.then2, label %for.cond.3
 
 for.cond.3:                                       ; preds = %for.cond.2
-  %indvars.iv.next.3 = add nuw nsw i64 %indvars.iv, 4
-  %exitcond.not.3 = icmp eq i64 %indvars.iv.next.3, 64
-  br i1 %exitcond.not.3, label %for.end, label %for.body, !llvm.loop !9
+  %4 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 4), align 16, !tbaa !5
+  %cmp1.4 = icmp eq ptr %4, null
+  br i1 %cmp1.4, label %if.then2, label %for.cond.4
 
-for.body:                                         ; preds = %for.cond.3, %if.then
-  %indvars.iv = phi i64 [ 0, %if.then ], [ %indvars.iv.next.3, %for.cond.3 ]
-  %arrayidx = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv
-  %3 = load ptr, ptr %arrayidx, align 16, !tbaa !5
-  %cmp1 = icmp eq ptr %3, null
-  br i1 %cmp1, label %if.then2, label %for.cond
+for.cond.4:                                       ; preds = %for.cond.3
+  %5 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 5), align 8, !tbaa !5
+  %cmp1.5 = icmp eq ptr %5, null
+  br i1 %cmp1.5, label %if.then2, label %for.cond.5
 
-if.then2:                                         ; preds = %for.cond.2, %for.cond.1, %for.cond, %for.body
-  %indvars.iv.lcssa = phi i64 [ %indvars.iv, %for.body ], [ %indvars.iv.next, %for.cond ], [ %indvars.iv.next.1, %for.cond.1 ], [ %indvars.iv.next.2, %for.cond.2 ]
-  %arrayidx.lcssa = phi ptr [ %arrayidx, %for.body ], [ %arrayidx.1, %for.cond ], [ %arrayidx.2, %for.cond.1 ], [ %arrayidx.3, %for.cond.2 ]
-  %4 = load ptr, ptr @g_HugetlbPath, align 8, !tbaa !5
-  %call3 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %4) #17
+for.cond.5:                                       ; preds = %for.cond.4
+  %6 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 6), align 16, !tbaa !5
+  %cmp1.6 = icmp eq ptr %6, null
+  br i1 %cmp1.6, label %if.then2, label %for.cond.6
+
+for.cond.6:                                       ; preds = %for.cond.5
+  %7 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 7), align 8, !tbaa !5
+  %cmp1.7 = icmp eq ptr %7, null
+  br i1 %cmp1.7, label %if.then2, label %for.cond.7
+
+for.cond.7:                                       ; preds = %for.cond.6
+  %8 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 8), align 16, !tbaa !5
+  %cmp1.8 = icmp eq ptr %8, null
+  br i1 %cmp1.8, label %if.then2, label %for.cond.8
+
+for.cond.8:                                       ; preds = %for.cond.7
+  %9 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 9), align 8, !tbaa !5
+  %cmp1.9 = icmp eq ptr %9, null
+  br i1 %cmp1.9, label %if.then2, label %for.cond.9
+
+for.cond.9:                                       ; preds = %for.cond.8
+  %10 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 10), align 16, !tbaa !5
+  %cmp1.10 = icmp eq ptr %10, null
+  br i1 %cmp1.10, label %if.then2, label %for.cond.10
+
+for.cond.10:                                      ; preds = %for.cond.9
+  %11 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 11), align 8, !tbaa !5
+  %cmp1.11 = icmp eq ptr %11, null
+  br i1 %cmp1.11, label %if.then2, label %for.cond.11
+
+for.cond.11:                                      ; preds = %for.cond.10
+  %12 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 12), align 16, !tbaa !5
+  %cmp1.12 = icmp eq ptr %12, null
+  br i1 %cmp1.12, label %if.then2, label %for.cond.12
+
+for.cond.12:                                      ; preds = %for.cond.11
+  %13 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 13), align 8, !tbaa !5
+  %cmp1.13 = icmp eq ptr %13, null
+  br i1 %cmp1.13, label %if.then2, label %for.cond.13
+
+for.cond.13:                                      ; preds = %for.cond.12
+  %14 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 14), align 16, !tbaa !5
+  %cmp1.14 = icmp eq ptr %14, null
+  br i1 %cmp1.14, label %if.then2, label %for.cond.14
+
+for.cond.14:                                      ; preds = %for.cond.13
+  %15 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 15), align 8, !tbaa !5
+  %cmp1.15 = icmp eq ptr %15, null
+  br i1 %cmp1.15, label %if.then2, label %for.cond.15
+
+for.cond.15:                                      ; preds = %for.cond.14
+  %16 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 16), align 16, !tbaa !5
+  %cmp1.16 = icmp eq ptr %16, null
+  br i1 %cmp1.16, label %if.then2, label %for.cond.16
+
+for.cond.16:                                      ; preds = %for.cond.15
+  %17 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 17), align 8, !tbaa !5
+  %cmp1.17 = icmp eq ptr %17, null
+  br i1 %cmp1.17, label %if.then2, label %for.cond.17
+
+for.cond.17:                                      ; preds = %for.cond.16
+  %18 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 18), align 16, !tbaa !5
+  %cmp1.18 = icmp eq ptr %18, null
+  br i1 %cmp1.18, label %if.then2, label %for.cond.18
+
+for.cond.18:                                      ; preds = %for.cond.17
+  %19 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 19), align 8, !tbaa !5
+  %cmp1.19 = icmp eq ptr %19, null
+  br i1 %cmp1.19, label %if.then2, label %for.cond.19
+
+for.cond.19:                                      ; preds = %for.cond.18
+  %20 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 20), align 16, !tbaa !5
+  %cmp1.20 = icmp eq ptr %20, null
+  br i1 %cmp1.20, label %if.then2, label %for.cond.20
+
+for.cond.20:                                      ; preds = %for.cond.19
+  %21 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 21), align 8, !tbaa !5
+  %cmp1.21 = icmp eq ptr %21, null
+  br i1 %cmp1.21, label %if.then2, label %for.cond.21
+
+for.cond.21:                                      ; preds = %for.cond.20
+  %22 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 22), align 16, !tbaa !5
+  %cmp1.22 = icmp eq ptr %22, null
+  br i1 %cmp1.22, label %if.then2, label %for.cond.22
+
+for.cond.22:                                      ; preds = %for.cond.21
+  %23 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 23), align 8, !tbaa !5
+  %cmp1.23 = icmp eq ptr %23, null
+  br i1 %cmp1.23, label %if.then2, label %for.cond.23
+
+for.cond.23:                                      ; preds = %for.cond.22
+  %24 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 24), align 16, !tbaa !5
+  %cmp1.24 = icmp eq ptr %24, null
+  br i1 %cmp1.24, label %if.then2, label %for.cond.24
+
+for.cond.24:                                      ; preds = %for.cond.23
+  %25 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 25), align 8, !tbaa !5
+  %cmp1.25 = icmp eq ptr %25, null
+  br i1 %cmp1.25, label %if.then2, label %for.cond.25
+
+for.cond.25:                                      ; preds = %for.cond.24
+  %26 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 26), align 16, !tbaa !5
+  %cmp1.26 = icmp eq ptr %26, null
+  br i1 %cmp1.26, label %if.then2, label %for.cond.26
+
+for.cond.26:                                      ; preds = %for.cond.25
+  %27 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 27), align 8, !tbaa !5
+  %cmp1.27 = icmp eq ptr %27, null
+  br i1 %cmp1.27, label %if.then2, label %for.cond.27
+
+for.cond.27:                                      ; preds = %for.cond.26
+  %28 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 28), align 16, !tbaa !5
+  %cmp1.28 = icmp eq ptr %28, null
+  br i1 %cmp1.28, label %if.then2, label %for.cond.28
+
+for.cond.28:                                      ; preds = %for.cond.27
+  %29 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 29), align 8, !tbaa !5
+  %cmp1.29 = icmp eq ptr %29, null
+  br i1 %cmp1.29, label %if.then2, label %for.cond.29
+
+for.cond.29:                                      ; preds = %for.cond.28
+  %30 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 30), align 16, !tbaa !5
+  %cmp1.30 = icmp eq ptr %30, null
+  br i1 %cmp1.30, label %if.then2, label %for.cond.30
+
+for.cond.30:                                      ; preds = %for.cond.29
+  %31 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 31), align 8, !tbaa !5
+  %cmp1.31 = icmp eq ptr %31, null
+  br i1 %cmp1.31, label %if.then2, label %for.cond.31
+
+for.cond.31:                                      ; preds = %for.cond.30
+  %32 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 32), align 16, !tbaa !5
+  %cmp1.32 = icmp eq ptr %32, null
+  br i1 %cmp1.32, label %if.then2, label %for.cond.32
+
+for.cond.32:                                      ; preds = %for.cond.31
+  %33 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 33), align 8, !tbaa !5
+  %cmp1.33 = icmp eq ptr %33, null
+  br i1 %cmp1.33, label %if.then2, label %for.cond.33
+
+for.cond.33:                                      ; preds = %for.cond.32
+  %34 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 34), align 16, !tbaa !5
+  %cmp1.34 = icmp eq ptr %34, null
+  br i1 %cmp1.34, label %if.then2, label %for.cond.34
+
+for.cond.34:                                      ; preds = %for.cond.33
+  %35 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 35), align 8, !tbaa !5
+  %cmp1.35 = icmp eq ptr %35, null
+  br i1 %cmp1.35, label %if.then2, label %for.cond.35
+
+for.cond.35:                                      ; preds = %for.cond.34
+  %36 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 36), align 16, !tbaa !5
+  %cmp1.36 = icmp eq ptr %36, null
+  br i1 %cmp1.36, label %if.then2, label %for.cond.36
+
+for.cond.36:                                      ; preds = %for.cond.35
+  %37 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 37), align 8, !tbaa !5
+  %cmp1.37 = icmp eq ptr %37, null
+  br i1 %cmp1.37, label %if.then2, label %for.cond.37
+
+for.cond.37:                                      ; preds = %for.cond.36
+  %38 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 38), align 16, !tbaa !5
+  %cmp1.38 = icmp eq ptr %38, null
+  br i1 %cmp1.38, label %if.then2, label %for.cond.38
+
+for.cond.38:                                      ; preds = %for.cond.37
+  %39 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 39), align 8, !tbaa !5
+  %cmp1.39 = icmp eq ptr %39, null
+  br i1 %cmp1.39, label %if.then2, label %for.cond.39
+
+for.cond.39:                                      ; preds = %for.cond.38
+  %40 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 40), align 16, !tbaa !5
+  %cmp1.40 = icmp eq ptr %40, null
+  br i1 %cmp1.40, label %if.then2, label %for.cond.40
+
+for.cond.40:                                      ; preds = %for.cond.39
+  %41 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 41), align 8, !tbaa !5
+  %cmp1.41 = icmp eq ptr %41, null
+  br i1 %cmp1.41, label %if.then2, label %for.cond.41
+
+for.cond.41:                                      ; preds = %for.cond.40
+  %42 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 42), align 16, !tbaa !5
+  %cmp1.42 = icmp eq ptr %42, null
+  br i1 %cmp1.42, label %if.then2, label %for.cond.42
+
+for.cond.42:                                      ; preds = %for.cond.41
+  %43 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 43), align 8, !tbaa !5
+  %cmp1.43 = icmp eq ptr %43, null
+  br i1 %cmp1.43, label %if.then2, label %for.cond.43
+
+for.cond.43:                                      ; preds = %for.cond.42
+  %44 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 44), align 16, !tbaa !5
+  %cmp1.44 = icmp eq ptr %44, null
+  br i1 %cmp1.44, label %if.then2, label %for.cond.44
+
+for.cond.44:                                      ; preds = %for.cond.43
+  %45 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 45), align 8, !tbaa !5
+  %cmp1.45 = icmp eq ptr %45, null
+  br i1 %cmp1.45, label %if.then2, label %for.cond.45
+
+for.cond.45:                                      ; preds = %for.cond.44
+  %46 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 46), align 16, !tbaa !5
+  %cmp1.46 = icmp eq ptr %46, null
+  br i1 %cmp1.46, label %if.then2, label %for.cond.46
+
+for.cond.46:                                      ; preds = %for.cond.45
+  %47 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 47), align 8, !tbaa !5
+  %cmp1.47 = icmp eq ptr %47, null
+  br i1 %cmp1.47, label %if.then2, label %for.cond.47
+
+for.cond.47:                                      ; preds = %for.cond.46
+  %48 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 48), align 16, !tbaa !5
+  %cmp1.48 = icmp eq ptr %48, null
+  br i1 %cmp1.48, label %if.then2, label %for.cond.48
+
+for.cond.48:                                      ; preds = %for.cond.47
+  %49 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 49), align 8, !tbaa !5
+  %cmp1.49 = icmp eq ptr %49, null
+  br i1 %cmp1.49, label %if.then2, label %for.cond.49
+
+for.cond.49:                                      ; preds = %for.cond.48
+  %50 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 50), align 16, !tbaa !5
+  %cmp1.50 = icmp eq ptr %50, null
+  br i1 %cmp1.50, label %if.then2, label %for.cond.50
+
+for.cond.50:                                      ; preds = %for.cond.49
+  %51 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 51), align 8, !tbaa !5
+  %cmp1.51 = icmp eq ptr %51, null
+  br i1 %cmp1.51, label %if.then2, label %for.cond.51
+
+for.cond.51:                                      ; preds = %for.cond.50
+  %52 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 52), align 16, !tbaa !5
+  %cmp1.52 = icmp eq ptr %52, null
+  br i1 %cmp1.52, label %if.then2, label %for.cond.52
+
+for.cond.52:                                      ; preds = %for.cond.51
+  %53 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 53), align 8, !tbaa !5
+  %cmp1.53 = icmp eq ptr %53, null
+  br i1 %cmp1.53, label %if.then2, label %for.cond.53
+
+for.cond.53:                                      ; preds = %for.cond.52
+  %54 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 54), align 16, !tbaa !5
+  %cmp1.54 = icmp eq ptr %54, null
+  br i1 %cmp1.54, label %if.then2, label %for.cond.54
+
+for.cond.54:                                      ; preds = %for.cond.53
+  %55 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 55), align 8, !tbaa !5
+  %cmp1.55 = icmp eq ptr %55, null
+  br i1 %cmp1.55, label %if.then2, label %for.cond.55
+
+for.cond.55:                                      ; preds = %for.cond.54
+  %56 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 56), align 16, !tbaa !5
+  %cmp1.56 = icmp eq ptr %56, null
+  br i1 %cmp1.56, label %if.then2, label %for.cond.56
+
+for.cond.56:                                      ; preds = %for.cond.55
+  %57 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 57), align 8, !tbaa !5
+  %cmp1.57 = icmp eq ptr %57, null
+  br i1 %cmp1.57, label %if.then2, label %for.cond.57
+
+for.cond.57:                                      ; preds = %for.cond.56
+  %58 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 58), align 16, !tbaa !5
+  %cmp1.58 = icmp eq ptr %58, null
+  br i1 %cmp1.58, label %if.then2, label %for.cond.58
+
+for.cond.58:                                      ; preds = %for.cond.57
+  %59 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 59), align 8, !tbaa !5
+  %cmp1.59 = icmp eq ptr %59, null
+  br i1 %cmp1.59, label %if.then2, label %for.cond.59
+
+for.cond.59:                                      ; preds = %for.cond.58
+  %60 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 60), align 16, !tbaa !5
+  %cmp1.60 = icmp eq ptr %60, null
+  br i1 %cmp1.60, label %if.then2, label %for.cond.60
+
+for.cond.60:                                      ; preds = %for.cond.59
+  %61 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 61), align 8, !tbaa !5
+  %cmp1.61 = icmp eq ptr %61, null
+  br i1 %cmp1.61, label %if.then2, label %for.cond.61
+
+for.cond.61:                                      ; preds = %for.cond.60
+  %62 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 62), align 16, !tbaa !5
+  %cmp1.62 = icmp eq ptr %62, null
+  br i1 %cmp1.62, label %if.then2, label %for.cond.62
+
+for.cond.62:                                      ; preds = %for.cond.61
+  %63 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 63), align 8, !tbaa !5
+  %cmp1.63 = icmp eq ptr %63, null
+  br i1 %cmp1.63, label %if.then2, label %for.end
+
+if.then2:                                         ; preds = %for.cond.62, %for.cond.61, %for.cond.60, %for.cond.59, %for.cond.58, %for.cond.57, %for.cond.56, %for.cond.55, %for.cond.54, %for.cond.53, %for.cond.52, %for.cond.51, %for.cond.50, %for.cond.49, %for.cond.48, %for.cond.47, %for.cond.46, %for.cond.45, %for.cond.44, %for.cond.43, %for.cond.42, %for.cond.41, %for.cond.40, %for.cond.39, %for.cond.38, %for.cond.37, %for.cond.36, %for.cond.35, %for.cond.34, %for.cond.33, %for.cond.32, %for.cond.31, %for.cond.30, %for.cond.29, %for.cond.28, %for.cond.27, %for.cond.26, %for.cond.25, %for.cond.24, %for.cond.23, %for.cond.22, %for.cond.21, %for.cond.20, %for.cond.19, %for.cond.18, %for.cond.17, %for.cond.16, %for.cond.15, %for.cond.14, %for.cond.13, %for.cond.12, %for.cond.11, %for.cond.10, %for.cond.9, %for.cond.8, %for.cond.7, %for.cond.6, %for.cond.5, %for.cond.4, %for.cond.3, %for.cond.2, %for.cond.1, %for.cond, %if.then
+  %idxprom.lcssa = phi i64 [ 0, %if.then ], [ 1, %for.cond ], [ 2, %for.cond.1 ], [ 3, %for.cond.2 ], [ 4, %for.cond.3 ], [ 5, %for.cond.4 ], [ 6, %for.cond.5 ], [ 7, %for.cond.6 ], [ 8, %for.cond.7 ], [ 9, %for.cond.8 ], [ 10, %for.cond.9 ], [ 11, %for.cond.10 ], [ 12, %for.cond.11 ], [ 13, %for.cond.12 ], [ 14, %for.cond.13 ], [ 15, %for.cond.14 ], [ 16, %for.cond.15 ], [ 17, %for.cond.16 ], [ 18, %for.cond.17 ], [ 19, %for.cond.18 ], [ 20, %for.cond.19 ], [ 21, %for.cond.20 ], [ 22, %for.cond.21 ], [ 23, %for.cond.22 ], [ 24, %for.cond.23 ], [ 25, %for.cond.24 ], [ 26, %for.cond.25 ], [ 27, %for.cond.26 ], [ 28, %for.cond.27 ], [ 29, %for.cond.28 ], [ 30, %for.cond.29 ], [ 31, %for.cond.30 ], [ 32, %for.cond.31 ], [ 33, %for.cond.32 ], [ 34, %for.cond.33 ], [ 35, %for.cond.34 ], [ 36, %for.cond.35 ], [ 37, %for.cond.36 ], [ 38, %for.cond.37 ], [ 39, %for.cond.38 ], [ 40, %for.cond.39 ], [ 41, %for.cond.40 ], [ 42, %for.cond.41 ], [ 43, %for.cond.42 ], [ 44, %for.cond.43 ], [ 45, %for.cond.44 ], [ 46, %for.cond.45 ], [ 47, %for.cond.46 ], [ 48, %for.cond.47 ], [ 49, %for.cond.48 ], [ 50, %for.cond.49 ], [ 51, %for.cond.50 ], [ 52, %for.cond.51 ], [ 53, %for.cond.52 ], [ 54, %for.cond.53 ], [ 55, %for.cond.54 ], [ 56, %for.cond.55 ], [ 57, %for.cond.56 ], [ 58, %for.cond.57 ], [ 59, %for.cond.58 ], [ 60, %for.cond.59 ], [ 61, %for.cond.60 ], [ 62, %for.cond.61 ], [ 63, %for.cond.62 ]
+  %arrayidx.lcssa = phi ptr [ @g_HugePageAddr, %if.then ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 1), %for.cond ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 2), %for.cond.1 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 3), %for.cond.2 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 4), %for.cond.3 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 5), %for.cond.4 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 6), %for.cond.5 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 7), %for.cond.6 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 8), %for.cond.7 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 9), %for.cond.8 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 10), %for.cond.9 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 11), %for.cond.10 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 12), %for.cond.11 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 13), %for.cond.12 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 14), %for.cond.13 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 15), %for.cond.14 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 16), %for.cond.15 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 17), %for.cond.16 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 18), %for.cond.17 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 19), %for.cond.18 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 20), %for.cond.19 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 21), %for.cond.20 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 22), %for.cond.21 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 23), %for.cond.22 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 24), %for.cond.23 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 25), %for.cond.24 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 26), %for.cond.25 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 27), %for.cond.26 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 28), %for.cond.27 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 29), %for.cond.28 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 30), %for.cond.29 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 31), %for.cond.30 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 32), %for.cond.31 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 33), %for.cond.32 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 34), %for.cond.33 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 35), %for.cond.34 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 36), %for.cond.35 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 37), %for.cond.36 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 38), %for.cond.37 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 39), %for.cond.38 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 40), %for.cond.39 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 41), %for.cond.40 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 42), %for.cond.41 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 43), %for.cond.42 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 44), %for.cond.43 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 45), %for.cond.44 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 46), %for.cond.45 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 47), %for.cond.46 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 48), %for.cond.47 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 49), %for.cond.48 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 50), %for.cond.49 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 51), %for.cond.50 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 52), %for.cond.51 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 53), %for.cond.52 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 54), %for.cond.53 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 55), %for.cond.54 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 56), %for.cond.55 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 57), %for.cond.56 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 58), %for.cond.57 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 59), %for.cond.58 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 60), %for.cond.59 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 61), %for.cond.60 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 62), %for.cond.61 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 63), %for.cond.62 ]
+  %64 = load ptr, ptr @g_HugetlbPath, align 8, !tbaa !5
+  %call3 = tail call i64 @strlen(ptr noundef nonnull dereferenceable(1) %64) #17
   %add = add i64 %call3, 12
-  %5 = and i64 %add, 4294967295
-  %6 = tail call ptr @llvm.stacksave.p0()
-  %vla = alloca i8, i64 %5, align 16
+  %65 = and i64 %add, 4294967295
+  %66 = tail call ptr @llvm.stacksave.p0()
+  %vla = alloca i8, i64 %65, align 16
   %sext = shl i64 %call3, 32
   %conv4 = ashr exact i64 %sext, 32
-  call void @llvm.memcpy.p0.p0.i64(ptr nonnull align 16 %vla, ptr align 1 %4, i64 %conv4, i1 false)
+  call void @llvm.memcpy.p0.p0.i64(ptr nonnull align 16 %vla, ptr align 1 %64, i64 %conv4, i1 false)
   %add.ptr = getelementptr inbounds i8, ptr %vla, i64 %conv4
   call void @llvm.memcpy.p0.p0.i64(ptr noundef nonnull align 1 dereferenceable(11) %add.ptr, ptr noundef nonnull align 1 dereferenceable(11) @.str.4, i64 11, i1 false)
   %call5 = call i32 @mkstemp64(ptr noundef nonnull %vla) #16
@@ -128,11 +412,11 @@ if.then2:                                         ; preds = %for.cond.2, %for.co
   br i1 %cmp7, label %if.then9, label %if.end
 
 if.then9:                                         ; preds = %if.then2
-  %7 = load ptr, ptr @stderr, align 8, !tbaa !5
+  %67 = load ptr, ptr @stderr, align 8, !tbaa !5
   %call10 = tail call ptr @__errno_location() #18
-  %8 = load i32, ptr %call10, align 4, !tbaa !11
-  %call11 = call ptr @strerror(i32 noundef %8) #16
-  %call12 = call i32 (ptr, ptr, ...) @fprintf(ptr noundef %7, ptr noundef nonnull @.str.5, ptr noundef nonnull %vla, ptr noundef %call11) #19
+  %68 = load i32, ptr %call10, align 4, !tbaa !9
+  %call11 = call ptr @strerror(i32 noundef %68) #16
+  %call12 = call i32 (ptr, ptr, ...) @fprintf(ptr noundef %67, ptr noundef nonnull @.str.5, ptr noundef nonnull %vla, ptr noundef %call11) #19
   br label %cleanup
 
 if.end:                                           ; preds = %if.then2
@@ -142,18 +426,18 @@ if.end:                                           ; preds = %if.then2
   br i1 %cmp15, label %cleanup, label %if.end18
 
 if.end18:                                         ; preds = %if.end
-  %arrayidx20 = getelementptr inbounds [64 x i64], ptr @g_HugePageLen, i64 0, i64 %indvars.iv.lcssa
-  store i64 %size, ptr %arrayidx20, align 8, !tbaa !13
+  %arrayidx20 = getelementptr inbounds [64 x i64], ptr @g_HugePageLen, i64 0, i64 %idxprom.lcssa
+  store i64 %size, ptr %arrayidx20, align 8, !tbaa !11
   store ptr %call13, ptr %arrayidx.lcssa, align 8, !tbaa !5
   br label %cleanup
 
 cleanup:                                          ; preds = %if.end, %if.end18, %if.then9
   %address.0 = phi ptr [ null, %if.then9 ], [ %call13, %if.end18 ], [ null, %if.end ]
-  call void @llvm.stackrestore.p0(ptr %6)
+  call void @llvm.stackrestore.p0(ptr %66)
   br label %for.end
 
-for.end:                                          ; preds = %for.cond.3, %cleanup
-  %address.1 = phi ptr [ %address.0, %cleanup ], [ null, %for.cond.3 ]
+for.end:                                          ; preds = %for.cond.62, %cleanup
+  %address.1 = phi ptr [ %address.0, %cleanup ], [ null, %for.cond.62 ]
   %call26 = call i32 @pthread_mutex_unlock(ptr noundef nonnull @VirtualAlloc.mutex) #16
   br label %return
 
@@ -170,55 +454,352 @@ return:                                           ; preds = %if.end29, %for.end
 define dso_local void @MidFree(ptr noundef %address) local_unnamed_addr #4 {
 entry:
   %cmp = icmp eq ptr %address, null
-  br i1 %cmp, label %return, label %for.body.i
+  br i1 %cmp, label %return, label %if.end
 
-for.cond.i:                                       ; preds = %for.body.i
-  %indvars.iv.next.i = or i64 %indvars.iv.i, 1
-  %arrayidx.i.1 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.i
-  %0 = load ptr, ptr %arrayidx.i.1, align 8, !tbaa !5
-  %cmp1.i.1 = icmp eq ptr %0, %address
-  br i1 %cmp1.i.1, label %if.then.i, label %for.cond.i.1
-
-for.cond.i.1:                                     ; preds = %for.cond.i
-  %indvars.iv.next.i.1 = or i64 %indvars.iv.i, 2
-  %arrayidx.i.2 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.i.1
-  %1 = load ptr, ptr %arrayidx.i.2, align 16, !tbaa !5
-  %cmp1.i.2 = icmp eq ptr %1, %address
-  br i1 %cmp1.i.2, label %if.then.i, label %for.cond.i.2
-
-for.cond.i.2:                                     ; preds = %for.cond.i.1
-  %indvars.iv.next.i.2 = or i64 %indvars.iv.i, 3
-  %arrayidx.i.3 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.i.2
-  %2 = load ptr, ptr %arrayidx.i.3, align 8, !tbaa !5
-  %cmp1.i.3 = icmp eq ptr %2, %address
-  br i1 %cmp1.i.3, label %if.then.i, label %for.cond.i.3
-
-for.cond.i.3:                                     ; preds = %for.cond.i.2
-  %indvars.iv.next.i.3 = add nuw nsw i64 %indvars.iv.i, 4
-  %exitcond.not.i.3 = icmp eq i64 %indvars.iv.next.i.3, 64
-  br i1 %exitcond.not.i.3, label %for.end.i, label %for.body.i, !llvm.loop !15
-
-for.body.i:                                       ; preds = %entry, %for.cond.i.3
-  %indvars.iv.i = phi i64 [ %indvars.iv.next.i.3, %for.cond.i.3 ], [ 0, %entry ]
-  %arrayidx.i = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.i
-  %3 = load ptr, ptr %arrayidx.i, align 16, !tbaa !5
-  %cmp1.i = icmp eq ptr %3, %address
-  br i1 %cmp1.i, label %if.then.i, label %for.cond.i
-
-if.then.i:                                        ; preds = %for.cond.i.2, %for.cond.i.1, %for.cond.i, %for.body.i
-  %indvars.iv.i.lcssa = phi i64 [ %indvars.iv.i, %for.body.i ], [ %indvars.iv.next.i, %for.cond.i ], [ %indvars.iv.next.i.1, %for.cond.i.1 ], [ %indvars.iv.next.i.2, %for.cond.i.2 ]
-  %arrayidx.i.lcssa = phi ptr [ %arrayidx.i, %for.body.i ], [ %arrayidx.i.1, %for.cond.i ], [ %arrayidx.i.2, %for.cond.i.1 ], [ %arrayidx.i.3, %for.cond.i.2 ]
-  %arrayidx3.i = getelementptr inbounds [64 x i64], ptr @g_HugePageLen, i64 0, i64 %indvars.iv.i.lcssa
-  %4 = load i64, ptr %arrayidx3.i, align 8, !tbaa !13
-  %call.i = tail call i32 @munmap(ptr noundef nonnull %address, i64 noundef %4) #16
-  store ptr null, ptr %arrayidx.i.lcssa, align 8, !tbaa !5
+if.end:                                           ; preds = %entry
+  tail call fastcc void @VirtualFree(ptr noundef nonnull %address)
   br label %return
 
-for.end.i:                                        ; preds = %for.cond.i.3
+return:                                           ; preds = %entry, %if.end
+  ret void
+}
+
+; Function Attrs: nounwind uwtable
+define internal fastcc void @VirtualFree(ptr noundef %address) unnamed_addr #4 {
+entry:
+  %0 = load ptr, ptr @g_HugePageAddr, align 16, !tbaa !5
+  %cmp1 = icmp eq ptr %0, %address
+  br i1 %cmp1, label %if.then, label %for.cond
+
+for.cond:                                         ; preds = %entry
+  %1 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 1), align 8, !tbaa !5
+  %cmp1.1 = icmp eq ptr %1, %address
+  br i1 %cmp1.1, label %if.then, label %for.cond.1
+
+for.cond.1:                                       ; preds = %for.cond
+  %2 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 2), align 16, !tbaa !5
+  %cmp1.2 = icmp eq ptr %2, %address
+  br i1 %cmp1.2, label %if.then, label %for.cond.2
+
+for.cond.2:                                       ; preds = %for.cond.1
+  %3 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 3), align 8, !tbaa !5
+  %cmp1.3 = icmp eq ptr %3, %address
+  br i1 %cmp1.3, label %if.then, label %for.cond.3
+
+for.cond.3:                                       ; preds = %for.cond.2
+  %4 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 4), align 16, !tbaa !5
+  %cmp1.4 = icmp eq ptr %4, %address
+  br i1 %cmp1.4, label %if.then, label %for.cond.4
+
+for.cond.4:                                       ; preds = %for.cond.3
+  %5 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 5), align 8, !tbaa !5
+  %cmp1.5 = icmp eq ptr %5, %address
+  br i1 %cmp1.5, label %if.then, label %for.cond.5
+
+for.cond.5:                                       ; preds = %for.cond.4
+  %6 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 6), align 16, !tbaa !5
+  %cmp1.6 = icmp eq ptr %6, %address
+  br i1 %cmp1.6, label %if.then, label %for.cond.6
+
+for.cond.6:                                       ; preds = %for.cond.5
+  %7 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 7), align 8, !tbaa !5
+  %cmp1.7 = icmp eq ptr %7, %address
+  br i1 %cmp1.7, label %if.then, label %for.cond.7
+
+for.cond.7:                                       ; preds = %for.cond.6
+  %8 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 8), align 16, !tbaa !5
+  %cmp1.8 = icmp eq ptr %8, %address
+  br i1 %cmp1.8, label %if.then, label %for.cond.8
+
+for.cond.8:                                       ; preds = %for.cond.7
+  %9 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 9), align 8, !tbaa !5
+  %cmp1.9 = icmp eq ptr %9, %address
+  br i1 %cmp1.9, label %if.then, label %for.cond.9
+
+for.cond.9:                                       ; preds = %for.cond.8
+  %10 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 10), align 16, !tbaa !5
+  %cmp1.10 = icmp eq ptr %10, %address
+  br i1 %cmp1.10, label %if.then, label %for.cond.10
+
+for.cond.10:                                      ; preds = %for.cond.9
+  %11 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 11), align 8, !tbaa !5
+  %cmp1.11 = icmp eq ptr %11, %address
+  br i1 %cmp1.11, label %if.then, label %for.cond.11
+
+for.cond.11:                                      ; preds = %for.cond.10
+  %12 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 12), align 16, !tbaa !5
+  %cmp1.12 = icmp eq ptr %12, %address
+  br i1 %cmp1.12, label %if.then, label %for.cond.12
+
+for.cond.12:                                      ; preds = %for.cond.11
+  %13 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 13), align 8, !tbaa !5
+  %cmp1.13 = icmp eq ptr %13, %address
+  br i1 %cmp1.13, label %if.then, label %for.cond.13
+
+for.cond.13:                                      ; preds = %for.cond.12
+  %14 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 14), align 16, !tbaa !5
+  %cmp1.14 = icmp eq ptr %14, %address
+  br i1 %cmp1.14, label %if.then, label %for.cond.14
+
+for.cond.14:                                      ; preds = %for.cond.13
+  %15 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 15), align 8, !tbaa !5
+  %cmp1.15 = icmp eq ptr %15, %address
+  br i1 %cmp1.15, label %if.then, label %for.cond.15
+
+for.cond.15:                                      ; preds = %for.cond.14
+  %16 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 16), align 16, !tbaa !5
+  %cmp1.16 = icmp eq ptr %16, %address
+  br i1 %cmp1.16, label %if.then, label %for.cond.16
+
+for.cond.16:                                      ; preds = %for.cond.15
+  %17 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 17), align 8, !tbaa !5
+  %cmp1.17 = icmp eq ptr %17, %address
+  br i1 %cmp1.17, label %if.then, label %for.cond.17
+
+for.cond.17:                                      ; preds = %for.cond.16
+  %18 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 18), align 16, !tbaa !5
+  %cmp1.18 = icmp eq ptr %18, %address
+  br i1 %cmp1.18, label %if.then, label %for.cond.18
+
+for.cond.18:                                      ; preds = %for.cond.17
+  %19 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 19), align 8, !tbaa !5
+  %cmp1.19 = icmp eq ptr %19, %address
+  br i1 %cmp1.19, label %if.then, label %for.cond.19
+
+for.cond.19:                                      ; preds = %for.cond.18
+  %20 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 20), align 16, !tbaa !5
+  %cmp1.20 = icmp eq ptr %20, %address
+  br i1 %cmp1.20, label %if.then, label %for.cond.20
+
+for.cond.20:                                      ; preds = %for.cond.19
+  %21 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 21), align 8, !tbaa !5
+  %cmp1.21 = icmp eq ptr %21, %address
+  br i1 %cmp1.21, label %if.then, label %for.cond.21
+
+for.cond.21:                                      ; preds = %for.cond.20
+  %22 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 22), align 16, !tbaa !5
+  %cmp1.22 = icmp eq ptr %22, %address
+  br i1 %cmp1.22, label %if.then, label %for.cond.22
+
+for.cond.22:                                      ; preds = %for.cond.21
+  %23 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 23), align 8, !tbaa !5
+  %cmp1.23 = icmp eq ptr %23, %address
+  br i1 %cmp1.23, label %if.then, label %for.cond.23
+
+for.cond.23:                                      ; preds = %for.cond.22
+  %24 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 24), align 16, !tbaa !5
+  %cmp1.24 = icmp eq ptr %24, %address
+  br i1 %cmp1.24, label %if.then, label %for.cond.24
+
+for.cond.24:                                      ; preds = %for.cond.23
+  %25 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 25), align 8, !tbaa !5
+  %cmp1.25 = icmp eq ptr %25, %address
+  br i1 %cmp1.25, label %if.then, label %for.cond.25
+
+for.cond.25:                                      ; preds = %for.cond.24
+  %26 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 26), align 16, !tbaa !5
+  %cmp1.26 = icmp eq ptr %26, %address
+  br i1 %cmp1.26, label %if.then, label %for.cond.26
+
+for.cond.26:                                      ; preds = %for.cond.25
+  %27 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 27), align 8, !tbaa !5
+  %cmp1.27 = icmp eq ptr %27, %address
+  br i1 %cmp1.27, label %if.then, label %for.cond.27
+
+for.cond.27:                                      ; preds = %for.cond.26
+  %28 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 28), align 16, !tbaa !5
+  %cmp1.28 = icmp eq ptr %28, %address
+  br i1 %cmp1.28, label %if.then, label %for.cond.28
+
+for.cond.28:                                      ; preds = %for.cond.27
+  %29 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 29), align 8, !tbaa !5
+  %cmp1.29 = icmp eq ptr %29, %address
+  br i1 %cmp1.29, label %if.then, label %for.cond.29
+
+for.cond.29:                                      ; preds = %for.cond.28
+  %30 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 30), align 16, !tbaa !5
+  %cmp1.30 = icmp eq ptr %30, %address
+  br i1 %cmp1.30, label %if.then, label %for.cond.30
+
+for.cond.30:                                      ; preds = %for.cond.29
+  %31 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 31), align 8, !tbaa !5
+  %cmp1.31 = icmp eq ptr %31, %address
+  br i1 %cmp1.31, label %if.then, label %for.cond.31
+
+for.cond.31:                                      ; preds = %for.cond.30
+  %32 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 32), align 16, !tbaa !5
+  %cmp1.32 = icmp eq ptr %32, %address
+  br i1 %cmp1.32, label %if.then, label %for.cond.32
+
+for.cond.32:                                      ; preds = %for.cond.31
+  %33 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 33), align 8, !tbaa !5
+  %cmp1.33 = icmp eq ptr %33, %address
+  br i1 %cmp1.33, label %if.then, label %for.cond.33
+
+for.cond.33:                                      ; preds = %for.cond.32
+  %34 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 34), align 16, !tbaa !5
+  %cmp1.34 = icmp eq ptr %34, %address
+  br i1 %cmp1.34, label %if.then, label %for.cond.34
+
+for.cond.34:                                      ; preds = %for.cond.33
+  %35 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 35), align 8, !tbaa !5
+  %cmp1.35 = icmp eq ptr %35, %address
+  br i1 %cmp1.35, label %if.then, label %for.cond.35
+
+for.cond.35:                                      ; preds = %for.cond.34
+  %36 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 36), align 16, !tbaa !5
+  %cmp1.36 = icmp eq ptr %36, %address
+  br i1 %cmp1.36, label %if.then, label %for.cond.36
+
+for.cond.36:                                      ; preds = %for.cond.35
+  %37 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 37), align 8, !tbaa !5
+  %cmp1.37 = icmp eq ptr %37, %address
+  br i1 %cmp1.37, label %if.then, label %for.cond.37
+
+for.cond.37:                                      ; preds = %for.cond.36
+  %38 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 38), align 16, !tbaa !5
+  %cmp1.38 = icmp eq ptr %38, %address
+  br i1 %cmp1.38, label %if.then, label %for.cond.38
+
+for.cond.38:                                      ; preds = %for.cond.37
+  %39 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 39), align 8, !tbaa !5
+  %cmp1.39 = icmp eq ptr %39, %address
+  br i1 %cmp1.39, label %if.then, label %for.cond.39
+
+for.cond.39:                                      ; preds = %for.cond.38
+  %40 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 40), align 16, !tbaa !5
+  %cmp1.40 = icmp eq ptr %40, %address
+  br i1 %cmp1.40, label %if.then, label %for.cond.40
+
+for.cond.40:                                      ; preds = %for.cond.39
+  %41 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 41), align 8, !tbaa !5
+  %cmp1.41 = icmp eq ptr %41, %address
+  br i1 %cmp1.41, label %if.then, label %for.cond.41
+
+for.cond.41:                                      ; preds = %for.cond.40
+  %42 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 42), align 16, !tbaa !5
+  %cmp1.42 = icmp eq ptr %42, %address
+  br i1 %cmp1.42, label %if.then, label %for.cond.42
+
+for.cond.42:                                      ; preds = %for.cond.41
+  %43 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 43), align 8, !tbaa !5
+  %cmp1.43 = icmp eq ptr %43, %address
+  br i1 %cmp1.43, label %if.then, label %for.cond.43
+
+for.cond.43:                                      ; preds = %for.cond.42
+  %44 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 44), align 16, !tbaa !5
+  %cmp1.44 = icmp eq ptr %44, %address
+  br i1 %cmp1.44, label %if.then, label %for.cond.44
+
+for.cond.44:                                      ; preds = %for.cond.43
+  %45 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 45), align 8, !tbaa !5
+  %cmp1.45 = icmp eq ptr %45, %address
+  br i1 %cmp1.45, label %if.then, label %for.cond.45
+
+for.cond.45:                                      ; preds = %for.cond.44
+  %46 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 46), align 16, !tbaa !5
+  %cmp1.46 = icmp eq ptr %46, %address
+  br i1 %cmp1.46, label %if.then, label %for.cond.46
+
+for.cond.46:                                      ; preds = %for.cond.45
+  %47 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 47), align 8, !tbaa !5
+  %cmp1.47 = icmp eq ptr %47, %address
+  br i1 %cmp1.47, label %if.then, label %for.cond.47
+
+for.cond.47:                                      ; preds = %for.cond.46
+  %48 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 48), align 16, !tbaa !5
+  %cmp1.48 = icmp eq ptr %48, %address
+  br i1 %cmp1.48, label %if.then, label %for.cond.48
+
+for.cond.48:                                      ; preds = %for.cond.47
+  %49 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 49), align 8, !tbaa !5
+  %cmp1.49 = icmp eq ptr %49, %address
+  br i1 %cmp1.49, label %if.then, label %for.cond.49
+
+for.cond.49:                                      ; preds = %for.cond.48
+  %50 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 50), align 16, !tbaa !5
+  %cmp1.50 = icmp eq ptr %50, %address
+  br i1 %cmp1.50, label %if.then, label %for.cond.50
+
+for.cond.50:                                      ; preds = %for.cond.49
+  %51 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 51), align 8, !tbaa !5
+  %cmp1.51 = icmp eq ptr %51, %address
+  br i1 %cmp1.51, label %if.then, label %for.cond.51
+
+for.cond.51:                                      ; preds = %for.cond.50
+  %52 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 52), align 16, !tbaa !5
+  %cmp1.52 = icmp eq ptr %52, %address
+  br i1 %cmp1.52, label %if.then, label %for.cond.52
+
+for.cond.52:                                      ; preds = %for.cond.51
+  %53 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 53), align 8, !tbaa !5
+  %cmp1.53 = icmp eq ptr %53, %address
+  br i1 %cmp1.53, label %if.then, label %for.cond.53
+
+for.cond.53:                                      ; preds = %for.cond.52
+  %54 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 54), align 16, !tbaa !5
+  %cmp1.54 = icmp eq ptr %54, %address
+  br i1 %cmp1.54, label %if.then, label %for.cond.54
+
+for.cond.54:                                      ; preds = %for.cond.53
+  %55 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 55), align 8, !tbaa !5
+  %cmp1.55 = icmp eq ptr %55, %address
+  br i1 %cmp1.55, label %if.then, label %for.cond.55
+
+for.cond.55:                                      ; preds = %for.cond.54
+  %56 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 56), align 16, !tbaa !5
+  %cmp1.56 = icmp eq ptr %56, %address
+  br i1 %cmp1.56, label %if.then, label %for.cond.56
+
+for.cond.56:                                      ; preds = %for.cond.55
+  %57 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 57), align 8, !tbaa !5
+  %cmp1.57 = icmp eq ptr %57, %address
+  br i1 %cmp1.57, label %if.then, label %for.cond.57
+
+for.cond.57:                                      ; preds = %for.cond.56
+  %58 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 58), align 16, !tbaa !5
+  %cmp1.58 = icmp eq ptr %58, %address
+  br i1 %cmp1.58, label %if.then, label %for.cond.58
+
+for.cond.58:                                      ; preds = %for.cond.57
+  %59 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 59), align 8, !tbaa !5
+  %cmp1.59 = icmp eq ptr %59, %address
+  br i1 %cmp1.59, label %if.then, label %for.cond.59
+
+for.cond.59:                                      ; preds = %for.cond.58
+  %60 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 60), align 16, !tbaa !5
+  %cmp1.60 = icmp eq ptr %60, %address
+  br i1 %cmp1.60, label %if.then, label %for.cond.60
+
+for.cond.60:                                      ; preds = %for.cond.59
+  %61 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 61), align 8, !tbaa !5
+  %cmp1.61 = icmp eq ptr %61, %address
+  br i1 %cmp1.61, label %if.then, label %for.cond.61
+
+for.cond.61:                                      ; preds = %for.cond.60
+  %62 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 62), align 16, !tbaa !5
+  %cmp1.62 = icmp eq ptr %62, %address
+  br i1 %cmp1.62, label %if.then, label %for.cond.62
+
+for.cond.62:                                      ; preds = %for.cond.61
+  %63 = load ptr, ptr getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 63), align 8, !tbaa !5
+  %cmp1.63 = icmp eq ptr %63, %address
+  br i1 %cmp1.63, label %if.then, label %for.cond.63
+
+for.cond.63:                                      ; preds = %for.cond.62
   tail call void @free(ptr noundef %address) #16
-  br label %return
+  br label %cleanup
 
-return:                                           ; preds = %for.end.i, %if.then.i, %entry
+if.then:                                          ; preds = %for.cond.62, %for.cond.61, %for.cond.60, %for.cond.59, %for.cond.58, %for.cond.57, %for.cond.56, %for.cond.55, %for.cond.54, %for.cond.53, %for.cond.52, %for.cond.51, %for.cond.50, %for.cond.49, %for.cond.48, %for.cond.47, %for.cond.46, %for.cond.45, %for.cond.44, %for.cond.43, %for.cond.42, %for.cond.41, %for.cond.40, %for.cond.39, %for.cond.38, %for.cond.37, %for.cond.36, %for.cond.35, %for.cond.34, %for.cond.33, %for.cond.32, %for.cond.31, %for.cond.30, %for.cond.29, %for.cond.28, %for.cond.27, %for.cond.26, %for.cond.25, %for.cond.24, %for.cond.23, %for.cond.22, %for.cond.21, %for.cond.20, %for.cond.19, %for.cond.18, %for.cond.17, %for.cond.16, %for.cond.15, %for.cond.14, %for.cond.13, %for.cond.12, %for.cond.11, %for.cond.10, %for.cond.9, %for.cond.8, %for.cond.7, %for.cond.6, %for.cond.5, %for.cond.4, %for.cond.3, %for.cond.2, %for.cond.1, %for.cond, %entry
+  %idxprom.lcssa = phi i64 [ 0, %entry ], [ 1, %for.cond ], [ 2, %for.cond.1 ], [ 3, %for.cond.2 ], [ 4, %for.cond.3 ], [ 5, %for.cond.4 ], [ 6, %for.cond.5 ], [ 7, %for.cond.6 ], [ 8, %for.cond.7 ], [ 9, %for.cond.8 ], [ 10, %for.cond.9 ], [ 11, %for.cond.10 ], [ 12, %for.cond.11 ], [ 13, %for.cond.12 ], [ 14, %for.cond.13 ], [ 15, %for.cond.14 ], [ 16, %for.cond.15 ], [ 17, %for.cond.16 ], [ 18, %for.cond.17 ], [ 19, %for.cond.18 ], [ 20, %for.cond.19 ], [ 21, %for.cond.20 ], [ 22, %for.cond.21 ], [ 23, %for.cond.22 ], [ 24, %for.cond.23 ], [ 25, %for.cond.24 ], [ 26, %for.cond.25 ], [ 27, %for.cond.26 ], [ 28, %for.cond.27 ], [ 29, %for.cond.28 ], [ 30, %for.cond.29 ], [ 31, %for.cond.30 ], [ 32, %for.cond.31 ], [ 33, %for.cond.32 ], [ 34, %for.cond.33 ], [ 35, %for.cond.34 ], [ 36, %for.cond.35 ], [ 37, %for.cond.36 ], [ 38, %for.cond.37 ], [ 39, %for.cond.38 ], [ 40, %for.cond.39 ], [ 41, %for.cond.40 ], [ 42, %for.cond.41 ], [ 43, %for.cond.42 ], [ 44, %for.cond.43 ], [ 45, %for.cond.44 ], [ 46, %for.cond.45 ], [ 47, %for.cond.46 ], [ 48, %for.cond.47 ], [ 49, %for.cond.48 ], [ 50, %for.cond.49 ], [ 51, %for.cond.50 ], [ 52, %for.cond.51 ], [ 53, %for.cond.52 ], [ 54, %for.cond.53 ], [ 55, %for.cond.54 ], [ 56, %for.cond.55 ], [ 57, %for.cond.56 ], [ 58, %for.cond.57 ], [ 59, %for.cond.58 ], [ 60, %for.cond.59 ], [ 61, %for.cond.60 ], [ 62, %for.cond.61 ], [ 63, %for.cond.62 ]
+  %arrayidx.lcssa = phi ptr [ @g_HugePageAddr, %entry ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 1), %for.cond ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 2), %for.cond.1 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 3), %for.cond.2 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 4), %for.cond.3 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 5), %for.cond.4 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 6), %for.cond.5 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 7), %for.cond.6 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 8), %for.cond.7 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 9), %for.cond.8 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 10), %for.cond.9 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 11), %for.cond.10 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 12), %for.cond.11 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 13), %for.cond.12 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 14), %for.cond.13 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 15), %for.cond.14 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 16), %for.cond.15 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 17), %for.cond.16 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 18), %for.cond.17 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 19), %for.cond.18 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 20), %for.cond.19 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 21), %for.cond.20 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 22), %for.cond.21 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 23), %for.cond.22 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 24), %for.cond.23 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 25), %for.cond.24 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 26), %for.cond.25 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 27), %for.cond.26 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 28), %for.cond.27 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 29), %for.cond.28 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 30), %for.cond.29 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 31), %for.cond.30 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 32), %for.cond.31 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 33), %for.cond.32 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 34), %for.cond.33 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 35), %for.cond.34 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 36), %for.cond.35 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 37), %for.cond.36 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 38), %for.cond.37 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 39), %for.cond.38 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 40), %for.cond.39 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 41), %for.cond.40 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 42), %for.cond.41 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 43), %for.cond.42 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 44), %for.cond.43 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 45), %for.cond.44 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 46), %for.cond.45 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 47), %for.cond.46 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 48), %for.cond.47 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 49), %for.cond.48 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 50), %for.cond.49 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 51), %for.cond.50 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 52), %for.cond.51 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 53), %for.cond.52 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 54), %for.cond.53 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 55), %for.cond.54 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 56), %for.cond.55 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 57), %for.cond.56 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 58), %for.cond.57 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 59), %for.cond.58 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 60), %for.cond.59 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 61), %for.cond.60 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 62), %for.cond.61 ], [ getelementptr inbounds ([64 x ptr], ptr @g_HugePageAddr, i64 0, i64 63), %for.cond.62 ]
+  %arrayidx3 = getelementptr inbounds [64 x i64], ptr @g_HugePageLen, i64 0, i64 %idxprom.lcssa
+  %64 = load i64, ptr %arrayidx3, align 8, !tbaa !11
+  %call = tail call i32 @munmap(ptr noundef %address, i64 noundef %64) #16
+  store ptr null, ptr %arrayidx.lcssa, align 8, !tbaa !5
+  br label %cleanup
+
+cleanup:                                          ; preds = %for.cond.63, %if.then
   ret void
 }
 
@@ -231,7 +812,7 @@ entry:
   br i1 %cmp, label %if.then, label %lor.lhs.false
 
 if.then:                                          ; preds = %entry
-  store i8 0, ptr @largePageMinimum.dir_hugetlbfs, align 16, !tbaa !16
+  store i8 0, ptr @largePageMinimum.dir_hugetlbfs, align 16, !tbaa !13
   %call1 = tail call ptr @setmntent(ptr noundef nonnull @.str.1, ptr noundef nonnull @.str.2) #16
   %tobool.not = icmp eq ptr %call1, null
   br i1 %tobool.not, label %if.end11, label %if.then2
@@ -244,28 +825,28 @@ if.then2:                                         ; preds = %if.then
 while.body:                                       ; preds = %if.then2, %if.end
   %info.031 = phi ptr [ %call9, %if.end ], [ %call3, %if.then2 ]
   %mnt_type = getelementptr inbounds %struct.mntent, ptr %info.031, i64 0, i32 2
-  %0 = load ptr, ptr %mnt_type, align 8, !tbaa !17
+  %0 = load ptr, ptr %mnt_type, align 8, !tbaa !14
   %call5 = tail call i32 @strcmp(ptr noundef nonnull dereferenceable(1) %0, ptr noundef nonnull dereferenceable(10) @.str.3) #17
   %cmp6 = icmp eq i32 %call5, 0
   br i1 %cmp6, label %if.then7, label %if.end
 
 if.then7:                                         ; preds = %while.body
   %mnt_dir = getelementptr inbounds %struct.mntent, ptr %info.031, i64 0, i32 1
-  %1 = load ptr, ptr %mnt_dir, align 8, !tbaa !19
+  %1 = load ptr, ptr %mnt_dir, align 8, !tbaa !16
   %call8 = tail call ptr @strcpy(ptr noundef nonnull dereferenceable(1) @largePageMinimum.dir_hugetlbfs, ptr noundef nonnull dereferenceable(1) %1) #16
   br label %while.end
 
 if.end:                                           ; preds = %while.body
   %call9 = tail call ptr @getmntent(ptr noundef nonnull %call1) #16
   %tobool4.not = icmp eq ptr %call9, null
-  br i1 %tobool4.not, label %while.end, label %while.body, !llvm.loop !20
+  br i1 %tobool4.not, label %while.end, label %while.body, !llvm.loop !17
 
 while.end:                                        ; preds = %if.end, %if.then2, %if.then7
   %call10 = tail call i32 @endmntent(ptr noundef nonnull %call1) #16
   br label %if.end11
 
 if.end11:                                         ; preds = %while.end, %if.then
-  %2 = load i8, ptr @largePageMinimum.dir_hugetlbfs, align 16, !tbaa !16
+  %2 = load i8, ptr @largePageMinimum.dir_hugetlbfs, align 16, !tbaa !13
   %tobool12.not = icmp eq i8 %2, 0
   br i1 %tobool12.not, label %if.end15, label %if.then13
 
@@ -320,12 +901,12 @@ declare i32 @getpagesize() local_unnamed_addr #9
 define dso_local void @SetLargePageSize() local_unnamed_addr #4 {
 entry:
   %call = tail call i64 @largePageMinimum()
-  %0 = tail call i64 @llvm.ctpop.i64(i64 %call), !range !21
+  %0 = tail call i64 @llvm.ctpop.i64(i64 %call), !range !19
   %or.cond = icmp eq i64 %0, 1
   br i1 %or.cond, label %if.end, label %cleanup
 
 if.end:                                           ; preds = %entry
-  store i64 %call, ptr @g_LargePageSize, align 8, !tbaa !13
+  store i64 %call, ptr @g_LargePageSize, align 8, !tbaa !11
   br label %cleanup
 
 cleanup:                                          ; preds = %entry, %if.end
@@ -368,55 +949,13 @@ return:                                           ; preds = %if.then5, %entry, %
 define dso_local void @BigFree(ptr noundef %address) local_unnamed_addr #4 {
 entry:
   %cmp = icmp eq ptr %address, null
-  br i1 %cmp, label %return, label %for.body.i
+  br i1 %cmp, label %return, label %if.end
 
-for.cond.i:                                       ; preds = %for.body.i
-  %indvars.iv.next.i = or i64 %indvars.iv.i, 1
-  %arrayidx.i.1 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.i
-  %0 = load ptr, ptr %arrayidx.i.1, align 8, !tbaa !5
-  %cmp1.i.1 = icmp eq ptr %0, %address
-  br i1 %cmp1.i.1, label %if.then.i, label %for.cond.i.1
-
-for.cond.i.1:                                     ; preds = %for.cond.i
-  %indvars.iv.next.i.1 = or i64 %indvars.iv.i, 2
-  %arrayidx.i.2 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.i.1
-  %1 = load ptr, ptr %arrayidx.i.2, align 16, !tbaa !5
-  %cmp1.i.2 = icmp eq ptr %1, %address
-  br i1 %cmp1.i.2, label %if.then.i, label %for.cond.i.2
-
-for.cond.i.2:                                     ; preds = %for.cond.i.1
-  %indvars.iv.next.i.2 = or i64 %indvars.iv.i, 3
-  %arrayidx.i.3 = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.next.i.2
-  %2 = load ptr, ptr %arrayidx.i.3, align 8, !tbaa !5
-  %cmp1.i.3 = icmp eq ptr %2, %address
-  br i1 %cmp1.i.3, label %if.then.i, label %for.cond.i.3
-
-for.cond.i.3:                                     ; preds = %for.cond.i.2
-  %indvars.iv.next.i.3 = add nuw nsw i64 %indvars.iv.i, 4
-  %exitcond.not.i.3 = icmp eq i64 %indvars.iv.next.i.3, 64
-  br i1 %exitcond.not.i.3, label %for.end.i, label %for.body.i, !llvm.loop !15
-
-for.body.i:                                       ; preds = %entry, %for.cond.i.3
-  %indvars.iv.i = phi i64 [ %indvars.iv.next.i.3, %for.cond.i.3 ], [ 0, %entry ]
-  %arrayidx.i = getelementptr inbounds [64 x ptr], ptr @g_HugePageAddr, i64 0, i64 %indvars.iv.i
-  %3 = load ptr, ptr %arrayidx.i, align 16, !tbaa !5
-  %cmp1.i = icmp eq ptr %3, %address
-  br i1 %cmp1.i, label %if.then.i, label %for.cond.i
-
-if.then.i:                                        ; preds = %for.cond.i.2, %for.cond.i.1, %for.cond.i, %for.body.i
-  %indvars.iv.i.lcssa = phi i64 [ %indvars.iv.i, %for.body.i ], [ %indvars.iv.next.i, %for.cond.i ], [ %indvars.iv.next.i.1, %for.cond.i.1 ], [ %indvars.iv.next.i.2, %for.cond.i.2 ]
-  %arrayidx.i.lcssa = phi ptr [ %arrayidx.i, %for.body.i ], [ %arrayidx.i.1, %for.cond.i ], [ %arrayidx.i.2, %for.cond.i.1 ], [ %arrayidx.i.3, %for.cond.i.2 ]
-  %arrayidx3.i = getelementptr inbounds [64 x i64], ptr @g_HugePageLen, i64 0, i64 %indvars.iv.i.lcssa
-  %4 = load i64, ptr %arrayidx3.i, align 8, !tbaa !13
-  %call.i = tail call i32 @munmap(ptr noundef nonnull %address, i64 noundef %4) #16
-  store ptr null, ptr %arrayidx.i.lcssa, align 8, !tbaa !5
+if.end:                                           ; preds = %entry
+  tail call fastcc void @VirtualFree(ptr noundef nonnull %address)
   br label %return
 
-for.end.i:                                        ; preds = %for.cond.i.3
-  tail call void @free(ptr noundef %address) #16
-  br label %return
-
-return:                                           ; preds = %for.end.i, %if.then.i, %entry
+return:                                           ; preds = %entry, %if.end
   ret void
 }
 
@@ -496,16 +1035,14 @@ attributes #19 = { cold }
 !6 = !{!"any pointer", !7, i64 0}
 !7 = !{!"omnipotent char", !8, i64 0}
 !8 = !{!"Simple C/C++ TBAA"}
-!9 = distinct !{!9, !10}
-!10 = !{!"llvm.loop.mustprogress"}
+!9 = !{!10, !10, i64 0}
+!10 = !{!"int", !7, i64 0}
 !11 = !{!12, !12, i64 0}
-!12 = !{!"int", !7, i64 0}
-!13 = !{!14, !14, i64 0}
-!14 = !{!"long", !7, i64 0}
-!15 = distinct !{!15, !10}
-!16 = !{!7, !7, i64 0}
-!17 = !{!18, !6, i64 16}
-!18 = !{!"mntent", !6, i64 0, !6, i64 8, !6, i64 16, !6, i64 24, !12, i64 32, !12, i64 36}
-!19 = !{!18, !6, i64 8}
-!20 = distinct !{!20, !10}
-!21 = !{i64 0, i64 65}
+!12 = !{!"long", !7, i64 0}
+!13 = !{!7, !7, i64 0}
+!14 = !{!15, !6, i64 16}
+!15 = !{!"mntent", !6, i64 0, !6, i64 8, !6, i64 16, !6, i64 24, !10, i64 32, !10, i64 36}
+!16 = !{!15, !6, i64 8}
+!17 = distinct !{!17, !18}
+!18 = !{!"llvm.loop.mustprogress"}
+!19 = !{i64 0, i64 65}

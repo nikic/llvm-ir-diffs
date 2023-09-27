@@ -157,158 +157,1054 @@ entry:
   store i32 64, ptr %arrayidx, align 4, !tbaa !5
   %ReorderCount.i20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 1
   store i32 4, ptr %ReorderCount.i20, align 8, !tbaa !10
-  %0 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 0
-  store <8 x i16> <i16 64, i16 63, i16 62, i16 61, i16 60, i16 59, i16 58, i16 57>, ptr %0, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 0
-  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %1, align 2, !tbaa !13, !alias.scope !17
-  %2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 8
-  store <8 x i16> <i16 56, i16 55, i16 54, i16 53, i16 52, i16 51, i16 50, i16 49>, ptr %2, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 8
-  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %3, align 2, !tbaa !13, !alias.scope !17
-  %4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 16
-  store <8 x i16> <i16 48, i16 47, i16 46, i16 45, i16 44, i16 43, i16 42, i16 41>, ptr %4, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 16
-  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %5, align 2, !tbaa !13, !alias.scope !17
-  %6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 24
-  store <8 x i16> <i16 40, i16 39, i16 38, i16 37, i16 36, i16 35, i16 34, i16 33>, ptr %6, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 24
-  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %7, align 2, !tbaa !13, !alias.scope !17
-  %8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 32
-  store <8 x i16> <i16 32, i16 31, i16 30, i16 29, i16 28, i16 27, i16 26, i16 25>, ptr %8, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 32
-  store <8 x i8> <i8 32, i8 33, i8 34, i8 35, i8 36, i8 37, i8 38, i8 39>, ptr %9, align 2, !tbaa !13, !alias.scope !17
-  %10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 40
-  store <8 x i16> <i16 24, i16 23, i16 22, i16 21, i16 20, i16 19, i16 18, i16 17>, ptr %10, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 40
-  store <8 x i8> <i8 40, i8 41, i8 42, i8 43, i8 44, i8 45, i8 46, i8 47>, ptr %11, align 2, !tbaa !13, !alias.scope !17
-  %12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 48
-  store <8 x i16> <i16 16, i16 15, i16 14, i16 13, i16 12, i16 11, i16 10, i16 9>, ptr %12, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 48
-  store <8 x i8> <i8 48, i8 49, i8 50, i8 51, i8 52, i8 53, i8 54, i8 55>, ptr %13, align 2, !tbaa !13, !alias.scope !17
-  %14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 56
-  store <8 x i16> <i16 8, i16 7, i16 6, i16 5, i16 4, i16 3, i16 2, i16 1>, ptr %14, align 4, !tbaa !11, !alias.scope !14, !noalias !17
-  %15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 56
-  store <8 x i8> <i8 56, i8 57, i8 58, i8 59, i8 60, i8 61, i8 62, i8 63>, ptr %15, align 2, !tbaa !13, !alias.scope !17
+  %arrayidx.i25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 0
+  store i16 64, ptr %arrayidx.i25, align 4, !tbaa !11
+  %arrayidx4.i27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 0
+  store i8 0, ptr %arrayidx4.i27, align 2, !tbaa !13
+  %arrayidx.i25.161 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 1
+  store i16 63, ptr %arrayidx.i25.161, align 2, !tbaa !11
+  %arrayidx4.i27.162 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 1
+  store i8 1, ptr %arrayidx4.i27.162, align 1, !tbaa !13
+  %arrayidx.i25.264 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 2
+  store i16 62, ptr %arrayidx.i25.264, align 8, !tbaa !11
+  %arrayidx4.i27.265 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 2
+  store i8 2, ptr %arrayidx4.i27.265, align 8, !tbaa !13
+  %arrayidx.i25.367 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 3
+  store i16 61, ptr %arrayidx.i25.367, align 2, !tbaa !11
+  %arrayidx4.i27.368 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 3
+  store i8 3, ptr %arrayidx4.i27.368, align 1, !tbaa !13
+  %arrayidx.i25.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 4
+  store i16 60, ptr %arrayidx.i25.4, align 4, !tbaa !11
+  %arrayidx4.i27.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 4
+  store i8 4, ptr %arrayidx4.i27.4, align 2, !tbaa !13
+  %arrayidx.i25.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 5
+  store i16 59, ptr %arrayidx.i25.5, align 2, !tbaa !11
+  %arrayidx4.i27.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 5
+  store i8 5, ptr %arrayidx4.i27.5, align 1, !tbaa !13
+  %arrayidx.i25.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 6
+  store i16 58, ptr %arrayidx.i25.6, align 8, !tbaa !11
+  %arrayidx4.i27.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 6
+  store i8 6, ptr %arrayidx4.i27.6, align 4, !tbaa !13
+  %arrayidx.i25.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 7
+  store i16 57, ptr %arrayidx.i25.7, align 2, !tbaa !11
+  %arrayidx4.i27.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 7
+  store i8 7, ptr %arrayidx4.i27.7, align 1, !tbaa !13
+  %arrayidx.i25.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 8
+  store i16 56, ptr %arrayidx.i25.8, align 4, !tbaa !11
+  %arrayidx4.i27.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 8
+  store i8 8, ptr %arrayidx4.i27.8, align 2, !tbaa !13
+  %arrayidx.i25.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 9
+  store i16 55, ptr %arrayidx.i25.9, align 2, !tbaa !11
+  %arrayidx4.i27.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 9
+  store i8 9, ptr %arrayidx4.i27.9, align 1, !tbaa !13
+  %arrayidx.i25.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 10
+  store i16 54, ptr %arrayidx.i25.10, align 8, !tbaa !11
+  %arrayidx4.i27.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 10
+  store i8 10, ptr %arrayidx4.i27.10, align 8, !tbaa !13
+  %arrayidx.i25.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 11
+  store i16 53, ptr %arrayidx.i25.11, align 2, !tbaa !11
+  %arrayidx4.i27.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 11
+  store i8 11, ptr %arrayidx4.i27.11, align 1, !tbaa !13
+  %arrayidx.i25.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 12
+  store i16 52, ptr %arrayidx.i25.12, align 4, !tbaa !11
+  %arrayidx4.i27.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 12
+  store i8 12, ptr %arrayidx4.i27.12, align 2, !tbaa !13
+  %arrayidx.i25.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 13
+  store i16 51, ptr %arrayidx.i25.13, align 2, !tbaa !11
+  %arrayidx4.i27.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 13
+  store i8 13, ptr %arrayidx4.i27.13, align 1, !tbaa !13
+  %arrayidx.i25.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 14
+  store i16 50, ptr %arrayidx.i25.14, align 8, !tbaa !11
+  %arrayidx4.i27.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 14
+  store i8 14, ptr %arrayidx4.i27.14, align 4, !tbaa !13
+  %arrayidx.i25.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 15
+  store i16 49, ptr %arrayidx.i25.15, align 2, !tbaa !11
+  %arrayidx4.i27.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 15
+  store i8 15, ptr %arrayidx4.i27.15, align 1, !tbaa !13
+  %arrayidx.i25.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 16
+  store i16 48, ptr %arrayidx.i25.16, align 4, !tbaa !11
+  %arrayidx4.i27.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 16
+  store i8 16, ptr %arrayidx4.i27.16, align 2, !tbaa !13
+  %arrayidx.i25.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 17
+  store i16 47, ptr %arrayidx.i25.17, align 2, !tbaa !11
+  %arrayidx4.i27.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 17
+  store i8 17, ptr %arrayidx4.i27.17, align 1, !tbaa !13
+  %arrayidx.i25.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 18
+  store i16 46, ptr %arrayidx.i25.18, align 8, !tbaa !11
+  %arrayidx4.i27.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 18
+  store i8 18, ptr %arrayidx4.i27.18, align 8, !tbaa !13
+  %arrayidx.i25.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 19
+  store i16 45, ptr %arrayidx.i25.19, align 2, !tbaa !11
+  %arrayidx4.i27.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 19
+  store i8 19, ptr %arrayidx4.i27.19, align 1, !tbaa !13
+  %arrayidx.i25.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 20
+  store i16 44, ptr %arrayidx.i25.20, align 4, !tbaa !11
+  %arrayidx4.i27.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 20
+  store i8 20, ptr %arrayidx4.i27.20, align 2, !tbaa !13
+  %arrayidx.i25.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 21
+  store i16 43, ptr %arrayidx.i25.21, align 2, !tbaa !11
+  %arrayidx4.i27.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 21
+  store i8 21, ptr %arrayidx4.i27.21, align 1, !tbaa !13
+  %arrayidx.i25.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 22
+  store i16 42, ptr %arrayidx.i25.22, align 8, !tbaa !11
+  %arrayidx4.i27.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 22
+  store i8 22, ptr %arrayidx4.i27.22, align 4, !tbaa !13
+  %arrayidx.i25.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 23
+  store i16 41, ptr %arrayidx.i25.23, align 2, !tbaa !11
+  %arrayidx4.i27.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 23
+  store i8 23, ptr %arrayidx4.i27.23, align 1, !tbaa !13
+  %arrayidx.i25.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 24
+  store i16 40, ptr %arrayidx.i25.24, align 4, !tbaa !11
+  %arrayidx4.i27.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 24
+  store i8 24, ptr %arrayidx4.i27.24, align 2, !tbaa !13
+  %arrayidx.i25.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 25
+  store i16 39, ptr %arrayidx.i25.25, align 2, !tbaa !11
+  %arrayidx4.i27.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 25
+  store i8 25, ptr %arrayidx4.i27.25, align 1, !tbaa !13
+  %arrayidx.i25.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 26
+  store i16 38, ptr %arrayidx.i25.26, align 8, !tbaa !11
+  %arrayidx4.i27.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 26
+  store i8 26, ptr %arrayidx4.i27.26, align 8, !tbaa !13
+  %arrayidx.i25.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 27
+  store i16 37, ptr %arrayidx.i25.27, align 2, !tbaa !11
+  %arrayidx4.i27.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 27
+  store i8 27, ptr %arrayidx4.i27.27, align 1, !tbaa !13
+  %arrayidx.i25.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 28
+  store i16 36, ptr %arrayidx.i25.28, align 4, !tbaa !11
+  %arrayidx4.i27.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 28
+  store i8 28, ptr %arrayidx4.i27.28, align 2, !tbaa !13
+  %arrayidx.i25.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 29
+  store i16 35, ptr %arrayidx.i25.29, align 2, !tbaa !11
+  %arrayidx4.i27.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 29
+  store i8 29, ptr %arrayidx4.i27.29, align 1, !tbaa !13
+  %arrayidx.i25.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 30
+  store i16 34, ptr %arrayidx.i25.30, align 8, !tbaa !11
+  %arrayidx4.i27.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 30
+  store i8 30, ptr %arrayidx4.i27.30, align 4, !tbaa !13
+  %arrayidx.i25.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 31
+  store i16 33, ptr %arrayidx.i25.31, align 2, !tbaa !11
+  %arrayidx4.i27.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 31
+  store i8 31, ptr %arrayidx4.i27.31, align 1, !tbaa !13
+  %arrayidx.i25.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 32
+  store i16 32, ptr %arrayidx.i25.32, align 4, !tbaa !11
+  %arrayidx4.i27.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 32
+  store i8 32, ptr %arrayidx4.i27.32, align 2, !tbaa !13
+  %arrayidx.i25.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 33
+  store i16 31, ptr %arrayidx.i25.33, align 2, !tbaa !11
+  %arrayidx4.i27.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 33
+  store i8 33, ptr %arrayidx4.i27.33, align 1, !tbaa !13
+  %arrayidx.i25.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 34
+  store i16 30, ptr %arrayidx.i25.34, align 8, !tbaa !11
+  %arrayidx4.i27.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 34
+  store i8 34, ptr %arrayidx4.i27.34, align 8, !tbaa !13
+  %arrayidx.i25.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 35
+  store i16 29, ptr %arrayidx.i25.35, align 2, !tbaa !11
+  %arrayidx4.i27.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 35
+  store i8 35, ptr %arrayidx4.i27.35, align 1, !tbaa !13
+  %arrayidx.i25.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 36
+  store i16 28, ptr %arrayidx.i25.36, align 4, !tbaa !11
+  %arrayidx4.i27.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 36
+  store i8 36, ptr %arrayidx4.i27.36, align 2, !tbaa !13
+  %arrayidx.i25.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 37
+  store i16 27, ptr %arrayidx.i25.37, align 2, !tbaa !11
+  %arrayidx4.i27.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 37
+  store i8 37, ptr %arrayidx4.i27.37, align 1, !tbaa !13
+  %arrayidx.i25.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 38
+  store i16 26, ptr %arrayidx.i25.38, align 8, !tbaa !11
+  %arrayidx4.i27.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 38
+  store i8 38, ptr %arrayidx4.i27.38, align 4, !tbaa !13
+  %arrayidx.i25.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 39
+  store i16 25, ptr %arrayidx.i25.39, align 2, !tbaa !11
+  %arrayidx4.i27.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 39
+  store i8 39, ptr %arrayidx4.i27.39, align 1, !tbaa !13
+  %arrayidx.i25.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 40
+  store i16 24, ptr %arrayidx.i25.40, align 4, !tbaa !11
+  %arrayidx4.i27.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 40
+  store i8 40, ptr %arrayidx4.i27.40, align 2, !tbaa !13
+  %arrayidx.i25.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 41
+  store i16 23, ptr %arrayidx.i25.41, align 2, !tbaa !11
+  %arrayidx4.i27.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 41
+  store i8 41, ptr %arrayidx4.i27.41, align 1, !tbaa !13
+  %arrayidx.i25.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 42
+  store i16 22, ptr %arrayidx.i25.42, align 8, !tbaa !11
+  %arrayidx4.i27.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 42
+  store i8 42, ptr %arrayidx4.i27.42, align 8, !tbaa !13
+  %arrayidx.i25.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 43
+  store i16 21, ptr %arrayidx.i25.43, align 2, !tbaa !11
+  %arrayidx4.i27.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 43
+  store i8 43, ptr %arrayidx4.i27.43, align 1, !tbaa !13
+  %arrayidx.i25.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 44
+  store i16 20, ptr %arrayidx.i25.44, align 4, !tbaa !11
+  %arrayidx4.i27.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 44
+  store i8 44, ptr %arrayidx4.i27.44, align 2, !tbaa !13
+  %arrayidx.i25.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 45
+  store i16 19, ptr %arrayidx.i25.45, align 2, !tbaa !11
+  %arrayidx4.i27.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 45
+  store i8 45, ptr %arrayidx4.i27.45, align 1, !tbaa !13
+  %arrayidx.i25.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 46
+  store i16 18, ptr %arrayidx.i25.46, align 8, !tbaa !11
+  %arrayidx4.i27.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 46
+  store i8 46, ptr %arrayidx4.i27.46, align 4, !tbaa !13
+  %arrayidx.i25.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 47
+  store i16 17, ptr %arrayidx.i25.47, align 2, !tbaa !11
+  %arrayidx4.i27.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 47
+  store i8 47, ptr %arrayidx4.i27.47, align 1, !tbaa !13
+  %arrayidx.i25.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 48
+  store i16 16, ptr %arrayidx.i25.48, align 4, !tbaa !11
+  %arrayidx4.i27.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 48
+  store i8 48, ptr %arrayidx4.i27.48, align 2, !tbaa !13
+  %arrayidx.i25.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 49
+  store i16 15, ptr %arrayidx.i25.49, align 2, !tbaa !11
+  %arrayidx4.i27.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 49
+  store i8 49, ptr %arrayidx4.i27.49, align 1, !tbaa !13
+  %arrayidx.i25.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 50
+  store i16 14, ptr %arrayidx.i25.50, align 8, !tbaa !11
+  %arrayidx4.i27.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 50
+  store i8 50, ptr %arrayidx4.i27.50, align 8, !tbaa !13
+  %arrayidx.i25.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 51
+  store i16 13, ptr %arrayidx.i25.51, align 2, !tbaa !11
+  %arrayidx4.i27.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 51
+  store i8 51, ptr %arrayidx4.i27.51, align 1, !tbaa !13
+  %arrayidx.i25.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 52
+  store i16 12, ptr %arrayidx.i25.52, align 4, !tbaa !11
+  %arrayidx4.i27.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 52
+  store i8 52, ptr %arrayidx4.i27.52, align 2, !tbaa !13
+  %arrayidx.i25.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 53
+  store i16 11, ptr %arrayidx.i25.53, align 2, !tbaa !11
+  %arrayidx4.i27.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 53
+  store i8 53, ptr %arrayidx4.i27.53, align 1, !tbaa !13
+  %arrayidx.i25.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 54
+  store i16 10, ptr %arrayidx.i25.54, align 8, !tbaa !11
+  %arrayidx4.i27.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 54
+  store i8 54, ptr %arrayidx4.i27.54, align 4, !tbaa !13
+  %arrayidx.i25.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 55
+  store i16 9, ptr %arrayidx.i25.55, align 2, !tbaa !11
+  %arrayidx4.i27.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 55
+  store i8 55, ptr %arrayidx4.i27.55, align 1, !tbaa !13
+  %arrayidx.i25.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 56
+  store i16 8, ptr %arrayidx.i25.56, align 4, !tbaa !11
+  %arrayidx4.i27.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 56
+  store i8 56, ptr %arrayidx4.i27.56, align 2, !tbaa !13
+  %arrayidx.i25.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 57
+  store i16 7, ptr %arrayidx.i25.57, align 2, !tbaa !11
+  %arrayidx4.i27.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 57
+  store i8 57, ptr %arrayidx4.i27.57, align 1, !tbaa !13
+  %arrayidx.i25.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 58
+  store i16 6, ptr %arrayidx.i25.58, align 8, !tbaa !11
+  %arrayidx4.i27.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 58
+  store i8 58, ptr %arrayidx4.i27.58, align 8, !tbaa !13
+  %arrayidx.i25.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 59
+  store i16 5, ptr %arrayidx.i25.59, align 2, !tbaa !11
+  %arrayidx4.i27.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 59
+  store i8 59, ptr %arrayidx4.i27.59, align 1, !tbaa !13
+  %arrayidx.i25.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 60
+  store i16 4, ptr %arrayidx.i25.60, align 4, !tbaa !11
+  %arrayidx4.i27.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 60
+  store i8 60, ptr %arrayidx4.i27.60, align 2, !tbaa !13
+  %arrayidx.i25.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 61
+  store i16 3, ptr %arrayidx.i25.61, align 2, !tbaa !11
+  %arrayidx4.i27.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 61
+  store i8 61, ptr %arrayidx4.i27.61, align 1, !tbaa !13
+  %arrayidx.i25.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 62
+  store i16 2, ptr %arrayidx.i25.62, align 8, !tbaa !11
+  %arrayidx4.i27.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 62
+  store i8 62, ptr %arrayidx4.i27.62, align 4, !tbaa !13
+  %arrayidx.i25.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 63
+  store i16 1, ptr %arrayidx.i25.63, align 2, !tbaa !11
+  %arrayidx4.i27.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 3, i64 63
+  store i8 63, ptr %arrayidx4.i27.63, align 1, !tbaa !13
   %arrayidx7.i30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 0, i32 2, i64 64
   store i16 0, ptr %arrayidx7.i30, align 4, !tbaa !11
   %arrayidx.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1
   store i32 64, ptr %arrayidx.1, align 8, !tbaa !5
   %ReorderCount.i20.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 1
   store i32 4, ptr %ReorderCount.i20.1, align 4, !tbaa !10
-  %16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 0
-  store <8 x i16> <i16 64, i16 63, i16 62, i16 61, i16 60, i16 59, i16 58, i16 57>, ptr %16, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 0
-  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %17, align 2, !tbaa !13, !alias.scope !22
-  %18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 8
-  store <8 x i16> <i16 56, i16 55, i16 54, i16 53, i16 52, i16 51, i16 50, i16 49>, ptr %18, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 8
-  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %19, align 2, !tbaa !13, !alias.scope !22
-  %20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 16
-  store <8 x i16> <i16 48, i16 47, i16 46, i16 45, i16 44, i16 43, i16 42, i16 41>, ptr %20, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 16
-  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %21, align 2, !tbaa !13, !alias.scope !22
-  %22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 24
-  store <8 x i16> <i16 40, i16 39, i16 38, i16 37, i16 36, i16 35, i16 34, i16 33>, ptr %22, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 24
-  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %23, align 2, !tbaa !13, !alias.scope !22
-  %24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 32
-  store <8 x i16> <i16 32, i16 31, i16 30, i16 29, i16 28, i16 27, i16 26, i16 25>, ptr %24, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 32
-  store <8 x i8> <i8 32, i8 33, i8 34, i8 35, i8 36, i8 37, i8 38, i8 39>, ptr %25, align 2, !tbaa !13, !alias.scope !22
-  %26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 40
-  store <8 x i16> <i16 24, i16 23, i16 22, i16 21, i16 20, i16 19, i16 18, i16 17>, ptr %26, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 40
-  store <8 x i8> <i8 40, i8 41, i8 42, i8 43, i8 44, i8 45, i8 46, i8 47>, ptr %27, align 2, !tbaa !13, !alias.scope !22
-  %28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 48
-  store <8 x i16> <i16 16, i16 15, i16 14, i16 13, i16 12, i16 11, i16 10, i16 9>, ptr %28, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 48
-  store <8 x i8> <i8 48, i8 49, i8 50, i8 51, i8 52, i8 53, i8 54, i8 55>, ptr %29, align 2, !tbaa !13, !alias.scope !22
-  %30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 56
-  store <8 x i16> <i16 8, i16 7, i16 6, i16 5, i16 4, i16 3, i16 2, i16 1>, ptr %30, align 8, !tbaa !11, !alias.scope !19, !noalias !22
-  %31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 56
-  store <8 x i8> <i8 56, i8 57, i8 58, i8 59, i8 60, i8 61, i8 62, i8 63>, ptr %31, align 2, !tbaa !13, !alias.scope !22
+  %arrayidx.i25.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 0
+  store i16 64, ptr %arrayidx.i25.1, align 8, !tbaa !11
+  %arrayidx4.i27.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 0
+  store i8 0, ptr %arrayidx4.i27.1, align 2, !tbaa !13
+  %arrayidx.i25.1.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 1
+  store i16 63, ptr %arrayidx.i25.1.1, align 2, !tbaa !11
+  %arrayidx4.i27.1.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 1
+  store i8 1, ptr %arrayidx4.i27.1.1, align 1, !tbaa !13
+  %arrayidx.i25.1.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 2
+  store i16 62, ptr %arrayidx.i25.1.2, align 4, !tbaa !11
+  %arrayidx4.i27.1.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 2
+  store i8 2, ptr %arrayidx4.i27.1.2, align 4, !tbaa !13
+  %arrayidx.i25.1.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 3
+  store i16 61, ptr %arrayidx.i25.1.3, align 2, !tbaa !11
+  %arrayidx4.i27.1.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 3
+  store i8 3, ptr %arrayidx4.i27.1.3, align 1, !tbaa !13
+  %arrayidx.i25.1.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 4
+  store i16 60, ptr %arrayidx.i25.1.4, align 8, !tbaa !11
+  %arrayidx4.i27.1.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 4
+  store i8 4, ptr %arrayidx4.i27.1.4, align 2, !tbaa !13
+  %arrayidx.i25.1.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 5
+  store i16 59, ptr %arrayidx.i25.1.5, align 2, !tbaa !11
+  %arrayidx4.i27.1.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 5
+  store i8 5, ptr %arrayidx4.i27.1.5, align 1, !tbaa !13
+  %arrayidx.i25.1.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 6
+  store i16 58, ptr %arrayidx.i25.1.6, align 4, !tbaa !11
+  %arrayidx4.i27.1.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 6
+  store i8 6, ptr %arrayidx4.i27.1.6, align 8, !tbaa !13
+  %arrayidx.i25.1.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 7
+  store i16 57, ptr %arrayidx.i25.1.7, align 2, !tbaa !11
+  %arrayidx4.i27.1.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 7
+  store i8 7, ptr %arrayidx4.i27.1.7, align 1, !tbaa !13
+  %arrayidx.i25.1.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 8
+  store i16 56, ptr %arrayidx.i25.1.8, align 8, !tbaa !11
+  %arrayidx4.i27.1.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 8
+  store i8 8, ptr %arrayidx4.i27.1.8, align 2, !tbaa !13
+  %arrayidx.i25.1.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 9
+  store i16 55, ptr %arrayidx.i25.1.9, align 2, !tbaa !11
+  %arrayidx4.i27.1.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 9
+  store i8 9, ptr %arrayidx4.i27.1.9, align 1, !tbaa !13
+  %arrayidx.i25.1.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 10
+  store i16 54, ptr %arrayidx.i25.1.10, align 4, !tbaa !11
+  %arrayidx4.i27.1.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 10
+  store i8 10, ptr %arrayidx4.i27.1.10, align 4, !tbaa !13
+  %arrayidx.i25.1.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 11
+  store i16 53, ptr %arrayidx.i25.1.11, align 2, !tbaa !11
+  %arrayidx4.i27.1.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 11
+  store i8 11, ptr %arrayidx4.i27.1.11, align 1, !tbaa !13
+  %arrayidx.i25.1.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 12
+  store i16 52, ptr %arrayidx.i25.1.12, align 8, !tbaa !11
+  %arrayidx4.i27.1.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 12
+  store i8 12, ptr %arrayidx4.i27.1.12, align 2, !tbaa !13
+  %arrayidx.i25.1.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 13
+  store i16 51, ptr %arrayidx.i25.1.13, align 2, !tbaa !11
+  %arrayidx4.i27.1.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 13
+  store i8 13, ptr %arrayidx4.i27.1.13, align 1, !tbaa !13
+  %arrayidx.i25.1.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 14
+  store i16 50, ptr %arrayidx.i25.1.14, align 4, !tbaa !11
+  %arrayidx4.i27.1.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 14
+  store i8 14, ptr %arrayidx4.i27.1.14, align 8, !tbaa !13
+  %arrayidx.i25.1.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 15
+  store i16 49, ptr %arrayidx.i25.1.15, align 2, !tbaa !11
+  %arrayidx4.i27.1.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 15
+  store i8 15, ptr %arrayidx4.i27.1.15, align 1, !tbaa !13
+  %arrayidx.i25.1.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 16
+  store i16 48, ptr %arrayidx.i25.1.16, align 8, !tbaa !11
+  %arrayidx4.i27.1.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 16
+  store i8 16, ptr %arrayidx4.i27.1.16, align 2, !tbaa !13
+  %arrayidx.i25.1.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 17
+  store i16 47, ptr %arrayidx.i25.1.17, align 2, !tbaa !11
+  %arrayidx4.i27.1.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 17
+  store i8 17, ptr %arrayidx4.i27.1.17, align 1, !tbaa !13
+  %arrayidx.i25.1.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 18
+  store i16 46, ptr %arrayidx.i25.1.18, align 4, !tbaa !11
+  %arrayidx4.i27.1.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 18
+  store i8 18, ptr %arrayidx4.i27.1.18, align 4, !tbaa !13
+  %arrayidx.i25.1.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 19
+  store i16 45, ptr %arrayidx.i25.1.19, align 2, !tbaa !11
+  %arrayidx4.i27.1.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 19
+  store i8 19, ptr %arrayidx4.i27.1.19, align 1, !tbaa !13
+  %arrayidx.i25.1.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 20
+  store i16 44, ptr %arrayidx.i25.1.20, align 8, !tbaa !11
+  %arrayidx4.i27.1.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 20
+  store i8 20, ptr %arrayidx4.i27.1.20, align 2, !tbaa !13
+  %arrayidx.i25.1.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 21
+  store i16 43, ptr %arrayidx.i25.1.21, align 2, !tbaa !11
+  %arrayidx4.i27.1.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 21
+  store i8 21, ptr %arrayidx4.i27.1.21, align 1, !tbaa !13
+  %arrayidx.i25.1.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 22
+  store i16 42, ptr %arrayidx.i25.1.22, align 4, !tbaa !11
+  %arrayidx4.i27.1.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 22
+  store i8 22, ptr %arrayidx4.i27.1.22, align 8, !tbaa !13
+  %arrayidx.i25.1.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 23
+  store i16 41, ptr %arrayidx.i25.1.23, align 2, !tbaa !11
+  %arrayidx4.i27.1.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 23
+  store i8 23, ptr %arrayidx4.i27.1.23, align 1, !tbaa !13
+  %arrayidx.i25.1.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 24
+  store i16 40, ptr %arrayidx.i25.1.24, align 8, !tbaa !11
+  %arrayidx4.i27.1.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 24
+  store i8 24, ptr %arrayidx4.i27.1.24, align 2, !tbaa !13
+  %arrayidx.i25.1.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 25
+  store i16 39, ptr %arrayidx.i25.1.25, align 2, !tbaa !11
+  %arrayidx4.i27.1.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 25
+  store i8 25, ptr %arrayidx4.i27.1.25, align 1, !tbaa !13
+  %arrayidx.i25.1.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 26
+  store i16 38, ptr %arrayidx.i25.1.26, align 4, !tbaa !11
+  %arrayidx4.i27.1.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 26
+  store i8 26, ptr %arrayidx4.i27.1.26, align 4, !tbaa !13
+  %arrayidx.i25.1.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 27
+  store i16 37, ptr %arrayidx.i25.1.27, align 2, !tbaa !11
+  %arrayidx4.i27.1.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 27
+  store i8 27, ptr %arrayidx4.i27.1.27, align 1, !tbaa !13
+  %arrayidx.i25.1.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 28
+  store i16 36, ptr %arrayidx.i25.1.28, align 8, !tbaa !11
+  %arrayidx4.i27.1.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 28
+  store i8 28, ptr %arrayidx4.i27.1.28, align 2, !tbaa !13
+  %arrayidx.i25.1.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 29
+  store i16 35, ptr %arrayidx.i25.1.29, align 2, !tbaa !11
+  %arrayidx4.i27.1.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 29
+  store i8 29, ptr %arrayidx4.i27.1.29, align 1, !tbaa !13
+  %arrayidx.i25.1.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 30
+  store i16 34, ptr %arrayidx.i25.1.30, align 4, !tbaa !11
+  %arrayidx4.i27.1.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 30
+  store i8 30, ptr %arrayidx4.i27.1.30, align 8, !tbaa !13
+  %arrayidx.i25.1.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 31
+  store i16 33, ptr %arrayidx.i25.1.31, align 2, !tbaa !11
+  %arrayidx4.i27.1.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 31
+  store i8 31, ptr %arrayidx4.i27.1.31, align 1, !tbaa !13
+  %arrayidx.i25.1.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 32
+  store i16 32, ptr %arrayidx.i25.1.32, align 8, !tbaa !11
+  %arrayidx4.i27.1.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 32
+  store i8 32, ptr %arrayidx4.i27.1.32, align 2, !tbaa !13
+  %arrayidx.i25.1.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 33
+  store i16 31, ptr %arrayidx.i25.1.33, align 2, !tbaa !11
+  %arrayidx4.i27.1.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 33
+  store i8 33, ptr %arrayidx4.i27.1.33, align 1, !tbaa !13
+  %arrayidx.i25.1.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 34
+  store i16 30, ptr %arrayidx.i25.1.34, align 4, !tbaa !11
+  %arrayidx4.i27.1.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 34
+  store i8 34, ptr %arrayidx4.i27.1.34, align 4, !tbaa !13
+  %arrayidx.i25.1.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 35
+  store i16 29, ptr %arrayidx.i25.1.35, align 2, !tbaa !11
+  %arrayidx4.i27.1.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 35
+  store i8 35, ptr %arrayidx4.i27.1.35, align 1, !tbaa !13
+  %arrayidx.i25.1.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 36
+  store i16 28, ptr %arrayidx.i25.1.36, align 8, !tbaa !11
+  %arrayidx4.i27.1.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 36
+  store i8 36, ptr %arrayidx4.i27.1.36, align 2, !tbaa !13
+  %arrayidx.i25.1.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 37
+  store i16 27, ptr %arrayidx.i25.1.37, align 2, !tbaa !11
+  %arrayidx4.i27.1.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 37
+  store i8 37, ptr %arrayidx4.i27.1.37, align 1, !tbaa !13
+  %arrayidx.i25.1.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 38
+  store i16 26, ptr %arrayidx.i25.1.38, align 4, !tbaa !11
+  %arrayidx4.i27.1.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 38
+  store i8 38, ptr %arrayidx4.i27.1.38, align 8, !tbaa !13
+  %arrayidx.i25.1.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 39
+  store i16 25, ptr %arrayidx.i25.1.39, align 2, !tbaa !11
+  %arrayidx4.i27.1.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 39
+  store i8 39, ptr %arrayidx4.i27.1.39, align 1, !tbaa !13
+  %arrayidx.i25.1.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 40
+  store i16 24, ptr %arrayidx.i25.1.40, align 8, !tbaa !11
+  %arrayidx4.i27.1.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 40
+  store i8 40, ptr %arrayidx4.i27.1.40, align 2, !tbaa !13
+  %arrayidx.i25.1.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 41
+  store i16 23, ptr %arrayidx.i25.1.41, align 2, !tbaa !11
+  %arrayidx4.i27.1.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 41
+  store i8 41, ptr %arrayidx4.i27.1.41, align 1, !tbaa !13
+  %arrayidx.i25.1.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 42
+  store i16 22, ptr %arrayidx.i25.1.42, align 4, !tbaa !11
+  %arrayidx4.i27.1.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 42
+  store i8 42, ptr %arrayidx4.i27.1.42, align 4, !tbaa !13
+  %arrayidx.i25.1.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 43
+  store i16 21, ptr %arrayidx.i25.1.43, align 2, !tbaa !11
+  %arrayidx4.i27.1.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 43
+  store i8 43, ptr %arrayidx4.i27.1.43, align 1, !tbaa !13
+  %arrayidx.i25.1.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 44
+  store i16 20, ptr %arrayidx.i25.1.44, align 8, !tbaa !11
+  %arrayidx4.i27.1.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 44
+  store i8 44, ptr %arrayidx4.i27.1.44, align 2, !tbaa !13
+  %arrayidx.i25.1.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 45
+  store i16 19, ptr %arrayidx.i25.1.45, align 2, !tbaa !11
+  %arrayidx4.i27.1.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 45
+  store i8 45, ptr %arrayidx4.i27.1.45, align 1, !tbaa !13
+  %arrayidx.i25.1.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 46
+  store i16 18, ptr %arrayidx.i25.1.46, align 4, !tbaa !11
+  %arrayidx4.i27.1.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 46
+  store i8 46, ptr %arrayidx4.i27.1.46, align 8, !tbaa !13
+  %arrayidx.i25.1.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 47
+  store i16 17, ptr %arrayidx.i25.1.47, align 2, !tbaa !11
+  %arrayidx4.i27.1.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 47
+  store i8 47, ptr %arrayidx4.i27.1.47, align 1, !tbaa !13
+  %arrayidx.i25.1.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 48
+  store i16 16, ptr %arrayidx.i25.1.48, align 8, !tbaa !11
+  %arrayidx4.i27.1.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 48
+  store i8 48, ptr %arrayidx4.i27.1.48, align 2, !tbaa !13
+  %arrayidx.i25.1.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 49
+  store i16 15, ptr %arrayidx.i25.1.49, align 2, !tbaa !11
+  %arrayidx4.i27.1.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 49
+  store i8 49, ptr %arrayidx4.i27.1.49, align 1, !tbaa !13
+  %arrayidx.i25.1.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 50
+  store i16 14, ptr %arrayidx.i25.1.50, align 4, !tbaa !11
+  %arrayidx4.i27.1.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 50
+  store i8 50, ptr %arrayidx4.i27.1.50, align 4, !tbaa !13
+  %arrayidx.i25.1.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 51
+  store i16 13, ptr %arrayidx.i25.1.51, align 2, !tbaa !11
+  %arrayidx4.i27.1.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 51
+  store i8 51, ptr %arrayidx4.i27.1.51, align 1, !tbaa !13
+  %arrayidx.i25.1.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 52
+  store i16 12, ptr %arrayidx.i25.1.52, align 8, !tbaa !11
+  %arrayidx4.i27.1.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 52
+  store i8 52, ptr %arrayidx4.i27.1.52, align 2, !tbaa !13
+  %arrayidx.i25.1.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 53
+  store i16 11, ptr %arrayidx.i25.1.53, align 2, !tbaa !11
+  %arrayidx4.i27.1.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 53
+  store i8 53, ptr %arrayidx4.i27.1.53, align 1, !tbaa !13
+  %arrayidx.i25.1.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 54
+  store i16 10, ptr %arrayidx.i25.1.54, align 4, !tbaa !11
+  %arrayidx4.i27.1.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 54
+  store i8 54, ptr %arrayidx4.i27.1.54, align 8, !tbaa !13
+  %arrayidx.i25.1.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 55
+  store i16 9, ptr %arrayidx.i25.1.55, align 2, !tbaa !11
+  %arrayidx4.i27.1.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 55
+  store i8 55, ptr %arrayidx4.i27.1.55, align 1, !tbaa !13
+  %arrayidx.i25.1.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 56
+  store i16 8, ptr %arrayidx.i25.1.56, align 8, !tbaa !11
+  %arrayidx4.i27.1.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 56
+  store i8 56, ptr %arrayidx4.i27.1.56, align 2, !tbaa !13
+  %arrayidx.i25.1.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 57
+  store i16 7, ptr %arrayidx.i25.1.57, align 2, !tbaa !11
+  %arrayidx4.i27.1.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 57
+  store i8 57, ptr %arrayidx4.i27.1.57, align 1, !tbaa !13
+  %arrayidx.i25.1.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 58
+  store i16 6, ptr %arrayidx.i25.1.58, align 4, !tbaa !11
+  %arrayidx4.i27.1.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 58
+  store i8 58, ptr %arrayidx4.i27.1.58, align 4, !tbaa !13
+  %arrayidx.i25.1.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 59
+  store i16 5, ptr %arrayidx.i25.1.59, align 2, !tbaa !11
+  %arrayidx4.i27.1.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 59
+  store i8 59, ptr %arrayidx4.i27.1.59, align 1, !tbaa !13
+  %arrayidx.i25.1.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 60
+  store i16 4, ptr %arrayidx.i25.1.60, align 8, !tbaa !11
+  %arrayidx4.i27.1.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 60
+  store i8 60, ptr %arrayidx4.i27.1.60, align 2, !tbaa !13
+  %arrayidx.i25.1.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 61
+  store i16 3, ptr %arrayidx.i25.1.61, align 2, !tbaa !11
+  %arrayidx4.i27.1.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 61
+  store i8 61, ptr %arrayidx4.i27.1.61, align 1, !tbaa !13
+  %arrayidx.i25.1.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 62
+  store i16 2, ptr %arrayidx.i25.1.62, align 4, !tbaa !11
+  %arrayidx4.i27.1.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 62
+  store i8 62, ptr %arrayidx4.i27.1.62, align 8, !tbaa !13
+  %arrayidx.i25.1.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 63
+  store i16 1, ptr %arrayidx.i25.1.63, align 2, !tbaa !11
+  %arrayidx4.i27.1.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 3, i64 63
+  store i8 63, ptr %arrayidx4.i27.1.63, align 1, !tbaa !13
   %arrayidx7.i30.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 1, i32 2, i64 64
   store i16 0, ptr %arrayidx7.i30.1, align 8, !tbaa !11
   %arrayidx.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2
   store i32 64, ptr %arrayidx.2, align 4, !tbaa !5
   %ReorderCount.i20.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 1
   store i32 4, ptr %ReorderCount.i20.2, align 8, !tbaa !10
-  %32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 0
-  store <8 x i16> <i16 64, i16 63, i16 62, i16 61, i16 60, i16 59, i16 58, i16 57>, ptr %32, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 0
-  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %33, align 2, !tbaa !13, !alias.scope !27
-  %34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 8
-  store <8 x i16> <i16 56, i16 55, i16 54, i16 53, i16 52, i16 51, i16 50, i16 49>, ptr %34, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 8
-  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %35, align 2, !tbaa !13, !alias.scope !27
-  %36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 16
-  store <8 x i16> <i16 48, i16 47, i16 46, i16 45, i16 44, i16 43, i16 42, i16 41>, ptr %36, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 16
-  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %37, align 2, !tbaa !13, !alias.scope !27
-  %38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 24
-  store <8 x i16> <i16 40, i16 39, i16 38, i16 37, i16 36, i16 35, i16 34, i16 33>, ptr %38, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 24
-  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %39, align 2, !tbaa !13, !alias.scope !27
-  %40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 32
-  store <8 x i16> <i16 32, i16 31, i16 30, i16 29, i16 28, i16 27, i16 26, i16 25>, ptr %40, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 32
-  store <8 x i8> <i8 32, i8 33, i8 34, i8 35, i8 36, i8 37, i8 38, i8 39>, ptr %41, align 2, !tbaa !13, !alias.scope !27
-  %42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 40
-  store <8 x i16> <i16 24, i16 23, i16 22, i16 21, i16 20, i16 19, i16 18, i16 17>, ptr %42, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 40
-  store <8 x i8> <i8 40, i8 41, i8 42, i8 43, i8 44, i8 45, i8 46, i8 47>, ptr %43, align 2, !tbaa !13, !alias.scope !27
-  %44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 48
-  store <8 x i16> <i16 16, i16 15, i16 14, i16 13, i16 12, i16 11, i16 10, i16 9>, ptr %44, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 48
-  store <8 x i8> <i8 48, i8 49, i8 50, i8 51, i8 52, i8 53, i8 54, i8 55>, ptr %45, align 2, !tbaa !13, !alias.scope !27
-  %46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 56
-  store <8 x i16> <i16 8, i16 7, i16 6, i16 5, i16 4, i16 3, i16 2, i16 1>, ptr %46, align 4, !tbaa !11, !alias.scope !24, !noalias !27
-  %47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 56
-  store <8 x i8> <i8 56, i8 57, i8 58, i8 59, i8 60, i8 61, i8 62, i8 63>, ptr %47, align 2, !tbaa !13, !alias.scope !27
+  %arrayidx.i25.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 0
+  store i16 64, ptr %arrayidx.i25.2, align 4, !tbaa !11
+  %arrayidx4.i27.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 0
+  store i8 0, ptr %arrayidx4.i27.2, align 2, !tbaa !13
+  %arrayidx.i25.2.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 1
+  store i16 63, ptr %arrayidx.i25.2.1, align 2, !tbaa !11
+  %arrayidx4.i27.2.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 1
+  store i8 1, ptr %arrayidx4.i27.2.1, align 1, !tbaa !13
+  %arrayidx.i25.2.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 2
+  store i16 62, ptr %arrayidx.i25.2.2, align 8, !tbaa !11
+  %arrayidx4.i27.2.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 2
+  store i8 2, ptr %arrayidx4.i27.2.2, align 8, !tbaa !13
+  %arrayidx.i25.2.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 3
+  store i16 61, ptr %arrayidx.i25.2.3, align 2, !tbaa !11
+  %arrayidx4.i27.2.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 3
+  store i8 3, ptr %arrayidx4.i27.2.3, align 1, !tbaa !13
+  %arrayidx.i25.2.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 4
+  store i16 60, ptr %arrayidx.i25.2.4, align 4, !tbaa !11
+  %arrayidx4.i27.2.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 4
+  store i8 4, ptr %arrayidx4.i27.2.4, align 2, !tbaa !13
+  %arrayidx.i25.2.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 5
+  store i16 59, ptr %arrayidx.i25.2.5, align 2, !tbaa !11
+  %arrayidx4.i27.2.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 5
+  store i8 5, ptr %arrayidx4.i27.2.5, align 1, !tbaa !13
+  %arrayidx.i25.2.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 6
+  store i16 58, ptr %arrayidx.i25.2.6, align 8, !tbaa !11
+  %arrayidx4.i27.2.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 6
+  store i8 6, ptr %arrayidx4.i27.2.6, align 4, !tbaa !13
+  %arrayidx.i25.2.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 7
+  store i16 57, ptr %arrayidx.i25.2.7, align 2, !tbaa !11
+  %arrayidx4.i27.2.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 7
+  store i8 7, ptr %arrayidx4.i27.2.7, align 1, !tbaa !13
+  %arrayidx.i25.2.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 8
+  store i16 56, ptr %arrayidx.i25.2.8, align 4, !tbaa !11
+  %arrayidx4.i27.2.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 8
+  store i8 8, ptr %arrayidx4.i27.2.8, align 2, !tbaa !13
+  %arrayidx.i25.2.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 9
+  store i16 55, ptr %arrayidx.i25.2.9, align 2, !tbaa !11
+  %arrayidx4.i27.2.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 9
+  store i8 9, ptr %arrayidx4.i27.2.9, align 1, !tbaa !13
+  %arrayidx.i25.2.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 10
+  store i16 54, ptr %arrayidx.i25.2.10, align 8, !tbaa !11
+  %arrayidx4.i27.2.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 10
+  store i8 10, ptr %arrayidx4.i27.2.10, align 8, !tbaa !13
+  %arrayidx.i25.2.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 11
+  store i16 53, ptr %arrayidx.i25.2.11, align 2, !tbaa !11
+  %arrayidx4.i27.2.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 11
+  store i8 11, ptr %arrayidx4.i27.2.11, align 1, !tbaa !13
+  %arrayidx.i25.2.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 12
+  store i16 52, ptr %arrayidx.i25.2.12, align 4, !tbaa !11
+  %arrayidx4.i27.2.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 12
+  store i8 12, ptr %arrayidx4.i27.2.12, align 2, !tbaa !13
+  %arrayidx.i25.2.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 13
+  store i16 51, ptr %arrayidx.i25.2.13, align 2, !tbaa !11
+  %arrayidx4.i27.2.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 13
+  store i8 13, ptr %arrayidx4.i27.2.13, align 1, !tbaa !13
+  %arrayidx.i25.2.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 14
+  store i16 50, ptr %arrayidx.i25.2.14, align 8, !tbaa !11
+  %arrayidx4.i27.2.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 14
+  store i8 14, ptr %arrayidx4.i27.2.14, align 4, !tbaa !13
+  %arrayidx.i25.2.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 15
+  store i16 49, ptr %arrayidx.i25.2.15, align 2, !tbaa !11
+  %arrayidx4.i27.2.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 15
+  store i8 15, ptr %arrayidx4.i27.2.15, align 1, !tbaa !13
+  %arrayidx.i25.2.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 16
+  store i16 48, ptr %arrayidx.i25.2.16, align 4, !tbaa !11
+  %arrayidx4.i27.2.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 16
+  store i8 16, ptr %arrayidx4.i27.2.16, align 2, !tbaa !13
+  %arrayidx.i25.2.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 17
+  store i16 47, ptr %arrayidx.i25.2.17, align 2, !tbaa !11
+  %arrayidx4.i27.2.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 17
+  store i8 17, ptr %arrayidx4.i27.2.17, align 1, !tbaa !13
+  %arrayidx.i25.2.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 18
+  store i16 46, ptr %arrayidx.i25.2.18, align 8, !tbaa !11
+  %arrayidx4.i27.2.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 18
+  store i8 18, ptr %arrayidx4.i27.2.18, align 8, !tbaa !13
+  %arrayidx.i25.2.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 19
+  store i16 45, ptr %arrayidx.i25.2.19, align 2, !tbaa !11
+  %arrayidx4.i27.2.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 19
+  store i8 19, ptr %arrayidx4.i27.2.19, align 1, !tbaa !13
+  %arrayidx.i25.2.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 20
+  store i16 44, ptr %arrayidx.i25.2.20, align 4, !tbaa !11
+  %arrayidx4.i27.2.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 20
+  store i8 20, ptr %arrayidx4.i27.2.20, align 2, !tbaa !13
+  %arrayidx.i25.2.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 21
+  store i16 43, ptr %arrayidx.i25.2.21, align 2, !tbaa !11
+  %arrayidx4.i27.2.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 21
+  store i8 21, ptr %arrayidx4.i27.2.21, align 1, !tbaa !13
+  %arrayidx.i25.2.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 22
+  store i16 42, ptr %arrayidx.i25.2.22, align 8, !tbaa !11
+  %arrayidx4.i27.2.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 22
+  store i8 22, ptr %arrayidx4.i27.2.22, align 4, !tbaa !13
+  %arrayidx.i25.2.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 23
+  store i16 41, ptr %arrayidx.i25.2.23, align 2, !tbaa !11
+  %arrayidx4.i27.2.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 23
+  store i8 23, ptr %arrayidx4.i27.2.23, align 1, !tbaa !13
+  %arrayidx.i25.2.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 24
+  store i16 40, ptr %arrayidx.i25.2.24, align 4, !tbaa !11
+  %arrayidx4.i27.2.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 24
+  store i8 24, ptr %arrayidx4.i27.2.24, align 2, !tbaa !13
+  %arrayidx.i25.2.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 25
+  store i16 39, ptr %arrayidx.i25.2.25, align 2, !tbaa !11
+  %arrayidx4.i27.2.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 25
+  store i8 25, ptr %arrayidx4.i27.2.25, align 1, !tbaa !13
+  %arrayidx.i25.2.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 26
+  store i16 38, ptr %arrayidx.i25.2.26, align 8, !tbaa !11
+  %arrayidx4.i27.2.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 26
+  store i8 26, ptr %arrayidx4.i27.2.26, align 8, !tbaa !13
+  %arrayidx.i25.2.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 27
+  store i16 37, ptr %arrayidx.i25.2.27, align 2, !tbaa !11
+  %arrayidx4.i27.2.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 27
+  store i8 27, ptr %arrayidx4.i27.2.27, align 1, !tbaa !13
+  %arrayidx.i25.2.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 28
+  store i16 36, ptr %arrayidx.i25.2.28, align 4, !tbaa !11
+  %arrayidx4.i27.2.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 28
+  store i8 28, ptr %arrayidx4.i27.2.28, align 2, !tbaa !13
+  %arrayidx.i25.2.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 29
+  store i16 35, ptr %arrayidx.i25.2.29, align 2, !tbaa !11
+  %arrayidx4.i27.2.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 29
+  store i8 29, ptr %arrayidx4.i27.2.29, align 1, !tbaa !13
+  %arrayidx.i25.2.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 30
+  store i16 34, ptr %arrayidx.i25.2.30, align 8, !tbaa !11
+  %arrayidx4.i27.2.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 30
+  store i8 30, ptr %arrayidx4.i27.2.30, align 4, !tbaa !13
+  %arrayidx.i25.2.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 31
+  store i16 33, ptr %arrayidx.i25.2.31, align 2, !tbaa !11
+  %arrayidx4.i27.2.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 31
+  store i8 31, ptr %arrayidx4.i27.2.31, align 1, !tbaa !13
+  %arrayidx.i25.2.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 32
+  store i16 32, ptr %arrayidx.i25.2.32, align 4, !tbaa !11
+  %arrayidx4.i27.2.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 32
+  store i8 32, ptr %arrayidx4.i27.2.32, align 2, !tbaa !13
+  %arrayidx.i25.2.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 33
+  store i16 31, ptr %arrayidx.i25.2.33, align 2, !tbaa !11
+  %arrayidx4.i27.2.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 33
+  store i8 33, ptr %arrayidx4.i27.2.33, align 1, !tbaa !13
+  %arrayidx.i25.2.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 34
+  store i16 30, ptr %arrayidx.i25.2.34, align 8, !tbaa !11
+  %arrayidx4.i27.2.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 34
+  store i8 34, ptr %arrayidx4.i27.2.34, align 8, !tbaa !13
+  %arrayidx.i25.2.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 35
+  store i16 29, ptr %arrayidx.i25.2.35, align 2, !tbaa !11
+  %arrayidx4.i27.2.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 35
+  store i8 35, ptr %arrayidx4.i27.2.35, align 1, !tbaa !13
+  %arrayidx.i25.2.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 36
+  store i16 28, ptr %arrayidx.i25.2.36, align 4, !tbaa !11
+  %arrayidx4.i27.2.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 36
+  store i8 36, ptr %arrayidx4.i27.2.36, align 2, !tbaa !13
+  %arrayidx.i25.2.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 37
+  store i16 27, ptr %arrayidx.i25.2.37, align 2, !tbaa !11
+  %arrayidx4.i27.2.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 37
+  store i8 37, ptr %arrayidx4.i27.2.37, align 1, !tbaa !13
+  %arrayidx.i25.2.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 38
+  store i16 26, ptr %arrayidx.i25.2.38, align 8, !tbaa !11
+  %arrayidx4.i27.2.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 38
+  store i8 38, ptr %arrayidx4.i27.2.38, align 4, !tbaa !13
+  %arrayidx.i25.2.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 39
+  store i16 25, ptr %arrayidx.i25.2.39, align 2, !tbaa !11
+  %arrayidx4.i27.2.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 39
+  store i8 39, ptr %arrayidx4.i27.2.39, align 1, !tbaa !13
+  %arrayidx.i25.2.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 40
+  store i16 24, ptr %arrayidx.i25.2.40, align 4, !tbaa !11
+  %arrayidx4.i27.2.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 40
+  store i8 40, ptr %arrayidx4.i27.2.40, align 2, !tbaa !13
+  %arrayidx.i25.2.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 41
+  store i16 23, ptr %arrayidx.i25.2.41, align 2, !tbaa !11
+  %arrayidx4.i27.2.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 41
+  store i8 41, ptr %arrayidx4.i27.2.41, align 1, !tbaa !13
+  %arrayidx.i25.2.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 42
+  store i16 22, ptr %arrayidx.i25.2.42, align 8, !tbaa !11
+  %arrayidx4.i27.2.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 42
+  store i8 42, ptr %arrayidx4.i27.2.42, align 8, !tbaa !13
+  %arrayidx.i25.2.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 43
+  store i16 21, ptr %arrayidx.i25.2.43, align 2, !tbaa !11
+  %arrayidx4.i27.2.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 43
+  store i8 43, ptr %arrayidx4.i27.2.43, align 1, !tbaa !13
+  %arrayidx.i25.2.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 44
+  store i16 20, ptr %arrayidx.i25.2.44, align 4, !tbaa !11
+  %arrayidx4.i27.2.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 44
+  store i8 44, ptr %arrayidx4.i27.2.44, align 2, !tbaa !13
+  %arrayidx.i25.2.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 45
+  store i16 19, ptr %arrayidx.i25.2.45, align 2, !tbaa !11
+  %arrayidx4.i27.2.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 45
+  store i8 45, ptr %arrayidx4.i27.2.45, align 1, !tbaa !13
+  %arrayidx.i25.2.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 46
+  store i16 18, ptr %arrayidx.i25.2.46, align 8, !tbaa !11
+  %arrayidx4.i27.2.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 46
+  store i8 46, ptr %arrayidx4.i27.2.46, align 4, !tbaa !13
+  %arrayidx.i25.2.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 47
+  store i16 17, ptr %arrayidx.i25.2.47, align 2, !tbaa !11
+  %arrayidx4.i27.2.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 47
+  store i8 47, ptr %arrayidx4.i27.2.47, align 1, !tbaa !13
+  %arrayidx.i25.2.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 48
+  store i16 16, ptr %arrayidx.i25.2.48, align 4, !tbaa !11
+  %arrayidx4.i27.2.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 48
+  store i8 48, ptr %arrayidx4.i27.2.48, align 2, !tbaa !13
+  %arrayidx.i25.2.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 49
+  store i16 15, ptr %arrayidx.i25.2.49, align 2, !tbaa !11
+  %arrayidx4.i27.2.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 49
+  store i8 49, ptr %arrayidx4.i27.2.49, align 1, !tbaa !13
+  %arrayidx.i25.2.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 50
+  store i16 14, ptr %arrayidx.i25.2.50, align 8, !tbaa !11
+  %arrayidx4.i27.2.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 50
+  store i8 50, ptr %arrayidx4.i27.2.50, align 8, !tbaa !13
+  %arrayidx.i25.2.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 51
+  store i16 13, ptr %arrayidx.i25.2.51, align 2, !tbaa !11
+  %arrayidx4.i27.2.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 51
+  store i8 51, ptr %arrayidx4.i27.2.51, align 1, !tbaa !13
+  %arrayidx.i25.2.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 52
+  store i16 12, ptr %arrayidx.i25.2.52, align 4, !tbaa !11
+  %arrayidx4.i27.2.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 52
+  store i8 52, ptr %arrayidx4.i27.2.52, align 2, !tbaa !13
+  %arrayidx.i25.2.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 53
+  store i16 11, ptr %arrayidx.i25.2.53, align 2, !tbaa !11
+  %arrayidx4.i27.2.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 53
+  store i8 53, ptr %arrayidx4.i27.2.53, align 1, !tbaa !13
+  %arrayidx.i25.2.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 54
+  store i16 10, ptr %arrayidx.i25.2.54, align 8, !tbaa !11
+  %arrayidx4.i27.2.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 54
+  store i8 54, ptr %arrayidx4.i27.2.54, align 4, !tbaa !13
+  %arrayidx.i25.2.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 55
+  store i16 9, ptr %arrayidx.i25.2.55, align 2, !tbaa !11
+  %arrayidx4.i27.2.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 55
+  store i8 55, ptr %arrayidx4.i27.2.55, align 1, !tbaa !13
+  %arrayidx.i25.2.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 56
+  store i16 8, ptr %arrayidx.i25.2.56, align 4, !tbaa !11
+  %arrayidx4.i27.2.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 56
+  store i8 56, ptr %arrayidx4.i27.2.56, align 2, !tbaa !13
+  %arrayidx.i25.2.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 57
+  store i16 7, ptr %arrayidx.i25.2.57, align 2, !tbaa !11
+  %arrayidx4.i27.2.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 57
+  store i8 57, ptr %arrayidx4.i27.2.57, align 1, !tbaa !13
+  %arrayidx.i25.2.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 58
+  store i16 6, ptr %arrayidx.i25.2.58, align 8, !tbaa !11
+  %arrayidx4.i27.2.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 58
+  store i8 58, ptr %arrayidx4.i27.2.58, align 8, !tbaa !13
+  %arrayidx.i25.2.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 59
+  store i16 5, ptr %arrayidx.i25.2.59, align 2, !tbaa !11
+  %arrayidx4.i27.2.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 59
+  store i8 59, ptr %arrayidx4.i27.2.59, align 1, !tbaa !13
+  %arrayidx.i25.2.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 60
+  store i16 4, ptr %arrayidx.i25.2.60, align 4, !tbaa !11
+  %arrayidx4.i27.2.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 60
+  store i8 60, ptr %arrayidx4.i27.2.60, align 2, !tbaa !13
+  %arrayidx.i25.2.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 61
+  store i16 3, ptr %arrayidx.i25.2.61, align 2, !tbaa !11
+  %arrayidx4.i27.2.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 61
+  store i8 61, ptr %arrayidx4.i27.2.61, align 1, !tbaa !13
+  %arrayidx.i25.2.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 62
+  store i16 2, ptr %arrayidx.i25.2.62, align 8, !tbaa !11
+  %arrayidx4.i27.2.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 62
+  store i8 62, ptr %arrayidx4.i27.2.62, align 4, !tbaa !13
+  %arrayidx.i25.2.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 63
+  store i16 1, ptr %arrayidx.i25.2.63, align 2, !tbaa !11
+  %arrayidx4.i27.2.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 3, i64 63
+  store i8 63, ptr %arrayidx4.i27.2.63, align 1, !tbaa !13
   %arrayidx7.i30.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 2, i32 2, i64 64
   store i16 0, ptr %arrayidx7.i30.2, align 4, !tbaa !11
   %arrayidx.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3
   store i32 64, ptr %arrayidx.3, align 8, !tbaa !5
   %ReorderCount.i20.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 1
   store i32 4, ptr %ReorderCount.i20.3, align 4, !tbaa !10
-  %48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 0
-  store <8 x i16> <i16 64, i16 63, i16 62, i16 61, i16 60, i16 59, i16 58, i16 57>, ptr %48, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 0
-  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %49, align 2, !tbaa !13, !alias.scope !32
-  %50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 8
-  store <8 x i16> <i16 56, i16 55, i16 54, i16 53, i16 52, i16 51, i16 50, i16 49>, ptr %50, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 8
-  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %51, align 2, !tbaa !13, !alias.scope !32
-  %52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 16
-  store <8 x i16> <i16 48, i16 47, i16 46, i16 45, i16 44, i16 43, i16 42, i16 41>, ptr %52, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 16
-  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %53, align 2, !tbaa !13, !alias.scope !32
-  %54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 24
-  store <8 x i16> <i16 40, i16 39, i16 38, i16 37, i16 36, i16 35, i16 34, i16 33>, ptr %54, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 24
-  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %55, align 2, !tbaa !13, !alias.scope !32
-  %56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 32
-  store <8 x i16> <i16 32, i16 31, i16 30, i16 29, i16 28, i16 27, i16 26, i16 25>, ptr %56, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 32
-  store <8 x i8> <i8 32, i8 33, i8 34, i8 35, i8 36, i8 37, i8 38, i8 39>, ptr %57, align 2, !tbaa !13, !alias.scope !32
-  %58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 40
-  store <8 x i16> <i16 24, i16 23, i16 22, i16 21, i16 20, i16 19, i16 18, i16 17>, ptr %58, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 40
-  store <8 x i8> <i8 40, i8 41, i8 42, i8 43, i8 44, i8 45, i8 46, i8 47>, ptr %59, align 2, !tbaa !13, !alias.scope !32
-  %60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 48
-  store <8 x i16> <i16 16, i16 15, i16 14, i16 13, i16 12, i16 11, i16 10, i16 9>, ptr %60, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 48
-  store <8 x i8> <i8 48, i8 49, i8 50, i8 51, i8 52, i8 53, i8 54, i8 55>, ptr %61, align 2, !tbaa !13, !alias.scope !32
-  %62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 56
-  store <8 x i16> <i16 8, i16 7, i16 6, i16 5, i16 4, i16 3, i16 2, i16 1>, ptr %62, align 8, !tbaa !11, !alias.scope !29, !noalias !32
-  %63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 56
-  store <8 x i8> <i8 56, i8 57, i8 58, i8 59, i8 60, i8 61, i8 62, i8 63>, ptr %63, align 2, !tbaa !13, !alias.scope !32
+  %arrayidx.i25.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 0
+  store i16 64, ptr %arrayidx.i25.3, align 8, !tbaa !11
+  %arrayidx4.i27.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 0
+  store i8 0, ptr %arrayidx4.i27.3, align 2, !tbaa !13
+  %arrayidx.i25.3.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 1
+  store i16 63, ptr %arrayidx.i25.3.1, align 2, !tbaa !11
+  %arrayidx4.i27.3.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 1
+  store i8 1, ptr %arrayidx4.i27.3.1, align 1, !tbaa !13
+  %arrayidx.i25.3.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 2
+  store i16 62, ptr %arrayidx.i25.3.2, align 4, !tbaa !11
+  %arrayidx4.i27.3.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 2
+  store i8 2, ptr %arrayidx4.i27.3.2, align 4, !tbaa !13
+  %arrayidx.i25.3.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 3
+  store i16 61, ptr %arrayidx.i25.3.3, align 2, !tbaa !11
+  %arrayidx4.i27.3.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 3
+  store i8 3, ptr %arrayidx4.i27.3.3, align 1, !tbaa !13
+  %arrayidx.i25.3.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 4
+  store i16 60, ptr %arrayidx.i25.3.4, align 8, !tbaa !11
+  %arrayidx4.i27.3.4 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 4
+  store i8 4, ptr %arrayidx4.i27.3.4, align 2, !tbaa !13
+  %arrayidx.i25.3.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 5
+  store i16 59, ptr %arrayidx.i25.3.5, align 2, !tbaa !11
+  %arrayidx4.i27.3.5 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 5
+  store i8 5, ptr %arrayidx4.i27.3.5, align 1, !tbaa !13
+  %arrayidx.i25.3.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 6
+  store i16 58, ptr %arrayidx.i25.3.6, align 4, !tbaa !11
+  %arrayidx4.i27.3.6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 6
+  store i8 6, ptr %arrayidx4.i27.3.6, align 8, !tbaa !13
+  %arrayidx.i25.3.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 7
+  store i16 57, ptr %arrayidx.i25.3.7, align 2, !tbaa !11
+  %arrayidx4.i27.3.7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 7
+  store i8 7, ptr %arrayidx4.i27.3.7, align 1, !tbaa !13
+  %arrayidx.i25.3.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 8
+  store i16 56, ptr %arrayidx.i25.3.8, align 8, !tbaa !11
+  %arrayidx4.i27.3.8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 8
+  store i8 8, ptr %arrayidx4.i27.3.8, align 2, !tbaa !13
+  %arrayidx.i25.3.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 9
+  store i16 55, ptr %arrayidx.i25.3.9, align 2, !tbaa !11
+  %arrayidx4.i27.3.9 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 9
+  store i8 9, ptr %arrayidx4.i27.3.9, align 1, !tbaa !13
+  %arrayidx.i25.3.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 10
+  store i16 54, ptr %arrayidx.i25.3.10, align 4, !tbaa !11
+  %arrayidx4.i27.3.10 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 10
+  store i8 10, ptr %arrayidx4.i27.3.10, align 4, !tbaa !13
+  %arrayidx.i25.3.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 11
+  store i16 53, ptr %arrayidx.i25.3.11, align 2, !tbaa !11
+  %arrayidx4.i27.3.11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 11
+  store i8 11, ptr %arrayidx4.i27.3.11, align 1, !tbaa !13
+  %arrayidx.i25.3.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 12
+  store i16 52, ptr %arrayidx.i25.3.12, align 8, !tbaa !11
+  %arrayidx4.i27.3.12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 12
+  store i8 12, ptr %arrayidx4.i27.3.12, align 2, !tbaa !13
+  %arrayidx.i25.3.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 13
+  store i16 51, ptr %arrayidx.i25.3.13, align 2, !tbaa !11
+  %arrayidx4.i27.3.13 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 13
+  store i8 13, ptr %arrayidx4.i27.3.13, align 1, !tbaa !13
+  %arrayidx.i25.3.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 14
+  store i16 50, ptr %arrayidx.i25.3.14, align 4, !tbaa !11
+  %arrayidx4.i27.3.14 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 14
+  store i8 14, ptr %arrayidx4.i27.3.14, align 8, !tbaa !13
+  %arrayidx.i25.3.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 15
+  store i16 49, ptr %arrayidx.i25.3.15, align 2, !tbaa !11
+  %arrayidx4.i27.3.15 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 15
+  store i8 15, ptr %arrayidx4.i27.3.15, align 1, !tbaa !13
+  %arrayidx.i25.3.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 16
+  store i16 48, ptr %arrayidx.i25.3.16, align 8, !tbaa !11
+  %arrayidx4.i27.3.16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 16
+  store i8 16, ptr %arrayidx4.i27.3.16, align 2, !tbaa !13
+  %arrayidx.i25.3.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 17
+  store i16 47, ptr %arrayidx.i25.3.17, align 2, !tbaa !11
+  %arrayidx4.i27.3.17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 17
+  store i8 17, ptr %arrayidx4.i27.3.17, align 1, !tbaa !13
+  %arrayidx.i25.3.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 18
+  store i16 46, ptr %arrayidx.i25.3.18, align 4, !tbaa !11
+  %arrayidx4.i27.3.18 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 18
+  store i8 18, ptr %arrayidx4.i27.3.18, align 4, !tbaa !13
+  %arrayidx.i25.3.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 19
+  store i16 45, ptr %arrayidx.i25.3.19, align 2, !tbaa !11
+  %arrayidx4.i27.3.19 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 19
+  store i8 19, ptr %arrayidx4.i27.3.19, align 1, !tbaa !13
+  %arrayidx.i25.3.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 20
+  store i16 44, ptr %arrayidx.i25.3.20, align 8, !tbaa !11
+  %arrayidx4.i27.3.20 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 20
+  store i8 20, ptr %arrayidx4.i27.3.20, align 2, !tbaa !13
+  %arrayidx.i25.3.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 21
+  store i16 43, ptr %arrayidx.i25.3.21, align 2, !tbaa !11
+  %arrayidx4.i27.3.21 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 21
+  store i8 21, ptr %arrayidx4.i27.3.21, align 1, !tbaa !13
+  %arrayidx.i25.3.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 22
+  store i16 42, ptr %arrayidx.i25.3.22, align 4, !tbaa !11
+  %arrayidx4.i27.3.22 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 22
+  store i8 22, ptr %arrayidx4.i27.3.22, align 8, !tbaa !13
+  %arrayidx.i25.3.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 23
+  store i16 41, ptr %arrayidx.i25.3.23, align 2, !tbaa !11
+  %arrayidx4.i27.3.23 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 23
+  store i8 23, ptr %arrayidx4.i27.3.23, align 1, !tbaa !13
+  %arrayidx.i25.3.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 24
+  store i16 40, ptr %arrayidx.i25.3.24, align 8, !tbaa !11
+  %arrayidx4.i27.3.24 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 24
+  store i8 24, ptr %arrayidx4.i27.3.24, align 2, !tbaa !13
+  %arrayidx.i25.3.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 25
+  store i16 39, ptr %arrayidx.i25.3.25, align 2, !tbaa !11
+  %arrayidx4.i27.3.25 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 25
+  store i8 25, ptr %arrayidx4.i27.3.25, align 1, !tbaa !13
+  %arrayidx.i25.3.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 26
+  store i16 38, ptr %arrayidx.i25.3.26, align 4, !tbaa !11
+  %arrayidx4.i27.3.26 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 26
+  store i8 26, ptr %arrayidx4.i27.3.26, align 4, !tbaa !13
+  %arrayidx.i25.3.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 27
+  store i16 37, ptr %arrayidx.i25.3.27, align 2, !tbaa !11
+  %arrayidx4.i27.3.27 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 27
+  store i8 27, ptr %arrayidx4.i27.3.27, align 1, !tbaa !13
+  %arrayidx.i25.3.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 28
+  store i16 36, ptr %arrayidx.i25.3.28, align 8, !tbaa !11
+  %arrayidx4.i27.3.28 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 28
+  store i8 28, ptr %arrayidx4.i27.3.28, align 2, !tbaa !13
+  %arrayidx.i25.3.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 29
+  store i16 35, ptr %arrayidx.i25.3.29, align 2, !tbaa !11
+  %arrayidx4.i27.3.29 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 29
+  store i8 29, ptr %arrayidx4.i27.3.29, align 1, !tbaa !13
+  %arrayidx.i25.3.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 30
+  store i16 34, ptr %arrayidx.i25.3.30, align 4, !tbaa !11
+  %arrayidx4.i27.3.30 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 30
+  store i8 30, ptr %arrayidx4.i27.3.30, align 8, !tbaa !13
+  %arrayidx.i25.3.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 31
+  store i16 33, ptr %arrayidx.i25.3.31, align 2, !tbaa !11
+  %arrayidx4.i27.3.31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 31
+  store i8 31, ptr %arrayidx4.i27.3.31, align 1, !tbaa !13
+  %arrayidx.i25.3.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 32
+  store i16 32, ptr %arrayidx.i25.3.32, align 8, !tbaa !11
+  %arrayidx4.i27.3.32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 32
+  store i8 32, ptr %arrayidx4.i27.3.32, align 2, !tbaa !13
+  %arrayidx.i25.3.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 33
+  store i16 31, ptr %arrayidx.i25.3.33, align 2, !tbaa !11
+  %arrayidx4.i27.3.33 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 33
+  store i8 33, ptr %arrayidx4.i27.3.33, align 1, !tbaa !13
+  %arrayidx.i25.3.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 34
+  store i16 30, ptr %arrayidx.i25.3.34, align 4, !tbaa !11
+  %arrayidx4.i27.3.34 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 34
+  store i8 34, ptr %arrayidx4.i27.3.34, align 4, !tbaa !13
+  %arrayidx.i25.3.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 35
+  store i16 29, ptr %arrayidx.i25.3.35, align 2, !tbaa !11
+  %arrayidx4.i27.3.35 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 35
+  store i8 35, ptr %arrayidx4.i27.3.35, align 1, !tbaa !13
+  %arrayidx.i25.3.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 36
+  store i16 28, ptr %arrayidx.i25.3.36, align 8, !tbaa !11
+  %arrayidx4.i27.3.36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 36
+  store i8 36, ptr %arrayidx4.i27.3.36, align 2, !tbaa !13
+  %arrayidx.i25.3.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 37
+  store i16 27, ptr %arrayidx.i25.3.37, align 2, !tbaa !11
+  %arrayidx4.i27.3.37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 37
+  store i8 37, ptr %arrayidx4.i27.3.37, align 1, !tbaa !13
+  %arrayidx.i25.3.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 38
+  store i16 26, ptr %arrayidx.i25.3.38, align 4, !tbaa !11
+  %arrayidx4.i27.3.38 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 38
+  store i8 38, ptr %arrayidx4.i27.3.38, align 8, !tbaa !13
+  %arrayidx.i25.3.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 39
+  store i16 25, ptr %arrayidx.i25.3.39, align 2, !tbaa !11
+  %arrayidx4.i27.3.39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 39
+  store i8 39, ptr %arrayidx4.i27.3.39, align 1, !tbaa !13
+  %arrayidx.i25.3.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 40
+  store i16 24, ptr %arrayidx.i25.3.40, align 8, !tbaa !11
+  %arrayidx4.i27.3.40 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 40
+  store i8 40, ptr %arrayidx4.i27.3.40, align 2, !tbaa !13
+  %arrayidx.i25.3.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 41
+  store i16 23, ptr %arrayidx.i25.3.41, align 2, !tbaa !11
+  %arrayidx4.i27.3.41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 41
+  store i8 41, ptr %arrayidx4.i27.3.41, align 1, !tbaa !13
+  %arrayidx.i25.3.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 42
+  store i16 22, ptr %arrayidx.i25.3.42, align 4, !tbaa !11
+  %arrayidx4.i27.3.42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 42
+  store i8 42, ptr %arrayidx4.i27.3.42, align 4, !tbaa !13
+  %arrayidx.i25.3.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 43
+  store i16 21, ptr %arrayidx.i25.3.43, align 2, !tbaa !11
+  %arrayidx4.i27.3.43 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 43
+  store i8 43, ptr %arrayidx4.i27.3.43, align 1, !tbaa !13
+  %arrayidx.i25.3.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 44
+  store i16 20, ptr %arrayidx.i25.3.44, align 8, !tbaa !11
+  %arrayidx4.i27.3.44 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 44
+  store i8 44, ptr %arrayidx4.i27.3.44, align 2, !tbaa !13
+  %arrayidx.i25.3.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 45
+  store i16 19, ptr %arrayidx.i25.3.45, align 2, !tbaa !11
+  %arrayidx4.i27.3.45 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 45
+  store i8 45, ptr %arrayidx4.i27.3.45, align 1, !tbaa !13
+  %arrayidx.i25.3.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 46
+  store i16 18, ptr %arrayidx.i25.3.46, align 4, !tbaa !11
+  %arrayidx4.i27.3.46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 46
+  store i8 46, ptr %arrayidx4.i27.3.46, align 8, !tbaa !13
+  %arrayidx.i25.3.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 47
+  store i16 17, ptr %arrayidx.i25.3.47, align 2, !tbaa !11
+  %arrayidx4.i27.3.47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 47
+  store i8 47, ptr %arrayidx4.i27.3.47, align 1, !tbaa !13
+  %arrayidx.i25.3.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 48
+  store i16 16, ptr %arrayidx.i25.3.48, align 8, !tbaa !11
+  %arrayidx4.i27.3.48 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 48
+  store i8 48, ptr %arrayidx4.i27.3.48, align 2, !tbaa !13
+  %arrayidx.i25.3.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 49
+  store i16 15, ptr %arrayidx.i25.3.49, align 2, !tbaa !11
+  %arrayidx4.i27.3.49 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 49
+  store i8 49, ptr %arrayidx4.i27.3.49, align 1, !tbaa !13
+  %arrayidx.i25.3.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 50
+  store i16 14, ptr %arrayidx.i25.3.50, align 4, !tbaa !11
+  %arrayidx4.i27.3.50 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 50
+  store i8 50, ptr %arrayidx4.i27.3.50, align 4, !tbaa !13
+  %arrayidx.i25.3.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 51
+  store i16 13, ptr %arrayidx.i25.3.51, align 2, !tbaa !11
+  %arrayidx4.i27.3.51 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 51
+  store i8 51, ptr %arrayidx4.i27.3.51, align 1, !tbaa !13
+  %arrayidx.i25.3.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 52
+  store i16 12, ptr %arrayidx.i25.3.52, align 8, !tbaa !11
+  %arrayidx4.i27.3.52 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 52
+  store i8 52, ptr %arrayidx4.i27.3.52, align 2, !tbaa !13
+  %arrayidx.i25.3.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 53
+  store i16 11, ptr %arrayidx.i25.3.53, align 2, !tbaa !11
+  %arrayidx4.i27.3.53 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 53
+  store i8 53, ptr %arrayidx4.i27.3.53, align 1, !tbaa !13
+  %arrayidx.i25.3.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 54
+  store i16 10, ptr %arrayidx.i25.3.54, align 4, !tbaa !11
+  %arrayidx4.i27.3.54 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 54
+  store i8 54, ptr %arrayidx4.i27.3.54, align 8, !tbaa !13
+  %arrayidx.i25.3.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 55
+  store i16 9, ptr %arrayidx.i25.3.55, align 2, !tbaa !11
+  %arrayidx4.i27.3.55 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 55
+  store i8 55, ptr %arrayidx4.i27.3.55, align 1, !tbaa !13
+  %arrayidx.i25.3.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 56
+  store i16 8, ptr %arrayidx.i25.3.56, align 8, !tbaa !11
+  %arrayidx4.i27.3.56 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 56
+  store i8 56, ptr %arrayidx4.i27.3.56, align 2, !tbaa !13
+  %arrayidx.i25.3.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 57
+  store i16 7, ptr %arrayidx.i25.3.57, align 2, !tbaa !11
+  %arrayidx4.i27.3.57 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 57
+  store i8 57, ptr %arrayidx4.i27.3.57, align 1, !tbaa !13
+  %arrayidx.i25.3.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 58
+  store i16 6, ptr %arrayidx.i25.3.58, align 4, !tbaa !11
+  %arrayidx4.i27.3.58 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 58
+  store i8 58, ptr %arrayidx4.i27.3.58, align 4, !tbaa !13
+  %arrayidx.i25.3.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 59
+  store i16 5, ptr %arrayidx.i25.3.59, align 2, !tbaa !11
+  %arrayidx4.i27.3.59 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 59
+  store i8 59, ptr %arrayidx4.i27.3.59, align 1, !tbaa !13
+  %arrayidx.i25.3.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 60
+  store i16 4, ptr %arrayidx.i25.3.60, align 8, !tbaa !11
+  %arrayidx4.i27.3.60 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 60
+  store i8 60, ptr %arrayidx4.i27.3.60, align 2, !tbaa !13
+  %arrayidx.i25.3.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 61
+  store i16 3, ptr %arrayidx.i25.3.61, align 2, !tbaa !11
+  %arrayidx4.i27.3.61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 61
+  store i8 61, ptr %arrayidx4.i27.3.61, align 1, !tbaa !13
+  %arrayidx.i25.3.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 62
+  store i16 2, ptr %arrayidx.i25.3.62, align 4, !tbaa !11
+  %arrayidx4.i27.3.62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 62
+  store i8 62, ptr %arrayidx4.i27.3.62, align 8, !tbaa !13
+  %arrayidx.i25.3.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 63
+  store i16 1, ptr %arrayidx.i25.3.63, align 2, !tbaa !11
+  %arrayidx4.i27.3.63 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 3, i64 63
+  store i8 63, ptr %arrayidx4.i27.3.63, align 1, !tbaa !13
   %arrayidx7.i30.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 14, i64 3, i32 2, i64 64
   store i16 0, ptr %arrayidx7.i30.3, align 8, !tbaa !11
   %_numDictBits = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 10
-  %64 = load i32, ptr %_numDictBits, align 8, !tbaa !34
-  %cmp2 = icmp eq i32 %64, 0
-  %shl = shl i32 %64, 1
+  %0 = load i32, ptr %_numDictBits, align 8, !tbaa !14
+  %cmp2 = icmp eq i32 %0, 0
+  %shl = shl i32 %0, 1
   %spec.select = select i1 %cmp2, i32 1, i32 %shl
   %arrayidx8 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0
   %cond.i = tail call i32 @llvm.umin.i32(i32 %spec.select, i32 24)
@@ -319,78 +1215,78 @@ entry:
   br i1 %cmp16.not.i, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.thread, label %for.body.preheader.i
 
 _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.thread: ; preds = %entry
-  %arrayidx7.i4263 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 0
-  store i16 0, ptr %arrayidx7.i4263, align 4, !tbaa !11
-  %arrayidx8.164 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1
-  store i32 %spec.select, ptr %arrayidx8.164, align 8, !tbaa !5
-  %ReorderCount.i32.166 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 1
-  store i32 4, ptr %ReorderCount.i32.166, align 4, !tbaa !10
-  %arrayidx7.i42.169 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 0
-  store i16 0, ptr %arrayidx7.i42.169, align 8, !tbaa !11
-  %arrayidx8.270 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2
-  store i32 %spec.select, ptr %arrayidx8.270, align 4, !tbaa !5
-  %ReorderCount.i32.272 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 1
-  store i32 4, ptr %ReorderCount.i32.272, align 8, !tbaa !10
+  %arrayidx7.i4272 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 0
+  store i16 0, ptr %arrayidx7.i4272, align 4, !tbaa !11
+  %arrayidx8.173 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1
+  store i32 %spec.select, ptr %arrayidx8.173, align 8, !tbaa !5
+  %ReorderCount.i32.175 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 1
+  store i32 4, ptr %ReorderCount.i32.175, align 4, !tbaa !10
+  %arrayidx7.i42.178 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 0
+  store i16 0, ptr %arrayidx7.i42.178, align 8, !tbaa !11
+  %arrayidx8.279 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2
+  store i32 %spec.select, ptr %arrayidx8.279, align 4, !tbaa !5
+  %ReorderCount.i32.281 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 1
+  store i32 4, ptr %ReorderCount.i32.281, align 8, !tbaa !10
   br label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2
 
 for.body.preheader.i:                             ; preds = %entry
   %wide.trip.count.i = zext i32 %cond.i to i64
   %min.iters.check = icmp ult i32 %spec.select, 16
-  br i1 %min.iters.check, label %for.body.i33.preheader, label %vector.memcheck136
+  br i1 %min.iters.check, label %for.body.i33.preheader, label %vector.memcheck
 
-vector.memcheck136:                               ; preds = %for.body.preheader.i
-  %scevgep137 = getelementptr inbounds i8, ptr %this, i64 1212
-  %65 = shl nuw nsw i64 %wide.trip.count.i, 1
-  %66 = add nuw nsw i64 %65, 1212
-  %scevgep138 = getelementptr i8, ptr %this, i64 %66
-  %scevgep139 = getelementptr inbounds i8, ptr %this, i64 1342
-  %67 = add nuw nsw i64 %wide.trip.count.i, 1342
-  %scevgep140 = getelementptr i8, ptr %this, i64 %67
-  %bound0141 = icmp ult ptr %scevgep137, %scevgep140
-  %bound1142 = icmp ult ptr %scevgep139, %scevgep138
-  %found.conflict143 = and i1 %bound0141, %bound1142
-  br i1 %found.conflict143, label %for.body.i33.preheader, label %vector.ph146
+vector.memcheck:                                  ; preds = %for.body.preheader.i
+  %scevgep = getelementptr inbounds i8, ptr %this, i64 1212
+  %1 = shl nuw nsw i64 %wide.trip.count.i, 1
+  %2 = add nuw nsw i64 %1, 1212
+  %scevgep83 = getelementptr i8, ptr %this, i64 %2
+  %scevgep84 = getelementptr inbounds i8, ptr %this, i64 1342
+  %3 = add nuw nsw i64 %wide.trip.count.i, 1342
+  %scevgep85 = getelementptr i8, ptr %this, i64 %3
+  %bound0 = icmp ult ptr %scevgep, %scevgep85
+  %bound1 = icmp ult ptr %scevgep84, %scevgep83
+  %found.conflict = and i1 %bound0, %bound1
+  br i1 %found.conflict, label %for.body.i33.preheader, label %vector.ph
 
-vector.ph146:                                     ; preds = %vector.memcheck136
+vector.ph:                                        ; preds = %vector.memcheck
   %n.vec = and i64 %wide.trip.count.i, 24
   %broadcast.splatinsert = insertelement <8 x i32> poison, i32 %cond.i, i64 0
   %broadcast.splat = shufflevector <8 x i32> %broadcast.splatinsert, <8 x i32> poison, <8 x i32> zeroinitializer
-  %68 = trunc <8 x i32> %broadcast.splat to <8 x i16>
-  %69 = add nsw <8 x i16> %68, <i16 0, i16 -1, i16 -2, i16 -3, i16 -4, i16 -5, i16 -6, i16 -7>
-  %70 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 0
-  store <8 x i16> %69, ptr %70, align 4, !tbaa !11, !alias.scope !51, !noalias !54
-  %71 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 0
-  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %71, align 2, !tbaa !13, !alias.scope !54
-  %72 = icmp eq i64 %n.vec, 8
-  br i1 %72, label %middle.block144, label %vector.body148.1, !llvm.loop !56
+  %4 = trunc <8 x i32> %broadcast.splat to <8 x i16>
+  %5 = add nsw <8 x i16> %4, <i16 0, i16 -1, i16 -2, i16 -3, i16 -4, i16 -5, i16 -6, i16 -7>
+  %6 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 0
+  store <8 x i16> %5, ptr %6, align 4, !tbaa !11, !alias.scope !31, !noalias !34
+  %7 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 0
+  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %7, align 2, !tbaa !13, !alias.scope !34
+  %8 = icmp eq i64 %n.vec, 8
+  br i1 %8, label %middle.block, label %vector.body.1, !llvm.loop !36
 
-vector.body148.1:                                 ; preds = %vector.ph146
-  %73 = trunc <8 x i32> %broadcast.splat to <8 x i16>
-  %74 = add nsw <8 x i16> %73, <i16 -8, i16 -9, i16 -10, i16 -11, i16 -12, i16 -13, i16 -14, i16 -15>
-  %75 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 8
-  store <8 x i16> %74, ptr %75, align 4, !tbaa !11, !alias.scope !51, !noalias !54
-  %76 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 8
-  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %76, align 2, !tbaa !13, !alias.scope !54
-  %77 = icmp eq i64 %n.vec, 16
-  br i1 %77, label %middle.block144, label %vector.body148.2, !llvm.loop !56
+vector.body.1:                                    ; preds = %vector.ph
+  %9 = trunc <8 x i32> %broadcast.splat to <8 x i16>
+  %10 = add nsw <8 x i16> %9, <i16 -8, i16 -9, i16 -10, i16 -11, i16 -12, i16 -13, i16 -14, i16 -15>
+  %11 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 8
+  store <8 x i16> %10, ptr %11, align 4, !tbaa !11, !alias.scope !31, !noalias !34
+  %12 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 8
+  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %12, align 2, !tbaa !13, !alias.scope !34
+  %13 = icmp eq i64 %n.vec, 16
+  br i1 %13, label %middle.block, label %vector.body.2, !llvm.loop !36
 
-vector.body148.2:                                 ; preds = %vector.body148.1
-  %78 = trunc <8 x i32> %broadcast.splat to <8 x i16>
-  %79 = add nsw <8 x i16> %78, <i16 -16, i16 -17, i16 -18, i16 -19, i16 -20, i16 -21, i16 -22, i16 -23>
-  %80 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 16
-  store <8 x i16> %79, ptr %80, align 4, !tbaa !11, !alias.scope !51, !noalias !54
-  %81 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 16
-  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %81, align 2, !tbaa !13, !alias.scope !54
-  br label %middle.block144
+vector.body.2:                                    ; preds = %vector.body.1
+  %14 = trunc <8 x i32> %broadcast.splat to <8 x i16>
+  %15 = add nsw <8 x i16> %14, <i16 -16, i16 -17, i16 -18, i16 -19, i16 -20, i16 -21, i16 -22, i16 -23>
+  %16 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 16
+  store <8 x i16> %15, ptr %16, align 4, !tbaa !11, !alias.scope !31, !noalias !34
+  %17 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 16
+  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %17, align 2, !tbaa !13, !alias.scope !34
+  br label %middle.block
 
-middle.block144:                                  ; preds = %vector.body148.2, %vector.body148.1, %vector.ph146
+middle.block:                                     ; preds = %vector.body.2, %vector.body.1, %vector.ph
   %cmp.n = icmp eq i64 %n.vec, %wide.trip.count.i
   br i1 %cmp.n, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43, label %for.body.i33.preheader
 
-for.body.i33.preheader:                           ; preds = %vector.memcheck136, %for.body.preheader.i, %middle.block144
-  %indvars.iv.i34.ph = phi i64 [ 0, %vector.memcheck136 ], [ 0, %for.body.preheader.i ], [ %n.vec, %middle.block144 ]
-  %82 = xor i64 %indvars.iv.i34.ph, -1
-  %83 = add nsw i64 %82, %wide.trip.count.i
+for.body.i33.preheader:                           ; preds = %vector.memcheck, %for.body.preheader.i, %middle.block
+  %indvars.iv.i34.ph = phi i64 [ 0, %vector.memcheck ], [ 0, %for.body.preheader.i ], [ %n.vec, %middle.block ]
+  %18 = xor i64 %indvars.iv.i34.ph, -1
+  %19 = add nsw i64 %18, %wide.trip.count.i
   %xtraiter = and i64 %wide.trip.count.i, 3
   %lcmp.mod.not = icmp eq i64 %xtraiter, 0
   br i1 %lcmp.mod.not, label %for.body.i33.prol.loopexit, label %for.body.i33.prol
@@ -398,8 +1294,8 @@ for.body.i33.preheader:                           ; preds = %vector.memcheck136,
 for.body.i33.prol:                                ; preds = %for.body.i33.preheader, %for.body.i33.prol
   %indvars.iv.i34.prol = phi i64 [ %indvars.iv.next.i40.prol, %for.body.i33.prol ], [ %indvars.iv.i34.ph, %for.body.i33.preheader ]
   %prol.iter = phi i64 [ %prol.iter.next, %for.body.i33.prol ], [ 0, %for.body.i33.preheader ]
-  %84 = trunc i64 %indvars.iv.i34.prol to i32
-  %sub.i35.prol = sub i32 %cond.i, %84
+  %20 = trunc i64 %indvars.iv.i34.prol to i32
+  %sub.i35.prol = sub i32 %cond.i, %20
   %conv.i36.prol = trunc i32 %sub.i35.prol to i16
   %arrayidx.i37.prol = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.i34.prol
   store i16 %conv.i36.prol, ptr %arrayidx.i37.prol, align 2, !tbaa !11
@@ -409,17 +1305,17 @@ for.body.i33.prol:                                ; preds = %for.body.i33.prehea
   %indvars.iv.next.i40.prol = add nuw nsw i64 %indvars.iv.i34.prol, 1
   %prol.iter.next = add i64 %prol.iter, 1
   %prol.iter.cmp.not = icmp eq i64 %prol.iter.next, %xtraiter
-  br i1 %prol.iter.cmp.not, label %for.body.i33.prol.loopexit, label %for.body.i33.prol, !llvm.loop !60
+  br i1 %prol.iter.cmp.not, label %for.body.i33.prol.loopexit, label %for.body.i33.prol, !llvm.loop !40
 
 for.body.i33.prol.loopexit:                       ; preds = %for.body.i33.prol, %for.body.i33.preheader
   %indvars.iv.i34.unr = phi i64 [ %indvars.iv.i34.ph, %for.body.i33.preheader ], [ %indvars.iv.next.i40.prol, %for.body.i33.prol ]
-  %85 = icmp ult i64 %83, 3
-  br i1 %85, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43, label %for.body.i33
+  %21 = icmp ult i64 %19, 3
+  br i1 %21, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43, label %for.body.i33
 
 for.body.i33:                                     ; preds = %for.body.i33.prol.loopexit, %for.body.i33
   %indvars.iv.i34 = phi i64 [ %indvars.iv.next.i40.3, %for.body.i33 ], [ %indvars.iv.i34.unr, %for.body.i33.prol.loopexit ]
-  %86 = trunc i64 %indvars.iv.i34 to i32
-  %sub.i35 = sub i32 %cond.i, %86
+  %22 = trunc i64 %indvars.iv.i34 to i32
+  %sub.i35 = sub i32 %cond.i, %22
   %conv.i36 = trunc i32 %sub.i35 to i16
   %arrayidx.i37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.i34
   store i16 %conv.i36, ptr %arrayidx.i37, align 2, !tbaa !11
@@ -427,37 +1323,37 @@ for.body.i33:                                     ; preds = %for.body.i33.prol.l
   %arrayidx4.i39 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 %indvars.iv.i34
   store i8 %conv2.i38, ptr %arrayidx4.i39, align 1, !tbaa !13
   %indvars.iv.next.i40 = add nuw nsw i64 %indvars.iv.i34, 1
-  %87 = trunc i64 %indvars.iv.next.i40 to i32
-  %sub.i35.1206 = sub i32 %cond.i, %87
-  %conv.i36.1207 = trunc i32 %sub.i35.1206 to i16
-  %arrayidx.i37.1208 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.next.i40
-  store i16 %conv.i36.1207, ptr %arrayidx.i37.1208, align 2, !tbaa !11
-  %conv2.i38.1209 = trunc i64 %indvars.iv.next.i40 to i8
-  %arrayidx4.i39.1210 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 %indvars.iv.next.i40
-  store i8 %conv2.i38.1209, ptr %arrayidx4.i39.1210, align 1, !tbaa !13
-  %indvars.iv.next.i40.1211 = add nuw nsw i64 %indvars.iv.i34, 2
-  %88 = trunc i64 %indvars.iv.next.i40.1211 to i32
-  %sub.i35.2215 = sub i32 %cond.i, %88
-  %conv.i36.2216 = trunc i32 %sub.i35.2215 to i16
-  %arrayidx.i37.2217 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.next.i40.1211
-  store i16 %conv.i36.2216, ptr %arrayidx.i37.2217, align 2, !tbaa !11
-  %conv2.i38.2218 = trunc i64 %indvars.iv.next.i40.1211 to i8
-  %arrayidx4.i39.2219 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 %indvars.iv.next.i40.1211
-  store i8 %conv2.i38.2218, ptr %arrayidx4.i39.2219, align 1, !tbaa !13
-  %indvars.iv.next.i40.2220 = add nuw nsw i64 %indvars.iv.i34, 3
-  %89 = trunc i64 %indvars.iv.next.i40.2220 to i32
-  %sub.i35.3 = sub i32 %cond.i, %89
+  %23 = trunc i64 %indvars.iv.next.i40 to i32
+  %sub.i35.1139 = sub i32 %cond.i, %23
+  %conv.i36.1140 = trunc i32 %sub.i35.1139 to i16
+  %arrayidx.i37.1141 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.next.i40
+  store i16 %conv.i36.1140, ptr %arrayidx.i37.1141, align 2, !tbaa !11
+  %conv2.i38.1142 = trunc i64 %indvars.iv.next.i40 to i8
+  %arrayidx4.i39.1143 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 %indvars.iv.next.i40
+  store i8 %conv2.i38.1142, ptr %arrayidx4.i39.1143, align 1, !tbaa !13
+  %indvars.iv.next.i40.1144 = add nuw nsw i64 %indvars.iv.i34, 2
+  %24 = trunc i64 %indvars.iv.next.i40.1144 to i32
+  %sub.i35.2148 = sub i32 %cond.i, %24
+  %conv.i36.2149 = trunc i32 %sub.i35.2148 to i16
+  %arrayidx.i37.2150 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.next.i40.1144
+  store i16 %conv.i36.2149, ptr %arrayidx.i37.2150, align 2, !tbaa !11
+  %conv2.i38.2151 = trunc i64 %indvars.iv.next.i40.1144 to i8
+  %arrayidx4.i39.2152 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 %indvars.iv.next.i40.1144
+  store i8 %conv2.i38.2151, ptr %arrayidx4.i39.2152, align 1, !tbaa !13
+  %indvars.iv.next.i40.2153 = add nuw nsw i64 %indvars.iv.i34, 3
+  %25 = trunc i64 %indvars.iv.next.i40.2153 to i32
+  %sub.i35.3 = sub i32 %cond.i, %25
   %conv.i36.3 = trunc i32 %sub.i35.3 to i16
-  %arrayidx.i37.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.next.i40.2220
+  %arrayidx.i37.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %indvars.iv.next.i40.2153
   store i16 %conv.i36.3, ptr %arrayidx.i37.3, align 2, !tbaa !11
-  %conv2.i38.3 = trunc i64 %indvars.iv.next.i40.2220 to i8
-  %arrayidx4.i39.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 %indvars.iv.next.i40.2220
+  %conv2.i38.3 = trunc i64 %indvars.iv.next.i40.2153 to i8
+  %arrayidx4.i39.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 3, i64 %indvars.iv.next.i40.2153
   store i8 %conv2.i38.3, ptr %arrayidx4.i39.3, align 1, !tbaa !13
   %indvars.iv.next.i40.3 = add nuw nsw i64 %indvars.iv.i34, 4
   %exitcond.not.i41.3 = icmp eq i64 %indvars.iv.next.i40.3, %wide.trip.count.i
-  br i1 %exitcond.not.i41.3, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43, label %for.body.i33, !llvm.loop !62
+  br i1 %exitcond.not.i41.3, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43, label %for.body.i33, !llvm.loop !42
 
-_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43: ; preds = %for.body.i33.prol.loopexit, %for.body.i33, %middle.block144
+_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43: ; preds = %for.body.i33.prol.loopexit, %for.body.i33, %middle.block
   %arrayidx7.i42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 0, i32 2, i64 %wide.trip.count.i
   store i16 0, ptr %arrayidx7.i42, align 2, !tbaa !11
   %arrayidx8.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1
@@ -466,81 +1362,81 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43: ; preds = %for
   %ReorderCount.i32.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 1
   store i32 4, ptr %ReorderCount.i32.1, align 4, !tbaa !10
   %wide.trip.count.i.1 = zext i32 %cond.i.1 to i64
-  %min.iters.check165 = icmp ult i32 %spec.select, 16
-  br i1 %min.iters.check165, label %for.body.i33.1.preheader, label %vector.memcheck155
+  %min.iters.check98 = icmp ult i32 %spec.select, 16
+  br i1 %min.iters.check98, label %for.body.i33.1.preheader, label %vector.memcheck88
 
-vector.memcheck155:                               ; preds = %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43
-  %scevgep156 = getelementptr inbounds i8, ptr %this, i64 1416
-  %90 = shl nuw nsw i64 %wide.trip.count.i.1, 1
-  %91 = add nuw nsw i64 %90, 1416
-  %scevgep157 = getelementptr i8, ptr %this, i64 %91
-  %scevgep158 = getelementptr inbounds i8, ptr %this, i64 1546
-  %92 = add nuw nsw i64 %wide.trip.count.i.1, 1546
-  %scevgep159 = getelementptr i8, ptr %this, i64 %92
-  %bound0160 = icmp ult ptr %scevgep156, %scevgep159
-  %bound1161 = icmp ult ptr %scevgep158, %scevgep157
-  %found.conflict162 = and i1 %bound0160, %bound1161
-  br i1 %found.conflict162, label %for.body.i33.1.preheader, label %vector.ph166
+vector.memcheck88:                                ; preds = %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43
+  %scevgep89 = getelementptr inbounds i8, ptr %this, i64 1416
+  %26 = shl nuw nsw i64 %wide.trip.count.i.1, 1
+  %27 = add nuw nsw i64 %26, 1416
+  %scevgep90 = getelementptr i8, ptr %this, i64 %27
+  %scevgep91 = getelementptr inbounds i8, ptr %this, i64 1546
+  %28 = add nuw nsw i64 %wide.trip.count.i.1, 1546
+  %scevgep92 = getelementptr i8, ptr %this, i64 %28
+  %bound093 = icmp ult ptr %scevgep89, %scevgep92
+  %bound194 = icmp ult ptr %scevgep91, %scevgep90
+  %found.conflict95 = and i1 %bound093, %bound194
+  br i1 %found.conflict95, label %for.body.i33.1.preheader, label %vector.ph99
 
-vector.ph166:                                     ; preds = %vector.memcheck155
-  %n.vec168 = and i64 %wide.trip.count.i.1, 56
-  %broadcast.splatinsert177 = insertelement <8 x i32> poison, i32 %cond.i.1, i64 0
-  %broadcast.splat178 = shufflevector <8 x i32> %broadcast.splatinsert177, <8 x i32> poison, <8 x i32> zeroinitializer
-  %93 = trunc <8 x i32> %broadcast.splat178 to <8 x i16>
-  %94 = add nsw <8 x i16> %93, <i16 0, i16 -1, i16 -2, i16 -3, i16 -4, i16 -5, i16 -6, i16 -7>
-  %95 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 0
-  store <8 x i16> %94, ptr %95, align 8, !tbaa !11, !alias.scope !63, !noalias !66
-  %96 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 0
-  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %96, align 2, !tbaa !13, !alias.scope !66
-  %97 = icmp eq i64 %n.vec168, 8
-  br i1 %97, label %middle.block163, label %vector.body171.1, !llvm.loop !68
+vector.ph99:                                      ; preds = %vector.memcheck88
+  %n.vec101 = and i64 %wide.trip.count.i.1, 56
+  %broadcast.splatinsert110 = insertelement <8 x i32> poison, i32 %cond.i.1, i64 0
+  %broadcast.splat111 = shufflevector <8 x i32> %broadcast.splatinsert110, <8 x i32> poison, <8 x i32> zeroinitializer
+  %29 = trunc <8 x i32> %broadcast.splat111 to <8 x i16>
+  %30 = add nsw <8 x i16> %29, <i16 0, i16 -1, i16 -2, i16 -3, i16 -4, i16 -5, i16 -6, i16 -7>
+  %31 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 0
+  store <8 x i16> %30, ptr %31, align 8, !tbaa !11, !alias.scope !43, !noalias !46
+  %32 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 0
+  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %32, align 2, !tbaa !13, !alias.scope !46
+  %33 = icmp eq i64 %n.vec101, 8
+  br i1 %33, label %middle.block96, label %vector.body104.1, !llvm.loop !48
 
-vector.body171.1:                                 ; preds = %vector.ph166
-  %98 = trunc <8 x i32> %broadcast.splat178 to <8 x i16>
-  %99 = add nsw <8 x i16> %98, <i16 -8, i16 -9, i16 -10, i16 -11, i16 -12, i16 -13, i16 -14, i16 -15>
-  %100 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 8
-  store <8 x i16> %99, ptr %100, align 8, !tbaa !11, !alias.scope !63, !noalias !66
-  %101 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 8
-  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %101, align 2, !tbaa !13, !alias.scope !66
-  %102 = icmp eq i64 %n.vec168, 16
-  br i1 %102, label %middle.block163, label %vector.body171.2, !llvm.loop !68
+vector.body104.1:                                 ; preds = %vector.ph99
+  %34 = trunc <8 x i32> %broadcast.splat111 to <8 x i16>
+  %35 = add nsw <8 x i16> %34, <i16 -8, i16 -9, i16 -10, i16 -11, i16 -12, i16 -13, i16 -14, i16 -15>
+  %36 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 8
+  store <8 x i16> %35, ptr %36, align 8, !tbaa !11, !alias.scope !43, !noalias !46
+  %37 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 8
+  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %37, align 2, !tbaa !13, !alias.scope !46
+  %38 = icmp eq i64 %n.vec101, 16
+  br i1 %38, label %middle.block96, label %vector.body104.2, !llvm.loop !48
 
-vector.body171.2:                                 ; preds = %vector.body171.1
-  %103 = trunc <8 x i32> %broadcast.splat178 to <8 x i16>
-  %104 = add nsw <8 x i16> %103, <i16 -16, i16 -17, i16 -18, i16 -19, i16 -20, i16 -21, i16 -22, i16 -23>
-  %105 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 16
-  store <8 x i16> %104, ptr %105, align 8, !tbaa !11, !alias.scope !63, !noalias !66
-  %106 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 16
-  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %106, align 2, !tbaa !13, !alias.scope !66
-  %107 = icmp eq i64 %n.vec168, 24
-  br i1 %107, label %middle.block163, label %vector.body171.3, !llvm.loop !68
+vector.body104.2:                                 ; preds = %vector.body104.1
+  %39 = trunc <8 x i32> %broadcast.splat111 to <8 x i16>
+  %40 = add nsw <8 x i16> %39, <i16 -16, i16 -17, i16 -18, i16 -19, i16 -20, i16 -21, i16 -22, i16 -23>
+  %41 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 16
+  store <8 x i16> %40, ptr %41, align 8, !tbaa !11, !alias.scope !43, !noalias !46
+  %42 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 16
+  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %42, align 2, !tbaa !13, !alias.scope !46
+  %43 = icmp eq i64 %n.vec101, 24
+  br i1 %43, label %middle.block96, label %vector.body104.3, !llvm.loop !48
 
-vector.body171.3:                                 ; preds = %vector.body171.2
-  %108 = trunc <8 x i32> %broadcast.splat178 to <8 x i16>
-  %109 = add nsw <8 x i16> %108, <i16 -24, i16 -25, i16 -26, i16 -27, i16 -28, i16 -29, i16 -30, i16 -31>
-  %110 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 24
-  store <8 x i16> %109, ptr %110, align 8, !tbaa !11, !alias.scope !63, !noalias !66
-  %111 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 24
-  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %111, align 2, !tbaa !13, !alias.scope !66
-  br label %middle.block163
+vector.body104.3:                                 ; preds = %vector.body104.2
+  %44 = trunc <8 x i32> %broadcast.splat111 to <8 x i16>
+  %45 = add nsw <8 x i16> %44, <i16 -24, i16 -25, i16 -26, i16 -27, i16 -28, i16 -29, i16 -30, i16 -31>
+  %46 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 24
+  store <8 x i16> %45, ptr %46, align 8, !tbaa !11, !alias.scope !43, !noalias !46
+  %47 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 24
+  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %47, align 2, !tbaa !13, !alias.scope !46
+  br label %middle.block96
 
-middle.block163:                                  ; preds = %vector.body171.3, %vector.body171.2, %vector.body171.1, %vector.ph166
-  %cmp.n170 = icmp eq i64 %n.vec168, %wide.trip.count.i.1
-  br i1 %cmp.n170, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, label %for.body.i33.1.preheader
+middle.block96:                                   ; preds = %vector.body104.3, %vector.body104.2, %vector.body104.1, %vector.ph99
+  %cmp.n103 = icmp eq i64 %n.vec101, %wide.trip.count.i.1
+  br i1 %cmp.n103, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, label %for.body.i33.1.preheader
 
-for.body.i33.1.preheader:                         ; preds = %vector.memcheck155, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43, %middle.block163
-  %indvars.iv.i34.1.ph = phi i64 [ 0, %vector.memcheck155 ], [ 0, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43 ], [ %n.vec168, %middle.block163 ]
-  %112 = xor i64 %indvars.iv.i34.1.ph, -1
-  %113 = add nsw i64 %112, %wide.trip.count.i.1
-  %xtraiter223 = and i64 %wide.trip.count.i.1, 3
-  %lcmp.mod224.not = icmp eq i64 %xtraiter223, 0
-  br i1 %lcmp.mod224.not, label %for.body.i33.1.prol.loopexit, label %for.body.i33.1.prol
+for.body.i33.1.preheader:                         ; preds = %vector.memcheck88, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43, %middle.block96
+  %indvars.iv.i34.1.ph = phi i64 [ 0, %vector.memcheck88 ], [ 0, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43 ], [ %n.vec101, %middle.block96 ]
+  %48 = xor i64 %indvars.iv.i34.1.ph, -1
+  %49 = add nsw i64 %48, %wide.trip.count.i.1
+  %xtraiter156 = and i64 %wide.trip.count.i.1, 3
+  %lcmp.mod157.not = icmp eq i64 %xtraiter156, 0
+  br i1 %lcmp.mod157.not, label %for.body.i33.1.prol.loopexit, label %for.body.i33.1.prol
 
 for.body.i33.1.prol:                              ; preds = %for.body.i33.1.preheader, %for.body.i33.1.prol
   %indvars.iv.i34.1.prol = phi i64 [ %indvars.iv.next.i40.1.prol, %for.body.i33.1.prol ], [ %indvars.iv.i34.1.ph, %for.body.i33.1.preheader ]
-  %prol.iter225 = phi i64 [ %prol.iter225.next, %for.body.i33.1.prol ], [ 0, %for.body.i33.1.preheader ]
-  %114 = trunc i64 %indvars.iv.i34.1.prol to i32
-  %sub.i35.1.prol = sub i32 %cond.i.1, %114
+  %prol.iter158 = phi i64 [ %prol.iter158.next, %for.body.i33.1.prol ], [ 0, %for.body.i33.1.preheader ]
+  %50 = trunc i64 %indvars.iv.i34.1.prol to i32
+  %sub.i35.1.prol = sub i32 %cond.i.1, %50
   %conv.i36.1.prol = trunc i32 %sub.i35.1.prol to i16
   %arrayidx.i37.1.prol = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 %indvars.iv.i34.1.prol
   store i16 %conv.i36.1.prol, ptr %arrayidx.i37.1.prol, align 2, !tbaa !11
@@ -548,19 +1444,19 @@ for.body.i33.1.prol:                              ; preds = %for.body.i33.1.preh
   %arrayidx4.i39.1.prol = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 %indvars.iv.i34.1.prol
   store i8 %conv2.i38.1.prol, ptr %arrayidx4.i39.1.prol, align 1, !tbaa !13
   %indvars.iv.next.i40.1.prol = add nuw nsw i64 %indvars.iv.i34.1.prol, 1
-  %prol.iter225.next = add i64 %prol.iter225, 1
-  %prol.iter225.cmp.not = icmp eq i64 %prol.iter225.next, %xtraiter223
-  br i1 %prol.iter225.cmp.not, label %for.body.i33.1.prol.loopexit, label %for.body.i33.1.prol, !llvm.loop !69
+  %prol.iter158.next = add i64 %prol.iter158, 1
+  %prol.iter158.cmp.not = icmp eq i64 %prol.iter158.next, %xtraiter156
+  br i1 %prol.iter158.cmp.not, label %for.body.i33.1.prol.loopexit, label %for.body.i33.1.prol, !llvm.loop !49
 
 for.body.i33.1.prol.loopexit:                     ; preds = %for.body.i33.1.prol, %for.body.i33.1.preheader
   %indvars.iv.i34.1.unr = phi i64 [ %indvars.iv.i34.1.ph, %for.body.i33.1.preheader ], [ %indvars.iv.next.i40.1.prol, %for.body.i33.1.prol ]
-  %115 = icmp ult i64 %113, 3
-  br i1 %115, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, label %for.body.i33.1
+  %51 = icmp ult i64 %49, 3
+  br i1 %51, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, label %for.body.i33.1
 
 for.body.i33.1:                                   ; preds = %for.body.i33.1.prol.loopexit, %for.body.i33.1
   %indvars.iv.i34.1 = phi i64 [ %indvars.iv.next.i40.1.3, %for.body.i33.1 ], [ %indvars.iv.i34.1.unr, %for.body.i33.1.prol.loopexit ]
-  %116 = trunc i64 %indvars.iv.i34.1 to i32
-  %sub.i35.1 = sub i32 %cond.i.1, %116
+  %52 = trunc i64 %indvars.iv.i34.1 to i32
+  %sub.i35.1 = sub i32 %cond.i.1, %52
   %conv.i36.1 = trunc i32 %sub.i35.1 to i16
   %arrayidx.i37.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 %indvars.iv.i34.1
   store i16 %conv.i36.1, ptr %arrayidx.i37.1, align 2, !tbaa !11
@@ -568,8 +1464,8 @@ for.body.i33.1:                                   ; preds = %for.body.i33.1.prol
   %arrayidx4.i39.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 %indvars.iv.i34.1
   store i8 %conv2.i38.1, ptr %arrayidx4.i39.1, align 1, !tbaa !13
   %indvars.iv.next.i40.1 = add nuw nsw i64 %indvars.iv.i34.1, 1
-  %117 = trunc i64 %indvars.iv.next.i40.1 to i32
-  %sub.i35.1.1 = sub i32 %cond.i.1, %117
+  %53 = trunc i64 %indvars.iv.next.i40.1 to i32
+  %sub.i35.1.1 = sub i32 %cond.i.1, %53
   %conv.i36.1.1 = trunc i32 %sub.i35.1.1 to i16
   %arrayidx.i37.1.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 %indvars.iv.next.i40.1
   store i16 %conv.i36.1.1, ptr %arrayidx.i37.1.1, align 2, !tbaa !11
@@ -577,8 +1473,8 @@ for.body.i33.1:                                   ; preds = %for.body.i33.1.prol
   %arrayidx4.i39.1.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 %indvars.iv.next.i40.1
   store i8 %conv2.i38.1.1, ptr %arrayidx4.i39.1.1, align 1, !tbaa !13
   %indvars.iv.next.i40.1.1 = add nuw nsw i64 %indvars.iv.i34.1, 2
-  %118 = trunc i64 %indvars.iv.next.i40.1.1 to i32
-  %sub.i35.1.2 = sub i32 %cond.i.1, %118
+  %54 = trunc i64 %indvars.iv.next.i40.1.1 to i32
+  %sub.i35.1.2 = sub i32 %cond.i.1, %54
   %conv.i36.1.2 = trunc i32 %sub.i35.1.2 to i16
   %arrayidx.i37.1.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 %indvars.iv.next.i40.1.1
   store i16 %conv.i36.1.2, ptr %arrayidx.i37.1.2, align 2, !tbaa !11
@@ -586,8 +1482,8 @@ for.body.i33.1:                                   ; preds = %for.body.i33.1.prol
   %arrayidx4.i39.1.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 3, i64 %indvars.iv.next.i40.1.1
   store i8 %conv2.i38.1.2, ptr %arrayidx4.i39.1.2, align 1, !tbaa !13
   %indvars.iv.next.i40.1.2 = add nuw nsw i64 %indvars.iv.i34.1, 3
-  %119 = trunc i64 %indvars.iv.next.i40.1.2 to i32
-  %sub.i35.1.3 = sub i32 %cond.i.1, %119
+  %55 = trunc i64 %indvars.iv.next.i40.1.2 to i32
+  %sub.i35.1.3 = sub i32 %cond.i.1, %55
   %conv.i36.1.3 = trunc i32 %sub.i35.1.3 to i16
   %arrayidx.i37.1.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 %indvars.iv.next.i40.1.2
   store i16 %conv.i36.1.3, ptr %arrayidx.i37.1.3, align 2, !tbaa !11
@@ -596,9 +1492,9 @@ for.body.i33.1:                                   ; preds = %for.body.i33.1.prol
   store i8 %conv2.i38.1.3, ptr %arrayidx4.i39.1.3, align 1, !tbaa !13
   %indvars.iv.next.i40.1.3 = add nuw nsw i64 %indvars.iv.i34.1, 4
   %exitcond.not.i41.1.3 = icmp eq i64 %indvars.iv.next.i40.1.3, %wide.trip.count.i.1
-  br i1 %exitcond.not.i41.1.3, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, label %for.body.i33.1, !llvm.loop !70
+  br i1 %exitcond.not.i41.1.3, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, label %for.body.i33.1, !llvm.loop !50
 
-_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1: ; preds = %for.body.i33.1.prol.loopexit, %for.body.i33.1, %middle.block163
+_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1: ; preds = %for.body.i33.1.prol.loopexit, %for.body.i33.1, %middle.block96
   %arrayidx7.i42.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 1, i32 2, i64 %wide.trip.count.i.1
   store i16 0, ptr %arrayidx7.i42.1, align 2, !tbaa !11
   %arrayidx8.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2
@@ -607,91 +1503,91 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1: ; preds = %f
   %ReorderCount.i32.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 1
   store i32 4, ptr %ReorderCount.i32.2, align 8, !tbaa !10
   %wide.trip.count.i.2 = zext i32 %cond.i.2 to i64
-  %min.iters.check190 = icmp ult i32 %spec.select, 16
-  br i1 %min.iters.check190, label %for.body.i33.2.preheader, label %vector.memcheck180
+  %min.iters.check123 = icmp ult i32 %spec.select, 16
+  br i1 %min.iters.check123, label %for.body.i33.2.preheader, label %vector.memcheck113
 
-vector.memcheck180:                               ; preds = %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1
-  %scevgep181 = getelementptr inbounds i8, ptr %this, i64 1620
-  %120 = shl nuw nsw i64 %wide.trip.count.i.2, 1
-  %121 = add nuw nsw i64 %120, 1620
-  %scevgep182 = getelementptr i8, ptr %this, i64 %121
-  %scevgep183 = getelementptr inbounds i8, ptr %this, i64 1750
-  %122 = add nuw nsw i64 %wide.trip.count.i.2, 1750
-  %scevgep184 = getelementptr i8, ptr %this, i64 %122
-  %bound0185 = icmp ult ptr %scevgep181, %scevgep184
-  %bound1186 = icmp ult ptr %scevgep183, %scevgep182
-  %found.conflict187 = and i1 %bound0185, %bound1186
-  br i1 %found.conflict187, label %for.body.i33.2.preheader, label %vector.ph191
+vector.memcheck113:                               ; preds = %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1
+  %scevgep114 = getelementptr inbounds i8, ptr %this, i64 1620
+  %56 = shl nuw nsw i64 %wide.trip.count.i.2, 1
+  %57 = add nuw nsw i64 %56, 1620
+  %scevgep115 = getelementptr i8, ptr %this, i64 %57
+  %scevgep116 = getelementptr inbounds i8, ptr %this, i64 1750
+  %58 = add nuw nsw i64 %wide.trip.count.i.2, 1750
+  %scevgep117 = getelementptr i8, ptr %this, i64 %58
+  %bound0118 = icmp ult ptr %scevgep114, %scevgep117
+  %bound1119 = icmp ult ptr %scevgep116, %scevgep115
+  %found.conflict120 = and i1 %bound0118, %bound1119
+  br i1 %found.conflict120, label %for.body.i33.2.preheader, label %vector.ph124
 
-vector.ph191:                                     ; preds = %vector.memcheck180
-  %n.vec193 = and i64 %wide.trip.count.i.2, 56
-  %broadcast.splatinsert202 = insertelement <8 x i32> poison, i32 %cond.i.2, i64 0
-  %broadcast.splat203 = shufflevector <8 x i32> %broadcast.splatinsert202, <8 x i32> poison, <8 x i32> zeroinitializer
-  %123 = trunc <8 x i32> %broadcast.splat203 to <8 x i16>
-  %124 = add nsw <8 x i16> %123, <i16 0, i16 -1, i16 -2, i16 -3, i16 -4, i16 -5, i16 -6, i16 -7>
-  %125 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 0
-  store <8 x i16> %124, ptr %125, align 4, !tbaa !11, !alias.scope !71, !noalias !74
-  %126 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 0
-  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %126, align 2, !tbaa !13, !alias.scope !74
-  %127 = icmp eq i64 %n.vec193, 8
-  br i1 %127, label %middle.block188, label %vector.body196.1, !llvm.loop !76
+vector.ph124:                                     ; preds = %vector.memcheck113
+  %n.vec126 = and i64 %wide.trip.count.i.2, 56
+  %broadcast.splatinsert135 = insertelement <8 x i32> poison, i32 %cond.i.2, i64 0
+  %broadcast.splat136 = shufflevector <8 x i32> %broadcast.splatinsert135, <8 x i32> poison, <8 x i32> zeroinitializer
+  %59 = trunc <8 x i32> %broadcast.splat136 to <8 x i16>
+  %60 = add nsw <8 x i16> %59, <i16 0, i16 -1, i16 -2, i16 -3, i16 -4, i16 -5, i16 -6, i16 -7>
+  %61 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 0
+  store <8 x i16> %60, ptr %61, align 4, !tbaa !11, !alias.scope !51, !noalias !54
+  %62 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 0
+  store <8 x i8> <i8 0, i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7>, ptr %62, align 2, !tbaa !13, !alias.scope !54
+  %63 = icmp eq i64 %n.vec126, 8
+  br i1 %63, label %middle.block121, label %vector.body129.1, !llvm.loop !56
 
-vector.body196.1:                                 ; preds = %vector.ph191
-  %128 = trunc <8 x i32> %broadcast.splat203 to <8 x i16>
-  %129 = add nsw <8 x i16> %128, <i16 -8, i16 -9, i16 -10, i16 -11, i16 -12, i16 -13, i16 -14, i16 -15>
-  %130 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 8
-  store <8 x i16> %129, ptr %130, align 4, !tbaa !11, !alias.scope !71, !noalias !74
-  %131 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 8
-  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %131, align 2, !tbaa !13, !alias.scope !74
-  %132 = icmp eq i64 %n.vec193, 16
-  br i1 %132, label %middle.block188, label %vector.body196.2, !llvm.loop !76
+vector.body129.1:                                 ; preds = %vector.ph124
+  %64 = trunc <8 x i32> %broadcast.splat136 to <8 x i16>
+  %65 = add nsw <8 x i16> %64, <i16 -8, i16 -9, i16 -10, i16 -11, i16 -12, i16 -13, i16 -14, i16 -15>
+  %66 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 8
+  store <8 x i16> %65, ptr %66, align 4, !tbaa !11, !alias.scope !51, !noalias !54
+  %67 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 8
+  store <8 x i8> <i8 8, i8 9, i8 10, i8 11, i8 12, i8 13, i8 14, i8 15>, ptr %67, align 2, !tbaa !13, !alias.scope !54
+  %68 = icmp eq i64 %n.vec126, 16
+  br i1 %68, label %middle.block121, label %vector.body129.2, !llvm.loop !56
 
-vector.body196.2:                                 ; preds = %vector.body196.1
-  %133 = trunc <8 x i32> %broadcast.splat203 to <8 x i16>
-  %134 = add nsw <8 x i16> %133, <i16 -16, i16 -17, i16 -18, i16 -19, i16 -20, i16 -21, i16 -22, i16 -23>
-  %135 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 16
-  store <8 x i16> %134, ptr %135, align 4, !tbaa !11, !alias.scope !71, !noalias !74
-  %136 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 16
-  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %136, align 2, !tbaa !13, !alias.scope !74
-  %137 = icmp eq i64 %n.vec193, 24
-  br i1 %137, label %middle.block188, label %vector.body196.3, !llvm.loop !76
+vector.body129.2:                                 ; preds = %vector.body129.1
+  %69 = trunc <8 x i32> %broadcast.splat136 to <8 x i16>
+  %70 = add nsw <8 x i16> %69, <i16 -16, i16 -17, i16 -18, i16 -19, i16 -20, i16 -21, i16 -22, i16 -23>
+  %71 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 16
+  store <8 x i16> %70, ptr %71, align 4, !tbaa !11, !alias.scope !51, !noalias !54
+  %72 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 16
+  store <8 x i8> <i8 16, i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23>, ptr %72, align 2, !tbaa !13, !alias.scope !54
+  %73 = icmp eq i64 %n.vec126, 24
+  br i1 %73, label %middle.block121, label %vector.body129.3, !llvm.loop !56
 
-vector.body196.3:                                 ; preds = %vector.body196.2
-  %138 = trunc <8 x i32> %broadcast.splat203 to <8 x i16>
-  %139 = add nsw <8 x i16> %138, <i16 -24, i16 -25, i16 -26, i16 -27, i16 -28, i16 -29, i16 -30, i16 -31>
-  %140 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 24
-  store <8 x i16> %139, ptr %140, align 4, !tbaa !11, !alias.scope !71, !noalias !74
-  %141 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 24
-  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %141, align 2, !tbaa !13, !alias.scope !74
-  %142 = icmp eq i64 %n.vec193, 32
-  br i1 %142, label %middle.block188, label %vector.body196.4, !llvm.loop !76
+vector.body129.3:                                 ; preds = %vector.body129.2
+  %74 = trunc <8 x i32> %broadcast.splat136 to <8 x i16>
+  %75 = add nsw <8 x i16> %74, <i16 -24, i16 -25, i16 -26, i16 -27, i16 -28, i16 -29, i16 -30, i16 -31>
+  %76 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 24
+  store <8 x i16> %75, ptr %76, align 4, !tbaa !11, !alias.scope !51, !noalias !54
+  %77 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 24
+  store <8 x i8> <i8 24, i8 25, i8 26, i8 27, i8 28, i8 29, i8 30, i8 31>, ptr %77, align 2, !tbaa !13, !alias.scope !54
+  %78 = icmp eq i64 %n.vec126, 32
+  br i1 %78, label %middle.block121, label %vector.body129.4, !llvm.loop !56
 
-vector.body196.4:                                 ; preds = %vector.body196.3
-  %143 = trunc <8 x i32> %broadcast.splat203 to <8 x i16>
-  %144 = add nsw <8 x i16> %143, <i16 -32, i16 -33, i16 -34, i16 -35, i16 -36, i16 -37, i16 -38, i16 -39>
-  %145 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 32
-  store <8 x i16> %144, ptr %145, align 4, !tbaa !11, !alias.scope !71, !noalias !74
-  %146 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 32
-  store <8 x i8> <i8 32, i8 33, i8 34, i8 35, i8 36, i8 37, i8 38, i8 39>, ptr %146, align 2, !tbaa !13, !alias.scope !74
-  br label %middle.block188
+vector.body129.4:                                 ; preds = %vector.body129.3
+  %79 = trunc <8 x i32> %broadcast.splat136 to <8 x i16>
+  %80 = add nsw <8 x i16> %79, <i16 -32, i16 -33, i16 -34, i16 -35, i16 -36, i16 -37, i16 -38, i16 -39>
+  %81 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 32
+  store <8 x i16> %80, ptr %81, align 4, !tbaa !11, !alias.scope !51, !noalias !54
+  %82 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 32
+  store <8 x i8> <i8 32, i8 33, i8 34, i8 35, i8 36, i8 37, i8 38, i8 39>, ptr %82, align 2, !tbaa !13, !alias.scope !54
+  br label %middle.block121
 
-middle.block188:                                  ; preds = %vector.body196.4, %vector.body196.3, %vector.body196.2, %vector.body196.1, %vector.ph191
-  %cmp.n195 = icmp eq i64 %n.vec193, %wide.trip.count.i.2
-  br i1 %cmp.n195, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2, label %for.body.i33.2.preheader
+middle.block121:                                  ; preds = %vector.body129.4, %vector.body129.3, %vector.body129.2, %vector.body129.1, %vector.ph124
+  %cmp.n128 = icmp eq i64 %n.vec126, %wide.trip.count.i.2
+  br i1 %cmp.n128, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2, label %for.body.i33.2.preheader
 
-for.body.i33.2.preheader:                         ; preds = %vector.memcheck180, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, %middle.block188
-  %indvars.iv.i34.2.ph = phi i64 [ 0, %vector.memcheck180 ], [ 0, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1 ], [ %n.vec193, %middle.block188 ]
-  %147 = xor i64 %indvars.iv.i34.2.ph, -1
-  %148 = add nsw i64 %147, %wide.trip.count.i.2
-  %xtraiter226 = and i64 %wide.trip.count.i.2, 3
-  %lcmp.mod227.not = icmp eq i64 %xtraiter226, 0
-  br i1 %lcmp.mod227.not, label %for.body.i33.2.prol.loopexit, label %for.body.i33.2.prol
+for.body.i33.2.preheader:                         ; preds = %vector.memcheck113, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1, %middle.block121
+  %indvars.iv.i34.2.ph = phi i64 [ 0, %vector.memcheck113 ], [ 0, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.1 ], [ %n.vec126, %middle.block121 ]
+  %83 = xor i64 %indvars.iv.i34.2.ph, -1
+  %84 = add nsw i64 %83, %wide.trip.count.i.2
+  %xtraiter159 = and i64 %wide.trip.count.i.2, 3
+  %lcmp.mod160.not = icmp eq i64 %xtraiter159, 0
+  br i1 %lcmp.mod160.not, label %for.body.i33.2.prol.loopexit, label %for.body.i33.2.prol
 
 for.body.i33.2.prol:                              ; preds = %for.body.i33.2.preheader, %for.body.i33.2.prol
   %indvars.iv.i34.2.prol = phi i64 [ %indvars.iv.next.i40.2.prol, %for.body.i33.2.prol ], [ %indvars.iv.i34.2.ph, %for.body.i33.2.preheader ]
-  %prol.iter228 = phi i64 [ %prol.iter228.next, %for.body.i33.2.prol ], [ 0, %for.body.i33.2.preheader ]
-  %149 = trunc i64 %indvars.iv.i34.2.prol to i32
-  %sub.i35.2.prol = sub i32 %cond.i.2, %149
+  %prol.iter161 = phi i64 [ %prol.iter161.next, %for.body.i33.2.prol ], [ 0, %for.body.i33.2.preheader ]
+  %85 = trunc i64 %indvars.iv.i34.2.prol to i32
+  %sub.i35.2.prol = sub i32 %cond.i.2, %85
   %conv.i36.2.prol = trunc i32 %sub.i35.2.prol to i16
   %arrayidx.i37.2.prol = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 %indvars.iv.i34.2.prol
   store i16 %conv.i36.2.prol, ptr %arrayidx.i37.2.prol, align 2, !tbaa !11
@@ -699,19 +1595,19 @@ for.body.i33.2.prol:                              ; preds = %for.body.i33.2.preh
   %arrayidx4.i39.2.prol = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 %indvars.iv.i34.2.prol
   store i8 %conv2.i38.2.prol, ptr %arrayidx4.i39.2.prol, align 1, !tbaa !13
   %indvars.iv.next.i40.2.prol = add nuw nsw i64 %indvars.iv.i34.2.prol, 1
-  %prol.iter228.next = add i64 %prol.iter228, 1
-  %prol.iter228.cmp.not = icmp eq i64 %prol.iter228.next, %xtraiter226
-  br i1 %prol.iter228.cmp.not, label %for.body.i33.2.prol.loopexit, label %for.body.i33.2.prol, !llvm.loop !77
+  %prol.iter161.next = add i64 %prol.iter161, 1
+  %prol.iter161.cmp.not = icmp eq i64 %prol.iter161.next, %xtraiter159
+  br i1 %prol.iter161.cmp.not, label %for.body.i33.2.prol.loopexit, label %for.body.i33.2.prol, !llvm.loop !57
 
 for.body.i33.2.prol.loopexit:                     ; preds = %for.body.i33.2.prol, %for.body.i33.2.preheader
   %indvars.iv.i34.2.unr = phi i64 [ %indvars.iv.i34.2.ph, %for.body.i33.2.preheader ], [ %indvars.iv.next.i40.2.prol, %for.body.i33.2.prol ]
-  %150 = icmp ult i64 %148, 3
-  br i1 %150, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2, label %for.body.i33.2
+  %86 = icmp ult i64 %84, 3
+  br i1 %86, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2, label %for.body.i33.2
 
 for.body.i33.2:                                   ; preds = %for.body.i33.2.prol.loopexit, %for.body.i33.2
   %indvars.iv.i34.2 = phi i64 [ %indvars.iv.next.i40.2.3, %for.body.i33.2 ], [ %indvars.iv.i34.2.unr, %for.body.i33.2.prol.loopexit ]
-  %151 = trunc i64 %indvars.iv.i34.2 to i32
-  %sub.i35.2 = sub i32 %cond.i.2, %151
+  %87 = trunc i64 %indvars.iv.i34.2 to i32
+  %sub.i35.2 = sub i32 %cond.i.2, %87
   %conv.i36.2 = trunc i32 %sub.i35.2 to i16
   %arrayidx.i37.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 %indvars.iv.i34.2
   store i16 %conv.i36.2, ptr %arrayidx.i37.2, align 2, !tbaa !11
@@ -719,8 +1615,8 @@ for.body.i33.2:                                   ; preds = %for.body.i33.2.prol
   %arrayidx4.i39.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 %indvars.iv.i34.2
   store i8 %conv2.i38.2, ptr %arrayidx4.i39.2, align 1, !tbaa !13
   %indvars.iv.next.i40.2 = add nuw nsw i64 %indvars.iv.i34.2, 1
-  %152 = trunc i64 %indvars.iv.next.i40.2 to i32
-  %sub.i35.2.1 = sub i32 %cond.i.2, %152
+  %88 = trunc i64 %indvars.iv.next.i40.2 to i32
+  %sub.i35.2.1 = sub i32 %cond.i.2, %88
   %conv.i36.2.1 = trunc i32 %sub.i35.2.1 to i16
   %arrayidx.i37.2.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 %indvars.iv.next.i40.2
   store i16 %conv.i36.2.1, ptr %arrayidx.i37.2.1, align 2, !tbaa !11
@@ -728,8 +1624,8 @@ for.body.i33.2:                                   ; preds = %for.body.i33.2.prol
   %arrayidx4.i39.2.1 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 %indvars.iv.next.i40.2
   store i8 %conv2.i38.2.1, ptr %arrayidx4.i39.2.1, align 1, !tbaa !13
   %indvars.iv.next.i40.2.1 = add nuw nsw i64 %indvars.iv.i34.2, 2
-  %153 = trunc i64 %indvars.iv.next.i40.2.1 to i32
-  %sub.i35.2.2 = sub i32 %cond.i.2, %153
+  %89 = trunc i64 %indvars.iv.next.i40.2.1 to i32
+  %sub.i35.2.2 = sub i32 %cond.i.2, %89
   %conv.i36.2.2 = trunc i32 %sub.i35.2.2 to i16
   %arrayidx.i37.2.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 %indvars.iv.next.i40.2.1
   store i16 %conv.i36.2.2, ptr %arrayidx.i37.2.2, align 2, !tbaa !11
@@ -737,8 +1633,8 @@ for.body.i33.2:                                   ; preds = %for.body.i33.2.prol
   %arrayidx4.i39.2.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 3, i64 %indvars.iv.next.i40.2.1
   store i8 %conv2.i38.2.2, ptr %arrayidx4.i39.2.2, align 1, !tbaa !13
   %indvars.iv.next.i40.2.2 = add nuw nsw i64 %indvars.iv.i34.2, 3
-  %154 = trunc i64 %indvars.iv.next.i40.2.2 to i32
-  %sub.i35.2.3 = sub i32 %cond.i.2, %154
+  %90 = trunc i64 %indvars.iv.next.i40.2.2 to i32
+  %sub.i35.2.3 = sub i32 %cond.i.2, %90
   %conv.i36.2.3 = trunc i32 %sub.i35.2.3 to i16
   %arrayidx.i37.2.3 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 %indvars.iv.next.i40.2.2
   store i16 %conv.i36.2.3, ptr %arrayidx.i37.2.3, align 2, !tbaa !11
@@ -747,10 +1643,10 @@ for.body.i33.2:                                   ; preds = %for.body.i33.2.prol
   store i8 %conv2.i38.2.3, ptr %arrayidx4.i39.2.3, align 1, !tbaa !13
   %indvars.iv.next.i40.2.3 = add nuw nsw i64 %indvars.iv.i34.2, 4
   %exitcond.not.i41.2.3 = icmp eq i64 %indvars.iv.next.i40.2.3, %wide.trip.count.i.2
-  br i1 %exitcond.not.i41.2.3, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2, label %for.body.i33.2, !llvm.loop !78
+  br i1 %exitcond.not.i41.2.3, label %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2, label %for.body.i33.2, !llvm.loop !58
 
-_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2: ; preds = %for.body.i33.2.prol.loopexit, %for.body.i33.2, %middle.block188, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.thread
-  %idxprom6.pre-phi.i.2 = phi i64 [ 0, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.thread ], [ %wide.trip.count.i.2, %middle.block188 ], [ %wide.trip.count.i.2, %for.body.i33.2 ], [ %wide.trip.count.i.2, %for.body.i33.2.prol.loopexit ]
+_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.2: ; preds = %for.body.i33.2.prol.loopexit, %for.body.i33.2, %middle.block121, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.thread
+  %idxprom6.pre-phi.i.2 = phi i64 [ 0, %_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder4InitEj.exit43.thread ], [ %wide.trip.count.i.2, %middle.block121 ], [ %wide.trip.count.i.2, %for.body.i33.2 ], [ %wide.trip.count.i.2, %for.body.i33.2.prol.loopexit ]
   %arrayidx7.i42.2 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 15, i64 2, i32 2, i64 %idxprom6.pre-phi.i.2
   store i16 0, ptr %arrayidx7.i42.2, align 2, !tbaa !11
   %m_LenSlot = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 16
@@ -880,20 +1776,20 @@ declare void @llvm.lifetime.end.p0(i64 immarg, ptr nocapture) #1
 define dso_local noundef i32 @_ZN9NCompress8NQuantum8CDecoder8CodeSpecEj(ptr noundef nonnull align 8 dereferenceable(2020) %this, i32 noundef %curSize) local_unnamed_addr #2 align 2 {
 entry:
   %_remainLen = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 8
-  %0 = load i32, ptr %_remainLen, align 8, !tbaa !79
+  %0 = load i32, ptr %_remainLen, align 8, !tbaa !59
   %cmp = icmp eq i32 %0, -2
   br i1 %cmp, label %if.then, label %if.end10
 
 if.then:                                          ; preds = %entry
   %_keepHistory = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 11
-  %1 = load i8, ptr %_keepHistory, align 4, !tbaa !80, !range !81, !noundef !82
+  %1 = load i8, ptr %_keepHistory, align 4, !tbaa !60, !range !61, !noundef !62
   %tobool.not = icmp eq i8 %1, 0
   br i1 %tobool.not, label %if.then2, label %if.end4
 
 if.then2:                                         ; preds = %if.then
   %_outWindowStream = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 5
   %_numDictBits = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 10
-  %2 = load i32, ptr %_numDictBits, align 8, !tbaa !34
+  %2 = load i32, ptr %_numDictBits, align 8, !tbaa !14
   %shl = shl nuw i32 1, %2
   %call = tail call noundef zeroext i1 @_ZN10COutBuffer6CreateEj(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream, i32 noundef %shl)
   br i1 %call, label %if.end, label %return
@@ -911,10 +1807,10 @@ if.end7:                                          ; preds = %if.end4
   %_rangeDecoder = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6
   %Stream.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 4
   tail call void @_ZN9CInBuffer4InitEv(ptr noundef nonnull align 8 dereferenceable(45) %Stream.i.i)
-  store i32 65536, ptr %Stream.i, align 8, !tbaa !83
-  store i32 0, ptr %_rangeDecoder, align 8, !tbaa !84
+  store i32 65536, ptr %Stream.i, align 8, !tbaa !63
+  store i32 0, ptr %_rangeDecoder, align 8, !tbaa !64
   %Range.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 1
-  store i32 65536, ptr %Range.i, align 4, !tbaa !85
+  store i32 65536, ptr %Range.i, align 4, !tbaa !65
   %_bufferLimit.i.i.i.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 4, i32 2, i32 1
   br label %do.body.i.i
 
@@ -927,8 +1823,8 @@ do.body.i.i:                                      ; preds = %_ZN9NCompress8NQuan
   br i1 %cmp.i.i.i, label %if.then.i.i.i, label %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i.i
 
 if.then.i.i.i:                                    ; preds = %do.body.i.i
-  %4 = load ptr, ptr %Stream.i.i, align 8, !tbaa !86
-  %5 = load ptr, ptr %_bufferLimit.i.i.i.i, align 8, !tbaa !87
+  %4 = load ptr, ptr %Stream.i.i, align 8, !tbaa !66
+  %5 = load ptr, ptr %_bufferLimit.i.i.i.i, align 8, !tbaa !67
   %cmp.not.i.i.i.i = icmp ult ptr %4, %5
   br i1 %cmp.not.i.i.i.i, label %if.end.i.i.i.i, label %if.then.i.i.i.i
 
@@ -938,7 +1834,7 @@ if.then.i.i.i.i:                                  ; preds = %if.then.i.i.i
 
 if.end.i.i.i.i:                                   ; preds = %if.then.i.i.i
   %incdec.ptr.i.i.i.i = getelementptr inbounds i8, ptr %4, i64 1
-  store ptr %incdec.ptr.i.i.i.i, ptr %Stream.i.i, align 8, !tbaa !86
+  store ptr %incdec.ptr.i.i.i.i, ptr %Stream.i.i, align 8, !tbaa !66
   %6 = load i8, ptr %4, align 1, !tbaa !13
   br label %_ZN9CInBuffer8ReadByteEv.exit.i.i.i
 
@@ -953,11 +1849,11 @@ _ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i.i: ; preds = %_ZN9CIn
   %shr.i.i.i = lshr i32 %7, 7
   %and.i.i.i = and i32 %shr.i.i.i, 1
   %shl.i.i.i = shl nuw nsw i32 %7, 1
-  store i32 %shl.i.i.i, ptr %Stream.i, align 8, !tbaa !83
+  store i32 %shl.i.i.i, ptr %Stream.i, align 8, !tbaa !63
   %or.i.i = or i32 %and.i.i.i, %shl.i.i
   %dec.i.i = add nsw i32 %numBits.addr.0.i.i, -1
   %cmp.not.i.i = icmp eq i32 %dec.i.i, 0
-  br i1 %cmp.not.i.i, label %if.end10.thread, label %do.body.i.i, !llvm.loop !88
+  br i1 %cmp.not.i.i, label %if.end10.thread, label %do.body.i.i, !llvm.loop !68
 
 if.end10:                                         ; preds = %entry
   %cmp11 = icmp eq i32 %curSize, 0
@@ -965,8 +1861,8 @@ if.end10:                                         ; preds = %entry
 
 if.end10.thread:                                  ; preds = %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i.i
   %Code.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 2
-  store i32 %or.i.i, ptr %Code.i, align 8, !tbaa !89
-  store i32 0, ptr %_remainLen, align 8, !tbaa !79
+  store i32 %or.i.i, ptr %Code.i, align 8, !tbaa !69
+  store i32 0, ptr %_remainLen, align 8, !tbaa !59
   %cmp11209 = icmp eq i32 %curSize, 0
   br i1 %cmp11209, label %return, label %while.body24.lr.ph
 
@@ -1006,26 +1902,26 @@ while.body:                                       ; preds = %while.body.lr.ph, %
   %8 = phi i32 [ %0, %while.body.lr.ph ], [ %17, %_ZN12CLzOutWindow7PutByteEh.exit ]
   %curSize.addr.0205 = phi i32 [ %curSize, %while.body.lr.ph ], [ %dec21, %_ZN12CLzOutWindow7PutByteEh.exit ]
   %dec = add nsw i32 %8, -1
-  store i32 %dec, ptr %_remainLen, align 8, !tbaa !79
-  %9 = load i32, ptr %_rep0, align 4, !tbaa !90
-  %10 = load i32, ptr %_pos.i, align 8, !tbaa !91
+  store i32 %dec, ptr %_remainLen, align 8, !tbaa !59
+  %9 = load i32, ptr %_rep0, align 4, !tbaa !70
+  %10 = load i32, ptr %_pos.i, align 8, !tbaa !71
   %11 = xor i32 %9, -1
   %sub2.i = add i32 %10, %11
-  %12 = load i32, ptr %_bufferSize.i, align 4, !tbaa !92
+  %12 = load i32, ptr %_bufferSize.i, align 4, !tbaa !72
   %cmp.not.i = icmp ult i32 %sub2.i, %12
   %add.i = select i1 %cmp.not.i, i32 0, i32 %12
   %spec.select.i = add i32 %add.i, %sub2.i
-  %13 = load ptr, ptr %_outWindowStream18, align 8, !tbaa !93
+  %13 = load ptr, ptr %_outWindowStream18, align 8, !tbaa !73
   %idxprom.i = zext i32 %spec.select.i to i64
   %arrayidx.i = getelementptr inbounds i8, ptr %13, i64 %idxprom.i
   %14 = load i8, ptr %arrayidx.i, align 1, !tbaa !13
   %inc.i = add i32 %10, 1
-  store i32 %inc.i, ptr %_pos.i, align 8, !tbaa !91
+  store i32 %inc.i, ptr %_pos.i, align 8, !tbaa !71
   %idxprom.i139 = zext i32 %10 to i64
   %arrayidx.i140 = getelementptr inbounds i8, ptr %13, i64 %idxprom.i139
   store i8 %14, ptr %arrayidx.i140, align 1, !tbaa !13
-  %15 = load i32, ptr %_pos.i, align 8, !tbaa !91
-  %16 = load i32, ptr %_limitPos.i, align 4, !tbaa !94
+  %15 = load i32, ptr %_pos.i, align 8, !tbaa !71
+  %16 = load i32, ptr %_limitPos.i, align 4, !tbaa !74
   %cmp.i = icmp eq i32 %15, %16
   br i1 %cmp.i, label %if.then.i, label %_ZN12CLzOutWindow7PutByteEh.exit
 
@@ -1035,15 +1931,15 @@ if.then.i:                                        ; preds = %while.body
 
 _ZN12CLzOutWindow7PutByteEh.exit:                 ; preds = %while.body, %if.then.i
   %dec21 = add i32 %curSize.addr.0205, -1
-  %17 = load i32, ptr %_remainLen, align 8, !tbaa !79
+  %17 = load i32, ptr %_remainLen, align 8, !tbaa !59
   %cmp15 = icmp sgt i32 %17, 0
   %cmp16 = icmp ne i32 %dec21, 0
   %18 = select i1 %cmp15, i1 %cmp16, i1 false
-  br i1 %18, label %while.body, label %while.cond22.preheader, !llvm.loop !95
+  br i1 %18, label %while.body, label %while.cond22.preheader, !llvm.loop !75
 
 while.body24:                                     ; preds = %while.body24.lr.ph, %cleanup95
   %curSize.addr.1207 = phi i32 [ %curSize.addr.0.lcssa213, %while.body24.lr.ph ], [ %curSize.addr.4, %cleanup95 ]
-  %19 = load i8, ptr %_wasFinished.i.i, align 4, !tbaa !96, !range !81, !noundef !82
+  %19 = load i8, ptr %_wasFinished.i.i, align 4, !tbaa !76, !range !61, !noundef !62
   %tobool.i.i.not = icmp eq i8 %19, 0
   br i1 %tobool.i.i.not, label %if.end28, label %return
 
@@ -1059,15 +1955,15 @@ if.then32:                                        ; preds = %if.end28
   %call36 = tail call noundef i32 @_ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE(ptr noundef nonnull align 4 dereferenceable(202) %arrayidx, ptr noundef nonnull %_rangeDecoder25)
   %add = add i32 %call36, %shl34
   %conv = trunc i32 %add to i8
-  %20 = load ptr, ptr %_outWindowStream81, align 8, !tbaa !93
-  %21 = load i32, ptr %_pos.i180, align 8, !tbaa !91
+  %20 = load ptr, ptr %_outWindowStream81, align 8, !tbaa !73
+  %21 = load i32, ptr %_pos.i180, align 8, !tbaa !71
   %inc.i142 = add i32 %21, 1
-  store i32 %inc.i142, ptr %_pos.i180, align 8, !tbaa !91
+  store i32 %inc.i142, ptr %_pos.i180, align 8, !tbaa !71
   %idxprom.i143 = zext i32 %21 to i64
   %arrayidx.i144 = getelementptr inbounds i8, ptr %20, i64 %idxprom.i143
   store i8 %conv, ptr %arrayidx.i144, align 1, !tbaa !13
-  %22 = load i32, ptr %_pos.i180, align 8, !tbaa !91
-  %23 = load i32, ptr %_limitPos.i186, align 4, !tbaa !94
+  %22 = load i32, ptr %_pos.i180, align 8, !tbaa !71
+  %23 = load i32, ptr %_limitPos.i186, align 4, !tbaa !74
   %cmp.i146 = icmp eq i32 %22, %23
   br i1 %cmp.i146, label %if.then.i147, label %_ZN12CLzOutWindow7PutByteEh.exit148
 
@@ -1102,7 +1998,7 @@ if.then45:                                        ; preds = %if.then41
   br i1 %cmp50, label %if.then51, label %if.end60
 
 if.then51:                                        ; preds = %if.then45
-  %.pr.i = load i32, ptr %Stream, align 8, !tbaa !83
+  %.pr.i = load i32, ptr %Stream, align 8, !tbaa !63
   br label %do.body.i
 
 do.body.i:                                        ; preds = %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i, %if.then51
@@ -1114,8 +2010,8 @@ do.body.i:                                        ; preds = %_ZN9NCompress8NQuan
   br i1 %cmp.i.i, label %if.then.i.i, label %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i
 
 if.then.i.i:                                      ; preds = %do.body.i
-  %25 = load ptr, ptr %Stream.i.i149, align 8, !tbaa !86
-  %26 = load ptr, ptr %_bufferLimit.i.i.i, align 8, !tbaa !87
+  %25 = load ptr, ptr %Stream.i.i149, align 8, !tbaa !66
+  %26 = load ptr, ptr %_bufferLimit.i.i.i, align 8, !tbaa !67
   %cmp.not.i.i.i = icmp ult ptr %25, %26
   br i1 %cmp.not.i.i.i, label %if.end.i.i.i, label %if.then.i.i.i152
 
@@ -1125,7 +2021,7 @@ if.then.i.i.i152:                                 ; preds = %if.then.i.i
 
 if.end.i.i.i:                                     ; preds = %if.then.i.i
   %incdec.ptr.i.i.i = getelementptr inbounds i8, ptr %25, i64 1
-  store ptr %incdec.ptr.i.i.i, ptr %Stream.i.i149, align 8, !tbaa !86
+  store ptr %incdec.ptr.i.i.i, ptr %Stream.i.i149, align 8, !tbaa !66
   %27 = load i8, ptr %25, align 1, !tbaa !13
   br label %_ZN9CInBuffer8ReadByteEv.exit.i.i
 
@@ -1140,11 +2036,11 @@ _ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i: ; preds = %_ZN9CInBu
   %shr.i.i = lshr i32 %28, 7
   %and.i.i = and i32 %shr.i.i, 1
   %shl.i.i150 = shl nuw nsw i32 %28, 1
-  store i32 %shl.i.i150, ptr %Stream, align 8, !tbaa !83
+  store i32 %shl.i.i150, ptr %Stream, align 8, !tbaa !63
   %or.i = or i32 %and.i.i, %shl.i
   %dec.i = add nsw i32 %numBits.addr.0.i, -1
   %cmp.not.i151 = icmp eq i32 %dec.i, 0
-  br i1 %cmp.not.i151, label %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit, label %do.body.i, !llvm.loop !88
+  br i1 %cmp.not.i151, label %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit, label %do.body.i, !llvm.loop !68
 
 _ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit: ; preds = %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i
   %add55 = add i32 %or.i, %add49
@@ -1167,7 +2063,7 @@ if.then66:                                        ; preds = %if.end60
   %sub69 = add nsw i32 %shr68, -1
   %and70 = and i32 %call64, 1
   %or71 = or i32 %and70, 2
-  %.pr.i154 = load i32, ptr %Stream, align 8, !tbaa !83
+  %.pr.i154 = load i32, ptr %Stream, align 8, !tbaa !63
   br label %do.body.i157
 
 do.body.i157:                                     ; preds = %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i162, %if.then66
@@ -1179,8 +2075,8 @@ do.body.i157:                                     ; preds = %_ZN9NCompress8NQuan
   br i1 %cmp.i.i161, label %if.then.i.i169, label %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i162
 
 if.then.i.i169:                                   ; preds = %do.body.i157
-  %30 = load ptr, ptr %Stream.i.i149, align 8, !tbaa !86
-  %31 = load ptr, ptr %_bufferLimit.i.i.i, align 8, !tbaa !87
+  %30 = load ptr, ptr %Stream.i.i149, align 8, !tbaa !66
+  %31 = load ptr, ptr %_bufferLimit.i.i.i, align 8, !tbaa !67
   %cmp.not.i.i.i170 = icmp ult ptr %30, %31
   br i1 %cmp.not.i.i.i170, label %if.end.i.i.i177, label %if.then.i.i.i171
 
@@ -1190,7 +2086,7 @@ if.then.i.i.i171:                                 ; preds = %if.then.i.i169
 
 if.end.i.i.i177:                                  ; preds = %if.then.i.i169
   %incdec.ptr.i.i.i178 = getelementptr inbounds i8, ptr %30, i64 1
-  store ptr %incdec.ptr.i.i.i178, ptr %Stream.i.i149, align 8, !tbaa !86
+  store ptr %incdec.ptr.i.i.i178, ptr %Stream.i.i149, align 8, !tbaa !66
   %32 = load i8, ptr %30, align 1, !tbaa !13
   br label %_ZN9CInBuffer8ReadByteEv.exit.i.i173
 
@@ -1205,11 +2101,11 @@ _ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i162: ; preds = %_ZN9CI
   %shr.i.i163 = lshr i32 %33, 7
   %and.i.i164 = and i32 %shr.i.i163, 1
   %shl.i.i165 = shl nuw nsw i32 %33, 1
-  store i32 %shl.i.i165, ptr %Stream, align 8, !tbaa !83
+  store i32 %shl.i.i165, ptr %Stream, align 8, !tbaa !63
   %or.i166 = or i32 %and.i.i164, %shl.i160
   %dec.i167 = add nsw i32 %numBits.addr.0.i158, -1
   %cmp.not.i168 = icmp eq i32 %dec.i167, 0
-  br i1 %cmp.not.i168, label %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit179, label %do.body.i157, !llvm.loop !88
+  br i1 %cmp.not.i168, label %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit179, label %do.body.i157, !llvm.loop !68
 
 _ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit179: ; preds = %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit.i162
   %shl72 = shl i32 %or71, %sub69
@@ -1219,19 +2115,19 @@ _ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit179: ; preds = %_ZN9NCo
 if.end77:                                         ; preds = %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit179, %if.end60
   %rep0.0 = phi i32 [ %add76, %_ZN9NCompress8NQuantum17CStreamBitDecoder8ReadBitsEi.exit179 ], [ %call64, %if.end60 ]
   %spec.select = tail call i32 @llvm.umin.i32(i32 %len.2, i32 %curSize.addr.1207)
-  %34 = load i32, ptr %_pos.i180, align 8, !tbaa !91
+  %34 = load i32, ptr %_pos.i180, align 8, !tbaa !71
   %35 = xor i32 %rep0.0, -1
   %sub2.i181 = add i32 %34, %35
   %cmp.not.i182 = icmp ugt i32 %34, %rep0.0
   br i1 %cmp.not.i182, label %if.end7.i, label %if.then.i183
 
 if.then.i183:                                     ; preds = %if.end77
-  %36 = load i8, ptr %_overDict.i, align 8, !tbaa !97, !range !81, !noundef !82
+  %36 = load i8, ptr %_overDict.i, align 8, !tbaa !77, !range !61, !noundef !62
   %tobool.not.i = icmp eq i8 %36, 0
   br i1 %tobool.not.i, label %return, label %lor.lhs.false.i
 
 lor.lhs.false.i:                                  ; preds = %if.then.i183
-  %37 = load i32, ptr %_bufferSize.i184, align 4, !tbaa !92
+  %37 = load i32, ptr %_bufferSize.i184, align 4, !tbaa !72
   %cmp4.not.i = icmp ugt i32 %37, %rep0.0
   br i1 %cmp4.not.i, label %if.end.i, label %return
 
@@ -1241,7 +2137,7 @@ if.end.i:                                         ; preds = %lor.lhs.false.i
 
 if.end7.i:                                        ; preds = %if.end.i, %if.end77
   %pos.0.i = phi i32 [ %add.i185, %if.end.i ], [ %sub2.i181, %if.end77 ]
-  %38 = load i32, ptr %_limitPos.i186, align 4, !tbaa !94
+  %38 = load i32, ptr %_limitPos.i186, align 4, !tbaa !74
   %sub9.i = sub i32 %38, %34
   %cmp10.i = icmp ugt i32 %sub9.i, %spec.select
   br i1 %cmp10.i, label %land.lhs.true.i, label %do.body23.i.preheader
@@ -1250,19 +2146,19 @@ do.body23.i.preheader:                            ; preds = %land.lhs.true.i, %i
   br label %do.body23.i
 
 land.lhs.true.i:                                  ; preds = %if.end7.i
-  %39 = load i32, ptr %_bufferSize.i184, align 4, !tbaa !92
+  %39 = load i32, ptr %_bufferSize.i184, align 4, !tbaa !72
   %sub12.i = sub i32 %39, %pos.0.i
   %cmp13.i = icmp ugt i32 %sub12.i, %spec.select
   br i1 %cmp13.i, label %iter.check, label %do.body23.i.preheader
 
 iter.check:                                       ; preds = %land.lhs.true.i
-  %40 = load ptr, ptr %_outWindowStream81, align 8, !tbaa !93
+  %40 = load ptr, ptr %_outWindowStream81, align 8, !tbaa !73
   %idx.ext.i = zext i32 %pos.0.i to i64
   %add.ptr.i = getelementptr i8, ptr %40, i64 %idx.ext.i
   %idx.ext17.i = zext i32 %34 to i64
   %add.ptr18.i = getelementptr i8, ptr %40, i64 %idx.ext17.i
   %add20.i = add i32 %34, %spec.select
-  store i32 %add20.i, ptr %_pos.i180, align 8, !tbaa !91
+  store i32 %add20.i, ptr %_pos.i180, align 8, !tbaa !71
   %41 = add i32 %spec.select, -1
   %42 = zext i32 %41 to i64
   %43 = add nuw nsw i64 %42, 1
@@ -1297,7 +2193,7 @@ vector.body:                                      ; preds = %vector.body, %vecto
   store <16 x i8> %wide.load220, ptr %49, align 1, !tbaa !13
   %index.next = add nuw i64 %index, 32
   %50 = icmp eq i64 %index.next, %n.vec
-  br i1 %50, label %middle.block, label %vector.body, !llvm.loop !98
+  br i1 %50, label %middle.block, label %vector.body, !llvm.loop !78
 
 middle.block:                                     ; preds = %vector.body
   %cmp.n = icmp eq i64 %43, %n.vec
@@ -1329,7 +2225,7 @@ vec.epilog.vector.body:                           ; preds = %vec.epilog.vector.b
   store <8 x i8> %wide.load239, ptr %next.gep238, align 1, !tbaa !13
   %index.next240 = add nuw i64 %index236, 8
   %51 = icmp eq i64 %index.next240, %n.vec224
-  br i1 %51, label %vec.epilog.middle.block, label %vec.epilog.vector.body, !llvm.loop !99
+  br i1 %51, label %vec.epilog.middle.block, label %vec.epilog.vector.body, !llvm.loop !79
 
 vec.epilog.middle.block:                          ; preds = %vec.epilog.vector.body
   %cmp.n235 = icmp eq i64 %43, %n.vec224
@@ -1356,7 +2252,7 @@ do.body.i190.prol:                                ; preds = %do.body.i190.prehea
   %dec.i191.prol = add i32 %len.addr.0.i.prol, -1
   %prol.iter.next = add i32 %prol.iter, 1
   %prol.iter.cmp.not = icmp eq i32 %prol.iter.next, %xtraiter
-  br i1 %prol.iter.cmp.not, label %do.body.i190.prol.loopexit, label %do.body.i190.prol, !llvm.loop !100
+  br i1 %prol.iter.cmp.not, label %do.body.i190.prol.loopexit, label %do.body.i190.prol, !llvm.loop !80
 
 do.body.i190.prol.loopexit:                       ; preds = %do.body.i190.prol, %do.body.i190.preheader
   %len.addr.0.i.unr = phi i32 [ %len.addr.0.i.ph, %do.body.i190.preheader ], [ %dec.i191.prol, %do.body.i190.prol ]
@@ -1403,27 +2299,27 @@ do.body.i190:                                     ; preds = %do.body.i190.prol.l
   store i8 %62, ptr %incdec.ptr21.i.6, align 1, !tbaa !13
   %dec.i191.7 = add i32 %len.addr.0.i, -8
   %cmp22.not.i.7 = icmp eq i32 %dec.i191.7, 0
-  br i1 %cmp22.not.i.7, label %if.end84, label %do.body.i190, !llvm.loop !101
+  br i1 %cmp22.not.i.7, label %if.end84, label %do.body.i190, !llvm.loop !81
 
 do.body23.i:                                      ; preds = %do.body23.i.preheader, %do.cond39.i
   %len.addr.1.i = phi i32 [ %dec40.i, %do.cond39.i ], [ %spec.select, %do.body23.i.preheader ]
   %pos.1.i = phi i32 [ %inc.i187, %do.cond39.i ], [ %pos.0.i, %do.body23.i.preheader ]
-  %63 = load i32, ptr %_bufferSize.i184, align 4, !tbaa !92
+  %63 = load i32, ptr %_bufferSize.i184, align 4, !tbaa !72
   %cmp25.i = icmp eq i32 %pos.1.i, %63
   %spec.store.select.i = select i1 %cmp25.i, i32 0, i32 %pos.1.i
-  %64 = load ptr, ptr %_outWindowStream81, align 8, !tbaa !93
+  %64 = load ptr, ptr %_outWindowStream81, align 8, !tbaa !73
   %inc.i187 = add i32 %spec.store.select.i, 1
   %idxprom.i188 = zext i32 %spec.store.select.i to i64
   %arrayidx.i189 = getelementptr inbounds i8, ptr %64, i64 %idxprom.i188
   %65 = load i8, ptr %arrayidx.i189, align 1, !tbaa !13
-  %66 = load i32, ptr %_pos.i180, align 8, !tbaa !91
+  %66 = load i32, ptr %_pos.i180, align 8, !tbaa !71
   %inc31.i = add i32 %66, 1
-  store i32 %inc31.i, ptr %_pos.i180, align 8, !tbaa !91
+  store i32 %inc31.i, ptr %_pos.i180, align 8, !tbaa !71
   %idxprom32.i = zext i32 %66 to i64
   %arrayidx33.i = getelementptr inbounds i8, ptr %64, i64 %idxprom32.i
   store i8 %65, ptr %arrayidx33.i, align 1, !tbaa !13
-  %67 = load i32, ptr %_pos.i180, align 8, !tbaa !91
-  %68 = load i32, ptr %_limitPos.i186, align 4, !tbaa !94
+  %67 = load i32, ptr %_pos.i180, align 8, !tbaa !71
+  %68 = load i32, ptr %_limitPos.i186, align 4, !tbaa !74
   %cmp36.i = icmp eq i32 %67, %68
   br i1 %cmp36.i, label %if.then37.i, label %do.cond39.i
 
@@ -1434,7 +2330,7 @@ if.then37.i:                                      ; preds = %do.body23.i
 do.cond39.i:                                      ; preds = %if.then37.i, %do.body23.i
   %dec40.i = add i32 %len.addr.1.i, -1
   %cmp41.not.i = icmp eq i32 %dec40.i, 0
-  br i1 %cmp41.not.i, label %if.end84, label %do.body23.i, !llvm.loop !102
+  br i1 %cmp41.not.i, label %if.end84, label %do.body23.i, !llvm.loop !82
 
 if.end84:                                         ; preds = %do.cond39.i, %do.body.i190.prol.loopexit, %do.body.i190, %middle.block, %vec.epilog.middle.block
   %sub85 = sub i32 %curSize.addr.1207, %spec.select
@@ -1443,9 +2339,9 @@ if.end84:                                         ; preds = %do.cond39.i, %do.bo
 
 cleanup95.thread200:                              ; preds = %if.end84
   %sub86 = sub i32 %len.2, %spec.select
-  store i32 %sub86, ptr %_remainLen, align 8, !tbaa !79
+  store i32 %sub86, ptr %_remainLen, align 8, !tbaa !59
   %_rep090 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 9
-  store i32 %rep0.0, ptr %_rep090, align 4, !tbaa !90
+  store i32 %rep0.0, ptr %_rep090, align 4, !tbaa !70
   br label %while.end98
 
 cleanup95:                                        ; preds = %_ZN12CLzOutWindow7PutByteEh.exit148, %if.end84
@@ -1455,7 +2351,7 @@ cleanup95:                                        ; preds = %_ZN12CLzOutWindow7P
 
 while.end98:                                      ; preds = %cleanup95, %while.cond22.preheader, %cleanup95.thread200
   %_wasFinished.i.i192 = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 4, i32 2, i32 6
-  %69 = load i8, ptr %_wasFinished.i.i192, align 4, !tbaa !96, !range !81, !noundef !82
+  %69 = load i8, ptr %_wasFinished.i.i192, align 4, !tbaa !76, !range !61, !noundef !62
   %cond = zext i8 %69 to i32
   br label %return
 
@@ -1473,12 +2369,12 @@ entry:
   %0 = load i16, ptr %Freqs, align 4, !tbaa !11
   %conv = zext i16 %0 to i32
   %Code.i = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CDecoder", ptr %rangeDecoder, i64 0, i32 2
-  %1 = load i32, ptr %Code.i, align 8, !tbaa !89
+  %1 = load i32, ptr %Code.i, align 8, !tbaa !69
   %add.i = add i32 %1, 1
   %mul.i = mul i32 %add.i, %conv
   %sub.i = add i32 %mul.i, -1
   %Range.i = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CDecoder", ptr %rangeDecoder, i64 0, i32 1
-  %2 = load i32, ptr %Range.i, align 4, !tbaa !85
+  %2 = load i32, ptr %Range.i, align 4, !tbaa !65
   %div.i = udiv i32 %sub.i, %2
   br label %for.cond
 
@@ -1492,7 +2388,7 @@ for.cond:                                         ; preds = %for.cond, %entry
   %cmp = icmp ult i32 %div.i, %conv4
   %inc = add i32 %i.0, 1
   %indvars.iv.next = add i32 %indvars.iv, 1
-  br i1 %cmp, label %for.cond, label %for.end, !llvm.loop !103
+  br i1 %cmp, label %for.cond, label %for.end, !llvm.loop !83
 
 for.end:                                          ; preds = %for.cond
   %sub = add i32 %i.0, -1
@@ -1527,7 +2423,7 @@ vector.body:                                      ; preds = %vector.body, %vecto
   store <8 x i16> %12, ptr %10, align 2, !tbaa !11
   %index.next = add nuw i64 %index, 16
   %13 = icmp eq i64 %index.next, %n.vec
-  br i1 %13, label %middle.block, label %vector.body, !llvm.loop !104
+  br i1 %13, label %middle.block, label %vector.body, !llvm.loop !84
 
 middle.block:                                     ; preds = %vector.body
   %cmp.n = icmp eq i64 %7, %n.vec
@@ -1545,7 +2441,7 @@ do.body:                                          ; preds = %do.body.preheader, 
   store i16 %add, ptr %arrayidx21, align 2, !tbaa !11
   %indvars.iv.next207 = add nsw i64 %indvars.iv206, -1
   %cmp25.not = icmp eq i64 %indvars.iv206, 0
-  br i1 %cmp25.not, label %do.end, label %do.body, !llvm.loop !105
+  br i1 %cmp25.not, label %do.end, label %do.body, !llvm.loop !85
 
 do.end:                                           ; preds = %do.body, %middle.block
   %15 = load i16, ptr %Freqs, align 4, !tbaa !11
@@ -1593,7 +2489,7 @@ vector.body244:                                   ; preds = %vector.body244, %ve
   store <8 x i16> %27, ptr %18, align 4, !tbaa !11
   %index.next247 = add nuw i64 %index245, 8
   %28 = icmp eq i64 %index.next247, %n.vec241
-  br i1 %28, label %middle.block236, label %vector.body244, !llvm.loop !106
+  br i1 %28, label %middle.block236, label %vector.body244, !llvm.loop !86
 
 middle.block236:                                  ; preds = %vector.body244
   %cmp.n243 = icmp eq i64 %n.vec241, %wide.trip.count
@@ -1631,12 +2527,12 @@ for.body36:                                       ; preds = %for.body36.preheade
   %conv48 = trunc i32 %31 to i16
   store i16 %conv48, ptr %arrayidx39, align 2, !tbaa !11
   %exitcond.not = icmp eq i64 %indvars.iv.next210, %wide.trip.count
-  br i1 %exitcond.not, label %for.cond55.preheader, label %for.body36, !llvm.loop !107
+  br i1 %exitcond.not, label %for.cond55.preheader, label %for.body36, !llvm.loop !87
 
 for.cond55.loopexit:                              ; preds = %for.inc99, %for.body59
   %indvars.iv.next213 = add nuw nsw i64 %indvars.iv212, 1
   %exitcond222.not = icmp eq i64 %indvars.iv.next219, %wide.trip.count221
-  br i1 %exitcond222.not, label %do.body105.preheader.loopexit, label %for.body59, !llvm.loop !108
+  br i1 %exitcond222.not, label %do.body105.preheader.loopexit, label %for.body59, !llvm.loop !88
 
 do.body105.preheader.loopexit:                    ; preds = %for.cond55.loopexit
   %32 = zext i32 %sub57229 to i64
@@ -1696,23 +2592,23 @@ vector.body267:                                   ; preds = %vector.body267, %ve
   %offset.idx269 = sub i64 %i.3.lcssa, %index268
   %56 = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CModelDecoder", ptr %this, i64 0, i32 2, i64 %offset.idx269
   %57 = getelementptr inbounds i16, ptr %56, i64 -7
-  %wide.load270 = load <8 x i16>, ptr %57, align 2, !tbaa !11, !alias.scope !109, !noalias !112
+  %wide.load270 = load <8 x i16>, ptr %57, align 2, !tbaa !11, !alias.scope !89, !noalias !92
   %58 = getelementptr inbounds i16, ptr %56, i64 -15
-  %wide.load272 = load <8 x i16>, ptr %58, align 2, !tbaa !11, !alias.scope !109, !noalias !112
+  %wide.load272 = load <8 x i16>, ptr %58, align 2, !tbaa !11, !alias.scope !89, !noalias !92
   %59 = add nuw i64 %offset.idx269, 1
   %60 = and i64 %59, 4294967295
   %61 = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CModelDecoder", ptr %this, i64 0, i32 2, i64 %60
   %62 = getelementptr inbounds i16, ptr %61, i64 -7
-  %wide.load274 = load <8 x i16>, ptr %62, align 2, !tbaa !11, !alias.scope !112
+  %wide.load274 = load <8 x i16>, ptr %62, align 2, !tbaa !11, !alias.scope !92
   %63 = getelementptr inbounds i16, ptr %61, i64 -15
-  %wide.load276 = load <8 x i16>, ptr %63, align 2, !tbaa !11, !alias.scope !112
+  %wide.load276 = load <8 x i16>, ptr %63, align 2, !tbaa !11, !alias.scope !92
   %64 = add <8 x i16> %wide.load274, %wide.load270
   %65 = add <8 x i16> %wide.load276, %wide.load272
-  store <8 x i16> %64, ptr %57, align 2, !tbaa !11, !alias.scope !109, !noalias !112
-  store <8 x i16> %65, ptr %58, align 2, !tbaa !11, !alias.scope !109, !noalias !112
+  store <8 x i16> %64, ptr %57, align 2, !tbaa !11, !alias.scope !89, !noalias !92
+  store <8 x i16> %65, ptr %58, align 2, !tbaa !11, !alias.scope !89, !noalias !92
   %index.next280 = add nuw i64 %index268, 16
   %66 = icmp eq i64 %index.next280, %n.vec263
-  br i1 %66, label %middle.block258, label %vector.body267, !llvm.loop !114
+  br i1 %66, label %middle.block258, label %vector.body267, !llvm.loop !94
 
 middle.block258:                                  ; preds = %vector.body267
   %cmp.n266 = icmp eq i64 %33, %n.vec263
@@ -1775,7 +2671,7 @@ for.inc99:                                        ; preds = %for.body64, %if.the
   %indvars.iv.next215 = add nuw nsw i64 %indvars.iv214, 1
   %lftr.wideiv = trunc i64 %indvars.iv.next215 to i32
   %exitcond217.not = icmp eq i32 %17, %lftr.wideiv
-  br i1 %exitcond217.not, label %for.cond55.loopexit, label %for.body64, !llvm.loop !115
+  br i1 %exitcond217.not, label %for.cond55.loopexit, label %for.body64, !llvm.loop !95
 
 do.body105:                                       ; preds = %do.body105.prol.loopexit, %do.body105
   %indvars.iv223 = phi i64 [ %indvars.iv.next224.1, %do.body105 ], [ %indvars.iv223.unr, %do.body105.prol.loopexit ]
@@ -1797,7 +2693,7 @@ do.body105:                                       ; preds = %do.body105.prol.loo
   store i16 %add115.1, ptr %arrayidx108.1, align 2, !tbaa !11
   %indvars.iv.next224.1 = add nsw i64 %indvars.iv223, -2
   %cmp122.not.1 = icmp eq i64 %indvars.iv.next224, 0
-  br i1 %cmp122.not.1, label %if.end160, label %do.body105, !llvm.loop !116
+  br i1 %cmp122.not.1, label %if.end160, label %do.body105, !llvm.loop !96
 
 if.else:                                          ; preds = %if.then
   %79 = load i32, ptr %this, align 4, !tbaa !5
@@ -1848,7 +2744,7 @@ do.body126:                                       ; preds = %do.body126.prol.loo
   %spec.select.1 = select i1 %cmp142.not.1, i16 %87, i16 %add149.1
   store i16 %spec.select.1, ptr %arrayidx129.1, align 2, !tbaa !11
   %cmp157.not.1 = icmp eq i32 %i.5.1, 0
-  br i1 %cmp157.not.1, label %if.end160, label %do.body126, !llvm.loop !117
+  br i1 %cmp157.not.1, label %if.end160, label %do.body126, !llvm.loop !97
 
 if.end160:                                        ; preds = %do.body126.prol.loopexit, %do.body126, %do.body105.prol.loopexit, %do.body105, %middle.block258, %do.end
   %conv18 = zext i8 %5 to i32
@@ -1865,21 +2761,21 @@ entry:
   br i1 %cmp, label %return, label %if.end
 
 if.end:                                           ; preds = %entry
-  %1 = load i64, ptr %outSize, align 8, !tbaa !118
-  %vtable = load ptr, ptr %this, align 8, !tbaa !119
+  %1 = load i64, ptr %outSize, align 8, !tbaa !98
+  %vtable = load ptr, ptr %this, align 8, !tbaa !99
   %vfn = getelementptr inbounds ptr, ptr %vtable, i64 6
   %2 = load ptr, ptr %vfn, align 8
   %call = tail call noundef i32 %2(ptr noundef nonnull align 8 dereferenceable(2020) %this, ptr noundef %inStream)
   %_outWindowStream = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 5
   tail call void @_ZN10COutBuffer9SetStreamEP20ISequentialOutStream(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream, ptr noundef %outStream)
-  %vtable2 = load ptr, ptr %this, align 8, !tbaa !119
+  %vtable2 = load ptr, ptr %this, align 8, !tbaa !99
   %vfn3 = getelementptr inbounds ptr, ptr %vtable2, i64 8
   %3 = load ptr, ptr %vfn3, align 8
   %call4 = tail call noundef i32 %3(ptr noundef nonnull align 8 dereferenceable(2020) %this, ptr noundef nonnull %outSize)
   call void @llvm.lifetime.start.p0(i64 16, ptr nonnull %flusher) #11
-  store ptr %this, ptr %flusher, align 8, !tbaa !121
+  store ptr %this, ptr %flusher, align 8, !tbaa !101
   %NeedFlush.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder::CDecoderFlusher", ptr %flusher, i64 0, i32 1
-  store i8 1, ptr %NeedFlush.i, align 8, !tbaa !123
+  store i8 1, ptr %NeedFlush.i, align 8, !tbaa !103
   %call6 = invoke noundef i64 @_ZNK10COutBuffer16GetProcessedSizeEv(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream)
           to label %for.cond.preheader unwind label %lpad
 
@@ -1956,22 +2852,22 @@ lpad19.split:                                     ; preds = %if.end18
 
 cleanup.cont:                                     ; preds = %invoke.cont20
   call void @llvm.lifetime.start.p0(i64 8, ptr nonnull %inSize) #11
-  %9 = load i64, ptr %_processedSize.i.i.i, align 8, !tbaa !124
-  %10 = load ptr, ptr %Stream.i.i, align 8, !tbaa !86
-  %11 = load ptr, ptr %_bufferBase.i.i.i, align 8, !tbaa !125
+  %9 = load i64, ptr %_processedSize.i.i.i, align 8, !tbaa !104
+  %10 = load ptr, ptr %Stream.i.i, align 8, !tbaa !66
+  %11 = load ptr, ptr %_bufferBase.i.i.i, align 8, !tbaa !105
   %sub.ptr.lhs.cast.i.i.i = ptrtoint ptr %10 to i64
   %sub.ptr.rhs.cast.i.i.i = ptrtoint ptr %11 to i64
   %sub.ptr.sub.i.i.i = add i64 %9, %sub.ptr.lhs.cast.i.i.i
   %add.i.i.i = sub i64 %sub.ptr.sub.i.i.i, %sub.ptr.rhs.cast.i.i.i
-  store i64 %add.i.i.i, ptr %inSize, align 8, !tbaa !118
+  store i64 %add.i.i.i, ptr %inSize, align 8, !tbaa !98
   call void @llvm.lifetime.start.p0(i64 8, ptr nonnull %nowPos64) #11
   %call33 = invoke noundef i64 @_ZNK10COutBuffer16GetProcessedSizeEv(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream)
           to label %invoke.cont32 unwind label %lpad31
 
 invoke.cont32:                                    ; preds = %cleanup.cont
   %sub34 = sub i64 %call33, %call6
-  store i64 %sub34, ptr %nowPos64, align 8, !tbaa !118
-  %vtable36 = load ptr, ptr %progress, align 8, !tbaa !119
+  store i64 %sub34, ptr %nowPos64, align 8, !tbaa !98
+  %vtable36 = load ptr, ptr %progress, align 8, !tbaa !99
   %vfn37 = getelementptr inbounds ptr, ptr %vtable36, i64 5
   %12 = load ptr, ptr %vfn37, align 8
   %call40 = invoke noundef i32 %12(ptr noundef nonnull align 8 dereferenceable(8) %progress, ptr noundef nonnull %inSize, ptr noundef nonnull %nowPos64)
@@ -2000,7 +2896,7 @@ ehcleanup:                                        ; preds = %lpad38, %lpad31
   br label %ehcleanup62
 
 for.end:                                          ; preds = %invoke.cont9, %invoke.cont9.us
-  store i8 0, ptr %NeedFlush.i, align 8, !tbaa !123
+  store i8 0, ptr %NeedFlush.i, align 8, !tbaa !103
   %call.i89 = invoke noundef i32 @_ZN10COutBuffer5FlushEv(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream)
           to label %if.end.i unwind label %lpad
 
@@ -2012,23 +2908,23 @@ if.then.i:                                        ; preds = %invoke.cont20, %inv
 if.end.i:                                         ; preds = %for.end, %if.then.i
   %retval.5105 = phi i32 [ %retval.5.ph, %if.then.i ], [ %call.i89, %for.end ]
   %_stream.i.i.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 5, i32 0, i32 5
-  %15 = load ptr, ptr %_stream.i.i.i, align 8, !tbaa !126
+  %15 = load ptr, ptr %_stream.i.i.i, align 8, !tbaa !106
   %tobool.not.i.i.i.i = icmp eq ptr %15, null
   br i1 %tobool.not.i.i.i.i, label %_ZN10COutBuffer13ReleaseStreamEv.exit.i.i, label %if.then.i.i.i.i
 
 if.then.i.i.i.i:                                  ; preds = %if.end.i
-  %vtable.i.i.i.i = load ptr, ptr %15, align 8, !tbaa !119
+  %vtable.i.i.i.i = load ptr, ptr %15, align 8, !tbaa !99
   %vfn.i.i.i.i = getelementptr inbounds ptr, ptr %vtable.i.i.i.i, i64 2
   %16 = load ptr, ptr %vfn.i.i.i.i, align 8
   %call.i.i.i5.i = invoke noundef i32 %16(ptr noundef nonnull align 8 dereferenceable(8) %15)
           to label %call.i.i.i.noexc.i unwind label %terminate.lpad.i
 
 call.i.i.i.noexc.i:                               ; preds = %if.then.i.i.i.i
-  store ptr null, ptr %_stream.i.i.i, align 8, !tbaa !126
+  store ptr null, ptr %_stream.i.i.i, align 8, !tbaa !106
   br label %_ZN10COutBuffer13ReleaseStreamEv.exit.i.i
 
 _ZN10COutBuffer13ReleaseStreamEv.exit.i.i:        ; preds = %call.i.i.i.noexc.i, %if.end.i
-  %vtable.i.i = load ptr, ptr %this, align 8, !tbaa !119
+  %vtable.i.i = load ptr, ptr %this, align 8, !tbaa !99
   %vfn.i.i = getelementptr inbounds ptr, ptr %vtable.i.i, i64 7
   %17 = load ptr, ptr %vfn.i.i, align 8
   %call.i6.i = invoke noundef i32 %17(ptr noundef nonnull align 8 dereferenceable(2020) %this)
@@ -2066,36 +2962,36 @@ declare i32 @__gxx_personality_v0(...)
 define linkonce_odr dso_local void @_ZN9NCompress8NQuantum8CDecoder15CDecoderFlusherD2Ev(ptr noundef nonnull align 8 dereferenceable(9) %this) unnamed_addr #5 comdat align 2 personality ptr @__gxx_personality_v0 {
 entry:
   %NeedFlush = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder::CDecoderFlusher", ptr %this, i64 0, i32 1
-  %0 = load i8, ptr %NeedFlush, align 8, !tbaa !123, !range !81, !noundef !82
+  %0 = load i8, ptr %NeedFlush, align 8, !tbaa !103, !range !61, !noundef !62
   %tobool.not = icmp eq i8 %0, 0
   br i1 %tobool.not, label %if.end, label %if.then
 
 if.then:                                          ; preds = %entry
-  %1 = load ptr, ptr %this, align 8, !tbaa !121
+  %1 = load ptr, ptr %this, align 8, !tbaa !101
   %_outWindowStream.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %1, i64 0, i32 5
   %call.i4 = invoke noundef i32 @_ZN10COutBuffer5FlushEv(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream.i)
           to label %if.end unwind label %terminate.lpad
 
 if.end:                                           ; preds = %if.then, %entry
-  %2 = load ptr, ptr %this, align 8, !tbaa !121
+  %2 = load ptr, ptr %this, align 8, !tbaa !101
   %_stream.i.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %2, i64 0, i32 5, i32 0, i32 5
-  %3 = load ptr, ptr %_stream.i.i, align 8, !tbaa !126
+  %3 = load ptr, ptr %_stream.i.i, align 8, !tbaa !106
   %tobool.not.i.i.i = icmp eq ptr %3, null
   br i1 %tobool.not.i.i.i, label %_ZN10COutBuffer13ReleaseStreamEv.exit.i, label %if.then.i.i.i
 
 if.then.i.i.i:                                    ; preds = %if.end
-  %vtable.i.i.i = load ptr, ptr %3, align 8, !tbaa !119
+  %vtable.i.i.i = load ptr, ptr %3, align 8, !tbaa !99
   %vfn.i.i.i = getelementptr inbounds ptr, ptr %vtable.i.i.i, i64 2
   %4 = load ptr, ptr %vfn.i.i.i, align 8
   %call.i.i.i5 = invoke noundef i32 %4(ptr noundef nonnull align 8 dereferenceable(8) %3)
           to label %call.i.i.i.noexc unwind label %terminate.lpad
 
 call.i.i.i.noexc:                                 ; preds = %if.then.i.i.i
-  store ptr null, ptr %_stream.i.i, align 8, !tbaa !126
+  store ptr null, ptr %_stream.i.i, align 8, !tbaa !106
   br label %_ZN10COutBuffer13ReleaseStreamEv.exit.i
 
 _ZN10COutBuffer13ReleaseStreamEv.exit.i:          ; preds = %call.i.i.i.noexc, %if.end
-  %vtable.i = load ptr, ptr %2, align 8, !tbaa !119
+  %vtable.i = load ptr, ptr %2, align 8, !tbaa !99
   %vfn.i = getelementptr inbounds ptr, ptr %vtable.i, i64 7
   %5 = load ptr, ptr %vfn.i, align 8
   %call.i6 = invoke noundef i32 %5(ptr noundef nonnull align 8 dereferenceable(2020) %2)
@@ -2141,7 +3037,7 @@ catch.fallthrough:                                ; preds = %lpad
 
 return.sink.split.sink.split:                     ; preds = %catch.fallthrough, %catch5
   %.sink = phi ptr [ %4, %catch5 ], [ %6, %catch.fallthrough ]
-  %7 = load i32, ptr %.sink, align 4, !tbaa !127
+  %7 = load i32, ptr %.sink, align 4, !tbaa !107
   br label %return.sink.split
 
 return.sink.split:                                ; preds = %return.sink.split.sink.split, %catch.fallthrough
@@ -2181,16 +3077,16 @@ entry:
 define dso_local noundef i32 @_ZN9NCompress8NQuantum8CDecoder15ReleaseInStreamEv(ptr nocapture noundef nonnull align 8 dereferenceable(2020) %this) unnamed_addr #2 align 2 {
 entry:
   %_stream.i.i.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 4, i32 2, i32 3
-  %0 = load ptr, ptr %_stream.i.i.i, align 8, !tbaa !129
+  %0 = load ptr, ptr %_stream.i.i.i, align 8, !tbaa !109
   %tobool.not.i.i.i.i = icmp eq ptr %0, null
   br i1 %tobool.not.i.i.i.i, label %_ZN9NCompress8NQuantum11NRangeCoder8CDecoder13ReleaseStreamEv.exit, label %if.then.i.i.i.i
 
 if.then.i.i.i.i:                                  ; preds = %entry
-  %vtable.i.i.i.i = load ptr, ptr %0, align 8, !tbaa !119
+  %vtable.i.i.i.i = load ptr, ptr %0, align 8, !tbaa !99
   %vfn.i.i.i.i = getelementptr inbounds ptr, ptr %vtable.i.i.i.i, i64 2
   %1 = load ptr, ptr %vfn.i.i.i.i, align 8
   %call.i.i.i.i = tail call noundef i32 %1(ptr noundef nonnull align 8 dereferenceable(8) %0)
-  store ptr null, ptr %_stream.i.i.i, align 8, !tbaa !129
+  store ptr null, ptr %_stream.i.i.i, align 8, !tbaa !109
   br label %_ZN9NCompress8NQuantum11NRangeCoder8CDecoder13ReleaseStreamEv.exit
 
 _ZN9NCompress8NQuantum11NRangeCoder8CDecoder13ReleaseStreamEv.exit: ; preds = %entry, %if.then.i.i.i.i
@@ -2201,16 +3097,16 @@ _ZN9NCompress8NQuantum11NRangeCoder8CDecoder13ReleaseStreamEv.exit: ; preds = %e
 define dso_local noundef i32 @_ZThn8_N9NCompress8NQuantum8CDecoder15ReleaseInStreamEv(ptr nocapture noundef %this) unnamed_addr #4 align 2 {
 entry:
   %_stream.i.i.i.i = getelementptr inbounds i8, ptr %this, i64 128
-  %0 = load ptr, ptr %_stream.i.i.i.i, align 8, !tbaa !129
+  %0 = load ptr, ptr %_stream.i.i.i.i, align 8, !tbaa !109
   %tobool.not.i.i.i.i.i = icmp eq ptr %0, null
   br i1 %tobool.not.i.i.i.i.i, label %_ZN9NCompress8NQuantum8CDecoder15ReleaseInStreamEv.exit, label %if.then.i.i.i.i.i
 
 if.then.i.i.i.i.i:                                ; preds = %entry
-  %vtable.i.i.i.i.i = load ptr, ptr %0, align 8, !tbaa !119
+  %vtable.i.i.i.i.i = load ptr, ptr %0, align 8, !tbaa !99
   %vfn.i.i.i.i.i = getelementptr inbounds ptr, ptr %vtable.i.i.i.i.i, i64 2
   %1 = load ptr, ptr %vfn.i.i.i.i.i, align 8
   %call.i.i.i.i.i = tail call noundef i32 %1(ptr noundef nonnull align 8 dereferenceable(8) %0)
-  store ptr null, ptr %_stream.i.i.i.i, align 8, !tbaa !129
+  store ptr null, ptr %_stream.i.i.i.i, align 8, !tbaa !109
   br label %_ZN9NCompress8NQuantum8CDecoder15ReleaseInStreamEv.exit
 
 _ZN9NCompress8NQuantum8CDecoder15ReleaseInStreamEv.exit: ; preds = %entry, %if.then.i.i.i.i.i
@@ -2225,10 +3121,10 @@ entry:
 
 if.end:                                           ; preds = %entry
   %_remainLen = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 8
-  store i32 -2, ptr %_remainLen, align 8, !tbaa !79
+  store i32 -2, ptr %_remainLen, align 8, !tbaa !59
   %_outWindowStream = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 5
   %_keepHistory = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 11
-  %0 = load i8, ptr %_keepHistory, align 4, !tbaa !80, !range !81, !noundef !82
+  %0 = load i8, ptr %_keepHistory, align 4, !tbaa !60, !range !61, !noundef !62
   %tobool = icmp ne i8 %0, 0
   tail call void @_ZN12CLzOutWindow4InitEb(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream, i1 noundef zeroext %tobool)
   br label %return
@@ -2248,10 +3144,10 @@ entry:
 
 if.end.i:                                         ; preds = %entry
   %_remainLen.i = getelementptr inbounds i8, ptr %this, i64 152
-  store i32 -2, ptr %_remainLen.i, align 8, !tbaa !79
+  store i32 -2, ptr %_remainLen.i, align 8, !tbaa !59
   %_outWindowStream.i = getelementptr inbounds i8, ptr %this, i64 16
   %_keepHistory.i = getelementptr inbounds i8, ptr %this, i64 164
-  %0 = load i8, ptr %_keepHistory.i, align 4, !tbaa !80, !range !81, !noundef !82
+  %0 = load i8, ptr %_keepHistory.i, align 4, !tbaa !60, !range !61, !noundef !62
   %tobool.i = icmp ne i8 %0, 0
   tail call void @_ZN12CLzOutWindow4InitEb(ptr noundef nonnull align 8 dereferenceable(49) %_outWindowStream.i, i1 noundef zeroext %tobool.i)
   br label %_ZN9NCompress8NQuantum8CDecoder16SetOutStreamSizeEPKy.exit
@@ -2597,8 +3493,8 @@ _ZeqRK4GUIDS1_.exit120:                           ; preds = %for.cond.13.i113
 return.sink.split:                                ; preds = %_ZeqRK4GUIDS1_.exit120, %_ZeqRK4GUIDS1_.exit71, %_ZeqRK4GUIDS1_.exit
   %.sink = phi i64 [ 8, %_ZeqRK4GUIDS1_.exit ], [ 8, %_ZeqRK4GUIDS1_.exit71 ], [ 16, %_ZeqRK4GUIDS1_.exit120 ]
   %add.ptr14 = getelementptr inbounds i8, ptr %this, i64 %.sink
-  store ptr %add.ptr14, ptr %outObject, align 8, !tbaa !130
-  %vtable15 = load ptr, ptr %this, align 8, !tbaa !119
+  store ptr %add.ptr14, ptr %outObject, align 8, !tbaa !110
+  %vtable15 = load ptr, ptr %this, align 8, !tbaa !99
   %vfn16 = getelementptr inbounds ptr, ptr %vtable15, i64 1
   %94 = load ptr, ptr %vfn16, align 8
   %call17 = tail call noundef i32 %94(ptr noundef nonnull align 8 dereferenceable(2020) %this)
@@ -2613,9 +3509,9 @@ return:                                           ; preds = %return.sink.split, 
 define linkonce_odr dso_local noundef i32 @_ZN9NCompress8NQuantum8CDecoder6AddRefEv(ptr noundef nonnull align 8 dereferenceable(2020) %this) unnamed_addr #7 comdat align 2 {
 entry:
   %add.ptr = getelementptr inbounds i8, ptr %this, i64 24
-  %0 = load i32, ptr %add.ptr, align 8, !tbaa !131
+  %0 = load i32, ptr %add.ptr, align 8, !tbaa !111
   %inc = add i32 %0, 1
-  store i32 %inc, ptr %add.ptr, align 8, !tbaa !131
+  store i32 %inc, ptr %add.ptr, align 8, !tbaa !111
   ret i32 %inc
 }
 
@@ -2623,14 +3519,14 @@ entry:
 define linkonce_odr dso_local noundef i32 @_ZN9NCompress8NQuantum8CDecoder7ReleaseEv(ptr noundef nonnull align 8 dereferenceable(2020) %this) unnamed_addr #7 comdat align 2 {
 entry:
   %add.ptr = getelementptr inbounds i8, ptr %this, i64 24
-  %0 = load i32, ptr %add.ptr, align 8, !tbaa !131
+  %0 = load i32, ptr %add.ptr, align 8, !tbaa !111
   %dec = add i32 %0, -1
-  store i32 %dec, ptr %add.ptr, align 8, !tbaa !131
+  store i32 %dec, ptr %add.ptr, align 8, !tbaa !111
   %cmp.not = icmp eq i32 %dec, 0
   br i1 %cmp.not, label %delete.notnull, label %return
 
 delete.notnull:                                   ; preds = %entry
-  %vtable = load ptr, ptr %this, align 8, !tbaa !119
+  %vtable = load ptr, ptr %this, align 8, !tbaa !99
   %vfn = getelementptr inbounds ptr, ptr %vtable, i64 4
   %1 = load ptr, ptr %vfn, align 8
   tail call void %1(ptr noundef nonnull align 8 dereferenceable(2020) %this) #11
@@ -2643,23 +3539,23 @@ return:                                           ; preds = %entry, %delete.notn
 ; Function Attrs: nounwind uwtable
 define linkonce_odr dso_local void @_ZN9NCompress8NQuantum8CDecoderD2Ev(ptr noundef nonnull align 8 dereferenceable(2020) %this) unnamed_addr #5 comdat align 2 personality ptr @__gxx_personality_v0 {
 entry:
-  store ptr getelementptr inbounds ({ [11 x ptr], [9 x ptr], [8 x ptr] }, ptr @_ZTVN9NCompress8NQuantum8CDecoderE, i64 0, inrange i32 0, i64 2), ptr %this, align 8, !tbaa !119
+  store ptr getelementptr inbounds ({ [11 x ptr], [9 x ptr], [8 x ptr] }, ptr @_ZTVN9NCompress8NQuantum8CDecoderE, i64 0, inrange i32 0, i64 2), ptr %this, align 8, !tbaa !99
   %add.ptr = getelementptr inbounds i8, ptr %this, i64 8
-  store ptr getelementptr inbounds ({ [11 x ptr], [9 x ptr], [8 x ptr] }, ptr @_ZTVN9NCompress8NQuantum8CDecoderE, i64 0, inrange i32 1, i64 2), ptr %add.ptr, align 8, !tbaa !119
+  store ptr getelementptr inbounds ({ [11 x ptr], [9 x ptr], [8 x ptr] }, ptr @_ZTVN9NCompress8NQuantum8CDecoderE, i64 0, inrange i32 1, i64 2), ptr %add.ptr, align 8, !tbaa !99
   %add.ptr2 = getelementptr inbounds i8, ptr %this, i64 16
-  store ptr getelementptr inbounds ({ [11 x ptr], [9 x ptr], [8 x ptr] }, ptr @_ZTVN9NCompress8NQuantum8CDecoderE, i64 0, inrange i32 2, i64 2), ptr %add.ptr2, align 8, !tbaa !119
+  store ptr getelementptr inbounds ({ [11 x ptr], [9 x ptr], [8 x ptr] }, ptr @_ZTVN9NCompress8NQuantum8CDecoderE, i64 0, inrange i32 2, i64 2), ptr %add.ptr2, align 8, !tbaa !99
   %Stream.i.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 4, i32 2
   invoke void @_ZN9CInBuffer4FreeEv(ptr noundef nonnull align 8 dereferenceable(45) %Stream.i.i)
           to label %invoke.cont.i.i.i unwind label %terminate.lpad.i.i.i
 
 invoke.cont.i.i.i:                                ; preds = %entry
   %_stream.i.i.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 6, i32 4, i32 2, i32 3
-  %0 = load ptr, ptr %_stream.i.i.i, align 8, !tbaa !129
+  %0 = load ptr, ptr %_stream.i.i.i, align 8, !tbaa !109
   %tobool.not.i.i.i.i = icmp eq ptr %0, null
   br i1 %tobool.not.i.i.i.i, label %_ZN9NCompress8NQuantum11NRangeCoder8CDecoderD2Ev.exit, label %if.then.i.i.i.i
 
 if.then.i.i.i.i:                                  ; preds = %invoke.cont.i.i.i
-  %vtable.i.i.i.i = load ptr, ptr %0, align 8, !tbaa !119
+  %vtable.i.i.i.i = load ptr, ptr %0, align 8, !tbaa !99
   %vfn.i.i.i.i = getelementptr inbounds ptr, ptr %vtable.i.i.i.i, i64 2
   %1 = load ptr, ptr %vfn.i.i.i.i, align 8
   %call.i.i.i.i = invoke noundef i32 %1(ptr noundef nonnull align 8 dereferenceable(8) %0)
@@ -2686,12 +3582,12 @@ _ZN9NCompress8NQuantum11NRangeCoder8CDecoderD2Ev.exit: ; preds = %invoke.cont.i.
 
 invoke.cont.i:                                    ; preds = %_ZN9NCompress8NQuantum11NRangeCoder8CDecoderD2Ev.exit
   %_stream.i = getelementptr inbounds %"class.NCompress::NQuantum::CDecoder", ptr %this, i64 0, i32 5, i32 0, i32 5
-  %6 = load ptr, ptr %_stream.i, align 8, !tbaa !126
+  %6 = load ptr, ptr %_stream.i, align 8, !tbaa !106
   %tobool.not.i.i = icmp eq ptr %6, null
   br i1 %tobool.not.i.i, label %_ZN10COutBufferD2Ev.exit, label %if.then.i.i
 
 if.then.i.i:                                      ; preds = %invoke.cont.i
-  %vtable.i.i = load ptr, ptr %6, align 8, !tbaa !119
+  %vtable.i.i = load ptr, ptr %6, align 8, !tbaa !99
   %vfn.i.i = getelementptr inbounds ptr, ptr %vtable.i.i, i64 2
   %7 = load ptr, ptr %vfn.i.i, align 8
   %call.i.i = invoke noundef i32 %7(ptr noundef nonnull align 8 dereferenceable(8) %6)
@@ -2735,9 +3631,9 @@ entry:
 define linkonce_odr dso_local noundef i32 @_ZThn8_N9NCompress8NQuantum8CDecoder6AddRefEv(ptr noundef %this) unnamed_addr #4 comdat align 2 {
 entry:
   %add.ptr.i = getelementptr inbounds i8, ptr %this, i64 16
-  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !131
+  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !111
   %inc.i = add i32 %0, 1
-  store i32 %inc.i, ptr %add.ptr.i, align 8, !tbaa !131
+  store i32 %inc.i, ptr %add.ptr.i, align 8, !tbaa !111
   ret i32 %inc.i
 }
 
@@ -2745,15 +3641,15 @@ entry:
 define linkonce_odr dso_local noundef i32 @_ZThn8_N9NCompress8NQuantum8CDecoder7ReleaseEv(ptr noundef %this) unnamed_addr #4 comdat align 2 {
 entry:
   %add.ptr.i = getelementptr inbounds i8, ptr %this, i64 16
-  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !131
+  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !111
   %dec.i = add i32 %0, -1
-  store i32 %dec.i, ptr %add.ptr.i, align 8, !tbaa !131
+  store i32 %dec.i, ptr %add.ptr.i, align 8, !tbaa !111
   %cmp.not.i = icmp eq i32 %dec.i, 0
   br i1 %cmp.not.i, label %delete.notnull.i, label %_ZN9NCompress8NQuantum8CDecoder7ReleaseEv.exit
 
 delete.notnull.i:                                 ; preds = %entry
   %1 = getelementptr inbounds i8, ptr %this, i64 -8
-  %vtable.i = load ptr, ptr %1, align 8, !tbaa !119
+  %vtable.i = load ptr, ptr %1, align 8, !tbaa !99
   %vfn.i = getelementptr inbounds ptr, ptr %vtable.i, i64 4
   %2 = load ptr, ptr %vfn.i, align 8
   tail call void %2(ptr noundef nonnull align 8 dereferenceable(2020) %1) #11
@@ -2792,9 +3688,9 @@ entry:
 define linkonce_odr dso_local noundef i32 @_ZThn16_N9NCompress8NQuantum8CDecoder6AddRefEv(ptr noundef %this) unnamed_addr #4 comdat align 2 {
 entry:
   %add.ptr.i = getelementptr inbounds i8, ptr %this, i64 8
-  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !131
+  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !111
   %inc.i = add i32 %0, 1
-  store i32 %inc.i, ptr %add.ptr.i, align 8, !tbaa !131
+  store i32 %inc.i, ptr %add.ptr.i, align 8, !tbaa !111
   ret i32 %inc.i
 }
 
@@ -2802,15 +3698,15 @@ entry:
 define linkonce_odr dso_local noundef i32 @_ZThn16_N9NCompress8NQuantum8CDecoder7ReleaseEv(ptr noundef %this) unnamed_addr #4 comdat align 2 {
 entry:
   %add.ptr.i = getelementptr inbounds i8, ptr %this, i64 8
-  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !131
+  %0 = load i32, ptr %add.ptr.i, align 8, !tbaa !111
   %dec.i = add i32 %0, -1
-  store i32 %dec.i, ptr %add.ptr.i, align 8, !tbaa !131
+  store i32 %dec.i, ptr %add.ptr.i, align 8, !tbaa !111
   %cmp.not.i = icmp eq i32 %dec.i, 0
   br i1 %cmp.not.i, label %delete.notnull.i, label %_ZN9NCompress8NQuantum8CDecoder7ReleaseEv.exit
 
 delete.notnull.i:                                 ; preds = %entry
   %1 = getelementptr inbounds i8, ptr %this, i64 -16
-  %vtable.i = load ptr, ptr %1, align 8, !tbaa !119
+  %vtable.i = load ptr, ptr %1, align 8, !tbaa !99
   %vfn.i = getelementptr inbounds ptr, ptr %vtable.i, i64 4
   %2 = load ptr, ptr %vfn.i, align 8
   tail call void %2(ptr noundef nonnull align 8 dereferenceable(2020) %1) #11
@@ -2846,9 +3742,9 @@ declare void @_ZN10COutBuffer14FlushWithCheckEv(ptr noundef nonnull align 8 dere
 ; Function Attrs: mustprogress uwtable
 define linkonce_odr dso_local void @_ZN9NCompress8NQuantum11NRangeCoder8CDecoder6DecodeEjjj(ptr noundef nonnull align 8 dereferenceable(72) %this, i32 noundef %start, i32 noundef %end, i32 noundef %total) local_unnamed_addr #2 comdat align 2 {
 entry:
-  %0 = load i32, ptr %this, align 8, !tbaa !84
+  %0 = load i32, ptr %this, align 8, !tbaa !64
   %Range = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CDecoder", ptr %this, i64 0, i32 1
-  %1 = load i32, ptr %Range, align 4, !tbaa !85
+  %1 = load i32, ptr %Range, align 4, !tbaa !65
   %mul = mul i32 %1, %end
   %div = udiv i32 %mul, %total
   %add = add i32 %0, -1
@@ -2856,11 +3752,11 @@ entry:
   %mul3 = mul i32 %1, %start
   %div4 = udiv i32 %mul3, %total
   %Code = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CDecoder", ptr %this, i64 0, i32 2
-  %2 = load i32, ptr %Code, align 8, !tbaa !89
+  %2 = load i32, ptr %Code, align 8, !tbaa !69
   %sub5 = sub i32 %2, %div4
-  store i32 %sub5, ptr %Code, align 8, !tbaa !89
+  store i32 %sub5, ptr %Code, align 8, !tbaa !69
   %add7 = add i32 %div4, %0
-  store i32 %add7, ptr %this, align 8, !tbaa !84
+  store i32 %add7, ptr %this, align 8, !tbaa !64
   %Stream = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CDecoder", ptr %this, i64 0, i32 4
   %Stream.i = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CDecoder", ptr %this, i64 0, i32 4, i32 2
   %_bufferLimit.i.i = getelementptr inbounds %"class.NCompress::NQuantum::NRangeCoder::CDecoder", ptr %this, i64 0, i32 4, i32 2, i32 1
@@ -2893,29 +3789,29 @@ if.end18:                                         ; preds = %if.end, %for.cond
   %high.1 = phi i32 [ %or, %if.end ], [ %high.0, %for.cond ]
   %shl = shl i32 %7, 1
   %and20 = and i32 %shl, 65534
-  store i32 %and20, ptr %this, align 8, !tbaa !84
+  store i32 %and20, ptr %this, align 8, !tbaa !64
   %shl22 = shl i32 %high.1, 1
   %or23 = and i32 %shl22, 65534
   %and24 = or i32 %or23, 1
   %shl26 = shl i32 %3, 1
-  %8 = load i32, ptr %Stream, align 8, !tbaa !83
+  %8 = load i32, ptr %Stream, align 8, !tbaa !63
   %cmp.i = icmp ugt i32 %8, 65535
   br i1 %cmp.i, label %if.then.i, label %_ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit
 
 if.then.i:                                        ; preds = %if.end18
-  %9 = load ptr, ptr %Stream.i, align 8, !tbaa !86
-  %10 = load ptr, ptr %_bufferLimit.i.i, align 8, !tbaa !87
+  %9 = load ptr, ptr %Stream.i, align 8, !tbaa !66
+  %10 = load ptr, ptr %_bufferLimit.i.i, align 8, !tbaa !67
   %cmp.not.i.i = icmp ult ptr %9, %10
   br i1 %cmp.not.i.i, label %if.end.i.i, label %if.then.i.i
 
 if.then.i.i:                                      ; preds = %if.then.i
   %call.i.i = tail call noundef zeroext i8 @_ZN9CInBuffer10ReadBlock2Ev(ptr noundef nonnull align 8 dereferenceable(45) %Stream.i)
-  %.pre.pre.pre = load i32, ptr %this, align 8, !tbaa !84
+  %.pre.pre.pre = load i32, ptr %this, align 8, !tbaa !64
   br label %_ZN9CInBuffer8ReadByteEv.exit.i
 
 if.end.i.i:                                       ; preds = %if.then.i
   %incdec.ptr.i.i = getelementptr inbounds i8, ptr %9, i64 1
-  store ptr %incdec.ptr.i.i, ptr %Stream.i, align 8, !tbaa !86
+  store ptr %incdec.ptr.i.i, ptr %Stream.i, align 8, !tbaa !66
   %11 = load i8, ptr %9, align 1, !tbaa !13
   br label %_ZN9CInBuffer8ReadByteEv.exit.i
 
@@ -2932,15 +3828,15 @@ _ZN9NCompress8NQuantum17CStreamBitDecoder7ReadBitEv.exit: ; preds = %if.end18, %
   %shr.i = lshr i32 %12, 7
   %and.i = and i32 %shr.i, 1
   %shl.i = shl nuw nsw i32 %12, 1
-  store i32 %shl.i, ptr %Stream, align 8, !tbaa !83
+  store i32 %shl.i, ptr %Stream, align 8, !tbaa !63
   %or27 = or i32 %and.i, %shl26
-  store i32 %or27, ptr %Code, align 8, !tbaa !89
-  br label %for.cond, !llvm.loop !132
+  store i32 %or27, ptr %Code, align 8, !tbaa !69
+  br label %for.cond, !llvm.loop !112
 
 for.end:                                          ; preds = %if.then
   %sub30 = add i32 %high.0, 1
   %add31 = sub i32 %sub30, %4
-  store i32 %add31, ptr %Range, align 4, !tbaa !85
+  store i32 %add31, ptr %Range, align 4, !tbaa !65
   ret void
 }
 
@@ -3004,122 +3900,102 @@ attributes #13 = { builtin nounwind }
 !11 = !{!12, !12, i64 0}
 !12 = !{!"short", !8, i64 0}
 !13 = !{!8, !8, i64 0}
-!14 = !{!15}
-!15 = distinct !{!15, !16}
-!16 = distinct !{!16, !"LVerDomain"}
-!17 = !{!18}
-!18 = distinct !{!18, !16}
-!19 = !{!20}
-!20 = distinct !{!20, !21}
-!21 = distinct !{!21, !"LVerDomain"}
-!22 = !{!23}
-!23 = distinct !{!23, !21}
-!24 = !{!25}
-!25 = distinct !{!25, !26}
-!26 = distinct !{!26, !"LVerDomain"}
-!27 = !{!28}
-!28 = distinct !{!28, !26}
-!29 = !{!30}
-!30 = distinct !{!30, !31}
-!31 = distinct !{!31, !"LVerDomain"}
-!32 = !{!33}
-!33 = distinct !{!33, !31}
-!34 = !{!35, !7, i64 176}
-!35 = !{!"_ZTSN9NCompress8NQuantum8CDecoderE", !36, i64 0, !38, i64 8, !39, i64 16, !40, i64 24, !41, i64 32, !47, i64 88, !45, i64 160, !7, i64 168, !7, i64 172, !7, i64 176, !46, i64 180, !6, i64 184, !8, i64 388, !8, i64 1204, !6, i64 1816}
-!36 = !{!"_ZTS14ICompressCoder", !37, i64 0}
-!37 = !{!"_ZTS8IUnknown"}
-!38 = !{!"_ZTS20ICompressSetInStream", !37, i64 0}
-!39 = !{!"_ZTS25ICompressSetOutStreamSize", !37, i64 0}
-!40 = !{!"_ZTS13CMyUnknownImp", !7, i64 0}
-!41 = !{!"_ZTS12CLzOutWindow", !42, i64 0}
-!42 = !{!"_ZTS10COutBuffer", !43, i64 0, !7, i64 8, !7, i64 12, !7, i64 16, !7, i64 20, !44, i64 24, !45, i64 32, !43, i64 40, !46, i64 48}
-!43 = !{!"any pointer", !8, i64 0}
-!44 = !{!"_ZTS9CMyComPtrI20ISequentialOutStreamE", !43, i64 0}
-!45 = !{!"long long", !8, i64 0}
-!46 = !{!"bool", !8, i64 0}
-!47 = !{!"_ZTSN9NCompress8NQuantum11NRangeCoder8CDecoderE", !7, i64 0, !7, i64 4, !7, i64 8, !48, i64 16}
-!48 = !{!"_ZTSN9NCompress8NQuantum17CStreamBitDecoderE", !7, i64 0, !49, i64 8}
-!49 = !{!"_ZTS9CInBuffer", !43, i64 0, !43, i64 8, !43, i64 16, !50, i64 24, !45, i64 32, !7, i64 40, !46, i64 44}
-!50 = !{!"_ZTS9CMyComPtrI19ISequentialInStreamE", !43, i64 0}
+!14 = !{!15, !7, i64 176}
+!15 = !{!"_ZTSN9NCompress8NQuantum8CDecoderE", !16, i64 0, !18, i64 8, !19, i64 16, !20, i64 24, !21, i64 32, !27, i64 88, !25, i64 160, !7, i64 168, !7, i64 172, !7, i64 176, !26, i64 180, !6, i64 184, !8, i64 388, !8, i64 1204, !6, i64 1816}
+!16 = !{!"_ZTS14ICompressCoder", !17, i64 0}
+!17 = !{!"_ZTS8IUnknown"}
+!18 = !{!"_ZTS20ICompressSetInStream", !17, i64 0}
+!19 = !{!"_ZTS25ICompressSetOutStreamSize", !17, i64 0}
+!20 = !{!"_ZTS13CMyUnknownImp", !7, i64 0}
+!21 = !{!"_ZTS12CLzOutWindow", !22, i64 0}
+!22 = !{!"_ZTS10COutBuffer", !23, i64 0, !7, i64 8, !7, i64 12, !7, i64 16, !7, i64 20, !24, i64 24, !25, i64 32, !23, i64 40, !26, i64 48}
+!23 = !{!"any pointer", !8, i64 0}
+!24 = !{!"_ZTS9CMyComPtrI20ISequentialOutStreamE", !23, i64 0}
+!25 = !{!"long long", !8, i64 0}
+!26 = !{!"bool", !8, i64 0}
+!27 = !{!"_ZTSN9NCompress8NQuantum11NRangeCoder8CDecoderE", !7, i64 0, !7, i64 4, !7, i64 8, !28, i64 16}
+!28 = !{!"_ZTSN9NCompress8NQuantum17CStreamBitDecoderE", !7, i64 0, !29, i64 8}
+!29 = !{!"_ZTS9CInBuffer", !23, i64 0, !23, i64 8, !23, i64 16, !30, i64 24, !25, i64 32, !7, i64 40, !26, i64 44}
+!30 = !{!"_ZTS9CMyComPtrI19ISequentialInStreamE", !23, i64 0}
+!31 = !{!32}
+!32 = distinct !{!32, !33}
+!33 = distinct !{!33, !"LVerDomain"}
+!34 = !{!35}
+!35 = distinct !{!35, !33}
+!36 = distinct !{!36, !37, !38, !39}
+!37 = !{!"llvm.loop.mustprogress"}
+!38 = !{!"llvm.loop.isvectorized", i32 1}
+!39 = !{!"llvm.loop.unroll.runtime.disable"}
+!40 = distinct !{!40, !41}
+!41 = !{!"llvm.loop.unroll.disable"}
+!42 = distinct !{!42, !37, !38}
+!43 = !{!44}
+!44 = distinct !{!44, !45}
+!45 = distinct !{!45, !"LVerDomain"}
+!46 = !{!47}
+!47 = distinct !{!47, !45}
+!48 = distinct !{!48, !37, !38, !39}
+!49 = distinct !{!49, !41}
+!50 = distinct !{!50, !37, !38}
 !51 = !{!52}
 !52 = distinct !{!52, !53}
 !53 = distinct !{!53, !"LVerDomain"}
 !54 = !{!55}
 !55 = distinct !{!55, !53}
-!56 = distinct !{!56, !57, !58, !59}
-!57 = !{!"llvm.loop.mustprogress"}
-!58 = !{!"llvm.loop.isvectorized", i32 1}
-!59 = !{!"llvm.loop.unroll.runtime.disable"}
-!60 = distinct !{!60, !61}
-!61 = !{!"llvm.loop.unroll.disable"}
-!62 = distinct !{!62, !57, !58}
-!63 = !{!64}
-!64 = distinct !{!64, !65}
-!65 = distinct !{!65, !"LVerDomain"}
-!66 = !{!67}
-!67 = distinct !{!67, !65}
-!68 = distinct !{!68, !57, !58, !59}
-!69 = distinct !{!69, !61}
-!70 = distinct !{!70, !57, !58}
-!71 = !{!72}
-!72 = distinct !{!72, !73}
-!73 = distinct !{!73, !"LVerDomain"}
-!74 = !{!75}
-!75 = distinct !{!75, !73}
-!76 = distinct !{!76, !57, !58, !59}
-!77 = distinct !{!77, !61}
-!78 = distinct !{!78, !57, !58}
-!79 = !{!35, !7, i64 168}
-!80 = !{!35, !46, i64 180}
-!81 = !{i8 0, i8 2}
-!82 = !{}
-!83 = !{!48, !7, i64 0}
-!84 = !{!47, !7, i64 0}
-!85 = !{!47, !7, i64 4}
-!86 = !{!49, !43, i64 0}
-!87 = !{!49, !43, i64 8}
-!88 = distinct !{!88, !57}
-!89 = !{!47, !7, i64 8}
-!90 = !{!35, !7, i64 172}
-!91 = !{!42, !7, i64 8}
-!92 = !{!42, !7, i64 20}
-!93 = !{!42, !43, i64 0}
-!94 = !{!42, !7, i64 12}
-!95 = distinct !{!95, !57}
-!96 = !{!49, !46, i64 44}
-!97 = !{!42, !46, i64 48}
-!98 = distinct !{!98, !57, !58, !59}
-!99 = distinct !{!99, !57, !58, !59}
-!100 = distinct !{!100, !61}
-!101 = distinct !{!101, !57, !58}
-!102 = distinct !{!102, !57}
-!103 = distinct !{!103, !57}
-!104 = distinct !{!104, !57, !58, !59}
-!105 = distinct !{!105, !57, !59, !58}
-!106 = distinct !{!106, !57, !58, !59}
-!107 = distinct !{!107, !57, !59, !58}
-!108 = distinct !{!108, !57}
-!109 = !{!110}
-!110 = distinct !{!110, !111}
-!111 = distinct !{!111, !"LVerDomain"}
-!112 = !{!113}
-!113 = distinct !{!113, !111}
-!114 = distinct !{!114, !57, !58, !59}
-!115 = distinct !{!115, !57}
-!116 = distinct !{!116, !57, !58}
-!117 = distinct !{!117, !57}
-!118 = !{!45, !45, i64 0}
-!119 = !{!120, !120, i64 0}
-!120 = !{!"vtable pointer", !9, i64 0}
-!121 = !{!122, !43, i64 0}
-!122 = !{!"_ZTSN9NCompress8NQuantum8CDecoder15CDecoderFlusherE", !43, i64 0, !46, i64 8}
-!123 = !{!122, !46, i64 8}
-!124 = !{!49, !45, i64 32}
-!125 = !{!49, !43, i64 16}
-!126 = !{!44, !43, i64 0}
-!127 = !{!128, !7, i64 0}
-!128 = !{!"_ZTS16CSystemException", !7, i64 0}
-!129 = !{!50, !43, i64 0}
-!130 = !{!43, !43, i64 0}
-!131 = !{!40, !7, i64 0}
-!132 = distinct !{!132, !57}
+!56 = distinct !{!56, !37, !38, !39}
+!57 = distinct !{!57, !41}
+!58 = distinct !{!58, !37, !38}
+!59 = !{!15, !7, i64 168}
+!60 = !{!15, !26, i64 180}
+!61 = !{i8 0, i8 2}
+!62 = !{}
+!63 = !{!28, !7, i64 0}
+!64 = !{!27, !7, i64 0}
+!65 = !{!27, !7, i64 4}
+!66 = !{!29, !23, i64 0}
+!67 = !{!29, !23, i64 8}
+!68 = distinct !{!68, !37}
+!69 = !{!27, !7, i64 8}
+!70 = !{!15, !7, i64 172}
+!71 = !{!22, !7, i64 8}
+!72 = !{!22, !7, i64 20}
+!73 = !{!22, !23, i64 0}
+!74 = !{!22, !7, i64 12}
+!75 = distinct !{!75, !37}
+!76 = !{!29, !26, i64 44}
+!77 = !{!22, !26, i64 48}
+!78 = distinct !{!78, !37, !38, !39}
+!79 = distinct !{!79, !37, !38, !39}
+!80 = distinct !{!80, !41}
+!81 = distinct !{!81, !37, !38}
+!82 = distinct !{!82, !37}
+!83 = distinct !{!83, !37}
+!84 = distinct !{!84, !37, !38, !39}
+!85 = distinct !{!85, !37, !39, !38}
+!86 = distinct !{!86, !37, !38, !39}
+!87 = distinct !{!87, !37, !39, !38}
+!88 = distinct !{!88, !37}
+!89 = !{!90}
+!90 = distinct !{!90, !91}
+!91 = distinct !{!91, !"LVerDomain"}
+!92 = !{!93}
+!93 = distinct !{!93, !91}
+!94 = distinct !{!94, !37, !38, !39}
+!95 = distinct !{!95, !37}
+!96 = distinct !{!96, !37, !38}
+!97 = distinct !{!97, !37}
+!98 = !{!25, !25, i64 0}
+!99 = !{!100, !100, i64 0}
+!100 = !{!"vtable pointer", !9, i64 0}
+!101 = !{!102, !23, i64 0}
+!102 = !{!"_ZTSN9NCompress8NQuantum8CDecoder15CDecoderFlusherE", !23, i64 0, !26, i64 8}
+!103 = !{!102, !26, i64 8}
+!104 = !{!29, !25, i64 32}
+!105 = !{!29, !23, i64 16}
+!106 = !{!24, !23, i64 0}
+!107 = !{!108, !7, i64 0}
+!108 = !{!"_ZTS16CSystemException", !7, i64 0}
+!109 = !{!30, !23, i64 0}
+!110 = !{!23, !23, i64 0}
+!111 = !{!20, !7, i64 0}
+!112 = distinct !{!112, !37}

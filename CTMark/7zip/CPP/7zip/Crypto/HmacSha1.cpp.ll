@@ -22,11 +22,11 @@ entry:
 
 for.cond5.preheader:                              ; preds = %entry
   %cmp654.not = icmp eq i64 %keySize, 0
-  br i1 %cmp654.not, label %vector.body, label %for.body7.preheader
+  br i1 %cmp654.not, label %if.end, label %for.body7.preheader
 
 for.body7.preheader:                              ; preds = %for.cond5.preheader
   call void @llvm.memcpy.p0.p0.i64(ptr nonnull align 16 %keyTemp, ptr align 1 %key, i64 %keySize, i1 false), !tbaa !5
-  br label %vector.body
+  br label %if.end
 
 if.then:                                          ; preds = %entry
   tail call void @_ZN7NCrypto5NSha112CContextBase4InitEv(ptr noundef nonnull align 8 dereferenceable(32) %this)
@@ -34,43 +34,40 @@ if.then:                                          ; preds = %entry
   store i32 0, ptr %_count2.i, align 8, !tbaa !8
   tail call void @_ZN7NCrypto5NSha18CContext6UpdateEPKhm(ptr noundef nonnull align 8 dereferenceable(100) %this, ptr noundef %key, i64 noundef %keySize)
   call void @_ZN7NCrypto5NSha18CContext5FinalEPh(ptr noundef nonnull align 8 dereferenceable(100) %this, ptr noundef nonnull %keyTemp)
-  br label %vector.body
+  br label %if.end
 
-vector.body:                                      ; preds = %for.body7.preheader, %for.cond5.preheader, %if.then
-  %wide.load = load <16 x i8>, ptr %keyTemp, align 16, !tbaa !5
-  %0 = xor <16 x i8> %wide.load, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
-  store <16 x i8> %0, ptr %keyTemp, align 16, !tbaa !5
-  %1 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 16
-  %wide.load.1 = load <16 x i8>, ptr %1, align 16, !tbaa !5
-  %2 = xor <16 x i8> %wide.load.1, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
-  store <16 x i8> %2, ptr %1, align 16, !tbaa !5
-  %3 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 32
-  %wide.load.2 = load <16 x i8>, ptr %3, align 16, !tbaa !5
-  %4 = xor <16 x i8> %wide.load.2, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
-  store <16 x i8> %4, ptr %3, align 16, !tbaa !5
-  %5 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 48
-  %wide.load.3 = load <16 x i8>, ptr %5, align 16, !tbaa !5
-  %6 = xor <16 x i8> %wide.load.3, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
-  store <16 x i8> %6, ptr %5, align 16, !tbaa !5
+if.end:                                           ; preds = %for.body7.preheader, %for.cond5.preheader, %if.then
+  %0 = load <16 x i8>, ptr %keyTemp, align 16, !tbaa !5
+  %1 = xor <16 x i8> %0, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
+  store <16 x i8> %1, ptr %keyTemp, align 16, !tbaa !5
+  %arrayidx16.16 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 16
+  %2 = load <16 x i8>, ptr %arrayidx16.16, align 16, !tbaa !5
+  %3 = xor <16 x i8> %2, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
+  store <16 x i8> %3, ptr %arrayidx16.16, align 16, !tbaa !5
+  %arrayidx16.32 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 32
+  %4 = load <16 x i8>, ptr %arrayidx16.32, align 16, !tbaa !5
+  %5 = xor <16 x i8> %4, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
+  store <16 x i8> %5, ptr %arrayidx16.32, align 16, !tbaa !5
+  %arrayidx16.48 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 48
+  %6 = load <16 x i8>, ptr %arrayidx16.48, align 16, !tbaa !5
+  %7 = xor <16 x i8> %6, <i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54, i8 54>
+  store <16 x i8> %7, ptr %arrayidx16.48, align 16, !tbaa !5
   call void @_ZN7NCrypto5NSha112CContextBase4InitEv(ptr noundef nonnull align 8 dereferenceable(32) %this)
   %_count2.i51 = getelementptr inbounds %"class.NCrypto::NSha1::CContextBase2", ptr %this, i64 0, i32 1
   store i32 0, ptr %_count2.i51, align 8, !tbaa !8
   call void @_ZN7NCrypto5NSha18CContext6UpdateEPKhm(ptr noundef nonnull align 8 dereferenceable(100) %this, ptr noundef nonnull %keyTemp, i64 noundef 64)
-  %wide.load65 = load <16 x i8>, ptr %keyTemp, align 16, !tbaa !5
-  %7 = xor <16 x i8> %wide.load65, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
-  store <16 x i8> %7, ptr %keyTemp, align 16, !tbaa !5
-  %8 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 16
-  %wide.load65.1 = load <16 x i8>, ptr %8, align 16, !tbaa !5
-  %9 = xor <16 x i8> %wide.load65.1, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
-  store <16 x i8> %9, ptr %8, align 16, !tbaa !5
-  %10 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 32
-  %wide.load65.2 = load <16 x i8>, ptr %10, align 16, !tbaa !5
-  %11 = xor <16 x i8> %wide.load65.2, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
-  store <16 x i8> %11, ptr %10, align 16, !tbaa !5
-  %12 = getelementptr inbounds [64 x i8], ptr %keyTemp, i64 0, i64 48
-  %wide.load65.3 = load <16 x i8>, ptr %12, align 16, !tbaa !5
-  %13 = xor <16 x i8> %wide.load65.3, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
-  store <16 x i8> %13, ptr %12, align 16, !tbaa !5
+  %8 = load <16 x i8>, ptr %keyTemp, align 16, !tbaa !5
+  %9 = xor <16 x i8> %8, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
+  store <16 x i8> %9, ptr %keyTemp, align 16, !tbaa !5
+  %10 = load <16 x i8>, ptr %arrayidx16.16, align 16, !tbaa !5
+  %11 = xor <16 x i8> %10, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
+  store <16 x i8> %11, ptr %arrayidx16.16, align 16, !tbaa !5
+  %12 = load <16 x i8>, ptr %arrayidx16.32, align 16, !tbaa !5
+  %13 = xor <16 x i8> %12, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
+  store <16 x i8> %13, ptr %arrayidx16.32, align 16, !tbaa !5
+  %14 = load <16 x i8>, ptr %arrayidx16.48, align 16, !tbaa !5
+  %15 = xor <16 x i8> %14, <i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106, i8 106>
+  store <16 x i8> %15, ptr %arrayidx16.48, align 16, !tbaa !5
   %_sha2 = getelementptr inbounds %"class.NCrypto::NSha1::CHmac", ptr %this, i64 0, i32 1
   call void @_ZN7NCrypto5NSha112CContextBase4InitEv(ptr noundef nonnull align 8 dereferenceable(32) %_sha2)
   %_count2.i52 = getelementptr inbounds %"class.NCrypto::NSha1::CHmac", ptr %this, i64 0, i32 1, i32 0, i32 1

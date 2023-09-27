@@ -3824,71 +3824,497 @@ for.body45:                                       ; preds = %for.body19, %strncp
 
 while.cond.preheader.i:                           ; preds = %for.body45
   %call.i = tail call ptr @__ctype_toupper_loc() #30
-  br label %while.body.i
-
-while.body.i:                                     ; preds = %while.body.i, %while.cond.preheader.i
-  %str1.addr.012.i = phi ptr [ @WriteGapFill.b, %while.cond.preheader.i ], [ %incdec.ptr3.i.4, %while.body.i ]
-  %str2.addr.011.i = phi ptr [ %add.ptr, %while.cond.preheader.i ], [ %incdec.ptr.i.4, %while.body.i ]
-  %len.addr.010.i = phi i32 [ 60, %while.cond.preheader.i ], [ %dec.i.4, %while.body.i ]
   %7 = load ptr, ptr %call.i, align 8, !tbaa !16
-  %incdec.ptr.i = getelementptr inbounds i8, ptr %str2.addr.011.i, i64 1
-  %8 = load i8, ptr %str2.addr.011.i, align 1, !tbaa !17
+  %incdec.ptr.i = getelementptr inbounds i8, ptr %add.ptr, i64 1
+  %8 = load i8, ptr %add.ptr, align 4, !tbaa !17
   %idxprom.i = sext i8 %8 to i64
   %arrayidx.i = getelementptr inbounds i32, ptr %7, i64 %idxprom.i
   %9 = load i32, ptr %arrayidx.i, align 4, !tbaa !22
   %conv2.i = trunc i32 %9 to i8
-  %incdec.ptr3.i = getelementptr inbounds i8, ptr %str1.addr.012.i, i64 1
-  store i8 %conv2.i, ptr %str1.addr.012.i, align 1, !tbaa !17
+  store i8 %conv2.i, ptr @WriteGapFill.b, align 16, !tbaa !17
   %10 = load ptr, ptr %call.i, align 8, !tbaa !16
-  %incdec.ptr.i.1 = getelementptr inbounds i8, ptr %str2.addr.011.i, i64 2
+  %incdec.ptr.i.1 = getelementptr inbounds i8, ptr %add.ptr, i64 2
   %11 = load i8, ptr %incdec.ptr.i, align 1, !tbaa !17
   %idxprom.i.1 = sext i8 %11 to i64
   %arrayidx.i.1 = getelementptr inbounds i32, ptr %10, i64 %idxprom.i.1
   %12 = load i32, ptr %arrayidx.i.1, align 4, !tbaa !22
   %conv2.i.1 = trunc i32 %12 to i8
-  %incdec.ptr3.i.1 = getelementptr inbounds i8, ptr %str1.addr.012.i, i64 2
-  store i8 %conv2.i.1, ptr %incdec.ptr3.i, align 1, !tbaa !17
+  store i8 %conv2.i.1, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 1), align 1, !tbaa !17
   %13 = load ptr, ptr %call.i, align 8, !tbaa !16
-  %incdec.ptr.i.2 = getelementptr inbounds i8, ptr %str2.addr.011.i, i64 3
-  %14 = load i8, ptr %incdec.ptr.i.1, align 1, !tbaa !17
+  %incdec.ptr.i.2 = getelementptr inbounds i8, ptr %add.ptr, i64 3
+  %14 = load i8, ptr %incdec.ptr.i.1, align 2, !tbaa !17
   %idxprom.i.2 = sext i8 %14 to i64
   %arrayidx.i.2 = getelementptr inbounds i32, ptr %13, i64 %idxprom.i.2
   %15 = load i32, ptr %arrayidx.i.2, align 4, !tbaa !22
   %conv2.i.2 = trunc i32 %15 to i8
-  %incdec.ptr3.i.2 = getelementptr inbounds i8, ptr %str1.addr.012.i, i64 3
-  store i8 %conv2.i.2, ptr %incdec.ptr3.i.1, align 1, !tbaa !17
+  store i8 %conv2.i.2, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 2), align 2, !tbaa !17
   %16 = load ptr, ptr %call.i, align 8, !tbaa !16
-  %incdec.ptr.i.3 = getelementptr inbounds i8, ptr %str2.addr.011.i, i64 4
+  %incdec.ptr.i.3 = getelementptr inbounds i8, ptr %add.ptr, i64 4
   %17 = load i8, ptr %incdec.ptr.i.2, align 1, !tbaa !17
   %idxprom.i.3 = sext i8 %17 to i64
   %arrayidx.i.3 = getelementptr inbounds i32, ptr %16, i64 %idxprom.i.3
   %18 = load i32, ptr %arrayidx.i.3, align 4, !tbaa !22
   %conv2.i.3 = trunc i32 %18 to i8
-  %incdec.ptr3.i.3 = getelementptr inbounds i8, ptr %str1.addr.012.i, i64 4
-  store i8 %conv2.i.3, ptr %incdec.ptr3.i.2, align 1, !tbaa !17
-  %dec.i.4 = add nsw i32 %len.addr.010.i, -5
+  store i8 %conv2.i.3, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 3), align 1, !tbaa !17
   %19 = load ptr, ptr %call.i, align 8, !tbaa !16
-  %incdec.ptr.i.4 = getelementptr inbounds i8, ptr %str2.addr.011.i, i64 5
-  %20 = load i8, ptr %incdec.ptr.i.3, align 1, !tbaa !17
+  %incdec.ptr.i.4 = getelementptr inbounds i8, ptr %add.ptr, i64 5
+  %20 = load i8, ptr %incdec.ptr.i.3, align 4, !tbaa !17
   %idxprom.i.4 = sext i8 %20 to i64
   %arrayidx.i.4 = getelementptr inbounds i32, ptr %19, i64 %idxprom.i.4
   %21 = load i32, ptr %arrayidx.i.4, align 4, !tbaa !22
   %conv2.i.4 = trunc i32 %21 to i8
-  %incdec.ptr3.i.4 = getelementptr inbounds i8, ptr %str1.addr.012.i, i64 5
-  store i8 %conv2.i.4, ptr %incdec.ptr3.i.3, align 1, !tbaa !17
-  %tobool.not.i.4 = icmp eq i32 %dec.i.4, 0
-  br i1 %tobool.not.i.4, label %strncpy_caseC.exit, label %while.body.i, !llvm.loop !36
+  store i8 %conv2.i.4, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 4), align 4, !tbaa !17
+  %22 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.5 = getelementptr inbounds i8, ptr %add.ptr, i64 6
+  %23 = load i8, ptr %incdec.ptr.i.4, align 1, !tbaa !17
+  %idxprom.i.5 = sext i8 %23 to i64
+  %arrayidx.i.5 = getelementptr inbounds i32, ptr %22, i64 %idxprom.i.5
+  %24 = load i32, ptr %arrayidx.i.5, align 4, !tbaa !22
+  %conv2.i.5 = trunc i32 %24 to i8
+  store i8 %conv2.i.5, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 5), align 1, !tbaa !17
+  %25 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.6 = getelementptr inbounds i8, ptr %add.ptr, i64 7
+  %26 = load i8, ptr %incdec.ptr.i.5, align 2, !tbaa !17
+  %idxprom.i.6 = sext i8 %26 to i64
+  %arrayidx.i.6 = getelementptr inbounds i32, ptr %25, i64 %idxprom.i.6
+  %27 = load i32, ptr %arrayidx.i.6, align 4, !tbaa !22
+  %conv2.i.6 = trunc i32 %27 to i8
+  store i8 %conv2.i.6, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 6), align 2, !tbaa !17
+  %28 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.7 = getelementptr inbounds i8, ptr %add.ptr, i64 8
+  %29 = load i8, ptr %incdec.ptr.i.6, align 1, !tbaa !17
+  %idxprom.i.7 = sext i8 %29 to i64
+  %arrayidx.i.7 = getelementptr inbounds i32, ptr %28, i64 %idxprom.i.7
+  %30 = load i32, ptr %arrayidx.i.7, align 4, !tbaa !22
+  %conv2.i.7 = trunc i32 %30 to i8
+  store i8 %conv2.i.7, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 7), align 1, !tbaa !17
+  %31 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.8 = getelementptr inbounds i8, ptr %add.ptr, i64 9
+  %32 = load i8, ptr %incdec.ptr.i.7, align 4, !tbaa !17
+  %idxprom.i.8 = sext i8 %32 to i64
+  %arrayidx.i.8 = getelementptr inbounds i32, ptr %31, i64 %idxprom.i.8
+  %33 = load i32, ptr %arrayidx.i.8, align 4, !tbaa !22
+  %conv2.i.8 = trunc i32 %33 to i8
+  store i8 %conv2.i.8, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 8), align 8, !tbaa !17
+  %34 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.9 = getelementptr inbounds i8, ptr %add.ptr, i64 10
+  %35 = load i8, ptr %incdec.ptr.i.8, align 1, !tbaa !17
+  %idxprom.i.9 = sext i8 %35 to i64
+  %arrayidx.i.9 = getelementptr inbounds i32, ptr %34, i64 %idxprom.i.9
+  %36 = load i32, ptr %arrayidx.i.9, align 4, !tbaa !22
+  %conv2.i.9 = trunc i32 %36 to i8
+  store i8 %conv2.i.9, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 9), align 1, !tbaa !17
+  %37 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.10 = getelementptr inbounds i8, ptr %add.ptr, i64 11
+  %38 = load i8, ptr %incdec.ptr.i.9, align 2, !tbaa !17
+  %idxprom.i.10 = sext i8 %38 to i64
+  %arrayidx.i.10 = getelementptr inbounds i32, ptr %37, i64 %idxprom.i.10
+  %39 = load i32, ptr %arrayidx.i.10, align 4, !tbaa !22
+  %conv2.i.10 = trunc i32 %39 to i8
+  store i8 %conv2.i.10, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 10), align 2, !tbaa !17
+  %40 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.11 = getelementptr inbounds i8, ptr %add.ptr, i64 12
+  %41 = load i8, ptr %incdec.ptr.i.10, align 1, !tbaa !17
+  %idxprom.i.11 = sext i8 %41 to i64
+  %arrayidx.i.11 = getelementptr inbounds i32, ptr %40, i64 %idxprom.i.11
+  %42 = load i32, ptr %arrayidx.i.11, align 4, !tbaa !22
+  %conv2.i.11 = trunc i32 %42 to i8
+  store i8 %conv2.i.11, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 11), align 1, !tbaa !17
+  %43 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.12 = getelementptr inbounds i8, ptr %add.ptr, i64 13
+  %44 = load i8, ptr %incdec.ptr.i.11, align 4, !tbaa !17
+  %idxprom.i.12 = sext i8 %44 to i64
+  %arrayidx.i.12 = getelementptr inbounds i32, ptr %43, i64 %idxprom.i.12
+  %45 = load i32, ptr %arrayidx.i.12, align 4, !tbaa !22
+  %conv2.i.12 = trunc i32 %45 to i8
+  store i8 %conv2.i.12, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 12), align 4, !tbaa !17
+  %46 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.13 = getelementptr inbounds i8, ptr %add.ptr, i64 14
+  %47 = load i8, ptr %incdec.ptr.i.12, align 1, !tbaa !17
+  %idxprom.i.13 = sext i8 %47 to i64
+  %arrayidx.i.13 = getelementptr inbounds i32, ptr %46, i64 %idxprom.i.13
+  %48 = load i32, ptr %arrayidx.i.13, align 4, !tbaa !22
+  %conv2.i.13 = trunc i32 %48 to i8
+  store i8 %conv2.i.13, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 13), align 1, !tbaa !17
+  %49 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.14 = getelementptr inbounds i8, ptr %add.ptr, i64 15
+  %50 = load i8, ptr %incdec.ptr.i.13, align 2, !tbaa !17
+  %idxprom.i.14 = sext i8 %50 to i64
+  %arrayidx.i.14 = getelementptr inbounds i32, ptr %49, i64 %idxprom.i.14
+  %51 = load i32, ptr %arrayidx.i.14, align 4, !tbaa !22
+  %conv2.i.14 = trunc i32 %51 to i8
+  store i8 %conv2.i.14, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 14), align 2, !tbaa !17
+  %52 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.15 = getelementptr inbounds i8, ptr %add.ptr, i64 16
+  %53 = load i8, ptr %incdec.ptr.i.14, align 1, !tbaa !17
+  %idxprom.i.15 = sext i8 %53 to i64
+  %arrayidx.i.15 = getelementptr inbounds i32, ptr %52, i64 %idxprom.i.15
+  %54 = load i32, ptr %arrayidx.i.15, align 4, !tbaa !22
+  %conv2.i.15 = trunc i32 %54 to i8
+  store i8 %conv2.i.15, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 15), align 1, !tbaa !17
+  %55 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.16 = getelementptr inbounds i8, ptr %add.ptr, i64 17
+  %56 = load i8, ptr %incdec.ptr.i.15, align 4, !tbaa !17
+  %idxprom.i.16 = sext i8 %56 to i64
+  %arrayidx.i.16 = getelementptr inbounds i32, ptr %55, i64 %idxprom.i.16
+  %57 = load i32, ptr %arrayidx.i.16, align 4, !tbaa !22
+  %conv2.i.16 = trunc i32 %57 to i8
+  store i8 %conv2.i.16, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 16), align 16, !tbaa !17
+  %58 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.17 = getelementptr inbounds i8, ptr %add.ptr, i64 18
+  %59 = load i8, ptr %incdec.ptr.i.16, align 1, !tbaa !17
+  %idxprom.i.17 = sext i8 %59 to i64
+  %arrayidx.i.17 = getelementptr inbounds i32, ptr %58, i64 %idxprom.i.17
+  %60 = load i32, ptr %arrayidx.i.17, align 4, !tbaa !22
+  %conv2.i.17 = trunc i32 %60 to i8
+  store i8 %conv2.i.17, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 17), align 1, !tbaa !17
+  %61 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.18 = getelementptr inbounds i8, ptr %add.ptr, i64 19
+  %62 = load i8, ptr %incdec.ptr.i.17, align 2, !tbaa !17
+  %idxprom.i.18 = sext i8 %62 to i64
+  %arrayidx.i.18 = getelementptr inbounds i32, ptr %61, i64 %idxprom.i.18
+  %63 = load i32, ptr %arrayidx.i.18, align 4, !tbaa !22
+  %conv2.i.18 = trunc i32 %63 to i8
+  store i8 %conv2.i.18, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 18), align 2, !tbaa !17
+  %64 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.19 = getelementptr inbounds i8, ptr %add.ptr, i64 20
+  %65 = load i8, ptr %incdec.ptr.i.18, align 1, !tbaa !17
+  %idxprom.i.19 = sext i8 %65 to i64
+  %arrayidx.i.19 = getelementptr inbounds i32, ptr %64, i64 %idxprom.i.19
+  %66 = load i32, ptr %arrayidx.i.19, align 4, !tbaa !22
+  %conv2.i.19 = trunc i32 %66 to i8
+  store i8 %conv2.i.19, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 19), align 1, !tbaa !17
+  %67 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.20 = getelementptr inbounds i8, ptr %add.ptr, i64 21
+  %68 = load i8, ptr %incdec.ptr.i.19, align 4, !tbaa !17
+  %idxprom.i.20 = sext i8 %68 to i64
+  %arrayidx.i.20 = getelementptr inbounds i32, ptr %67, i64 %idxprom.i.20
+  %69 = load i32, ptr %arrayidx.i.20, align 4, !tbaa !22
+  %conv2.i.20 = trunc i32 %69 to i8
+  store i8 %conv2.i.20, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 20), align 4, !tbaa !17
+  %70 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.21 = getelementptr inbounds i8, ptr %add.ptr, i64 22
+  %71 = load i8, ptr %incdec.ptr.i.20, align 1, !tbaa !17
+  %idxprom.i.21 = sext i8 %71 to i64
+  %arrayidx.i.21 = getelementptr inbounds i32, ptr %70, i64 %idxprom.i.21
+  %72 = load i32, ptr %arrayidx.i.21, align 4, !tbaa !22
+  %conv2.i.21 = trunc i32 %72 to i8
+  store i8 %conv2.i.21, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 21), align 1, !tbaa !17
+  %73 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.22 = getelementptr inbounds i8, ptr %add.ptr, i64 23
+  %74 = load i8, ptr %incdec.ptr.i.21, align 2, !tbaa !17
+  %idxprom.i.22 = sext i8 %74 to i64
+  %arrayidx.i.22 = getelementptr inbounds i32, ptr %73, i64 %idxprom.i.22
+  %75 = load i32, ptr %arrayidx.i.22, align 4, !tbaa !22
+  %conv2.i.22 = trunc i32 %75 to i8
+  store i8 %conv2.i.22, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 22), align 2, !tbaa !17
+  %76 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.23 = getelementptr inbounds i8, ptr %add.ptr, i64 24
+  %77 = load i8, ptr %incdec.ptr.i.22, align 1, !tbaa !17
+  %idxprom.i.23 = sext i8 %77 to i64
+  %arrayidx.i.23 = getelementptr inbounds i32, ptr %76, i64 %idxprom.i.23
+  %78 = load i32, ptr %arrayidx.i.23, align 4, !tbaa !22
+  %conv2.i.23 = trunc i32 %78 to i8
+  store i8 %conv2.i.23, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 23), align 1, !tbaa !17
+  %79 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.24 = getelementptr inbounds i8, ptr %add.ptr, i64 25
+  %80 = load i8, ptr %incdec.ptr.i.23, align 4, !tbaa !17
+  %idxprom.i.24 = sext i8 %80 to i64
+  %arrayidx.i.24 = getelementptr inbounds i32, ptr %79, i64 %idxprom.i.24
+  %81 = load i32, ptr %arrayidx.i.24, align 4, !tbaa !22
+  %conv2.i.24 = trunc i32 %81 to i8
+  store i8 %conv2.i.24, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 24), align 8, !tbaa !17
+  %82 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.25 = getelementptr inbounds i8, ptr %add.ptr, i64 26
+  %83 = load i8, ptr %incdec.ptr.i.24, align 1, !tbaa !17
+  %idxprom.i.25 = sext i8 %83 to i64
+  %arrayidx.i.25 = getelementptr inbounds i32, ptr %82, i64 %idxprom.i.25
+  %84 = load i32, ptr %arrayidx.i.25, align 4, !tbaa !22
+  %conv2.i.25 = trunc i32 %84 to i8
+  store i8 %conv2.i.25, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 25), align 1, !tbaa !17
+  %85 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.26 = getelementptr inbounds i8, ptr %add.ptr, i64 27
+  %86 = load i8, ptr %incdec.ptr.i.25, align 2, !tbaa !17
+  %idxprom.i.26 = sext i8 %86 to i64
+  %arrayidx.i.26 = getelementptr inbounds i32, ptr %85, i64 %idxprom.i.26
+  %87 = load i32, ptr %arrayidx.i.26, align 4, !tbaa !22
+  %conv2.i.26 = trunc i32 %87 to i8
+  store i8 %conv2.i.26, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 26), align 2, !tbaa !17
+  %88 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.27 = getelementptr inbounds i8, ptr %add.ptr, i64 28
+  %89 = load i8, ptr %incdec.ptr.i.26, align 1, !tbaa !17
+  %idxprom.i.27 = sext i8 %89 to i64
+  %arrayidx.i.27 = getelementptr inbounds i32, ptr %88, i64 %idxprom.i.27
+  %90 = load i32, ptr %arrayidx.i.27, align 4, !tbaa !22
+  %conv2.i.27 = trunc i32 %90 to i8
+  store i8 %conv2.i.27, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 27), align 1, !tbaa !17
+  %91 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.28 = getelementptr inbounds i8, ptr %add.ptr, i64 29
+  %92 = load i8, ptr %incdec.ptr.i.27, align 4, !tbaa !17
+  %idxprom.i.28 = sext i8 %92 to i64
+  %arrayidx.i.28 = getelementptr inbounds i32, ptr %91, i64 %idxprom.i.28
+  %93 = load i32, ptr %arrayidx.i.28, align 4, !tbaa !22
+  %conv2.i.28 = trunc i32 %93 to i8
+  store i8 %conv2.i.28, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 28), align 4, !tbaa !17
+  %94 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.29 = getelementptr inbounds i8, ptr %add.ptr, i64 30
+  %95 = load i8, ptr %incdec.ptr.i.28, align 1, !tbaa !17
+  %idxprom.i.29 = sext i8 %95 to i64
+  %arrayidx.i.29 = getelementptr inbounds i32, ptr %94, i64 %idxprom.i.29
+  %96 = load i32, ptr %arrayidx.i.29, align 4, !tbaa !22
+  %conv2.i.29 = trunc i32 %96 to i8
+  store i8 %conv2.i.29, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 29), align 1, !tbaa !17
+  %97 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.30 = getelementptr inbounds i8, ptr %add.ptr, i64 31
+  %98 = load i8, ptr %incdec.ptr.i.29, align 2, !tbaa !17
+  %idxprom.i.30 = sext i8 %98 to i64
+  %arrayidx.i.30 = getelementptr inbounds i32, ptr %97, i64 %idxprom.i.30
+  %99 = load i32, ptr %arrayidx.i.30, align 4, !tbaa !22
+  %conv2.i.30 = trunc i32 %99 to i8
+  store i8 %conv2.i.30, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 30), align 2, !tbaa !17
+  %100 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.31 = getelementptr inbounds i8, ptr %add.ptr, i64 32
+  %101 = load i8, ptr %incdec.ptr.i.30, align 1, !tbaa !17
+  %idxprom.i.31 = sext i8 %101 to i64
+  %arrayidx.i.31 = getelementptr inbounds i32, ptr %100, i64 %idxprom.i.31
+  %102 = load i32, ptr %arrayidx.i.31, align 4, !tbaa !22
+  %conv2.i.31 = trunc i32 %102 to i8
+  store i8 %conv2.i.31, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 31), align 1, !tbaa !17
+  %103 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.32 = getelementptr inbounds i8, ptr %add.ptr, i64 33
+  %104 = load i8, ptr %incdec.ptr.i.31, align 4, !tbaa !17
+  %idxprom.i.32 = sext i8 %104 to i64
+  %arrayidx.i.32 = getelementptr inbounds i32, ptr %103, i64 %idxprom.i.32
+  %105 = load i32, ptr %arrayidx.i.32, align 4, !tbaa !22
+  %conv2.i.32 = trunc i32 %105 to i8
+  store i8 %conv2.i.32, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 32), align 16, !tbaa !17
+  %106 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.33 = getelementptr inbounds i8, ptr %add.ptr, i64 34
+  %107 = load i8, ptr %incdec.ptr.i.32, align 1, !tbaa !17
+  %idxprom.i.33 = sext i8 %107 to i64
+  %arrayidx.i.33 = getelementptr inbounds i32, ptr %106, i64 %idxprom.i.33
+  %108 = load i32, ptr %arrayidx.i.33, align 4, !tbaa !22
+  %conv2.i.33 = trunc i32 %108 to i8
+  store i8 %conv2.i.33, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 33), align 1, !tbaa !17
+  %109 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.34 = getelementptr inbounds i8, ptr %add.ptr, i64 35
+  %110 = load i8, ptr %incdec.ptr.i.33, align 2, !tbaa !17
+  %idxprom.i.34 = sext i8 %110 to i64
+  %arrayidx.i.34 = getelementptr inbounds i32, ptr %109, i64 %idxprom.i.34
+  %111 = load i32, ptr %arrayidx.i.34, align 4, !tbaa !22
+  %conv2.i.34 = trunc i32 %111 to i8
+  store i8 %conv2.i.34, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 34), align 2, !tbaa !17
+  %112 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.35 = getelementptr inbounds i8, ptr %add.ptr, i64 36
+  %113 = load i8, ptr %incdec.ptr.i.34, align 1, !tbaa !17
+  %idxprom.i.35 = sext i8 %113 to i64
+  %arrayidx.i.35 = getelementptr inbounds i32, ptr %112, i64 %idxprom.i.35
+  %114 = load i32, ptr %arrayidx.i.35, align 4, !tbaa !22
+  %conv2.i.35 = trunc i32 %114 to i8
+  store i8 %conv2.i.35, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 35), align 1, !tbaa !17
+  %115 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.36 = getelementptr inbounds i8, ptr %add.ptr, i64 37
+  %116 = load i8, ptr %incdec.ptr.i.35, align 4, !tbaa !17
+  %idxprom.i.36 = sext i8 %116 to i64
+  %arrayidx.i.36 = getelementptr inbounds i32, ptr %115, i64 %idxprom.i.36
+  %117 = load i32, ptr %arrayidx.i.36, align 4, !tbaa !22
+  %conv2.i.36 = trunc i32 %117 to i8
+  store i8 %conv2.i.36, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 36), align 4, !tbaa !17
+  %118 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.37 = getelementptr inbounds i8, ptr %add.ptr, i64 38
+  %119 = load i8, ptr %incdec.ptr.i.36, align 1, !tbaa !17
+  %idxprom.i.37 = sext i8 %119 to i64
+  %arrayidx.i.37 = getelementptr inbounds i32, ptr %118, i64 %idxprom.i.37
+  %120 = load i32, ptr %arrayidx.i.37, align 4, !tbaa !22
+  %conv2.i.37 = trunc i32 %120 to i8
+  store i8 %conv2.i.37, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 37), align 1, !tbaa !17
+  %121 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.38 = getelementptr inbounds i8, ptr %add.ptr, i64 39
+  %122 = load i8, ptr %incdec.ptr.i.37, align 2, !tbaa !17
+  %idxprom.i.38 = sext i8 %122 to i64
+  %arrayidx.i.38 = getelementptr inbounds i32, ptr %121, i64 %idxprom.i.38
+  %123 = load i32, ptr %arrayidx.i.38, align 4, !tbaa !22
+  %conv2.i.38 = trunc i32 %123 to i8
+  store i8 %conv2.i.38, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 38), align 2, !tbaa !17
+  %124 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.39 = getelementptr inbounds i8, ptr %add.ptr, i64 40
+  %125 = load i8, ptr %incdec.ptr.i.38, align 1, !tbaa !17
+  %idxprom.i.39 = sext i8 %125 to i64
+  %arrayidx.i.39 = getelementptr inbounds i32, ptr %124, i64 %idxprom.i.39
+  %126 = load i32, ptr %arrayidx.i.39, align 4, !tbaa !22
+  %conv2.i.39 = trunc i32 %126 to i8
+  store i8 %conv2.i.39, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 39), align 1, !tbaa !17
+  %127 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.40 = getelementptr inbounds i8, ptr %add.ptr, i64 41
+  %128 = load i8, ptr %incdec.ptr.i.39, align 4, !tbaa !17
+  %idxprom.i.40 = sext i8 %128 to i64
+  %arrayidx.i.40 = getelementptr inbounds i32, ptr %127, i64 %idxprom.i.40
+  %129 = load i32, ptr %arrayidx.i.40, align 4, !tbaa !22
+  %conv2.i.40 = trunc i32 %129 to i8
+  store i8 %conv2.i.40, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 40), align 8, !tbaa !17
+  %130 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.41 = getelementptr inbounds i8, ptr %add.ptr, i64 42
+  %131 = load i8, ptr %incdec.ptr.i.40, align 1, !tbaa !17
+  %idxprom.i.41 = sext i8 %131 to i64
+  %arrayidx.i.41 = getelementptr inbounds i32, ptr %130, i64 %idxprom.i.41
+  %132 = load i32, ptr %arrayidx.i.41, align 4, !tbaa !22
+  %conv2.i.41 = trunc i32 %132 to i8
+  store i8 %conv2.i.41, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 41), align 1, !tbaa !17
+  %133 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.42 = getelementptr inbounds i8, ptr %add.ptr, i64 43
+  %134 = load i8, ptr %incdec.ptr.i.41, align 2, !tbaa !17
+  %idxprom.i.42 = sext i8 %134 to i64
+  %arrayidx.i.42 = getelementptr inbounds i32, ptr %133, i64 %idxprom.i.42
+  %135 = load i32, ptr %arrayidx.i.42, align 4, !tbaa !22
+  %conv2.i.42 = trunc i32 %135 to i8
+  store i8 %conv2.i.42, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 42), align 2, !tbaa !17
+  %136 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.43 = getelementptr inbounds i8, ptr %add.ptr, i64 44
+  %137 = load i8, ptr %incdec.ptr.i.42, align 1, !tbaa !17
+  %idxprom.i.43 = sext i8 %137 to i64
+  %arrayidx.i.43 = getelementptr inbounds i32, ptr %136, i64 %idxprom.i.43
+  %138 = load i32, ptr %arrayidx.i.43, align 4, !tbaa !22
+  %conv2.i.43 = trunc i32 %138 to i8
+  store i8 %conv2.i.43, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 43), align 1, !tbaa !17
+  %139 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.44 = getelementptr inbounds i8, ptr %add.ptr, i64 45
+  %140 = load i8, ptr %incdec.ptr.i.43, align 4, !tbaa !17
+  %idxprom.i.44 = sext i8 %140 to i64
+  %arrayidx.i.44 = getelementptr inbounds i32, ptr %139, i64 %idxprom.i.44
+  %141 = load i32, ptr %arrayidx.i.44, align 4, !tbaa !22
+  %conv2.i.44 = trunc i32 %141 to i8
+  store i8 %conv2.i.44, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 44), align 4, !tbaa !17
+  %142 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.45 = getelementptr inbounds i8, ptr %add.ptr, i64 46
+  %143 = load i8, ptr %incdec.ptr.i.44, align 1, !tbaa !17
+  %idxprom.i.45 = sext i8 %143 to i64
+  %arrayidx.i.45 = getelementptr inbounds i32, ptr %142, i64 %idxprom.i.45
+  %144 = load i32, ptr %arrayidx.i.45, align 4, !tbaa !22
+  %conv2.i.45 = trunc i32 %144 to i8
+  store i8 %conv2.i.45, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 45), align 1, !tbaa !17
+  %145 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.46 = getelementptr inbounds i8, ptr %add.ptr, i64 47
+  %146 = load i8, ptr %incdec.ptr.i.45, align 2, !tbaa !17
+  %idxprom.i.46 = sext i8 %146 to i64
+  %arrayidx.i.46 = getelementptr inbounds i32, ptr %145, i64 %idxprom.i.46
+  %147 = load i32, ptr %arrayidx.i.46, align 4, !tbaa !22
+  %conv2.i.46 = trunc i32 %147 to i8
+  store i8 %conv2.i.46, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 46), align 2, !tbaa !17
+  %148 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.47 = getelementptr inbounds i8, ptr %add.ptr, i64 48
+  %149 = load i8, ptr %incdec.ptr.i.46, align 1, !tbaa !17
+  %idxprom.i.47 = sext i8 %149 to i64
+  %arrayidx.i.47 = getelementptr inbounds i32, ptr %148, i64 %idxprom.i.47
+  %150 = load i32, ptr %arrayidx.i.47, align 4, !tbaa !22
+  %conv2.i.47 = trunc i32 %150 to i8
+  store i8 %conv2.i.47, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 47), align 1, !tbaa !17
+  %151 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.48 = getelementptr inbounds i8, ptr %add.ptr, i64 49
+  %152 = load i8, ptr %incdec.ptr.i.47, align 4, !tbaa !17
+  %idxprom.i.48 = sext i8 %152 to i64
+  %arrayidx.i.48 = getelementptr inbounds i32, ptr %151, i64 %idxprom.i.48
+  %153 = load i32, ptr %arrayidx.i.48, align 4, !tbaa !22
+  %conv2.i.48 = trunc i32 %153 to i8
+  store i8 %conv2.i.48, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 48), align 16, !tbaa !17
+  %154 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.49 = getelementptr inbounds i8, ptr %add.ptr, i64 50
+  %155 = load i8, ptr %incdec.ptr.i.48, align 1, !tbaa !17
+  %idxprom.i.49 = sext i8 %155 to i64
+  %arrayidx.i.49 = getelementptr inbounds i32, ptr %154, i64 %idxprom.i.49
+  %156 = load i32, ptr %arrayidx.i.49, align 4, !tbaa !22
+  %conv2.i.49 = trunc i32 %156 to i8
+  store i8 %conv2.i.49, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 49), align 1, !tbaa !17
+  %157 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.50 = getelementptr inbounds i8, ptr %add.ptr, i64 51
+  %158 = load i8, ptr %incdec.ptr.i.49, align 2, !tbaa !17
+  %idxprom.i.50 = sext i8 %158 to i64
+  %arrayidx.i.50 = getelementptr inbounds i32, ptr %157, i64 %idxprom.i.50
+  %159 = load i32, ptr %arrayidx.i.50, align 4, !tbaa !22
+  %conv2.i.50 = trunc i32 %159 to i8
+  store i8 %conv2.i.50, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 50), align 2, !tbaa !17
+  %160 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.51 = getelementptr inbounds i8, ptr %add.ptr, i64 52
+  %161 = load i8, ptr %incdec.ptr.i.50, align 1, !tbaa !17
+  %idxprom.i.51 = sext i8 %161 to i64
+  %arrayidx.i.51 = getelementptr inbounds i32, ptr %160, i64 %idxprom.i.51
+  %162 = load i32, ptr %arrayidx.i.51, align 4, !tbaa !22
+  %conv2.i.51 = trunc i32 %162 to i8
+  store i8 %conv2.i.51, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 51), align 1, !tbaa !17
+  %163 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.52 = getelementptr inbounds i8, ptr %add.ptr, i64 53
+  %164 = load i8, ptr %incdec.ptr.i.51, align 4, !tbaa !17
+  %idxprom.i.52 = sext i8 %164 to i64
+  %arrayidx.i.52 = getelementptr inbounds i32, ptr %163, i64 %idxprom.i.52
+  %165 = load i32, ptr %arrayidx.i.52, align 4, !tbaa !22
+  %conv2.i.52 = trunc i32 %165 to i8
+  store i8 %conv2.i.52, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 52), align 4, !tbaa !17
+  %166 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.53 = getelementptr inbounds i8, ptr %add.ptr, i64 54
+  %167 = load i8, ptr %incdec.ptr.i.52, align 1, !tbaa !17
+  %idxprom.i.53 = sext i8 %167 to i64
+  %arrayidx.i.53 = getelementptr inbounds i32, ptr %166, i64 %idxprom.i.53
+  %168 = load i32, ptr %arrayidx.i.53, align 4, !tbaa !22
+  %conv2.i.53 = trunc i32 %168 to i8
+  store i8 %conv2.i.53, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 53), align 1, !tbaa !17
+  %169 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.54 = getelementptr inbounds i8, ptr %add.ptr, i64 55
+  %170 = load i8, ptr %incdec.ptr.i.53, align 2, !tbaa !17
+  %idxprom.i.54 = sext i8 %170 to i64
+  %arrayidx.i.54 = getelementptr inbounds i32, ptr %169, i64 %idxprom.i.54
+  %171 = load i32, ptr %arrayidx.i.54, align 4, !tbaa !22
+  %conv2.i.54 = trunc i32 %171 to i8
+  store i8 %conv2.i.54, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 54), align 2, !tbaa !17
+  %172 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.55 = getelementptr inbounds i8, ptr %add.ptr, i64 56
+  %173 = load i8, ptr %incdec.ptr.i.54, align 1, !tbaa !17
+  %idxprom.i.55 = sext i8 %173 to i64
+  %arrayidx.i.55 = getelementptr inbounds i32, ptr %172, i64 %idxprom.i.55
+  %174 = load i32, ptr %arrayidx.i.55, align 4, !tbaa !22
+  %conv2.i.55 = trunc i32 %174 to i8
+  store i8 %conv2.i.55, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 55), align 1, !tbaa !17
+  %175 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.56 = getelementptr inbounds i8, ptr %add.ptr, i64 57
+  %176 = load i8, ptr %incdec.ptr.i.55, align 4, !tbaa !17
+  %idxprom.i.56 = sext i8 %176 to i64
+  %arrayidx.i.56 = getelementptr inbounds i32, ptr %175, i64 %idxprom.i.56
+  %177 = load i32, ptr %arrayidx.i.56, align 4, !tbaa !22
+  %conv2.i.56 = trunc i32 %177 to i8
+  store i8 %conv2.i.56, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 56), align 8, !tbaa !17
+  %178 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.57 = getelementptr inbounds i8, ptr %add.ptr, i64 58
+  %179 = load i8, ptr %incdec.ptr.i.56, align 1, !tbaa !17
+  %idxprom.i.57 = sext i8 %179 to i64
+  %arrayidx.i.57 = getelementptr inbounds i32, ptr %178, i64 %idxprom.i.57
+  %180 = load i32, ptr %arrayidx.i.57, align 4, !tbaa !22
+  %conv2.i.57 = trunc i32 %180 to i8
+  store i8 %conv2.i.57, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 57), align 1, !tbaa !17
+  %181 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %incdec.ptr.i.58 = getelementptr inbounds i8, ptr %add.ptr, i64 59
+  %182 = load i8, ptr %incdec.ptr.i.57, align 2, !tbaa !17
+  %idxprom.i.58 = sext i8 %182 to i64
+  %arrayidx.i.58 = getelementptr inbounds i32, ptr %181, i64 %idxprom.i.58
+  %183 = load i32, ptr %arrayidx.i.58, align 4, !tbaa !22
+  %conv2.i.58 = trunc i32 %183 to i8
+  store i8 %conv2.i.58, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 58), align 2, !tbaa !17
+  %184 = load ptr, ptr %call.i, align 8, !tbaa !16
+  %185 = load i8, ptr %incdec.ptr.i.58, align 1, !tbaa !17
+  %idxprom.i.59 = sext i8 %185 to i64
+  %arrayidx.i.59 = getelementptr inbounds i32, ptr %184, i64 %idxprom.i.59
+  %186 = load i32, ptr %arrayidx.i.59, align 4, !tbaa !22
+  %conv2.i.59 = trunc i32 %186 to i8
+  store i8 %conv2.i.59, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 59), align 1, !tbaa !17
+  br label %strncpy_caseC.exit
 
 if.else.i:                                        ; preds = %for.body45
   %call5.i = tail call ptr @strncpy(ptr noundef nonnull dereferenceable(1) @WriteGapFill.b, ptr noundef nonnull dereferenceable(1) %add.ptr, i64 noundef 60) #31
   br label %strncpy_caseC.exit
 
-strncpy_caseC.exit:                               ; preds = %while.body.i, %if.else.i
+strncpy_caseC.exit:                               ; preds = %while.cond.preheader.i, %if.else.i
   store i8 0, ptr getelementptr inbounds ([5000000 x i8], ptr @WriteGapFill.b, i64 0, i64 60), align 4, !tbaa !17
   %call46 = tail call i32 (ptr, ptr, ...) @fprintf(ptr noundef %fp, ptr noundef nonnull @.str.5, ptr noundef nonnull @WriteGapFill.b)
   %indvars.iv.next92 = add nuw i64 %indvars.iv91, 60
-  %22 = trunc i64 %indvars.iv.next92 to i32
-  %cmp43 = icmp slt i32 %22, %conv31
+  %187 = trunc i64 %indvars.iv.next92 to i32
+  %cmp43 = icmp slt i32 %187, %conv31
   br i1 %cmp43, label %for.body45, label %for.inc49, !llvm.loop !71
 
 for.inc49:                                        ; preds = %strncpy_caseC.exit, %for.body19

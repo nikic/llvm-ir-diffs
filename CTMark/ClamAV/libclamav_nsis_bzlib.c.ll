@@ -201,6 +201,118 @@ while.cond.preheader:                             ; preds = %if.end3
   %invariant.gep590 = getelementptr i8, ptr %pos.i, i64 -15
   %invariant.gep592 = getelementptr i8, ptr %pos.i, i64 -7
   %invariant.gep594 = getelementptr i8, ptr %pos.i, i64 -7
+  %arrayidx961.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4095
+  %arrayidx961.1.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4094
+  %arrayidx961.2.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4093
+  %arrayidx961.6.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4089
+  %arrayidx961.14.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4081
+  %arrayidx961.15.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4080
+  %arrayidx968.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 15
+  %arrayidx961.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4079
+  %arrayidx961.1.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4078
+  %arrayidx961.2.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4077
+  %arrayidx961.6.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4073
+  %arrayidx961.14.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4065
+  %arrayidx961.15.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4064
+  %arrayidx968.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 14
+  %arrayidx961.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4063
+  %arrayidx961.1.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4062
+  %arrayidx961.2.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4061
+  %arrayidx961.6.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4057
+  %arrayidx961.14.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4049
+  %arrayidx961.15.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4048
+  %arrayidx968.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 13
+  %arrayidx961.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4047
+  %arrayidx961.1.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4046
+  %arrayidx961.2.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4045
+  %arrayidx961.6.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4041
+  %arrayidx961.14.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4033
+  %arrayidx961.15.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4032
+  %arrayidx968.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 12
+  %arrayidx961.i.4 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4031
+  %arrayidx961.1.i.4 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4030
+  %arrayidx961.2.i.4 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4029
+  %arrayidx961.6.i.4 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4025
+  %arrayidx961.14.i.4 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4017
+  %arrayidx961.15.i.4 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4016
+  %arrayidx968.i.4 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 11
+  %arrayidx961.i.5 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4015
+  %arrayidx961.1.i.5 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4014
+  %arrayidx961.2.i.5 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4013
+  %arrayidx961.6.i.5 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4009
+  %arrayidx961.14.i.5 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4001
+  %arrayidx961.15.i.5 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 4000
+  %arrayidx968.i.5 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 10
+  %arrayidx961.i.6 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3999
+  %arrayidx961.1.i.6 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3998
+  %arrayidx961.2.i.6 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3997
+  %arrayidx961.6.i.6 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3993
+  %arrayidx961.14.i.6 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3985
+  %arrayidx961.15.i.6 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3984
+  %arrayidx968.i.6 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 9
+  %arrayidx961.i.7 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3983
+  %arrayidx961.1.i.7 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3982
+  %arrayidx961.2.i.7 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3981
+  %arrayidx961.6.i.7 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3977
+  %arrayidx961.14.i.7 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3969
+  %arrayidx961.15.i.7 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3968
+  %arrayidx968.i.7 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 8
+  %arrayidx961.i.8 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3967
+  %arrayidx961.1.i.8 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3966
+  %arrayidx961.2.i.8 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3965
+  %arrayidx961.6.i.8 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3961
+  %arrayidx961.14.i.8 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3953
+  %arrayidx961.15.i.8 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3952
+  %arrayidx968.i.8 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 7
+  %arrayidx961.i.9 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3951
+  %arrayidx961.1.i.9 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3950
+  %arrayidx961.2.i.9 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3949
+  %arrayidx961.6.i.9 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3945
+  %arrayidx961.14.i.9 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3937
+  %arrayidx961.15.i.9 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3936
+  %arrayidx968.i.9 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 6
+  %arrayidx961.i.10 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3935
+  %arrayidx961.1.i.10 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3934
+  %arrayidx961.2.i.10 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3933
+  %arrayidx961.6.i.10 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3929
+  %arrayidx961.14.i.10 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3921
+  %arrayidx961.15.i.10 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3920
+  %arrayidx968.i.10 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 5
+  %arrayidx961.i.11 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3919
+  %arrayidx961.1.i.11 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3918
+  %arrayidx961.2.i.11 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3917
+  %arrayidx961.6.i.11 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3913
+  %arrayidx961.14.i.11 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3905
+  %arrayidx961.15.i.11 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3904
+  %arrayidx968.i.11 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 4
+  %arrayidx961.i.12 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3903
+  %arrayidx961.1.i.12 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3902
+  %arrayidx961.2.i.12 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3901
+  %arrayidx961.6.i.12 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3897
+  %arrayidx961.14.i.12 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3889
+  %arrayidx961.15.i.12 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3888
+  %arrayidx968.i.12 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 3
+  %arrayidx961.i.13 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3887
+  %arrayidx961.1.i.13 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3886
+  %arrayidx961.2.i.13 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3885
+  %arrayidx961.6.i.13 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3881
+  %arrayidx961.14.i.13 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3873
+  %arrayidx961.15.i.13 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3872
+  %arrayidx968.i.13 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 2
+  %arrayidx961.i.14 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3871
+  %arrayidx961.1.i.14 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3870
+  %arrayidx961.2.i.14 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3869
+  %arrayidx961.6.i.14 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3865
+  %arrayidx961.14.i.14 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3857
+  %arrayidx961.15.i.14 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3856
+  %arrayidx968.i.14 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 1
+  %arrayidx961.i.15 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3855
+  %arrayidx961.1.i.15 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3854
+  %arrayidx961.2.i.15 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3853
+  %arrayidx961.6.i.15 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3849
+  %arrayidx961.14.i.15 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3841
+  %arrayidx961.15.i.15 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 3840
+  %arrayidx968.i.15 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 0
   %invariant.gep596 = getelementptr i8, ptr %0, i64 -15
   %invariant.gep598 = getelementptr i8, ptr %0, i64 -15
   %invariant.gep600 = getelementptr i8, ptr %0, i64 -7
@@ -3345,77 +3457,147 @@ for.end935.i:                                     ; preds = %CreateDecodeTables.
   %972 = load i32, ptr %nInUse.i.i, align 8, !tbaa !79
   %973 = load i32, ptr %blockSize100k.i, align 8, !tbaa !49
   tail call void @llvm.memset.p0.i64(ptr noundef nonnull align 4 dereferenceable(1024) %scevgep3283.i, i8 0, i64 1024, i1 false), !tbaa !36
-  br label %for.cond953.preheader.i
-
-for.cond953.preheader.i:                          ; preds = %for.cond953.preheader.i, %for.end935.i
-  %indvars.iv3295.i = phi i64 [ 15, %for.end935.i ], [ %indvars.iv.next3296.i, %for.cond953.preheader.i ]
-  %indvars.iv3293.i = phi i64 [ 4095, %for.end935.i ], [ %indvars.iv.next3294.i, %for.cond953.preheader.i ]
-  %indvars3316.i = trunc i64 %indvars.iv3295.i to i8
-  %mul957.i = shl i8 %indvars3316.i, 4
-  %conv959.i = or i8 %mul957.i, 15
-  %arrayidx961.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv3293.i
-  store i8 %conv959.i, ptr %arrayidx961.i, align 1, !tbaa !31
-  %indvars.iv.next3290.i = add nsw i64 %indvars.iv3293.i, -1
-  %conv959.1.i = or i8 %mul957.i, 14
-  %arrayidx961.1.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3290.i
-  store i8 %conv959.1.i, ptr %arrayidx961.1.i, align 1, !tbaa !31
-  %indvars.iv.next3290.1.i = add nsw i64 %indvars.iv3293.i, -2
-  %conv959.2.i = or i8 %mul957.i, 13
-  %arrayidx961.2.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3290.1.i
-  store i8 %conv959.2.i, ptr %arrayidx961.2.i, align 1, !tbaa !31
-  %indvars.iv.next3290.5.i = add nsw i64 %indvars.iv3293.i, -6
-  %arrayidx961.6.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3290.5.i
-  %974 = insertelement <4 x i8> poison, i8 %mul957.i, i64 0
-  %975 = shufflevector <4 x i8> %974, <4 x i8> poison, <4 x i32> zeroinitializer
-  %976 = or <4 x i8> %975, <i8 9, i8 10, i8 11, i8 12>
-  store <4 x i8> %976, ptr %arrayidx961.6.i, align 1, !tbaa !31
-  %indvars.iv.next3290.13.i = add nsw i64 %indvars.iv3293.i, -14
-  %arrayidx961.14.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3290.13.i
-  %977 = insertelement <8 x i8> poison, i8 %mul957.i, i64 0
-  %978 = shufflevector <8 x i8> %977, <8 x i8> poison, <8 x i32> zeroinitializer
-  %979 = or <8 x i8> %978, <i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7, i8 8>
-  store <8 x i8> %979, ptr %arrayidx961.14.i, align 1, !tbaa !31
-  %indvars.iv.next3290.14.i = add nsw i64 %indvars.iv3293.i, -15
-  %arrayidx961.15.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3290.14.i
-  store i8 %mul957.i, ptr %arrayidx961.15.i, align 1, !tbaa !31
-  %980 = trunc i64 %indvars.iv.next3290.14.i to i32
-  %indvars.iv.next3294.i = add nsw i64 %indvars.iv3293.i, -16
-  %arrayidx968.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 %indvars.iv3295.i
-  store i32 %980, ptr %arrayidx968.i, align 4, !tbaa !36
-  %indvars.iv.next3296.i = add nsw i64 %indvars.iv3295.i, -1
-  %cmp950.not.i = icmp eq i64 %indvars.iv3295.i, 0
-  br i1 %cmp950.not.i, label %if.then974.i, label %for.cond953.preheader.i, !llvm.loop !100
-
-if.then974.i:                                     ; preds = %for.cond953.preheader.i
+  store i8 -1, ptr %arrayidx961.i, align 1, !tbaa !31
+  store i8 -2, ptr %arrayidx961.1.i, align 1, !tbaa !31
+  store i8 -3, ptr %arrayidx961.2.i, align 1, !tbaa !31
+  store <4 x i8> <i8 -7, i8 -6, i8 -5, i8 -4>, ptr %arrayidx961.6.i, align 1, !tbaa !31
+  store <8 x i8> <i8 -15, i8 -14, i8 -13, i8 -12, i8 -11, i8 -10, i8 -9, i8 -8>, ptr %arrayidx961.14.i, align 1, !tbaa !31
+  store i8 -16, ptr %arrayidx961.15.i, align 1, !tbaa !31
+  store i32 4080, ptr %arrayidx968.i, align 4, !tbaa !36
+  store i8 -17, ptr %arrayidx961.i.1, align 1, !tbaa !31
+  store i8 -18, ptr %arrayidx961.1.i.1, align 1, !tbaa !31
+  store i8 -19, ptr %arrayidx961.2.i.1, align 1, !tbaa !31
+  store <4 x i8> <i8 -23, i8 -22, i8 -21, i8 -20>, ptr %arrayidx961.6.i.1, align 1, !tbaa !31
+  store <8 x i8> <i8 -31, i8 -30, i8 -29, i8 -28, i8 -27, i8 -26, i8 -25, i8 -24>, ptr %arrayidx961.14.i.1, align 1, !tbaa !31
+  store i8 -32, ptr %arrayidx961.15.i.1, align 1, !tbaa !31
+  store i32 4064, ptr %arrayidx968.i.1, align 4, !tbaa !36
+  store i8 -33, ptr %arrayidx961.i.2, align 1, !tbaa !31
+  store i8 -34, ptr %arrayidx961.1.i.2, align 1, !tbaa !31
+  store i8 -35, ptr %arrayidx961.2.i.2, align 1, !tbaa !31
+  store <4 x i8> <i8 -39, i8 -38, i8 -37, i8 -36>, ptr %arrayidx961.6.i.2, align 1, !tbaa !31
+  store <8 x i8> <i8 -47, i8 -46, i8 -45, i8 -44, i8 -43, i8 -42, i8 -41, i8 -40>, ptr %arrayidx961.14.i.2, align 1, !tbaa !31
+  store i8 -48, ptr %arrayidx961.15.i.2, align 1, !tbaa !31
+  store i32 4048, ptr %arrayidx968.i.2, align 4, !tbaa !36
+  store i8 -49, ptr %arrayidx961.i.3, align 1, !tbaa !31
+  store i8 -50, ptr %arrayidx961.1.i.3, align 1, !tbaa !31
+  store i8 -51, ptr %arrayidx961.2.i.3, align 1, !tbaa !31
+  store <4 x i8> <i8 -55, i8 -54, i8 -53, i8 -52>, ptr %arrayidx961.6.i.3, align 1, !tbaa !31
+  store <8 x i8> <i8 -63, i8 -62, i8 -61, i8 -60, i8 -59, i8 -58, i8 -57, i8 -56>, ptr %arrayidx961.14.i.3, align 1, !tbaa !31
+  store i8 -64, ptr %arrayidx961.15.i.3, align 1, !tbaa !31
+  store i32 4032, ptr %arrayidx968.i.3, align 4, !tbaa !36
+  store i8 -65, ptr %arrayidx961.i.4, align 1, !tbaa !31
+  store i8 -66, ptr %arrayidx961.1.i.4, align 1, !tbaa !31
+  store i8 -67, ptr %arrayidx961.2.i.4, align 1, !tbaa !31
+  store <4 x i8> <i8 -71, i8 -70, i8 -69, i8 -68>, ptr %arrayidx961.6.i.4, align 1, !tbaa !31
+  store <8 x i8> <i8 -79, i8 -78, i8 -77, i8 -76, i8 -75, i8 -74, i8 -73, i8 -72>, ptr %arrayidx961.14.i.4, align 1, !tbaa !31
+  store i8 -80, ptr %arrayidx961.15.i.4, align 1, !tbaa !31
+  store i32 4016, ptr %arrayidx968.i.4, align 4, !tbaa !36
+  store i8 -81, ptr %arrayidx961.i.5, align 1, !tbaa !31
+  store i8 -82, ptr %arrayidx961.1.i.5, align 1, !tbaa !31
+  store i8 -83, ptr %arrayidx961.2.i.5, align 1, !tbaa !31
+  store <4 x i8> <i8 -87, i8 -86, i8 -85, i8 -84>, ptr %arrayidx961.6.i.5, align 1, !tbaa !31
+  store <8 x i8> <i8 -95, i8 -94, i8 -93, i8 -92, i8 -91, i8 -90, i8 -89, i8 -88>, ptr %arrayidx961.14.i.5, align 1, !tbaa !31
+  store i8 -96, ptr %arrayidx961.15.i.5, align 1, !tbaa !31
+  store i32 4000, ptr %arrayidx968.i.5, align 4, !tbaa !36
+  store i8 -97, ptr %arrayidx961.i.6, align 1, !tbaa !31
+  store i8 -98, ptr %arrayidx961.1.i.6, align 1, !tbaa !31
+  store i8 -99, ptr %arrayidx961.2.i.6, align 1, !tbaa !31
+  store <4 x i8> <i8 -103, i8 -102, i8 -101, i8 -100>, ptr %arrayidx961.6.i.6, align 1, !tbaa !31
+  store <8 x i8> <i8 -111, i8 -110, i8 -109, i8 -108, i8 -107, i8 -106, i8 -105, i8 -104>, ptr %arrayidx961.14.i.6, align 1, !tbaa !31
+  store i8 -112, ptr %arrayidx961.15.i.6, align 1, !tbaa !31
+  store i32 3984, ptr %arrayidx968.i.6, align 4, !tbaa !36
+  store i8 -113, ptr %arrayidx961.i.7, align 1, !tbaa !31
+  store i8 -114, ptr %arrayidx961.1.i.7, align 1, !tbaa !31
+  store i8 -115, ptr %arrayidx961.2.i.7, align 1, !tbaa !31
+  store <4 x i8> <i8 -119, i8 -118, i8 -117, i8 -116>, ptr %arrayidx961.6.i.7, align 1, !tbaa !31
+  store <8 x i8> <i8 -127, i8 -126, i8 -125, i8 -124, i8 -123, i8 -122, i8 -121, i8 -120>, ptr %arrayidx961.14.i.7, align 1, !tbaa !31
+  store i8 -128, ptr %arrayidx961.15.i.7, align 1, !tbaa !31
+  store i32 3968, ptr %arrayidx968.i.7, align 4, !tbaa !36
+  store i8 127, ptr %arrayidx961.i.8, align 1, !tbaa !31
+  store i8 126, ptr %arrayidx961.1.i.8, align 1, !tbaa !31
+  store i8 125, ptr %arrayidx961.2.i.8, align 1, !tbaa !31
+  store <4 x i8> <i8 121, i8 122, i8 123, i8 124>, ptr %arrayidx961.6.i.8, align 1, !tbaa !31
+  store <8 x i8> <i8 113, i8 114, i8 115, i8 116, i8 117, i8 118, i8 119, i8 120>, ptr %arrayidx961.14.i.8, align 1, !tbaa !31
+  store i8 112, ptr %arrayidx961.15.i.8, align 1, !tbaa !31
+  store i32 3952, ptr %arrayidx968.i.8, align 4, !tbaa !36
+  store i8 111, ptr %arrayidx961.i.9, align 1, !tbaa !31
+  store i8 110, ptr %arrayidx961.1.i.9, align 1, !tbaa !31
+  store i8 109, ptr %arrayidx961.2.i.9, align 1, !tbaa !31
+  store <4 x i8> <i8 105, i8 106, i8 107, i8 108>, ptr %arrayidx961.6.i.9, align 1, !tbaa !31
+  store <8 x i8> <i8 97, i8 98, i8 99, i8 100, i8 101, i8 102, i8 103, i8 104>, ptr %arrayidx961.14.i.9, align 1, !tbaa !31
+  store i8 96, ptr %arrayidx961.15.i.9, align 1, !tbaa !31
+  store i32 3936, ptr %arrayidx968.i.9, align 4, !tbaa !36
+  store i8 95, ptr %arrayidx961.i.10, align 1, !tbaa !31
+  store i8 94, ptr %arrayidx961.1.i.10, align 1, !tbaa !31
+  store i8 93, ptr %arrayidx961.2.i.10, align 1, !tbaa !31
+  store <4 x i8> <i8 89, i8 90, i8 91, i8 92>, ptr %arrayidx961.6.i.10, align 1, !tbaa !31
+  store <8 x i8> <i8 81, i8 82, i8 83, i8 84, i8 85, i8 86, i8 87, i8 88>, ptr %arrayidx961.14.i.10, align 1, !tbaa !31
+  store i8 80, ptr %arrayidx961.15.i.10, align 1, !tbaa !31
+  store i32 3920, ptr %arrayidx968.i.10, align 4, !tbaa !36
+  store i8 79, ptr %arrayidx961.i.11, align 1, !tbaa !31
+  store i8 78, ptr %arrayidx961.1.i.11, align 1, !tbaa !31
+  store i8 77, ptr %arrayidx961.2.i.11, align 1, !tbaa !31
+  store <4 x i8> <i8 73, i8 74, i8 75, i8 76>, ptr %arrayidx961.6.i.11, align 1, !tbaa !31
+  store <8 x i8> <i8 65, i8 66, i8 67, i8 68, i8 69, i8 70, i8 71, i8 72>, ptr %arrayidx961.14.i.11, align 1, !tbaa !31
+  store i8 64, ptr %arrayidx961.15.i.11, align 1, !tbaa !31
+  store i32 3904, ptr %arrayidx968.i.11, align 4, !tbaa !36
+  store i8 63, ptr %arrayidx961.i.12, align 1, !tbaa !31
+  store i8 62, ptr %arrayidx961.1.i.12, align 1, !tbaa !31
+  store i8 61, ptr %arrayidx961.2.i.12, align 1, !tbaa !31
+  store <4 x i8> <i8 57, i8 58, i8 59, i8 60>, ptr %arrayidx961.6.i.12, align 1, !tbaa !31
+  store <8 x i8> <i8 49, i8 50, i8 51, i8 52, i8 53, i8 54, i8 55, i8 56>, ptr %arrayidx961.14.i.12, align 1, !tbaa !31
+  store i8 48, ptr %arrayidx961.15.i.12, align 1, !tbaa !31
+  store i32 3888, ptr %arrayidx968.i.12, align 4, !tbaa !36
+  store i8 47, ptr %arrayidx961.i.13, align 1, !tbaa !31
+  store i8 46, ptr %arrayidx961.1.i.13, align 1, !tbaa !31
+  store i8 45, ptr %arrayidx961.2.i.13, align 1, !tbaa !31
+  store <4 x i8> <i8 41, i8 42, i8 43, i8 44>, ptr %arrayidx961.6.i.13, align 1, !tbaa !31
+  store <8 x i8> <i8 33, i8 34, i8 35, i8 36, i8 37, i8 38, i8 39, i8 40>, ptr %arrayidx961.14.i.13, align 1, !tbaa !31
+  store i8 32, ptr %arrayidx961.15.i.13, align 1, !tbaa !31
+  store i32 3872, ptr %arrayidx968.i.13, align 4, !tbaa !36
+  store i8 31, ptr %arrayidx961.i.14, align 1, !tbaa !31
+  store i8 30, ptr %arrayidx961.1.i.14, align 1, !tbaa !31
+  store i8 29, ptr %arrayidx961.2.i.14, align 1, !tbaa !31
+  store <4 x i8> <i8 25, i8 26, i8 27, i8 28>, ptr %arrayidx961.6.i.14, align 1, !tbaa !31
+  store <8 x i8> <i8 17, i8 18, i8 19, i8 20, i8 21, i8 22, i8 23, i8 24>, ptr %arrayidx961.14.i.14, align 1, !tbaa !31
+  store i8 16, ptr %arrayidx961.15.i.14, align 1, !tbaa !31
+  store i32 3856, ptr %arrayidx968.i.14, align 4, !tbaa !36
+  store i8 15, ptr %arrayidx961.i.15, align 1, !tbaa !31
+  store i8 14, ptr %arrayidx961.1.i.15, align 1, !tbaa !31
+  store i8 13, ptr %arrayidx961.2.i.15, align 1, !tbaa !31
+  store <4 x i8> <i8 9, i8 10, i8 11, i8 12>, ptr %arrayidx961.6.i.15, align 1, !tbaa !31
+  store <8 x i8> <i8 1, i8 2, i8 3, i8 4, i8 5, i8 6, i8 7, i8 8>, ptr %arrayidx961.14.i.15, align 1, !tbaa !31
+  store i8 0, ptr %arrayidx961.15.i.15, align 1, !tbaa !31
+  store i32 3840, ptr %arrayidx968.i.15, align 4, !tbaa !36
   %mul939.i = mul nsw i32 %973, 100000
   %add937.i = add nsw i32 %972, 1
   %cmp976.i = icmp slt i32 %nSelectors.3.i, 1
   br i1 %cmp976.i, label %BZ2_decompress.exit, label %if.end999.i
 
-if.end999.i:                                      ; preds = %if.then974.i
-  %981 = load i8, ptr %selector980.i, align 1, !tbaa !31
-  %idxprom985.i = zext i8 %981 to i64
+if.end999.i:                                      ; preds = %for.end935.i
+  %974 = load i8, ptr %selector980.i, align 1, !tbaa !31
+  %idxprom985.i = zext i8 %974 to i64
   %arrayidx997.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 37, i64 %idxprom985.i
   %arrayidx993.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 38, i64 %idxprom985.i
   %arrayidx989.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 36, i64 %idxprom985.i
   %arrayidx986.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 39, i64 %idxprom985.i
-  %982 = load i32, ptr %arrayidx986.i, align 4, !tbaa !36
-  %conv983.i = zext i8 %981 to i32
+  %975 = load i32, ptr %arrayidx986.i, align 4, !tbaa !36
+  %conv983.i = zext i8 %974 to i32
   br label %sw.bb1001.i
 
 sw.bb1001.i:                                      ; preds = %if.end999.i, %if.end.i86
-  %983 = phi i32 [ %.pre3402.i, %if.end.i86 ], [ %777, %if.end999.i ]
-  %984 = phi i32 [ %.pre3405.i, %if.end.i86 ], [ %780, %if.end999.i ]
-  %985 = phi i32 [ %.pre3406.i, %if.end.i86 ], [ %781, %if.end999.i ]
-  %986 = phi i32 [ %.pre3408.i, %if.end.i86 ], [ %782, %if.end999.i ]
-  %987 = phi i32 [ %.pre3410.i, %if.end.i86 ], [ %784, %if.end999.i ]
-  %988 = phi i32 [ %.pre3411.i, %if.end.i86 ], [ %785, %if.end999.i ]
+  %976 = phi i32 [ %.pre3402.i, %if.end.i86 ], [ %777, %if.end999.i ]
+  %977 = phi i32 [ %.pre3405.i, %if.end.i86 ], [ %780, %if.end999.i ]
+  %978 = phi i32 [ %.pre3406.i, %if.end.i86 ], [ %781, %if.end999.i ]
+  %979 = phi i32 [ %.pre3408.i, %if.end.i86 ], [ %782, %if.end999.i ]
+  %980 = phi i32 [ %.pre3410.i, %if.end.i86 ], [ %784, %if.end999.i ]
+  %981 = phi i32 [ %.pre3411.i, %if.end.i86 ], [ %785, %if.end999.i ]
   %gSel.1.i = phi i32 [ %.pre3412.i, %if.end.i86 ], [ %conv983.i, %if.end999.i ]
-  %gMinlen.1.i = phi i32 [ %.pre3413.i, %if.end.i86 ], [ %982, %if.end999.i ]
+  %gMinlen.1.i = phi i32 [ %.pre3413.i, %if.end.i86 ], [ %975, %if.end999.i ]
   %gLimit.1.i = phi ptr [ %.pre3414.i, %if.end.i86 ], [ %arrayidx989.i, %if.end999.i ]
   %gBase.1.i = phi ptr [ %.pre3415.i, %if.end.i86 ], [ %arrayidx997.i, %if.end999.i ]
   %gPerm.1.i = phi ptr [ %.pre3416.i, %if.end.i86 ], [ %arrayidx993.i, %if.end999.i ]
-  %zn.0.i = phi i32 [ %.pre3409.i, %if.end.i86 ], [ %982, %if.end999.i ]
+  %zn.0.i = phi i32 [ %.pre3409.i, %if.end.i86 ], [ %975, %if.end999.i ]
   %curr.7.i = phi i32 [ %.pre3407.i, %if.end.i86 ], [ %curr.0.i, %if.end999.i ]
   %nblock.0.i = phi i32 [ %.pre3404.i, %if.end.i86 ], [ 0, %if.end999.i ]
   %nblockMAX.0.i = phi i32 [ %.pre3403.i, %if.end.i86 ], [ %mul939.i, %if.end999.i ]
@@ -3438,18 +3620,18 @@ sw.bb1001.if.then1008_crit_edge.i:                ; preds = %sw.bb1001.i
   br label %if.then1008.i
 
 if.end1019.lr.ph.i:                               ; preds = %sw.bb1001.i
-  %989 = load ptr, ptr %0, align 8, !tbaa !13
-  %avail_in1021.i = getelementptr inbounds %struct.nsis_bzstream, ptr %989, i64 0, i32 1
-  %total_in_lo321042.i = getelementptr inbounds %struct.nsis_bzstream, ptr %989, i64 0, i32 2
-  %total_in_hi321050.i = getelementptr inbounds %struct.nsis_bzstream, ptr %989, i64 0, i32 3
+  %982 = load ptr, ptr %0, align 8, !tbaa !13
+  %avail_in1021.i = getelementptr inbounds %struct.nsis_bzstream, ptr %982, i64 0, i32 1
+  %total_in_lo321042.i = getelementptr inbounds %struct.nsis_bzstream, ptr %982, i64 0, i32 2
+  %total_in_hi321050.i = getelementptr inbounds %struct.nsis_bzstream, ptr %982, i64 0, i32 3
   %avail_in1021.promoted.i = load i32, ptr %avail_in1021.i, align 8, !tbaa !73
   br label %if.end1019.i
 
 if.then1008.i:                                    ; preds = %if.end1052.i, %sw.bb1001.if.then1008_crit_edge.i
-  %990 = phi i32 [ %.pre3428.i, %sw.bb1001.if.then1008_crit_edge.i ], [ %or1031.i, %if.end1052.i ]
+  %983 = phi i32 [ %.pre3428.i, %sw.bb1001.if.then1008_crit_edge.i ], [ %or1031.i, %if.end1052.i ]
   %.lcssa3054.i = phi i32 [ %bsLive1005.promoted.i, %sw.bb1001.if.then1008_crit_edge.i ], [ %add1034.i, %if.end1052.i ]
   %sub1012.i = sub nsw i32 %.lcssa3054.i, %zn.0.i
-  %shr1013.i = lshr i32 %990, %sub1012.i
+  %shr1013.i = lshr i32 %983, %sub1012.i
   %notmask.i = shl nsw i32 -1, %zn.0.i
   %sub1015.i = xor i32 %notmask.i, -1
   %and1016.i = and i32 %shr1013.i, %sub1015.i
@@ -3463,28 +3645,28 @@ if.end1019.i:                                     ; preds = %if.end1052.i, %if.e
   br i1 %cmp1022.i, label %BZ2_decompress.exit, label %if.end1025.i
 
 if.end1025.i:                                     ; preds = %if.end1019.i
-  %991 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
-  %shl1027.i = shl i32 %991, 8
-  %992 = load ptr, ptr %989, align 8, !tbaa !74
-  %993 = load i8, ptr %992, align 1, !tbaa !31
-  %conv1030.i = zext i8 %993 to i32
+  %984 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
+  %shl1027.i = shl i32 %984, 8
+  %985 = load ptr, ptr %982, align 8, !tbaa !74
+  %986 = load i8, ptr %985, align 1, !tbaa !31
+  %conv1030.i = zext i8 %986 to i32
   %or1031.i = or i32 %shl1027.i, %conv1030.i
   store i32 %or1031.i, ptr %bsBuff77.i, align 8, !tbaa !18
   %add1034.i = add nsw i32 %add103431323134.i, 8
   store i32 %add1034.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
-  %incdec.ptr1037.i = getelementptr inbounds i8, ptr %992, i64 1
-  store ptr %incdec.ptr1037.i, ptr %989, align 8, !tbaa !74
+  %incdec.ptr1037.i = getelementptr inbounds i8, ptr %985, i64 1
+  store ptr %incdec.ptr1037.i, ptr %982, align 8, !tbaa !74
   %dec1040.i = add i32 %dec10403137.i, -1
   store i32 %dec1040.i, ptr %avail_in1021.i, align 8, !tbaa !73
-  %994 = load i32, ptr %total_in_lo321042.i, align 4, !tbaa !20
-  %inc1043.i = add i32 %994, 1
+  %987 = load i32, ptr %total_in_lo321042.i, align 4, !tbaa !20
+  %inc1043.i = add i32 %987, 1
   store i32 %inc1043.i, ptr %total_in_lo321042.i, align 4, !tbaa !20
   %cmp1046.i = icmp eq i32 %inc1043.i, 0
   br i1 %cmp1046.i, label %if.then1048.i, label %if.end1052.i
 
 if.then1048.i:                                    ; preds = %if.end1025.i
-  %995 = load i32, ptr %total_in_hi321050.i, align 8, !tbaa !21
-  %inc1051.i = add i32 %995, 1
+  %988 = load i32, ptr %total_in_hi321050.i, align 8, !tbaa !21
+  %inc1051.i = add i32 %988, 1
   store i32 %inc1051.i, ptr %total_in_hi321050.i, align 8, !tbaa !21
   br label %if.end1052.i
 
@@ -3493,12 +3675,12 @@ if.end1052.i:                                     ; preds = %if.then1048.i, %if.
   br i1 %cmp1006.not.i, label %if.end1019.i, label %if.then1008.i
 
 while.cond1054.i:                                 ; preds = %if.then1074.i, %if.then1008.i
-  %996 = phi i32 [ %1001, %if.then1074.i ], [ %983, %if.then1008.i ]
-  %997 = phi i32 [ %1002, %if.then1074.i ], [ %984, %if.then1008.i ]
-  %998 = phi i32 [ %1003, %if.then1074.i ], [ %985, %if.then1008.i ]
-  %999 = phi i32 [ %1004, %if.then1074.i ], [ %986, %if.then1008.i ]
+  %989 = phi i32 [ %994, %if.then1074.i ], [ %976, %if.then1008.i ]
+  %990 = phi i32 [ %995, %if.then1074.i ], [ %977, %if.then1008.i ]
+  %991 = phi i32 [ %996, %if.then1074.i ], [ %978, %if.then1008.i ]
+  %992 = phi i32 [ %997, %if.then1074.i ], [ %979, %if.then1008.i ]
   %bsLive1071.promoted3442.i = phi i32 [ %sub1078.i, %if.then1074.i ], [ %sub1012.i, %if.then1008.i ]
-  %zj.0.i = phi i32 [ %and1080.i, %if.then1074.i ], [ %988, %if.then1008.i ]
+  %zj.0.i = phi i32 [ %and1080.i, %if.then1074.i ], [ %981, %if.then1008.i ]
   %gSel.2.i = phi i32 [ %gSel.3.i, %if.then1074.i ], [ %gSel.1.i, %if.then1008.i ]
   %gMinlen.2.i = phi i32 [ %gMinlen.3.i, %if.then1074.i ], [ %gMinlen.1.i, %if.then1008.i ]
   %gLimit.2.i = phi ptr [ %gLimit.3.i, %if.then1074.i ], [ %gLimit.1.i, %if.then1008.i ]
@@ -3524,8 +3706,8 @@ while.cond1054.i:                                 ; preds = %if.then1074.i, %if.
 if.end1059.i:                                     ; preds = %while.cond1054.i
   %idxprom1060.i = sext i32 %zn.1.i to i64
   %arrayidx1061.i = getelementptr inbounds i32, ptr %gLimit.2.i, i64 %idxprom1060.i
-  %1000 = load i32, ptr %arrayidx1061.i, align 4, !tbaa !36
-  %cmp1062.not.i = icmp sgt i32 %zvec.0.i, %1000
+  %993 = load i32, ptr %arrayidx1061.i, align 4, !tbaa !36
+  %cmp1062.not.i = icmp sgt i32 %zvec.0.i, %993
   br i1 %cmp1062.not.i, label %if.end1065.i, label %while.end1120.i
 
 if.end1065.i:                                     ; preds = %if.end1059.i
@@ -3533,10 +3715,10 @@ if.end1065.i:                                     ; preds = %if.end1059.i
   br label %sw.bb1067.i
 
 sw.bb1067.i:                                      ; preds = %if.end1065.i, %if.end.sw.bb1067_crit_edge.i
-  %1001 = phi i32 [ %.pre3402.i, %if.end.sw.bb1067_crit_edge.i ], [ %996, %if.end1065.i ]
-  %1002 = phi i32 [ %.pre3405.i, %if.end.sw.bb1067_crit_edge.i ], [ %997, %if.end1065.i ]
-  %1003 = phi i32 [ %.pre3406.i, %if.end.sw.bb1067_crit_edge.i ], [ %998, %if.end1065.i ]
-  %1004 = phi i32 [ %.pre3408.i, %if.end.sw.bb1067_crit_edge.i ], [ %999, %if.end1065.i ]
+  %994 = phi i32 [ %.pre3402.i, %if.end.sw.bb1067_crit_edge.i ], [ %989, %if.end1065.i ]
+  %995 = phi i32 [ %.pre3405.i, %if.end.sw.bb1067_crit_edge.i ], [ %990, %if.end1065.i ]
+  %996 = phi i32 [ %.pre3406.i, %if.end.sw.bb1067_crit_edge.i ], [ %991, %if.end1065.i ]
+  %997 = phi i32 [ %.pre3408.i, %if.end.sw.bb1067_crit_edge.i ], [ %992, %if.end1065.i ]
   %bsLive1071.promoted.i = phi i32 [ %bsLive1071.promoted.pre.i, %if.end.sw.bb1067_crit_edge.i ], [ %bsLive1071.promoted3442.i, %if.end1065.i ]
   %zj.1.i = phi i32 [ %.pre3411.i, %if.end.sw.bb1067_crit_edge.i ], [ %zj.0.i, %if.end1065.i ]
   %gSel.3.i = phi i32 [ %.pre3412.i, %if.end.sw.bb1067_crit_edge.i ], [ %gSel.2.i, %if.end1065.i ]
@@ -3567,18 +3749,18 @@ sw.bb1067.if.then1074_crit_edge.i:                ; preds = %sw.bb1067.i
   br label %if.then1074.i
 
 if.end1083.lr.ph.i:                               ; preds = %sw.bb1067.i
-  %1005 = load ptr, ptr %0, align 8, !tbaa !13
-  %avail_in1085.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1005, i64 0, i32 1
-  %total_in_lo321106.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1005, i64 0, i32 2
-  %total_in_hi321114.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1005, i64 0, i32 3
+  %998 = load ptr, ptr %0, align 8, !tbaa !13
+  %avail_in1085.i = getelementptr inbounds %struct.nsis_bzstream, ptr %998, i64 0, i32 1
+  %total_in_lo321106.i = getelementptr inbounds %struct.nsis_bzstream, ptr %998, i64 0, i32 2
+  %total_in_hi321114.i = getelementptr inbounds %struct.nsis_bzstream, ptr %998, i64 0, i32 3
   %avail_in1085.promoted.i = load i32, ptr %avail_in1085.i, align 8, !tbaa !73
   br label %if.end1083.i
 
 if.then1074.i:                                    ; preds = %if.end1116.i, %sw.bb1067.if.then1074_crit_edge.i
-  %1006 = phi i32 [ %.pre3443.i, %sw.bb1067.if.then1074_crit_edge.i ], [ %or1095.i, %if.end1116.i ]
+  %999 = phi i32 [ %.pre3443.i, %sw.bb1067.if.then1074_crit_edge.i ], [ %or1095.i, %if.end1116.i ]
   %.lcssa3032.i = phi i32 [ %bsLive1071.promoted.i, %sw.bb1067.if.then1074_crit_edge.i ], [ %add1098.i, %if.end1116.i ]
   %sub1078.i = add nsw i32 %.lcssa3032.i, -1
-  %shr1079.i = lshr i32 %1006, %sub1078.i
+  %shr1079.i = lshr i32 %999, %sub1078.i
   %and1080.i = and i32 %shr1079.i, 1
   store i32 %sub1078.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
   %shl1118.i = shl i32 %zvec.1.i, 1
@@ -3592,28 +3774,28 @@ if.end1083.i:                                     ; preds = %if.end1116.i, %if.e
   br i1 %cmp1086.i, label %BZ2_decompress.exit, label %if.end1089.i
 
 if.end1089.i:                                     ; preds = %if.end1083.i
-  %1007 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
-  %shl1091.i = shl i32 %1007, 8
-  %1008 = load ptr, ptr %1005, align 8, !tbaa !74
-  %1009 = load i8, ptr %1008, align 1, !tbaa !31
-  %conv1094.i = zext i8 %1009 to i32
+  %1000 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
+  %shl1091.i = shl i32 %1000, 8
+  %1001 = load ptr, ptr %998, align 8, !tbaa !74
+  %1002 = load i8, ptr %1001, align 1, !tbaa !31
+  %conv1094.i = zext i8 %1002 to i32
   %or1095.i = or i32 %shl1091.i, %conv1094.i
   store i32 %or1095.i, ptr %bsBuff77.i, align 8, !tbaa !18
   %add1098.i = add nsw i32 %add109831953197.i, 8
   store i32 %add1098.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
-  %incdec.ptr1101.i = getelementptr inbounds i8, ptr %1008, i64 1
-  store ptr %incdec.ptr1101.i, ptr %1005, align 8, !tbaa !74
+  %incdec.ptr1101.i = getelementptr inbounds i8, ptr %1001, i64 1
+  store ptr %incdec.ptr1101.i, ptr %998, align 8, !tbaa !74
   %dec1104.i = add i32 %dec11043200.i, -1
   store i32 %dec1104.i, ptr %avail_in1085.i, align 8, !tbaa !73
-  %1010 = load i32, ptr %total_in_lo321106.i, align 4, !tbaa !20
-  %inc1107.i = add i32 %1010, 1
+  %1003 = load i32, ptr %total_in_lo321106.i, align 4, !tbaa !20
+  %inc1107.i = add i32 %1003, 1
   store i32 %inc1107.i, ptr %total_in_lo321106.i, align 4, !tbaa !20
   %cmp1110.i = icmp eq i32 %inc1107.i, 0
   br i1 %cmp1110.i, label %if.then1112.i, label %if.end1116.i
 
 if.then1112.i:                                    ; preds = %if.end1089.i
-  %1011 = load i32, ptr %total_in_hi321114.i, align 8, !tbaa !21
-  %inc1115.i = add i32 %1011, 1
+  %1004 = load i32, ptr %total_in_hi321114.i, align 8, !tbaa !21
+  %inc1115.i = add i32 %1004, 1
   store i32 %inc1115.i, ptr %total_in_hi321114.i, align 8, !tbaa !21
   br label %if.end1116.i
 
@@ -3623,19 +3805,19 @@ if.end1116.i:                                     ; preds = %if.then1112.i, %if.
 
 while.end1120.i:                                  ; preds = %if.end1059.i
   %arrayidx1122.i = getelementptr inbounds i32, ptr %gBase.2.i, i64 %idxprom1060.i
-  %1012 = load i32, ptr %arrayidx1122.i, align 4, !tbaa !36
-  %sub1123.i = sub nsw i32 %zvec.0.i, %1012
+  %1005 = load i32, ptr %arrayidx1122.i, align 4, !tbaa !36
+  %sub1123.i = sub nsw i32 %zvec.0.i, %1005
   %or.cond.i = icmp ugt i32 %sub1123.i, 257
   br i1 %or.cond.i, label %BZ2_decompress.exit, label %if.end1133.i
 
 if.end1133.i:                                     ; preds = %while.end1120.i
   %idxprom1137.i = zext i32 %sub1123.i to i64
   %arrayidx1138.i = getelementptr inbounds i32, ptr %gPerm.2.i, i64 %idxprom1137.i
-  %1013 = load i32, ptr %arrayidx1138.i, align 4, !tbaa !36
+  %1006 = load i32, ptr %arrayidx1138.i, align 4, !tbaa !36
   br label %while.cond1139.i
 
 while.cond1139.i:                                 ; preds = %while.cond1351.preheader.i, %while.cond1367.preheader.i, %if.end1382.loopexit.i, %if.end1382.loopexit3247.i, %if.end1742.i, %if.end1133.i
-  %1014 = phi i32 [ %1177, %if.end1742.i ], [ %999, %if.end1133.i ], [ %1026, %if.end1382.loopexit3247.i ], [ %1026, %if.end1382.loopexit.i ], [ %1026, %while.cond1367.preheader.i ], [ %1026, %while.cond1351.preheader.i ]
+  %1007 = phi i32 [ %1170, %if.end1742.i ], [ %992, %if.end1133.i ], [ %1019, %if.end1382.loopexit3247.i ], [ %1019, %if.end1382.loopexit.i ], [ %1019, %while.cond1367.preheader.i ], [ %1019, %while.cond1351.preheader.i ]
   %zj.2.i = phi i32 [ %zj.8.i, %if.end1742.i ], [ %zj.0.i, %if.end1133.i ], [ %zj.5.i, %if.end1382.loopexit3247.i ], [ %zj.5.i, %if.end1382.loopexit.i ], [ %zj.5.i, %while.cond1367.preheader.i ], [ %zj.5.i, %while.cond1351.preheader.i ]
   %gSel.4.i = phi i32 [ %gSel.12.i, %if.end1742.i ], [ %gSel.2.i, %if.end1133.i ], [ %gSel.8.i, %if.end1382.loopexit3247.i ], [ %gSel.8.i, %if.end1382.loopexit.i ], [ %gSel.8.i, %while.cond1367.preheader.i ], [ %gSel.8.i, %while.cond1351.preheader.i ]
   %gMinlen.4.i = phi i32 [ %gMinlen.12.i, %if.end1742.i ], [ %gMinlen.2.i, %if.end1133.i ], [ %gMinlen.8.i, %if.end1382.loopexit3247.i ], [ %gMinlen.8.i, %if.end1382.loopexit.i ], [ %gMinlen.8.i, %while.cond1367.preheader.i ], [ %gMinlen.8.i, %while.cond1351.preheader.i ]
@@ -3645,11 +3827,11 @@ while.cond1139.i:                                 ; preds = %while.cond1351.preh
   %zvec.2.i = phi i32 [ %zvec.8.i, %if.end1742.i ], [ %zvec.0.i, %if.end1133.i ], [ %zvec.5.i, %if.end1382.loopexit3247.i ], [ %zvec.5.i, %if.end1382.loopexit.i ], [ %zvec.5.i, %while.cond1367.preheader.i ], [ %zvec.5.i, %while.cond1351.preheader.i ]
   %zn.3.i = phi i32 [ %zn.9.i, %if.end1742.i ], [ %zn.1.i, %if.end1133.i ], [ %zn.6.i, %if.end1382.loopexit3247.i ], [ %zn.6.i, %if.end1382.loopexit.i ], [ %zn.6.i, %while.cond1367.preheader.i ], [ %zn.6.i, %while.cond1351.preheader.i ]
   %curr.10.i = phi i32 [ %curr.16.i, %if.end1742.i ], [ %curr.8.i, %if.end1133.i ], [ %curr.13.i, %if.end1382.loopexit3247.i ], [ %curr.13.i, %if.end1382.loopexit.i ], [ %curr.13.i, %while.cond1367.preheader.i ], [ %curr.13.i, %while.cond1351.preheader.i ]
-  %N.0.i = phi i32 [ %N.6.i, %if.end1742.i ], [ %998, %if.end1133.i ], [ %N.3.i, %if.end1382.loopexit3247.i ], [ %N.3.i, %if.end1382.loopexit.i ], [ %N.3.i, %while.cond1367.preheader.i ], [ %N.3.i, %while.cond1351.preheader.i ]
-  %es.0.i = phi i32 [ %es.10.i, %if.end1742.i ], [ %997, %if.end1133.i ], [ %dec1364.i, %if.end1382.loopexit3247.i ], [ %dec1380.i, %if.end1382.loopexit.i ], [ %inc1336.i, %while.cond1367.preheader.i ], [ %inc1336.i, %while.cond1351.preheader.i ]
-  %nblock.3.i = phi i32 [ %nblock.12.i, %if.end1742.i ], [ %nblock.1.i, %if.end1133.i ], [ %1049, %if.end1382.loopexit3247.i ], [ %1048, %if.end1382.loopexit.i ], [ %nblock.6.i, %while.cond1367.preheader.i ], [ %nblock.6.i, %while.cond1351.preheader.i ]
+  %N.0.i = phi i32 [ %N.6.i, %if.end1742.i ], [ %991, %if.end1133.i ], [ %N.3.i, %if.end1382.loopexit3247.i ], [ %N.3.i, %if.end1382.loopexit.i ], [ %N.3.i, %while.cond1367.preheader.i ], [ %N.3.i, %while.cond1351.preheader.i ]
+  %es.0.i = phi i32 [ %es.10.i, %if.end1742.i ], [ %990, %if.end1133.i ], [ %dec1364.i, %if.end1382.loopexit3247.i ], [ %dec1380.i, %if.end1382.loopexit.i ], [ %inc1336.i, %while.cond1367.preheader.i ], [ %inc1336.i, %while.cond1351.preheader.i ]
+  %nblock.3.i = phi i32 [ %nblock.12.i, %if.end1742.i ], [ %nblock.1.i, %if.end1133.i ], [ %1042, %if.end1382.loopexit3247.i ], [ %1041, %if.end1382.loopexit.i ], [ %nblock.6.i, %while.cond1367.preheader.i ], [ %nblock.6.i, %while.cond1351.preheader.i ]
   %nblockMAX.3.i = phi i32 [ %nblockMAX.9.i, %if.end1742.i ], [ %nblockMAX.1.i, %if.end1133.i ], [ %nblockMAX.6.i, %if.end1382.loopexit3247.i ], [ %nblockMAX.6.i, %if.end1382.loopexit.i ], [ %nblockMAX.6.i, %while.cond1367.preheader.i ], [ %nblockMAX.6.i, %while.cond1351.preheader.i ]
-  %nextSym.0.i = phi i32 [ %1188, %if.end1742.i ], [ %1013, %if.end1133.i ], [ %1037, %if.end1382.loopexit3247.i ], [ %1037, %if.end1382.loopexit.i ], [ %1037, %while.cond1367.preheader.i ], [ %1037, %while.cond1351.preheader.i ]
+  %nextSym.0.i = phi i32 [ %1181, %if.end1742.i ], [ %1006, %if.end1133.i ], [ %1030, %if.end1382.loopexit3247.i ], [ %1030, %if.end1382.loopexit.i ], [ %1030, %while.cond1367.preheader.i ], [ %1030, %while.cond1351.preheader.i ]
   %groupPos.4.i = phi i32 [ %groupPos.12.i, %if.end1742.i ], [ %groupPos.2.i, %if.end1133.i ], [ %groupPos.8.i, %if.end1382.loopexit3247.i ], [ %groupPos.8.i, %if.end1382.loopexit.i ], [ %groupPos.8.i, %while.cond1367.preheader.i ], [ %groupPos.8.i, %while.cond1351.preheader.i ]
   %groupNo.4.i = phi i32 [ %groupNo.12.i, %if.end1742.i ], [ %groupNo.2.i, %if.end1133.i ], [ %groupNo.8.i, %if.end1382.loopexit3247.i ], [ %groupNo.8.i, %if.end1382.loopexit.i ], [ %groupNo.8.i, %while.cond1367.preheader.i ], [ %groupNo.8.i, %while.cond1351.preheader.i ]
   %EOB.3.i = phi i32 [ %EOB.9.i, %if.end1742.i ], [ %EOB.1.i, %if.end1133.i ], [ %EOB.6.i, %if.end1382.loopexit3247.i ], [ %EOB.6.i, %if.end1382.loopexit.i ], [ %EOB.6.i, %while.cond1367.preheader.i ], [ %EOB.6.i, %while.cond1351.preheader.i ]
@@ -3667,7 +3849,7 @@ if.end1144.i:                                     ; preds = %while.cond1139.i
   br i1 %or.cond2102.i, label %do.body.i, label %if.else1383.i
 
 do.body.i:                                        ; preds = %if.end1326.i, %if.end1144.i
-  %1015 = phi i32 [ %1026, %if.end1326.i ], [ %1014, %if.end1144.i ]
+  %1008 = phi i32 [ %1019, %if.end1326.i ], [ %1007, %if.end1144.i ]
   %zj.3.i = phi i32 [ %zj.5.i, %if.end1326.i ], [ %zj.2.i, %if.end1144.i ]
   %gSel.5.i = phi i32 [ %gSel.8.i, %if.end1326.i ], [ %gSel.4.i, %if.end1144.i ]
   %gMinlen.5.i = phi i32 [ %gMinlen.8.i, %if.end1326.i ], [ %gMinlen.4.i, %if.end1144.i ]
@@ -3681,7 +3863,7 @@ do.body.i:                                        ; preds = %if.end1326.i, %if.e
   %es.1.i = phi i32 [ %es.4.i, %if.end1326.i ], [ -1, %if.end1144.i ]
   %nblock.4.i = phi i32 [ %nblock.6.i, %if.end1326.i ], [ %nblock.3.i, %if.end1144.i ]
   %nblockMAX.4.i = phi i32 [ %nblockMAX.6.i, %if.end1326.i ], [ %nblockMAX.3.i, %if.end1144.i ]
-  %nextSym.1.i = phi i32 [ %1037, %if.end1326.i ], [ %nextSym.0.i, %if.end1144.i ]
+  %nextSym.1.i = phi i32 [ %1030, %if.end1326.i ], [ %nextSym.0.i, %if.end1144.i ]
   %groupPos.5.i = phi i32 [ %groupPos.8.i, %if.end1326.i ], [ %groupPos.4.i, %if.end1144.i ]
   %groupNo.5.i = phi i32 [ %groupNo.8.i, %if.end1326.i ], [ %groupNo.4.i, %if.end1144.i ]
   %EOB.4.i = phi i32 [ %EOB.6.i, %if.end1326.i ], [ %EOB.3.i, %if.end1144.i ]
@@ -3706,11 +3888,11 @@ if.then1167.i:                                    ; preds = %do.body.i
 if.end1172.i:                                     ; preds = %if.then1167.i
   %idxprom1174.i = sext i32 %inc1168.i to i64
   %arrayidx1175.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 33, i64 %idxprom1174.i
-  %1016 = load i8, ptr %arrayidx1175.i, align 1, !tbaa !31
-  %conv1176.i = zext i8 %1016 to i32
-  %idxprom1178.i = zext i8 %1016 to i64
+  %1009 = load i8, ptr %arrayidx1175.i, align 1, !tbaa !31
+  %conv1176.i = zext i8 %1009 to i32
+  %idxprom1178.i = zext i8 %1009 to i64
   %arrayidx1179.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 39, i64 %idxprom1178.i
-  %1017 = load i32, ptr %arrayidx1179.i, align 4, !tbaa !36
+  %1010 = load i32, ptr %arrayidx1179.i, align 4, !tbaa !36
   %arrayidx1182.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 36, i64 %idxprom1178.i
   %arrayidx1186.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 38, i64 %idxprom1178.i
   %arrayidx1190.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 37, i64 %idxprom1178.i
@@ -3718,7 +3900,7 @@ if.end1172.i:                                     ; preds = %if.then1167.i
 
 if.end1192.i:                                     ; preds = %if.end1172.i, %do.body.i
   %gSel.6.i = phi i32 [ %conv1176.i, %if.end1172.i ], [ %gSel.5.i, %do.body.i ]
-  %gMinlen.6.i = phi i32 [ %1017, %if.end1172.i ], [ %gMinlen.5.i, %do.body.i ]
+  %gMinlen.6.i = phi i32 [ %1010, %if.end1172.i ], [ %gMinlen.5.i, %do.body.i ]
   %gLimit.6.i = phi ptr [ %arrayidx1182.i, %if.end1172.i ], [ %gLimit.5.i, %do.body.i ]
   %gBase.6.i = phi ptr [ %arrayidx1190.i, %if.end1172.i ], [ %gBase.5.i, %do.body.i ]
   %gPerm.6.i = phi ptr [ %arrayidx1186.i, %if.end1172.i ], [ %gPerm.5.i, %do.body.i ]
@@ -3728,7 +3910,7 @@ if.end1192.i:                                     ; preds = %if.end1172.i, %do.b
   br label %sw.bb1194.i
 
 sw.bb1194.i:                                      ; preds = %if.end1192.i, %if.end.i86
-  %1018 = phi i32 [ %1015, %if.end1192.i ], [ %.pre3408.i, %if.end.i86 ]
+  %1011 = phi i32 [ %1008, %if.end1192.i ], [ %.pre3408.i, %if.end.i86 ]
   %zj.4.i = phi i32 [ %zj.3.i, %if.end1192.i ], [ %.pre3411.i, %if.end.i86 ]
   %gSel.7.i = phi i32 [ %gSel.6.i, %if.end1192.i ], [ %.pre3412.i, %if.end.i86 ]
   %gMinlen.7.i = phi i32 [ %gMinlen.6.i, %if.end1192.i ], [ %.pre3413.i, %if.end.i86 ]
@@ -3762,18 +3944,18 @@ sw.bb1194.if.then1201_crit_edge.i:                ; preds = %sw.bb1194.i
   br label %if.then1201.i
 
 if.end1212.lr.ph.i:                               ; preds = %sw.bb1194.i
-  %1019 = load ptr, ptr %0, align 8, !tbaa !13
-  %avail_in1214.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1019, i64 0, i32 1
-  %total_in_lo321235.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1019, i64 0, i32 2
-  %total_in_hi321243.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1019, i64 0, i32 3
+  %1012 = load ptr, ptr %0, align 8, !tbaa !13
+  %avail_in1214.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1012, i64 0, i32 1
+  %total_in_lo321235.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1012, i64 0, i32 2
+  %total_in_hi321243.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1012, i64 0, i32 3
   %avail_in1214.promoted.i = load i32, ptr %avail_in1214.i, align 8, !tbaa !73
   br label %if.end1212.i
 
 if.then1201.i:                                    ; preds = %if.end1245.i, %sw.bb1194.if.then1201_crit_edge.i
-  %1020 = phi i32 [ %.pre3433.i, %sw.bb1194.if.then1201_crit_edge.i ], [ %or1224.i, %if.end1245.i ]
+  %1013 = phi i32 [ %.pre3433.i, %sw.bb1194.if.then1201_crit_edge.i ], [ %or1224.i, %if.end1245.i ]
   %.lcssa3044.i = phi i32 [ %bsLive1198.promoted.i, %sw.bb1194.if.then1201_crit_edge.i ], [ %add1227.i, %if.end1245.i ]
   %sub1205.i = sub nsw i32 %.lcssa3044.i, %zn.5.i
-  %shr1206.i = lshr i32 %1020, %sub1205.i
+  %shr1206.i = lshr i32 %1013, %sub1205.i
   %notmask2982.i = shl nsw i32 -1, %zn.5.i
   %sub1208.i = xor i32 %notmask2982.i, -1
   %and1209.i = and i32 %shr1206.i, %sub1208.i
@@ -3787,28 +3969,28 @@ if.end1212.i:                                     ; preds = %if.end1245.i, %if.e
   br i1 %cmp1215.i, label %BZ2_decompress.exit, label %if.end1218.i
 
 if.end1218.i:                                     ; preds = %if.end1212.i
-  %1021 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
-  %shl1220.i = shl i32 %1021, 8
-  %1022 = load ptr, ptr %1019, align 8, !tbaa !74
-  %1023 = load i8, ptr %1022, align 1, !tbaa !31
-  %conv1223.i = zext i8 %1023 to i32
+  %1014 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
+  %shl1220.i = shl i32 %1014, 8
+  %1015 = load ptr, ptr %1012, align 8, !tbaa !74
+  %1016 = load i8, ptr %1015, align 1, !tbaa !31
+  %conv1223.i = zext i8 %1016 to i32
   %or1224.i = or i32 %shl1220.i, %conv1223.i
   store i32 %or1224.i, ptr %bsBuff77.i, align 8, !tbaa !18
   %add1227.i = add nsw i32 %add122731643166.i, 8
   store i32 %add1227.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
-  %incdec.ptr1230.i = getelementptr inbounds i8, ptr %1022, i64 1
-  store ptr %incdec.ptr1230.i, ptr %1019, align 8, !tbaa !74
+  %incdec.ptr1230.i = getelementptr inbounds i8, ptr %1015, i64 1
+  store ptr %incdec.ptr1230.i, ptr %1012, align 8, !tbaa !74
   %dec1233.i = add i32 %dec12333169.i, -1
   store i32 %dec1233.i, ptr %avail_in1214.i, align 8, !tbaa !73
-  %1024 = load i32, ptr %total_in_lo321235.i, align 4, !tbaa !20
-  %inc1236.i = add i32 %1024, 1
+  %1017 = load i32, ptr %total_in_lo321235.i, align 4, !tbaa !20
+  %inc1236.i = add i32 %1017, 1
   store i32 %inc1236.i, ptr %total_in_lo321235.i, align 4, !tbaa !20
   %cmp1239.i = icmp eq i32 %inc1236.i, 0
   br i1 %cmp1239.i, label %if.then1241.i, label %if.end1245.i
 
 if.then1241.i:                                    ; preds = %if.end1218.i
-  %1025 = load i32, ptr %total_in_hi321243.i, align 8, !tbaa !21
-  %inc1244.i = add i32 %1025, 1
+  %1018 = load i32, ptr %total_in_hi321243.i, align 8, !tbaa !21
+  %inc1244.i = add i32 %1018, 1
   store i32 %inc1244.i, ptr %total_in_hi321243.i, align 8, !tbaa !21
   br label %if.end1245.i
 
@@ -3817,7 +3999,7 @@ if.end1245.i:                                     ; preds = %if.then1241.i, %if.
   br i1 %cmp1199.not.i, label %if.end1212.i, label %if.then1201.i
 
 while.cond1247.i:                                 ; preds = %if.then1267.i, %if.then1201.i
-  %1026 = phi i32 [ %1018, %if.then1201.i ], [ %1028, %if.then1267.i ]
+  %1019 = phi i32 [ %1011, %if.then1201.i ], [ %1021, %if.then1267.i ]
   %bsLive1264.promoted3435.i = phi i32 [ %sub1205.i, %if.then1201.i ], [ %sub1271.i, %if.then1267.i ]
   %zj.5.i = phi i32 [ %zj.4.i, %if.then1201.i ], [ %and1273.i, %if.then1267.i ]
   %gSel.8.i = phi i32 [ %gSel.7.i, %if.then1201.i ], [ %gSel.9.i, %if.then1267.i ]
@@ -3848,8 +4030,8 @@ while.cond1247.i:                                 ; preds = %if.then1267.i, %if.
 if.end1252.i:                                     ; preds = %while.cond1247.i
   %idxprom1253.i = sext i32 %zn.6.i to i64
   %arrayidx1254.i = getelementptr inbounds i32, ptr %gLimit.8.i, i64 %idxprom1253.i
-  %1027 = load i32, ptr %arrayidx1254.i, align 4, !tbaa !36
-  %cmp1255.not.i = icmp sgt i32 %zvec.5.i, %1027
+  %1020 = load i32, ptr %arrayidx1254.i, align 4, !tbaa !36
+  %cmp1255.not.i = icmp sgt i32 %zvec.5.i, %1020
   br i1 %cmp1255.not.i, label %if.end1258.i, label %while.end1313.i
 
 if.end1258.i:                                     ; preds = %if.end1252.i
@@ -3857,7 +4039,7 @@ if.end1258.i:                                     ; preds = %if.end1252.i
   br label %sw.bb1260.i
 
 sw.bb1260.i:                                      ; preds = %if.end1258.i, %if.end.sw.bb1260_crit_edge.i
-  %1028 = phi i32 [ %1026, %if.end1258.i ], [ %.pre3408.i, %if.end.sw.bb1260_crit_edge.i ]
+  %1021 = phi i32 [ %1019, %if.end1258.i ], [ %.pre3408.i, %if.end.sw.bb1260_crit_edge.i ]
   %bsLive1264.promoted.i = phi i32 [ %bsLive1264.promoted3435.i, %if.end1258.i ], [ %bsLive1264.promoted.pre.i, %if.end.sw.bb1260_crit_edge.i ]
   %zj.6.i = phi i32 [ %zj.5.i, %if.end1258.i ], [ %.pre3411.i, %if.end.sw.bb1260_crit_edge.i ]
   %gSel.9.i = phi i32 [ %gSel.8.i, %if.end1258.i ], [ %.pre3412.i, %if.end.sw.bb1260_crit_edge.i ]
@@ -3891,18 +4073,18 @@ sw.bb1260.if.then1267_crit_edge.i:                ; preds = %sw.bb1260.i
   br label %if.then1267.i
 
 if.end1276.lr.ph.i:                               ; preds = %sw.bb1260.i
-  %1029 = load ptr, ptr %0, align 8, !tbaa !13
-  %avail_in1278.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1029, i64 0, i32 1
-  %total_in_lo321299.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1029, i64 0, i32 2
-  %total_in_hi321307.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1029, i64 0, i32 3
+  %1022 = load ptr, ptr %0, align 8, !tbaa !13
+  %avail_in1278.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1022, i64 0, i32 1
+  %total_in_lo321299.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1022, i64 0, i32 2
+  %total_in_hi321307.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1022, i64 0, i32 3
   %avail_in1278.promoted.i = load i32, ptr %avail_in1278.i, align 8, !tbaa !73
   br label %if.end1276.i
 
 if.then1267.i:                                    ; preds = %if.end1309.i, %sw.bb1260.if.then1267_crit_edge.i
-  %1030 = phi i32 [ %.pre3436.i, %sw.bb1260.if.then1267_crit_edge.i ], [ %or1288.i, %if.end1309.i ]
+  %1023 = phi i32 [ %.pre3436.i, %sw.bb1260.if.then1267_crit_edge.i ], [ %or1288.i, %if.end1309.i ]
   %.lcssa3037.i = phi i32 [ %bsLive1264.promoted.i, %sw.bb1260.if.then1267_crit_edge.i ], [ %add1291.i, %if.end1309.i ]
   %sub1271.i = add nsw i32 %.lcssa3037.i, -1
-  %shr1272.i = lshr i32 %1030, %sub1271.i
+  %shr1272.i = lshr i32 %1023, %sub1271.i
   %and1273.i = and i32 %shr1272.i, 1
   store i32 %sub1271.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
   %shl1311.i = shl i32 %zvec.6.i, 1
@@ -3916,28 +4098,28 @@ if.end1276.i:                                     ; preds = %if.end1309.i, %if.e
   br i1 %cmp1279.i, label %BZ2_decompress.exit, label %if.end1282.i
 
 if.end1282.i:                                     ; preds = %if.end1276.i
-  %1031 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
-  %shl1284.i = shl i32 %1031, 8
-  %1032 = load ptr, ptr %1029, align 8, !tbaa !74
-  %1033 = load i8, ptr %1032, align 1, !tbaa !31
-  %conv1287.i = zext i8 %1033 to i32
+  %1024 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
+  %shl1284.i = shl i32 %1024, 8
+  %1025 = load ptr, ptr %1022, align 8, !tbaa !74
+  %1026 = load i8, ptr %1025, align 1, !tbaa !31
+  %conv1287.i = zext i8 %1026 to i32
   %or1288.i = or i32 %shl1284.i, %conv1287.i
   store i32 %or1288.i, ptr %bsBuff77.i, align 8, !tbaa !18
   %add1291.i = add nsw i32 %add129131803182.i, 8
   store i32 %add1291.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
-  %incdec.ptr1294.i = getelementptr inbounds i8, ptr %1032, i64 1
-  store ptr %incdec.ptr1294.i, ptr %1029, align 8, !tbaa !74
+  %incdec.ptr1294.i = getelementptr inbounds i8, ptr %1025, i64 1
+  store ptr %incdec.ptr1294.i, ptr %1022, align 8, !tbaa !74
   %dec1297.i = add i32 %dec12973185.i, -1
   store i32 %dec1297.i, ptr %avail_in1278.i, align 8, !tbaa !73
-  %1034 = load i32, ptr %total_in_lo321299.i, align 4, !tbaa !20
-  %inc1300.i = add i32 %1034, 1
+  %1027 = load i32, ptr %total_in_lo321299.i, align 4, !tbaa !20
+  %inc1300.i = add i32 %1027, 1
   store i32 %inc1300.i, ptr %total_in_lo321299.i, align 4, !tbaa !20
   %cmp1303.i = icmp eq i32 %inc1300.i, 0
   br i1 %cmp1303.i, label %if.then1305.i, label %if.end1309.i
 
 if.then1305.i:                                    ; preds = %if.end1282.i
-  %1035 = load i32, ptr %total_in_hi321307.i, align 8, !tbaa !21
-  %inc1308.i = add i32 %1035, 1
+  %1028 = load i32, ptr %total_in_hi321307.i, align 8, !tbaa !21
+  %inc1308.i = add i32 %1028, 1
   store i32 %inc1308.i, ptr %total_in_hi321307.i, align 8, !tbaa !21
   br label %if.end1309.i
 
@@ -3947,34 +4129,34 @@ if.end1309.i:                                     ; preds = %if.then1305.i, %if.
 
 while.end1313.i:                                  ; preds = %if.end1252.i
   %arrayidx1315.i = getelementptr inbounds i32, ptr %gBase.8.i, i64 %idxprom1253.i
-  %1036 = load i32, ptr %arrayidx1315.i, align 4, !tbaa !36
-  %sub1316.i = sub nsw i32 %zvec.5.i, %1036
+  %1029 = load i32, ptr %arrayidx1315.i, align 4, !tbaa !36
+  %sub1316.i = sub nsw i32 %zvec.5.i, %1029
   %or.cond2984.i = icmp ugt i32 %sub1316.i, 257
   br i1 %or.cond2984.i, label %BZ2_decompress.exit, label %if.end1326.i
 
 if.end1326.i:                                     ; preds = %while.end1313.i
   %idxprom1330.i = zext i32 %sub1316.i to i64
   %arrayidx1331.i = getelementptr inbounds i32, ptr %gPerm.8.i, i64 %idxprom1330.i
-  %1037 = load i32, ptr %arrayidx1331.i, align 4, !tbaa !36
-  %1038 = icmp ult i32 %1037, 2
-  br i1 %1038, label %do.body.i, label %do.end.i, !llvm.loop !101
+  %1030 = load i32, ptr %arrayidx1331.i, align 4, !tbaa !36
+  %1031 = icmp ult i32 %1030, 2
+  br i1 %1031, label %do.body.i, label %do.end.i, !llvm.loop !100
 
 do.end.i:                                         ; preds = %if.end1326.i
   %inc1336.i = add nsw i32 %es.4.i, 1
-  %1039 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
-  %idxprom1340.i = sext i32 %1039 to i64
+  %1032 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
+  %idxprom1340.i = sext i32 %1032 to i64
   %arrayidx1341.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1340.i
-  %1040 = load i8, ptr %arrayidx1341.i, align 1, !tbaa !31
-  %idxprom1342.i = zext i8 %1040 to i64
+  %1033 = load i8, ptr %arrayidx1341.i, align 1, !tbaa !31
+  %idxprom1342.i = zext i8 %1033 to i64
   %arrayidx1343.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 30, i64 %idxprom1342.i
-  %1041 = load i8, ptr %arrayidx1343.i, align 1, !tbaa !31
-  %idxprom1345.i = zext i8 %1041 to i64
+  %1034 = load i8, ptr %arrayidx1343.i, align 1, !tbaa !31
+  %idxprom1345.i = zext i8 %1034 to i64
   %arrayidx1346.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 16, i64 %idxprom1345.i
-  %1042 = load i32, ptr %arrayidx1346.i, align 4, !tbaa !36
-  %add1347.i = add nsw i32 %1042, %inc1336.i
+  %1035 = load i32, ptr %arrayidx1346.i, align 4, !tbaa !36
+  %add1347.i = add nsw i32 %1035, %inc1336.i
   store i32 %add1347.i, ptr %arrayidx1346.i, align 4, !tbaa !36
-  %1043 = load i8, ptr %smallDecompress, align 4, !tbaa !24
-  %tobool1349.not.i = icmp eq i8 %1043, 0
+  %1036 = load i8, ptr %smallDecompress, align 4, !tbaa !24
+  %tobool1349.not.i = icmp eq i8 %1036, 0
   %cmp13683175.i = icmp sgt i32 %es.4.i, -1
   br i1 %tobool1349.not.i, label %while.cond1367.preheader.i, label %while.cond1351.preheader.i
 
@@ -3982,8 +4164,8 @@ while.cond1351.preheader.i:                       ; preds = %do.end.i
   br i1 %cmp13683175.i, label %while.body1354.lr.ph.i, label %while.cond1139.i
 
 while.body1354.lr.ph.i:                           ; preds = %while.cond1351.preheader.i
-  %conv1359.i = zext i8 %1041 to i16
-  %1044 = sext i32 %nblock.6.i to i64
+  %conv1359.i = zext i8 %1034 to i16
+  %1037 = sext i32 %nblock.6.i to i64
   %smax.i = tail call i32 @llvm.smax.i32(i32 %nblock.6.i, i32 %nblockMAX.6.i)
   %wide.trip.count3347.i = sext i32 %smax.i to i64
   br label %while.body1354.i
@@ -3992,48 +4174,48 @@ while.cond1367.preheader.i:                       ; preds = %do.end.i
   br i1 %cmp13683175.i, label %while.body1370.lr.ph.i, label %while.cond1139.i
 
 while.body1370.lr.ph.i:                           ; preds = %while.cond1367.preheader.i
-  %conv1375.i = zext i8 %1041 to i32
-  %1045 = sext i32 %nblock.6.i to i64
+  %conv1375.i = zext i8 %1034 to i32
+  %1038 = sext i32 %nblock.6.i to i64
   %smax3353.i = tail call i32 @llvm.smax.i32(i32 %nblock.6.i, i32 %nblockMAX.6.i)
   %wide.trip.count3354.i = sext i32 %smax3353.i to i64
   br label %while.body1370.i
 
 while.body1354.i:                                 ; preds = %if.end1358.i, %while.body1354.lr.ph.i
-  %indvars.iv3343.i = phi i64 [ %1044, %while.body1354.lr.ph.i ], [ %indvars.iv.next3344.i, %if.end1358.i ]
+  %indvars.iv3343.i = phi i64 [ %1037, %while.body1354.lr.ph.i ], [ %indvars.iv.next3344.i, %if.end1358.i ]
   %es.63171.i = phi i32 [ %inc1336.i, %while.body1354.lr.ph.i ], [ %dec1364.i, %if.end1358.i ]
   %exitcond3348.not.i = icmp eq i64 %indvars.iv3343.i, %wide.trip.count3347.i
   br i1 %exitcond3348.not.i, label %BZ2_decompress.exit, label %if.end1358.i
 
 if.end1358.i:                                     ; preds = %while.body1354.i
-  %1046 = load ptr, ptr %ll16.i, align 8, !tbaa !39
-  %arrayidx1362.i = getelementptr inbounds i16, ptr %1046, i64 %indvars.iv3343.i
+  %1039 = load ptr, ptr %ll16.i, align 8, !tbaa !39
+  %arrayidx1362.i = getelementptr inbounds i16, ptr %1039, i64 %indvars.iv3343.i
   store i16 %conv1359.i, ptr %arrayidx1362.i, align 2, !tbaa !40
   %indvars.iv.next3344.i = add nsw i64 %indvars.iv3343.i, 1
   %dec1364.i = add nsw i32 %es.63171.i, -1
   %cmp1352.i = icmp sgt i32 %es.63171.i, 1
-  br i1 %cmp1352.i, label %while.body1354.i, label %if.end1382.loopexit3247.i, !llvm.loop !102
+  br i1 %cmp1352.i, label %while.body1354.i, label %if.end1382.loopexit3247.i, !llvm.loop !101
 
 while.body1370.i:                                 ; preds = %if.end1374.i, %while.body1370.lr.ph.i
-  %indvars.iv3349.i = phi i64 [ %1045, %while.body1370.lr.ph.i ], [ %indvars.iv.next3350.i, %if.end1374.i ]
+  %indvars.iv3349.i = phi i64 [ %1038, %while.body1370.lr.ph.i ], [ %indvars.iv.next3350.i, %if.end1374.i ]
   %es.73176.i = phi i32 [ %inc1336.i, %while.body1370.lr.ph.i ], [ %dec1380.i, %if.end1374.i ]
   %exitcond3355.not.i = icmp eq i64 %indvars.iv3349.i, %wide.trip.count3354.i
   br i1 %exitcond3355.not.i, label %BZ2_decompress.exit, label %if.end1374.i
 
 if.end1374.i:                                     ; preds = %while.body1370.i
-  %1047 = load ptr, ptr %tt.i, align 8, !tbaa !44
-  %arrayidx1378.i = getelementptr inbounds i32, ptr %1047, i64 %indvars.iv3349.i
+  %1040 = load ptr, ptr %tt.i, align 8, !tbaa !44
+  %arrayidx1378.i = getelementptr inbounds i32, ptr %1040, i64 %indvars.iv3349.i
   store i32 %conv1375.i, ptr %arrayidx1378.i, align 4, !tbaa !36
   %indvars.iv.next3350.i = add nsw i64 %indvars.iv3349.i, 1
   %dec1380.i = add nsw i32 %es.73176.i, -1
   %cmp1368.i = icmp sgt i32 %es.73176.i, 1
-  br i1 %cmp1368.i, label %while.body1370.i, label %if.end1382.loopexit.i, !llvm.loop !103
+  br i1 %cmp1368.i, label %while.body1370.i, label %if.end1382.loopexit.i, !llvm.loop !102
 
 if.end1382.loopexit.i:                            ; preds = %if.end1374.i
-  %1048 = trunc i64 %indvars.iv.next3350.i to i32
+  %1041 = trunc i64 %indvars.iv.next3350.i to i32
   br label %while.cond1139.i
 
 if.end1382.loopexit3247.i:                        ; preds = %if.end1358.i
-  %1049 = trunc i64 %indvars.iv.next3344.i to i32
+  %1042 = trunc i64 %indvars.iv.next3344.i to i32
   br label %while.cond1139.i
 
 if.else1383.i:                                    ; preds = %if.end1144.i
@@ -4046,213 +4228,213 @@ if.end1387.i:                                     ; preds = %if.else1383.i
   br i1 %cmp1392.i, label %if.then1394.i, label %if.else1457.i
 
 if.then1394.i:                                    ; preds = %if.end1387.i
-  %1050 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
-  %add1398.i = add i32 %1050, %sub1391.i
+  %1043 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
+  %add1398.i = add i32 %1043, %sub1391.i
   %idxprom1399.i = zext i32 %add1398.i to i64
   %arrayidx1400.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1399.i
-  %1051 = load i8, ptr %arrayidx1400.i, align 1, !tbaa !31
+  %1044 = load i8, ptr %arrayidx1400.i, align 1, !tbaa !31
   %cmp14023147.i = icmp ugt i32 %sub1391.i, 3
   br i1 %cmp14023147.i, label %while.body1404.preheader.i, label %iter.check
 
 while.body1404.preheader.i:                       ; preds = %if.then1394.i
-  %1052 = zext i32 %sub1391.i to i64
+  %1045 = zext i32 %sub1391.i to i64
   br label %while.body1404.i
 
 while.cond1439.preheader.i:                       ; preds = %while.body1404.i
-  %cmp1440.not3150.i = icmp eq i32 %1107, 0
+  %cmp1440.not3150.i = icmp eq i32 %1100, 0
   br i1 %cmp1440.not3150.i, label %while.end1453.i, label %iter.check
 
 iter.check:                                       ; preds = %while.cond1439.preheader.i, %if.then1394.i
-  %nn.0.lcssa4317.i = phi i32 [ %1107, %while.cond1439.preheader.i ], [ %sub1391.i, %if.then1394.i ]
-  %1053 = zext i32 %nn.0.lcssa4317.i to i64
-  %1054 = add i32 %nn.0.lcssa4317.i, -1
-  %1055 = zext i32 %1054 to i64
-  %1056 = add nuw nsw i64 %1055, 1
-  %min.iters.check = icmp ult i32 %1054, 7
+  %nn.0.lcssa4317.i = phi i32 [ %1100, %while.cond1439.preheader.i ], [ %sub1391.i, %if.then1394.i ]
+  %1046 = zext i32 %nn.0.lcssa4317.i to i64
+  %1047 = add i32 %nn.0.lcssa4317.i, -1
+  %1048 = zext i32 %1047 to i64
+  %1049 = add nuw nsw i64 %1048, 1
+  %min.iters.check = icmp ult i32 %1047, 7
   br i1 %min.iters.check, label %while.body1442.i.preheader, label %vector.scevcheck
 
 vector.scevcheck:                                 ; preds = %iter.check
-  %1057 = add i32 %nn.0.lcssa4317.i, -1
-  %1058 = add i32 %nn.0.lcssa4317.i, %1050
-  %1059 = icmp ugt i32 %1057, %1058
-  %1060 = add i32 %nn.0.lcssa4317.i, -1
-  %1061 = add i32 %1060, %1050
-  %1062 = icmp ugt i32 %1050, %1061
-  %1063 = zext i32 %1058 to i64
-  %scevgep306 = getelementptr i8, ptr %scevgep, i64 %1063
-  %1064 = zext i32 %1057 to i64
-  %1065 = sub nsw i64 0, %1064
-  %1066 = getelementptr i8, ptr %scevgep306, i64 %1065
-  %1067 = icmp ugt ptr %1066, %scevgep306
-  %1068 = zext i32 %1061 to i64
-  %scevgep311 = getelementptr i8, ptr %scevgep310, i64 %1068
-  %1069 = zext i32 %1057 to i64
-  %1070 = sub nsw i64 0, %1069
-  %1071 = getelementptr i8, ptr %scevgep311, i64 %1070
-  %1072 = icmp ugt ptr %1071, %scevgep311
-  %1073 = or i1 %1059, %1062
-  %1074 = or i1 %1073, %1067
-  %1075 = or i1 %1074, %1072
-  br i1 %1075, label %while.body1442.i.preheader, label %vector.memcheck
+  %1050 = add i32 %nn.0.lcssa4317.i, -1
+  %1051 = add i32 %nn.0.lcssa4317.i, %1043
+  %1052 = icmp ugt i32 %1050, %1051
+  %1053 = add i32 %nn.0.lcssa4317.i, -1
+  %1054 = add i32 %1053, %1043
+  %1055 = icmp ugt i32 %1043, %1054
+  %1056 = zext i32 %1051 to i64
+  %scevgep306 = getelementptr i8, ptr %scevgep, i64 %1056
+  %1057 = zext i32 %1050 to i64
+  %1058 = sub nsw i64 0, %1057
+  %1059 = getelementptr i8, ptr %scevgep306, i64 %1058
+  %1060 = icmp ugt ptr %1059, %scevgep306
+  %1061 = zext i32 %1054 to i64
+  %scevgep311 = getelementptr i8, ptr %scevgep310, i64 %1061
+  %1062 = zext i32 %1050 to i64
+  %1063 = sub nsw i64 0, %1062
+  %1064 = getelementptr i8, ptr %scevgep311, i64 %1063
+  %1065 = icmp ugt ptr %1064, %scevgep311
+  %1066 = or i1 %1052, %1055
+  %1067 = or i1 %1066, %1060
+  %1068 = or i1 %1067, %1065
+  br i1 %1068, label %while.body1442.i.preheader, label %vector.memcheck
 
 vector.memcheck:                                  ; preds = %vector.scevcheck
-  %1076 = add i32 %nn.0.lcssa4317.i, -1
-  %1077 = add i32 %1076, %1050
-  %1078 = zext i32 %1077 to i64
-  %1079 = add i64 %3, %1078
-  %1080 = add i32 %nn.0.lcssa4317.i, %1050
-  %1081 = zext i32 %1080 to i64
-  %1082 = add i64 %4, %1081
-  %1083 = sub i64 %1079, %1082
-  %diff.check = icmp ult i64 %1083, 16
+  %1069 = add i32 %nn.0.lcssa4317.i, -1
+  %1070 = add i32 %1069, %1043
+  %1071 = zext i32 %1070 to i64
+  %1072 = add i64 %3, %1071
+  %1073 = add i32 %nn.0.lcssa4317.i, %1043
+  %1074 = zext i32 %1073 to i64
+  %1075 = add i64 %4, %1074
+  %1076 = sub i64 %1072, %1075
+  %diff.check = icmp ult i64 %1076, 16
   br i1 %diff.check, label %while.body1442.i.preheader, label %vector.main.loop.iter.check
 
 vector.main.loop.iter.check:                      ; preds = %vector.memcheck
-  %min.iters.check318 = icmp ult i32 %1054, 15
+  %min.iters.check318 = icmp ult i32 %1047, 15
   br i1 %min.iters.check318, label %vec.epilog.ph, label %vector.ph319
 
 vector.ph319:                                     ; preds = %vector.main.loop.iter.check
-  %n.vec = and i64 %1056, 8589934576
+  %n.vec = and i64 %1049, 8589934576
   br label %vector.body320
 
 vector.body320:                                   ; preds = %vector.body320, %vector.ph319
   %index321 = phi i64 [ 0, %vector.ph319 ], [ %index.next325, %vector.body320 ]
-  %1084 = trunc i64 %index321 to i32
-  %1085 = sub i32 %nn.0.lcssa4317.i, %1084
-  %1086 = add i32 %1050, %1085
-  %1087 = add i32 %1086, -1
-  %1088 = zext i32 %1087 to i64
-  %gep597 = getelementptr %struct.DState, ptr %invariant.gep596, i64 0, i32 31, i64 %1088
+  %1077 = trunc i64 %index321 to i32
+  %1078 = sub i32 %nn.0.lcssa4317.i, %1077
+  %1079 = add i32 %1043, %1078
+  %1080 = add i32 %1079, -1
+  %1081 = zext i32 %1080 to i64
+  %gep597 = getelementptr %struct.DState, ptr %invariant.gep596, i64 0, i32 31, i64 %1081
   %wide.load323 = load <16 x i8>, ptr %gep597, align 1, !tbaa !31
-  %1089 = zext i32 %1086 to i64
-  %gep599 = getelementptr %struct.DState, ptr %invariant.gep598, i64 0, i32 31, i64 %1089
+  %1082 = zext i32 %1079 to i64
+  %gep599 = getelementptr %struct.DState, ptr %invariant.gep598, i64 0, i32 31, i64 %1082
   store <16 x i8> %wide.load323, ptr %gep599, align 1, !tbaa !31
   %index.next325 = add nuw i64 %index321, 16
-  %1090 = icmp eq i64 %index.next325, %n.vec
-  br i1 %1090, label %middle.block315, label %vector.body320, !llvm.loop !104
+  %1083 = icmp eq i64 %index.next325, %n.vec
+  br i1 %1083, label %middle.block315, label %vector.body320, !llvm.loop !103
 
 middle.block315:                                  ; preds = %vector.body320
-  %cmp.n = icmp eq i64 %1056, %n.vec
+  %cmp.n = icmp eq i64 %1049, %n.vec
   br i1 %cmp.n, label %while.end1453.i, label %vec.epilog.iter.check
 
 vec.epilog.iter.check:                            ; preds = %middle.block315
-  %ind.end328 = sub nsw i64 %1053, %n.vec
-  %n.vec.remaining = and i64 %1056, 8
+  %ind.end328 = sub nsw i64 %1046, %n.vec
+  %n.vec.remaining = and i64 %1049, 8
   %min.epilog.iters.check.not.not = icmp eq i64 %n.vec.remaining, 0
   br i1 %min.epilog.iters.check.not.not, label %while.body1442.i.preheader, label %vec.epilog.ph
 
 vec.epilog.ph:                                    ; preds = %vector.main.loop.iter.check, %vec.epilog.iter.check
   %vec.epilog.resume.val = phi i64 [ %n.vec, %vec.epilog.iter.check ], [ 0, %vector.main.loop.iter.check ]
-  %n.vec327 = and i64 %1056, 8589934584
-  %ind.end = sub nsw i64 %1053, %n.vec327
+  %n.vec327 = and i64 %1049, 8589934584
+  %ind.end = sub nsw i64 %1046, %n.vec327
   br label %vec.epilog.vector.body
 
 vec.epilog.vector.body:                           ; preds = %vec.epilog.vector.body, %vec.epilog.ph
   %index331 = phi i64 [ %vec.epilog.resume.val, %vec.epilog.ph ], [ %index.next336, %vec.epilog.vector.body ]
-  %1091 = trunc i64 %index331 to i32
-  %1092 = sub i32 %nn.0.lcssa4317.i, %1091
-  %1093 = add i32 %1050, %1092
-  %1094 = add i32 %1093, -1
-  %1095 = zext i32 %1094 to i64
-  %gep601 = getelementptr %struct.DState, ptr %invariant.gep600, i64 0, i32 31, i64 %1095
+  %1084 = trunc i64 %index331 to i32
+  %1085 = sub i32 %nn.0.lcssa4317.i, %1084
+  %1086 = add i32 %1043, %1085
+  %1087 = add i32 %1086, -1
+  %1088 = zext i32 %1087 to i64
+  %gep601 = getelementptr %struct.DState, ptr %invariant.gep600, i64 0, i32 31, i64 %1088
   %wide.load333 = load <8 x i8>, ptr %gep601, align 1, !tbaa !31
-  %1096 = zext i32 %1093 to i64
-  %gep603 = getelementptr %struct.DState, ptr %invariant.gep602, i64 0, i32 31, i64 %1096
+  %1089 = zext i32 %1086 to i64
+  %gep603 = getelementptr %struct.DState, ptr %invariant.gep602, i64 0, i32 31, i64 %1089
   store <8 x i8> %wide.load333, ptr %gep603, align 1, !tbaa !31
   %index.next336 = add nuw i64 %index331, 8
-  %1097 = icmp eq i64 %index.next336, %n.vec327
-  br i1 %1097, label %vec.epilog.middle.block, label %vec.epilog.vector.body, !llvm.loop !105
+  %1090 = icmp eq i64 %index.next336, %n.vec327
+  br i1 %1090, label %vec.epilog.middle.block, label %vec.epilog.vector.body, !llvm.loop !104
 
 vec.epilog.middle.block:                          ; preds = %vec.epilog.vector.body
-  %cmp.n330 = icmp eq i64 %1056, %n.vec327
+  %cmp.n330 = icmp eq i64 %1049, %n.vec327
   br i1 %cmp.n330, label %while.end1453.i, label %while.body1442.i.preheader
 
 while.body1442.i.preheader:                       ; preds = %vector.memcheck, %vector.scevcheck, %iter.check, %vec.epilog.iter.check, %vec.epilog.middle.block
-  %indvars.iv3339.i.ph = phi i64 [ %1053, %iter.check ], [ %1053, %vector.memcheck ], [ %1053, %vector.scevcheck ], [ %ind.end328, %vec.epilog.iter.check ], [ %ind.end, %vec.epilog.middle.block ]
-  %1098 = trunc i64 %indvars.iv3339.i.ph to i32
-  %xtraiter561 = and i32 %1098, 1
+  %indvars.iv3339.i.ph = phi i64 [ %1046, %iter.check ], [ %1046, %vector.memcheck ], [ %1046, %vector.scevcheck ], [ %ind.end328, %vec.epilog.iter.check ], [ %ind.end, %vec.epilog.middle.block ]
+  %1091 = trunc i64 %indvars.iv3339.i.ph to i32
+  %xtraiter561 = and i32 %1091, 1
   %lcmp.mod562.not = icmp eq i32 %xtraiter561, 0
   br i1 %lcmp.mod562.not, label %while.body1442.i.prol.loopexit, label %while.body1442.i.prol
 
 while.body1442.i.prol:                            ; preds = %while.body1442.i.preheader
-  %1099 = trunc i64 %indvars.iv3339.i.ph to i32
-  %add1444.i.prol = add i32 %1050, %1099
+  %1092 = trunc i64 %indvars.iv3339.i.ph to i32
+  %add1444.i.prol = add i32 %1043, %1092
   %sub1445.i.prol = add i32 %add1444.i.prol, -1
   %idxprom1446.i.prol = zext i32 %sub1445.i.prol to i64
   %arrayidx1447.i.prol = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1446.i.prol
-  %1100 = load i8, ptr %arrayidx1447.i.prol, align 1, !tbaa !31
+  %1093 = load i8, ptr %arrayidx1447.i.prol, align 1, !tbaa !31
   %idxprom1450.i.prol = zext i32 %add1444.i.prol to i64
   %arrayidx1451.i.prol = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1450.i.prol
-  store i8 %1100, ptr %arrayidx1451.i.prol, align 1, !tbaa !31
+  store i8 %1093, ptr %arrayidx1451.i.prol, align 1, !tbaa !31
   %indvars.iv.next3340.i.prol = add nsw i64 %indvars.iv3339.i.ph, -1
   br label %while.body1442.i.prol.loopexit
 
 while.body1442.i.prol.loopexit:                   ; preds = %while.body1442.i.prol, %while.body1442.i.preheader
   %indvars.iv3339.i.unr = phi i64 [ %indvars.iv3339.i.ph, %while.body1442.i.preheader ], [ %indvars.iv.next3340.i.prol, %while.body1442.i.prol ]
-  %1101 = icmp eq i32 %1098, 1
-  br i1 %1101, label %while.end1453.i, label %while.body1442.i
+  %1094 = icmp eq i32 %1091, 1
+  br i1 %1094, label %while.end1453.i, label %while.body1442.i
 
 while.body1404.i:                                 ; preds = %while.body1404.i, %while.body1404.preheader.i
-  %indvars.iv3335.i = phi i64 [ %1052, %while.body1404.preheader.i ], [ %indvars.iv.next3336.i, %while.body1404.i ]
-  %1102 = trunc i64 %indvars.iv3335.i to i32
-  %add1405.i = add i32 %1050, %1102
+  %indvars.iv3335.i = phi i64 [ %1045, %while.body1404.preheader.i ], [ %indvars.iv.next3336.i, %while.body1404.i ]
+  %1095 = trunc i64 %indvars.iv3335.i to i32
+  %add1405.i = add i32 %1043, %1095
   %sub1407.i = add nsw i32 %add1405.i, -1
   %idxprom1408.i = sext i32 %sub1407.i to i64
   %arrayidx1409.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1408.i
-  %1103 = load i8, ptr %arrayidx1409.i, align 1, !tbaa !31
+  %1096 = load i8, ptr %arrayidx1409.i, align 1, !tbaa !31
   %idxprom1411.i = sext i32 %add1405.i to i64
   %arrayidx1412.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1411.i
-  store i8 %1103, ptr %arrayidx1412.i, align 1, !tbaa !31
+  store i8 %1096, ptr %arrayidx1412.i, align 1, !tbaa !31
   %sub1414.i = add nsw i32 %add1405.i, -2
   %idxprom1415.i = sext i32 %sub1414.i to i64
   %arrayidx1416.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1415.i
-  %1104 = load i8, ptr %arrayidx1416.i, align 1, !tbaa !31
-  store i8 %1104, ptr %arrayidx1409.i, align 1, !tbaa !31
+  %1097 = load i8, ptr %arrayidx1416.i, align 1, !tbaa !31
+  store i8 %1097, ptr %arrayidx1409.i, align 1, !tbaa !31
   %sub1422.i = add nsw i32 %add1405.i, -3
   %idxprom1423.i = sext i32 %sub1422.i to i64
   %arrayidx1424.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1423.i
-  %1105 = load i8, ptr %arrayidx1424.i, align 1, !tbaa !31
-  store i8 %1105, ptr %arrayidx1416.i, align 1, !tbaa !31
+  %1098 = load i8, ptr %arrayidx1424.i, align 1, !tbaa !31
+  store i8 %1098, ptr %arrayidx1416.i, align 1, !tbaa !31
   %sub1430.i = add nsw i32 %add1405.i, -4
   %idxprom1431.i = sext i32 %sub1430.i to i64
   %arrayidx1432.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1431.i
-  %1106 = load i8, ptr %arrayidx1432.i, align 1, !tbaa !31
-  store i8 %1106, ptr %arrayidx1424.i, align 1, !tbaa !31
+  %1099 = load i8, ptr %arrayidx1432.i, align 1, !tbaa !31
+  store i8 %1099, ptr %arrayidx1424.i, align 1, !tbaa !31
   %indvars.iv.next3336.i = add nsw i64 %indvars.iv3335.i, -4
-  %1107 = trunc i64 %indvars.iv.next3336.i to i32
-  %cmp1402.i = icmp ugt i32 %1107, 3
-  br i1 %cmp1402.i, label %while.body1404.i, label %while.cond1439.preheader.i, !llvm.loop !106
+  %1100 = trunc i64 %indvars.iv.next3336.i to i32
+  %cmp1402.i = icmp ugt i32 %1100, 3
+  br i1 %cmp1402.i, label %while.body1404.i, label %while.cond1439.preheader.i, !llvm.loop !105
 
 while.body1442.i:                                 ; preds = %while.body1442.i.prol.loopexit, %while.body1442.i
   %indvars.iv3339.i = phi i64 [ %indvars.iv.next3340.i.1, %while.body1442.i ], [ %indvars.iv3339.i.unr, %while.body1442.i.prol.loopexit ]
-  %1108 = trunc i64 %indvars.iv3339.i to i32
-  %add1444.i = add i32 %1050, %1108
+  %1101 = trunc i64 %indvars.iv3339.i to i32
+  %add1444.i = add i32 %1043, %1101
   %sub1445.i = add i32 %add1444.i, -1
   %idxprom1446.i = zext i32 %sub1445.i to i64
   %arrayidx1447.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1446.i
-  %1109 = load i8, ptr %arrayidx1447.i, align 1, !tbaa !31
+  %1102 = load i8, ptr %arrayidx1447.i, align 1, !tbaa !31
   %idxprom1450.i = zext i32 %add1444.i to i64
   %arrayidx1451.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1450.i
-  store i8 %1109, ptr %arrayidx1451.i, align 1, !tbaa !31
-  %1110 = trunc i64 %indvars.iv3339.i to i32
-  %1111 = add i32 %1110, -1
-  %add1444.i.1 = add i32 %1050, %1111
+  store i8 %1102, ptr %arrayidx1451.i, align 1, !tbaa !31
+  %1103 = trunc i64 %indvars.iv3339.i to i32
+  %1104 = add i32 %1103, -1
+  %add1444.i.1 = add i32 %1043, %1104
   %sub1445.i.1 = add i32 %add1444.i.1, -1
   %idxprom1446.i.1 = zext i32 %sub1445.i.1 to i64
   %arrayidx1447.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1446.i.1
-  %1112 = load i8, ptr %arrayidx1447.i.1, align 1, !tbaa !31
+  %1105 = load i8, ptr %arrayidx1447.i.1, align 1, !tbaa !31
   %idxprom1450.i.1 = zext i32 %add1444.i.1 to i64
   %arrayidx1451.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1450.i.1
-  store i8 %1112, ptr %arrayidx1451.i.1, align 1, !tbaa !31
+  store i8 %1105, ptr %arrayidx1451.i.1, align 1, !tbaa !31
   %indvars.iv.next3340.i.1 = add nsw i64 %indvars.iv3339.i, -2
-  %1113 = and i64 %indvars.iv.next3340.i.1, 4294967295
-  %cmp1440.not.i.1 = icmp eq i64 %1113, 0
-  br i1 %cmp1440.not.i.1, label %while.end1453.i, label %while.body1442.i, !llvm.loop !107
+  %1106 = and i64 %indvars.iv.next3340.i.1, 4294967295
+  %cmp1440.not.i.1 = icmp eq i64 %1106, 0
+  br i1 %cmp1440.not.i.1, label %while.end1453.i, label %while.body1442.i, !llvm.loop !106
 
 while.end1453.i:                                  ; preds = %while.body1442.i.prol.loopexit, %while.body1442.i, %middle.block315, %vec.epilog.middle.block, %while.cond1439.preheader.i
-  %idxprom1455.i = sext i32 %1050 to i64
+  %idxprom1455.i = sext i32 %1043 to i64
   %arrayidx1456.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1455.i
-  store i8 %1051, ptr %arrayidx1456.i, align 1, !tbaa !31
+  store i8 %1044, ptr %arrayidx1456.i, align 1, !tbaa !31
   br label %if.end1553.i
 
 if.else1457.i:                                    ; preds = %if.end1387.i
@@ -4260,36 +4442,36 @@ if.else1457.i:                                    ; preds = %if.end1387.i
   %rem.i = and i32 %sub1391.i, 15
   %idxprom1459.i = zext i32 %div2980.i to i64
   %arrayidx1460.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 %idxprom1459.i
-  %1114 = load i32, ptr %arrayidx1460.i, align 4, !tbaa !36
-  %add1461.i = add nsw i32 %1114, %rem.i
+  %1107 = load i32, ptr %arrayidx1460.i, align 4, !tbaa !36
+  %add1461.i = add nsw i32 %1107, %rem.i
   %idxprom1463.i = sext i32 %add1461.i to i64
   %arrayidx1464.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1463.i
-  %1115 = load i8, ptr %arrayidx1464.i, align 1, !tbaa !31
+  %1108 = load i8, ptr %arrayidx1464.i, align 1, !tbaa !31
   %cmp14693138.not.i = icmp eq i32 %rem.i, 0
   br i1 %cmp14693138.not.i, label %while.body1488.preheader.i, label %while.body1471.preheader.i
 
 while.body1471.preheader.i:                       ; preds = %if.else1457.i
-  %1116 = sext i32 %1114 to i64
-  %1117 = add i32 %nextSym.0.i, 15
-  %1118 = and i32 %1117, 15
-  %1119 = zext i32 %1118 to i64
-  %1120 = add nsw i64 %1116, %1119
+  %1109 = sext i32 %1107 to i64
+  %1110 = add i32 %nextSym.0.i, 15
+  %1111 = and i32 %1110, 15
+  %1112 = zext i32 %1111 to i64
+  %1113 = add nsw i64 %1109, %1112
   br label %while.body1471.i
 
 while.body1471.i:                                 ; preds = %while.body1471.i, %while.body1471.preheader.i
-  %indvars.iv3317.i = phi i64 [ %1120, %while.body1471.preheader.i ], [ %indvars.iv.next3318.i, %while.body1471.i ]
+  %indvars.iv3317.i = phi i64 [ %1113, %while.body1471.preheader.i ], [ %indvars.iv.next3318.i, %while.body1471.i ]
   %indvars.iv.next3318.i = add nsw i64 %indvars.iv3317.i, -1
   %arrayidx1475.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3318.i
-  %1121 = load i8, ptr %arrayidx1475.i, align 1, !tbaa !31
+  %1114 = load i8, ptr %arrayidx1475.i, align 1, !tbaa !31
   %arrayidx1478.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv3317.i
-  store i8 %1121, ptr %arrayidx1478.i, align 1, !tbaa !31
-  %1122 = load i32, ptr %arrayidx1460.i, align 4, !tbaa !36
-  %1123 = sext i32 %1122 to i64
-  %cmp1469.i = icmp sgt i64 %indvars.iv.next3318.i, %1123
-  br i1 %cmp1469.i, label %while.body1471.i, label %while.body1488.preheader.i, !llvm.loop !108
+  store i8 %1114, ptr %arrayidx1478.i, align 1, !tbaa !31
+  %1115 = load i32, ptr %arrayidx1460.i, align 4, !tbaa !36
+  %1116 = sext i32 %1115 to i64
+  %cmp1469.i = icmp sgt i64 %indvars.iv.next3318.i, %1116
+  br i1 %cmp1469.i, label %while.body1471.i, label %while.body1488.preheader.i, !llvm.loop !107
 
 while.body1488.preheader.i:                       ; preds = %while.body1471.i, %if.else1457.i
-  %.lcssa3053.i = phi i32 [ %1114, %if.else1457.i ], [ %1122, %while.body1471.i ]
+  %.lcssa3053.i = phi i32 [ %1107, %if.else1457.i ], [ %1115, %while.body1471.i ]
   %inc1484.i = add nsw i32 %.lcssa3053.i, 1
   store i32 %inc1484.i, ptr %arrayidx1460.i, align 4, !tbaa !36
   br label %while.body1488.i
@@ -4297,197 +4479,197 @@ while.body1488.preheader.i:                       ; preds = %while.body1471.i, %
 while.body1488.i:                                 ; preds = %while.body1488.i, %while.body1488.preheader.i
   %indvars.iv3321.i = phi i64 [ %idxprom1459.i, %while.body1488.preheader.i ], [ %indvars.iv.next3322.i, %while.body1488.i ]
   %arrayidx1491.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 %indvars.iv3321.i
-  %1124 = load i32, ptr %arrayidx1491.i, align 4, !tbaa !36
-  %dec1492.i = add nsw i32 %1124, -1
+  %1117 = load i32, ptr %arrayidx1491.i, align 4, !tbaa !36
+  %dec1492.i = add nsw i32 %1117, -1
   store i32 %dec1492.i, ptr %arrayidx1491.i, align 4, !tbaa !36
   %indvars.iv.next3322.i = add nsw i64 %indvars.iv3321.i, -1
   %idxprom1496.i = and i64 %indvars.iv.next3322.i, 4294967295
   %arrayidx1497.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 %idxprom1496.i
-  %1125 = load i32, ptr %arrayidx1497.i, align 4, !tbaa !36
-  %sub1499.i = add nsw i32 %1125, 15
+  %1118 = load i32, ptr %arrayidx1497.i, align 4, !tbaa !36
+  %sub1499.i = add nsw i32 %1118, 15
   %idxprom1500.i = sext i32 %sub1499.i to i64
   %arrayidx1501.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1500.i
-  %1126 = load i8, ptr %arrayidx1501.i, align 1, !tbaa !31
+  %1119 = load i8, ptr %arrayidx1501.i, align 1, !tbaa !31
   %idxprom1506.i = sext i32 %dec1492.i to i64
   %arrayidx1507.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1506.i
-  store i8 %1126, ptr %arrayidx1507.i, align 1, !tbaa !31
+  store i8 %1119, ptr %arrayidx1507.i, align 1, !tbaa !31
   %cmp1486.i = icmp sgt i64 %indvars.iv3321.i, 1
-  br i1 %cmp1486.i, label %while.body1488.i, label %while.end1509.i, !llvm.loop !109
+  br i1 %cmp1486.i, label %while.body1488.i, label %while.end1509.i, !llvm.loop !108
 
 while.end1509.i:                                  ; preds = %while.body1488.i
-  %1127 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
-  %dec1512.i = add nsw i32 %1127, -1
+  %1120 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
+  %dec1512.i = add nsw i32 %1120, -1
   store i32 %dec1512.i, ptr %mtfbase1458.i, align 4, !tbaa !36
   %idxprom1516.i = sext i32 %dec1512.i to i64
   %arrayidx1517.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1516.i
-  store i8 %1115, ptr %arrayidx1517.i, align 1, !tbaa !31
-  %1128 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
-  %cmp1520.i = icmp eq i32 %1128, 0
+  store i8 %1108, ptr %arrayidx1517.i, align 1, !tbaa !31
+  %1121 = load i32, ptr %mtfbase1458.i, align 4, !tbaa !36
+  %cmp1520.i = icmp eq i32 %1121, 0
   br i1 %cmp1520.i, label %for.cond1527.preheader.i, label %if.end1553.i
 
 for.cond1527.preheader.i:                         ; preds = %while.end1509.i, %for.cond1527.preheader.i
   %indvars.iv3329.i = phi i64 [ %indvars.iv.next3330.i, %for.cond1527.preheader.i ], [ 15, %while.end1509.i ]
   %indvars.iv3327.i = phi i64 [ %indvars.iv.next3328.i, %for.cond1527.preheader.i ], [ 4095, %while.end1509.i ]
   %arrayidx1534.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 32, i64 %indvars.iv3329.i
-  %1129 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.i = add nsw i32 %1129, 15
+  %1122 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.i = add nsw i32 %1122, 15
   %idxprom1536.i = sext i32 %add1535.i to i64
   %arrayidx1537.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.i
-  %1130 = load i8, ptr %arrayidx1537.i, align 1, !tbaa !31
+  %1123 = load i8, ptr %arrayidx1537.i, align 1, !tbaa !31
   %arrayidx1540.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv3327.i
-  store i8 %1130, ptr %arrayidx1540.i, align 1, !tbaa !31
+  store i8 %1123, ptr %arrayidx1540.i, align 1, !tbaa !31
   %indvars.iv.next3324.i = add nsw i64 %indvars.iv3327.i, -1
-  %1131 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.1.i = add nsw i32 %1131, 14
+  %1124 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.1.i = add nsw i32 %1124, 14
   %idxprom1536.1.i = sext i32 %add1535.1.i to i64
   %arrayidx1537.1.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.1.i
-  %1132 = load i8, ptr %arrayidx1537.1.i, align 1, !tbaa !31
+  %1125 = load i8, ptr %arrayidx1537.1.i, align 1, !tbaa !31
   %arrayidx1540.1.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.i
-  store i8 %1132, ptr %arrayidx1540.1.i, align 1, !tbaa !31
+  store i8 %1125, ptr %arrayidx1540.1.i, align 1, !tbaa !31
   %indvars.iv.next3324.1.i = add nsw i64 %indvars.iv3327.i, -2
-  %1133 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.2.i = add nsw i32 %1133, 13
+  %1126 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.2.i = add nsw i32 %1126, 13
   %idxprom1536.2.i = sext i32 %add1535.2.i to i64
   %arrayidx1537.2.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.2.i
-  %1134 = load i8, ptr %arrayidx1537.2.i, align 1, !tbaa !31
+  %1127 = load i8, ptr %arrayidx1537.2.i, align 1, !tbaa !31
   %arrayidx1540.2.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.1.i
-  store i8 %1134, ptr %arrayidx1540.2.i, align 1, !tbaa !31
+  store i8 %1127, ptr %arrayidx1540.2.i, align 1, !tbaa !31
   %indvars.iv.next3324.2.i = add nsw i64 %indvars.iv3327.i, -3
-  %1135 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.3.i = add nsw i32 %1135, 12
+  %1128 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.3.i = add nsw i32 %1128, 12
   %idxprom1536.3.i = sext i32 %add1535.3.i to i64
   %arrayidx1537.3.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.3.i
-  %1136 = load i8, ptr %arrayidx1537.3.i, align 1, !tbaa !31
+  %1129 = load i8, ptr %arrayidx1537.3.i, align 1, !tbaa !31
   %arrayidx1540.3.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.2.i
-  store i8 %1136, ptr %arrayidx1540.3.i, align 1, !tbaa !31
+  store i8 %1129, ptr %arrayidx1540.3.i, align 1, !tbaa !31
   %indvars.iv.next3324.3.i = add nsw i64 %indvars.iv3327.i, -4
-  %1137 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.4.i = add nsw i32 %1137, 11
+  %1130 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.4.i = add nsw i32 %1130, 11
   %idxprom1536.4.i = sext i32 %add1535.4.i to i64
   %arrayidx1537.4.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.4.i
-  %1138 = load i8, ptr %arrayidx1537.4.i, align 1, !tbaa !31
+  %1131 = load i8, ptr %arrayidx1537.4.i, align 1, !tbaa !31
   %arrayidx1540.4.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.3.i
-  store i8 %1138, ptr %arrayidx1540.4.i, align 1, !tbaa !31
+  store i8 %1131, ptr %arrayidx1540.4.i, align 1, !tbaa !31
   %indvars.iv.next3324.4.i = add nsw i64 %indvars.iv3327.i, -5
-  %1139 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.5.i = add nsw i32 %1139, 10
+  %1132 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.5.i = add nsw i32 %1132, 10
   %idxprom1536.5.i = sext i32 %add1535.5.i to i64
   %arrayidx1537.5.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.5.i
-  %1140 = load i8, ptr %arrayidx1537.5.i, align 1, !tbaa !31
+  %1133 = load i8, ptr %arrayidx1537.5.i, align 1, !tbaa !31
   %arrayidx1540.5.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.4.i
-  store i8 %1140, ptr %arrayidx1540.5.i, align 1, !tbaa !31
+  store i8 %1133, ptr %arrayidx1540.5.i, align 1, !tbaa !31
   %indvars.iv.next3324.5.i = add nsw i64 %indvars.iv3327.i, -6
-  %1141 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.6.i = add nsw i32 %1141, 9
+  %1134 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.6.i = add nsw i32 %1134, 9
   %idxprom1536.6.i = sext i32 %add1535.6.i to i64
   %arrayidx1537.6.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.6.i
-  %1142 = load i8, ptr %arrayidx1537.6.i, align 1, !tbaa !31
+  %1135 = load i8, ptr %arrayidx1537.6.i, align 1, !tbaa !31
   %arrayidx1540.6.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.5.i
-  store i8 %1142, ptr %arrayidx1540.6.i, align 1, !tbaa !31
+  store i8 %1135, ptr %arrayidx1540.6.i, align 1, !tbaa !31
   %indvars.iv.next3324.6.i = add nsw i64 %indvars.iv3327.i, -7
-  %1143 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.7.i = add nsw i32 %1143, 8
+  %1136 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.7.i = add nsw i32 %1136, 8
   %idxprom1536.7.i = sext i32 %add1535.7.i to i64
   %arrayidx1537.7.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.7.i
-  %1144 = load i8, ptr %arrayidx1537.7.i, align 1, !tbaa !31
+  %1137 = load i8, ptr %arrayidx1537.7.i, align 1, !tbaa !31
   %arrayidx1540.7.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.6.i
-  store i8 %1144, ptr %arrayidx1540.7.i, align 1, !tbaa !31
+  store i8 %1137, ptr %arrayidx1540.7.i, align 1, !tbaa !31
   %indvars.iv.next3324.7.i = add nsw i64 %indvars.iv3327.i, -8
-  %1145 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.8.i = add nsw i32 %1145, 7
+  %1138 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.8.i = add nsw i32 %1138, 7
   %idxprom1536.8.i = sext i32 %add1535.8.i to i64
   %arrayidx1537.8.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.8.i
-  %1146 = load i8, ptr %arrayidx1537.8.i, align 1, !tbaa !31
+  %1139 = load i8, ptr %arrayidx1537.8.i, align 1, !tbaa !31
   %arrayidx1540.8.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.7.i
-  store i8 %1146, ptr %arrayidx1540.8.i, align 1, !tbaa !31
+  store i8 %1139, ptr %arrayidx1540.8.i, align 1, !tbaa !31
   %indvars.iv.next3324.8.i = add nsw i64 %indvars.iv3327.i, -9
-  %1147 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.9.i = add nsw i32 %1147, 6
+  %1140 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.9.i = add nsw i32 %1140, 6
   %idxprom1536.9.i = sext i32 %add1535.9.i to i64
   %arrayidx1537.9.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.9.i
-  %1148 = load i8, ptr %arrayidx1537.9.i, align 1, !tbaa !31
+  %1141 = load i8, ptr %arrayidx1537.9.i, align 1, !tbaa !31
   %arrayidx1540.9.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.8.i
-  store i8 %1148, ptr %arrayidx1540.9.i, align 1, !tbaa !31
+  store i8 %1141, ptr %arrayidx1540.9.i, align 1, !tbaa !31
   %indvars.iv.next3324.9.i = add nsw i64 %indvars.iv3327.i, -10
-  %1149 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.10.i = add nsw i32 %1149, 5
+  %1142 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.10.i = add nsw i32 %1142, 5
   %idxprom1536.10.i = sext i32 %add1535.10.i to i64
   %arrayidx1537.10.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.10.i
-  %1150 = load i8, ptr %arrayidx1537.10.i, align 1, !tbaa !31
+  %1143 = load i8, ptr %arrayidx1537.10.i, align 1, !tbaa !31
   %arrayidx1540.10.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.9.i
-  store i8 %1150, ptr %arrayidx1540.10.i, align 1, !tbaa !31
+  store i8 %1143, ptr %arrayidx1540.10.i, align 1, !tbaa !31
   %indvars.iv.next3324.10.i = add nsw i64 %indvars.iv3327.i, -11
-  %1151 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.11.i = add nsw i32 %1151, 4
+  %1144 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.11.i = add nsw i32 %1144, 4
   %idxprom1536.11.i = sext i32 %add1535.11.i to i64
   %arrayidx1537.11.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.11.i
-  %1152 = load i8, ptr %arrayidx1537.11.i, align 1, !tbaa !31
+  %1145 = load i8, ptr %arrayidx1537.11.i, align 1, !tbaa !31
   %arrayidx1540.11.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.10.i
-  store i8 %1152, ptr %arrayidx1540.11.i, align 1, !tbaa !31
+  store i8 %1145, ptr %arrayidx1540.11.i, align 1, !tbaa !31
   %indvars.iv.next3324.11.i = add nsw i64 %indvars.iv3327.i, -12
-  %1153 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.12.i = add nsw i32 %1153, 3
+  %1146 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.12.i = add nsw i32 %1146, 3
   %idxprom1536.12.i = sext i32 %add1535.12.i to i64
   %arrayidx1537.12.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.12.i
-  %1154 = load i8, ptr %arrayidx1537.12.i, align 1, !tbaa !31
+  %1147 = load i8, ptr %arrayidx1537.12.i, align 1, !tbaa !31
   %arrayidx1540.12.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.11.i
-  store i8 %1154, ptr %arrayidx1540.12.i, align 1, !tbaa !31
+  store i8 %1147, ptr %arrayidx1540.12.i, align 1, !tbaa !31
   %indvars.iv.next3324.12.i = add nsw i64 %indvars.iv3327.i, -13
-  %1155 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.13.i = add nsw i32 %1155, 2
+  %1148 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.13.i = add nsw i32 %1148, 2
   %idxprom1536.13.i = sext i32 %add1535.13.i to i64
   %arrayidx1537.13.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.13.i
-  %1156 = load i8, ptr %arrayidx1537.13.i, align 1, !tbaa !31
+  %1149 = load i8, ptr %arrayidx1537.13.i, align 1, !tbaa !31
   %arrayidx1540.13.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.12.i
-  store i8 %1156, ptr %arrayidx1540.13.i, align 1, !tbaa !31
+  store i8 %1149, ptr %arrayidx1540.13.i, align 1, !tbaa !31
   %indvars.iv.next3324.13.i = add nsw i64 %indvars.iv3327.i, -14
-  %1157 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %add1535.14.i = add nsw i32 %1157, 1
+  %1150 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %add1535.14.i = add nsw i32 %1150, 1
   %idxprom1536.14.i = sext i32 %add1535.14.i to i64
   %arrayidx1537.14.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.14.i
-  %1158 = load i8, ptr %arrayidx1537.14.i, align 1, !tbaa !31
+  %1151 = load i8, ptr %arrayidx1537.14.i, align 1, !tbaa !31
   %arrayidx1540.14.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.13.i
-  store i8 %1158, ptr %arrayidx1540.14.i, align 1, !tbaa !31
+  store i8 %1151, ptr %arrayidx1540.14.i, align 1, !tbaa !31
   %indvars.iv.next3324.14.i = add nsw i64 %indvars.iv3327.i, -15
-  %1159 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
-  %idxprom1536.15.i = sext i32 %1159 to i64
+  %1152 = load i32, ptr %arrayidx1534.i, align 4, !tbaa !36
+  %idxprom1536.15.i = sext i32 %1152 to i64
   %arrayidx1537.15.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %idxprom1536.15.i
-  %1160 = load i8, ptr %arrayidx1537.15.i, align 1, !tbaa !31
+  %1153 = load i8, ptr %arrayidx1537.15.i, align 1, !tbaa !31
   %arrayidx1540.15.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 31, i64 %indvars.iv.next3324.14.i
-  store i8 %1160, ptr %arrayidx1540.15.i, align 1, !tbaa !31
-  %1161 = trunc i64 %indvars.iv.next3324.14.i to i32
+  store i8 %1153, ptr %arrayidx1540.15.i, align 1, !tbaa !31
+  %1154 = trunc i64 %indvars.iv.next3324.14.i to i32
   %indvars.iv.next3328.i = add nsw i64 %indvars.iv3327.i, -16
-  store i32 %1161, ptr %arrayidx1534.i, align 4, !tbaa !36
+  store i32 %1154, ptr %arrayidx1534.i, align 4, !tbaa !36
   %indvars.iv.next3330.i = add nsw i64 %indvars.iv3329.i, -1
   %cmp1524.not.i = icmp eq i64 %indvars.iv3329.i, 0
-  br i1 %cmp1524.not.i, label %if.end1553.i, label %for.cond1527.preheader.i, !llvm.loop !110
+  br i1 %cmp1524.not.i, label %if.end1553.i, label %for.cond1527.preheader.i, !llvm.loop !109
 
 if.end1553.i:                                     ; preds = %for.cond1527.preheader.i, %while.end1509.i, %while.end1453.i
-  %uc.0.i = phi i8 [ %1051, %while.end1453.i ], [ %1115, %while.end1509.i ], [ %1115, %for.cond1527.preheader.i ]
+  %uc.0.i = phi i8 [ %1044, %while.end1453.i ], [ %1108, %while.end1509.i ], [ %1108, %for.cond1527.preheader.i ]
   %idxprom1556.i = zext i8 %uc.0.i to i64
   %arrayidx1557.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 30, i64 %idxprom1556.i
-  %1162 = load i8, ptr %arrayidx1557.i, align 1, !tbaa !31
-  %idxprom1558.i = zext i8 %1162 to i64
+  %1155 = load i8, ptr %arrayidx1557.i, align 1, !tbaa !31
+  %idxprom1558.i = zext i8 %1155 to i64
   %arrayidx1559.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 16, i64 %idxprom1558.i
-  %1163 = load i32, ptr %arrayidx1559.i, align 4, !tbaa !36
-  %inc1560.i = add nsw i32 %1163, 1
+  %1156 = load i32, ptr %arrayidx1559.i, align 4, !tbaa !36
+  %inc1560.i = add nsw i32 %1156, 1
   store i32 %inc1560.i, ptr %arrayidx1559.i, align 4, !tbaa !36
-  %1164 = load i8, ptr %smallDecompress, align 4, !tbaa !24
-  %tobool1562.not.i = icmp eq i8 %1164, 0
+  %1157 = load i8, ptr %smallDecompress, align 4, !tbaa !24
+  %tobool1562.not.i = icmp eq i8 %1157, 0
   %idxprom1577.i = sext i32 %nblock.3.i to i64
   br i1 %tobool1562.not.i, label %if.else1571.i, label %if.then1563.i
 
 if.then1563.i:                                    ; preds = %if.end1553.i
-  %conv1567.i = zext i8 %1162 to i16
-  %1165 = load ptr, ptr %ll16.i, align 8, !tbaa !39
-  %arrayidx1570.i = getelementptr inbounds i16, ptr %1165, i64 %idxprom1577.i
+  %conv1567.i = zext i8 %1155 to i16
+  %1158 = load ptr, ptr %ll16.i, align 8, !tbaa !39
+  %arrayidx1570.i = getelementptr inbounds i16, ptr %1158, i64 %idxprom1577.i
   store i16 %conv1567.i, ptr %arrayidx1570.i, align 2, !tbaa !40
   br label %if.end1579.i
 
 if.else1571.i:                                    ; preds = %if.end1553.i
-  %conv1575.i = zext i8 %1162 to i32
-  %1166 = load ptr, ptr %tt.i, align 8, !tbaa !44
-  %arrayidx1578.i = getelementptr inbounds i32, ptr %1166, i64 %idxprom1577.i
+  %conv1575.i = zext i8 %1155 to i32
+  %1159 = load ptr, ptr %tt.i, align 8, !tbaa !44
+  %arrayidx1578.i = getelementptr inbounds i32, ptr %1159, i64 %idxprom1577.i
   store i32 %conv1575.i, ptr %arrayidx1578.i, align 4, !tbaa !36
   br label %if.end1579.i
 
@@ -4504,11 +4686,11 @@ if.then1583.i:                                    ; preds = %if.end1579.i
 if.end1588.i:                                     ; preds = %if.then1583.i
   %idxprom1590.i = sext i32 %inc1584.i to i64
   %arrayidx1591.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 33, i64 %idxprom1590.i
-  %1167 = load i8, ptr %arrayidx1591.i, align 1, !tbaa !31
-  %conv1592.i = zext i8 %1167 to i32
-  %idxprom1594.i = zext i8 %1167 to i64
+  %1160 = load i8, ptr %arrayidx1591.i, align 1, !tbaa !31
+  %conv1592.i = zext i8 %1160 to i32
+  %idxprom1594.i = zext i8 %1160 to i64
   %arrayidx1595.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 39, i64 %idxprom1594.i
-  %1168 = load i32, ptr %arrayidx1595.i, align 4, !tbaa !36
+  %1161 = load i32, ptr %arrayidx1595.i, align 4, !tbaa !36
   %arrayidx1598.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 36, i64 %idxprom1594.i
   %arrayidx1602.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 38, i64 %idxprom1594.i
   %arrayidx1606.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 37, i64 %idxprom1594.i
@@ -4516,7 +4698,7 @@ if.end1588.i:                                     ; preds = %if.then1583.i
 
 if.end1608.i:                                     ; preds = %if.end1588.i, %if.end1579.i
   %gSel.10.i = phi i32 [ %conv1592.i, %if.end1588.i ], [ %gSel.4.i, %if.end1579.i ]
-  %gMinlen.10.i = phi i32 [ %1168, %if.end1588.i ], [ %gMinlen.4.i, %if.end1579.i ]
+  %gMinlen.10.i = phi i32 [ %1161, %if.end1588.i ], [ %gMinlen.4.i, %if.end1579.i ]
   %gLimit.10.i = phi ptr [ %arrayidx1598.i, %if.end1588.i ], [ %gLimit.4.i, %if.end1579.i ]
   %gBase.10.i = phi ptr [ %arrayidx1606.i, %if.end1588.i ], [ %gBase.4.i, %if.end1579.i ]
   %gPerm.10.i = phi ptr [ %arrayidx1602.i, %if.end1588.i ], [ %gPerm.4.i, %if.end1579.i ]
@@ -4526,7 +4708,7 @@ if.end1608.i:                                     ; preds = %if.end1588.i, %if.e
   br label %sw.bb1610.i
 
 sw.bb1610.i:                                      ; preds = %if.end1608.i, %if.end.i86
-  %1169 = phi i32 [ %1014, %if.end1608.i ], [ %.pre3408.i, %if.end.i86 ]
+  %1162 = phi i32 [ %1007, %if.end1608.i ], [ %.pre3408.i, %if.end.i86 ]
   %zj.7.i = phi i32 [ %zj.2.i, %if.end1608.i ], [ %.pre3411.i, %if.end.i86 ]
   %gSel.11.i = phi i32 [ %gSel.10.i, %if.end1608.i ], [ %.pre3412.i, %if.end.i86 ]
   %gMinlen.11.i = phi i32 [ %gMinlen.10.i, %if.end1608.i ], [ %.pre3413.i, %if.end.i86 ]
@@ -4560,18 +4742,18 @@ sw.bb1610.if.then1617_crit_edge.i:                ; preds = %sw.bb1610.i
   br label %if.then1617.i
 
 if.end1628.lr.ph.i:                               ; preds = %sw.bb1610.i
-  %1170 = load ptr, ptr %0, align 8, !tbaa !13
-  %avail_in1630.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1170, i64 0, i32 1
-  %total_in_lo321651.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1170, i64 0, i32 2
-  %total_in_hi321659.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1170, i64 0, i32 3
+  %1163 = load ptr, ptr %0, align 8, !tbaa !13
+  %avail_in1630.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1163, i64 0, i32 1
+  %total_in_lo321651.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1163, i64 0, i32 2
+  %total_in_hi321659.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1163, i64 0, i32 3
   %avail_in1630.promoted.i = load i32, ptr %avail_in1630.i, align 8, !tbaa !73
   br label %if.end1628.i
 
 if.then1617.i:                                    ; preds = %if.end1661.i, %sw.bb1610.if.then1617_crit_edge.i
-  %1171 = phi i32 [ %.pre3429.i, %sw.bb1610.if.then1617_crit_edge.i ], [ %or1640.i, %if.end1661.i ]
+  %1164 = phi i32 [ %.pre3429.i, %sw.bb1610.if.then1617_crit_edge.i ], [ %or1640.i, %if.end1661.i ]
   %.lcssa3050.i = phi i32 [ %bsLive1614.promoted.i, %sw.bb1610.if.then1617_crit_edge.i ], [ %add1643.i, %if.end1661.i ]
   %sub1621.i = sub nsw i32 %.lcssa3050.i, %zn.8.i
-  %shr1622.i = lshr i32 %1171, %sub1621.i
+  %shr1622.i = lshr i32 %1164, %sub1621.i
   %notmask2981.i = shl nsw i32 -1, %zn.8.i
   %sub1624.i = xor i32 %notmask2981.i, -1
   %and1625.i = and i32 %shr1622.i, %sub1624.i
@@ -4585,28 +4767,28 @@ if.end1628.i:                                     ; preds = %if.end1661.i, %if.e
   br i1 %cmp1631.i, label %BZ2_decompress.exit, label %if.end1634.i
 
 if.end1634.i:                                     ; preds = %if.end1628.i
-  %1172 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
-  %shl1636.i = shl i32 %1172, 8
-  %1173 = load ptr, ptr %1170, align 8, !tbaa !74
-  %1174 = load i8, ptr %1173, align 1, !tbaa !31
-  %conv1639.i = zext i8 %1174 to i32
+  %1165 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
+  %shl1636.i = shl i32 %1165, 8
+  %1166 = load ptr, ptr %1163, align 8, !tbaa !74
+  %1167 = load i8, ptr %1166, align 1, !tbaa !31
+  %conv1639.i = zext i8 %1167 to i32
   %or1640.i = or i32 %shl1636.i, %conv1639.i
   store i32 %or1640.i, ptr %bsBuff77.i, align 8, !tbaa !18
   %add1643.i = add nsw i32 %add164331523154.i, 8
   store i32 %add1643.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
-  %incdec.ptr1646.i = getelementptr inbounds i8, ptr %1173, i64 1
-  store ptr %incdec.ptr1646.i, ptr %1170, align 8, !tbaa !74
+  %incdec.ptr1646.i = getelementptr inbounds i8, ptr %1166, i64 1
+  store ptr %incdec.ptr1646.i, ptr %1163, align 8, !tbaa !74
   %dec1649.i = add i32 %dec16493157.i, -1
   store i32 %dec1649.i, ptr %avail_in1630.i, align 8, !tbaa !73
-  %1175 = load i32, ptr %total_in_lo321651.i, align 4, !tbaa !20
-  %inc1652.i = add i32 %1175, 1
+  %1168 = load i32, ptr %total_in_lo321651.i, align 4, !tbaa !20
+  %inc1652.i = add i32 %1168, 1
   store i32 %inc1652.i, ptr %total_in_lo321651.i, align 4, !tbaa !20
   %cmp1655.i = icmp eq i32 %inc1652.i, 0
   br i1 %cmp1655.i, label %if.then1657.i, label %if.end1661.i
 
 if.then1657.i:                                    ; preds = %if.end1634.i
-  %1176 = load i32, ptr %total_in_hi321659.i, align 8, !tbaa !21
-  %inc1660.i = add i32 %1176, 1
+  %1169 = load i32, ptr %total_in_hi321659.i, align 8, !tbaa !21
+  %inc1660.i = add i32 %1169, 1
   store i32 %inc1660.i, ptr %total_in_hi321659.i, align 8, !tbaa !21
   br label %if.end1661.i
 
@@ -4615,7 +4797,7 @@ if.end1661.i:                                     ; preds = %if.then1657.i, %if.
   br i1 %cmp1615.not.i, label %if.end1628.i, label %if.then1617.i
 
 while.cond1663.i:                                 ; preds = %if.then1683.i, %if.then1617.i
-  %1177 = phi i32 [ %1179, %if.then1683.i ], [ %1169, %if.then1617.i ]
+  %1170 = phi i32 [ %1172, %if.then1683.i ], [ %1162, %if.then1617.i ]
   %bsLive1680.promoted3431.i = phi i32 [ %sub1687.i, %if.then1683.i ], [ %sub1621.i, %if.then1617.i ]
   %zj.8.i = phi i32 [ %and1689.i, %if.then1683.i ], [ %zj.7.i, %if.then1617.i ]
   %gSel.12.i = phi i32 [ %gSel.13.i, %if.then1683.i ], [ %gSel.11.i, %if.then1617.i ]
@@ -4646,8 +4828,8 @@ while.cond1663.i:                                 ; preds = %if.then1683.i, %if.
 if.end1668.i:                                     ; preds = %while.cond1663.i
   %idxprom1669.i = sext i32 %zn.9.i to i64
   %arrayidx1670.i = getelementptr inbounds i32, ptr %gLimit.12.i, i64 %idxprom1669.i
-  %1178 = load i32, ptr %arrayidx1670.i, align 4, !tbaa !36
-  %cmp1671.not.i = icmp sgt i32 %zvec.8.i, %1178
+  %1171 = load i32, ptr %arrayidx1670.i, align 4, !tbaa !36
+  %cmp1671.not.i = icmp sgt i32 %zvec.8.i, %1171
   br i1 %cmp1671.not.i, label %if.end1674.i, label %while.end1729.i
 
 if.end1674.i:                                     ; preds = %if.end1668.i
@@ -4655,7 +4837,7 @@ if.end1674.i:                                     ; preds = %if.end1668.i
   br label %sw.bb1676.i
 
 sw.bb1676.i:                                      ; preds = %if.end1674.i, %if.end.sw.bb1676_crit_edge.i
-  %1179 = phi i32 [ %.pre3408.i, %if.end.sw.bb1676_crit_edge.i ], [ %1177, %if.end1674.i ]
+  %1172 = phi i32 [ %.pre3408.i, %if.end.sw.bb1676_crit_edge.i ], [ %1170, %if.end1674.i ]
   %bsLive1680.promoted.i = phi i32 [ %bsLive1680.promoted.pre.i, %if.end.sw.bb1676_crit_edge.i ], [ %bsLive1680.promoted3431.i, %if.end1674.i ]
   %zj.9.i = phi i32 [ %.pre3411.i, %if.end.sw.bb1676_crit_edge.i ], [ %zj.8.i, %if.end1674.i ]
   %gSel.13.i = phi i32 [ %.pre3412.i, %if.end.sw.bb1676_crit_edge.i ], [ %gSel.12.i, %if.end1674.i ]
@@ -4689,18 +4871,18 @@ sw.bb1676.if.then1683_crit_edge.i:                ; preds = %sw.bb1676.i
   br label %if.then1683.i
 
 if.end1692.lr.ph.i:                               ; preds = %sw.bb1676.i
-  %1180 = load ptr, ptr %0, align 8, !tbaa !13
-  %avail_in1694.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1180, i64 0, i32 1
-  %total_in_lo321715.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1180, i64 0, i32 2
-  %total_in_hi321723.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1180, i64 0, i32 3
+  %1173 = load ptr, ptr %0, align 8, !tbaa !13
+  %avail_in1694.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1173, i64 0, i32 1
+  %total_in_lo321715.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1173, i64 0, i32 2
+  %total_in_hi321723.i = getelementptr inbounds %struct.nsis_bzstream, ptr %1173, i64 0, i32 3
   %avail_in1694.promoted.i = load i32, ptr %avail_in1694.i, align 8, !tbaa !73
   br label %if.end1692.i
 
 if.then1683.i:                                    ; preds = %if.end1725.i, %sw.bb1676.if.then1683_crit_edge.i
-  %1181 = phi i32 [ %.pre3432.i, %sw.bb1676.if.then1683_crit_edge.i ], [ %or1704.i, %if.end1725.i ]
+  %1174 = phi i32 [ %.pre3432.i, %sw.bb1676.if.then1683_crit_edge.i ], [ %or1704.i, %if.end1725.i ]
   %.lcssa3047.i = phi i32 [ %bsLive1680.promoted.i, %sw.bb1676.if.then1683_crit_edge.i ], [ %add1707.i, %if.end1725.i ]
   %sub1687.i = add nsw i32 %.lcssa3047.i, -1
-  %shr1688.i = lshr i32 %1181, %sub1687.i
+  %shr1688.i = lshr i32 %1174, %sub1687.i
   %and1689.i = and i32 %shr1688.i, 1
   store i32 %sub1687.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
   %shl1727.i = shl i32 %zvec.9.i, 1
@@ -4714,28 +4896,28 @@ if.end1692.i:                                     ; preds = %if.end1725.i, %if.e
   br i1 %cmp1695.i, label %BZ2_decompress.exit, label %if.end1698.i
 
 if.end1698.i:                                     ; preds = %if.end1692.i
-  %1182 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
-  %shl1700.i = shl i32 %1182, 8
-  %1183 = load ptr, ptr %1180, align 8, !tbaa !74
-  %1184 = load i8, ptr %1183, align 1, !tbaa !31
-  %conv1703.i = zext i8 %1184 to i32
+  %1175 = load i32, ptr %bsBuff77.i, align 8, !tbaa !18
+  %shl1700.i = shl i32 %1175, 8
+  %1176 = load ptr, ptr %1173, align 8, !tbaa !74
+  %1177 = load i8, ptr %1176, align 1, !tbaa !31
+  %conv1703.i = zext i8 %1177 to i32
   %or1704.i = or i32 %shl1700.i, %conv1703.i
   store i32 %or1704.i, ptr %bsBuff77.i, align 8, !tbaa !18
   %add1707.i = add nsw i32 %add170731583160.i, 8
   store i32 %add1707.i, ptr %bsLive1264.phi.trans.insert.i, align 4, !tbaa !17
-  %incdec.ptr1710.i = getelementptr inbounds i8, ptr %1183, i64 1
-  store ptr %incdec.ptr1710.i, ptr %1180, align 8, !tbaa !74
+  %incdec.ptr1710.i = getelementptr inbounds i8, ptr %1176, i64 1
+  store ptr %incdec.ptr1710.i, ptr %1173, align 8, !tbaa !74
   %dec1713.i = add i32 %dec17133163.i, -1
   store i32 %dec1713.i, ptr %avail_in1694.i, align 8, !tbaa !73
-  %1185 = load i32, ptr %total_in_lo321715.i, align 4, !tbaa !20
-  %inc1716.i = add i32 %1185, 1
+  %1178 = load i32, ptr %total_in_lo321715.i, align 4, !tbaa !20
+  %inc1716.i = add i32 %1178, 1
   store i32 %inc1716.i, ptr %total_in_lo321715.i, align 4, !tbaa !20
   %cmp1719.i = icmp eq i32 %inc1716.i, 0
   br i1 %cmp1719.i, label %if.then1721.i, label %if.end1725.i
 
 if.then1721.i:                                    ; preds = %if.end1698.i
-  %1186 = load i32, ptr %total_in_hi321723.i, align 8, !tbaa !21
-  %inc1724.i = add i32 %1186, 1
+  %1179 = load i32, ptr %total_in_hi321723.i, align 8, !tbaa !21
+  %inc1724.i = add i32 %1179, 1
   store i32 %inc1724.i, ptr %total_in_hi321723.i, align 8, !tbaa !21
   br label %if.end1725.i
 
@@ -4745,21 +4927,21 @@ if.end1725.i:                                     ; preds = %if.then1721.i, %if.
 
 while.end1729.i:                                  ; preds = %if.end1668.i
   %arrayidx1731.i = getelementptr inbounds i32, ptr %gBase.12.i, i64 %idxprom1669.i
-  %1187 = load i32, ptr %arrayidx1731.i, align 4, !tbaa !36
-  %sub1732.i = sub nsw i32 %zvec.8.i, %1187
+  %1180 = load i32, ptr %arrayidx1731.i, align 4, !tbaa !36
+  %sub1732.i = sub nsw i32 %zvec.8.i, %1180
   %or.cond2985.i = icmp ugt i32 %sub1732.i, 257
   br i1 %or.cond2985.i, label %BZ2_decompress.exit, label %if.end1742.i
 
 if.end1742.i:                                     ; preds = %while.end1729.i
   %idxprom1746.i = zext i32 %sub1732.i to i64
   %arrayidx1747.i = getelementptr inbounds i32, ptr %gPerm.12.i, i64 %idxprom1746.i
-  %1188 = load i32, ptr %arrayidx1747.i, align 4, !tbaa !36
+  %1181 = load i32, ptr %arrayidx1747.i, align 4, !tbaa !36
   br label %while.cond1139.i
 
 while.end1748.i:                                  ; preds = %while.cond1139.i
-  %1189 = load i32, ptr %origPtr.i, align 8, !tbaa !75
-  %cmp1750.i = icmp sgt i32 %1189, -1
-  %cmp1754.not.i = icmp slt i32 %1189, %nblock.3.i
+  %1182 = load i32, ptr %origPtr.i, align 8, !tbaa !75
+  %cmp1750.i = icmp sgt i32 %1182, -1
+  %cmp1754.not.i = icmp slt i32 %1182, %nblock.3.i
   %or.cond2986.i = select i1 %cmp1750.i, i1 %cmp1754.not.i, i1 false
   br i1 %or.cond2986.i, label %if.end1757.i, label %BZ2_decompress.exit
 
@@ -4896,68 +5078,68 @@ if.end1757.i:                                     ; preds = %while.end1748.i
   br label %for.body1776.i
 
 for.body1776.i:                                   ; preds = %for.body1776.i, %if.end1757.i
-  %1190 = phi i32 [ 0, %if.end1757.i ], [ %add1784.i.3, %for.body1776.i ]
+  %1183 = phi i32 [ 0, %if.end1757.i ], [ %add1784.i.3, %for.body1776.i ]
   %indvars.iv3364.i = phi i64 [ 1, %if.end1757.i ], [ %indvars.iv.next3365.i.3, %for.body1776.i ]
   %arrayidx1783.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv3364.i
-  %1191 = load i32, ptr %arrayidx1783.i, align 4, !tbaa !36
-  %add1784.i = add nsw i32 %1191, %1190
+  %1184 = load i32, ptr %arrayidx1783.i, align 4, !tbaa !36
+  %add1784.i = add nsw i32 %1184, %1183
   store i32 %add1784.i, ptr %arrayidx1783.i, align 4, !tbaa !36
   %indvars.iv.next3365.i = add nuw nsw i64 %indvars.iv3364.i, 1
   %arrayidx1783.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv.next3365.i
-  %1192 = load i32, ptr %arrayidx1783.i.1, align 4, !tbaa !36
-  %add1784.i.1 = add nsw i32 %1192, %add1784.i
+  %1185 = load i32, ptr %arrayidx1783.i.1, align 4, !tbaa !36
+  %add1784.i.1 = add nsw i32 %1185, %add1784.i
   store i32 %add1784.i.1, ptr %arrayidx1783.i.1, align 4, !tbaa !36
   %indvars.iv.next3365.i.1 = add nuw nsw i64 %indvars.iv3364.i, 2
   %arrayidx1783.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv.next3365.i.1
-  %1193 = load i32, ptr %arrayidx1783.i.2, align 4, !tbaa !36
-  %add1784.i.2 = add nsw i32 %1193, %add1784.i.1
+  %1186 = load i32, ptr %arrayidx1783.i.2, align 4, !tbaa !36
+  %add1784.i.2 = add nsw i32 %1186, %add1784.i.1
   store i32 %add1784.i.2, ptr %arrayidx1783.i.2, align 4, !tbaa !36
   %indvars.iv.next3365.i.2 = add nuw nsw i64 %indvars.iv3364.i, 3
   %arrayidx1783.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv.next3365.i.2
-  %1194 = load i32, ptr %arrayidx1783.i.3, align 4, !tbaa !36
-  %add1784.i.3 = add nsw i32 %1194, %add1784.i.2
+  %1187 = load i32, ptr %arrayidx1783.i.3, align 4, !tbaa !36
+  %add1784.i.3 = add nsw i32 %1187, %add1784.i.2
   store i32 %add1784.i.3, ptr %arrayidx1783.i.3, align 4, !tbaa !36
   %indvars.iv.next3365.i.3 = add nuw nsw i64 %indvars.iv3364.i, 4
   %exitcond3369.not.i.3 = icmp eq i64 %indvars.iv.next3365.i.3, 257
-  br i1 %exitcond3369.not.i.3, label %for.body1791.i, label %for.body1776.i, !llvm.loop !111
+  br i1 %exitcond3369.not.i.3, label %for.body1791.i, label %for.body1776.i, !llvm.loop !110
 
 for.body1791.i:                                   ; preds = %for.body1776.i, %for.inc1805.i.3
   %indvars.iv3370.i = phi i64 [ %indvars.iv.next3371.i.3, %for.inc1805.i.3 ], [ 0, %for.body1776.i ]
   %arrayidx1794.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv3370.i
-  %1195 = load i32, ptr %arrayidx1794.i, align 4, !tbaa !36
-  %cmp1795.i = icmp slt i32 %1195, 0
-  %cmp1801.i = icmp sgt i32 %1195, %nblock.3.i
+  %1188 = load i32, ptr %arrayidx1794.i, align 4, !tbaa !36
+  %cmp1795.i = icmp slt i32 %1188, 0
+  %cmp1801.i = icmp sgt i32 %1188, %nblock.3.i
   %or.cond2987.i = select i1 %cmp1795.i, i1 true, i1 %cmp1801.i
   br i1 %or.cond2987.i, label %save_state_and_return.loopexit3243.i, label %for.inc1805.i
 
 for.inc1805.i:                                    ; preds = %for.body1791.i
   %indvars.iv.next3371.i = or i64 %indvars.iv3370.i, 1
   %exitcond3374.not.i = icmp eq i64 %indvars.iv.next3371.i, 257
-  br i1 %exitcond3374.not.i, label %for.end1807.i, label %for.body1791.i.1, !llvm.loop !112
+  br i1 %exitcond3374.not.i, label %for.end1807.i, label %for.body1791.i.1, !llvm.loop !111
 
 for.body1791.i.1:                                 ; preds = %for.inc1805.i
   %arrayidx1794.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv.next3371.i
-  %1196 = load i32, ptr %arrayidx1794.i.1, align 4, !tbaa !36
-  %cmp1795.i.1 = icmp slt i32 %1196, 0
-  %cmp1801.i.1 = icmp sgt i32 %1196, %nblock.3.i
+  %1189 = load i32, ptr %arrayidx1794.i.1, align 4, !tbaa !36
+  %cmp1795.i.1 = icmp slt i32 %1189, 0
+  %cmp1801.i.1 = icmp sgt i32 %1189, %nblock.3.i
   %or.cond2987.i.1 = select i1 %cmp1795.i.1, i1 true, i1 %cmp1801.i.1
   br i1 %or.cond2987.i.1, label %save_state_and_return.loopexit3243.i, label %for.inc1805.i.1
 
 for.inc1805.i.1:                                  ; preds = %for.body1791.i.1
   %indvars.iv.next3371.i.1 = or i64 %indvars.iv3370.i, 2
   %arrayidx1794.i.2 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv.next3371.i.1
-  %1197 = load i32, ptr %arrayidx1794.i.2, align 4, !tbaa !36
-  %cmp1795.i.2 = icmp slt i32 %1197, 0
-  %cmp1801.i.2 = icmp sgt i32 %1197, %nblock.3.i
+  %1190 = load i32, ptr %arrayidx1794.i.2, align 4, !tbaa !36
+  %cmp1795.i.2 = icmp slt i32 %1190, 0
+  %cmp1801.i.2 = icmp sgt i32 %1190, %nblock.3.i
   %or.cond2987.i.2 = select i1 %cmp1795.i.2, i1 true, i1 %cmp1801.i.2
   br i1 %or.cond2987.i.2, label %save_state_and_return.loopexit3243.i, label %for.inc1805.i.2
 
 for.inc1805.i.2:                                  ; preds = %for.inc1805.i.1
   %indvars.iv.next3371.i.2 = or i64 %indvars.iv3370.i, 3
   %arrayidx1794.i.3 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %indvars.iv.next3371.i.2
-  %1198 = load i32, ptr %arrayidx1794.i.3, align 4, !tbaa !36
-  %cmp1795.i.3 = icmp slt i32 %1198, 0
-  %cmp1801.i.3 = icmp sgt i32 %1198, %nblock.3.i
+  %1191 = load i32, ptr %arrayidx1794.i.3, align 4, !tbaa !36
+  %cmp1795.i.3 = icmp slt i32 %1191, 0
+  %cmp1801.i.3 = icmp sgt i32 %1191, %nblock.3.i
   %or.cond2987.i.3 = select i1 %cmp1795.i.3, i1 true, i1 %cmp1801.i.3
   br i1 %or.cond2987.i.3, label %save_state_and_return.loopexit3243.i, label %for.inc1805.i.3
 
@@ -4969,8 +5151,8 @@ for.end1807.i:                                    ; preds = %for.inc1805.i
   store i32 0, ptr %state_out_len.i, align 8, !tbaa !28
   store i8 0, ptr %state_out_ch.i, align 4, !tbaa !29
   store i32 2, ptr %state8, align 8, !tbaa !16
-  %1199 = load i8, ptr %smallDecompress, align 4, !tbaa !24
-  %tobool1817.not.i = icmp eq i8 %1199, 0
+  %1192 = load i8, ptr %smallDecompress, align 4, !tbaa !24
+  %tobool1817.not.i = icmp eq i8 %1192, 0
   br i1 %tobool1817.not.i, label %for.cond1995.preheader.i, label %vector.body
 
 vector.body:                                      ; preds = %for.end1807.i
@@ -5102,17 +5284,17 @@ vector.body:                                      ; preds = %for.end1807.i
   %wide.load293.31 = load <4 x i32>, ptr %273, align 4, !tbaa !36
   store <4 x i32> %wide.load.31, ptr %274, align 4, !tbaa !36
   store <4 x i32> %wide.load293.31, ptr %275, align 4, !tbaa !36
-  %1200 = load i32, ptr %arrayidx1825.i, align 4, !tbaa !36
-  store i32 %1200, ptr %arrayidx1827.i, align 4, !tbaa !36
+  %1193 = load i32, ptr %arrayidx1825.i, align 4, !tbaa !36
+  store i32 %1193, ptr %arrayidx1827.i, align 4, !tbaa !36
   %wide.trip.count3386.i = zext i32 %nblock.3.i to i64
   br label %for.body1834.i
 
 for.cond1995.preheader.i:                         ; preds = %for.end1807.i
-  %1201 = load ptr, ptr %tt.i, align 8, !tbaa !44
+  %1194 = load ptr, ptr %tt.i, align 8, !tbaa !44
   %wide.trip.count3392.i = zext i32 %nblock.3.i to i64
   %xtraiter563 = and i64 %wide.trip.count3392.i, 1
-  %1202 = icmp eq i32 %nblock.3.i, 1
-  br i1 %1202, label %for.end2018.loopexit.i.unr-lcssa, label %for.cond1995.preheader.i.new
+  %1195 = icmp eq i32 %nblock.3.i, 1
+  br i1 %1195, label %for.end2018.loopexit.i.unr-lcssa, label %for.cond1995.preheader.i.new
 
 for.cond1995.preheader.i.new:                     ; preds = %for.cond1995.preheader.i
   %unroll_iter565 = and i64 %wide.trip.count3392.i, 4294967294
@@ -5120,62 +5302,62 @@ for.cond1995.preheader.i.new:                     ; preds = %for.cond1995.prehea
 
 for.body1834.i:                                   ; preds = %if.end1885.i, %vector.body
   %indvars.iv3382.i = phi i64 [ 0, %vector.body ], [ %indvars.iv.next3383.i, %if.end1885.i ]
-  %1203 = load ptr, ptr %ll16.i, align 8, !tbaa !39
-  %arrayidx1837.i = getelementptr inbounds i16, ptr %1203, i64 %indvars.iv3382.i
-  %1204 = load i16, ptr %arrayidx1837.i, align 2, !tbaa !40
-  %1205 = and i16 %1204, 255
-  %idxprom1840.i = zext i16 %1205 to i64
+  %1196 = load ptr, ptr %ll16.i, align 8, !tbaa !39
+  %arrayidx1837.i = getelementptr inbounds i16, ptr %1196, i64 %indvars.iv3382.i
+  %1197 = load i16, ptr %arrayidx1837.i, align 2, !tbaa !40
+  %1198 = and i16 %1197, 255
+  %idxprom1840.i = zext i16 %1198 to i64
   %arrayidx1841.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 19, i64 %idxprom1840.i
-  %1206 = load i32, ptr %arrayidx1841.i, align 4, !tbaa !36
-  %conv1843.i = trunc i32 %1206 to i16
+  %1199 = load i32, ptr %arrayidx1841.i, align 4, !tbaa !36
+  %conv1843.i = trunc i32 %1199 to i16
   store i16 %conv1843.i, ptr %arrayidx1837.i, align 2, !tbaa !40
   %and18474343.i = and i64 %indvars.iv3382.i, 1
   %cmp1848.i = icmp eq i64 %and18474343.i, 0
-  %1207 = load ptr, ptr %ll4.i, align 8, !tbaa !42
+  %1200 = load ptr, ptr %ll4.i, align 8, !tbaa !42
   %shr1852.i = lshr i64 %indvars.iv3382.i, 1
   %idxprom1853.i = and i64 %shr1852.i, 2147483647
-  %arrayidx1854.i = getelementptr inbounds i8, ptr %1207, i64 %idxprom1853.i
-  %1208 = load i8, ptr %arrayidx1854.i, align 1, !tbaa !31
+  %arrayidx1854.i = getelementptr inbounds i8, ptr %1200, i64 %idxprom1853.i
+  %1201 = load i8, ptr %arrayidx1854.i, align 1, !tbaa !31
   br i1 %cmp1848.i, label %if.then1850.i, label %if.else1867.i
 
 if.then1850.i:                                    ; preds = %for.body1834.i
-  %1209 = and i8 %1208, -16
-  %1210 = lshr i32 %1206, 16
-  %1211 = trunc i32 %1210 to i8
-  %conv1862.i = or i8 %1209, %1211
+  %1202 = and i8 %1201, -16
+  %1203 = lshr i32 %1199, 16
+  %1204 = trunc i32 %1203 to i8
+  %conv1862.i = or i8 %1202, %1204
   br label %if.end1885.i
 
 if.else1867.i:                                    ; preds = %for.body1834.i
-  %1212 = and i8 %1208, 15
-  %1213 = lshr i32 %1206, 12
-  %1214 = trunc i32 %1213 to i8
-  %1215 = and i8 %1214, -16
-  %conv1880.i = or i8 %1212, %1215
+  %1205 = and i8 %1201, 15
+  %1206 = lshr i32 %1199, 12
+  %1207 = trunc i32 %1206 to i8
+  %1208 = and i8 %1207, -16
+  %conv1880.i = or i8 %1205, %1208
   br label %if.end1885.i
 
 if.end1885.i:                                     ; preds = %if.else1867.i, %if.then1850.i
   %conv1880.sink.i = phi i8 [ %conv1880.i, %if.else1867.i ], [ %conv1862.i, %if.then1850.i ]
   store i8 %conv1880.sink.i, ptr %arrayidx1854.i, align 1, !tbaa !31
-  %1216 = load i32, ptr %arrayidx1841.i, align 4, !tbaa !36
-  %inc1889.i = add nsw i32 %1216, 1
+  %1209 = load i32, ptr %arrayidx1841.i, align 4, !tbaa !36
+  %inc1889.i = add nsw i32 %1209, 1
   store i32 %inc1889.i, ptr %arrayidx1841.i, align 4, !tbaa !36
   %indvars.iv.next3383.i = add nuw nsw i64 %indvars.iv3382.i, 1
   %exitcond3387.not.i = icmp eq i64 %indvars.iv.next3383.i, %wide.trip.count3386.i
-  br i1 %exitcond3387.not.i, label %for.end1892.loopexit.i, label %for.body1834.i, !llvm.loop !113
+  br i1 %exitcond3387.not.i, label %for.end1892.loopexit.i, label %for.body1834.i, !llvm.loop !112
 
 for.end1892.loopexit.i:                           ; preds = %if.end1885.i
   %.pre3438.i = load i32, ptr %origPtr.i, align 8, !tbaa !75
-  %1217 = load ptr, ptr %ll16.i, align 8, !tbaa !39
+  %1210 = load ptr, ptr %ll16.i, align 8, !tbaa !39
   %idxprom1895.i = sext i32 %.pre3438.i to i64
-  %arrayidx1896.i = getelementptr inbounds i16, ptr %1217, i64 %idxprom1895.i
-  %1218 = load i16, ptr %arrayidx1896.i, align 2, !tbaa !40
-  %conv1897.i = zext i16 %1218 to i32
-  %1219 = load ptr, ptr %ll4.i, align 8, !tbaa !42
+  %arrayidx1896.i = getelementptr inbounds i16, ptr %1210, i64 %idxprom1895.i
+  %1211 = load i16, ptr %arrayidx1896.i, align 2, !tbaa !40
+  %conv1897.i = zext i16 %1211 to i32
+  %1212 = load ptr, ptr %ll4.i, align 8, !tbaa !42
   %shr1899.i = ashr i32 %.pre3438.i, 1
   %idxprom1900.i = sext i32 %shr1899.i to i64
-  %arrayidx1901.i = getelementptr inbounds i8, ptr %1219, i64 %idxprom1900.i
-  %1220 = load i8, ptr %arrayidx1901.i, align 1, !tbaa !31
-  %conv1902.i = zext i8 %1220 to i32
+  %arrayidx1901.i = getelementptr inbounds i8, ptr %1212, i64 %idxprom1900.i
+  %1213 = load i8, ptr %arrayidx1901.i, align 1, !tbaa !31
+  %conv1902.i = zext i8 %1213 to i32
   %shl1903.i = shl i32 %.pre3438.i, 2
   %and1904.i = and i32 %shl1903.i, 4
   %shr1905.i = lshr i32 %conv1902.i, %and1904.i
@@ -5187,17 +5369,17 @@ for.end1892.loopexit.i:                           ; preds = %if.end1885.i
 do.body1909.i:                                    ; preds = %if.end1963.i, %for.end1892.loopexit.i
   %j.26.i = phi i32 [ %or1908.i, %for.end1892.loopexit.i ], [ %or1925.i, %if.end1963.i ]
   %i.37.i = phi i32 [ %.pre3438.i, %for.end1892.loopexit.i ], [ %j.26.i, %if.end1963.i ]
-  %1221 = load ptr, ptr %ll16.i, align 8, !tbaa !39
+  %1214 = load ptr, ptr %ll16.i, align 8, !tbaa !39
   %idxprom1912.i = zext i32 %j.26.i to i64
-  %arrayidx1913.i = getelementptr inbounds i16, ptr %1221, i64 %idxprom1912.i
-  %1222 = load i16, ptr %arrayidx1913.i, align 2, !tbaa !40
-  %conv1914.i = zext i16 %1222 to i32
-  %1223 = load ptr, ptr %ll4.i, align 8, !tbaa !42
+  %arrayidx1913.i = getelementptr inbounds i16, ptr %1214, i64 %idxprom1912.i
+  %1215 = load i16, ptr %arrayidx1913.i, align 2, !tbaa !40
+  %conv1914.i = zext i16 %1215 to i32
+  %1216 = load ptr, ptr %ll4.i, align 8, !tbaa !42
   %shr1916.i = lshr i32 %j.26.i, 1
   %idxprom1917.i = zext i32 %shr1916.i to i64
-  %arrayidx1918.i = getelementptr inbounds i8, ptr %1223, i64 %idxprom1917.i
-  %1224 = load i8, ptr %arrayidx1918.i, align 1, !tbaa !31
-  %conv1919.i = zext i8 %1224 to i32
+  %arrayidx1918.i = getelementptr inbounds i8, ptr %1216, i64 %idxprom1917.i
+  %1217 = load i8, ptr %arrayidx1918.i, align 1, !tbaa !31
+  %conv1919.i = zext i8 %1217 to i32
   %shl1920.i = shl nuw nsw i32 %j.26.i, 2
   %and1921.i = and i32 %shl1920.i, 4
   %shr1922.i = lshr i32 %conv1919.i, %and1921.i
@@ -5208,30 +5390,30 @@ do.body1909.i:                                    ; preds = %if.end1963.i, %for.
   store i16 %conv1927.i, ptr %arrayidx1913.i, align 2, !tbaa !40
   %and1931.i = and i32 %j.26.i, 1
   %cmp1932.i = icmp eq i32 %and1931.i, 0
-  %1225 = load i8, ptr %arrayidx1918.i, align 1, !tbaa !31
+  %1218 = load i8, ptr %arrayidx1918.i, align 1, !tbaa !31
   br i1 %cmp1932.i, label %if.then1934.i, label %if.else1948.i
 
 if.then1934.i:                                    ; preds = %do.body1909.i
-  %1226 = and i8 %1225, -16
-  %1227 = lshr i32 %i.37.i, 16
-  %1228 = trunc i32 %1227 to i8
-  %conv1943.i = or i8 %1226, %1228
+  %1219 = and i8 %1218, -16
+  %1220 = lshr i32 %i.37.i, 16
+  %1221 = trunc i32 %1220 to i8
+  %conv1943.i = or i8 %1219, %1221
   br label %if.end1963.i
 
 if.else1948.i:                                    ; preds = %do.body1909.i
-  %1229 = and i8 %1225, 15
-  %1230 = lshr i32 %i.37.i, 12
-  %1231 = trunc i32 %1230 to i8
-  %1232 = and i8 %1231, -16
-  %conv1958.i = or i8 %1229, %1232
+  %1222 = and i8 %1218, 15
+  %1223 = lshr i32 %i.37.i, 12
+  %1224 = trunc i32 %1223 to i8
+  %1225 = and i8 %1224, -16
+  %conv1958.i = or i8 %1222, %1225
   br label %if.end1963.i
 
 if.end1963.i:                                     ; preds = %if.else1948.i, %if.then1934.i
   %storemerge.i = phi i8 [ %conv1958.i, %if.else1948.i ], [ %conv1943.i, %if.then1934.i ]
   store i8 %storemerge.i, ptr %arrayidx1918.i, align 1, !tbaa !31
-  %1233 = load i32, ptr %origPtr.i, align 8, !tbaa !75
-  %cmp1966.not.i = icmp eq i32 %j.26.i, %1233
-  br i1 %cmp1966.not.i, label %do.end1968.i, label %do.body1909.i, !llvm.loop !114
+  %1226 = load i32, ptr %origPtr.i, align 8, !tbaa !75
+  %cmp1966.not.i = icmp eq i32 %j.26.i, %1226
+  br i1 %cmp1966.not.i, label %do.end1968.i, label %do.body1909.i, !llvm.loop !113
 
 do.end1968.i:                                     ; preds = %if.end1963.i
   store i32 %j.26.i, ptr %tPos.i, align 4, !tbaa !35
@@ -5245,8 +5427,8 @@ do.body.i.i94:                                    ; preds = %do.body.i.i94, %do.
   %shr.i.i97 = ashr i32 %add.i2992.i, 1
   %idxprom.i.i98 = sext i32 %shr.i.i97 to i64
   %arrayidx.i2993.i = getelementptr inbounds i32, ptr %cftab.i, i64 %idxprom.i.i98
-  %1234 = load i32, ptr %arrayidx.i2993.i, align 4, !tbaa !36
-  %cmp.not.i.i99 = icmp sgt i32 %1234, %j.26.i
+  %1227 = load i32, ptr %arrayidx.i2993.i, align 4, !tbaa !36
+  %cmp.not.i.i99 = icmp sgt i32 %1227, %j.26.i
   %shr.na.0.i.i100 = select i1 %cmp.not.i.i99, i32 %shr.i.i97, i32 %na.0.i.i95
   %nb.0.shr.i.i101 = select i1 %cmp.not.i.i99, i32 %nb.0.i.i96, i32 %shr.i.i97
   %sub.i.i102 = sub nsw i32 %shr.na.0.i.i100, %nb.0.shr.i.i101
@@ -5255,14 +5437,14 @@ do.body.i.i94:                                    ; preds = %do.body.i.i94, %do.
 
 indexIntoF.exit.i104:                             ; preds = %do.body.i.i94
   store i32 %nb.0.shr.i.i101, ptr %k0.i, align 8, !tbaa !34
-  %1235 = load ptr, ptr %ll16.i, align 8, !tbaa !39
-  %arrayidx1976.i = getelementptr inbounds i16, ptr %1235, i64 %idxprom1912.i
-  %1236 = load i16, ptr %arrayidx1976.i, align 2, !tbaa !40
-  %conv1977.i = zext i16 %1236 to i32
-  %1237 = load ptr, ptr %ll4.i, align 8, !tbaa !42
-  %arrayidx1982.i = getelementptr inbounds i8, ptr %1237, i64 %idxprom1917.i
-  %1238 = load i8, ptr %arrayidx1982.i, align 1, !tbaa !31
-  %conv1983.i = zext i8 %1238 to i32
+  %1228 = load ptr, ptr %ll16.i, align 8, !tbaa !39
+  %arrayidx1976.i = getelementptr inbounds i16, ptr %1228, i64 %idxprom1912.i
+  %1229 = load i16, ptr %arrayidx1976.i, align 2, !tbaa !40
+  %conv1977.i = zext i16 %1229 to i32
+  %1230 = load ptr, ptr %ll4.i, align 8, !tbaa !42
+  %arrayidx1982.i = getelementptr inbounds i8, ptr %1230, i64 %idxprom1917.i
+  %1231 = load i8, ptr %arrayidx1982.i, align 1, !tbaa !31
+  %conv1983.i = zext i8 %1231 to i32
   %shr1987.i = lshr i32 %conv1983.i, %and1921.i
   %and1988.i = shl nuw nsw i32 %shr1987.i, 16
   %shl1989.i = and i32 %and1988.i, 983040
@@ -5274,43 +5456,43 @@ indexIntoF.exit.i104:                             ; preds = %do.body.i.i94
 for.body1998.i:                                   ; preds = %for.body1998.i, %for.cond1995.preheader.i.new
   %indvars.iv3388.i = phi i64 [ 0, %for.cond1995.preheader.i.new ], [ %indvars.iv.next3389.i.1, %for.body1998.i ]
   %niter566 = phi i64 [ 0, %for.cond1995.preheader.i.new ], [ %niter566.next.1, %for.body1998.i ]
-  %arrayidx2001.i = getelementptr inbounds i32, ptr %1201, i64 %indvars.iv3388.i
-  %1239 = load i32, ptr %arrayidx2001.i, align 4, !tbaa !36
-  %1240 = trunc i64 %indvars.iv3388.i to i32
-  %shl2004.i = shl i32 %1240, 8
-  %1241 = and i32 %1239, 255
-  %idxprom2007.i = zext i32 %1241 to i64
+  %arrayidx2001.i = getelementptr inbounds i32, ptr %1194, i64 %indvars.iv3388.i
+  %1232 = load i32, ptr %arrayidx2001.i, align 4, !tbaa !36
+  %1233 = trunc i64 %indvars.iv3388.i to i32
+  %shl2004.i = shl i32 %1233, 8
+  %1234 = and i32 %1232, 255
+  %idxprom2007.i = zext i32 %1234 to i64
   %arrayidx2008.i = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %idxprom2007.i
-  %1242 = load i32, ptr %arrayidx2008.i, align 4, !tbaa !36
-  %idxprom2009.i = sext i32 %1242 to i64
-  %arrayidx2010.i = getelementptr inbounds i32, ptr %1201, i64 %idxprom2009.i
-  %1243 = load i32, ptr %arrayidx2010.i, align 4, !tbaa !36
-  %or2011.i = or i32 %1243, %shl2004.i
+  %1235 = load i32, ptr %arrayidx2008.i, align 4, !tbaa !36
+  %idxprom2009.i = sext i32 %1235 to i64
+  %arrayidx2010.i = getelementptr inbounds i32, ptr %1194, i64 %idxprom2009.i
+  %1236 = load i32, ptr %arrayidx2010.i, align 4, !tbaa !36
+  %or2011.i = or i32 %1236, %shl2004.i
   store i32 %or2011.i, ptr %arrayidx2010.i, align 4, !tbaa !36
-  %1244 = load i32, ptr %arrayidx2008.i, align 4, !tbaa !36
-  %inc2015.i = add nsw i32 %1244, 1
+  %1237 = load i32, ptr %arrayidx2008.i, align 4, !tbaa !36
+  %inc2015.i = add nsw i32 %1237, 1
   store i32 %inc2015.i, ptr %arrayidx2008.i, align 4, !tbaa !36
   %indvars.iv.next3389.i = or i64 %indvars.iv3388.i, 1
-  %arrayidx2001.i.1 = getelementptr inbounds i32, ptr %1201, i64 %indvars.iv.next3389.i
-  %1245 = load i32, ptr %arrayidx2001.i.1, align 4, !tbaa !36
-  %1246 = trunc i64 %indvars.iv.next3389.i to i32
-  %shl2004.i.1 = shl i32 %1246, 8
-  %1247 = and i32 %1245, 255
-  %idxprom2007.i.1 = zext i32 %1247 to i64
+  %arrayidx2001.i.1 = getelementptr inbounds i32, ptr %1194, i64 %indvars.iv.next3389.i
+  %1238 = load i32, ptr %arrayidx2001.i.1, align 4, !tbaa !36
+  %1239 = trunc i64 %indvars.iv.next3389.i to i32
+  %shl2004.i.1 = shl i32 %1239, 8
+  %1240 = and i32 %1238, 255
+  %idxprom2007.i.1 = zext i32 %1240 to i64
   %arrayidx2008.i.1 = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %idxprom2007.i.1
-  %1248 = load i32, ptr %arrayidx2008.i.1, align 4, !tbaa !36
-  %idxprom2009.i.1 = sext i32 %1248 to i64
-  %arrayidx2010.i.1 = getelementptr inbounds i32, ptr %1201, i64 %idxprom2009.i.1
-  %1249 = load i32, ptr %arrayidx2010.i.1, align 4, !tbaa !36
-  %or2011.i.1 = or i32 %1249, %shl2004.i.1
+  %1241 = load i32, ptr %arrayidx2008.i.1, align 4, !tbaa !36
+  %idxprom2009.i.1 = sext i32 %1241 to i64
+  %arrayidx2010.i.1 = getelementptr inbounds i32, ptr %1194, i64 %idxprom2009.i.1
+  %1242 = load i32, ptr %arrayidx2010.i.1, align 4, !tbaa !36
+  %or2011.i.1 = or i32 %1242, %shl2004.i.1
   store i32 %or2011.i.1, ptr %arrayidx2010.i.1, align 4, !tbaa !36
-  %1250 = load i32, ptr %arrayidx2008.i.1, align 4, !tbaa !36
-  %inc2015.i.1 = add nsw i32 %1250, 1
+  %1243 = load i32, ptr %arrayidx2008.i.1, align 4, !tbaa !36
+  %inc2015.i.1 = add nsw i32 %1243, 1
   store i32 %inc2015.i.1, ptr %arrayidx2008.i.1, align 4, !tbaa !36
   %indvars.iv.next3389.i.1 = add nuw nsw i64 %indvars.iv3388.i, 2
   %niter566.next.1 = add i64 %niter566, 2
   %niter566.ncmp.1 = icmp eq i64 %niter566.next.1, %unroll_iter565
-  br i1 %niter566.ncmp.1, label %for.end2018.loopexit.i.unr-lcssa, label %for.body1998.i, !llvm.loop !115
+  br i1 %niter566.ncmp.1, label %for.end2018.loopexit.i.unr-lcssa, label %for.body1998.i, !llvm.loop !114
 
 for.end2018.loopexit.i.unr-lcssa:                 ; preds = %for.body1998.i, %for.cond1995.preheader.i
   %indvars.iv3388.i.unr = phi i64 [ 0, %for.cond1995.preheader.i ], [ %indvars.iv.next3389.i.1, %for.body1998.i ]
@@ -5318,44 +5500,44 @@ for.end2018.loopexit.i.unr-lcssa:                 ; preds = %for.body1998.i, %fo
   br i1 %lcmp.mod564.not, label %for.end2018.loopexit.i, label %for.body1998.i.epil
 
 for.body1998.i.epil:                              ; preds = %for.end2018.loopexit.i.unr-lcssa
-  %arrayidx2001.i.epil = getelementptr inbounds i32, ptr %1201, i64 %indvars.iv3388.i.unr
-  %1251 = load i32, ptr %arrayidx2001.i.epil, align 4, !tbaa !36
-  %1252 = trunc i64 %indvars.iv3388.i.unr to i32
-  %shl2004.i.epil = shl i32 %1252, 8
-  %1253 = and i32 %1251, 255
-  %idxprom2007.i.epil = zext i32 %1253 to i64
+  %arrayidx2001.i.epil = getelementptr inbounds i32, ptr %1194, i64 %indvars.iv3388.i.unr
+  %1244 = load i32, ptr %arrayidx2001.i.epil, align 4, !tbaa !36
+  %1245 = trunc i64 %indvars.iv3388.i.unr to i32
+  %shl2004.i.epil = shl i32 %1245, 8
+  %1246 = and i32 %1244, 255
+  %idxprom2007.i.epil = zext i32 %1246 to i64
   %arrayidx2008.i.epil = getelementptr inbounds %struct.DState, ptr %0, i64 0, i32 18, i64 %idxprom2007.i.epil
-  %1254 = load i32, ptr %arrayidx2008.i.epil, align 4, !tbaa !36
-  %idxprom2009.i.epil = sext i32 %1254 to i64
-  %arrayidx2010.i.epil = getelementptr inbounds i32, ptr %1201, i64 %idxprom2009.i.epil
-  %1255 = load i32, ptr %arrayidx2010.i.epil, align 4, !tbaa !36
-  %or2011.i.epil = or i32 %1255, %shl2004.i.epil
+  %1247 = load i32, ptr %arrayidx2008.i.epil, align 4, !tbaa !36
+  %idxprom2009.i.epil = sext i32 %1247 to i64
+  %arrayidx2010.i.epil = getelementptr inbounds i32, ptr %1194, i64 %idxprom2009.i.epil
+  %1248 = load i32, ptr %arrayidx2010.i.epil, align 4, !tbaa !36
+  %or2011.i.epil = or i32 %1248, %shl2004.i.epil
   store i32 %or2011.i.epil, ptr %arrayidx2010.i.epil, align 4, !tbaa !36
-  %1256 = load i32, ptr %arrayidx2008.i.epil, align 4, !tbaa !36
-  %inc2015.i.epil = add nsw i32 %1256, 1
+  %1249 = load i32, ptr %arrayidx2008.i.epil, align 4, !tbaa !36
+  %inc2015.i.epil = add nsw i32 %1249, 1
   store i32 %inc2015.i.epil, ptr %arrayidx2008.i.epil, align 4, !tbaa !36
   br label %for.end2018.loopexit.i
 
 for.end2018.loopexit.i:                           ; preds = %for.end2018.loopexit.i.unr-lcssa, %for.body1998.i.epil
   %.pre3440.i = load i32, ptr %origPtr.i, align 8, !tbaa !75
   %idxprom2021.i = sext i32 %.pre3440.i to i64
-  %arrayidx2022.i = getelementptr inbounds i32, ptr %1201, i64 %idxprom2021.i
-  %1257 = load i32, ptr %arrayidx2022.i, align 4, !tbaa !36
-  %shr2023.i = lshr i32 %1257, 8
+  %arrayidx2022.i = getelementptr inbounds i32, ptr %1194, i64 %idxprom2021.i
+  %1250 = load i32, ptr %arrayidx2022.i, align 4, !tbaa !36
+  %shr2023.i = lshr i32 %1250, 8
   store i32 %shr2023.i, ptr %tPos.i, align 4, !tbaa !35
   store i32 0, ptr %nblock_used.i, align 4, !tbaa !32
-  %1258 = load i32, ptr %blockSize100k.i, align 8, !tbaa !49
-  %mul2028.i = mul nsw i32 %1258, 100000
+  %1251 = load i32, ptr %blockSize100k.i, align 8, !tbaa !49
+  %mul2028.i = mul nsw i32 %1251, 100000
   %cmp2029.not.i = icmp ult i32 %shr2023.i, %mul2028.i
   br i1 %cmp2029.not.i, label %if.end2032.i, label %cleanup
 
 if.end2032.i:                                     ; preds = %for.end2018.loopexit.i
   %idxprom2035.i = zext i32 %shr2023.i to i64
-  %arrayidx2036.i = getelementptr inbounds i32, ptr %1201, i64 %idxprom2035.i
-  %1259 = load i32, ptr %arrayidx2036.i, align 4, !tbaa !36
-  %conv2041.i = and i32 %1259, 255
+  %arrayidx2036.i = getelementptr inbounds i32, ptr %1194, i64 %idxprom2035.i
+  %1252 = load i32, ptr %arrayidx2036.i, align 4, !tbaa !36
+  %conv2041.i = and i32 %1252, 255
   store i32 %conv2041.i, ptr %k0.i, align 8, !tbaa !34
-  %shr2044.i = lshr i32 %1259, 8
+  %shr2044.i = lshr i32 %1252, 8
   store i32 %shr2044.i, ptr %tPos.i, align 4, !tbaa !35
   store i32 1, ptr %nblock_used.i, align 4, !tbaa !32
   br label %BZ2_decompress.exit
@@ -5366,36 +5548,36 @@ endhdr_2.i:                                       ; preds = %if.then65.i
 
 save_state_and_return.loopexit3243.i:             ; preds = %for.inc1805.i.2, %for.inc1805.i.1, %for.body1791.i.1, %for.body1791.i
   %indvars.iv3370.i.lcssa = phi i64 [ %indvars.iv3370.i, %for.body1791.i ], [ %indvars.iv.next3371.i, %for.body1791.i.1 ], [ %indvars.iv.next3371.i.1, %for.inc1805.i.1 ], [ %indvars.iv.next3371.i.2, %for.inc1805.i.2 ]
-  %1260 = trunc i64 %indvars.iv3370.i.lcssa to i32
+  %1253 = trunc i64 %indvars.iv3370.i.lcssa to i32
   br label %BZ2_decompress.exit
 
-BZ2_decompress.exit:                              ; preds = %if.end71.i, %if.end123.i, %if.end180.i, %if.end237.i, %if.end467.i, %if.end525.i, %if.end1019.i, %if.end1628.i, %if.end1692.i, %if.end1212.i, %while.body1354.i, %while.body1370.i, %if.end1276.i, %if.end1083.i, %if.end698.i, %if.end763.i, %if.end820.i, %if.end626.i, %if.end393.i, %if.end309.i, %if.end587.i, %if.end.i86, %if.then27.i, %if.else.i, %if.then65.i, %if.then227.i, %if.end281.i, %makeMaps_d.exit.i, %if.then458.i, %if.then458.i, %if.then458.i, %if.then516.i, %while.cond737.i, %if.then974.i, %while.cond1054.i, %while.end1120.i, %if.then1167.i, %while.cond1247.i, %while.end1313.i, %if.else1383.i, %if.then1583.i, %while.cond1663.i, %while.end1729.i, %while.end1748.i, %indexIntoF.exit.i104, %if.end2032.i, %endhdr_2.i, %save_state_and_return.loopexit3243.i
-  %1261 = phi i32 [ %366, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %366, %if.then65.i ], [ %461, %if.then227.i ], [ %461, %if.end281.i ], [ %547, %makeMaps_d.exit.i ], [ %651, %if.then458.i ], [ %651, %if.then458.i ], [ %651, %if.then458.i ], [ %678, %if.then516.i ], [ %843, %while.cond737.i ], [ %782, %if.then974.i ], [ %999, %while.cond1054.i ], [ %999, %while.end1120.i ], [ %1015, %if.then1167.i ], [ %1026, %while.cond1247.i ], [ %1026, %while.end1313.i ], [ %1014, %if.else1383.i ], [ %1014, %if.then1583.i ], [ %1177, %while.cond1663.i ], [ %1177, %while.end1729.i ], [ %1014, %while.end1748.i ], [ %1014, %if.end2032.i ], [ %1014, %indexIntoF.exit.i104 ], [ %.pre3408.i, %if.end.i86 ], [ %1014, %save_state_and_return.loopexit3243.i ], [ %.ph492, %if.end587.i ], [ %516, %if.end309.i ], [ %592, %if.end393.i ], [ %.ph492, %if.end626.i ], [ %887, %if.end820.i ], [ %861, %if.end763.i ], [ %802, %if.end698.i ], [ %1004, %if.end1083.i ], [ %1028, %if.end1276.i ], [ %1026, %while.body1370.i ], [ %1026, %while.body1354.i ], [ %1018, %if.end1212.i ], [ %1179, %if.end1692.i ], [ %1169, %if.end1628.i ], [ %986, %if.end1019.i ], [ %678, %if.end525.i ], [ %651, %if.end467.i ], [ %461, %if.end237.i ], [ %429, %if.end180.i ], [ %397, %if.end123.i ], [ %366, %if.end71.i ]
-  %zj.10.i = phi i32 [ %369, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %369, %if.then65.i ], [ %464, %if.then227.i ], [ %464, %if.end281.i ], [ %550, %makeMaps_d.exit.i ], [ %654, %if.then458.i ], [ %654, %if.then458.i ], [ %654, %if.then458.i ], [ %681, %if.then516.i ], [ %846, %while.cond737.i ], [ %785, %if.then974.i ], [ %zj.0.i, %while.cond1054.i ], [ %zj.0.i, %while.end1120.i ], [ %zj.3.i, %if.then1167.i ], [ %zj.5.i, %while.cond1247.i ], [ %zj.5.i, %while.end1313.i ], [ %zj.2.i, %if.else1383.i ], [ %zj.2.i, %if.then1583.i ], [ %zj.8.i, %while.cond1663.i ], [ %zj.8.i, %while.end1729.i ], [ %zj.2.i, %while.end1748.i ], [ %zj.2.i, %if.end2032.i ], [ %zj.2.i, %indexIntoF.exit.i104 ], [ %.pre3411.i, %if.end.i86 ], [ %zj.2.i, %save_state_and_return.loopexit3243.i ], [ %.ph495, %if.end587.i ], [ %519, %if.end309.i ], [ %595, %if.end393.i ], [ %.ph495, %if.end626.i ], [ %890, %if.end820.i ], [ %864, %if.end763.i ], [ %805, %if.end698.i ], [ %zj.1.i, %if.end1083.i ], [ %zj.6.i, %if.end1276.i ], [ %zj.5.i, %while.body1370.i ], [ %zj.5.i, %while.body1354.i ], [ %zj.4.i, %if.end1212.i ], [ %zj.9.i, %if.end1692.i ], [ %zj.7.i, %if.end1628.i ], [ %988, %if.end1019.i ], [ %681, %if.end525.i ], [ %654, %if.end467.i ], [ %464, %if.end237.i ], [ %432, %if.end180.i ], [ %400, %if.end123.i ], [ %369, %if.end71.i ]
-  %gSel.14.i = phi i32 [ %370, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %370, %if.then65.i ], [ %465, %if.then227.i ], [ %465, %if.end281.i ], [ %551, %makeMaps_d.exit.i ], [ %655, %if.then458.i ], [ %655, %if.then458.i ], [ %655, %if.then458.i ], [ %682, %if.then516.i ], [ %847, %while.cond737.i ], [ %786, %if.then974.i ], [ %gSel.2.i, %while.cond1054.i ], [ %gSel.2.i, %while.end1120.i ], [ %gSel.5.i, %if.then1167.i ], [ %gSel.8.i, %while.cond1247.i ], [ %gSel.8.i, %while.end1313.i ], [ %gSel.4.i, %if.else1383.i ], [ %gSel.4.i, %if.then1583.i ], [ %gSel.12.i, %while.cond1663.i ], [ %gSel.12.i, %while.end1729.i ], [ %gSel.4.i, %while.end1748.i ], [ %gSel.4.i, %if.end2032.i ], [ %gSel.4.i, %indexIntoF.exit.i104 ], [ %.pre3412.i, %if.end.i86 ], [ %gSel.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph496, %if.end587.i ], [ %520, %if.end309.i ], [ %596, %if.end393.i ], [ %.ph496, %if.end626.i ], [ %891, %if.end820.i ], [ %865, %if.end763.i ], [ %806, %if.end698.i ], [ %gSel.3.i, %if.end1083.i ], [ %gSel.9.i, %if.end1276.i ], [ %gSel.8.i, %while.body1370.i ], [ %gSel.8.i, %while.body1354.i ], [ %gSel.7.i, %if.end1212.i ], [ %gSel.13.i, %if.end1692.i ], [ %gSel.11.i, %if.end1628.i ], [ %gSel.1.i, %if.end1019.i ], [ %682, %if.end525.i ], [ %655, %if.end467.i ], [ %465, %if.end237.i ], [ %433, %if.end180.i ], [ %401, %if.end123.i ], [ %370, %if.end71.i ]
-  %gMinlen.14.i = phi i32 [ %371, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %371, %if.then65.i ], [ %466, %if.then227.i ], [ %466, %if.end281.i ], [ %552, %makeMaps_d.exit.i ], [ %656, %if.then458.i ], [ %656, %if.then458.i ], [ %656, %if.then458.i ], [ %683, %if.then516.i ], [ %848, %while.cond737.i ], [ %787, %if.then974.i ], [ %gMinlen.2.i, %while.cond1054.i ], [ %gMinlen.2.i, %while.end1120.i ], [ %gMinlen.5.i, %if.then1167.i ], [ %gMinlen.8.i, %while.cond1247.i ], [ %gMinlen.8.i, %while.end1313.i ], [ %gMinlen.4.i, %if.else1383.i ], [ %gMinlen.4.i, %if.then1583.i ], [ %gMinlen.12.i, %while.cond1663.i ], [ %gMinlen.12.i, %while.end1729.i ], [ %gMinlen.4.i, %while.end1748.i ], [ %gMinlen.4.i, %if.end2032.i ], [ %gMinlen.4.i, %indexIntoF.exit.i104 ], [ %.pre3413.i, %if.end.i86 ], [ %gMinlen.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph497, %if.end587.i ], [ %521, %if.end309.i ], [ %597, %if.end393.i ], [ %.ph497, %if.end626.i ], [ %892, %if.end820.i ], [ %866, %if.end763.i ], [ %807, %if.end698.i ], [ %gMinlen.3.i, %if.end1083.i ], [ %gMinlen.9.i, %if.end1276.i ], [ %gMinlen.8.i, %while.body1370.i ], [ %gMinlen.8.i, %while.body1354.i ], [ %gMinlen.7.i, %if.end1212.i ], [ %gMinlen.13.i, %if.end1692.i ], [ %gMinlen.11.i, %if.end1628.i ], [ %gMinlen.1.i, %if.end1019.i ], [ %683, %if.end525.i ], [ %656, %if.end467.i ], [ %466, %if.end237.i ], [ %434, %if.end180.i ], [ %402, %if.end123.i ], [ %371, %if.end71.i ]
-  %gLimit.14.i = phi ptr [ %372, %endhdr_2.i ], [ null, %if.then27.i ], [ null, %if.else.i ], [ %372, %if.then65.i ], [ %467, %if.then227.i ], [ %467, %if.end281.i ], [ %553, %makeMaps_d.exit.i ], [ %657, %if.then458.i ], [ %657, %if.then458.i ], [ %657, %if.then458.i ], [ %684, %if.then516.i ], [ %849, %while.cond737.i ], [ %788, %if.then974.i ], [ %gLimit.2.i, %while.cond1054.i ], [ %gLimit.2.i, %while.end1120.i ], [ %gLimit.5.i, %if.then1167.i ], [ %gLimit.8.i, %while.cond1247.i ], [ %gLimit.8.i, %while.end1313.i ], [ %gLimit.4.i, %if.else1383.i ], [ %gLimit.4.i, %if.then1583.i ], [ %gLimit.12.i, %while.cond1663.i ], [ %gLimit.12.i, %while.end1729.i ], [ %gLimit.4.i, %while.end1748.i ], [ %gLimit.4.i, %if.end2032.i ], [ %gLimit.4.i, %indexIntoF.exit.i104 ], [ %.pre3414.i, %if.end.i86 ], [ %gLimit.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph498, %if.end587.i ], [ %522, %if.end309.i ], [ %598, %if.end393.i ], [ %.ph498, %if.end626.i ], [ %893, %if.end820.i ], [ %867, %if.end763.i ], [ %808, %if.end698.i ], [ %gLimit.3.i, %if.end1083.i ], [ %gLimit.9.i, %if.end1276.i ], [ %gLimit.8.i, %while.body1370.i ], [ %gLimit.8.i, %while.body1354.i ], [ %gLimit.7.i, %if.end1212.i ], [ %gLimit.13.i, %if.end1692.i ], [ %gLimit.11.i, %if.end1628.i ], [ %gLimit.1.i, %if.end1019.i ], [ %684, %if.end525.i ], [ %657, %if.end467.i ], [ %467, %if.end237.i ], [ %435, %if.end180.i ], [ %403, %if.end123.i ], [ %372, %if.end71.i ]
-  %gBase.14.i = phi ptr [ %373, %endhdr_2.i ], [ null, %if.then27.i ], [ null, %if.else.i ], [ %373, %if.then65.i ], [ %468, %if.then227.i ], [ %468, %if.end281.i ], [ %554, %makeMaps_d.exit.i ], [ %658, %if.then458.i ], [ %658, %if.then458.i ], [ %658, %if.then458.i ], [ %685, %if.then516.i ], [ %850, %while.cond737.i ], [ %789, %if.then974.i ], [ %gBase.2.i, %while.cond1054.i ], [ %gBase.2.i, %while.end1120.i ], [ %gBase.5.i, %if.then1167.i ], [ %gBase.8.i, %while.cond1247.i ], [ %gBase.8.i, %while.end1313.i ], [ %gBase.4.i, %if.else1383.i ], [ %gBase.4.i, %if.then1583.i ], [ %gBase.12.i, %while.cond1663.i ], [ %gBase.12.i, %while.end1729.i ], [ %gBase.4.i, %while.end1748.i ], [ %gBase.4.i, %if.end2032.i ], [ %gBase.4.i, %indexIntoF.exit.i104 ], [ %.pre3415.i, %if.end.i86 ], [ %gBase.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph499, %if.end587.i ], [ %523, %if.end309.i ], [ %599, %if.end393.i ], [ %.ph499, %if.end626.i ], [ %894, %if.end820.i ], [ %868, %if.end763.i ], [ %809, %if.end698.i ], [ %gBase.3.i, %if.end1083.i ], [ %gBase.9.i, %if.end1276.i ], [ %gBase.8.i, %while.body1370.i ], [ %gBase.8.i, %while.body1354.i ], [ %gBase.7.i, %if.end1212.i ], [ %gBase.13.i, %if.end1692.i ], [ %gBase.11.i, %if.end1628.i ], [ %gBase.1.i, %if.end1019.i ], [ %685, %if.end525.i ], [ %658, %if.end467.i ], [ %468, %if.end237.i ], [ %436, %if.end180.i ], [ %404, %if.end123.i ], [ %373, %if.end71.i ]
-  %gPerm.14.i = phi ptr [ %374, %endhdr_2.i ], [ null, %if.then27.i ], [ null, %if.else.i ], [ %374, %if.then65.i ], [ %469, %if.then227.i ], [ %469, %if.end281.i ], [ %555, %makeMaps_d.exit.i ], [ %659, %if.then458.i ], [ %659, %if.then458.i ], [ %659, %if.then458.i ], [ %686, %if.then516.i ], [ %851, %while.cond737.i ], [ %790, %if.then974.i ], [ %gPerm.2.i, %while.cond1054.i ], [ %gPerm.2.i, %while.end1120.i ], [ %gPerm.5.i, %if.then1167.i ], [ %gPerm.8.i, %while.cond1247.i ], [ %gPerm.8.i, %while.end1313.i ], [ %gPerm.4.i, %if.else1383.i ], [ %gPerm.4.i, %if.then1583.i ], [ %gPerm.12.i, %while.cond1663.i ], [ %gPerm.12.i, %while.end1729.i ], [ %gPerm.4.i, %while.end1748.i ], [ %gPerm.4.i, %if.end2032.i ], [ %gPerm.4.i, %indexIntoF.exit.i104 ], [ %.pre3416.i, %if.end.i86 ], [ %gPerm.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph500, %if.end587.i ], [ %524, %if.end309.i ], [ %600, %if.end393.i ], [ %.ph500, %if.end626.i ], [ %895, %if.end820.i ], [ %869, %if.end763.i ], [ %810, %if.end698.i ], [ %gPerm.3.i, %if.end1083.i ], [ %gPerm.9.i, %if.end1276.i ], [ %gPerm.8.i, %while.body1370.i ], [ %gPerm.8.i, %while.body1354.i ], [ %gPerm.7.i, %if.end1212.i ], [ %gPerm.13.i, %if.end1692.i ], [ %gPerm.11.i, %if.end1628.i ], [ %gPerm.1.i, %if.end1019.i ], [ %686, %if.end525.i ], [ %659, %if.end467.i ], [ %469, %if.end237.i ], [ %437, %if.end180.i ], [ %405, %if.end123.i ], [ %374, %if.end71.i ]
-  %zvec.10.i = phi i32 [ %368, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %368, %if.then65.i ], [ %463, %if.then227.i ], [ %463, %if.end281.i ], [ %549, %makeMaps_d.exit.i ], [ %653, %if.then458.i ], [ %653, %if.then458.i ], [ %653, %if.then458.i ], [ %680, %if.then516.i ], [ %845, %while.cond737.i ], [ %784, %if.then974.i ], [ %zvec.0.i, %while.cond1054.i ], [ %zvec.0.i, %while.end1120.i ], [ %zvec.3.i, %if.then1167.i ], [ %zvec.5.i, %while.cond1247.i ], [ %zvec.5.i, %while.end1313.i ], [ %zvec.2.i, %if.else1383.i ], [ %zvec.2.i, %if.then1583.i ], [ %zvec.8.i, %while.cond1663.i ], [ %zvec.8.i, %while.end1729.i ], [ %zvec.2.i, %while.end1748.i ], [ %zvec.2.i, %if.end2032.i ], [ %zvec.2.i, %indexIntoF.exit.i104 ], [ %.pre3410.i, %if.end.i86 ], [ %zvec.2.i, %save_state_and_return.loopexit3243.i ], [ %.ph494, %if.end587.i ], [ %518, %if.end309.i ], [ %594, %if.end393.i ], [ %.ph494, %if.end626.i ], [ %889, %if.end820.i ], [ %863, %if.end763.i ], [ %804, %if.end698.i ], [ %zvec.1.i, %if.end1083.i ], [ %zvec.6.i, %if.end1276.i ], [ %zvec.5.i, %while.body1370.i ], [ %zvec.5.i, %while.body1354.i ], [ %zvec.4.i, %if.end1212.i ], [ %zvec.9.i, %if.end1692.i ], [ %zvec.7.i, %if.end1628.i ], [ %987, %if.end1019.i ], [ %680, %if.end525.i ], [ %653, %if.end467.i ], [ %463, %if.end237.i ], [ %431, %if.end180.i ], [ %399, %if.end123.i ], [ %368, %if.end71.i ]
-  %zn.11.i = phi i32 [ %367, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %367, %if.then65.i ], [ %462, %if.then227.i ], [ %462, %if.end281.i ], [ %548, %makeMaps_d.exit.i ], [ %652, %if.then458.i ], [ %652, %if.then458.i ], [ %652, %if.then458.i ], [ %679, %if.then516.i ], [ %844, %while.cond737.i ], [ %783, %if.then974.i ], [ %zn.1.i, %while.cond1054.i ], [ %zn.1.i, %while.end1120.i ], [ %zn.4.i, %if.then1167.i ], [ %zn.6.i, %while.cond1247.i ], [ %zn.6.i, %while.end1313.i ], [ %zn.3.i, %if.else1383.i ], [ %zn.3.i, %if.then1583.i ], [ %zn.9.i, %while.cond1663.i ], [ %zn.9.i, %while.end1729.i ], [ %zn.3.i, %while.end1748.i ], [ %zn.3.i, %if.end2032.i ], [ %zn.3.i, %indexIntoF.exit.i104 ], [ %.pre3409.i, %if.end.i86 ], [ %zn.3.i, %save_state_and_return.loopexit3243.i ], [ %.ph493, %if.end587.i ], [ %517, %if.end309.i ], [ %593, %if.end393.i ], [ %.ph493, %if.end626.i ], [ %888, %if.end820.i ], [ %862, %if.end763.i ], [ %803, %if.end698.i ], [ %zn.2.i, %if.end1083.i ], [ %zn.7.i, %if.end1276.i ], [ %zn.6.i, %while.body1370.i ], [ %zn.6.i, %while.body1354.i ], [ %zn.5.i, %if.end1212.i ], [ %zn.10.i, %if.end1692.i ], [ %zn.8.i, %if.end1628.i ], [ %zn.0.i, %if.end1019.i ], [ %679, %if.end525.i ], [ %652, %if.end467.i ], [ %462, %if.end237.i ], [ %430, %if.end180.i ], [ %398, %if.end123.i ], [ %367, %if.end71.i ]
-  %curr.18.i = phi i32 [ %365, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %365, %if.then65.i ], [ %460, %if.then227.i ], [ %460, %if.end281.i ], [ %546, %makeMaps_d.exit.i ], [ %650, %if.then458.i ], [ %650, %if.then458.i ], [ %650, %if.then458.i ], [ %677, %if.then516.i ], [ %curr.3.i, %while.cond737.i ], [ %curr.0.i, %if.then974.i ], [ %curr.8.i, %while.cond1054.i ], [ %curr.8.i, %while.end1120.i ], [ %curr.11.i, %if.then1167.i ], [ %curr.13.i, %while.cond1247.i ], [ %curr.13.i, %while.end1313.i ], [ %curr.10.i, %if.else1383.i ], [ %curr.10.i, %if.then1583.i ], [ %curr.16.i, %while.cond1663.i ], [ %curr.16.i, %while.end1729.i ], [ %curr.10.i, %while.end1748.i ], [ %curr.10.i, %if.end2032.i ], [ %curr.10.i, %indexIntoF.exit.i104 ], [ %.pre3407.i, %if.end.i86 ], [ %curr.10.i, %save_state_and_return.loopexit3243.i ], [ %.ph491, %if.end587.i ], [ %515, %if.end309.i ], [ %591, %if.end393.i ], [ %.ph491, %if.end626.i ], [ %curr.5.i, %if.end820.i ], [ %curr.4.i, %if.end763.i ], [ %curr.1.i, %if.end698.i ], [ %curr.9.i, %if.end1083.i ], [ %curr.14.i, %if.end1276.i ], [ %curr.13.i, %while.body1370.i ], [ %curr.13.i, %while.body1354.i ], [ %curr.12.i, %if.end1212.i ], [ %curr.17.i, %if.end1692.i ], [ %curr.15.i, %if.end1628.i ], [ %curr.7.i, %if.end1019.i ], [ %677, %if.end525.i ], [ %650, %if.end467.i ], [ %460, %if.end237.i ], [ %428, %if.end180.i ], [ %396, %if.end123.i ], [ %365, %if.end71.i ]
-  %N.8.i = phi i32 [ %364, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %364, %if.then65.i ], [ %459, %if.then227.i ], [ %459, %if.end281.i ], [ %545, %makeMaps_d.exit.i ], [ %649, %if.then458.i ], [ %649, %if.then458.i ], [ %649, %if.then458.i ], [ %676, %if.then516.i ], [ %842, %while.cond737.i ], [ %781, %if.then974.i ], [ %998, %while.cond1054.i ], [ %998, %while.end1120.i ], [ %mul1160.i, %if.then1167.i ], [ %N.3.i, %while.cond1247.i ], [ %N.3.i, %while.end1313.i ], [ %N.0.i, %if.else1383.i ], [ %N.0.i, %if.then1583.i ], [ %N.6.i, %while.cond1663.i ], [ %N.6.i, %while.end1729.i ], [ %N.0.i, %while.end1748.i ], [ %N.0.i, %if.end2032.i ], [ %N.0.i, %indexIntoF.exit.i104 ], [ %.pre3406.i, %if.end.i86 ], [ %N.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph490, %if.end587.i ], [ %514, %if.end309.i ], [ %590, %if.end393.i ], [ %.ph490, %if.end626.i ], [ %886, %if.end820.i ], [ %860, %if.end763.i ], [ %801, %if.end698.i ], [ %1003, %if.end1083.i ], [ %N.4.i, %if.end1276.i ], [ %N.3.i, %while.body1370.i ], [ %N.3.i, %while.body1354.i ], [ %N.2.i, %if.end1212.i ], [ %N.7.i, %if.end1692.i ], [ %N.5.i, %if.end1628.i ], [ %985, %if.end1019.i ], [ %676, %if.end525.i ], [ %649, %if.end467.i ], [ %459, %if.end237.i ], [ %427, %if.end180.i ], [ %395, %if.end123.i ], [ %364, %if.end71.i ]
-  %es.12.i = phi i32 [ %363, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %363, %if.then65.i ], [ %458, %if.then227.i ], [ %458, %if.end281.i ], [ %544, %makeMaps_d.exit.i ], [ %648, %if.then458.i ], [ %648, %if.then458.i ], [ %648, %if.then458.i ], [ %675, %if.then516.i ], [ %841, %while.cond737.i ], [ %780, %if.then974.i ], [ %997, %while.cond1054.i ], [ %997, %while.end1120.i ], [ %es.2.i, %if.then1167.i ], [ %es.4.i, %while.cond1247.i ], [ %es.4.i, %while.end1313.i ], [ %es.0.i, %if.else1383.i ], [ %es.0.i, %if.then1583.i ], [ %es.10.i, %while.cond1663.i ], [ %es.10.i, %while.end1729.i ], [ %es.0.i, %while.end1748.i ], [ %es.0.i, %if.end2032.i ], [ %es.0.i, %indexIntoF.exit.i104 ], [ %.pre3405.i, %if.end.i86 ], [ %es.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph489, %if.end587.i ], [ %513, %if.end309.i ], [ %589, %if.end393.i ], [ %.ph489, %if.end626.i ], [ %885, %if.end820.i ], [ %859, %if.end763.i ], [ %800, %if.end698.i ], [ %1002, %if.end1083.i ], [ %es.5.i, %if.end1276.i ], [ %es.73176.i, %while.body1370.i ], [ %es.63171.i, %while.body1354.i ], [ %es.3.i, %if.end1212.i ], [ %es.11.i, %if.end1692.i ], [ %es.9.i, %if.end1628.i ], [ %984, %if.end1019.i ], [ %675, %if.end525.i ], [ %648, %if.end467.i ], [ %458, %if.end237.i ], [ %426, %if.end180.i ], [ %394, %if.end123.i ], [ %363, %if.end71.i ]
-  %nblock.14.i = phi i32 [ %362, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %362, %if.then65.i ], [ %457, %if.then227.i ], [ %457, %if.end281.i ], [ %543, %makeMaps_d.exit.i ], [ %647, %if.then458.i ], [ %647, %if.then458.i ], [ %647, %if.then458.i ], [ %674, %if.then516.i ], [ %840, %while.cond737.i ], [ 0, %if.then974.i ], [ %nblock.1.i, %while.cond1054.i ], [ %nblock.1.i, %while.end1120.i ], [ %nblock.4.i, %if.then1167.i ], [ %nblock.6.i, %while.cond1247.i ], [ %nblock.6.i, %while.end1313.i ], [ %nblock.3.i, %if.else1383.i ], [ %inc1580.i, %if.then1583.i ], [ %nblock.12.i, %while.cond1663.i ], [ %nblock.12.i, %while.end1729.i ], [ %nblock.3.i, %while.end1748.i ], [ %nblock.3.i, %if.end2032.i ], [ %nblock.3.i, %indexIntoF.exit.i104 ], [ %.pre3404.i, %if.end.i86 ], [ %nblock.3.i, %save_state_and_return.loopexit3243.i ], [ %.ph488, %if.end587.i ], [ %512, %if.end309.i ], [ %588, %if.end393.i ], [ %.ph488, %if.end626.i ], [ %884, %if.end820.i ], [ %858, %if.end763.i ], [ %799, %if.end698.i ], [ %nblock.2.i, %if.end1083.i ], [ %nblock.7.i, %if.end1276.i ], [ %smax3353.i, %while.body1370.i ], [ %smax.i, %while.body1354.i ], [ %nblock.5.i, %if.end1212.i ], [ %nblock.13.i, %if.end1692.i ], [ %nblock.11.i, %if.end1628.i ], [ %nblock.0.i, %if.end1019.i ], [ %674, %if.end525.i ], [ %647, %if.end467.i ], [ %457, %if.end237.i ], [ %425, %if.end180.i ], [ %393, %if.end123.i ], [ %362, %if.end71.i ]
-  %nblockMAX.11.i = phi i32 [ %361, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %361, %if.then65.i ], [ %456, %if.then227.i ], [ %456, %if.end281.i ], [ %542, %makeMaps_d.exit.i ], [ %646, %if.then458.i ], [ %646, %if.then458.i ], [ %646, %if.then458.i ], [ %673, %if.then516.i ], [ %839, %while.cond737.i ], [ %mul939.i, %if.then974.i ], [ %nblockMAX.1.i, %while.cond1054.i ], [ %nblockMAX.1.i, %while.end1120.i ], [ %nblockMAX.4.i, %if.then1167.i ], [ %nblockMAX.6.i, %while.cond1247.i ], [ %nblockMAX.6.i, %while.end1313.i ], [ %nblockMAX.3.i, %if.else1383.i ], [ %nblockMAX.3.i, %if.then1583.i ], [ %nblockMAX.9.i, %while.cond1663.i ], [ %nblockMAX.9.i, %while.end1729.i ], [ %nblockMAX.3.i, %while.end1748.i ], [ %nblockMAX.3.i, %if.end2032.i ], [ %nblockMAX.3.i, %indexIntoF.exit.i104 ], [ %.pre3403.i, %if.end.i86 ], [ %nblockMAX.3.i, %save_state_and_return.loopexit3243.i ], [ %.ph487, %if.end587.i ], [ %511, %if.end309.i ], [ %587, %if.end393.i ], [ %.ph487, %if.end626.i ], [ %883, %if.end820.i ], [ %857, %if.end763.i ], [ %798, %if.end698.i ], [ %nblockMAX.2.i, %if.end1083.i ], [ %nblockMAX.7.i, %if.end1276.i ], [ %nblockMAX.6.i, %while.body1370.i ], [ %nblockMAX.6.i, %while.body1354.i ], [ %nblockMAX.5.i, %if.end1212.i ], [ %nblockMAX.10.i, %if.end1692.i ], [ %nblockMAX.8.i, %if.end1628.i ], [ %nblockMAX.0.i, %if.end1019.i ], [ %673, %if.end525.i ], [ %646, %if.end467.i ], [ %456, %if.end237.i ], [ %424, %if.end180.i ], [ %392, %if.end123.i ], [ %361, %if.end71.i ]
-  %nextSym.8.i = phi i32 [ %360, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %360, %if.then65.i ], [ %455, %if.then227.i ], [ %455, %if.end281.i ], [ %541, %makeMaps_d.exit.i ], [ %645, %if.then458.i ], [ %645, %if.then458.i ], [ %645, %if.then458.i ], [ %672, %if.then516.i ], [ %838, %while.cond737.i ], [ %777, %if.then974.i ], [ %996, %while.cond1054.i ], [ %996, %while.end1120.i ], [ %nextSym.1.i, %if.then1167.i ], [ %nextSym.3.i, %while.cond1247.i ], [ %nextSym.3.i, %while.end1313.i ], [ %nextSym.0.i, %if.else1383.i ], [ %nextSym.0.i, %if.then1583.i ], [ %nextSym.6.i, %while.cond1663.i ], [ %nextSym.6.i, %while.end1729.i ], [ %nextSym.0.i, %while.end1748.i ], [ %nextSym.0.i, %if.end2032.i ], [ %nextSym.0.i, %indexIntoF.exit.i104 ], [ %.pre3402.i, %if.end.i86 ], [ %nextSym.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph486, %if.end587.i ], [ %510, %if.end309.i ], [ %586, %if.end393.i ], [ %.ph486, %if.end626.i ], [ %882, %if.end820.i ], [ %856, %if.end763.i ], [ %797, %if.end698.i ], [ %1001, %if.end1083.i ], [ %nextSym.4.i, %if.end1276.i ], [ %1037, %while.body1370.i ], [ %1037, %while.body1354.i ], [ %nextSym.2.i, %if.end1212.i ], [ %nextSym.7.i, %if.end1692.i ], [ %nextSym.5.i, %if.end1628.i ], [ %983, %if.end1019.i ], [ %672, %if.end525.i ], [ %645, %if.end467.i ], [ %455, %if.end237.i ], [ %423, %if.end180.i ], [ %391, %if.end123.i ], [ %360, %if.end71.i ]
-  %groupPos.14.i = phi i32 [ %359, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %359, %if.then65.i ], [ %454, %if.then227.i ], [ %454, %if.end281.i ], [ %540, %makeMaps_d.exit.i ], [ %644, %if.then458.i ], [ %644, %if.then458.i ], [ %644, %if.then458.i ], [ %671, %if.then516.i ], [ %837, %while.cond737.i ], [ 0, %if.then974.i ], [ %groupPos.2.i, %while.cond1054.i ], [ %groupPos.2.i, %while.end1120.i ], [ 0, %if.then1167.i ], [ %groupPos.8.i, %while.cond1247.i ], [ %groupPos.8.i, %while.end1313.i ], [ %groupPos.4.i, %if.else1383.i ], [ 0, %if.then1583.i ], [ %groupPos.12.i, %while.cond1663.i ], [ %groupPos.12.i, %while.end1729.i ], [ %groupPos.4.i, %while.end1748.i ], [ %groupPos.4.i, %if.end2032.i ], [ %groupPos.4.i, %indexIntoF.exit.i104 ], [ %.pre3401.i, %if.end.i86 ], [ %groupPos.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph485, %if.end587.i ], [ %509, %if.end309.i ], [ %585, %if.end393.i ], [ %.ph485, %if.end626.i ], [ %881, %if.end820.i ], [ %855, %if.end763.i ], [ %796, %if.end698.i ], [ %groupPos.3.i, %if.end1083.i ], [ %groupPos.9.i, %if.end1276.i ], [ %groupPos.8.i, %while.body1370.i ], [ %groupPos.8.i, %while.body1354.i ], [ %groupPos.7.i, %if.end1212.i ], [ %groupPos.13.i, %if.end1692.i ], [ %groupPos.11.i, %if.end1628.i ], [ %groupPos.1.i, %if.end1019.i ], [ %671, %if.end525.i ], [ %644, %if.end467.i ], [ %454, %if.end237.i ], [ %422, %if.end180.i ], [ %390, %if.end123.i ], [ %359, %if.end71.i ]
-  %groupNo.14.i = phi i32 [ %358, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %358, %if.then65.i ], [ %453, %if.then227.i ], [ %453, %if.end281.i ], [ %539, %makeMaps_d.exit.i ], [ %643, %if.then458.i ], [ %643, %if.then458.i ], [ %643, %if.then458.i ], [ %670, %if.then516.i ], [ %836, %while.cond737.i ], [ 0, %if.then974.i ], [ %groupNo.2.i, %while.cond1054.i ], [ %groupNo.2.i, %while.end1120.i ], [ %inc1168.i, %if.then1167.i ], [ %groupNo.8.i, %while.cond1247.i ], [ %groupNo.8.i, %while.end1313.i ], [ %groupNo.4.i, %if.else1383.i ], [ %inc1584.i, %if.then1583.i ], [ %groupNo.12.i, %while.cond1663.i ], [ %groupNo.12.i, %while.end1729.i ], [ %groupNo.4.i, %while.end1748.i ], [ %groupNo.4.i, %if.end2032.i ], [ %groupNo.4.i, %indexIntoF.exit.i104 ], [ %.pre3400.i, %if.end.i86 ], [ %groupNo.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph484, %if.end587.i ], [ %508, %if.end309.i ], [ %584, %if.end393.i ], [ %.ph484, %if.end626.i ], [ %880, %if.end820.i ], [ %854, %if.end763.i ], [ %795, %if.end698.i ], [ %groupNo.3.i, %if.end1083.i ], [ %groupNo.9.i, %if.end1276.i ], [ %groupNo.8.i, %while.body1370.i ], [ %groupNo.8.i, %while.body1354.i ], [ %groupNo.7.i, %if.end1212.i ], [ %groupNo.13.i, %if.end1692.i ], [ %groupNo.11.i, %if.end1628.i ], [ %groupNo.1.i, %if.end1019.i ], [ %670, %if.end525.i ], [ %643, %if.end467.i ], [ %453, %if.end237.i ], [ %421, %if.end180.i ], [ %389, %if.end123.i ], [ %358, %if.end71.i ]
-  %EOB.11.i = phi i32 [ %357, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %357, %if.then65.i ], [ %452, %if.then227.i ], [ %452, %if.end281.i ], [ %538, %makeMaps_d.exit.i ], [ %642, %if.then458.i ], [ %642, %if.then458.i ], [ %642, %if.then458.i ], [ %669, %if.then516.i ], [ %835, %while.cond737.i ], [ %add937.i, %if.then974.i ], [ %EOB.1.i, %while.cond1054.i ], [ %EOB.1.i, %while.end1120.i ], [ %EOB.4.i, %if.then1167.i ], [ %EOB.6.i, %while.cond1247.i ], [ %EOB.6.i, %while.end1313.i ], [ %EOB.3.i, %if.else1383.i ], [ %EOB.3.i, %if.then1583.i ], [ %EOB.9.i, %while.cond1663.i ], [ %EOB.9.i, %while.end1729.i ], [ %nextSym.0.i, %while.end1748.i ], [ %nextSym.0.i, %if.end2032.i ], [ %nextSym.0.i, %indexIntoF.exit.i104 ], [ %.pre3399.i, %if.end.i86 ], [ %nextSym.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph483, %if.end587.i ], [ %507, %if.end309.i ], [ %583, %if.end393.i ], [ %.ph483, %if.end626.i ], [ %879, %if.end820.i ], [ %853, %if.end763.i ], [ %794, %if.end698.i ], [ %EOB.2.i, %if.end1083.i ], [ %EOB.7.i, %if.end1276.i ], [ %EOB.6.i, %while.body1370.i ], [ %EOB.6.i, %while.body1354.i ], [ %EOB.5.i, %if.end1212.i ], [ %EOB.10.i, %if.end1692.i ], [ %EOB.8.i, %if.end1628.i ], [ %EOB.0.i, %if.end1019.i ], [ %669, %if.end525.i ], [ %642, %if.end467.i ], [ %452, %if.end237.i ], [ %420, %if.end180.i ], [ %388, %if.end123.i ], [ %357, %if.end71.i ]
-  %nSelectors.20.i = phi i32 [ %356, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %356, %if.then65.i ], [ %451, %if.then227.i ], [ %451, %if.end281.i ], [ %537, %makeMaps_d.exit.i ], [ %641, %if.then458.i ], [ %641, %if.then458.i ], [ %641, %if.then458.i ], [ 0, %if.then516.i ], [ %nSelectors.6.i, %while.cond737.i ], [ %nSelectors.3.i, %if.then974.i ], [ %nSelectors.10.i, %while.cond1054.i ], [ %nSelectors.10.i, %while.end1120.i ], [ %nSelectors.13.i, %if.then1167.i ], [ %nSelectors.15.i, %while.cond1247.i ], [ %nSelectors.15.i, %while.end1313.i ], [ %nSelectors.12.i, %if.else1383.i ], [ %nSelectors.12.i, %if.then1583.i ], [ %nSelectors.18.i, %while.cond1663.i ], [ %nSelectors.18.i, %while.end1729.i ], [ %nSelectors.12.i, %while.end1748.i ], [ %nSelectors.12.i, %if.end2032.i ], [ %nSelectors.12.i, %indexIntoF.exit.i104 ], [ %.pre3398.i, %if.end.i86 ], [ %nSelectors.12.i, %save_state_and_return.loopexit3243.i ], [ %nSelectors.2.i.ph, %if.end587.i ], [ %506, %if.end309.i ], [ %582, %if.end393.i ], [ %nSelectors.2.i.ph, %if.end626.i ], [ %nSelectors.8.i, %if.end820.i ], [ %nSelectors.7.i, %if.end763.i ], [ %nSelectors.4.i, %if.end698.i ], [ %nSelectors.11.i, %if.end1083.i ], [ %nSelectors.16.i, %if.end1276.i ], [ %nSelectors.15.i, %while.body1370.i ], [ %nSelectors.15.i, %while.body1354.i ], [ %nSelectors.14.i, %if.end1212.i ], [ %nSelectors.19.i, %if.end1692.i ], [ %nSelectors.17.i, %if.end1628.i ], [ %nSelectors.9.i, %if.end1019.i ], [ %668, %if.end525.i ], [ %641, %if.end467.i ], [ %451, %if.end237.i ], [ %419, %if.end180.i ], [ %387, %if.end123.i ], [ %356, %if.end71.i ]
-  %nGroups.21.i = phi i32 [ %355, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %355, %if.then65.i ], [ %450, %if.then227.i ], [ %450, %if.end281.i ], [ %536, %makeMaps_d.exit.i ], [ %and464.i, %if.then458.i ], [ %and464.i, %if.then458.i ], [ %and464.i, %if.then458.i ], [ %nGroups.0.i, %if.then516.i ], [ %nGroups.7.i, %while.cond737.i ], [ %nGroups.4.i, %if.then974.i ], [ %nGroups.11.i, %while.cond1054.i ], [ %nGroups.11.i, %while.end1120.i ], [ %nGroups.14.i, %if.then1167.i ], [ %nGroups.16.i, %while.cond1247.i ], [ %nGroups.16.i, %while.end1313.i ], [ %nGroups.13.i, %if.else1383.i ], [ %nGroups.13.i, %if.then1583.i ], [ %nGroups.19.i, %while.cond1663.i ], [ %nGroups.19.i, %while.end1729.i ], [ %nGroups.13.i, %while.end1748.i ], [ %nGroups.13.i, %if.end2032.i ], [ %nGroups.13.i, %indexIntoF.exit.i104 ], [ %.pre3397.i, %if.end.i86 ], [ %nGroups.13.i, %save_state_and_return.loopexit3243.i ], [ %nGroups.3.i.ph, %if.end587.i ], [ %505, %if.end309.i ], [ %581, %if.end393.i ], [ %nGroups.3.i.ph, %if.end626.i ], [ %nGroups.9.i, %if.end820.i ], [ %nGroups.8.i, %if.end763.i ], [ %nGroups.5.i, %if.end698.i ], [ %nGroups.12.i, %if.end1083.i ], [ %nGroups.17.i, %if.end1276.i ], [ %nGroups.16.i, %while.body1370.i ], [ %nGroups.16.i, %while.body1354.i ], [ %nGroups.15.i, %if.end1212.i ], [ %nGroups.20.i, %if.end1692.i ], [ %nGroups.18.i, %if.end1628.i ], [ %nGroups.10.i, %if.end1019.i ], [ %nGroups.0.i, %if.end525.i ], [ %640, %if.end467.i ], [ %450, %if.end237.i ], [ %418, %if.end180.i ], [ %386, %if.end123.i ], [ %355, %if.end71.i ]
-  %alphaSize.22.i = phi i32 [ %354, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %354, %if.then65.i ], [ %449, %if.then227.i ], [ %449, %if.end281.i ], [ %535, %makeMaps_d.exit.i ], [ %alphaSize.0.i, %if.then458.i ], [ %alphaSize.0.i, %if.then458.i ], [ %alphaSize.0.i, %if.then458.i ], [ %alphaSize.1.i, %if.then516.i ], [ %alphaSize.8.i, %while.cond737.i ], [ %alphaSize.5.i, %if.then974.i ], [ %alphaSize.12.i, %while.cond1054.i ], [ %alphaSize.12.i, %while.end1120.i ], [ %alphaSize.15.i, %if.then1167.i ], [ %alphaSize.17.i, %while.cond1247.i ], [ %alphaSize.17.i, %while.end1313.i ], [ %alphaSize.14.i, %if.else1383.i ], [ %alphaSize.14.i, %if.then1583.i ], [ %alphaSize.20.i, %while.cond1663.i ], [ %alphaSize.20.i, %while.end1729.i ], [ %alphaSize.14.i, %while.end1748.i ], [ %alphaSize.14.i, %if.end2032.i ], [ %alphaSize.14.i, %indexIntoF.exit.i104 ], [ %.pre3396.i, %if.end.i86 ], [ %alphaSize.14.i, %save_state_and_return.loopexit3243.i ], [ %alphaSize.4.i.ph, %if.end587.i ], [ %504, %if.end309.i ], [ %580, %if.end393.i ], [ %alphaSize.4.i.ph, %if.end626.i ], [ %alphaSize.10.i, %if.end820.i ], [ %alphaSize.9.i, %if.end763.i ], [ %alphaSize.6.i, %if.end698.i ], [ %alphaSize.13.i, %if.end1083.i ], [ %alphaSize.18.i, %if.end1276.i ], [ %alphaSize.17.i, %while.body1370.i ], [ %alphaSize.17.i, %while.body1354.i ], [ %alphaSize.16.i, %if.end1212.i ], [ %alphaSize.21.i, %if.end1692.i ], [ %alphaSize.19.i, %if.end1628.i ], [ %alphaSize.11.i, %if.end1019.i ], [ %alphaSize.1.i, %if.end525.i ], [ %alphaSize.0.i, %if.end467.i ], [ %449, %if.end237.i ], [ %417, %if.end180.i ], [ %385, %if.end123.i ], [ %354, %if.end71.i ]
-  %t.18.i = phi i32 [ %353, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %353, %if.then65.i ], [ %448, %if.then227.i ], [ %448, %if.end281.i ], [ %534, %makeMaps_d.exit.i ], [ %639, %if.then458.i ], [ %639, %if.then458.i ], [ %639, %if.then458.i ], [ %667, %if.then516.i ], [ %t.3.i, %while.cond737.i ], [ %t.6.lcssa.i, %if.then974.i ], [ %t.8.i, %while.cond1054.i ], [ %t.8.i, %while.end1120.i ], [ %t.11.i, %if.then1167.i ], [ %t.13.i, %while.cond1247.i ], [ %t.13.i, %while.end1313.i ], [ %t.10.i, %if.else1383.i ], [ %t.10.i, %if.then1583.i ], [ %t.16.i, %while.cond1663.i ], [ %t.16.i, %while.end1729.i ], [ %t.10.i, %while.end1748.i ], [ %t.10.i, %if.end2032.i ], [ %t.10.i, %indexIntoF.exit.i104 ], [ %.pre3395.i, %if.end.i86 ], [ %t.10.i, %save_state_and_return.loopexit3243.i ], [ %.ph, %if.end587.i ], [ %503, %if.end309.i ], [ %579, %if.end393.i ], [ %.ph, %if.end626.i ], [ %t.5.i, %if.end820.i ], [ %t.4.i, %if.end763.i ], [ %t.1.i, %if.end698.i ], [ %t.9.i, %if.end1083.i ], [ %t.14.i, %if.end1276.i ], [ %t.13.i, %while.body1370.i ], [ %t.13.i, %while.body1354.i ], [ %t.12.i, %if.end1212.i ], [ %t.17.i, %if.end1692.i ], [ %t.15.i, %if.end1628.i ], [ %t.7.i, %if.end1019.i ], [ %667, %if.end525.i ], [ %639, %if.end467.i ], [ %448, %if.end237.i ], [ %416, %if.end180.i ], [ %384, %if.end123.i ], [ %353, %if.end71.i ]
-  %j.28.i = phi i32 [ %352, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %352, %if.then65.i ], [ %447, %if.then227.i ], [ %447, %if.end281.i ], [ %j.0.i, %makeMaps_d.exit.i ], [ %j.4.i, %if.then458.i ], [ %j.4.i, %if.then458.i ], [ %j.4.i, %if.then458.i ], [ %j.5.i, %if.then516.i ], [ %j.12.i, %while.cond737.i ], [ %j.9.i, %if.then974.i ], [ %j.16.i, %while.cond1054.i ], [ %j.16.i, %while.end1120.i ], [ %j.19.i, %if.then1167.i ], [ %j.21.i, %while.cond1247.i ], [ %j.21.i, %while.end1313.i ], [ %j.18.i, %if.else1383.i ], [ %j.18.i, %if.then1583.i ], [ %j.24.i, %while.cond1663.i ], [ %j.24.i, %while.end1729.i ], [ %j.18.i, %while.end1748.i ], [ %j.18.i, %if.end2032.i ], [ %or1925.i, %indexIntoF.exit.i104 ], [ %.pre3394.i, %if.end.i86 ], [ %j.18.i, %save_state_and_return.loopexit3243.i ], [ %j.8.i, %if.end587.i ], [ %502, %if.end309.i ], [ %j.2.i, %if.end393.i ], [ %inc627.i, %if.end626.i ], [ %j.14.i, %if.end820.i ], [ %j.13.i, %if.end763.i ], [ %j.10.i, %if.end698.i ], [ %j.17.i, %if.end1083.i ], [ %j.22.i, %if.end1276.i ], [ %j.21.i, %while.body1370.i ], [ %j.21.i, %while.body1354.i ], [ %j.20.i, %if.end1212.i ], [ %j.25.i, %if.end1692.i ], [ %j.23.i, %if.end1628.i ], [ %j.15.i, %if.end1019.i ], [ %j.5.i, %if.end525.i ], [ %j.4.i, %if.end467.i ], [ %447, %if.end237.i ], [ %415, %if.end180.i ], [ %383, %if.end123.i ], [ %352, %if.end71.i ]
-  %i.40.i = phi i32 [ %351, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %351, %if.then65.i ], [ %446, %if.then227.i ], [ %446, %if.end281.i ], [ %i.3.i, %makeMaps_d.exit.i ], [ %i.7.i, %if.then458.i ], [ %i.7.i, %if.then458.i ], [ %i.7.i, %if.then458.i ], [ %i.8.i, %if.then516.i ], [ %i.16.i, %while.cond737.i ], [ 256, %if.then974.i ], [ %i.22.i, %while.cond1054.i ], [ %i.22.i, %while.end1120.i ], [ %i.25.i, %if.then1167.i ], [ %i.27.i, %while.cond1247.i ], [ %i.27.i, %while.end1313.i ], [ %i.24.i, %if.else1383.i ], [ %i.24.i, %if.then1583.i ], [ %i.30.i, %while.cond1663.i ], [ %i.30.i, %while.end1729.i ], [ %i.24.i, %while.end1748.i ], [ %nblock.3.i, %if.end2032.i ], [ %j.26.i, %indexIntoF.exit.i104 ], [ %.pre.i87, %if.end.i86 ], [ %1260, %save_state_and_return.loopexit3243.i ], [ %i.11.i.ph, %if.end587.i ], [ %i.1.i, %if.end309.i ], [ %i.5.i, %if.end393.i ], [ %i.11.i.ph, %if.end626.i ], [ %i.18.i, %if.end820.i ], [ %i.17.i, %if.end763.i ], [ %i.14.i, %if.end698.i ], [ %i.23.i, %if.end1083.i ], [ %i.28.i, %if.end1276.i ], [ %i.27.i, %while.body1370.i ], [ %i.27.i, %while.body1354.i ], [ %i.26.i, %if.end1212.i ], [ %i.31.i, %if.end1692.i ], [ %i.29.i, %if.end1628.i ], [ %i.21.i, %if.end1019.i ], [ %i.8.i, %if.end525.i ], [ %i.7.i, %if.end467.i ], [ %446, %if.end237.i ], [ %414, %if.end180.i ], [ %382, %if.end123.i ], [ %351, %if.end71.i ]
-  %cmp32 = phi i1 [ true, %endhdr_2.i ], [ false, %if.then27.i ], [ false, %if.else.i ], [ false, %if.then65.i ], [ false, %if.then227.i ], [ false, %if.end281.i ], [ false, %makeMaps_d.exit.i ], [ false, %if.then458.i ], [ false, %if.then458.i ], [ false, %if.then458.i ], [ false, %if.then516.i ], [ false, %while.cond737.i ], [ false, %if.then974.i ], [ false, %while.cond1054.i ], [ false, %while.end1120.i ], [ false, %if.then1167.i ], [ false, %while.cond1247.i ], [ false, %while.end1313.i ], [ false, %if.else1383.i ], [ false, %if.then1583.i ], [ false, %while.cond1663.i ], [ false, %while.end1729.i ], [ false, %while.end1748.i ], [ false, %if.end2032.i ], [ false, %indexIntoF.exit.i104 ], [ false, %if.end.i86 ], [ false, %save_state_and_return.loopexit3243.i ], [ false, %if.end587.i ], [ false, %if.end309.i ], [ false, %if.end393.i ], [ false, %if.end626.i ], [ false, %if.end820.i ], [ false, %if.end763.i ], [ false, %if.end698.i ], [ false, %if.end1083.i ], [ false, %if.end1276.i ], [ false, %while.body1370.i ], [ false, %while.body1354.i ], [ false, %if.end1212.i ], [ false, %if.end1692.i ], [ false, %if.end1628.i ], [ false, %if.end1019.i ], [ false, %if.end525.i ], [ false, %if.end467.i ], [ false, %if.end237.i ], [ false, %if.end180.i ], [ false, %if.end123.i ], [ false, %if.end71.i ]
-  %retVal.0.i = phi i32 [ 4, %endhdr_2.i ], [ -3, %if.then27.i ], [ -3, %if.else.i ], [ -4, %if.then65.i ], [ -4, %if.then227.i ], [ -4, %if.end281.i ], [ -4, %makeMaps_d.exit.i ], [ -4, %if.then458.i ], [ -4, %if.then458.i ], [ -4, %if.then458.i ], [ -4, %if.then516.i ], [ -4, %while.cond737.i ], [ -4, %if.then974.i ], [ -4, %while.cond1054.i ], [ -4, %while.end1120.i ], [ -4, %if.then1167.i ], [ -4, %while.cond1247.i ], [ -4, %while.end1313.i ], [ -4, %if.else1383.i ], [ -4, %if.then1583.i ], [ -4, %while.cond1663.i ], [ -4, %while.end1729.i ], [ -4, %while.end1748.i ], [ 0, %if.end2032.i ], [ 0, %indexIntoF.exit.i104 ], [ -4, %if.end.i86 ], [ -4, %save_state_and_return.loopexit3243.i ], [ 0, %if.end587.i ], [ 0, %if.end309.i ], [ 0, %if.end393.i ], [ -4, %if.end626.i ], [ 0, %if.end820.i ], [ 0, %if.end763.i ], [ 0, %if.end698.i ], [ 0, %if.end1083.i ], [ 0, %if.end1276.i ], [ -4, %while.body1370.i ], [ -4, %while.body1354.i ], [ 0, %if.end1212.i ], [ 0, %if.end1692.i ], [ 0, %if.end1628.i ], [ 0, %if.end1019.i ], [ 0, %if.end525.i ], [ 0, %if.end467.i ], [ 0, %if.end237.i ], [ 0, %if.end180.i ], [ 0, %if.end123.i ], [ 0, %if.end71.i ]
+BZ2_decompress.exit:                              ; preds = %if.end71.i, %if.end123.i, %if.end180.i, %if.end237.i, %if.end467.i, %if.end525.i, %if.end1019.i, %if.end1628.i, %if.end1692.i, %if.end1212.i, %while.body1354.i, %while.body1370.i, %if.end1276.i, %if.end1083.i, %if.end698.i, %if.end763.i, %if.end820.i, %if.end626.i, %if.end393.i, %if.end309.i, %if.end587.i, %if.end.i86, %if.then27.i, %if.else.i, %if.then65.i, %if.then227.i, %if.end281.i, %makeMaps_d.exit.i, %if.then458.i, %if.then458.i, %if.then458.i, %if.then516.i, %while.cond737.i, %for.end935.i, %while.cond1054.i, %while.end1120.i, %if.then1167.i, %while.cond1247.i, %while.end1313.i, %if.else1383.i, %if.then1583.i, %while.cond1663.i, %while.end1729.i, %while.end1748.i, %indexIntoF.exit.i104, %if.end2032.i, %endhdr_2.i, %save_state_and_return.loopexit3243.i
+  %1254 = phi i32 [ %366, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %366, %if.then65.i ], [ %461, %if.then227.i ], [ %461, %if.end281.i ], [ %547, %makeMaps_d.exit.i ], [ %651, %if.then458.i ], [ %651, %if.then458.i ], [ %651, %if.then458.i ], [ %678, %if.then516.i ], [ %843, %while.cond737.i ], [ %782, %for.end935.i ], [ %992, %while.cond1054.i ], [ %992, %while.end1120.i ], [ %1008, %if.then1167.i ], [ %1019, %while.cond1247.i ], [ %1019, %while.end1313.i ], [ %1007, %if.else1383.i ], [ %1007, %if.then1583.i ], [ %1170, %while.cond1663.i ], [ %1170, %while.end1729.i ], [ %1007, %while.end1748.i ], [ %1007, %if.end2032.i ], [ %1007, %indexIntoF.exit.i104 ], [ %.pre3408.i, %if.end.i86 ], [ %1007, %save_state_and_return.loopexit3243.i ], [ %.ph492, %if.end587.i ], [ %516, %if.end309.i ], [ %592, %if.end393.i ], [ %.ph492, %if.end626.i ], [ %887, %if.end820.i ], [ %861, %if.end763.i ], [ %802, %if.end698.i ], [ %997, %if.end1083.i ], [ %1021, %if.end1276.i ], [ %1019, %while.body1370.i ], [ %1019, %while.body1354.i ], [ %1011, %if.end1212.i ], [ %1172, %if.end1692.i ], [ %1162, %if.end1628.i ], [ %979, %if.end1019.i ], [ %678, %if.end525.i ], [ %651, %if.end467.i ], [ %461, %if.end237.i ], [ %429, %if.end180.i ], [ %397, %if.end123.i ], [ %366, %if.end71.i ]
+  %zj.10.i = phi i32 [ %369, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %369, %if.then65.i ], [ %464, %if.then227.i ], [ %464, %if.end281.i ], [ %550, %makeMaps_d.exit.i ], [ %654, %if.then458.i ], [ %654, %if.then458.i ], [ %654, %if.then458.i ], [ %681, %if.then516.i ], [ %846, %while.cond737.i ], [ %785, %for.end935.i ], [ %zj.0.i, %while.cond1054.i ], [ %zj.0.i, %while.end1120.i ], [ %zj.3.i, %if.then1167.i ], [ %zj.5.i, %while.cond1247.i ], [ %zj.5.i, %while.end1313.i ], [ %zj.2.i, %if.else1383.i ], [ %zj.2.i, %if.then1583.i ], [ %zj.8.i, %while.cond1663.i ], [ %zj.8.i, %while.end1729.i ], [ %zj.2.i, %while.end1748.i ], [ %zj.2.i, %if.end2032.i ], [ %zj.2.i, %indexIntoF.exit.i104 ], [ %.pre3411.i, %if.end.i86 ], [ %zj.2.i, %save_state_and_return.loopexit3243.i ], [ %.ph495, %if.end587.i ], [ %519, %if.end309.i ], [ %595, %if.end393.i ], [ %.ph495, %if.end626.i ], [ %890, %if.end820.i ], [ %864, %if.end763.i ], [ %805, %if.end698.i ], [ %zj.1.i, %if.end1083.i ], [ %zj.6.i, %if.end1276.i ], [ %zj.5.i, %while.body1370.i ], [ %zj.5.i, %while.body1354.i ], [ %zj.4.i, %if.end1212.i ], [ %zj.9.i, %if.end1692.i ], [ %zj.7.i, %if.end1628.i ], [ %981, %if.end1019.i ], [ %681, %if.end525.i ], [ %654, %if.end467.i ], [ %464, %if.end237.i ], [ %432, %if.end180.i ], [ %400, %if.end123.i ], [ %369, %if.end71.i ]
+  %gSel.14.i = phi i32 [ %370, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %370, %if.then65.i ], [ %465, %if.then227.i ], [ %465, %if.end281.i ], [ %551, %makeMaps_d.exit.i ], [ %655, %if.then458.i ], [ %655, %if.then458.i ], [ %655, %if.then458.i ], [ %682, %if.then516.i ], [ %847, %while.cond737.i ], [ %786, %for.end935.i ], [ %gSel.2.i, %while.cond1054.i ], [ %gSel.2.i, %while.end1120.i ], [ %gSel.5.i, %if.then1167.i ], [ %gSel.8.i, %while.cond1247.i ], [ %gSel.8.i, %while.end1313.i ], [ %gSel.4.i, %if.else1383.i ], [ %gSel.4.i, %if.then1583.i ], [ %gSel.12.i, %while.cond1663.i ], [ %gSel.12.i, %while.end1729.i ], [ %gSel.4.i, %while.end1748.i ], [ %gSel.4.i, %if.end2032.i ], [ %gSel.4.i, %indexIntoF.exit.i104 ], [ %.pre3412.i, %if.end.i86 ], [ %gSel.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph496, %if.end587.i ], [ %520, %if.end309.i ], [ %596, %if.end393.i ], [ %.ph496, %if.end626.i ], [ %891, %if.end820.i ], [ %865, %if.end763.i ], [ %806, %if.end698.i ], [ %gSel.3.i, %if.end1083.i ], [ %gSel.9.i, %if.end1276.i ], [ %gSel.8.i, %while.body1370.i ], [ %gSel.8.i, %while.body1354.i ], [ %gSel.7.i, %if.end1212.i ], [ %gSel.13.i, %if.end1692.i ], [ %gSel.11.i, %if.end1628.i ], [ %gSel.1.i, %if.end1019.i ], [ %682, %if.end525.i ], [ %655, %if.end467.i ], [ %465, %if.end237.i ], [ %433, %if.end180.i ], [ %401, %if.end123.i ], [ %370, %if.end71.i ]
+  %gMinlen.14.i = phi i32 [ %371, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %371, %if.then65.i ], [ %466, %if.then227.i ], [ %466, %if.end281.i ], [ %552, %makeMaps_d.exit.i ], [ %656, %if.then458.i ], [ %656, %if.then458.i ], [ %656, %if.then458.i ], [ %683, %if.then516.i ], [ %848, %while.cond737.i ], [ %787, %for.end935.i ], [ %gMinlen.2.i, %while.cond1054.i ], [ %gMinlen.2.i, %while.end1120.i ], [ %gMinlen.5.i, %if.then1167.i ], [ %gMinlen.8.i, %while.cond1247.i ], [ %gMinlen.8.i, %while.end1313.i ], [ %gMinlen.4.i, %if.else1383.i ], [ %gMinlen.4.i, %if.then1583.i ], [ %gMinlen.12.i, %while.cond1663.i ], [ %gMinlen.12.i, %while.end1729.i ], [ %gMinlen.4.i, %while.end1748.i ], [ %gMinlen.4.i, %if.end2032.i ], [ %gMinlen.4.i, %indexIntoF.exit.i104 ], [ %.pre3413.i, %if.end.i86 ], [ %gMinlen.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph497, %if.end587.i ], [ %521, %if.end309.i ], [ %597, %if.end393.i ], [ %.ph497, %if.end626.i ], [ %892, %if.end820.i ], [ %866, %if.end763.i ], [ %807, %if.end698.i ], [ %gMinlen.3.i, %if.end1083.i ], [ %gMinlen.9.i, %if.end1276.i ], [ %gMinlen.8.i, %while.body1370.i ], [ %gMinlen.8.i, %while.body1354.i ], [ %gMinlen.7.i, %if.end1212.i ], [ %gMinlen.13.i, %if.end1692.i ], [ %gMinlen.11.i, %if.end1628.i ], [ %gMinlen.1.i, %if.end1019.i ], [ %683, %if.end525.i ], [ %656, %if.end467.i ], [ %466, %if.end237.i ], [ %434, %if.end180.i ], [ %402, %if.end123.i ], [ %371, %if.end71.i ]
+  %gLimit.14.i = phi ptr [ %372, %endhdr_2.i ], [ null, %if.then27.i ], [ null, %if.else.i ], [ %372, %if.then65.i ], [ %467, %if.then227.i ], [ %467, %if.end281.i ], [ %553, %makeMaps_d.exit.i ], [ %657, %if.then458.i ], [ %657, %if.then458.i ], [ %657, %if.then458.i ], [ %684, %if.then516.i ], [ %849, %while.cond737.i ], [ %788, %for.end935.i ], [ %gLimit.2.i, %while.cond1054.i ], [ %gLimit.2.i, %while.end1120.i ], [ %gLimit.5.i, %if.then1167.i ], [ %gLimit.8.i, %while.cond1247.i ], [ %gLimit.8.i, %while.end1313.i ], [ %gLimit.4.i, %if.else1383.i ], [ %gLimit.4.i, %if.then1583.i ], [ %gLimit.12.i, %while.cond1663.i ], [ %gLimit.12.i, %while.end1729.i ], [ %gLimit.4.i, %while.end1748.i ], [ %gLimit.4.i, %if.end2032.i ], [ %gLimit.4.i, %indexIntoF.exit.i104 ], [ %.pre3414.i, %if.end.i86 ], [ %gLimit.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph498, %if.end587.i ], [ %522, %if.end309.i ], [ %598, %if.end393.i ], [ %.ph498, %if.end626.i ], [ %893, %if.end820.i ], [ %867, %if.end763.i ], [ %808, %if.end698.i ], [ %gLimit.3.i, %if.end1083.i ], [ %gLimit.9.i, %if.end1276.i ], [ %gLimit.8.i, %while.body1370.i ], [ %gLimit.8.i, %while.body1354.i ], [ %gLimit.7.i, %if.end1212.i ], [ %gLimit.13.i, %if.end1692.i ], [ %gLimit.11.i, %if.end1628.i ], [ %gLimit.1.i, %if.end1019.i ], [ %684, %if.end525.i ], [ %657, %if.end467.i ], [ %467, %if.end237.i ], [ %435, %if.end180.i ], [ %403, %if.end123.i ], [ %372, %if.end71.i ]
+  %gBase.14.i = phi ptr [ %373, %endhdr_2.i ], [ null, %if.then27.i ], [ null, %if.else.i ], [ %373, %if.then65.i ], [ %468, %if.then227.i ], [ %468, %if.end281.i ], [ %554, %makeMaps_d.exit.i ], [ %658, %if.then458.i ], [ %658, %if.then458.i ], [ %658, %if.then458.i ], [ %685, %if.then516.i ], [ %850, %while.cond737.i ], [ %789, %for.end935.i ], [ %gBase.2.i, %while.cond1054.i ], [ %gBase.2.i, %while.end1120.i ], [ %gBase.5.i, %if.then1167.i ], [ %gBase.8.i, %while.cond1247.i ], [ %gBase.8.i, %while.end1313.i ], [ %gBase.4.i, %if.else1383.i ], [ %gBase.4.i, %if.then1583.i ], [ %gBase.12.i, %while.cond1663.i ], [ %gBase.12.i, %while.end1729.i ], [ %gBase.4.i, %while.end1748.i ], [ %gBase.4.i, %if.end2032.i ], [ %gBase.4.i, %indexIntoF.exit.i104 ], [ %.pre3415.i, %if.end.i86 ], [ %gBase.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph499, %if.end587.i ], [ %523, %if.end309.i ], [ %599, %if.end393.i ], [ %.ph499, %if.end626.i ], [ %894, %if.end820.i ], [ %868, %if.end763.i ], [ %809, %if.end698.i ], [ %gBase.3.i, %if.end1083.i ], [ %gBase.9.i, %if.end1276.i ], [ %gBase.8.i, %while.body1370.i ], [ %gBase.8.i, %while.body1354.i ], [ %gBase.7.i, %if.end1212.i ], [ %gBase.13.i, %if.end1692.i ], [ %gBase.11.i, %if.end1628.i ], [ %gBase.1.i, %if.end1019.i ], [ %685, %if.end525.i ], [ %658, %if.end467.i ], [ %468, %if.end237.i ], [ %436, %if.end180.i ], [ %404, %if.end123.i ], [ %373, %if.end71.i ]
+  %gPerm.14.i = phi ptr [ %374, %endhdr_2.i ], [ null, %if.then27.i ], [ null, %if.else.i ], [ %374, %if.then65.i ], [ %469, %if.then227.i ], [ %469, %if.end281.i ], [ %555, %makeMaps_d.exit.i ], [ %659, %if.then458.i ], [ %659, %if.then458.i ], [ %659, %if.then458.i ], [ %686, %if.then516.i ], [ %851, %while.cond737.i ], [ %790, %for.end935.i ], [ %gPerm.2.i, %while.cond1054.i ], [ %gPerm.2.i, %while.end1120.i ], [ %gPerm.5.i, %if.then1167.i ], [ %gPerm.8.i, %while.cond1247.i ], [ %gPerm.8.i, %while.end1313.i ], [ %gPerm.4.i, %if.else1383.i ], [ %gPerm.4.i, %if.then1583.i ], [ %gPerm.12.i, %while.cond1663.i ], [ %gPerm.12.i, %while.end1729.i ], [ %gPerm.4.i, %while.end1748.i ], [ %gPerm.4.i, %if.end2032.i ], [ %gPerm.4.i, %indexIntoF.exit.i104 ], [ %.pre3416.i, %if.end.i86 ], [ %gPerm.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph500, %if.end587.i ], [ %524, %if.end309.i ], [ %600, %if.end393.i ], [ %.ph500, %if.end626.i ], [ %895, %if.end820.i ], [ %869, %if.end763.i ], [ %810, %if.end698.i ], [ %gPerm.3.i, %if.end1083.i ], [ %gPerm.9.i, %if.end1276.i ], [ %gPerm.8.i, %while.body1370.i ], [ %gPerm.8.i, %while.body1354.i ], [ %gPerm.7.i, %if.end1212.i ], [ %gPerm.13.i, %if.end1692.i ], [ %gPerm.11.i, %if.end1628.i ], [ %gPerm.1.i, %if.end1019.i ], [ %686, %if.end525.i ], [ %659, %if.end467.i ], [ %469, %if.end237.i ], [ %437, %if.end180.i ], [ %405, %if.end123.i ], [ %374, %if.end71.i ]
+  %zvec.10.i = phi i32 [ %368, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %368, %if.then65.i ], [ %463, %if.then227.i ], [ %463, %if.end281.i ], [ %549, %makeMaps_d.exit.i ], [ %653, %if.then458.i ], [ %653, %if.then458.i ], [ %653, %if.then458.i ], [ %680, %if.then516.i ], [ %845, %while.cond737.i ], [ %784, %for.end935.i ], [ %zvec.0.i, %while.cond1054.i ], [ %zvec.0.i, %while.end1120.i ], [ %zvec.3.i, %if.then1167.i ], [ %zvec.5.i, %while.cond1247.i ], [ %zvec.5.i, %while.end1313.i ], [ %zvec.2.i, %if.else1383.i ], [ %zvec.2.i, %if.then1583.i ], [ %zvec.8.i, %while.cond1663.i ], [ %zvec.8.i, %while.end1729.i ], [ %zvec.2.i, %while.end1748.i ], [ %zvec.2.i, %if.end2032.i ], [ %zvec.2.i, %indexIntoF.exit.i104 ], [ %.pre3410.i, %if.end.i86 ], [ %zvec.2.i, %save_state_and_return.loopexit3243.i ], [ %.ph494, %if.end587.i ], [ %518, %if.end309.i ], [ %594, %if.end393.i ], [ %.ph494, %if.end626.i ], [ %889, %if.end820.i ], [ %863, %if.end763.i ], [ %804, %if.end698.i ], [ %zvec.1.i, %if.end1083.i ], [ %zvec.6.i, %if.end1276.i ], [ %zvec.5.i, %while.body1370.i ], [ %zvec.5.i, %while.body1354.i ], [ %zvec.4.i, %if.end1212.i ], [ %zvec.9.i, %if.end1692.i ], [ %zvec.7.i, %if.end1628.i ], [ %980, %if.end1019.i ], [ %680, %if.end525.i ], [ %653, %if.end467.i ], [ %463, %if.end237.i ], [ %431, %if.end180.i ], [ %399, %if.end123.i ], [ %368, %if.end71.i ]
+  %zn.11.i = phi i32 [ %367, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %367, %if.then65.i ], [ %462, %if.then227.i ], [ %462, %if.end281.i ], [ %548, %makeMaps_d.exit.i ], [ %652, %if.then458.i ], [ %652, %if.then458.i ], [ %652, %if.then458.i ], [ %679, %if.then516.i ], [ %844, %while.cond737.i ], [ %783, %for.end935.i ], [ %zn.1.i, %while.cond1054.i ], [ %zn.1.i, %while.end1120.i ], [ %zn.4.i, %if.then1167.i ], [ %zn.6.i, %while.cond1247.i ], [ %zn.6.i, %while.end1313.i ], [ %zn.3.i, %if.else1383.i ], [ %zn.3.i, %if.then1583.i ], [ %zn.9.i, %while.cond1663.i ], [ %zn.9.i, %while.end1729.i ], [ %zn.3.i, %while.end1748.i ], [ %zn.3.i, %if.end2032.i ], [ %zn.3.i, %indexIntoF.exit.i104 ], [ %.pre3409.i, %if.end.i86 ], [ %zn.3.i, %save_state_and_return.loopexit3243.i ], [ %.ph493, %if.end587.i ], [ %517, %if.end309.i ], [ %593, %if.end393.i ], [ %.ph493, %if.end626.i ], [ %888, %if.end820.i ], [ %862, %if.end763.i ], [ %803, %if.end698.i ], [ %zn.2.i, %if.end1083.i ], [ %zn.7.i, %if.end1276.i ], [ %zn.6.i, %while.body1370.i ], [ %zn.6.i, %while.body1354.i ], [ %zn.5.i, %if.end1212.i ], [ %zn.10.i, %if.end1692.i ], [ %zn.8.i, %if.end1628.i ], [ %zn.0.i, %if.end1019.i ], [ %679, %if.end525.i ], [ %652, %if.end467.i ], [ %462, %if.end237.i ], [ %430, %if.end180.i ], [ %398, %if.end123.i ], [ %367, %if.end71.i ]
+  %curr.18.i = phi i32 [ %365, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %365, %if.then65.i ], [ %460, %if.then227.i ], [ %460, %if.end281.i ], [ %546, %makeMaps_d.exit.i ], [ %650, %if.then458.i ], [ %650, %if.then458.i ], [ %650, %if.then458.i ], [ %677, %if.then516.i ], [ %curr.3.i, %while.cond737.i ], [ %curr.0.i, %for.end935.i ], [ %curr.8.i, %while.cond1054.i ], [ %curr.8.i, %while.end1120.i ], [ %curr.11.i, %if.then1167.i ], [ %curr.13.i, %while.cond1247.i ], [ %curr.13.i, %while.end1313.i ], [ %curr.10.i, %if.else1383.i ], [ %curr.10.i, %if.then1583.i ], [ %curr.16.i, %while.cond1663.i ], [ %curr.16.i, %while.end1729.i ], [ %curr.10.i, %while.end1748.i ], [ %curr.10.i, %if.end2032.i ], [ %curr.10.i, %indexIntoF.exit.i104 ], [ %.pre3407.i, %if.end.i86 ], [ %curr.10.i, %save_state_and_return.loopexit3243.i ], [ %.ph491, %if.end587.i ], [ %515, %if.end309.i ], [ %591, %if.end393.i ], [ %.ph491, %if.end626.i ], [ %curr.5.i, %if.end820.i ], [ %curr.4.i, %if.end763.i ], [ %curr.1.i, %if.end698.i ], [ %curr.9.i, %if.end1083.i ], [ %curr.14.i, %if.end1276.i ], [ %curr.13.i, %while.body1370.i ], [ %curr.13.i, %while.body1354.i ], [ %curr.12.i, %if.end1212.i ], [ %curr.17.i, %if.end1692.i ], [ %curr.15.i, %if.end1628.i ], [ %curr.7.i, %if.end1019.i ], [ %677, %if.end525.i ], [ %650, %if.end467.i ], [ %460, %if.end237.i ], [ %428, %if.end180.i ], [ %396, %if.end123.i ], [ %365, %if.end71.i ]
+  %N.8.i = phi i32 [ %364, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %364, %if.then65.i ], [ %459, %if.then227.i ], [ %459, %if.end281.i ], [ %545, %makeMaps_d.exit.i ], [ %649, %if.then458.i ], [ %649, %if.then458.i ], [ %649, %if.then458.i ], [ %676, %if.then516.i ], [ %842, %while.cond737.i ], [ %781, %for.end935.i ], [ %991, %while.cond1054.i ], [ %991, %while.end1120.i ], [ %mul1160.i, %if.then1167.i ], [ %N.3.i, %while.cond1247.i ], [ %N.3.i, %while.end1313.i ], [ %N.0.i, %if.else1383.i ], [ %N.0.i, %if.then1583.i ], [ %N.6.i, %while.cond1663.i ], [ %N.6.i, %while.end1729.i ], [ %N.0.i, %while.end1748.i ], [ %N.0.i, %if.end2032.i ], [ %N.0.i, %indexIntoF.exit.i104 ], [ %.pre3406.i, %if.end.i86 ], [ %N.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph490, %if.end587.i ], [ %514, %if.end309.i ], [ %590, %if.end393.i ], [ %.ph490, %if.end626.i ], [ %886, %if.end820.i ], [ %860, %if.end763.i ], [ %801, %if.end698.i ], [ %996, %if.end1083.i ], [ %N.4.i, %if.end1276.i ], [ %N.3.i, %while.body1370.i ], [ %N.3.i, %while.body1354.i ], [ %N.2.i, %if.end1212.i ], [ %N.7.i, %if.end1692.i ], [ %N.5.i, %if.end1628.i ], [ %978, %if.end1019.i ], [ %676, %if.end525.i ], [ %649, %if.end467.i ], [ %459, %if.end237.i ], [ %427, %if.end180.i ], [ %395, %if.end123.i ], [ %364, %if.end71.i ]
+  %es.12.i = phi i32 [ %363, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %363, %if.then65.i ], [ %458, %if.then227.i ], [ %458, %if.end281.i ], [ %544, %makeMaps_d.exit.i ], [ %648, %if.then458.i ], [ %648, %if.then458.i ], [ %648, %if.then458.i ], [ %675, %if.then516.i ], [ %841, %while.cond737.i ], [ %780, %for.end935.i ], [ %990, %while.cond1054.i ], [ %990, %while.end1120.i ], [ %es.2.i, %if.then1167.i ], [ %es.4.i, %while.cond1247.i ], [ %es.4.i, %while.end1313.i ], [ %es.0.i, %if.else1383.i ], [ %es.0.i, %if.then1583.i ], [ %es.10.i, %while.cond1663.i ], [ %es.10.i, %while.end1729.i ], [ %es.0.i, %while.end1748.i ], [ %es.0.i, %if.end2032.i ], [ %es.0.i, %indexIntoF.exit.i104 ], [ %.pre3405.i, %if.end.i86 ], [ %es.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph489, %if.end587.i ], [ %513, %if.end309.i ], [ %589, %if.end393.i ], [ %.ph489, %if.end626.i ], [ %885, %if.end820.i ], [ %859, %if.end763.i ], [ %800, %if.end698.i ], [ %995, %if.end1083.i ], [ %es.5.i, %if.end1276.i ], [ %es.73176.i, %while.body1370.i ], [ %es.63171.i, %while.body1354.i ], [ %es.3.i, %if.end1212.i ], [ %es.11.i, %if.end1692.i ], [ %es.9.i, %if.end1628.i ], [ %977, %if.end1019.i ], [ %675, %if.end525.i ], [ %648, %if.end467.i ], [ %458, %if.end237.i ], [ %426, %if.end180.i ], [ %394, %if.end123.i ], [ %363, %if.end71.i ]
+  %nblock.14.i = phi i32 [ %362, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %362, %if.then65.i ], [ %457, %if.then227.i ], [ %457, %if.end281.i ], [ %543, %makeMaps_d.exit.i ], [ %647, %if.then458.i ], [ %647, %if.then458.i ], [ %647, %if.then458.i ], [ %674, %if.then516.i ], [ %840, %while.cond737.i ], [ 0, %for.end935.i ], [ %nblock.1.i, %while.cond1054.i ], [ %nblock.1.i, %while.end1120.i ], [ %nblock.4.i, %if.then1167.i ], [ %nblock.6.i, %while.cond1247.i ], [ %nblock.6.i, %while.end1313.i ], [ %nblock.3.i, %if.else1383.i ], [ %inc1580.i, %if.then1583.i ], [ %nblock.12.i, %while.cond1663.i ], [ %nblock.12.i, %while.end1729.i ], [ %nblock.3.i, %while.end1748.i ], [ %nblock.3.i, %if.end2032.i ], [ %nblock.3.i, %indexIntoF.exit.i104 ], [ %.pre3404.i, %if.end.i86 ], [ %nblock.3.i, %save_state_and_return.loopexit3243.i ], [ %.ph488, %if.end587.i ], [ %512, %if.end309.i ], [ %588, %if.end393.i ], [ %.ph488, %if.end626.i ], [ %884, %if.end820.i ], [ %858, %if.end763.i ], [ %799, %if.end698.i ], [ %nblock.2.i, %if.end1083.i ], [ %nblock.7.i, %if.end1276.i ], [ %smax3353.i, %while.body1370.i ], [ %smax.i, %while.body1354.i ], [ %nblock.5.i, %if.end1212.i ], [ %nblock.13.i, %if.end1692.i ], [ %nblock.11.i, %if.end1628.i ], [ %nblock.0.i, %if.end1019.i ], [ %674, %if.end525.i ], [ %647, %if.end467.i ], [ %457, %if.end237.i ], [ %425, %if.end180.i ], [ %393, %if.end123.i ], [ %362, %if.end71.i ]
+  %nblockMAX.11.i = phi i32 [ %361, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %361, %if.then65.i ], [ %456, %if.then227.i ], [ %456, %if.end281.i ], [ %542, %makeMaps_d.exit.i ], [ %646, %if.then458.i ], [ %646, %if.then458.i ], [ %646, %if.then458.i ], [ %673, %if.then516.i ], [ %839, %while.cond737.i ], [ %mul939.i, %for.end935.i ], [ %nblockMAX.1.i, %while.cond1054.i ], [ %nblockMAX.1.i, %while.end1120.i ], [ %nblockMAX.4.i, %if.then1167.i ], [ %nblockMAX.6.i, %while.cond1247.i ], [ %nblockMAX.6.i, %while.end1313.i ], [ %nblockMAX.3.i, %if.else1383.i ], [ %nblockMAX.3.i, %if.then1583.i ], [ %nblockMAX.9.i, %while.cond1663.i ], [ %nblockMAX.9.i, %while.end1729.i ], [ %nblockMAX.3.i, %while.end1748.i ], [ %nblockMAX.3.i, %if.end2032.i ], [ %nblockMAX.3.i, %indexIntoF.exit.i104 ], [ %.pre3403.i, %if.end.i86 ], [ %nblockMAX.3.i, %save_state_and_return.loopexit3243.i ], [ %.ph487, %if.end587.i ], [ %511, %if.end309.i ], [ %587, %if.end393.i ], [ %.ph487, %if.end626.i ], [ %883, %if.end820.i ], [ %857, %if.end763.i ], [ %798, %if.end698.i ], [ %nblockMAX.2.i, %if.end1083.i ], [ %nblockMAX.7.i, %if.end1276.i ], [ %nblockMAX.6.i, %while.body1370.i ], [ %nblockMAX.6.i, %while.body1354.i ], [ %nblockMAX.5.i, %if.end1212.i ], [ %nblockMAX.10.i, %if.end1692.i ], [ %nblockMAX.8.i, %if.end1628.i ], [ %nblockMAX.0.i, %if.end1019.i ], [ %673, %if.end525.i ], [ %646, %if.end467.i ], [ %456, %if.end237.i ], [ %424, %if.end180.i ], [ %392, %if.end123.i ], [ %361, %if.end71.i ]
+  %nextSym.8.i = phi i32 [ %360, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %360, %if.then65.i ], [ %455, %if.then227.i ], [ %455, %if.end281.i ], [ %541, %makeMaps_d.exit.i ], [ %645, %if.then458.i ], [ %645, %if.then458.i ], [ %645, %if.then458.i ], [ %672, %if.then516.i ], [ %838, %while.cond737.i ], [ %777, %for.end935.i ], [ %989, %while.cond1054.i ], [ %989, %while.end1120.i ], [ %nextSym.1.i, %if.then1167.i ], [ %nextSym.3.i, %while.cond1247.i ], [ %nextSym.3.i, %while.end1313.i ], [ %nextSym.0.i, %if.else1383.i ], [ %nextSym.0.i, %if.then1583.i ], [ %nextSym.6.i, %while.cond1663.i ], [ %nextSym.6.i, %while.end1729.i ], [ %nextSym.0.i, %while.end1748.i ], [ %nextSym.0.i, %if.end2032.i ], [ %nextSym.0.i, %indexIntoF.exit.i104 ], [ %.pre3402.i, %if.end.i86 ], [ %nextSym.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph486, %if.end587.i ], [ %510, %if.end309.i ], [ %586, %if.end393.i ], [ %.ph486, %if.end626.i ], [ %882, %if.end820.i ], [ %856, %if.end763.i ], [ %797, %if.end698.i ], [ %994, %if.end1083.i ], [ %nextSym.4.i, %if.end1276.i ], [ %1030, %while.body1370.i ], [ %1030, %while.body1354.i ], [ %nextSym.2.i, %if.end1212.i ], [ %nextSym.7.i, %if.end1692.i ], [ %nextSym.5.i, %if.end1628.i ], [ %976, %if.end1019.i ], [ %672, %if.end525.i ], [ %645, %if.end467.i ], [ %455, %if.end237.i ], [ %423, %if.end180.i ], [ %391, %if.end123.i ], [ %360, %if.end71.i ]
+  %groupPos.14.i = phi i32 [ %359, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %359, %if.then65.i ], [ %454, %if.then227.i ], [ %454, %if.end281.i ], [ %540, %makeMaps_d.exit.i ], [ %644, %if.then458.i ], [ %644, %if.then458.i ], [ %644, %if.then458.i ], [ %671, %if.then516.i ], [ %837, %while.cond737.i ], [ 0, %for.end935.i ], [ %groupPos.2.i, %while.cond1054.i ], [ %groupPos.2.i, %while.end1120.i ], [ 0, %if.then1167.i ], [ %groupPos.8.i, %while.cond1247.i ], [ %groupPos.8.i, %while.end1313.i ], [ %groupPos.4.i, %if.else1383.i ], [ 0, %if.then1583.i ], [ %groupPos.12.i, %while.cond1663.i ], [ %groupPos.12.i, %while.end1729.i ], [ %groupPos.4.i, %while.end1748.i ], [ %groupPos.4.i, %if.end2032.i ], [ %groupPos.4.i, %indexIntoF.exit.i104 ], [ %.pre3401.i, %if.end.i86 ], [ %groupPos.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph485, %if.end587.i ], [ %509, %if.end309.i ], [ %585, %if.end393.i ], [ %.ph485, %if.end626.i ], [ %881, %if.end820.i ], [ %855, %if.end763.i ], [ %796, %if.end698.i ], [ %groupPos.3.i, %if.end1083.i ], [ %groupPos.9.i, %if.end1276.i ], [ %groupPos.8.i, %while.body1370.i ], [ %groupPos.8.i, %while.body1354.i ], [ %groupPos.7.i, %if.end1212.i ], [ %groupPos.13.i, %if.end1692.i ], [ %groupPos.11.i, %if.end1628.i ], [ %groupPos.1.i, %if.end1019.i ], [ %671, %if.end525.i ], [ %644, %if.end467.i ], [ %454, %if.end237.i ], [ %422, %if.end180.i ], [ %390, %if.end123.i ], [ %359, %if.end71.i ]
+  %groupNo.14.i = phi i32 [ %358, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %358, %if.then65.i ], [ %453, %if.then227.i ], [ %453, %if.end281.i ], [ %539, %makeMaps_d.exit.i ], [ %643, %if.then458.i ], [ %643, %if.then458.i ], [ %643, %if.then458.i ], [ %670, %if.then516.i ], [ %836, %while.cond737.i ], [ 0, %for.end935.i ], [ %groupNo.2.i, %while.cond1054.i ], [ %groupNo.2.i, %while.end1120.i ], [ %inc1168.i, %if.then1167.i ], [ %groupNo.8.i, %while.cond1247.i ], [ %groupNo.8.i, %while.end1313.i ], [ %groupNo.4.i, %if.else1383.i ], [ %inc1584.i, %if.then1583.i ], [ %groupNo.12.i, %while.cond1663.i ], [ %groupNo.12.i, %while.end1729.i ], [ %groupNo.4.i, %while.end1748.i ], [ %groupNo.4.i, %if.end2032.i ], [ %groupNo.4.i, %indexIntoF.exit.i104 ], [ %.pre3400.i, %if.end.i86 ], [ %groupNo.4.i, %save_state_and_return.loopexit3243.i ], [ %.ph484, %if.end587.i ], [ %508, %if.end309.i ], [ %584, %if.end393.i ], [ %.ph484, %if.end626.i ], [ %880, %if.end820.i ], [ %854, %if.end763.i ], [ %795, %if.end698.i ], [ %groupNo.3.i, %if.end1083.i ], [ %groupNo.9.i, %if.end1276.i ], [ %groupNo.8.i, %while.body1370.i ], [ %groupNo.8.i, %while.body1354.i ], [ %groupNo.7.i, %if.end1212.i ], [ %groupNo.13.i, %if.end1692.i ], [ %groupNo.11.i, %if.end1628.i ], [ %groupNo.1.i, %if.end1019.i ], [ %670, %if.end525.i ], [ %643, %if.end467.i ], [ %453, %if.end237.i ], [ %421, %if.end180.i ], [ %389, %if.end123.i ], [ %358, %if.end71.i ]
+  %EOB.11.i = phi i32 [ %357, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %357, %if.then65.i ], [ %452, %if.then227.i ], [ %452, %if.end281.i ], [ %538, %makeMaps_d.exit.i ], [ %642, %if.then458.i ], [ %642, %if.then458.i ], [ %642, %if.then458.i ], [ %669, %if.then516.i ], [ %835, %while.cond737.i ], [ %add937.i, %for.end935.i ], [ %EOB.1.i, %while.cond1054.i ], [ %EOB.1.i, %while.end1120.i ], [ %EOB.4.i, %if.then1167.i ], [ %EOB.6.i, %while.cond1247.i ], [ %EOB.6.i, %while.end1313.i ], [ %EOB.3.i, %if.else1383.i ], [ %EOB.3.i, %if.then1583.i ], [ %EOB.9.i, %while.cond1663.i ], [ %EOB.9.i, %while.end1729.i ], [ %nextSym.0.i, %while.end1748.i ], [ %nextSym.0.i, %if.end2032.i ], [ %nextSym.0.i, %indexIntoF.exit.i104 ], [ %.pre3399.i, %if.end.i86 ], [ %nextSym.0.i, %save_state_and_return.loopexit3243.i ], [ %.ph483, %if.end587.i ], [ %507, %if.end309.i ], [ %583, %if.end393.i ], [ %.ph483, %if.end626.i ], [ %879, %if.end820.i ], [ %853, %if.end763.i ], [ %794, %if.end698.i ], [ %EOB.2.i, %if.end1083.i ], [ %EOB.7.i, %if.end1276.i ], [ %EOB.6.i, %while.body1370.i ], [ %EOB.6.i, %while.body1354.i ], [ %EOB.5.i, %if.end1212.i ], [ %EOB.10.i, %if.end1692.i ], [ %EOB.8.i, %if.end1628.i ], [ %EOB.0.i, %if.end1019.i ], [ %669, %if.end525.i ], [ %642, %if.end467.i ], [ %452, %if.end237.i ], [ %420, %if.end180.i ], [ %388, %if.end123.i ], [ %357, %if.end71.i ]
+  %nSelectors.20.i = phi i32 [ %356, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %356, %if.then65.i ], [ %451, %if.then227.i ], [ %451, %if.end281.i ], [ %537, %makeMaps_d.exit.i ], [ %641, %if.then458.i ], [ %641, %if.then458.i ], [ %641, %if.then458.i ], [ 0, %if.then516.i ], [ %nSelectors.6.i, %while.cond737.i ], [ %nSelectors.3.i, %for.end935.i ], [ %nSelectors.10.i, %while.cond1054.i ], [ %nSelectors.10.i, %while.end1120.i ], [ %nSelectors.13.i, %if.then1167.i ], [ %nSelectors.15.i, %while.cond1247.i ], [ %nSelectors.15.i, %while.end1313.i ], [ %nSelectors.12.i, %if.else1383.i ], [ %nSelectors.12.i, %if.then1583.i ], [ %nSelectors.18.i, %while.cond1663.i ], [ %nSelectors.18.i, %while.end1729.i ], [ %nSelectors.12.i, %while.end1748.i ], [ %nSelectors.12.i, %if.end2032.i ], [ %nSelectors.12.i, %indexIntoF.exit.i104 ], [ %.pre3398.i, %if.end.i86 ], [ %nSelectors.12.i, %save_state_and_return.loopexit3243.i ], [ %nSelectors.2.i.ph, %if.end587.i ], [ %506, %if.end309.i ], [ %582, %if.end393.i ], [ %nSelectors.2.i.ph, %if.end626.i ], [ %nSelectors.8.i, %if.end820.i ], [ %nSelectors.7.i, %if.end763.i ], [ %nSelectors.4.i, %if.end698.i ], [ %nSelectors.11.i, %if.end1083.i ], [ %nSelectors.16.i, %if.end1276.i ], [ %nSelectors.15.i, %while.body1370.i ], [ %nSelectors.15.i, %while.body1354.i ], [ %nSelectors.14.i, %if.end1212.i ], [ %nSelectors.19.i, %if.end1692.i ], [ %nSelectors.17.i, %if.end1628.i ], [ %nSelectors.9.i, %if.end1019.i ], [ %668, %if.end525.i ], [ %641, %if.end467.i ], [ %451, %if.end237.i ], [ %419, %if.end180.i ], [ %387, %if.end123.i ], [ %356, %if.end71.i ]
+  %nGroups.21.i = phi i32 [ %355, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %355, %if.then65.i ], [ %450, %if.then227.i ], [ %450, %if.end281.i ], [ %536, %makeMaps_d.exit.i ], [ %and464.i, %if.then458.i ], [ %and464.i, %if.then458.i ], [ %and464.i, %if.then458.i ], [ %nGroups.0.i, %if.then516.i ], [ %nGroups.7.i, %while.cond737.i ], [ %nGroups.4.i, %for.end935.i ], [ %nGroups.11.i, %while.cond1054.i ], [ %nGroups.11.i, %while.end1120.i ], [ %nGroups.14.i, %if.then1167.i ], [ %nGroups.16.i, %while.cond1247.i ], [ %nGroups.16.i, %while.end1313.i ], [ %nGroups.13.i, %if.else1383.i ], [ %nGroups.13.i, %if.then1583.i ], [ %nGroups.19.i, %while.cond1663.i ], [ %nGroups.19.i, %while.end1729.i ], [ %nGroups.13.i, %while.end1748.i ], [ %nGroups.13.i, %if.end2032.i ], [ %nGroups.13.i, %indexIntoF.exit.i104 ], [ %.pre3397.i, %if.end.i86 ], [ %nGroups.13.i, %save_state_and_return.loopexit3243.i ], [ %nGroups.3.i.ph, %if.end587.i ], [ %505, %if.end309.i ], [ %581, %if.end393.i ], [ %nGroups.3.i.ph, %if.end626.i ], [ %nGroups.9.i, %if.end820.i ], [ %nGroups.8.i, %if.end763.i ], [ %nGroups.5.i, %if.end698.i ], [ %nGroups.12.i, %if.end1083.i ], [ %nGroups.17.i, %if.end1276.i ], [ %nGroups.16.i, %while.body1370.i ], [ %nGroups.16.i, %while.body1354.i ], [ %nGroups.15.i, %if.end1212.i ], [ %nGroups.20.i, %if.end1692.i ], [ %nGroups.18.i, %if.end1628.i ], [ %nGroups.10.i, %if.end1019.i ], [ %nGroups.0.i, %if.end525.i ], [ %640, %if.end467.i ], [ %450, %if.end237.i ], [ %418, %if.end180.i ], [ %386, %if.end123.i ], [ %355, %if.end71.i ]
+  %alphaSize.22.i = phi i32 [ %354, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %354, %if.then65.i ], [ %449, %if.then227.i ], [ %449, %if.end281.i ], [ %535, %makeMaps_d.exit.i ], [ %alphaSize.0.i, %if.then458.i ], [ %alphaSize.0.i, %if.then458.i ], [ %alphaSize.0.i, %if.then458.i ], [ %alphaSize.1.i, %if.then516.i ], [ %alphaSize.8.i, %while.cond737.i ], [ %alphaSize.5.i, %for.end935.i ], [ %alphaSize.12.i, %while.cond1054.i ], [ %alphaSize.12.i, %while.end1120.i ], [ %alphaSize.15.i, %if.then1167.i ], [ %alphaSize.17.i, %while.cond1247.i ], [ %alphaSize.17.i, %while.end1313.i ], [ %alphaSize.14.i, %if.else1383.i ], [ %alphaSize.14.i, %if.then1583.i ], [ %alphaSize.20.i, %while.cond1663.i ], [ %alphaSize.20.i, %while.end1729.i ], [ %alphaSize.14.i, %while.end1748.i ], [ %alphaSize.14.i, %if.end2032.i ], [ %alphaSize.14.i, %indexIntoF.exit.i104 ], [ %.pre3396.i, %if.end.i86 ], [ %alphaSize.14.i, %save_state_and_return.loopexit3243.i ], [ %alphaSize.4.i.ph, %if.end587.i ], [ %504, %if.end309.i ], [ %580, %if.end393.i ], [ %alphaSize.4.i.ph, %if.end626.i ], [ %alphaSize.10.i, %if.end820.i ], [ %alphaSize.9.i, %if.end763.i ], [ %alphaSize.6.i, %if.end698.i ], [ %alphaSize.13.i, %if.end1083.i ], [ %alphaSize.18.i, %if.end1276.i ], [ %alphaSize.17.i, %while.body1370.i ], [ %alphaSize.17.i, %while.body1354.i ], [ %alphaSize.16.i, %if.end1212.i ], [ %alphaSize.21.i, %if.end1692.i ], [ %alphaSize.19.i, %if.end1628.i ], [ %alphaSize.11.i, %if.end1019.i ], [ %alphaSize.1.i, %if.end525.i ], [ %alphaSize.0.i, %if.end467.i ], [ %449, %if.end237.i ], [ %417, %if.end180.i ], [ %385, %if.end123.i ], [ %354, %if.end71.i ]
+  %t.18.i = phi i32 [ %353, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %353, %if.then65.i ], [ %448, %if.then227.i ], [ %448, %if.end281.i ], [ %534, %makeMaps_d.exit.i ], [ %639, %if.then458.i ], [ %639, %if.then458.i ], [ %639, %if.then458.i ], [ %667, %if.then516.i ], [ %t.3.i, %while.cond737.i ], [ %t.6.lcssa.i, %for.end935.i ], [ %t.8.i, %while.cond1054.i ], [ %t.8.i, %while.end1120.i ], [ %t.11.i, %if.then1167.i ], [ %t.13.i, %while.cond1247.i ], [ %t.13.i, %while.end1313.i ], [ %t.10.i, %if.else1383.i ], [ %t.10.i, %if.then1583.i ], [ %t.16.i, %while.cond1663.i ], [ %t.16.i, %while.end1729.i ], [ %t.10.i, %while.end1748.i ], [ %t.10.i, %if.end2032.i ], [ %t.10.i, %indexIntoF.exit.i104 ], [ %.pre3395.i, %if.end.i86 ], [ %t.10.i, %save_state_and_return.loopexit3243.i ], [ %.ph, %if.end587.i ], [ %503, %if.end309.i ], [ %579, %if.end393.i ], [ %.ph, %if.end626.i ], [ %t.5.i, %if.end820.i ], [ %t.4.i, %if.end763.i ], [ %t.1.i, %if.end698.i ], [ %t.9.i, %if.end1083.i ], [ %t.14.i, %if.end1276.i ], [ %t.13.i, %while.body1370.i ], [ %t.13.i, %while.body1354.i ], [ %t.12.i, %if.end1212.i ], [ %t.17.i, %if.end1692.i ], [ %t.15.i, %if.end1628.i ], [ %t.7.i, %if.end1019.i ], [ %667, %if.end525.i ], [ %639, %if.end467.i ], [ %448, %if.end237.i ], [ %416, %if.end180.i ], [ %384, %if.end123.i ], [ %353, %if.end71.i ]
+  %j.28.i = phi i32 [ %352, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %352, %if.then65.i ], [ %447, %if.then227.i ], [ %447, %if.end281.i ], [ %j.0.i, %makeMaps_d.exit.i ], [ %j.4.i, %if.then458.i ], [ %j.4.i, %if.then458.i ], [ %j.4.i, %if.then458.i ], [ %j.5.i, %if.then516.i ], [ %j.12.i, %while.cond737.i ], [ %j.9.i, %for.end935.i ], [ %j.16.i, %while.cond1054.i ], [ %j.16.i, %while.end1120.i ], [ %j.19.i, %if.then1167.i ], [ %j.21.i, %while.cond1247.i ], [ %j.21.i, %while.end1313.i ], [ %j.18.i, %if.else1383.i ], [ %j.18.i, %if.then1583.i ], [ %j.24.i, %while.cond1663.i ], [ %j.24.i, %while.end1729.i ], [ %j.18.i, %while.end1748.i ], [ %j.18.i, %if.end2032.i ], [ %or1925.i, %indexIntoF.exit.i104 ], [ %.pre3394.i, %if.end.i86 ], [ %j.18.i, %save_state_and_return.loopexit3243.i ], [ %j.8.i, %if.end587.i ], [ %502, %if.end309.i ], [ %j.2.i, %if.end393.i ], [ %inc627.i, %if.end626.i ], [ %j.14.i, %if.end820.i ], [ %j.13.i, %if.end763.i ], [ %j.10.i, %if.end698.i ], [ %j.17.i, %if.end1083.i ], [ %j.22.i, %if.end1276.i ], [ %j.21.i, %while.body1370.i ], [ %j.21.i, %while.body1354.i ], [ %j.20.i, %if.end1212.i ], [ %j.25.i, %if.end1692.i ], [ %j.23.i, %if.end1628.i ], [ %j.15.i, %if.end1019.i ], [ %j.5.i, %if.end525.i ], [ %j.4.i, %if.end467.i ], [ %447, %if.end237.i ], [ %415, %if.end180.i ], [ %383, %if.end123.i ], [ %352, %if.end71.i ]
+  %i.40.i = phi i32 [ %351, %endhdr_2.i ], [ 0, %if.then27.i ], [ 0, %if.else.i ], [ %351, %if.then65.i ], [ %446, %if.then227.i ], [ %446, %if.end281.i ], [ %i.3.i, %makeMaps_d.exit.i ], [ %i.7.i, %if.then458.i ], [ %i.7.i, %if.then458.i ], [ %i.7.i, %if.then458.i ], [ %i.8.i, %if.then516.i ], [ %i.16.i, %while.cond737.i ], [ 256, %for.end935.i ], [ %i.22.i, %while.cond1054.i ], [ %i.22.i, %while.end1120.i ], [ %i.25.i, %if.then1167.i ], [ %i.27.i, %while.cond1247.i ], [ %i.27.i, %while.end1313.i ], [ %i.24.i, %if.else1383.i ], [ %i.24.i, %if.then1583.i ], [ %i.30.i, %while.cond1663.i ], [ %i.30.i, %while.end1729.i ], [ %i.24.i, %while.end1748.i ], [ %nblock.3.i, %if.end2032.i ], [ %j.26.i, %indexIntoF.exit.i104 ], [ %.pre.i87, %if.end.i86 ], [ %1253, %save_state_and_return.loopexit3243.i ], [ %i.11.i.ph, %if.end587.i ], [ %i.1.i, %if.end309.i ], [ %i.5.i, %if.end393.i ], [ %i.11.i.ph, %if.end626.i ], [ %i.18.i, %if.end820.i ], [ %i.17.i, %if.end763.i ], [ %i.14.i, %if.end698.i ], [ %i.23.i, %if.end1083.i ], [ %i.28.i, %if.end1276.i ], [ %i.27.i, %while.body1370.i ], [ %i.27.i, %while.body1354.i ], [ %i.26.i, %if.end1212.i ], [ %i.31.i, %if.end1692.i ], [ %i.29.i, %if.end1628.i ], [ %i.21.i, %if.end1019.i ], [ %i.8.i, %if.end525.i ], [ %i.7.i, %if.end467.i ], [ %446, %if.end237.i ], [ %414, %if.end180.i ], [ %382, %if.end123.i ], [ %351, %if.end71.i ]
+  %cmp32 = phi i1 [ true, %endhdr_2.i ], [ false, %if.then27.i ], [ false, %if.else.i ], [ false, %if.then65.i ], [ false, %if.then227.i ], [ false, %if.end281.i ], [ false, %makeMaps_d.exit.i ], [ false, %if.then458.i ], [ false, %if.then458.i ], [ false, %if.then458.i ], [ false, %if.then516.i ], [ false, %while.cond737.i ], [ false, %for.end935.i ], [ false, %while.cond1054.i ], [ false, %while.end1120.i ], [ false, %if.then1167.i ], [ false, %while.cond1247.i ], [ false, %while.end1313.i ], [ false, %if.else1383.i ], [ false, %if.then1583.i ], [ false, %while.cond1663.i ], [ false, %while.end1729.i ], [ false, %while.end1748.i ], [ false, %if.end2032.i ], [ false, %indexIntoF.exit.i104 ], [ false, %if.end.i86 ], [ false, %save_state_and_return.loopexit3243.i ], [ false, %if.end587.i ], [ false, %if.end309.i ], [ false, %if.end393.i ], [ false, %if.end626.i ], [ false, %if.end820.i ], [ false, %if.end763.i ], [ false, %if.end698.i ], [ false, %if.end1083.i ], [ false, %if.end1276.i ], [ false, %while.body1370.i ], [ false, %while.body1354.i ], [ false, %if.end1212.i ], [ false, %if.end1692.i ], [ false, %if.end1628.i ], [ false, %if.end1019.i ], [ false, %if.end525.i ], [ false, %if.end467.i ], [ false, %if.end237.i ], [ false, %if.end180.i ], [ false, %if.end123.i ], [ false, %if.end71.i ]
+  %retVal.0.i = phi i32 [ 4, %endhdr_2.i ], [ -3, %if.then27.i ], [ -3, %if.else.i ], [ -4, %if.then65.i ], [ -4, %if.then227.i ], [ -4, %if.end281.i ], [ -4, %makeMaps_d.exit.i ], [ -4, %if.then458.i ], [ -4, %if.then458.i ], [ -4, %if.then458.i ], [ -4, %if.then516.i ], [ -4, %while.cond737.i ], [ -4, %for.end935.i ], [ -4, %while.cond1054.i ], [ -4, %while.end1120.i ], [ -4, %if.then1167.i ], [ -4, %while.cond1247.i ], [ -4, %while.end1313.i ], [ -4, %if.else1383.i ], [ -4, %if.then1583.i ], [ -4, %while.cond1663.i ], [ -4, %while.end1729.i ], [ -4, %while.end1748.i ], [ 0, %if.end2032.i ], [ 0, %indexIntoF.exit.i104 ], [ -4, %if.end.i86 ], [ -4, %save_state_and_return.loopexit3243.i ], [ 0, %if.end587.i ], [ 0, %if.end309.i ], [ 0, %if.end393.i ], [ -4, %if.end626.i ], [ 0, %if.end820.i ], [ 0, %if.end763.i ], [ 0, %if.end698.i ], [ 0, %if.end1083.i ], [ 0, %if.end1276.i ], [ -4, %while.body1370.i ], [ -4, %while.body1354.i ], [ 0, %if.end1212.i ], [ 0, %if.end1692.i ], [ 0, %if.end1628.i ], [ 0, %if.end1019.i ], [ 0, %if.end525.i ], [ 0, %if.end467.i ], [ 0, %if.end237.i ], [ 0, %if.end180.i ], [ 0, %if.end123.i ], [ 0, %if.end71.i ]
   store i32 %i.40.i, ptr %save_i.i124, align 4, !tbaa !50
   store i32 %j.28.i, ptr %save_j3.phi.trans.insert.i, align 8, !tbaa !51
   store i32 %t.18.i, ptr %save_t4.phi.trans.insert.i, align 4, !tbaa !52
@@ -5411,7 +5593,7 @@ BZ2_decompress.exit:                              ; preds = %if.end71.i, %if.end
   store i32 %es.12.i, ptr %save_es14.phi.trans.insert.i, align 4, !tbaa !61
   store i32 %N.8.i, ptr %save_N15.phi.trans.insert.i, align 8, !tbaa !62
   store i32 %curr.18.i, ptr %save_curr16.phi.trans.insert.i, align 4, !tbaa !63
-  store i32 %1261, ptr %save_zt17.phi.trans.insert.i, align 8, !tbaa !64
+  store i32 %1254, ptr %save_zt17.phi.trans.insert.i, align 8, !tbaa !64
   store i32 %zn.11.i, ptr %save_zn18.phi.trans.insert.i, align 4, !tbaa !65
   store i32 %zvec.10.i, ptr %save_zvec19.phi.trans.insert.i, align 8, !tbaa !66
   store i32 %zj.10.i, ptr %save_zj20.phi.trans.insert.i, align 4, !tbaa !67
@@ -5424,8 +5606,8 @@ BZ2_decompress.exit:                              ; preds = %if.end71.i, %if.end
 
 cleanup:                                          ; preds = %for.end2018.loopexit.i, %BZ2_decompress.exit
   %retval.0.i88128 = phi i32 [ %retVal.0.i, %BZ2_decompress.exit ], [ 1, %for.end2018.loopexit.i ]
-  %1262 = load i32, ptr %state8, align 8, !tbaa !16
-  %cmp36.not = icmp eq i32 %1262, 2
+  %1255 = load i32, ptr %state8, align 8, !tbaa !16
+  %cmp36.not = icmp eq i32 %1255, 2
   br i1 %cmp36.not, label %while.cond.outer, label %cleanup40
 
 cleanup40:                                        ; preds = %while.cond, %BZ2_decompress.exit, %if.end20, %land.lhs.true, %cleanup, %if.end23.i, %if.end86.i, %if.end80.i, %if.end58.i, %if.end36.i, %if.end21.i, %if.end15.i, %if.end3, %if.end, %entry
@@ -5651,11 +5833,11 @@ attributes #7 = { nounwind }
 !100 = distinct !{!100, !38}
 !101 = distinct !{!101, !38}
 !102 = distinct !{!102, !38}
-!103 = distinct !{!103, !38}
+!103 = distinct !{!103, !38, !46, !47}
 !104 = distinct !{!104, !38, !46, !47}
-!105 = distinct !{!105, !38, !46, !47}
-!106 = distinct !{!106, !38}
-!107 = distinct !{!107, !38, !46}
+!105 = distinct !{!105, !38}
+!106 = distinct !{!106, !38, !46}
+!107 = distinct !{!107, !38}
 !108 = distinct !{!108, !38}
 !109 = distinct !{!109, !38}
 !110 = distinct !{!110, !38}
@@ -5663,4 +5845,3 @@ attributes #7 = { nounwind }
 !112 = distinct !{!112, !38}
 !113 = distinct !{!113, !38}
 !114 = distinct !{!114, !38}
-!115 = distinct !{!115, !38}
